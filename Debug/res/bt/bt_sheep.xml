@@ -1,0 +1,23 @@
+<BehaviorTree>
+	<Selector>
+		<Selector>
+			<Precondition type = "HaveHP"/>
+			<Selector>
+				<Sequence>
+					<Precondition type = "NotBeat"/>
+					<SheepIdle>
+					</SheepIdle>
+					<SheepEat>
+					</SheepEat>
+				</Sequence>
+				<SheepScream>
+				</SheepScream>
+			</Selector>
+		</Selector>
+		<SheepDie>
+			<Precondition type = "NOT">
+				<Precondition type = "HaveHP"/>
+			</Precondition>
+		</SheepDie>
+	</Selector>
+</BehaviorTree>

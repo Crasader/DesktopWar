@@ -1,0 +1,16 @@
+<BehaviorTree>
+	<Selector>
+		<PawnDie>
+			<Precondition type = "NOT">
+				<Precondition type = "HaveHP"/>
+			</Precondition>
+		</PawnDie>
+		<Sequence>
+			<Precondition type = "HaveHP"/>
+			<PawnWander type = 2>
+			</PawnWander>
+			<PawnIdle>
+			</PawnIdle>
+		</Sequence>
+	</Selector>
+</BehaviorTree>

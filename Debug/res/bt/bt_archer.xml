@@ -1,0 +1,34 @@
+<BehaviorTree>
+	<Selector>
+		<PawnDie>
+			<Precondition type = "NOT">
+				<Precondition type = "HaveHP"/>
+			</Precondition>
+		</PawnDie>
+		<Selector>
+			<Selector>
+				<Precondition type = "HaveTarget"/>
+				<Selector>
+					<PawnAttackNear>
+						<Precondition type = "TargetInNearRange"/>
+					</PawnAttackNear>
+					<PawnAttackFar>
+						<Precondition type = "TargetInFarRange"/>
+					</PawnAttackFar>
+				</Selector>
+				<PawnChase>
+					<Precondition type = "NOT">
+						<Precondition type = "TargetInFarRange"/>
+					</Precondition>
+				</PawnChase>
+			</Selector>
+		</Selector>
+		<Sequence>
+			<Precondition type = "HaveHP"/>
+			<PawnIdle>
+			</PawnIdle>
+			<PawnWander>
+			</PawnWander>
+		</Sequence>
+	</Selector>
+</BehaviorTree>

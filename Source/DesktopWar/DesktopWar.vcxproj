@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{677C2AB3-D174-4EFC-8FB5-9E0BB6F2DCB5}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>DesktopWar</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Cocos2d.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Cocos2d.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IntDir>$(SolutionDir)..\..\temp\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\MyDev\Visual Leak Detector\include;Source;Source\common;Source\data;$(TinyXML);$(CocosRoot)cocos\audio\include;$(CocosRoot)external;$(CocosRoot)external\Box2D;$(CocosRoot)extensions;$(CocosRoot);$(CocosRoot)cocos;$(CocosRoot)cocos\editor-support;$(CocosRoot)cocos\platform\win32;$(CocosRoot)cocos\platform\desktop;$(CocosRoot)external\glfw3\include\win32;$(CocosRoot)external\win32-specific\gles\include\OGLES;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4251;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>tinyxml.lib;libcocos2d.lib;opengl32.lib;glew32.lib;libzlib.lib;libwebp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\MyDev\Visual Leak Detector\lib\Win32;$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\common\Performance.h" />
+    <ClInclude Include="Source\EntityCreators.h" />
+    <ClInclude Include="Source\AppStatus.h" />
+    <ClInclude Include="Source\gfx\GfxUtils.h" />
+    <ClInclude Include="Source\gfx\RollNumberLabel.h" />
+    <ClInclude Include="Source\LoadingManager.h" />
+    <ClInclude Include="Source\pawn\BehaviorCreators.h" />
+    <ClInclude Include="Source\pawn\BehaviorsAndPreconditions.h" />
+    <ClInclude Include="Source\pawn\PawnBehaviors.h" />
+    <ClInclude Include="Source\pawn\PawnBHTree.h" />
+    <ClInclude Include="Source\pawn\PawnDefines.h" />
+    <ClInclude Include="Source\pawn\PawnPrecondition.h" />
+    <ClInclude Include="WinWrapper.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Source\AI\AI.h" />
+    <ClInclude Include="Source\AI\AIBaseDef.h" />
+    <ClInclude Include="Source\AI\BehaviorTree\Behavior.h" />
+    <ClInclude Include="Source\AI\BehaviorTree\BehaviorLoader.h" />
+    <ClInclude Include="Source\AI\BehaviorTree\BehaviorTree.h" />
+    <ClInclude Include="Source\AI\BehaviorTree\Precondition.h" />
+    <ClInclude Include="Source\BulletDefines.h" />
+    <ClInclude Include="Source\common\2Ddef.h" />
+    <ClInclude Include="Source\common\AnyData.h" />
+    <ClInclude Include="Source\common\GeniusDef.h" />
+    <ClInclude Include="Source\common\Logger.h" />
+    <ClInclude Include="Source\common\RandUtility.h" />
+    <ClInclude Include="Source\common\Singleton.h" />
+    <ClInclude Include="Source\common\TabFile.h" />
+    <ClInclude Include="Source\common\TimeSystem.h" />
+    <ClInclude Include="Source\Config.h" />
+    <ClInclude Include="Source\data\AnimDataMgr.h" />
+    <ClInclude Include="Source\data\BuffActionDataMgr.h" />
+    <ClInclude Include="Source\data\BuffDataMgr.h" />
+    <ClInclude Include="Source\data\BulletDataMgr.h" />
+    <ClInclude Include="Source\data\DBSystem.h" />
+    <ClInclude Include="Source\data\IDataManager.h" />
+    <ClInclude Include="Source\data\RoleDataMgr.h" />
+    <ClInclude Include="Source\data\SkillDataMgr.h" />
+    <ClInclude Include="Source\ECS\BitSize.h" />
+    <ClInclude Include="Source\ECS\Component.h" />
+    <ClInclude Include="Source\ECS\ComponentMapper.h" />
+    <ClInclude Include="Source\ECS\components\BevtreeCom.h" />
+    <ClInclude Include="Source\ECS\components\BulletComponents.h" />
+    <ClInclude Include="Source\ECS\components\CommonCom.h" />
+    <ClInclude Include="Source\ECS\components\GamePlayCom.h" />
+    <ClInclude Include="Source\ECS\components\PawnComponents.h" />
+    <ClInclude Include="Source\ECS\ComponentType.h" />
+    <ClInclude Include="Source\ECS\ComponentTypeManager.h" />
+    <ClInclude Include="Source\ECS\ECSHeaders.h" />
+    <ClInclude Include="Source\ECS\ECSWorld.h" />
+    <ClInclude Include="Source\ECS\Entity.h" />
+    <ClInclude Include="Source\ECS\EntityEvents.h" />
+    <ClInclude Include="Source\ECS\EntityManager.h" />
+    <ClInclude Include="Source\ECS\EntityProcessingSystem.h" />
+    <ClInclude Include="Source\ECS\EntitySystem.h" />
+    <ClInclude Include="Source\ECS\GroupManager.h" />
+    <ClInclude Include="Source\ECS\ImmutableBag.h" />
+    <ClInclude Include="Source\ECS\SystemBitManager.h" />
+    <ClInclude Include="Source\ECS\SystemManager.h" />
+    <ClInclude Include="Source\ECS\systems\BevtreeSystem.h" />
+    <ClInclude Include="Source\ECS\systems\BezierMovingSystem.h" />
+    <ClInclude Include="Source\ECS\systems\BoxColliderSystem.h" />
+    <ClInclude Include="Source\ECS\systems\BulletAnimSystem.h" />
+    <ClInclude Include="Source\ECS\systems\BulletArrowAnimSystem.h" />
+    <ClInclude Include="Source\ECS\systems\BulletBombAnimSystem.h" />
+    <ClInclude Include="Source\ECS\systems\BulletDamageNoneSystem.h" />
+    <ClInclude Include="Source\ECS\systems\BulletDamageScopeSystem.h" />
+    <ClInclude Include="Source\ECS\systems\BulletDamageSingleSystem.h" />
+    <ClInclude Include="Source\ECS\systems\BulletDebugDrawSystem.h" />
+    <ClInclude Include="Source\ECS\systems\BulletEggAnimSystem.h" />
+    <ClInclude Include="Source\ECS\systems\BulletTargetSystem.h" />
+    <ClInclude Include="Source\ECS\systems\DelayTrackMovingSystem.h" />
+    <ClInclude Include="Source\ECS\systems\HumanGameControlSystem.h" />
+    <ClInclude Include="Source\ECS\systems\MonsterGameControlSystem.h" />
+    <ClInclude Include="Source\ECS\systems\MovementSystem.h" />
+    <ClInclude Include="Source\ECS\systems\NavigationSystem.h" />
+    <ClInclude Include="Source\ECS\systems\PawnActionSystem.h" />
+    <ClInclude Include="Source\ECS\systems\PawnAnimSystem.h" />
+    <ClInclude Include="Source\ECS\systems\PawnDebugDrawSystem.h" />
+    <ClInclude Include="Source\ECS\systems\PawnDirectionSystem.h" />
+    <ClInclude Include="Source\ECS\systems\PawnFightSystem.h" />
+    <ClInclude Include="Source\ECS\systems\SimpleAnimSystem.h" />
+    <ClInclude Include="Source\ECS\TagManager.h" />
+    <ClInclude Include="Source\event\Event.h" />
+    <ClInclude Include="Source\event\EventManager.h" />
+    <ClInclude Include="Source\GameDefine.h" />
+    <ClInclude Include="Source\GamePlay.h" />
+    <ClInclude Include="Source\GameUtils.h" />
+    <ClInclude Include="Source\gfx\BulletArrow.h" />
+    <ClInclude Include="Source\gfx\CocosApp.h" />
+    <ClInclude Include="Source\gfx\FloatLabel.h" />
+    <ClInclude Include="Source\gfx\gfx.h" />
+    <ClInclude Include="Source\gfx\ParticleTail.h" />
+    <ClInclude Include="Source\gfx\SceneManager.h" />
+    <ClInclude Include="Source\gfx\SystemStatusPanel.h" />
+    <ClInclude Include="Source\gfx\UIBar.h" />
+    <ClInclude Include="Source\PawnDefines.h" />
+    <ClInclude Include="Source\skill\Buff.h" />
+    <ClInclude Include="Source\skill\BuffAction.h" />
+    <ClInclude Include="Source\skill\BuffSet.h" />
+    <ClInclude Include="Source\skill\BuffSystem.h" />
+    <ClInclude Include="Source\skill\Skill.h" />
+    <ClInclude Include="Source\skill\SkillSet.h" />
+    <ClInclude Include="Source\skill\SkillSystem.h" />
+    <ClInclude Include="Source\skill\UserActions.h" />
+    <ClInclude Include="Source\WarApp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\common\Performance.cpp" />
+    <ClCompile Include="Source\EntityCreators.cpp" />
+    <ClCompile Include="Source\AppStatus.cpp" />
+    <ClCompile Include="Source\GameDefine.cpp" />
+    <ClCompile Include="Source\gfx\GfxUtils.cpp" />
+    <ClCompile Include="Source\gfx\RollNumberLabel.cpp" />
+    <ClCompile Include="Source\LoadingManager.cpp" />
+    <ClCompile Include="Source\pawn\BehaviorCreators.cpp" />
+    <ClCompile Include="Source\pawn\PawnBehaviors.cpp" />
+    <ClCompile Include="Source\pawn\PawnBHTree.cpp" />
+    <ClCompile Include="Source\pawn\PawnPrecondition.cpp" />
+    <ClCompile Include="WinWrapper.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Source\AI\BehaviorTree\Behavior.cpp" />
+    <ClCompile Include="Source\AI\BehaviorTree\BehaviorLoader.cpp" />
+    <ClCompile Include="Source\AI\BehaviorTree\BehaviorTree.cpp" />
+    <ClCompile Include="Source\AI\BehaviorTree\Precondition.cpp" />
+    <ClCompile Include="Source\common\Logger.cpp" />
+    <ClCompile Include="Source\common\TabFile.cpp" />
+    <ClCompile Include="Source\common\TimeSystem.cpp" />
+    <ClCompile Include="Source\data\AnimDataMgr.cpp" />
+    <ClCompile Include="Source\data\BuffActionDataMgr.cpp" />
+    <ClCompile Include="Source\data\BuffDataMgr.cpp" />
+    <ClCompile Include="Source\data\BulletDataMg.cpp" />
+    <ClCompile Include="Source\data\DBSystem.cpp" />
+    <ClCompile Include="Source\data\IDataManager.cpp" />
+    <ClCompile Include="Source\data\RoleDataMgr.cpp" />
+    <ClCompile Include="Source\data\SkillDataMgr.cpp" />
+    <ClCompile Include="Source\ECS\Component.cpp" />
+    <ClCompile Include="Source\ECS\components\BevtreeCom.cpp" />
+    <ClCompile Include="Source\ECS\components\BulletComponents.cpp" />
+    <ClCompile Include="Source\ECS\components\CommonCom.cpp" />
+    <ClCompile Include="Source\ECS\components\GamePlayCom.cpp" />
+    <ClCompile Include="Source\ECS\components\PawnComponents.cpp" />
+    <ClCompile Include="Source\ECS\ComponentType.cpp" />
+    <ClCompile Include="Source\ECS\ComponentTypeManager.cpp" />
+    <ClCompile Include="Source\ECS\ECSWorld.cpp" />
+    <ClCompile Include="Source\ECS\Entity.cpp" />
+    <ClCompile Include="Source\ECS\EntityManager.cpp" />
+    <ClCompile Include="Source\ECS\EntityProcessingSystem.cpp" />
+    <ClCompile Include="Source\ECS\EntitySystem.cpp" />
+    <ClCompile Include="Source\ECS\GroupManager.cpp" />
+    <ClCompile Include="Source\ECS\SystemBitManager.cpp" />
+    <ClCompile Include="Source\ECS\SystemManager.cpp" />
+    <ClCompile Include="Source\ECS\systems\BevtreeSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\BezierMovingSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\BoxColliderSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\BulletAnimSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\BulletArrowAnimSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\BulletBombAnimSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\BulletDamageNoneSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\BulletDamageScopeSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\BulletDamageSingleSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\BulletDebugDrawSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\BulletEggAnimSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\BulletTargetSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\DelayTrackMovingSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\HumanGameControlSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\MonsterGameControlSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\MovementSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\NavigationSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\PawnActionSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\PawnAnimSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\PawnDebugDrawSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\PawnDirectionSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\PawnFightSystem.cpp" />
+    <ClCompile Include="Source\ECS\systems\SimpleAnimSystem.cpp" />
+    <ClCompile Include="Source\ECS\TagManager.cpp" />
+    <ClCompile Include="Source\event\EventManager.cpp" />
+    <ClCompile Include="Source\GamePlay.cpp" />
+    <ClCompile Include="Source\gfx\BulletArrow.cpp" />
+    <ClCompile Include="Source\gfx\CocosApp.cpp" />
+    <ClCompile Include="Source\gfx\FloatLabel.cpp" />
+    <ClCompile Include="Source\gfx\ParticleTail.cpp" />
+    <ClCompile Include="Source\gfx\SceneManager.cpp" />
+    <ClCompile Include="Source\gfx\SystemStatusPanel.cpp" />
+    <ClCompile Include="Source\gfx\UIBar.cpp" />
+    <ClCompile Include="Source\skill\Buff.cpp" />
+    <ClCompile Include="Source\skill\BuffAction.cpp" />
+    <ClCompile Include="Source\skill\BuffSet.cpp" />
+    <ClCompile Include="Source\skill\BuffSystem.cpp" />
+    <ClCompile Include="Source\skill\Skill.cpp" />
+    <ClCompile Include="Source\skill\SkillSet.cpp" />
+    <ClCompile Include="Source\skill\SkillSystem.cpp" />
+    <ClCompile Include="Source\skill\UserActions.cpp" />
+    <ClCompile Include="Source\WarApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DesktopWar.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="DesktopWar.ico" />
+    <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\MyDev\Genius\Source\cocos2d\cocos\2d\libcocos2d.vcxproj">
+      <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
