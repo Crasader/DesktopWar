@@ -43,7 +43,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IntDir>$(SolutionDir)..\..\temp\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)\temp\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -87,6 +87,9 @@
     <ClInclude Include="Source\gfx\GfxUtils.h" />
     <ClInclude Include="Source\gfx\RollNumberLabel.h" />
     <ClInclude Include="Source\LoadingManager.h" />
+    <ClInclude Include="Source\pawn\anim\animFSM\AnimFSM.h" />
+    <ClInclude Include="Source\pawn\anim\animSet\AnimSet.h" />
+    <ClInclude Include="Source\pawn\anim\animState\AnimState.h" />
     <ClInclude Include="Source\pawn\BehaviorCreators.h" />
     <ClInclude Include="Source\pawn\BehaviorsAndPreconditions.h" />
     <ClInclude Include="Source\pawn\PawnBehaviors.h" />
@@ -197,6 +200,9 @@
     <ClCompile Include="Source\gfx\GfxUtils.cpp" />
     <ClCompile Include="Source\gfx\RollNumberLabel.cpp" />
     <ClCompile Include="Source\LoadingManager.cpp" />
+    <ClCompile Include="Source\pawn\anim\animFSM\AnimFSM.cpp" />
+    <ClCompile Include="Source\pawn\anim\animSet\AnimSet.cpp" />
+    <ClCompile Include="Source\pawn\anim\animState\AnimState.cpp" />
     <ClCompile Include="Source\pawn\BehaviorCreators.cpp" />
     <ClCompile Include="Source\pawn\PawnBehaviors.cpp" />
     <ClCompile Include="Source\pawn\PawnBHTree.cpp" />

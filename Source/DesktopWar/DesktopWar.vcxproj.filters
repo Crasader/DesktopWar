@@ -95,6 +95,18 @@
     <Filter Include="Source\Logic\Entity">
       <UniqueIdentifier>{e7d0cde6-cc3a-4d0a-a1ba-143a973802f5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Logic\Pawn\Anim">
+      <UniqueIdentifier>{56818f6b-2930-47f9-8b17-0e54f115e109}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Logic\Pawn\Anim\AnimFSM">
+      <UniqueIdentifier>{3eae6c33-2d1e-44d3-9499-46220a2ae3b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Logic\Pawn\Anim\AnimState">
+      <UniqueIdentifier>{dd631534-adfa-429e-9900-26ed33010005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Logic\Pawn\Anim\AnimSet">
+      <UniqueIdentifier>{f45cb523-9547-4d78-8ec4-8a58cacb5c95}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\common\2Ddef.h">
@@ -418,6 +430,15 @@
     <ClInclude Include="Source\gfx\RollNumberLabel.h">
       <Filter>Source\Base\Gfx</Filter>
     </ClInclude>
+    <ClInclude Include="Source\pawn\anim\animSet\AnimSet.h">
+      <Filter>Source\Logic\Pawn\Anim\AnimSet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\anim\animState\AnimState.h">
+      <Filter>Source\Logic\Pawn\Anim\AnimState</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\anim\animFSM\AnimFSM.h">
+      <Filter>Source\Logic\Pawn\Anim\AnimFSM</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -693,6 +714,15 @@
     </ClCompile>
     <ClCompile Include="Source\gfx\RollNumberLabel.cpp">
       <Filter>Source\Base\Gfx</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\anim\animSet\AnimSet.cpp">
+      <Filter>Source\Logic\Pawn\Anim\AnimSet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\anim\animState\AnimState.cpp">
+      <Filter>Source\Logic\Pawn\Anim\AnimState</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\anim\animFSM\AnimFSM.cpp">
+      <Filter>Source\Logic\Pawn\Anim\AnimFSM</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
