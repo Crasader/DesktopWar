@@ -76,7 +76,7 @@ void WinWrapper::Destroy()
 void WinWrapper::InitNotify(HWND hWnd)
 {
 	NOTIFYICONDATA nID = {};
-	nID.hIcon = (HICON)LoadImage(NULL, TEXT("notify.ico"), IMAGE_ICON, 0, 0, LR_LOADFROMFILE);
+	nID.hIcon = (HICON)LoadImage(NULL, TEXT("res/notify.ico"), IMAGE_ICON, 0, 0, LR_LOADFROMFILE);
 	wcscpy(nID.szTip, L"Welcome to Desktop War !");
 	nID.hWnd = m_hWnd;
 	nID.uID = 1;
