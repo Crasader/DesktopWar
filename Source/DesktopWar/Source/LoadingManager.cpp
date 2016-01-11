@@ -1,11 +1,11 @@
 
 #include "LoadingManager.h"
 #include "AnimDataMgr.h"
-#include "AppStatus.h"
+#include "App/AppStatus/AppStateLoading.h"
 
 using namespace Genius;
 
-LoadingManager::LoadingManager(AppLoadingState* pState)
+LoadingManager::LoadingManager(AppStateLoading* pState)
 {
 	m_pLoadingState = pState;
 }

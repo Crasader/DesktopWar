@@ -5,7 +5,7 @@
 #include <string>
 #include "gfx/gfx.h"
 
-class AppLoadingState;
+class AppStateLoading;
 class LoadingManager : public cocos2d::Ref
 {
 public:
@@ -29,7 +29,7 @@ public:
 
 
 public:
-	LoadingManager(AppLoadingState* pState);
+	LoadingManager(AppStateLoading* pState);
 	~LoadingManager();
 
 	void GenerateUnLoadList();
@@ -52,5 +52,5 @@ private:
 	ResourceList						m_unloadResources;
 	ResourceList::iterator		m_currentIterator;
 	unsigned int						m_loadedCount;
-	AppLoadingState*			m_pLoadingState;
+	AppStateLoading*			m_pLoadingState;
 };

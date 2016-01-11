@@ -81,14 +81,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\App\AppStatus\AppStateLaunch.h" />
+    <ClInclude Include="Source\App\AppStatus\AppStateLoading.h" />
+    <ClInclude Include="Source\App\AppStatus\AppState.h" />
+    <ClInclude Include="Source\App\AppStatus\AppStateBattle.h" />
     <ClInclude Include="Source\common\Performance.h" />
     <ClInclude Include="Source\EntityCreators.h" />
-    <ClInclude Include="Source\AppStatus.h" />
     <ClInclude Include="Source\gfx\GfxUtils.h" />
     <ClInclude Include="Source\gfx\RollNumberLabel.h" />
     <ClInclude Include="Source\LoadingManager.h" />
     <ClInclude Include="Source\pawn\anim\animFSM\AnimFSM.h" />
     <ClInclude Include="Source\pawn\anim\animSet\AnimSet.h" />
+    <ClInclude Include="Source\pawn\anim\animSet\AnimSetSimple.h" />
     <ClInclude Include="Source\pawn\anim\animState\AnimState.h" />
     <ClInclude Include="Source\pawn\BehaviorCreators.h" />
     <ClInclude Include="Source\pawn\BehaviorsAndPreconditions.h" />
@@ -193,15 +197,19 @@
     <ClInclude Include="Source\WarApp.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\App\AppStatus\AppStateLaunch.cpp" />
+    <ClCompile Include="Source\App\AppStatus\AppStateLoading.cpp" />
+    <ClCompile Include="Source\App\AppStatus\AppState.cpp" />
+    <ClCompile Include="Source\App\AppStatus\AppStateBattle.cpp" />
     <ClCompile Include="Source\common\Performance.cpp" />
     <ClCompile Include="Source\EntityCreators.cpp" />
-    <ClCompile Include="Source\AppStatus.cpp" />
     <ClCompile Include="Source\GameDefine.cpp" />
     <ClCompile Include="Source\gfx\GfxUtils.cpp" />
     <ClCompile Include="Source\gfx\RollNumberLabel.cpp" />
     <ClCompile Include="Source\LoadingManager.cpp" />
     <ClCompile Include="Source\pawn\anim\animFSM\AnimFSM.cpp" />
     <ClCompile Include="Source\pawn\anim\animSet\AnimSet.cpp" />
+    <ClCompile Include="Source\pawn\anim\animSet\AnimSetSimple.cpp" />
     <ClCompile Include="Source\pawn\anim\animState\AnimState.cpp" />
     <ClCompile Include="Source\pawn\BehaviorCreators.cpp" />
     <ClCompile Include="Source\pawn\PawnBehaviors.cpp" />

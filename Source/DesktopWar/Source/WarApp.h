@@ -1,9 +1,9 @@
 
 
 class AppState;
-class AppLoadingState;
-class AppLaunchState;
-class AppBattleState;
+class AppStateLoading;
+class AppStateLaunch;
+class AppStateBattle;
 
 class WarApp
 {
@@ -32,7 +32,7 @@ private:
 private:
 	AppState*					m_pCurrentState;
 	AppState*					m_pLastState;
-	AppLaunchState*		m_pLaunchState;
-	AppLoadingState*	m_pLoadingState;
-	AppBattleState*		m_pBattleState;
+	AppStateLaunch*		m_pLaunchState;
+	AppStateLoading*	m_pLoadingState;
+	AppStateBattle*		m_pBattleState;
 };

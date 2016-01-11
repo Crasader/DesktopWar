@@ -107,6 +107,9 @@
     <Filter Include="Source\Logic\Pawn\Anim\AnimSet">
       <UniqueIdentifier>{f45cb523-9547-4d78-8ec4-8a58cacb5c95}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Logic\App\AppStatus">
+      <UniqueIdentifier>{20b7be3e-bd6e-453e-8b3b-614cc98f88c2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\common\2Ddef.h">
@@ -418,9 +421,6 @@
     <ClInclude Include="Source\EntityCreators.h">
       <Filter>Source\Logic\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Source\AppStatus.h">
-      <Filter>Source\Logic\App</Filter>
-    </ClInclude>
     <ClInclude Include="Source\common\Performance.h">
       <Filter>Source\Base\Common</Filter>
     </ClInclude>
@@ -438,6 +438,21 @@
     </ClInclude>
     <ClInclude Include="Source\pawn\anim\animFSM\AnimFSM.h">
       <Filter>Source\Logic\Pawn\Anim\AnimFSM</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\App\AppStatus\AppState.h">
+      <Filter>Source\Logic\App\AppStatus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\App\AppStatus\AppStateBattle.h">
+      <Filter>Source\Logic\App\AppStatus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\App\AppStatus\AppStateLoading.h">
+      <Filter>Source\Logic\App\AppStatus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\App\AppStatus\AppStateLaunch.h">
+      <Filter>Source\Logic\App\AppStatus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\anim\animSet\AnimSetSimple.h">
+      <Filter>Source\Logic\Pawn\Anim\AnimSet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -700,9 +715,6 @@
     <ClCompile Include="Source\EntityCreators.cpp">
       <Filter>Source\Logic\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="Source\AppStatus.cpp">
-      <Filter>Source\Logic\App</Filter>
-    </ClCompile>
     <ClCompile Include="Source\common\Performance.cpp">
       <Filter>Source\Base\Common</Filter>
     </ClCompile>
@@ -723,6 +735,21 @@
     </ClCompile>
     <ClCompile Include="Source\pawn\anim\animFSM\AnimFSM.cpp">
       <Filter>Source\Logic\Pawn\Anim\AnimFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\App\AppStatus\AppState.cpp">
+      <Filter>Source\Logic\App\AppStatus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\App\AppStatus\AppStateBattle.cpp">
+      <Filter>Source\Logic\App\AppStatus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\App\AppStatus\AppStateLoading.cpp">
+      <Filter>Source\Logic\App\AppStatus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\App\AppStatus\AppStateLaunch.cpp">
+      <Filter>Source\Logic\App\AppStatus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\anim\animSet\AnimSetSimple.cpp">
+      <Filter>Source\Logic\Pawn\Anim\AnimSet</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
