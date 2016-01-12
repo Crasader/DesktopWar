@@ -3,20 +3,21 @@
 
 #include "../core/EntityProcessingSystem.h"
 #include "../core/ComponentMapper.h"
-#include "../components/CommonCom.h"
+#include "../components/common/PositionCom.h"
+#include "../components/common/AnimationCom.h"
 
 namespace Genius
 {
 	class SimpleAnimSystem : public EntityProcessingSystem
 	{
 	private:
-		ComponentMapper<SimpleAnimationCom>	animMapper;
+		ComponentMapper<AnimationCom>	animMapper;
 		ComponentMapper<PositionCom>		positionMapper;
 
 	public:
 		SimpleAnimSystem()
 		{
-			SetComponentTypes<SimpleAnimationCom, PositionCom>();
+			SetComponentTypes<AnimationCom, PositionCom>();
 		}
 		virtual const char* GetName(){ return "SimpleAnimSystem"; }
 		virtual void Initialize();

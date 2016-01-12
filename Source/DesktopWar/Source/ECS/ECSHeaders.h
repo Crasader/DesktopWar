@@ -10,7 +10,17 @@
 
 
 // components
-#include "components/CommonCom.h"
+#include "components/common/PositionCom.h"
+#include "components/common/VelocityCom.h"
+#include "components/common/BoxColliderCom.h"
+#include "components/common/ColliderHandlerCom.h"
+#include "components/common/AnimationCom.h"
+#include "components/common/TeamCom.h"
+#include "components/common/TargetCom.h"
+#include "components/common/ParticleCom.h"
+#include "components/common/BezierMovementCom.h"
+#include "components/common/DelayTrackMovementCom.h"
+
 #include "components/BevtreeCom.h"
 #include "components/PawnComponents.h"
 #include "components/BulletComponents.h"

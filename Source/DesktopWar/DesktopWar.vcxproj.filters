@@ -110,6 +110,9 @@
     <Filter Include="Source\Logic\App\AppStatus">
       <UniqueIdentifier>{20b7be3e-bd6e-453e-8b3b-614cc98f88c2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Logic\ESC\User\Component\common">
+      <UniqueIdentifier>{23fb624f-8964-474f-8f5c-23244a9f4fd4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\common\2Ddef.h">
@@ -248,9 +251,6 @@
       <Filter>Source\Logic\ESC\User\Component</Filter>
     </ClInclude>
     <ClInclude Include="Source\ECS\components\BulletComponents.h">
-      <Filter>Source\Logic\ESC\User\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\components\CommonCom.h">
       <Filter>Source\Logic\ESC\User\Component</Filter>
     </ClInclude>
     <ClInclude Include="Source\ECS\components\GamePlayCom.h">
@@ -454,6 +454,36 @@
     <ClInclude Include="Source\ECS\core\ImmutableBag.h">
       <Filter>Source\Logic\ESC\Core\Component</Filter>
     </ClInclude>
+    <ClInclude Include="Source\ECS\components\common\AnimationCom.h">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\common\BoxColliderCom.h">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\common\ColliderHandlerCom.h">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\common\ParticleCom.h">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\common\PositionCom.h">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\common\TargetCom.h">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\common\TeamCom.h">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\common\VelocityCom.h">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\common\BezierMovementCom.h">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\common\DelayTrackMovementCom.h">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -566,9 +596,6 @@
       <Filter>Source\Logic\ESC\User\Component</Filter>
     </ClCompile>
     <ClCompile Include="Source\ECS\components\BulletComponents.cpp">
-      <Filter>Source\Logic\ESC\User\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\components\CommonCom.cpp">
       <Filter>Source\Logic\ESC\User\Component</Filter>
     </ClCompile>
     <ClCompile Include="Source\ECS\components\GamePlayCom.cpp">
@@ -750,6 +777,36 @@
     </ClCompile>
     <ClCompile Include="Source\ECS\core\ComponentTypeManager.cpp">
       <Filter>Source\Logic\ESC\Core\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\common\AnimationCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\common\BoxColliderCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\common\ColliderHandlerCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\common\ParticleCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\common\PositionCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\common\TargetCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\common\TeamCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\common\VelocityCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\common\BezierMovementCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\common\DelayTrackMovementCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\common</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
