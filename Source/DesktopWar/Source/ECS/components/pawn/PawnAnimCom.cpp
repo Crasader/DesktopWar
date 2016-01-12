@@ -1,16 +1,16 @@
 // d:)
-#include "PawnComponents.h"
-#include "../../pawn/PawnDefines.h"
+#include "PawnAnimCom.h"
+#include "pawn/PawnDefines.h"
 #include "RoleDataMgr.h"
 #include "gfx/gfx.h"
 #include "AnimDataMgr.h"
 #include "event/EventManager.h"
-#include "../EntityEvents.h"
+#include "../../EntityEvents.h"
 #include "skill/SkillSystem.h"
 #include "skill/BuffSystem.h"
-#include "../core/Entity.h"
+#include "../../core/Entity.h"
 #include "Logger.h"
-#include "CommonCom.h"
+
 
 using namespace Genius;
 
@@ -156,121 +156,4 @@ void PawnAnimCom::PlayFloatNumber(int number, int y)
 void PawnAnimCom::SetDebugLabel(std::string text)
 {
 	m_pDebugLabel->setString(text);
-}
-
-/************************************************************************/
-/*                              PawnActionCom                                        */
-/************************************************************************/
-PawnActionCom::PawnActionCom(unsigned int act)
-{
-	m_curAction = Action_Idle;
-	if (act > Action_Min && act < Action_Max)
-		m_curAction = act;
-};
-
-void PawnActionCom::StartAction(unsigned int act)
-{
-	if (act <= Action_Min || act >= Action_Max)
-		return;
-
-	m_curAction = act;
-	/*switch (act)
-	{
-	case Action_Idle:
-		break;
-	case Action_Move:
-		break;
-	case Action_Attack_Near:
-		break;
-	case Action_Skill1:
-		break;
-	case Action_Die:
-		break;
-	default:
-		printf("unknown action\n");
-		break;
-	}*/
-}
-
-
-/************************************************************************/
-/*                                         PawnTemplateCom                             */
-/************************************************************************/
-PawnTemplateCom::PawnTemplateCom(int roleID)
-{
-	RoleData* info = RoleDataMgr::GetSingleton()->GetRoleData(roleID);
-	pRoleData = info;
-}
-
-
-/************************************************************************/
-/*                                         PawnAttributeCom                             */
-/************************************************************************/
-PawnAttributeCom::PawnAttributeCom(int roleID)
-{
-	RoleData* roleData = RoleDataMgr::GetSingleton()->GetRoleData(roleID);
-	if (roleData)
-	{
-		curLife = roleData->baseLife;
-	}
-}
-
-PawnAttributeCom::~PawnAttributeCom()
-{
-}
-
-/************************************************************************/
-/*                                           PawnFightCom                           */
-/************************************************************************/
-PawnFightCom::PawnFightCom() :
-enemyID(-1),
-haveTarget(false),
-isTargetInNearRange(false),
-isTargetInFarRange(false)
-{}
-
-PawnFightCom::~PawnFightCom()
-{
-	int id = GetOwner()->GetId();
-	SkillSystem::GetSingleton().ClearSkill(id);
-	BuffSystem::GetSingleton().RemoveBuff(id);
-}
-
-bool PawnFightCom::Init()
-{
-	Entity* ent = this->GetOwner();
-	PawnTemplateCom* tempCom = ent->GetComponent<PawnTemplateCom>();
-	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->pRoleData->normalSkill1);
-	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->pRoleData->normalSkill2);
-	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->pRoleData->specialSkill1);
-	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->pRoleData->specialSkill2);
-	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->pRoleData->specialSkill3);
-	return true;
-}
-
-/************************************************************************/
-/*                                     PawnDebugDrawCom                                 */
-/************************************************************************/
-PawnDebugDrawCom::PawnDebugDrawCom()
-{
-	pRoot = Node::create();
-	pNodeBoxCollider = DrawNode::create();
-	pNodeNearRange = DrawNode::create();
-	pNodeFarRange = DrawNode::create();
-	pRoot->addChild(pNodeBoxCollider);
-	pRoot->addChild(pNodeNearRange);
-	pRoot->addChild(pNodeFarRange);
-	SceneManager::GetInstance().AddToMapLayer(pRoot);
-}
-
-PawnDebugDrawCom::~PawnDebugDrawCom()
-{
-	pRoot->removeFromParent();
-}
-
-void PawnDebugDrawCom::Clear()
-{
-	pNodeBoxCollider->clear();
-	pNodeNearRange->clear();
-	pNodeFarRange->clear();
 }

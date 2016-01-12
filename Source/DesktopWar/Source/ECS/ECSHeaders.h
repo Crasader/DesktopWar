@@ -21,8 +21,16 @@
 #include "components/common/BezierMovementCom.h"
 #include "components/common/DelayTrackMovementCom.h"
 
+#include "components/pawn/PawnActionCom.h"
+#include "components/pawn/PawnAnimCom.h"
+#include "components/pawn/PawnAttributeCom.h"
+#include "components/pawn/PawnDebugDrawCom.h"
+#include "components/pawn/PawnDirectionCom.h"
+#include "components/pawn/PawnFightCom.h"
+#include "components/pawn/PawnNavigationCom.h"
+#include "components/pawn/PawnTemplateCom.h"
+
 #include "components/BevtreeCom.h"
-#include "components/PawnComponents.h"
 #include "components/BulletComponents.h"
 #include "components/GamePlayCom.h"
 

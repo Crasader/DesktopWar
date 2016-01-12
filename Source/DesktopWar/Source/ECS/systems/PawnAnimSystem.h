@@ -3,8 +3,11 @@
 
 #include "../core/EntityProcessingSystem.h"
 #include "../core/ComponentMapper.h"
-#include "../components/PawnComponents.h"
+
 #include "../components/common/PositionCom.h"
+#include "../components/pawn/PawnAnimCom.h"
+#include "../components/pawn/PawnDirectionCom.h"
+
 #include "../../common/2Ddef.h"
 #include "../../pawn/PawnDefines.h"
 

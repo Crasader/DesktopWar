@@ -44,7 +44,7 @@ bool PawnAnimSystem::HandleEvent(IEventData const &event)
 		const UpdateActionEvent & actionEvent = static_cast<const UpdateActionEvent &>(event);
 		PawnAnimCom* animCom = pawnAnimMapper.get(actionEvent.entity);
 		PawnDirectionCom* dirCom = pawnDirectionMapper.get(actionEvent.entity);
-		this->PlayAnimation(animCom, dirCom, animCom->m_curAction);
+		this->PlayAnimation(animCom, dirCom, (ActionType)animCom->m_curAction);
 	}
 		break;
 	}

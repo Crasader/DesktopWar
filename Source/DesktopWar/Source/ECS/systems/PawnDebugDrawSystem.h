@@ -4,7 +4,9 @@
 #include "../core/ComponentMapper.h"
 #include "../components/common/PositionCom.h"
 #include "../components/common/BoxColliderCom.h"
-#include "../components/PawnComponents.h"
+#include "../components/pawn/PawnDebugDrawCom.h"
+#include "../components/pawn/PawnTemplateCom.h"
+
 
 namespace Genius
 {

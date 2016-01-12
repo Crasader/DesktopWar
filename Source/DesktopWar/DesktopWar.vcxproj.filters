@@ -113,6 +113,9 @@
     <Filter Include="Source\Logic\ESC\User\Component\common">
       <UniqueIdentifier>{23fb624f-8964-474f-8f5c-23244a9f4fd4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Logic\ESC\User\Component\pawn">
+      <UniqueIdentifier>{1f3d725e-1d9c-4b3d-8f0e-39ee43f9351e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\common\2Ddef.h">
@@ -254,9 +257,6 @@
       <Filter>Source\Logic\ESC\User\Component</Filter>
     </ClInclude>
     <ClInclude Include="Source\ECS\components\GamePlayCom.h">
-      <Filter>Source\Logic\ESC\User\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\components\PawnComponents.h">
       <Filter>Source\Logic\ESC\User\Component</Filter>
     </ClInclude>
     <ClInclude Include="Source\ECS\EntityEvents.h">
@@ -484,6 +484,30 @@
     <ClInclude Include="Source\ECS\components\common\DelayTrackMovementCom.h">
       <Filter>Source\Logic\ESC\User\Component\common</Filter>
     </ClInclude>
+    <ClInclude Include="Source\ECS\components\pawn\PawnActionCom.h">
+      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\pawn\PawnAnimCom.h">
+      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\pawn\PawnAttributeCom.h">
+      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\pawn\PawnDebugDrawCom.h">
+      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\pawn\PawnDirectionCom.h">
+      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\pawn\PawnFightCom.h">
+      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\pawn\PawnNavigationCom.h">
+      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\pawn\PawnTemplateCom.h">
+      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -599,9 +623,6 @@
       <Filter>Source\Logic\ESC\User\Component</Filter>
     </ClCompile>
     <ClCompile Include="Source\ECS\components\GamePlayCom.cpp">
-      <Filter>Source\Logic\ESC\User\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\components\PawnComponents.cpp">
       <Filter>Source\Logic\ESC\User\Component</Filter>
     </ClCompile>
     <ClCompile Include="Source\ECS\systems\BulletAnimSystem.cpp">
@@ -807,6 +828,30 @@
     </ClCompile>
     <ClCompile Include="Source\ECS\components\common\DelayTrackMovementCom.cpp">
       <Filter>Source\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\pawn\PawnActionCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\pawn\PawnAnimCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\pawn\PawnAttributeCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\pawn\PawnDebugDrawCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\pawn\PawnDirectionCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\pawn\PawnFightCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\pawn\PawnNavigationCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\pawn\PawnTemplateCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

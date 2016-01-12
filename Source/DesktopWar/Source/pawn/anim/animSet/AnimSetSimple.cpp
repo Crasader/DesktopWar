@@ -81,8 +81,8 @@ const char* AnimSetSimple::GetMoveAnim(int direction)
 		else
 			return PawnAnimName::MoveRight.c_str();
 	}
-	else
-		PawnAnimName::MoveLeft.c_str();
+	
+	PawnAnimName::MoveLeft.c_str();
 }
 
 const char* AnimSetSimple::GetDieAnim(int direction)

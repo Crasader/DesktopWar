@@ -96,6 +96,14 @@
     <ClInclude Include="Source\ECS\components\common\TargetCom.h" />
     <ClInclude Include="Source\ECS\components\common\TeamCom.h" />
     <ClInclude Include="Source\ECS\components\common\VelocityCom.h" />
+    <ClInclude Include="Source\ECS\components\pawn\PawnActionCom.h" />
+    <ClInclude Include="Source\ECS\components\pawn\PawnAnimCom.h" />
+    <ClInclude Include="Source\ECS\components\pawn\PawnAttributeCom.h" />
+    <ClInclude Include="Source\ECS\components\pawn\PawnDebugDrawCom.h" />
+    <ClInclude Include="Source\ECS\components\pawn\PawnDirectionCom.h" />
+    <ClInclude Include="Source\ECS\components\pawn\PawnFightCom.h" />
+    <ClInclude Include="Source\ECS\components\pawn\PawnNavigationCom.h" />
+    <ClInclude Include="Source\ECS\components\pawn\PawnTemplateCom.h" />
     <ClInclude Include="Source\ECS\core\BitSize.h" />
     <ClInclude Include="Source\ECS\core\Component.h" />
     <ClInclude Include="Source\ECS\core\ComponentMapper.h" />
@@ -155,7 +163,6 @@
     <ClInclude Include="Source\ECS\components\BevtreeCom.h" />
     <ClInclude Include="Source\ECS\components\BulletComponents.h" />
     <ClInclude Include="Source\ECS\components\GamePlayCom.h" />
-    <ClInclude Include="Source\ECS\components\PawnComponents.h" />
     <ClInclude Include="Source\ECS\ECSHeaders.h" />
     <ClInclude Include="Source\ECS\EntityEvents.h" />
     <ClInclude Include="Source\ECS\systems\BevtreeSystem.h" />
@@ -221,6 +228,14 @@
     <ClCompile Include="Source\ECS\components\common\TargetCom.cpp" />
     <ClCompile Include="Source\ECS\components\common\TeamCom.cpp" />
     <ClCompile Include="Source\ECS\components\common\VelocityCom.cpp" />
+    <ClCompile Include="Source\ECS\components\pawn\PawnActionCom.cpp" />
+    <ClCompile Include="Source\ECS\components\pawn\PawnAnimCom.cpp" />
+    <ClCompile Include="Source\ECS\components\pawn\PawnAttributeCom.cpp" />
+    <ClCompile Include="Source\ECS\components\pawn\PawnDebugDrawCom.cpp" />
+    <ClCompile Include="Source\ECS\components\pawn\PawnDirectionCom.cpp" />
+    <ClCompile Include="Source\ECS\components\pawn\PawnFightCom.cpp" />
+    <ClCompile Include="Source\ECS\components\pawn\PawnNavigationCom.cpp" />
+    <ClCompile Include="Source\ECS\components\pawn\PawnTemplateCom.cpp" />
     <ClCompile Include="Source\ECS\core\Component.cpp" />
     <ClCompile Include="Source\ECS\core\ComponentType.cpp" />
     <ClCompile Include="Source\ECS\core\ComponentTypeManager.cpp" />
@@ -266,7 +281,6 @@
     <ClCompile Include="Source\ECS\components\BevtreeCom.cpp" />
     <ClCompile Include="Source\ECS\components\BulletComponents.cpp" />
     <ClCompile Include="Source\ECS\components\GamePlayCom.cpp" />
-    <ClCompile Include="Source\ECS\components\PawnComponents.cpp" />
     <ClCompile Include="Source\ECS\systems\BevtreeSystem.cpp" />
     <ClCompile Include="Source\ECS\systems\BezierMovingSystem.cpp" />
     <ClCompile Include="Source\ECS\systems\BoxColliderSystem.cpp" />

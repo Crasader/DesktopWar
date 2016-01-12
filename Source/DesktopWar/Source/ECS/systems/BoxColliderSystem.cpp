@@ -4,7 +4,7 @@
 #include "../EntityEvents.h"
 #include "../../pawn/PawnDefines.h"
 #include "../core/Entity.h"
-#include "../components/PawnComponents.h"
+
 #include "2Ddef.h"
 #include "RoleDataMgr.h"
 #include "GameDefine.h"

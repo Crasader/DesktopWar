@@ -3,7 +3,8 @@
 
 #include "../core/EntityProcessingSystem.h"
 #include "../core/ComponentMapper.h"
-#include "../components/PawnComponents.h"
+#include "../components/pawn/PawnActionCom.h"
+
 
 namespace Genius
 {

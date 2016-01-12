@@ -4,7 +4,7 @@
 #include "../EntityEvents.h"
 #include "../../pawn/PawnDefines.h"
 #include "../core/Entity.h"
-#include "../components/PawnComponents.h"
+
 #include "2Ddef.h"
 
 static inline float bezierat(float a, float b, float c, float d, float t)

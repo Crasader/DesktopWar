@@ -3,7 +3,6 @@
 
 #include <string>
 #include "../../core/Component.h"
-#include "pawn/PawnDefines.h"
 #include "common/2Ddef.h"
 #include "gfx/gfx.h"
 
@@ -17,7 +16,7 @@ namespace Genius
 		cocostudio::Armature*			m_pBodyArmature;
 		UIBar*									m_pLifeBar;
 		Label*									m_pDebugLabel;
-		ActionType							m_curAction;
+		int										m_curAction;
 
 	public:
 		PawnAnimCom(int roleID);
