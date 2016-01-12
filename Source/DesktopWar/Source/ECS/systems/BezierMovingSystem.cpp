@@ -3,7 +3,7 @@
 #include "../../event/EventManager.h"
 #include "../EntityEvents.h"
 #include "../../pawn/PawnDefines.h"
-#include "../Entity.h"
+#include "../core/Entity.h"
 #include "../components/PawnComponents.h"
 #include "2Ddef.h"
 

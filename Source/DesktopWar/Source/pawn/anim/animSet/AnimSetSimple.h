@@ -8,17 +8,17 @@ namespace Genius
 	class AnimSetSimple : public AnimSet
 	{
 	public:
-		AnimSetSimple();
+		AnimSetSimple(Armature* armature);
 		virtual ~AnimSetSimple();
 
-		virtual const char* GetIdleAnim();
-		virtual const char* GetMoveAnim();
-		virtual const char* GetDieAnim() = 0;
-		virtual const char* GetAttackNearAnim();
-		virtual const char* GetAttackFarAnim();
-		virtual const char* GetSkill1Anim();
-		virtual const char* GetSkill2Anim();
-		virtual const char* GetSkill3Anim();
+		virtual const char* GetIdleAnim(int direction);
+		virtual const char* GetMoveAnim(int direction);
+		virtual const char* GetDieAnim(int direction);
+		virtual const char* GetAttackNearAnim(int direction);
+		virtual const char* GetAttackFarAnim(int direction);
+		virtual const char* GetSkill1Anim(int direction);
+		virtual const char* GetSkill2Anim(int direction);
+		virtual const char* GetSkill3Anim(int direction);
 
 	};
 }

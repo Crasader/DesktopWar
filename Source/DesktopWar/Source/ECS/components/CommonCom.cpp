@@ -1,6 +1,6 @@
 // d:)
 #include "CommonCom.h"
-#include "../ECSWorld.h"
+#include "../core/ECSWorld.h"
 
 using namespace Genius;
 USING_NS_CC;

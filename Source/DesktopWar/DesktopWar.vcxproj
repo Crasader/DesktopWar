@@ -86,6 +86,21 @@
     <ClInclude Include="Source\App\AppStatus\AppState.h" />
     <ClInclude Include="Source\App\AppStatus\AppStateBattle.h" />
     <ClInclude Include="Source\common\Performance.h" />
+    <ClInclude Include="Source\ECS\core\BitSize.h" />
+    <ClInclude Include="Source\ECS\core\Component.h" />
+    <ClInclude Include="Source\ECS\core\ComponentMapper.h" />
+    <ClInclude Include="Source\ECS\core\ComponentType.h" />
+    <ClInclude Include="Source\ECS\core\ComponentTypeManager.h" />
+    <ClInclude Include="Source\ECS\core\ECSWorld.h" />
+    <ClInclude Include="Source\ECS\core\Entity.h" />
+    <ClInclude Include="Source\ECS\core\EntityManager.h" />
+    <ClInclude Include="Source\ECS\core\EntityProcessingSystem.h" />
+    <ClInclude Include="Source\ECS\core\EntitySystem.h" />
+    <ClInclude Include="Source\ECS\core\GroupManager.h" />
+    <ClInclude Include="Source\ECS\core\ImmutableBag.h" />
+    <ClInclude Include="Source\ECS\core\SystemBitManager.h" />
+    <ClInclude Include="Source\ECS\core\SystemManager.h" />
+    <ClInclude Include="Source\ECS\core\TagManager.h" />
     <ClInclude Include="Source\EntityCreators.h" />
     <ClInclude Include="Source\gfx\GfxUtils.h" />
     <ClInclude Include="Source\gfx\RollNumberLabel.h" />
@@ -127,27 +142,13 @@
     <ClInclude Include="Source\data\IDataManager.h" />
     <ClInclude Include="Source\data\RoleDataMgr.h" />
     <ClInclude Include="Source\data\SkillDataMgr.h" />
-    <ClInclude Include="Source\ECS\BitSize.h" />
-    <ClInclude Include="Source\ECS\Component.h" />
-    <ClInclude Include="Source\ECS\ComponentMapper.h" />
     <ClInclude Include="Source\ECS\components\BevtreeCom.h" />
     <ClInclude Include="Source\ECS\components\BulletComponents.h" />
     <ClInclude Include="Source\ECS\components\CommonCom.h" />
     <ClInclude Include="Source\ECS\components\GamePlayCom.h" />
     <ClInclude Include="Source\ECS\components\PawnComponents.h" />
-    <ClInclude Include="Source\ECS\ComponentType.h" />
-    <ClInclude Include="Source\ECS\ComponentTypeManager.h" />
     <ClInclude Include="Source\ECS\ECSHeaders.h" />
-    <ClInclude Include="Source\ECS\ECSWorld.h" />
-    <ClInclude Include="Source\ECS\Entity.h" />
     <ClInclude Include="Source\ECS\EntityEvents.h" />
-    <ClInclude Include="Source\ECS\EntityManager.h" />
-    <ClInclude Include="Source\ECS\EntityProcessingSystem.h" />
-    <ClInclude Include="Source\ECS\EntitySystem.h" />
-    <ClInclude Include="Source\ECS\GroupManager.h" />
-    <ClInclude Include="Source\ECS\ImmutableBag.h" />
-    <ClInclude Include="Source\ECS\SystemBitManager.h" />
-    <ClInclude Include="Source\ECS\SystemManager.h" />
     <ClInclude Include="Source\ECS\systems\BevtreeSystem.h" />
     <ClInclude Include="Source\ECS\systems\BezierMovingSystem.h" />
     <ClInclude Include="Source\ECS\systems\BoxColliderSystem.h" />
@@ -171,7 +172,6 @@
     <ClInclude Include="Source\ECS\systems\PawnDirectionSystem.h" />
     <ClInclude Include="Source\ECS\systems\PawnFightSystem.h" />
     <ClInclude Include="Source\ECS\systems\SimpleAnimSystem.h" />
-    <ClInclude Include="Source\ECS\TagManager.h" />
     <ClInclude Include="Source\event\Event.h" />
     <ClInclude Include="Source\event\EventManager.h" />
     <ClInclude Include="Source\GameDefine.h" />
@@ -202,6 +202,18 @@
     <ClCompile Include="Source\App\AppStatus\AppState.cpp" />
     <ClCompile Include="Source\App\AppStatus\AppStateBattle.cpp" />
     <ClCompile Include="Source\common\Performance.cpp" />
+    <ClCompile Include="Source\ECS\core\Component.cpp" />
+    <ClCompile Include="Source\ECS\core\ComponentType.cpp" />
+    <ClCompile Include="Source\ECS\core\ComponentTypeManager.cpp" />
+    <ClCompile Include="Source\ECS\core\ECSWorld.cpp" />
+    <ClCompile Include="Source\ECS\core\Entity.cpp" />
+    <ClCompile Include="Source\ECS\core\EntityManager.cpp" />
+    <ClCompile Include="Source\ECS\core\EntityProcessingSystem.cpp" />
+    <ClCompile Include="Source\ECS\core\EntitySystem.cpp" />
+    <ClCompile Include="Source\ECS\core\GroupManager.cpp" />
+    <ClCompile Include="Source\ECS\core\SystemBitManager.cpp" />
+    <ClCompile Include="Source\ECS\core\SystemManager.cpp" />
+    <ClCompile Include="Source\ECS\core\TagManager.cpp" />
     <ClCompile Include="Source\EntityCreators.cpp" />
     <ClCompile Include="Source\GameDefine.cpp" />
     <ClCompile Include="Source\gfx\GfxUtils.cpp" />
@@ -232,22 +244,11 @@
     <ClCompile Include="Source\data\IDataManager.cpp" />
     <ClCompile Include="Source\data\RoleDataMgr.cpp" />
     <ClCompile Include="Source\data\SkillDataMgr.cpp" />
-    <ClCompile Include="Source\ECS\Component.cpp" />
     <ClCompile Include="Source\ECS\components\BevtreeCom.cpp" />
     <ClCompile Include="Source\ECS\components\BulletComponents.cpp" />
     <ClCompile Include="Source\ECS\components\CommonCom.cpp" />
     <ClCompile Include="Source\ECS\components\GamePlayCom.cpp" />
     <ClCompile Include="Source\ECS\components\PawnComponents.cpp" />
-    <ClCompile Include="Source\ECS\ComponentType.cpp" />
-    <ClCompile Include="Source\ECS\ComponentTypeManager.cpp" />
-    <ClCompile Include="Source\ECS\ECSWorld.cpp" />
-    <ClCompile Include="Source\ECS\Entity.cpp" />
-    <ClCompile Include="Source\ECS\EntityManager.cpp" />
-    <ClCompile Include="Source\ECS\EntityProcessingSystem.cpp" />
-    <ClCompile Include="Source\ECS\EntitySystem.cpp" />
-    <ClCompile Include="Source\ECS\GroupManager.cpp" />
-    <ClCompile Include="Source\ECS\SystemBitManager.cpp" />
-    <ClCompile Include="Source\ECS\SystemManager.cpp" />
     <ClCompile Include="Source\ECS\systems\BevtreeSystem.cpp" />
     <ClCompile Include="Source\ECS\systems\BezierMovingSystem.cpp" />
     <ClCompile Include="Source\ECS\systems\BoxColliderSystem.cpp" />
@@ -271,7 +272,6 @@
     <ClCompile Include="Source\ECS\systems\PawnDirectionSystem.cpp" />
     <ClCompile Include="Source\ECS\systems\PawnFightSystem.cpp" />
     <ClCompile Include="Source\ECS\systems\SimpleAnimSystem.cpp" />
-    <ClCompile Include="Source\ECS\TagManager.cpp" />
     <ClCompile Include="Source\event\EventManager.cpp" />
     <ClCompile Include="Source\GamePlay.cpp" />
     <ClCompile Include="Source\gfx\BulletArrow.cpp" />
@@ -299,7 +299,7 @@
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:\MyDev\Genius\Source\cocos2d\cocos\2d\libcocos2d.vcxproj">
+    <ProjectReference Include="..\cocos2d\cocos\2d\libcocos2d.vcxproj">
       <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
     </ProjectReference>
   </ItemGroup>

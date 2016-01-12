@@ -1,18 +1,23 @@
 #ifndef _ECS_HEADERS_H_
 #define _ECS_HEADERS_H_
 
+// core
+#include "core/Component.h"
+#include "core/Entity.h"
+#include "core/EntityManager.h"
+#include "core/SystemManager.h"
+#include "core/ECSWorld.h"
 
-#include "Entity.h"
-#include "EntityManager.h"
 
-#include "Component.h"
+// components
 #include "components/CommonCom.h"
 #include "components/BevtreeCom.h"
 #include "components/PawnComponents.h"
 #include "components/BulletComponents.h"
 #include "components/GamePlayCom.h"
 
-#include "SystemManager.h"
+
+// systems
 #include "systems/MovementSystem.h"
 #include "systems/SimpleAnimSystem.h"
 #include "systems/BoxColliderSystem.h"
@@ -34,10 +39,9 @@
 #include "systems/BulletBombAnimSystem.h"
 #include "systems/BulletEggAnimSystem.h"
 #include "systems/BulletTargetSystem.h"
-
 #include "systems/HumanGameControlSystem.h"
 #include "systems/MonsterGameControlSystem.h"
 
-#include "ECSWorld.h"
+
 
 #endif

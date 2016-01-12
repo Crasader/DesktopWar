@@ -2,7 +2,7 @@
 #include "NavigationSystem.h"
 #include "../../event/EventManager.h"
 #include "../EntityEvents.h"
-#include "../Entity.h"
+#include "../core/Entity.h"
 
 using namespace Genius;
 

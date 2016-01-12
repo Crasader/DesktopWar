@@ -2,7 +2,7 @@
 #ifndef _BEVTREE_COMPONENT_H_
 #define _BEVTREE_COMPONENT_H_
 
-#include "../Component.h"
+#include "../core/Component.h"
 #include "AI/AI.h"
 #include <string>
 

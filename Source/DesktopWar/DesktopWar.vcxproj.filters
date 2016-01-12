@@ -244,51 +244,6 @@
     <ClInclude Include="Source\GameUtils.h">
       <Filter>Source\Logic\Common</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ECS\Component.h">
-      <Filter>Source\Logic\ESC\Core\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\ComponentMapper.h">
-      <Filter>Source\Logic\ESC\Core\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\ComponentType.h">
-      <Filter>Source\Logic\ESC\Core\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\ComponentTypeManager.h">
-      <Filter>Source\Logic\ESC\Core\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\Entity.h">
-      <Filter>Source\Logic\ESC\Core\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\EntityManager.h">
-      <Filter>Source\Logic\ESC\Core\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\ECSWorld.h">
-      <Filter>Source\Logic\ESC\Core\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\EntityProcessingSystem.h">
-      <Filter>Source\Logic\ESC\Core\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\EntitySystem.h">
-      <Filter>Source\Logic\ESC\Core\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\GroupManager.h">
-      <Filter>Source\Logic\ESC\Core\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\SystemBitManager.h">
-      <Filter>Source\Logic\ESC\Core\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\SystemManager.h">
-      <Filter>Source\Logic\ESC\Core\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\TagManager.h">
-      <Filter>Source\Logic\ESC\Core\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\BitSize.h">
-      <Filter>Source\Logic\ESC\Core\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\ImmutableBag.h">
-      <Filter>Source\Logic\ESC\Core\Component</Filter>
-    </ClInclude>
     <ClInclude Include="Source\ECS\components\BevtreeCom.h">
       <Filter>Source\Logic\ESC\User\Component</Filter>
     </ClInclude>
@@ -454,6 +409,51 @@
     <ClInclude Include="Source\pawn\anim\animSet\AnimSetSimple.h">
       <Filter>Source\Logic\Pawn\Anim\AnimSet</Filter>
     </ClInclude>
+    <ClInclude Include="Source\ECS\core\ECSWorld.h">
+      <Filter>Source\Logic\ESC\Core\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\core\EntityProcessingSystem.h">
+      <Filter>Source\Logic\ESC\Core\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\core\EntitySystem.h">
+      <Filter>Source\Logic\ESC\Core\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\core\GroupManager.h">
+      <Filter>Source\Logic\ESC\Core\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\core\SystemBitManager.h">
+      <Filter>Source\Logic\ESC\Core\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\core\SystemManager.h">
+      <Filter>Source\Logic\ESC\Core\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\core\TagManager.h">
+      <Filter>Source\Logic\ESC\Core\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\core\EntityManager.h">
+      <Filter>Source\Logic\ESC\Core\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\core\Entity.h">
+      <Filter>Source\Logic\ESC\Core\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\core\BitSize.h">
+      <Filter>Source\Logic\ESC\Core\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\core\Component.h">
+      <Filter>Source\Logic\ESC\Core\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\core\ComponentMapper.h">
+      <Filter>Source\Logic\ESC\Core\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\core\ComponentType.h">
+      <Filter>Source\Logic\ESC\Core\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\core\ComponentTypeManager.h">
+      <Filter>Source\Logic\ESC\Core\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\core\ImmutableBag.h">
+      <Filter>Source\Logic\ESC\Core\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -561,42 +561,6 @@
     </ClCompile>
     <ClCompile Include="Source\AI\BehaviorTree\Precondition.cpp">
       <Filter>Source\Logic\AI\BevTree</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\Component.cpp">
-      <Filter>Source\Logic\ESC\Core\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\ComponentType.cpp">
-      <Filter>Source\Logic\ESC\Core\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\ComponentTypeManager.cpp">
-      <Filter>Source\Logic\ESC\Core\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\Entity.cpp">
-      <Filter>Source\Logic\ESC\Core\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\EntityManager.cpp">
-      <Filter>Source\Logic\ESC\Core\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\ECSWorld.cpp">
-      <Filter>Source\Logic\ESC\Core\System</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\EntityProcessingSystem.cpp">
-      <Filter>Source\Logic\ESC\Core\System</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\EntitySystem.cpp">
-      <Filter>Source\Logic\ESC\Core\System</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\GroupManager.cpp">
-      <Filter>Source\Logic\ESC\Core\System</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\SystemBitManager.cpp">
-      <Filter>Source\Logic\ESC\Core\System</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\SystemManager.cpp">
-      <Filter>Source\Logic\ESC\Core\System</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\TagManager.cpp">
-      <Filter>Source\Logic\ESC\Core\System</Filter>
     </ClCompile>
     <ClCompile Include="Source\ECS\components\BevtreeCom.cpp">
       <Filter>Source\Logic\ESC\User\Component</Filter>
@@ -750,6 +714,42 @@
     </ClCompile>
     <ClCompile Include="Source\pawn\anim\animSet\AnimSetSimple.cpp">
       <Filter>Source\Logic\Pawn\Anim\AnimSet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\core\ECSWorld.cpp">
+      <Filter>Source\Logic\ESC\Core\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\core\EntityProcessingSystem.cpp">
+      <Filter>Source\Logic\ESC\Core\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\core\EntitySystem.cpp">
+      <Filter>Source\Logic\ESC\Core\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\core\GroupManager.cpp">
+      <Filter>Source\Logic\ESC\Core\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\core\SystemBitManager.cpp">
+      <Filter>Source\Logic\ESC\Core\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\core\SystemManager.cpp">
+      <Filter>Source\Logic\ESC\Core\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\core\TagManager.cpp">
+      <Filter>Source\Logic\ESC\Core\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\core\Entity.cpp">
+      <Filter>Source\Logic\ESC\Core\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\core\EntityManager.cpp">
+      <Filter>Source\Logic\ESC\Core\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\core\Component.cpp">
+      <Filter>Source\Logic\ESC\Core\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\core\ComponentType.cpp">
+      <Filter>Source\Logic\ESC\Core\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\core\ComponentTypeManager.cpp">
+      <Filter>Source\Logic\ESC\Core\Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

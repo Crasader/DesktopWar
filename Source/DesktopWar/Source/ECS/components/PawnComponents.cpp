@@ -8,7 +8,7 @@
 #include "../EntityEvents.h"
 #include "skill/SkillSystem.h"
 #include "skill/BuffSystem.h"
-#include "../Entity.h"
+#include "../core/Entity.h"
 #include "Logger.h"
 #include "CommonCom.h"
 

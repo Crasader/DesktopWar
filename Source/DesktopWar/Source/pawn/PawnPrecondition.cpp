@@ -1,7 +1,7 @@
 // d:)
 #include "PawnPrecondition.h"
 #include "ECS/ECSHeaders.h"
-#include "ECS/Entity.h"
+#include "ECS/core/Entity.h"
 #include "ECS/components/BevtreeCom.h"
 #include "data/RoleDataMgr.h"
 #include "Common/RandUtility.h"

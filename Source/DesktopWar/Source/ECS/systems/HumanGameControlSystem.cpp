@@ -1,7 +1,7 @@
 // d:)
 #include "HumanGameControlSystem.h"
 #include "PawnFightSystem.h"
-#include "../SystemManager.h"
+#include "../core/SystemManager.h"
 #include "event/EventManager.h"
 #include "../EntityEvents.h"
 #include "EntityCreators.h"

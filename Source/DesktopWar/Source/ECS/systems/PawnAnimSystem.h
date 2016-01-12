@@ -1,8 +1,8 @@
 #ifndef _PAWN_ANIM_SYSTEM_H_
 #define _PAWN_ANIM_SYSTEM_H_
 
-#include "../EntityProcessingSystem.h"
-#include "../ComponentMapper.h"
+#include "../core/EntityProcessingSystem.h"
+#include "../core/ComponentMapper.h"
 #include "../components/PawnComponents.h"
 #include "../components/CommonCom.h"
 #include "../../common/2Ddef.h"

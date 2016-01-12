@@ -1,8 +1,8 @@
 // d:)
 #include "BulletComponents.h"
 #include "data/BulletDataMgr.h"
-#include "../Entity.h"
-#include "../ECSWorld.h"
+#include "../core/Entity.h"
+#include "../core/ECSWorld.h"
 #include "Logger.h"
 #include "../EntityEvents.h"
 #include "event/EventManager.h"

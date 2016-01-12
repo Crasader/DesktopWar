@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include "../Component.h"
+#include "../core/Component.h"
 #include "pawn/PawnDefines.h"
 #include "common/2Ddef.h"
 #include "gfx/gfx.h"

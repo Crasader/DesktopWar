@@ -2,7 +2,7 @@
 #include "BulletArrowAnimSystem.h"
 #include "../../event/EventManager.h"
 #include "../EntityEvents.h"
-#include "../Entity.h"
+#include "../core/Entity.h"
 #include "2Ddef.h"
 
 using namespace Genius;

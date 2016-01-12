@@ -1,8 +1,8 @@
 #ifndef _BULLET_COMPONENT_H_
 #define _BULLET_COMPONENT_H_
 
-#include "../Component.h"
-#include "../Entity.h"
+#include "../core/Component.h"
+#include "../core/Entity.h"
 #include "gfx/gfx.h"
 
 namespace Genius

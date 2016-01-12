@@ -2,7 +2,7 @@
 #include "PawnFightSystem.h"
 #include "event/EventManager.h"
 #include "../EntityEvents.h"
-#include "../Entity.h"
+#include "../core/Entity.h"
 #include "RoleDataMgr.h"
 #include "skill/SkillSystem.h"
 #include "GameDefine.h"
