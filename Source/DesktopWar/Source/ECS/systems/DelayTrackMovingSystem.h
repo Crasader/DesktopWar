@@ -2,8 +2,9 @@
 
 #include "../core/EntityProcessingSystem.h"
 #include "../core/ComponentMapper.h"
-#include "../components/CommonCom.h"
-#include "../components/CommonCom.h"
+#include "../components/common/PositionCom.h"
+#include "../components/common/VelocityCom.h"
+#include "../components/common/DelayTrackMovementCom.h"
 
 namespace Genius
 {

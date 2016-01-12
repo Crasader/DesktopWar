@@ -1,6 +1,6 @@
 // d:)
 #include "AnimationCom.h"
-#include "../core/ECSWorld.h"
+#include "../../core/ECSWorld.h"
 
 using namespace Genius;
 using namespace cocos2d;

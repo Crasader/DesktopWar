@@ -31,7 +31,7 @@ void BezierMovingSystem::ProcessEntity(Entity* pEntity)
 {
 	PositionCom* pPosCom = positionMapper.get(pEntity);
 	VelocityCom* pVelCom = velocityMapper.get(pEntity);
-	BezierMovingCom* pBezierCom = bezierMapper.get(pEntity);
+	BezierMovementCom* pBezierCom = bezierMapper.get(pEntity);
 
 	if (pBezierCom->IsDone())
 		return;
@@ -90,6 +90,6 @@ void BezierMovingSystem::OnStopMove(IEventData const &evnt)
 	if (!IsMyEntity(pOwnerEntity))
 		return;
 
-	BezierMovingCom* pBezierCom = bezierMapper.get(pOwnerEntity);
+	BezierMovementCom* pBezierCom = bezierMapper.get(pOwnerEntity);
 	pBezierCom->Stop();
 }

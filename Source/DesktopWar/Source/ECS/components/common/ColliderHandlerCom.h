@@ -3,7 +3,7 @@
 
 
 #include "../../core/Component.h"
-
+#include <functional>
 
 namespace Genius
 {

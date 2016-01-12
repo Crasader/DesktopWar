@@ -10,7 +10,7 @@
 #include "skill/BuffSystem.h"
 #include "../core/Entity.h"
 #include "Logger.h"
-#include "CommonCom.h"
+
 
 using namespace Genius;
 

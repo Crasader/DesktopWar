@@ -10,6 +10,8 @@
 #include "../systems/PawnFightSystem.h"
 #include "skill/BuffSystem.h"
 
+#include "../components/common/TeamCom.h"
+
 using namespace Genius;
 
 void BulletDamageSingleSystem::Initialize()
@@ -85,7 +87,7 @@ void BulletDamageSingleSystem::collisionHandler(int id1, int id2)
 	}
 	/*
 	VelocityCom* pVelCom = velocityMapper.get(pEntity);
-	BezierMovingCom* pTrackCom = trackingMapper.get(pEntity);
+	BezierMovementCom* pTrackCom = trackingMapper.get(pEntity);
 	BulletDamageSingleCom* pAttackCom = attackMapper.get(pEntity);
 	PawnFightCom* eneFightCom = pOtherEntity->getComponent<PawnFightCom>();
 	if (pTrackCom && pAttackCom && eneFightCom && pAttackCom->team != eneFightCom->team)

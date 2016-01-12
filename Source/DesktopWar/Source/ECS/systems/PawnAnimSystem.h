@@ -4,7 +4,7 @@
 #include "../core/EntityProcessingSystem.h"
 #include "../core/ComponentMapper.h"
 #include "../components/PawnComponents.h"
-#include "../components/CommonCom.h"
+#include "../components/common/PositionCom.h"
 #include "../../common/2Ddef.h"
 #include "../../pawn/PawnDefines.h"
 

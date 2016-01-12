@@ -2,7 +2,8 @@
 
 #include "../core/EntityProcessingSystem.h"
 #include "../core/ComponentMapper.h"
-#include "../components/CommonCom.h"
+#include "../components/common/PositionCom.h"
+#include "../components/common/TargetCom.h"
 #include "../components/BulletComponents.h"
 
 namespace Genius

@@ -10,6 +10,9 @@
 #include "../systems/PawnFightSystem.h"
 #include "skill/BuffSystem.h"
 
+#include "../components/common/TeamCom.h"
+#include "../components/common/TargetCom.h"
+
 using namespace Genius;
 
 void BulletDamageScopeSystem::Initialize()

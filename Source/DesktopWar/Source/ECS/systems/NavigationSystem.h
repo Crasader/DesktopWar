@@ -4,7 +4,8 @@
 #include "../core/EntityProcessingSystem.h"
 #include "../core/ComponentMapper.h"
 #include "../components/PawnComponents.h"
-#include "../components/CommonCom.h"
+#include "../components/common/PositionCom.h"
+#include "../components/common/VelocityCom.h"
 
 namespace Genius
 {

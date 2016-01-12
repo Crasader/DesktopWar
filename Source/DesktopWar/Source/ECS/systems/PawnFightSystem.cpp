@@ -7,6 +7,8 @@
 #include "skill/SkillSystem.h"
 #include "GameDefine.h"
 
+#include "../components/common/TeamCom.h"
+
 using namespace Genius;
 
 void PawnFightSystem::Initialize()

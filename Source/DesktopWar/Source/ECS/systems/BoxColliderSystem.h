@@ -2,9 +2,9 @@
 
 #include "../core/EntityProcessingSystem.h"
 #include "../core/ComponentMapper.h"
-#include "../components/CommonCom.h"
-#include "../components/CommonCom.h"
-
+#include "../components/common/PositionCom.h"
+#include "../components/common/BoxColliderCom.h"
+#include "../components/common/ColliderHandlerCom.h"
 namespace Genius
 {
 	class BoxColliderSystem : public EntityProcessingSystem

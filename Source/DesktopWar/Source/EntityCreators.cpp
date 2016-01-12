@@ -91,7 +91,7 @@ Entity* EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, f
 	{
 		ent->AddComponent(new VelocityCom(0, 0));
 		ent->AddComponent(new TargetCom(Target_Location, 0, destX, destY));
-		ent->AddComponent(new BezierMovingCom(x, y, destX, destY, (abs(x - destX) + abs(y - destY)) / bulletInfo->flySpeed));
+		ent->AddComponent(new BezierMovementCom(x, y, destX, destY, (abs(x - destX) + abs(y - destY)) / bulletInfo->flySpeed));
 		ent->AddComponent(new BulletDamageSingleCom());
 		ent->AddComponent(new BulletArrowAnimCom(bulletInfo->bodyAnim));
 		BulletDamageSingleSystem* atkSys = ECSWorld::GetSingleton()->GetSystemManager()->GetSystem<BulletDamageSingleSystem>();
@@ -121,13 +121,13 @@ Entity* EntityCreator::CreateBornPoint(float x, float y, int team)
 	ent->AddComponent(new TeamCom(team));
 	if (team == Team_Human)
 	{
-		ent->AddComponent(new SimpleAnimationCom("BornPointHuman"));
+		ent->AddComponent(new AnimationCom("BornPointHuman"));
 		ent->AddComponent(new HumanGameControlCom());
 		ECSWorld::GetSingleton()->GetTagManager()->Subscribe(GameDefine::Tag_HumanBornPoint, ent);
 	}
 	else if (team == Team_Monster)
 	{
-		ent->AddComponent(new SimpleAnimationCom("BornPointMonster"));
+		ent->AddComponent(new AnimationCom("BornPointMonster"));
 		ent->AddComponent(new MonsterGameControlCom());
 		ECSWorld::GetSingleton()->GetTagManager()->Subscribe(GameDefine::Tag_MonsterBornPoint, ent);
 	}

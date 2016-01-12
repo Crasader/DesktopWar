@@ -4,16 +4,17 @@
 #include "../core/EntityProcessingSystem.h"
 #include "../core/ComponentMapper.h"
 #include "../components/PawnComponents.h"
-#include "../components/CommonCom.h"
+#include "../components/common/PositionCom.h"
+#include "../components/common/BoxColliderCom.h"
 
 namespace Genius
 {
 	class PawnFightSystem : public EntityProcessingSystem
 	{
 	private:
-		ComponentMapper<PawnFightCom>				pawnFightMapper;
 		ComponentMapper<PositionCom>					positionMapper;
 		ComponentMapper<BoxColliderCom>				colliderMapper;
+		ComponentMapper<PawnFightCom>				pawnFightMapper;
 		ComponentMapper<PawnTemplateCom>		pawnTemplateMapper;
 		ComponentMapper<PawnAttributeCom>		pawnAttributeMapper;
 		ComponentMapper<PawnAnimCom>				pawnAnimMapper;

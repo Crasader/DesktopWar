@@ -3,6 +3,7 @@
 
 
 #include "../../core/Component.h"
+#include "../../core/Entity.h"
 
 namespace Genius
 {

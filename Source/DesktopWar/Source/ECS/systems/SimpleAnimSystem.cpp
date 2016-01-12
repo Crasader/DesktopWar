@@ -13,7 +13,7 @@ void SimpleAnimSystem::Initialize()
 
 void SimpleAnimSystem::ProcessEntity(Entity* e)
 {
-	SimpleAnimationCom* render = animMapper.get(e);
+	AnimationCom* render = animMapper.get(e);
 	PositionCom* pos = positionMapper.get(e);
 	if (render && render->m_pAvatarRoot)
 		render->m_pAvatarRoot->setPosition(pos->x, pos->y);
