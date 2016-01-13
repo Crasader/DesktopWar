@@ -8,7 +8,7 @@
 #include "2Ddef.h"
 #include "RoleDataMgr.h"
 #include "app/GameDefine.h"
-#include "GameUtils.h"
+#include "app/GameUtils.h"
 
 using namespace Genius;
 

@@ -3,14 +3,12 @@
 
 #include "../../core/EntityProcessingSystem.h"
 #include "../../core/ComponentMapper.h"
-
 #include "../../components/common/ComPosition.h"
 #include "../../components/common/ComBoxCollider.h"
-
 #include "../../components/pawn/ComPawnFight.h"
 #include "../../components/pawn/ComPawnAnim.h"
-
 #include "../../components/pawn/ComPawnAttribute.h"
+#include "../../components/pawn/ComPawnAgent.h"
 
 namespace Genius
 {
