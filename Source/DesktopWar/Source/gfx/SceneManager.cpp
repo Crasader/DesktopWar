@@ -1,6 +1,6 @@
 // d:)
 #include "SceneManager.h"
-#include "ECS/ECSHeaders.h"
+#include "ECS/ecs.h"
 #include "CocosApp.h"
 #include "GameDefine.h"
 #include <algorithm>
@@ -51,8 +51,8 @@ void SceneManager::AddToMapLayer(cocos2d::Node* node, float x/* = 0*/, float y/*
 struct SortData
 {
 	Entity* entity;
-	PositionCom* posCom;
-	SortData(Entity* ent, PositionCom* pos) : entity(ent), posCom(pos){}
+	ComPosition* posCom;
+	SortData(Entity* ent, ComPosition* pos) : entity(ent), posCom(pos){}
 };
 
 bool SortZOrderFunc(SortData data1, SortData data2)
@@ -63,13 +63,13 @@ bool SortZOrderFunc(SortData data1, SortData data2)
 void SceneManager::RefreshPawnsZOrder()
 {
 	auto sysMgr = ECSWorld::GetSingleton()->GetSystemManager();
-	PawnAnimSystem* fightSys = sysMgr->GetSystem<PawnAnimSystem>();
+	SystemPawnAnim* fightSys = sysMgr->GetSystem<SystemPawnAnim>();
 	Bag<Entity*>& activities = fightSys->GetActivities();
 	std::vector<SortData> sortedList;
 	for (int i = 0; i < activities.getCount(); i++)
 	{
 		Entity* pEntity = activities.get(i);
-		PositionCom* posCom = pEntity->GetComponent<PositionCom>();
+		ComPosition* posCom = pEntity->GetComponent<ComPosition>();
 		SortData data(pEntity, posCom);
 		sortedList.push_back(data);
 	}
@@ -79,7 +79,7 @@ void SceneManager::RefreshPawnsZOrder()
 	for (auto iter = sortedList.begin(); iter != sortedList.end(); ++iter)
 	{
 		Entity* pEntity = (*iter).entity;
-		PawnAnimCom* animCom = pEntity->GetComponent<PawnAnimCom>();
+		ComPawnAnim* animCom = pEntity->GetComponent<ComPawnAnim>();
 		animCom->m_pAvatarRoot->setLocalZOrder(zorderStart);
 		zorderStart++;
 	}

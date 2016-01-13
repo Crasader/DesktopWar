@@ -1,6 +1,6 @@
 // d:)
 #include "MonsterGameControlSystem.h"
-#include "../pawn/PawnFightSystem.h"
+#include "../pawn/SystemPawnFight.h"
 #include "../../core/SystemManager.h"
 #include "event/EventManager.h"
 #include "../../EntityEvents.h"
@@ -21,8 +21,8 @@ void MonsterGameControlSystem::ProcessEntity(Entity* pEntity)
 	return;
 
 	MonsterGameControlCom* myGameControl = gameControlMapper.get(pEntity);
-	TeamCom* myTeamCom = teamMapper.get(pEntity);
-	PositionCom* myPositionCom = positionMapper.get(pEntity);
+	ComTeam* myComTeam = teamMapper.get(pEntity);
+	ComPosition* myComPosition = positionMapper.get(pEntity);
 
 	float deltaTime = world->GetDeltaTime();
 	myGameControl->gameTimePassed += deltaTime;
@@ -37,7 +37,7 @@ void MonsterGameControlSystem::ProcessEntity(Entity* pEntity)
 		&& myGameControl->gameTimePassed - myGameControl->lastSpawnTime > 10)
 	{
 		myGameControl->lastSpawnTime = myGameControl->gameTimePassed;
-		SpawnOne(myPositionCom->x, myPositionCom->y);
+		SpawnOne(myComPosition->x, myComPosition->y);
 	}
 };
 

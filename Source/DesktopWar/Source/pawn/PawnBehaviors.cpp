@@ -1,10 +1,10 @@
 // d:)
 //#include "Genius.h"
 #include "PawnBehaviors.h"
-#include "ECS/components/BevtreeCom.h"
+#include "ECS/components/pawn/ComPawnBevtree.h"
 #include "event/EventManager.h"
 #include "ECS/EntityEvents.h"
-#include "ECS/ECSHeaders.h"
+#include "ECS/ecs.h"
 #include "pawn/PawnDefines.h"
 #include "tinyxml.h"
 #include "Logger.h"
@@ -49,7 +49,7 @@ void PawnIdle::OnInitialize(BHUpdateContext& context)
 	m_changeDirTimeCounter = 0;
 
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	PawnTemplateCom* tmpCom = data.pEntity->GetComponent<PawnTemplateCom>();
+	ComPawnTemplate* tmpCom = data.pEntity->GetComponent<ComPawnTemplate>();
 	m_totalDuration = RandUtility::RandomScale(tmpCom->pRoleData->IdleDuration, 0.3f);
 	m_changeDirDuration = RandUtility::RandomScale(tmpCom->pRoleData->IdleTurnFaceTime, 0.3f);
 
@@ -79,7 +79,7 @@ bool PawnIdle::LoadFromXml(TiXmlElement* xml)
 eBehaviorStatus PawnMove::Update(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	PawnNavigationCom* navCom = data.pEntity->GetComponent<PawnNavigationCom>();
+	ComPawnNavigation* navCom = data.pEntity->GetComponent<ComPawnNavigation>();
 	if (navCom && navCom->arrived)
 		return BH_Success;
 
@@ -124,7 +124,7 @@ eBehaviorStatus PawnDie::Update(BHUpdateContext& context)
 		ECSWorld::GetSingleton()->DeleteEntity(data.pEntity);
 
 		// temp
-		/*PawnFightCom* fightCom = data.pEntity->getComponent<PawnFightCom>();
+		/*ComPawnFight* fightCom = data.pEntity->getComponent<ComPawnFight>();
 		int team = fightCom->team;
 		CGeniusApp::GetSingleton().SpawnOne(team);*/
 
@@ -138,7 +138,7 @@ void PawnDie::OnInitialize(BHUpdateContext& context)
 {
 	m_timeCounter = 0;
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	PawnTemplateCom* tmpCom = data.pEntity->GetComponent<PawnTemplateCom>();
+	ComPawnTemplate* tmpCom = data.pEntity->GetComponent<ComPawnTemplate>();
 	m_duration = tmpCom->pRoleData->DeadBodyTime;
 
 	EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, data.pEntity));
@@ -170,7 +170,7 @@ m_wanderType(eWanderAround)
 eBehaviorStatus PawnWander::Update(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	PawnNavigationCom* navCom = data.pEntity->GetComponent<PawnNavigationCom>();
+	ComPawnNavigation* navCom = data.pEntity->GetComponent<ComPawnNavigation>();
 	if (navCom && navCom->arrived)
 	{
 		GoToSomewhere(context);
@@ -188,7 +188,7 @@ eBehaviorStatus PawnWander::Update(BHUpdateContext& context)
 void PawnWander::OnInitialize(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	PawnTemplateCom* tmpCom = data.pEntity->GetComponent<PawnTemplateCom>();
+	ComPawnTemplate* tmpCom = data.pEntity->GetComponent<ComPawnTemplate>();
 	m_totalDuration = tmpCom->pRoleData->WanderDuration;
 	m_changeDirDuration = tmpCom->pRoleData->WanderChangeDirTime;
 
@@ -218,12 +218,12 @@ bool PawnWander::LoadFromXml(TiXmlElement* xml)
 void PawnWander::GoToSomewhere(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	PositionCom* posCom = data.pEntity->GetComponent<PositionCom>();
-	TeamCom* pTeamCom = data.pEntity->GetComponent<TeamCom>();
+	ComPosition* posCom = data.pEntity->GetComponent<ComPosition>();
+	ComTeam* pComTeam = data.pEntity->GetComponent<ComTeam>();
 
 	int width = GameDefine::viewWidth;
 	int height = GameDefine::viewHeight;
-	bool tooLeft = pTeamCom->team == Team_Human ? false : true;
+	bool tooLeft = pComTeam->team == Team_Human ? false : true;
 	bool tooTop = posCom->y < height - posCom->y;
 	int maxDistance = 200;
 
@@ -274,13 +274,13 @@ m_relocateInterval(1)
 eBehaviorStatus PawnChase::Update(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	PawnFightCom* myFightCom = data.pEntity->GetComponent<PawnFightCom>();
+	ComPawnFight* myFightCom = data.pEntity->GetComponent<ComPawnFight>();
 	if (myFightCom && myFightCom->haveTarget)
 	{
 		m_timeCounter += data.timeDelta;
 		if (m_timeCounter > m_relocateInterval)
 		{
-			PawnFightCom* eneCom = data.pEntity->GetComponent<PawnFightCom>();
+			ComPawnFight* eneCom = data.pEntity->GetComponent<ComPawnFight>();
 			EventManager::GetInstance().FireEvent(MoveToEntityEvent(data.pEntity, eneCom->enemyID));
 			m_timeCounter = 0;
 		}
@@ -333,9 +333,9 @@ PawnAttackNear::~PawnAttackNear()
 eBehaviorStatus PawnAttackNear::Update(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	PawnTemplateCom* tempCom = data.pEntity->GetComponent<PawnTemplateCom>();
+	ComPawnTemplate* tempCom = data.pEntity->GetComponent<ComPawnTemplate>();
 
-	PawnAnimCom* animCom = data.pEntity->GetComponent<PawnAnimCom>();
+	ComPawnAnim* animCom = data.pEntity->GetComponent<ComPawnAnim>();
 	animCom->SetDebugLabel("a1u");
 
 	if (attackAnimCount >= tempCom->pRoleData->maxAttack1Times)
@@ -356,7 +356,7 @@ void PawnAttackNear::OnInitialize(BHUpdateContext& context)
 	ownerEntityID = data.pEntity->GetId();
 	attackAnimCount = 0;
 	//LogInfo("enter attack");
-	PawnAnimCom* animCom = data.pEntity->GetComponent<PawnAnimCom>();
+	ComPawnAnim* animCom = data.pEntity->GetComponent<ComPawnAnim>();
 	animCom->SetDebugLabel("a1in");
 }
 
@@ -364,7 +364,7 @@ void PawnAttackNear::OnTerminate(BHUpdateContext& context, eBehaviorStatus state
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 
-	PawnAnimCom* animCom = data.pEntity->GetComponent<PawnAnimCom>();
+	ComPawnAnim* animCom = data.pEntity->GetComponent<ComPawnAnim>();
 	animCom->SetDebugLabel("a1o");
 	//LogInfo("exit PawnAttack");
 }
@@ -403,7 +403,7 @@ bool PawnAttackNear::HandleEvent(IEventData const &event)
 
 PawnAttackNear2::PawnAttackNear2() :
 ownerEntityID(-1),
-animationCompleted(false)
+ComAnimationpleted(false)
 {}
 
 PawnAttackNear2::~PawnAttackNear2()
@@ -414,11 +414,11 @@ PawnAttackNear2::~PawnAttackNear2()
 eBehaviorStatus PawnAttackNear2::Update(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	//PawnNavigationCom* navCom = data.entity->getComponent<PawnNavigationCom>();
-	PawnAnimCom* animCom = data.pEntity->GetComponent<PawnAnimCom>();
+	//ComPawnNavigation* navCom = data.entity->getComponent<ComPawnNavigation>();
+	ComPawnAnim* animCom = data.pEntity->GetComponent<ComPawnAnim>();
 	animCom->SetDebugLabel("a2u");
 
-	if (animationCompleted)
+	if (ComAnimationpleted)
 		return BH_Success;
 	else
 		return BH_Running;
@@ -434,9 +434,9 @@ void PawnAttackNear2::OnInitialize(BHUpdateContext& context)
 	EventManager::GetInstance().FireEvent(AttackNear2Event(data.pEntity));
 
 	ownerEntityID = data.pEntity->GetId();
-	animationCompleted = false;
+	ComAnimationpleted = false;
 	//LogInfo("enter attack");
-	PawnAnimCom* animCom = data.pEntity->GetComponent<PawnAnimCom>();
+	ComPawnAnim* animCom = data.pEntity->GetComponent<ComPawnAnim>();
 	animCom->SetDebugLabel("a2i");
 }
 
@@ -444,7 +444,7 @@ void PawnAttackNear2::OnTerminate(BHUpdateContext& context, eBehaviorStatus stat
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 	//LogInfo("exit PawnAttack");
-	PawnAnimCom* animCom = data.pEntity->GetComponent<PawnAnimCom>();
+	ComPawnAnim* animCom = data.pEntity->GetComponent<ComPawnAnim>();
 	animCom->SetDebugLabel("a2o");
 }
 
@@ -467,7 +467,7 @@ bool PawnAttackNear2::HandleEvent(IEventData const &event)
 								   && (animEvent.moveType == cocostudio::COMPLETE || animEvent.moveType == cocostudio::LOOP_COMPLETE)
 								   )
 							   {
-								   animationCompleted = true;
+								   ComAnimationpleted = true;
 							   }
 	}
 		break;
@@ -502,11 +502,11 @@ void PawnAttackFar::OnInitialize(BHUpdateContext& context)
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 
 	EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, data.pEntity));
-	PawnFightCom* fightCom = data.pEntity->GetComponent<PawnFightCom>();
+	ComPawnFight* fightCom = data.pEntity->GetComponent<ComPawnFight>();
 	Entity* pTargetEntity = ECSWorld::GetSingleton()->GetEntity(fightCom->enemyID);
 	if (nullptr != pTargetEntity)
 	{
-		PositionCom* tarPosCom = pTargetEntity->GetComponent<PositionCom>();
+		ComPosition* tarPosCom = pTargetEntity->GetComponent<ComPosition>();
 		EventManager::GetInstance().FireEvent(TurnToEvent(data.pEntity, tarPosCom->x, tarPosCom->y));
 	}
 	EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Skill1));
@@ -539,7 +539,7 @@ bool PawnAttackFar::HandleEvent(IEventData const &event)
 								   && (animEvent.moveType == cocostudio::COMPLETE || animEvent.moveType == cocostudio::LOOP_COMPLETE)
 								   )
 							   {
-								   animationCompleted = true;
+								   ComAnimationpleted = true;
 							   }*/
 	}
 		break;
@@ -565,7 +565,7 @@ eBehaviorStatus PawnSkill1::Update(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 
-	if (animationCompleted)
+	if (ComAnimationpleted)
 		return BH_Success;
 	else
 		return BH_Running;
@@ -580,7 +580,7 @@ void PawnSkill1::OnInitialize(BHUpdateContext& context)
 	EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, data.pEntity));
 	EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Skill1));
 
-	animationCompleted = false;
+	ComAnimationpleted = false;
 	ownerEntityID = data.pEntity->GetId();
 	//LogInfo("enter useskill");
 }
@@ -611,7 +611,7 @@ bool PawnSkill1::HandleEvent(IEventData const &event)
 			&& (animEvent.moveType == cocostudio::COMPLETE || animEvent.moveType == cocostudio::LOOP_COMPLETE)
 			)
 			{
-				animationCompleted = true;
+				ComAnimationpleted = true;
 			}
 	}
 		break;
@@ -637,7 +637,7 @@ eBehaviorStatus PawnSkill2::Update(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 
-	if (animationCompleted)
+	if (ComAnimationpleted)
 		return BH_Success;
 	else
 		return BH_Running;
@@ -652,7 +652,7 @@ void PawnSkill2::OnInitialize(BHUpdateContext& context)
 	EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, data.pEntity));
 	EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Skill2));
 
-	animationCompleted = false;
+	ComAnimationpleted = false;
 	ownerEntityID = data.pEntity->GetId();
 	//LogInfo("enter useskill");
 }
@@ -683,7 +683,7 @@ bool PawnSkill2::HandleEvent(IEventData const &event)
 								   && (animEvent.moveType == cocostudio::COMPLETE || animEvent.moveType == cocostudio::LOOP_COMPLETE)
 								   )
 							   {
-								   animationCompleted = true;
+								   ComAnimationpleted = true;
 							   }
 	}
 		break;
@@ -709,7 +709,7 @@ eBehaviorStatus PawnSkill3::Update(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 
-	if (animationCompleted)
+	if (ComAnimationpleted)
 		return BH_Success;
 	else
 		return BH_Running;
@@ -724,7 +724,7 @@ void PawnSkill3::OnInitialize(BHUpdateContext& context)
 	EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, data.pEntity));
 	EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Skill3));
 
-	animationCompleted = false;
+	ComAnimationpleted = false;
 	ownerEntityID = data.pEntity->GetId();
 	//LogInfo("enter useskill");
 }
@@ -755,7 +755,7 @@ bool PawnSkill3::HandleEvent(IEventData const &event)
 								   && (animEvent.moveType == cocostudio::COMPLETE || animEvent.moveType == cocostudio::LOOP_COMPLETE)
 								   )
 							   {
-								   animationCompleted = true;
+								   ComAnimationpleted = true;
 							   }
 	}
 		break;

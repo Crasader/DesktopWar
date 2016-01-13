@@ -4,28 +4,28 @@
 #include "EntitySystem.h"
 #include "SystemBitManager.h"
 
-#include "../ECSHeaders.h"
-/*#include "../systems/MovementSystem.h"
-#include "../systems/SimpleAnimSystem.h"
-#include "../systems/BoxColliderSystem.h"
-#include "../systems/BezierMovingSystem.h"
-#include "../systems/DelayTrackMovingSystem.h"
-#include "../systems/BevtreeSystem.h"
-#include "../systems/PawnAnimSystem.h"
-#include "../systems/PawnActionSystem.h"
-#include "../systems/PawnDirectionSystem.h"
-#include "../systems/navigationSystem.h"
-#include "../systems/PawnFightSystem.h"
-#include "../systems/PawnDebugDrawSystem.h"
-#include "../systems/BulletAnimSystem.h"
-#include "../systems/BulletDamageSingleSystem.h"
-#include "../systems/BulletDamageScopeSystem.h"
-#include "../systems/BulletDamageNoneSystem.h"
-#include "../systems/BulletDebugDrawSystem.h"
-#include "../systems/BulletArrowAnimSystem.h"
-#include "../systems/BulletBombAnimSystem.h"
-#include "../systems/BulletEggAnimSystem.h"
-#include "../systems/BulletTargetSystem.h"
+#include "../ecs.h"
+/*#include "../systems/SystemMovement.h"
+#include "../systems/SystemSimpleAnim.h"
+#include "../systems/SystemBoxCollider.h"
+#include "../systems/SystemBezierMovement.h"
+#include "../systems/SystemDelayTrackMovement.h"
+#include "../systems/SystemPawnBevtree.h"
+#include "../systems/SystemPawnAnim.h"
+#include "../systems/SystemPawnAction.h"
+#include "../systems/SystemPawnDirection.h"
+#include "../systems/SystemPawnNavigation.h"
+#include "../systems/SystemPawnFight.h"
+#include "../systems/SystemPawnDebugDraw.h"
+#include "../systems/SystemBulletAnim.h"
+#include "../systems/SystemBulletDamageSingle.h"
+#include "../systems/SystemBulletDamageScope.h"
+#include "../systems/SystemBulletDamageNone.h"
+#include "../systems/SystemBulletDebugDraw.h"
+#include "../systems/SystemBulletArrowAnim.h"
+#include "../systems/SystemBulletBombAnim.h"
+#include "../systems/SystemBulletEggAnim.h"
+#include "../systems/SystemBulletTarget.h"
 
 #include "../systems/HumanGameControlSystem.h"
 #include "../systems/MonsterGameControlSystem.h"*/
@@ -46,27 +46,27 @@ namespace Genius
 
 	void SystemManager::Init()
 	{
-		this->AddSystem(new MovementSystem());
-		this->AddSystem(new SimpleAnimSystem());
-		this->AddSystem(new BoxColliderSystem());
-		this->AddSystem(new BezierMovingSystem());
-		this->AddSystem(new DelayTrackMovingSystem());
-		this->AddSystem(new PawnAnimSystem());
-		this->AddSystem(new PawnActionSystem());
-		this->AddSystem(new PawnDirectionSystem());
-		this->AddSystem(new BevtreeSystem());
-		this->AddSystem(new NavigationSystem());
-		this->AddSystem(new PawnFightSystem());
-		this->AddSystem(new PawnDebugDrawSystem());
-		this->AddSystem(new BulletAnimSystem());
-		this->AddSystem(new BulletDamageSingleSystem());
-		this->AddSystem(new BulletDamageScopeSystem());
-		this->AddSystem(new BulletDamageNoneSystem());
-		this->AddSystem(new BulletDebugDrawSystem());
-		this->AddSystem(new BulletArrowAnimSystem());
-		this->AddSystem(new BulletBombAnimSystem());
-		this->AddSystem(new BulletEggAnimSystem());
-		this->AddSystem(new BulletTargetSystem());
+		this->AddSystem(new SystemMovement());
+		this->AddSystem(new SystemSimpleAnim());
+		this->AddSystem(new SystemBoxCollider());
+		this->AddSystem(new SystemBezierMovement());
+		this->AddSystem(new SystemDelayTrackMovement());
+		this->AddSystem(new SystemPawnAnim());
+		this->AddSystem(new SystemPawnAction());
+		this->AddSystem(new SystemPawnDirection());
+		this->AddSystem(new SystemPawnBevtree());
+		this->AddSystem(new SystemPawnNavigation());
+		this->AddSystem(new SystemPawnFight());
+		this->AddSystem(new SystemPawnDebugDraw());
+		this->AddSystem(new SystemBulletAnim());
+		this->AddSystem(new SystemBulletDamageSingle());
+		this->AddSystem(new SystemBulletDamageScope());
+		this->AddSystem(new SystemBulletDamageNone());
+		this->AddSystem(new SystemBulletDebugDraw());
+		this->AddSystem(new SystemBulletArrowAnim());
+		this->AddSystem(new SystemBulletBombAnim());
+		this->AddSystem(new SystemBulletEggAnim());
+		this->AddSystem(new SystemBulletTarget());
 		this->AddSystem(new HumanGameControlSystem());
 		this->AddSystem(new MonsterGameControlSystem());
 

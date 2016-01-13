@@ -4,7 +4,7 @@
 #include "UserActions.h"
 #include "event/EventManager.h"
 #include "ECS/EntityEvents.h"
-#include "ECS/ECSHeaders.h"
+#include "ECS/ecs.h"
 #include "data/RoleDataMgr.h"
 #include "data/BulletDataMgr.h"
 #include "EntityCreators.h"
@@ -23,7 +23,7 @@ int ChangeLife(BuffEnvParam& env, BuffParam& buffParam)
 		if (nullptr == senderEntity || nullptr == receiverEntity)
 			break;
 
-		PawnAttributeCom* attCom = receiverEntity->GetComponent<PawnAttributeCom>();
+		ComPawnAttribute* attCom = receiverEntity->GetComponent<ComPawnAttribute>();
 		if (nullptr == attCom)
 			break;
 
@@ -58,9 +58,9 @@ int DecLifeByPawn(BuffEnvParam& env, BuffParam& buffParam)
 		if (nullptr == senderEntity || nullptr == receiverEntity)
 			break;
 
-		PawnTemplateCom* tempComSender = senderEntity->GetComponent<PawnTemplateCom>();
-		PawnTemplateCom* tempComReceiver = receiverEntity->GetComponent<PawnTemplateCom>();
-		PawnAttributeCom* attComReceiver = receiverEntity->GetComponent<PawnAttributeCom>();
+		ComPawnTemplate* tempComSender = senderEntity->GetComponent<ComPawnTemplate>();
+		ComPawnTemplate* tempComReceiver = receiverEntity->GetComponent<ComPawnTemplate>();
+		ComPawnAttribute* attComReceiver = receiverEntity->GetComponent<ComPawnAttribute>();
 		if (nullptr == tempComSender
 			|| nullptr == tempComReceiver
 			|| nullptr == attComReceiver)
@@ -109,8 +109,8 @@ int AddLifeByPawn(BuffEnvParam& env, BuffParam& buffParam)
 		if (nullptr == senderEntity || nullptr == receiverEntity)
 			break;
 
-		PawnAttributeCom* attComReceiver = receiverEntity->GetComponent<PawnAttributeCom>();
-		PawnTemplateCom* tempComReceiver = receiverEntity->GetComponent<PawnTemplateCom>();
+		ComPawnAttribute* attComReceiver = receiverEntity->GetComponent<ComPawnAttribute>();
+		ComPawnTemplate* tempComReceiver = receiverEntity->GetComponent<ComPawnTemplate>();
 		if (nullptr == attComReceiver || nullptr == tempComReceiver)
 			break;
 
@@ -148,9 +148,9 @@ int DecLifeByBullet(BuffEnvParam& env, BuffParam& buffParam)
 		if (nullptr == senderEntity || nullptr == receiverEntity)
 			break;
 
-		BulletTemplateCom* tempComSender = senderEntity->GetComponent<BulletTemplateCom>();
-		PawnTemplateCom* tempComReceiver = receiverEntity->GetComponent<PawnTemplateCom>();
-		PawnAttributeCom* attComReceiver = receiverEntity->GetComponent<PawnAttributeCom>();
+		ComBulletTemplate* tempComSender = senderEntity->GetComponent<ComBulletTemplate>();
+		ComPawnTemplate* tempComReceiver = receiverEntity->GetComponent<ComPawnTemplate>();
+		ComPawnAttribute* attComReceiver = receiverEntity->GetComponent<ComPawnAttribute>();
 		if (nullptr == tempComSender
 			|| nullptr == tempComReceiver
 			|| nullptr == attComReceiver)
@@ -205,15 +205,15 @@ int SpawnSpiders(BuffEnvParam& env, BuffParam& buffParam)
 		if (nullptr == senderEntity)
 			break;
 
-		BulletTemplateCom* tempComSender = senderEntity->GetComponent<BulletTemplateCom>();
+		ComBulletTemplate* tempComSender = senderEntity->GetComponent<ComBulletTemplate>();
 		if (nullptr == tempComSender)
 			break;
 
-		PositionCom* posCom = senderEntity->GetComponent<PositionCom>();
+		ComPosition* posCom = senderEntity->GetComponent<ComPosition>();
 		if (nullptr == posCom)
 			break;
 
-		TeamCom* teamCom = senderEntity->GetComponent<TeamCom>();
+		ComTeam* teamCom = senderEntity->GetComponent<ComTeam>();
 		if (nullptr == teamCom)
 			break;
 

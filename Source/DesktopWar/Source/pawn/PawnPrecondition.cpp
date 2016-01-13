@@ -1,8 +1,8 @@
 // d:)
 #include "PawnPrecondition.h"
-#include "ECS/ECSHeaders.h"
+#include "ECS/ecs.h"
 #include "ECS/core/Entity.h"
-#include "ECS/components/BevtreeCom.h"
+#include "ECS/components/pawn/ComPawnBevtree.h"
 #include "data/RoleDataMgr.h"
 #include "Common/RandUtility.h"
 #include "Logger.h"
@@ -26,7 +26,7 @@ void Probablity::Reset()
 bool HaveHP::Check(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	PawnAttributeCom*attCom = data.pEntity->GetComponent<PawnAttributeCom>();
+	ComPawnAttribute*attCom = data.pEntity->GetComponent<ComPawnAttribute>();
 	if (attCom)
 		return attCom->curLife > 0;
 
@@ -36,8 +36,8 @@ bool HaveHP::Check(BHUpdateContext& context)
 bool LowHP::Check(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	PawnAttributeCom* attCom = data.pEntity->GetComponent<PawnAttributeCom>();
-	PawnTemplateCom* tempCom = data.pEntity->GetComponent<PawnTemplateCom>();
+	ComPawnAttribute* attCom = data.pEntity->GetComponent<ComPawnAttribute>();
+	ComPawnTemplate* tempCom = data.pEntity->GetComponent<ComPawnTemplate>();
 	if (attCom && tempCom)
 		return attCom->curLife < value * tempCom->pRoleData->baseLife;
 
@@ -47,8 +47,8 @@ bool LowHP::Check(BHUpdateContext& context)
 bool HighHP::Check(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	PawnAttributeCom*attCom = data.pEntity->GetComponent<PawnAttributeCom>();
-	PawnTemplateCom* tempCom = data.pEntity->GetComponent<PawnTemplateCom>();
+	ComPawnAttribute*attCom = data.pEntity->GetComponent<ComPawnAttribute>();
+	ComPawnTemplate* tempCom = data.pEntity->GetComponent<ComPawnTemplate>();
 	if (attCom && tempCom)
 		return attCom->curLife >= value * tempCom->pRoleData->baseLife;
 
@@ -58,7 +58,7 @@ bool HighHP::Check(BHUpdateContext& context)
 bool HaveTarget::Check(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	PawnFightCom* fightCom = data.pEntity->GetComponent<PawnFightCom>();
+	ComPawnFight* fightCom = data.pEntity->GetComponent<ComPawnFight>();
 	if (fightCom)
 		return fightCom->haveTarget;
 
@@ -68,7 +68,7 @@ bool HaveTarget::Check(BHUpdateContext& context)
 bool ReachTarget::Check(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	PawnFightCom* fightCom = data.pEntity->GetComponent<PawnFightCom>();
+	ComPawnFight* fightCom = data.pEntity->GetComponent<ComPawnFight>();
 	if (fightCom)
 		return fightCom->haveTarget && fightCom->isTargetInNearRange;
 
@@ -78,7 +78,7 @@ bool ReachTarget::Check(BHUpdateContext& context)
 bool TargetInNearRange::Check(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	PawnFightCom* fightCom = data.pEntity->GetComponent<PawnFightCom>();
+	ComPawnFight* fightCom = data.pEntity->GetComponent<ComPawnFight>();
 	if (fightCom)
 		return fightCom->haveTarget && fightCom->isTargetInNearRange;
 
@@ -88,7 +88,7 @@ bool TargetInNearRange::Check(BHUpdateContext& context)
 bool TargetInFarRange::Check(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	PawnFightCom* fightCom = data.pEntity->GetComponent<PawnFightCom>();
+	ComPawnFight* fightCom = data.pEntity->GetComponent<ComPawnFight>();
 	if (fightCom)
 		return fightCom->haveTarget && fightCom->isTargetInFarRange && ! fightCom->isTargetInNearRange;
 

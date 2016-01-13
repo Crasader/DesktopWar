@@ -166,7 +166,7 @@ public:
 
 private:
 	int ownerEntityID;
-	bool animationCompleted;
+	bool ComAnimationpleted;
 };
 
 /************************************************************************/
@@ -207,7 +207,7 @@ public:
 	virtual bool HandleEvent(IEventData const &event);
 
 private:
-	bool animationCompleted;
+	bool ComAnimationpleted;
 	int		ownerEntityID;
 };
 
@@ -228,7 +228,7 @@ public:
 	virtual bool HandleEvent(IEventData const &event);
 
 private:
-	bool animationCompleted;
+	bool ComAnimationpleted;
 	int		ownerEntityID;
 };
 
@@ -249,7 +249,7 @@ public:
 	virtual bool HandleEvent(IEventData const &event);
 
 private:
-	bool animationCompleted;
+	bool ComAnimationpleted;
 	int		ownerEntityID;
 };
 

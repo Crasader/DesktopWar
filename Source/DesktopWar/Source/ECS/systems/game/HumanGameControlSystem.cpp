@@ -1,6 +1,6 @@
 // d:)
 #include "HumanGameControlSystem.h"
-#include "../pawn/PawnFightSystem.h"
+#include "../pawn/SystemPawnFight.h"
 #include "../../core/SystemManager.h"
 #include "event/EventManager.h"
 #include "../../EntityEvents.h"
@@ -20,14 +20,14 @@ void HumanGameControlSystem::ProcessEntity(Entity* pEntity)
 {
 	return;
 	HumanGameControlCom* myGameControl = gameControlMapper.get(pEntity);
-	TeamCom* myTeamCom = teamMapper.get(pEntity);
-	PositionCom* myPositionCom = positionMapper.get(pEntity);
+	ComTeam* myComTeam = teamMapper.get(pEntity);
+	ComPosition* myComPosition = positionMapper.get(pEntity);
 
 	float deltaTime = world->GetDeltaTime();
 	myGameControl->gameTimePassed += deltaTime;
 
 	int myTeamCount = 0;
-	//PawnFightSystem* pFightSys = world->GetSystemManager()->getSystem<PawnFightSystem>();
+	//SystemPawnFight* pFightSys = world->GetSystemManager()->getSystem<SystemPawnFight>();
 	//Bag<Entity*>& pawnActivities = pFightSys->getActivities();
 	ImmutableBag<Entity*>* pawnActivities = world->GetGroupManager()->GetEntities(GameDefine::Group_Human);
 	if (pawnActivities)
@@ -38,7 +38,7 @@ void HumanGameControlSystem::ProcessEntity(Entity* pEntity)
 		&& myGameControl->gameTimePassed - myGameControl->lastSpawnTime > 8)
 	{
 		myGameControl->lastSpawnTime = myGameControl->gameTimePassed;
-		SpawnOne(myPositionCom->x, myPositionCom->y);
+		SpawnOne(myComPosition->x, myComPosition->y);
 	}
 };
 

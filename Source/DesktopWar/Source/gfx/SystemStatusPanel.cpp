@@ -2,7 +2,7 @@
 #include "SystemStatusPanel.h"
 #include "CocosApp.h"
 #include "GameDefine.h"
-#include "ECS/ECSHeaders.h"
+#include "ECS/ecs.h"
 
 USING_NS_CC;
 using namespace Genius;

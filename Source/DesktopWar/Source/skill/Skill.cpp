@@ -1,7 +1,7 @@
 // d:)
 #include "Skill.h"
 #include "Logger.h"
-#include "ECS/ECSHeaders.h"
+#include "ECS/ecs.h"
 #include "data/RoleDataMgr.h"
 #include "data/SkillDataMgr.h"
 #include "data/BulletDataMgr.h"
@@ -64,7 +64,7 @@ bool Skill::TargetOne(int owner, int target)
 		break;
 	}
 
-	auto pawnAttCom = entTarget->GetComponent<PawnAttributeCom>();
+	auto pawnAttCom = entTarget->GetComponent<ComPawnAttribute>();
 	if (pawnAttCom)
 	{
 		for (int i = 0; i < SkillData::MaxBuffNum; ++i)
@@ -81,7 +81,7 @@ bool Skill::TargetOne(int owner, int target)
 bool Skill::TargetScope(int owner, int target)
 {
 	auto sysMgr = ECSWorld::GetSingleton()->GetSystemManager();
-	PawnFightSystem* fightSys = sysMgr->GetSystem<PawnFightSystem>();
+	SystemPawnFight* fightSys = sysMgr->GetSystem<SystemPawnFight>();
 	std::vector<Entity*> targets;
 
 	switch (m_skillData->targetTeam)
@@ -119,12 +119,12 @@ bool Skill::TargetBullet(int owner, int targetID)
 	if (nullptr == ownerEntity)
 		return false;
 
-	PositionCom* ownerPosCom = ownerEntity->GetComponent<PositionCom>();
-	//PawnFightCom* ownerFightCom = ownerEntity->getComponent<PawnFightCom>();
-	TeamCom* ownerTeamCom = ownerEntity->GetComponent<TeamCom>();
-	PawnTemplateCom* ownerTempCom = ownerEntity->GetComponent<PawnTemplateCom>();
-	PawnDirectionCom* ownerDirCom = ownerEntity->GetComponent<PawnDirectionCom>();
-	if (nullptr == ownerTeamCom || nullptr == ownerTempCom || nullptr == ownerDirCom)
+	ComPosition* ownerPosCom = ownerEntity->GetComponent<ComPosition>();
+	//ComPawnFight* ownerFightCom = ownerEntity->getComponent<ComPawnFight>();
+	ComTeam* ownerComTeam = ownerEntity->GetComponent<ComTeam>();
+	ComPawnTemplate* ownerTempCom = ownerEntity->GetComponent<ComPawnTemplate>();
+	ComPawnDirection* ownerDirCom = ownerEntity->GetComponent<ComPawnDirection>();
+	if (nullptr == ownerComTeam || nullptr == ownerTempCom || nullptr == ownerDirCom)
 		return false;
 
 	float startX = ownerPosCom->x;
@@ -144,12 +144,12 @@ bool Skill::TargetBullet(int owner, int targetID)
 		startX = startX;
 	}
 
-	int team = ownerTeamCom->team;
+	int team = ownerComTeam->team;
 	
 	Entity* tarEntity = ECSWorld::GetSingleton()->GetEntity(targetID);
 	if (nullptr != tarEntity)
 	{// 有目标就直接飞向目标
-		PositionCom* posCom = tarEntity->GetComponent<PositionCom>();
+		ComPosition* posCom = tarEntity->GetComponent<ComPosition>();
 		EntityCreator::CreateBullet(m_skillData->bulletID, targetID, startX, startY, team, posCom->x, posCom->y);
 		return true;
 	}

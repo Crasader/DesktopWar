@@ -3,7 +3,7 @@
 
 #include "gfx/gfx.h"
 #include "GameDefine.h"
-#include "ECS/ECSHeaders.h"
+#include "ECS/ecs.h"
 #include "EntityCreators.h"
 #include "LoadingManager.h"
 #include "WarApp.h"

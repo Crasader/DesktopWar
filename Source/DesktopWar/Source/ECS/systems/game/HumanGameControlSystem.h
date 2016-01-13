@@ -3,8 +3,8 @@
 
 #include "../../core/EntityProcessingSystem.h"
 #include "../../core/ComponentMapper.h"
-#include "../../components/common/PositionCom.h"
-#include "../../components/common/TeamCom.h"
+#include "../../components/common/ComPosition.h"
+#include "../../components/common/ComTeam.h"
 #include "../../components/GamePlayCom.h"
 
 namespace Genius
@@ -13,13 +13,13 @@ namespace Genius
 	{
 	private:
 		ComponentMapper<HumanGameControlCom>	gameControlMapper;
-		ComponentMapper<TeamCom>	teamMapper;
-		ComponentMapper<PositionCom>	positionMapper;
+		ComponentMapper<ComTeam>	teamMapper;
+		ComponentMapper<ComPosition>	positionMapper;
 
 	public:
 		HumanGameControlSystem()
 		{
-			SetComponentTypes<HumanGameControlCom, TeamCom, PositionCom>();
+			SetComponentTypes<HumanGameControlCom, ComTeam, ComPosition>();
 		}
 		virtual const char* GetName(){ return "HumanGameControlSystem"; }
 		virtual void Initialize();
