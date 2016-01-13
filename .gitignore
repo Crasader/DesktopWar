@@ -997,7 +997,6 @@ temp/Debug/DesktopWar/BulletAnimSystem.obj
 temp/Debug/DesktopWar/BulletArrow.obj
 temp/Debug/DesktopWar/BulletArrowAnimSystem.obj
 temp/Debug/DesktopWar/BulletBombAnimSystem.obj
-temp/Debug/DesktopWar/BulletComponents.obj
 temp/Debug/DesktopWar/BulletDamageNoneSystem.obj
 temp/Debug/DesktopWar/BulletDamageScopeSystem.obj
 temp/Debug/DesktopWar/BulletDamageSingleSystem.obj
@@ -1052,7 +1051,6 @@ temp/Debug/DesktopWar/PawnActionSystem.obj
 temp/Debug/DesktopWar/PawnAnimSystem.obj
 temp/Debug/DesktopWar/PawnBHTree.obj
 temp/Debug/DesktopWar/PawnBehaviors.obj
-temp/Debug/DesktopWar/PawnComponents.obj
 temp/Debug/DesktopWar/PawnDebugDrawSystem.obj
 temp/Debug/DesktopWar/PawnDirectionSystem.obj
 temp/Debug/DesktopWar/PawnFightSystem.obj
