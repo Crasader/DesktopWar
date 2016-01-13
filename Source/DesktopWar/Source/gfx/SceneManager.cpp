@@ -2,7 +2,7 @@
 #include "SceneManager.h"
 #include "ECS/ecs.h"
 #include "CocosApp.h"
-#include "GameDefine.h"
+#include "app/GameDefine.h"
 #include <algorithm>
 #include "SystemStatusPanel.h"
 

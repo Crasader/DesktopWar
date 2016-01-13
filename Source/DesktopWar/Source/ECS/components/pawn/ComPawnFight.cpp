@@ -9,7 +9,7 @@
 #include "../../core/Entity.h"
 #include "Logger.h"
 
-#include "ComPawnTemplate.h"
+#include "ComPawnAgent.h"
 
 
 using namespace Genius;
@@ -32,7 +32,7 @@ ComPawnFight::~ComPawnFight()
 bool ComPawnFight::Init()
 {
 	Entity* ent = this->GetOwner();
-	ComPawnTemplate* tempCom = ent->GetComponent<ComPawnTemplate>();
+	ComPawnAgent* tempCom = ent->GetComponent<ComPawnAgent>();
 	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->pRoleData->normalSkill1);
 	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->pRoleData->normalSkill2);
 	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->pRoleData->specialSkill1);

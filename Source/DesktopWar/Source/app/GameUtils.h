@@ -1,5 +1,5 @@
 #pragma once
-#include "GameDefine.h"
+#include "app/GameDefine.h"
 
 namespace GameUtils
 {

@@ -1,7 +1,7 @@
 // d:)
 #include "CocosApp.h"
-#include "Config.h"
-#include "GameDefine.h"
+#include "app/Config.h"
+#include "app/GameDefine.h"
 
 USING_NS_CC;
 

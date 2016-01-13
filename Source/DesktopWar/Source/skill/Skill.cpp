@@ -6,7 +6,7 @@
 #include "data/SkillDataMgr.h"
 #include "data/BulletDataMgr.h"
 #include "BuffSystem.h"
-#include "EntityCreators.h"
+#include "entity/EntityCreators.h"
 
 using namespace Genius;
 
@@ -122,7 +122,7 @@ bool Skill::TargetBullet(int owner, int targetID)
 	ComPosition* ownerPosCom = ownerEntity->GetComponent<ComPosition>();
 	//ComPawnFight* ownerFightCom = ownerEntity->getComponent<ComPawnFight>();
 	ComTeam* ownerComTeam = ownerEntity->GetComponent<ComTeam>();
-	ComPawnTemplate* ownerTempCom = ownerEntity->GetComponent<ComPawnTemplate>();
+	ComPawnAgent* ownerTempCom = ownerEntity->GetComponent<ComPawnAgent>();
 	ComPawnDirection* ownerDirCom = ownerEntity->GetComponent<ComPawnDirection>();
 	if (nullptr == ownerComTeam || nullptr == ownerTempCom || nullptr == ownerDirCom)
 		return false;

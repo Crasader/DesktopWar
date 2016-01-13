@@ -4,8 +4,8 @@
 #include "../../core/SystemManager.h"
 #include "event/EventManager.h"
 #include "../../EntityEvents.h"
-#include "EntityCreators.h"
-#include "GameDefine.h"
+#include "entity/EntityCreators.h"
+#include "app/GameDefine.h"
 
 using namespace Genius;
 

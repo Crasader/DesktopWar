@@ -2,11 +2,11 @@
 #include "AppStateBattle.h"
 
 #include "gfx/gfx.h"
-#include "GameDefine.h"
+#include "app/GameDefine.h"
 #include "ECS/ecs.h"
-#include "EntityCreators.h"
+#include "entity/EntityCreators.h"
 #include "LoadingManager.h"
-#include "WarApp.h"
+#include "app/WarApp.h"
 #include "Logger.h"
 #include "AnimDataMgr.h"
 

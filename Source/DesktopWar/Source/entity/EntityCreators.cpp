@@ -1,13 +1,13 @@
 
 // d:)
-#include "EntityCreators.h"
+#include "entityCreators.h"
 #include "ECS/ecs.h"
 #include "RoleDataMgr.h"
 #include "BulletDataMgr.h"
-#include "BulletDefines.h"
+#include "bullet/BulletDefines.h"
 #include "Logger.h"
-#include "Config.h"
-#include "GameDefine.h"
+#include "app/Config.h"
+#include "app/GameDefine.h"
 
 using namespace Genius;
 
@@ -44,7 +44,7 @@ Entity* EntityCreator::CreatePawn(int id, float x, float y, int team)
 	ent->AddComponent(new ComColliderHandler(nullptr, nullptr));
 	ent->AddComponent(new ComPawnAction(Action_Idle));
 	ent->AddComponent(new ComPawnDirection());
-	ent->AddComponent(new ComPawnTemplate(roleInfo->id));
+	ent->AddComponent(new ComPawnAgent(roleInfo->id));
 	ent->AddComponent(new ComPawnBevtree(roleInfo->bevTreeFile));
 	ent->AddComponent(new ComPawnNavigation());
 	ent->AddComponent(new ComPawnAttribute(roleInfo->id));

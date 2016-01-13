@@ -37,7 +37,7 @@ bool LowHP::Check(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 	ComPawnAttribute* attCom = data.pEntity->GetComponent<ComPawnAttribute>();
-	ComPawnTemplate* tempCom = data.pEntity->GetComponent<ComPawnTemplate>();
+	ComPawnAgent* tempCom = data.pEntity->GetComponent<ComPawnAgent>();
 	if (attCom && tempCom)
 		return attCom->curLife < value * tempCom->pRoleData->baseLife;
 
@@ -48,7 +48,7 @@ bool HighHP::Check(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 	ComPawnAttribute*attCom = data.pEntity->GetComponent<ComPawnAttribute>();
-	ComPawnTemplate* tempCom = data.pEntity->GetComponent<ComPawnTemplate>();
+	ComPawnAgent* tempCom = data.pEntity->GetComponent<ComPawnAgent>();
 	if (attCom && tempCom)
 		return attCom->curLife >= value * tempCom->pRoleData->baseLife;
 

@@ -8,8 +8,8 @@
 #include "pawn/PawnDefines.h"
 #include "tinyxml.h"
 #include "Logger.h"
-#include "Config.h"
-#include "GameDefine.h"
+#include "app/Config.h"
+#include "app/GameDefine.h"
 #include "RoleDataMgr.h"
 #include "RandUtility.h"
 
@@ -49,7 +49,7 @@ void PawnIdle::OnInitialize(BHUpdateContext& context)
 	m_changeDirTimeCounter = 0;
 
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	ComPawnTemplate* tmpCom = data.pEntity->GetComponent<ComPawnTemplate>();
+	ComPawnAgent* tmpCom = data.pEntity->GetComponent<ComPawnAgent>();
 	m_totalDuration = RandUtility::RandomScale(tmpCom->pRoleData->IdleDuration, 0.3f);
 	m_changeDirDuration = RandUtility::RandomScale(tmpCom->pRoleData->IdleTurnFaceTime, 0.3f);
 
@@ -138,7 +138,7 @@ void PawnDie::OnInitialize(BHUpdateContext& context)
 {
 	m_timeCounter = 0;
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	ComPawnTemplate* tmpCom = data.pEntity->GetComponent<ComPawnTemplate>();
+	ComPawnAgent* tmpCom = data.pEntity->GetComponent<ComPawnAgent>();
 	m_duration = tmpCom->pRoleData->DeadBodyTime;
 
 	EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, data.pEntity));
@@ -188,7 +188,7 @@ eBehaviorStatus PawnWander::Update(BHUpdateContext& context)
 void PawnWander::OnInitialize(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	ComPawnTemplate* tmpCom = data.pEntity->GetComponent<ComPawnTemplate>();
+	ComPawnAgent* tmpCom = data.pEntity->GetComponent<ComPawnAgent>();
 	m_totalDuration = tmpCom->pRoleData->WanderDuration;
 	m_changeDirDuration = tmpCom->pRoleData->WanderChangeDirTime;
 
@@ -333,7 +333,7 @@ PawnAttackNear::~PawnAttackNear()
 eBehaviorStatus PawnAttackNear::Update(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	ComPawnTemplate* tempCom = data.pEntity->GetComponent<ComPawnTemplate>();
+	ComPawnAgent* tempCom = data.pEntity->GetComponent<ComPawnAgent>();
 
 	ComPawnAnim* animCom = data.pEntity->GetComponent<ComPawnAnim>();
 	animCom->SetDebugLabel("a1u");

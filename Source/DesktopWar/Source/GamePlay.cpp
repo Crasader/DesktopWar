@@ -2,7 +2,7 @@
 #include <vector>
 #include "tinyxml.h"
 #include "GamePlay.h"
-#include "EntityCreators.h"
+#include "entity/EntityCreators.h"
 #include "pawn/PawnDefines.h"
 #include "Logger.h"
 

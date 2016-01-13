@@ -5,7 +5,7 @@
 #include "../../components/common/ComPosition.h"
 #include "../../components/common/ComBoxCollider.h"
 #include "../../components/pawn/ComPawnDebugDraw.h"
-#include "../../components/pawn/ComPawnTemplate.h"
+#include "../../components/pawn/ComPawnAgent.h"
 
 
 namespace Genius
@@ -15,13 +15,13 @@ namespace Genius
 	private:
 		ComponentMapper<ComPawnDebugDraw> debugDrawMapper;
 		ComponentMapper<ComPosition> positionMapper;
-		ComponentMapper<ComPawnTemplate>pawnTemplateMapper;
+		ComponentMapper<ComPawnAgent>pawnAgentMapper;
 		ComponentMapper<ComBoxCollider> boxColliderMapper;
 
 	public:
 		SystemPawnDebugDraw()
 		{
-			SetComponentTypes<ComPawnDebugDraw, ComPosition, ComPawnTemplate, ComBoxCollider>();
+			SetComponentTypes<ComPawnDebugDraw, ComPosition, ComPawnAgent, ComBoxCollider>();
 		}
 		virtual const char* GetName(){ return "SystemPawnDebugDraw"; }
 		virtual void Initialize();

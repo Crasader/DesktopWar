@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "GameDefine.h"
+#include "app/GameDefine.h"
 
 namespace GameDefine
 {

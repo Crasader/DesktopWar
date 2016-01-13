@@ -19,7 +19,7 @@
 
 //#include<vld.h>
 #include "WinWrapper.h"
-#include "WarApp.h"
+#include "app/WarApp.h"
 
 #pragma warning(disable:4251)
 

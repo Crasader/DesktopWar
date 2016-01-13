@@ -1,7 +1,7 @@
 
 #include "LoadingManager.h"
 #include "AnimDataMgr.h"
-#include "App/AppStatus/AppStateLoading.h"
+#include "app/AppStatus/AppStateLoading.h"
 
 using namespace Genius;
 

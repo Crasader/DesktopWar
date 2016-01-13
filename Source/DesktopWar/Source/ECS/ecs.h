@@ -20,6 +20,7 @@
 #include "components/common/ComBezierMovement.h"
 #include "components/common/ComDelayTrackMovement.h"
 
+#include "components/pawn/ComPawnAgent.h"
 #include "components/pawn/ComPawnAction.h"
 #include "components/pawn/ComPawnAnim.h"
 #include "components/pawn/ComPawnAttribute.h"
@@ -27,9 +28,9 @@
 #include "components/pawn/ComPawnDirection.h"
 #include "components/pawn/ComPawnFight.h"
 #include "components/pawn/ComPawnNavigation.h"
-#include "components/pawn/ComPawnTemplate.h"
 #include "components/pawn/ComPawnBevtree.h"
 
+#include "components/bullet/ComBulletAgent.h"
 #include "components/bullet/ComBulletAnimArrow.h"
 #include "components/bullet/ComBulletAnimBase.h"
 #include "components/bullet/ComBulletAnimBomb.h"
@@ -38,7 +39,6 @@
 #include "components/bullet/ComBulletDamageSingle.h"
 #include "components/bullet/ComBulletDebugDraw.h"
 #include "components/bullet/ComBulletAnimEgg.h"
-#include "components/bullet/ComBulletTemplate.h"
 
 #include "components/GamePlayCom.h"
 

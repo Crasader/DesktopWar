@@ -5,7 +5,7 @@
 #include "pawn/PawnDefines.h"
 #include "../../core/Entity.h"
 
-#include "../../components/pawn/ComPawnTemplate.h"
+
 
 #include "2Ddef.h"
 #include "RoleDataMgr.h"
@@ -60,7 +60,7 @@ bool SystemMovement::HandleEvent(IEventData const &event)
 			delta.Normalize();
 			
 			float speed = 20;
-			ComPawnTemplate* pawnTemp = actionEvent.entity->GetComponent<ComPawnTemplate>();
+			ComPawnAgent* pawnTemp = actionEvent.entity->GetComponent<ComPawnAgent>();
 			if (pawnTemp)
 			{
 				speed = pawnTemp->pRoleData->moveSpeed;

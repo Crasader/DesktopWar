@@ -7,7 +7,7 @@
 #include "ECS/ecs.h"
 #include "data/RoleDataMgr.h"
 #include "data/BulletDataMgr.h"
-#include "EntityCreators.h"
+#include "entity/EntityCreators.h"
 
 using namespace Genius;
 
@@ -58,8 +58,8 @@ int DecLifeByPawn(BuffEnvParam& env, BuffParam& buffParam)
 		if (nullptr == senderEntity || nullptr == receiverEntity)
 			break;
 
-		ComPawnTemplate* tempComSender = senderEntity->GetComponent<ComPawnTemplate>();
-		ComPawnTemplate* tempComReceiver = receiverEntity->GetComponent<ComPawnTemplate>();
+		ComPawnAgent* tempComSender = senderEntity->GetComponent<ComPawnAgent>();
+		ComPawnAgent* tempComReceiver = receiverEntity->GetComponent<ComPawnAgent>();
 		ComPawnAttribute* attComReceiver = receiverEntity->GetComponent<ComPawnAttribute>();
 		if (nullptr == tempComSender
 			|| nullptr == tempComReceiver
@@ -110,7 +110,7 @@ int AddLifeByPawn(BuffEnvParam& env, BuffParam& buffParam)
 			break;
 
 		ComPawnAttribute* attComReceiver = receiverEntity->GetComponent<ComPawnAttribute>();
-		ComPawnTemplate* tempComReceiver = receiverEntity->GetComponent<ComPawnTemplate>();
+		ComPawnAgent* tempComReceiver = receiverEntity->GetComponent<ComPawnAgent>();
 		if (nullptr == attComReceiver || nullptr == tempComReceiver)
 			break;
 
@@ -149,7 +149,7 @@ int DecLifeByBullet(BuffEnvParam& env, BuffParam& buffParam)
 			break;
 
 		ComBulletTemplate* tempComSender = senderEntity->GetComponent<ComBulletTemplate>();
-		ComPawnTemplate* tempComReceiver = receiverEntity->GetComponent<ComPawnTemplate>();
+		ComPawnAgent* tempComReceiver = receiverEntity->GetComponent<ComPawnAgent>();
 		ComPawnAttribute* attComReceiver = receiverEntity->GetComponent<ComPawnAttribute>();
 		if (nullptr == tempComSender
 			|| nullptr == tempComReceiver

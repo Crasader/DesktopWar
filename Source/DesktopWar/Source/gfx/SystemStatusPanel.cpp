@@ -1,7 +1,7 @@
 // d:)
 #include "SystemStatusPanel.h"
 #include "CocosApp.h"
-#include "GameDefine.h"
+#include "app/GameDefine.h"
 #include "ECS/ecs.h"
 
 USING_NS_CC;

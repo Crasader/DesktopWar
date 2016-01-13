@@ -5,7 +5,7 @@
 #include "../../core/Entity.h"
 #include "RoleDataMgr.h"
 #include "skill/SkillSystem.h"
-#include "GameDefine.h"
+#include "app/GameDefine.h"
 
 #include "../../components/common/ComTeam.h"
 
@@ -16,7 +16,7 @@ void SystemPawnFight::Initialize()
 	pawnFightMapper.init(*world);
 	positionMapper.init(*world);
 	colliderMapper.init(*world);
-	pawnTemplateMapper.init(*world);
+	pawnAgentMapper.init(*world);
 	pawnAttributeMapper.init(*world);
 	pawnAnimMapper.init(*world);
 
@@ -134,7 +134,7 @@ void SystemPawnFight::HandleUseSkill(IEventData const &evt)
 {
 	const UseSkillEvent & castedEvent = static_cast<const UseSkillEvent &>(evt);
 	auto fightCom = pawnFightMapper.get(castedEvent.entity);
-	ComPawnTemplate* templateCom = pawnTemplateMapper.get(castedEvent.entity);
+	ComPawnAgent* templateCom = pawnAgentMapper.get(castedEvent.entity);
 	bool ret = false;
 	switch (castedEvent.skillType)
 	{
@@ -172,7 +172,7 @@ void SystemPawnFight::HandleHurt(IEventData const &evt)
 {
 	const HurtEvent & castedEvent = static_cast<const HurtEvent &>(evt);
 	auto animCom = pawnAnimMapper.get(castedEvent.entity);
-	ComPawnTemplate* myTempCom = pawnTemplateMapper.get(castedEvent.entity);
+	ComPawnAgent* myTempCom = pawnAgentMapper.get(castedEvent.entity);
 	if (animCom && myTempCom)
 	{
 		animCom->PlayFloatNumber(castedEvent.number, myTempCom->pRoleData->lifeBarHeight + 10);
@@ -187,7 +187,7 @@ bool SystemPawnFight::IsOldTargetVaild(Entity* pEntity)
 	ComPosition* myPosCom = positionMapper.get(pEntity);
 	ComBoxCollider* myBoxCom = colliderMapper.get(pEntity);
 	ComPawnFight* myFightCom = pawnFightMapper.get(pEntity);
-	ComPawnTemplate* myTempCom = pawnTemplateMapper.get(pEntity);
+	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
 	Entity* enemyEntity = world->GetEntity(myFightCom->enemyID);
 	if (nullptr == enemyEntity)
 	{
@@ -230,7 +230,7 @@ int SystemPawnFight::FindNearestTarget(Entity* pEntity, bool sameTeam, bool incl
 	ComPosition* myPosCom = positionMapper.get(pEntity);
 	ComPawnFight* myFightCom = pawnFightMapper.get(pEntity);
 	ComTeam* myComTeam = pEntity->GetComponent<ComTeam>();
-	ComPawnTemplate* myTempCom = pawnTemplateMapper.get(pEntity);
+	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
 	int enemyId = Entity::InvalidID;
 	float minDist = 0;
 	//Bag<Entity*>& activities = getActivities();
@@ -293,7 +293,7 @@ void SystemPawnFight::FindTargetsInScope(int entityID, int scopeSize, bool sameT
 	Entity* pEntity = world->GetEntity(entityID);
 	ComPosition* myPosCom = positionMapper.get(pEntity);
 	ComPawnFight* myFightCom = pawnFightMapper.get(pEntity);
-	ComPawnTemplate* myTempCom = pawnTemplateMapper.get(pEntity);
+	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
 	ComTeam* myComTeam = pEntity->GetComponent<ComTeam>();
 
 	Bag<Entity*>& activities = GetActivities();
@@ -333,7 +333,7 @@ void SystemPawnFight::UpdateLifeBar(Entity* pEntity)
 		return;
 
 	//ComPosition* myPosCom = positionMapper.get(pEntity);
-	ComPawnTemplate* myTempCom = pawnTemplateMapper.get(pEntity);
+	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
 	ComPawnAttribute* myAttCom = pawnAttributeMapper.get(pEntity);
 	ComPawnAnim* animCom = pawnAnimMapper.get(pEntity);
 

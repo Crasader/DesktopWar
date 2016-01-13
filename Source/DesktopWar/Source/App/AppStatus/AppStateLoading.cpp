@@ -1,9 +1,9 @@
 
 #include "AppStateLoading.h"
-#include "GameDefine.h"
+#include "app/GameDefine.h"
 #include "gfx/gfx.h"
 #include "LoadingManager.h"
-#include "WarApp.h"
+#include "app/WarApp.h"
 #include "Logger.h"
 #include "AnimDataMgr.h"
 

@@ -38,9 +38,6 @@
     <Filter Include="Source\Logic\Bullet">
       <UniqueIdentifier>{95070cb4-5cec-4ce9-a9c9-feee4bfd4525}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Logic\Common">
-      <UniqueIdentifier>{5e72e34c-ce96-4b8e-8d5d-8a1594d0eabc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Logic\ESC">
       <UniqueIdentifier>{85dce1c4-6430-4af7-89b0-5d0967d1c1d4}</UniqueIdentifier>
     </Filter>
@@ -244,15 +241,6 @@
     <ClInclude Include="Source\AI\AIBaseDef.h">
       <Filter>Source\Logic\AI</Filter>
     </ClInclude>
-    <ClInclude Include="Source\BulletDefines.h">
-      <Filter>Source\Logic\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GameDefine.h">
-      <Filter>Source\Logic\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GameUtils.h">
-      <Filter>Source\Logic\Common</Filter>
-    </ClInclude>
     <ClInclude Include="Source\ECS\components\GamePlayCom.h">
       <Filter>Source\Logic\ESC\User\Component</Filter>
     </ClInclude>
@@ -261,9 +249,6 @@
     </ClInclude>
     <ClInclude Include="Source\GamePlay.h">
       <Filter>Source\Logic\GamePlay</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\WarApp.h">
-      <Filter>Source\Logic\App</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
       <Filter>Source\Base\Win32</Filter>
@@ -291,15 +276,6 @@
     </ClInclude>
     <ClInclude Include="Source\pawn\PawnPrecondition.h">
       <Filter>Source\Logic\Pawn</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\LoadingManager.h">
-      <Filter>Source\Logic\App</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Config.h">
-      <Filter>Source\Logic\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\EntityCreators.h">
-      <Filter>Source\Logic\Entity</Filter>
     </ClInclude>
     <ClInclude Include="Source\common\Performance.h">
       <Filter>Source\Base\Common</Filter>
@@ -412,9 +388,6 @@
     <ClInclude Include="Source\ECS\components\bullet\ComBulletDebugDraw.h">
       <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ECS\components\bullet\ComBulletTemplate.h">
-      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
-    </ClInclude>
     <ClInclude Include="Source\ECS\components\common\ComAnimation.h">
       <Filter>Source\Logic\ESC\User\Component\common</Filter>
     </ClInclude>
@@ -470,9 +443,6 @@
       <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
     </ClInclude>
     <ClInclude Include="Source\ECS\components\pawn\ComPawnNavigation.h">
-      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\components\pawn\ComPawnTemplate.h">
       <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
     </ClInclude>
     <ClInclude Include="Source\ECS\systems\pawn\SystemPawnAction.h">
@@ -540,6 +510,30 @@
     </ClInclude>
     <ClInclude Include="Source\ECS\systems\pawn\SystemPawnNavigation.h">
       <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\bullet\ComBulletAgent.h">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\bullet\BulletDefines.h">
+      <Filter>Source\Logic\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\entity\EntityCreators.h">
+      <Filter>Source\Logic\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\App\LoadingManager.h">
+      <Filter>Source\Logic\App</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\App\WarApp.h">
+      <Filter>Source\Logic\App</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\app\Config.h">
+      <Filter>Source\Logic\App</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\app\GameDefine.h">
+      <Filter>Source\Logic\App</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\app\GameUtils.h">
+      <Filter>Source\Logic\App</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -655,9 +649,6 @@
     <ClCompile Include="Source\GamePlay.cpp">
       <Filter>Source\Logic\GamePlay</Filter>
     </ClCompile>
-    <ClCompile Include="Source\WarApp.cpp">
-      <Filter>Source\Logic\App</Filter>
-    </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source\Base\Win32</Filter>
     </ClCompile>
@@ -679,20 +670,11 @@
     <ClCompile Include="Source\pawn\PawnPrecondition.cpp">
       <Filter>Source\Logic\Pawn</Filter>
     </ClCompile>
-    <ClCompile Include="Source\LoadingManager.cpp">
-      <Filter>Source\Logic\App</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\EntityCreators.cpp">
-      <Filter>Source\Logic\Entity</Filter>
-    </ClCompile>
     <ClCompile Include="Source\common\Performance.cpp">
       <Filter>Source\Base\Common</Filter>
     </ClCompile>
     <ClCompile Include="Source\gfx\GfxUtils.cpp">
       <Filter>Source\Base\Gfx</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GameDefine.cpp">
-      <Filter>Source\Logic\Common</Filter>
     </ClCompile>
     <ClCompile Include="Source\gfx\RollNumberLabel.cpp">
       <Filter>Source\Base\Gfx</Filter>
@@ -790,9 +772,6 @@
     <ClCompile Include="Source\ECS\components\bullet\ComBulletDebugDraw.cpp">
       <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
     </ClCompile>
-    <ClCompile Include="Source\ECS\components\bullet\ComBulletTemplate.cpp">
-      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
-    </ClCompile>
     <ClCompile Include="Source\ECS\components\common\ComAnimation.cpp">
       <Filter>Source\Logic\ESC\User\Component\common</Filter>
     </ClCompile>
@@ -848,9 +827,6 @@
       <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
     </ClCompile>
     <ClCompile Include="Source\ECS\components\pawn\ComPawnNavigation.cpp">
-      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\components\pawn\ComPawnTemplate.cpp">
       <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
     </ClCompile>
     <ClCompile Include="Source\ECS\systems\pawn\SystemPawnAction.cpp">
@@ -915,6 +891,21 @@
     </ClCompile>
     <ClCompile Include="Source\ECS\systems\pawn\SystemPawnNavigation.cpp">
       <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\bullet\ComBulletAgent.cpp">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\entity\EntityCreators.cpp">
+      <Filter>Source\Logic\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\App\LoadingManager.cpp">
+      <Filter>Source\Logic\App</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\App\WarApp.cpp">
+      <Filter>Source\Logic\App</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\app\GameDefine.cpp">
+      <Filter>Source\Logic\App</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

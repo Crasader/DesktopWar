@@ -1,8 +1,8 @@
 
 #include "WinWrapper.h"
 #include "gfx/gfx.h"
-#include "Config.h"
-#include "GameDefine.h"
+#include "app/Config.h"
+#include "app/GameDefine.h"
 #include "Resource.h"
 
 
