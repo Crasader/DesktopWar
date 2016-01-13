@@ -7,8 +7,7 @@
 using namespace Genius;
 
 
-ComBulletAgent::ComBulletAgent(int roleID)
+ComBulletAgent::ComBulletAgent(BulletData* pData)
 {
-	BulletData* info = BulletDataMgr::GetSingleton()->GetBulletData(roleID);
-	pBulletData = info;
+	pBulletData = pData;
 }

@@ -4,7 +4,7 @@
 #include "../../EntityEvents.h"
 #include "pawn/PawnDefines.h"
 #include "../../core/Entity.h"
-
+#include "../../components/pawn/ComPawnAgent.h"
 
 
 #include "2Ddef.h"

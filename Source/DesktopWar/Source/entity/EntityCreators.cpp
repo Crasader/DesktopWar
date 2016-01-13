@@ -32,6 +32,7 @@ Entity* EntityCreator::CreatePawn(int id, float x, float y, int team)
 	}
 
 	Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
+	ent->AddComponent(new ComPawnAgent(roleInfo->id));
 	ent->AddComponent(new ComVelocity(0, 0));
 	ent->AddComponent(new ComPosition(x, y));
 	ent->AddComponent(new ComTeam(team));
@@ -44,7 +45,6 @@ Entity* EntityCreator::CreatePawn(int id, float x, float y, int team)
 	ent->AddComponent(new ComColliderHandler(nullptr, nullptr));
 	ent->AddComponent(new ComPawnAction(Action_Idle));
 	ent->AddComponent(new ComPawnDirection());
-	ent->AddComponent(new ComPawnAgent(roleInfo->id));
 	ent->AddComponent(new ComPawnBevtree(roleInfo->bevTreeFile));
 	ent->AddComponent(new ComPawnNavigation());
 	ent->AddComponent(new ComPawnAttribute(roleInfo->id));
@@ -75,10 +75,10 @@ Entity* EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, f
 	}
 
 	Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
+	ent->AddComponent(new ComBulletAgent(bulletInfo));
 	ent->AddComponent(new ComPosition(x, y));
 	ent->AddComponent(new ComTeam(team));
 	ent->AddComponent(new ComBoxCollider(true, 0, 0, bulletInfo->boxWidth, bulletInfo->boxHeight));
-	ent->AddComponent(new ComBulletTemplate(bulletInfo));
 	if (cfg_EnableDebugDraw) ent->AddComponent(new ComBulletDebugDraw());
 	
 	if (bulletInfo->moveType == BulletMoveType::BMT_Line)

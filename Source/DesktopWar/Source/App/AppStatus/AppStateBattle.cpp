@@ -5,7 +5,7 @@
 #include "app/GameDefine.h"
 #include "ECS/ecs.h"
 #include "entity/EntityCreators.h"
-#include "LoadingManager.h"
+#include "app/LoadingManager.h"
 #include "app/WarApp.h"
 #include "Logger.h"
 #include "AnimDataMgr.h"

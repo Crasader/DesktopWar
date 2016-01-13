@@ -15,7 +15,7 @@ namespace Genius
 		BulletData*					pBulletData;
 		BulletBlackboard*			pBlackBoard;
 
-		ComBulletAgent(int roleID);
+		ComBulletAgent(BulletData* pData);
 
 	};
 
