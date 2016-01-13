@@ -116,6 +116,9 @@
     <Filter Include="Source\Logic\ESC\User\Component\pawn">
       <UniqueIdentifier>{1f3d725e-1d9c-4b3d-8f0e-39ee43f9351e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Logic\ESC\User\Component\bullet">
+      <UniqueIdentifier>{b670c9a9-86d4-4efa-beb4-74e5a3caeb12}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\common\2Ddef.h">
@@ -253,83 +256,11 @@
     <ClInclude Include="Source\ECS\components\BevtreeCom.h">
       <Filter>Source\Logic\ESC\User\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ECS\components\BulletComponents.h">
-      <Filter>Source\Logic\ESC\User\Component</Filter>
-    </ClInclude>
     <ClInclude Include="Source\ECS\components\GamePlayCom.h">
       <Filter>Source\Logic\ESC\User\Component</Filter>
     </ClInclude>
     <ClInclude Include="Source\ECS\EntityEvents.h">
       <Filter>Source\Logic\ESC\User\Event</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\BulletAnimSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\BulletArrowAnimSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\BulletBombAnimSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\BulletDamageNoneSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\BulletDamageScopeSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\BulletDamageSingleSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\BulletDebugDrawSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\BulletEggAnimSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\BulletTargetSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\BezierMovingSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\BoxColliderSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\DelayTrackMovingSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\MovementSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\SimpleAnimSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\BevtreeSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\HumanGameControlSystem.h">
-      <Filter>Source\Logic\ESC\User\System\GamePlay</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\MonsterGameControlSystem.h">
-      <Filter>Source\Logic\ESC\User\System\GamePlay</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\NavigationSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\PawnActionSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\PawnAnimSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\PawnDebugDrawSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\PawnDirectionSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\PawnFightSystem.h">
-      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
     </ClInclude>
     <ClInclude Include="Source\ECS\ECSHeaders.h">
       <Filter>Source\Logic\ESC</Filter>
@@ -508,6 +439,102 @@
     <ClInclude Include="Source\ECS\components\pawn\PawnTemplateCom.h">
       <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
     </ClInclude>
+    <ClInclude Include="Source\ECS\systems\bullet\BulletAnimSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\bullet\BulletArrowAnimSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\bullet\BulletBombAnimSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\bullet\BulletDamageNoneSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\bullet\BulletDamageScopeSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\bullet\BulletDamageSingleSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\bullet\BulletDebugDrawSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\bullet\BulletEggAnimSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\bullet\BulletTargetSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\pawn\BevtreeSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\pawn\NavigationSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\pawn\PawnActionSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\pawn\PawnAnimSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\pawn\PawnDebugDrawSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\pawn\PawnDirectionSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\pawn\PawnFightSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\common\BezierMovingSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\common\BoxColliderSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\common\DelayTrackMovingSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\common\MovementSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\common\SimpleAnimSystem.h">
+      <Filter>Source\Logic\ESC\User\System\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\game\HumanGameControlSystem.h">
+      <Filter>Source\Logic\ESC\User\System\GamePlay</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\systems\game\MonsterGameControlSystem.h">
+      <Filter>Source\Logic\ESC\User\System\GamePlay</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\bullet\BulletArrowAnimCom.h">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\bullet\BulletBaseAnimCom.h">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\bullet\BulletBombAnimCom.h">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\bullet\BulletDamageNoneCom.h">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\bullet\BulletDamageScopeCom.h">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\bullet\BulletDamageSingleCom.h">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\bullet\BulletDebugDrawCom.h">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\bullet\BulletEggAnimCom.h">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ECS\components\bullet\BulletTemplateCom.h">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -619,80 +646,8 @@
     <ClCompile Include="Source\ECS\components\BevtreeCom.cpp">
       <Filter>Source\Logic\ESC\User\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Source\ECS\components\BulletComponents.cpp">
-      <Filter>Source\Logic\ESC\User\Component</Filter>
-    </ClCompile>
     <ClCompile Include="Source\ECS\components\GamePlayCom.cpp">
       <Filter>Source\Logic\ESC\User\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\BulletAnimSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\BulletArrowAnimSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\BulletBombAnimSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\BulletDamageNoneSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\BulletDamageScopeSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\BulletDamageSingleSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\BulletDebugDrawSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\BulletEggAnimSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\BulletTargetSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\BezierMovingSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\BoxColliderSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\DelayTrackMovingSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\MovementSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\SimpleAnimSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\BevtreeSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\HumanGameControlSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\GamePlay</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\MonsterGameControlSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\GamePlay</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\NavigationSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\PawnActionSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\PawnAnimSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\PawnDebugDrawSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\PawnDirectionSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\PawnFightSystem.cpp">
-      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
     </ClCompile>
     <ClCompile Include="Source\GamePlay.cpp">
       <Filter>Source\Logic\GamePlay</Filter>
@@ -852,6 +807,102 @@
     </ClCompile>
     <ClCompile Include="Source\ECS\components\pawn\PawnTemplateCom.cpp">
       <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\bullet\BulletAnimSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\bullet\BulletArrowAnimSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\bullet\BulletBombAnimSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\bullet\BulletDamageNoneSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\bullet\BulletDamageScopeSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\bullet\BulletDamageSingleSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\bullet\BulletDebugDrawSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\bullet\BulletEggAnimSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\bullet\BulletTargetSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\pawn\BevtreeSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\pawn\NavigationSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\pawn\PawnActionSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\pawn\PawnAnimSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\pawn\PawnDebugDrawSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\pawn\PawnDirectionSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\pawn\PawnFightSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\common\BezierMovingSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\common\BoxColliderSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\common\DelayTrackMovingSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\common\MovementSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\common\SimpleAnimSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\game\HumanGameControlSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\GamePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\systems\game\MonsterGameControlSystem.cpp">
+      <Filter>Source\Logic\ESC\User\System\GamePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\bullet\BulletArrowAnimCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\bullet\BulletBaseAnimCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\bullet\BulletBombAnimCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\bullet\BulletDamageNoneCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\bullet\BulletDamageScopeCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\bullet\BulletDamageSingleCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\bullet\BulletDebugDrawCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\bullet\BulletEggAnimCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ECS\components\bullet\BulletTemplateCom.cpp">
+      <Filter>Source\Logic\ESC\User\Component\bullet</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

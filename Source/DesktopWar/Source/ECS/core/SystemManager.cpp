@@ -4,7 +4,8 @@
 #include "EntitySystem.h"
 #include "SystemBitManager.h"
 
-#include "../systems/MovementSystem.h"
+#include "../ECSHeaders.h"
+/*#include "../systems/MovementSystem.h"
 #include "../systems/SimpleAnimSystem.h"
 #include "../systems/BoxColliderSystem.h"
 #include "../systems/BezierMovingSystem.h"
@@ -27,7 +28,7 @@
 #include "../systems/BulletTargetSystem.h"
 
 #include "../systems/HumanGameControlSystem.h"
-#include "../systems/MonsterGameControlSystem.h"
+#include "../systems/MonsterGameControlSystem.h"*/
 
 
 namespace Genius
