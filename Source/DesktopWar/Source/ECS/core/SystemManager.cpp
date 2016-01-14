@@ -21,7 +21,7 @@ namespace Genius
 
 	void SystemManager::Init()
 	{
-		/*this->AddSystem(new SystemMovement());
+		this->AddSystem(new SystemMovement());
 		this->AddSystem(new SystemSimpleAnim());
 		this->AddSystem(new SystemBoxCollider());
 		this->AddSystem(new SystemBezierMovement());
@@ -43,7 +43,7 @@ namespace Genius
 		this->AddSystem(new SystemBulletEggAnim());
 		this->AddSystem(new SystemBulletTarget());
 		this->AddSystem(new HumanGameControlSystem());
-		this->AddSystem(new MonsterGameControlSystem());*/
+		this->AddSystem(new MonsterGameControlSystem());
 
 		for (int i = 0; i < m_bagged.getCount(); i++)
 		{

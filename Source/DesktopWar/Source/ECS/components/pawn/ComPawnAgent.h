@@ -3,11 +3,11 @@
 
 #include <string>
 #include "../../core/Component.h"
+#include "data/RoleDataMgr.h"
 
 namespace Genius
 {
 	class PawnBlackboard;
-	class RoleData;
 	class AnimSet;
 
 	class ComPawnAgent : public Component

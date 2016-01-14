@@ -7,6 +7,7 @@ using namespace Genius;
 PawnBlackboard::PawnBlackboard(ComPawnAgent* agent)
 {
 	m_pAgent = agent;
+	m_currentHP = agent->m_pRoleData->baseLife;
 }
 
 PawnBlackboard::~PawnBlackboard()
