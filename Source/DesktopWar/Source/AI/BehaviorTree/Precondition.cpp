@@ -1,4 +1,4 @@
-// d:)
+
 #include "Precondition.h"
 
 

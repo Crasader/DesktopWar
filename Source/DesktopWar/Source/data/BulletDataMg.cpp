@@ -1,5 +1,5 @@
 
-// d:)
+
 #include "BulletDataMgr.h"
 
 using namespace Genius;

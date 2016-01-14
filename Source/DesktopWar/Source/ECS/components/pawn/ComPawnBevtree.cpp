@@ -1,4 +1,4 @@
-// d:)
+
 #include "ComPawnBevtree.h"
 #include "pawn/PawnBHTree.h"
 

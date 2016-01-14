@@ -1,4 +1,4 @@
-// d:)
+
 #include "SystemBitManager.h"
 
 namespace Genius

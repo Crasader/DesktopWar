@@ -1,5 +1,5 @@
 
-// d:)
+
 #include "BulletArrow.h"
 
 USING_NS_CC;

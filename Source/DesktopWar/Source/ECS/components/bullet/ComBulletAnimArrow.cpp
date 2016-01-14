@@ -1,4 +1,4 @@
-// d:)
+
 #include "ComBulletAnimArrow.h"
 #include "../../core/ECSWorld.h"
 

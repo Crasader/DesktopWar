@@ -1,14 +1,15 @@
 
 #include "PawnBlackboard.h"
+#include "ECS/components/pawn/ComPawnAgent.h"
 
 using namespace Genius;
 
-PawnBlackBoard::PawnBlackBoard()
+PawnBlackboard::PawnBlackboard(ComPawnAgent* agent)
 {
-
+	m_pAgent = agent;
 }
 
-PawnBlackBoard::~PawnBlackBoard()
+PawnBlackboard::~PawnBlackboard()
 {
 
 }

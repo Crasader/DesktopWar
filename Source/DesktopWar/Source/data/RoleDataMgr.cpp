@@ -1,5 +1,5 @@
 
-// d:)
+
 #include "RoleDataMgr.h"
 
 using namespace Genius;

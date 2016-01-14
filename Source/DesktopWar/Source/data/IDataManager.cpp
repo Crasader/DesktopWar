@@ -1,4 +1,4 @@
-﻿// d:)
+﻿
 #include "IDataManager.h"
 #include "TabFile.h"
 #include "Logger.h"

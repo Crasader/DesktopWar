@@ -1,4 +1,4 @@
-// d:)
+
 #include "SystemBoxCollider.h"
 #include "event/EventManager.h"
 #include "../../EntityEvents.h"

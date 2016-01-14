@@ -1,4 +1,4 @@
-// d:)
+
 #include "ComParticle.h"
 #include "../../core/ECSWorld.h"
 

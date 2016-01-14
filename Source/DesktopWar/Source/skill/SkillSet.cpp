@@ -1,4 +1,4 @@
-// d:)
+
 #include "SkillSet.h"
 
 using namespace Genius;

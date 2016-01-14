@@ -1,4 +1,4 @@
-// d:)
+
 #include "SystemPawnFight.h"
 #include "event/EventManager.h"
 #include "../../EntityEvents.h"
@@ -6,7 +6,7 @@
 #include "RoleDataMgr.h"
 #include "skill/SkillSystem.h"
 #include "app/GameDefine.h"
-
+#include "pawn/PawnBlackboard.h"
 #include "../../components/common/ComTeam.h"
 
 using namespace Genius;
@@ -17,7 +17,7 @@ void SystemPawnFight::Initialize()
 	positionMapper.init(*world);
 	colliderMapper.init(*world);
 	pawnAgentMapper.init(*world);
-	pawnAttributeMapper.init(*world);
+	pawnAgentMapper.init(*world);
 	pawnAnimMapper.init(*world);
 
 	// register event.
@@ -34,9 +34,9 @@ void SystemPawnFight::ProcessEntity(Entity* pEntity)
 	UpdateLifeBar(pEntity);
 
 	ComPawnFight* myFightCom = pawnFightMapper.get(pEntity);
-	ComPawnAttribute* myAttCom = pawnAttributeMapper.get(pEntity);
+	ComPawnAgent* myAttCom = pawnAgentMapper.get(pEntity);
 
-	if (myAttCom->curLife <= 0)
+	if (myAttCom->GetBlackboard()->m_currentHP<= 0)
 	{
 		myFightCom->haveTarget = false;
 		myFightCom->isTargetInNearRange = false;
@@ -139,29 +139,29 @@ void SystemPawnFight::HandleUseSkill(IEventData const &evt)
 	switch (castedEvent.skillType)
 	{
 	case UseSkillEvent::NormalSkill1:
-		ret = SkillSystem::GetSingleton().CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->pRoleData->normalSkill1);
+		ret = SkillSystem::GetSingleton().CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->normalSkill1);
 		if (ret)
-			SkillSystem::GetSingleton().UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->pRoleData->normalSkill1);
+			SkillSystem::GetSingleton().UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->normalSkill1);
 		break;
 	case UseSkillEvent::NormalSkill2:
-		ret = SkillSystem::GetSingleton().CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->pRoleData->normalSkill2);
+		ret = SkillSystem::GetSingleton().CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->normalSkill2);
 		if (ret)
-			SkillSystem::GetSingleton().UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->pRoleData->normalSkill1);
+			SkillSystem::GetSingleton().UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->normalSkill1);
 		break;
 	case UseSkillEvent::SpecialSkill1:
-		ret = SkillSystem::GetSingleton().CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->pRoleData->specialSkill1);
+		ret = SkillSystem::GetSingleton().CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill1);
 		if (ret)
-			SkillSystem::GetSingleton().UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->pRoleData->specialSkill1);
+			SkillSystem::GetSingleton().UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill1);
 		break;
 	case UseSkillEvent::SpecialSkill2:
-		ret = SkillSystem::GetSingleton().CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->pRoleData->specialSkill2);
+		ret = SkillSystem::GetSingleton().CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill2);
 		if (ret)
-			SkillSystem::GetSingleton().UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->pRoleData->specialSkill2);
+			SkillSystem::GetSingleton().UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill2);
 		break;
 	case UseSkillEvent::SpecialSkill3:
-		ret = SkillSystem::GetSingleton().CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->pRoleData->specialSkill3);
+		ret = SkillSystem::GetSingleton().CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill3);
 		if (ret)
-			SkillSystem::GetSingleton().UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->pRoleData->specialSkill3);
+			SkillSystem::GetSingleton().UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill3);
 		break;
 	default:
 		return;
@@ -175,7 +175,7 @@ void SystemPawnFight::HandleHurt(IEventData const &evt)
 	ComPawnAgent* myTempCom = pawnAgentMapper.get(castedEvent.entity);
 	if (animCom && myTempCom)
 	{
-		animCom->PlayFloatNumber(castedEvent.number, myTempCom->pRoleData->lifeBarHeight + 10);
+		animCom->PlayFloatNumber(castedEvent.number, myTempCom->m_pRoleData->lifeBarHeight + 10);
 	}
 }
 
@@ -197,8 +197,8 @@ bool SystemPawnFight::IsOldTargetVaild(Entity* pEntity)
 		return false;
 	}
 
-	ComPawnAttribute* enemyAttCom = enemyEntity->GetComponent<ComPawnAttribute>();
-	if (enemyAttCom && enemyAttCom->curLife <= 0)
+	ComPawnAgent* enemyAttCom = enemyEntity->GetComponent<ComPawnAgent>();
+	if (enemyAttCom && enemyAttCom->GetBlackboard()->m_currentHP<= 0)
 	{
 		myFightCom->haveTarget = false;
 		myFightCom->isTargetInNearRange = false;
@@ -210,7 +210,7 @@ bool SystemPawnFight::IsOldTargetVaild(Entity* pEntity)
 	ComBoxCollider* eneBoxCom = enemyEntity->GetComponent<ComBoxCollider>();
 	Point2D vecBetween(myPosCom->x - enePosCom->x, myPosCom->y - enePosCom->y);
 	float len = vecBetween.Length();
-	if (len > myTempCom->pRoleData->viewRange)
+	if (len > myTempCom->m_pRoleData->viewRange)
 	{
 		myFightCom->haveTarget = false;
 		myFightCom->isTargetInNearRange = false;
@@ -219,8 +219,8 @@ bool SystemPawnFight::IsOldTargetVaild(Entity* pEntity)
 	}
 	else
 	{
-		myFightCom->isTargetInFarRange = len < myTempCom->pRoleData->fightRangeFar + eneBoxCom->width*0.5f;
-		myFightCom->isTargetInNearRange = len < myTempCom->pRoleData->fightRangeNear + eneBoxCom->width*0.5f;
+		myFightCom->isTargetInFarRange = len < myTempCom->m_pRoleData->fightRangeFar + eneBoxCom->width*0.5f;
+		myFightCom->isTargetInNearRange = len < myTempCom->m_pRoleData->fightRangeNear + eneBoxCom->width*0.5f;
 		return true;
 	}
 }
@@ -253,8 +253,8 @@ int SystemPawnFight::FindNearestTarget(Entity* pEntity, bool sameTeam, bool incl
 		if ((! includeSelf) && pEnemyEntity->GetId() == pEntity->GetId())
 			continue;
 
-		ComPawnAttribute* enemyAttCom = pEnemyEntity->GetComponent<ComPawnAttribute>();
-		if (enemyAttCom && enemyAttCom->curLife <= 0)
+		ComPawnAgent* enemyAttCom = pEnemyEntity->GetComponent<ComPawnAgent>();
+		if (enemyAttCom && enemyAttCom->GetBlackboard()->m_currentHP<= 0)
 			continue;
 
 		//ComPawnFight* eneFightCom = pEnemyEntity->getComponent<ComPawnFight>();
@@ -270,7 +270,7 @@ int SystemPawnFight::FindNearestTarget(Entity* pEntity, bool sameTeam, bool incl
 		ComPosition* enePosCom = pEnemyEntity->GetComponent<ComPosition>();
 		Point2D vecBetween(myPosCom->x - enePosCom->x, myPosCom->y - enePosCom->y);
 		float len = vecBetween.Length();
-		if (len < myTempCom->pRoleData->viewRange)
+		if (len < myTempCom->m_pRoleData->viewRange)
 		{
 			if (enemyId == Entity::InvalidID)
 			{
@@ -303,8 +303,8 @@ void SystemPawnFight::FindTargetsInScope(int entityID, int scopeSize, bool sameT
 		if ( (!(sameTeam && includeSelf)) && pEnemyEntity->GetId() == pEntity->GetId())
  			continue;
 
-		ComPawnAttribute* enemyAttCom = pEnemyEntity->GetComponent<ComPawnAttribute>();
-		if (enemyAttCom && enemyAttCom->curLife <= 0)
+		ComPawnAgent* enemyAttCom = pEnemyEntity->GetComponent<ComPawnAgent>();
+		if (enemyAttCom && enemyAttCom->GetBlackboard()->m_currentHP<= 0)
 			continue;
 
 		//ComPawnFight* eneFightCom = eneEntity->getComponent<ComPawnFight>();
@@ -334,10 +334,10 @@ void SystemPawnFight::UpdateLifeBar(Entity* pEntity)
 
 	//ComPosition* myPosCom = positionMapper.get(pEntity);
 	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
-	ComPawnAttribute* myAttCom = pawnAttributeMapper.get(pEntity);
+	ComPawnAgent* myAttCom = pawnAgentMapper.get(pEntity);
 	ComPawnAnim* animCom = pawnAnimMapper.get(pEntity);
 
-	animCom->m_pLifeBar->setPercent((int)(100.0f * myAttCom->curLife / myTempCom->pRoleData->baseLife));
+	animCom->m_pLifeBar->setPercent((int)(100.0f * myAttCom->GetBlackboard()->m_currentHP/ myTempCom->m_pRoleData->baseLife));
 }
 
 int SystemPawnFight::FindFirstTargetByTeam(int team)

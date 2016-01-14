@@ -1,4 +1,4 @@
-// d:)
+
 #include "ComAnimation.h"
 #include "../../core/ECSWorld.h"
 

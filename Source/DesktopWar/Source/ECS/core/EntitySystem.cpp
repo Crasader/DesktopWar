@@ -1,4 +1,4 @@
-// d:)
+
 #include "EntitySystem.h"
 #include "ECSWorld.h"
 #include "Entity.h"

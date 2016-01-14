@@ -427,9 +427,6 @@
     <ClInclude Include="Source\ECS\components\pawn\ComPawnAnim.h">
       <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ECS\components\pawn\ComPawnAttribute.h">
-      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
-    </ClInclude>
     <ClInclude Include="Source\ECS\components\pawn\ComPawnBevtree.h">
       <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
     </ClInclude>
@@ -809,9 +806,6 @@
       <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
     </ClCompile>
     <ClCompile Include="Source\ECS\components\pawn\ComPawnAnim.cpp">
-      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\components\pawn\ComPawnAttribute.cpp">
       <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
     </ClCompile>
     <ClCompile Include="Source\ECS\components\pawn\ComPawnBevtree.cpp">

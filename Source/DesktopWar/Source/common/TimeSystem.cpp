@@ -1,4 +1,4 @@
-// d:)
+
 #include "TimeSystem.h"
 
 using namespace Genius;

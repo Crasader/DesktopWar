@@ -1,4 +1,4 @@
-// d:)
+
 #include "SystemBulletEggAnim.h"
 #include "event/EventManager.h"
 #include "../../EntityEvents.h"

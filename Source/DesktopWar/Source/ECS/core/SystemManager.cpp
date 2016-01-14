@@ -1,34 +1,9 @@
-// d:)
+
 #include "SystemManager.h"
 #include "ECSWorld.h"
 #include "EntitySystem.h"
 #include "SystemBitManager.h"
-
 #include "../ecs.h"
-/*#include "../systems/SystemMovement.h"
-#include "../systems/SystemSimpleAnim.h"
-#include "../systems/SystemBoxCollider.h"
-#include "../systems/SystemBezierMovement.h"
-#include "../systems/SystemDelayTrackMovement.h"
-#include "../systems/SystemPawnBevtree.h"
-#include "../systems/SystemPawnAnim.h"
-#include "../systems/SystemPawnAction.h"
-#include "../systems/SystemPawnDirection.h"
-#include "../systems/SystemPawnNavigation.h"
-#include "../systems/SystemPawnFight.h"
-#include "../systems/SystemPawnDebugDraw.h"
-#include "../systems/SystemBulletAnim.h"
-#include "../systems/SystemBulletDamageSingle.h"
-#include "../systems/SystemBulletDamageScope.h"
-#include "../systems/SystemBulletDamageNone.h"
-#include "../systems/SystemBulletDebugDraw.h"
-#include "../systems/SystemBulletArrowAnim.h"
-#include "../systems/SystemBulletBombAnim.h"
-#include "../systems/SystemBulletEggAnim.h"
-#include "../systems/SystemBulletTarget.h"
-
-#include "../systems/HumanGameControlSystem.h"
-#include "../systems/MonsterGameControlSystem.h"*/
 
 
 namespace Genius
@@ -46,7 +21,7 @@ namespace Genius
 
 	void SystemManager::Init()
 	{
-		this->AddSystem(new SystemMovement());
+		/*this->AddSystem(new SystemMovement());
 		this->AddSystem(new SystemSimpleAnim());
 		this->AddSystem(new SystemBoxCollider());
 		this->AddSystem(new SystemBezierMovement());
@@ -68,7 +43,7 @@ namespace Genius
 		this->AddSystem(new SystemBulletEggAnim());
 		this->AddSystem(new SystemBulletTarget());
 		this->AddSystem(new HumanGameControlSystem());
-		this->AddSystem(new MonsterGameControlSystem());
+		this->AddSystem(new MonsterGameControlSystem());*/
 
 		for (int i = 0; i < m_bagged.getCount(); i++)
 		{

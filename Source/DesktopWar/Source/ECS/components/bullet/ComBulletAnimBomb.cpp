@@ -1,4 +1,4 @@
-// d:)
+
 #include "ComBulletAnimBomb.h"
 #include "gfx/gfx.h"
 #include "../../core/ECSWorld.h"

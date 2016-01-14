@@ -1,4 +1,4 @@
-// d:)
+
 #include "BuffAction.h"
 #include "Buff.h"
 #include "UserActions.h"
@@ -8,6 +8,8 @@
 #include "data/RoleDataMgr.h"
 #include "data/BulletDataMgr.h"
 #include "entity/EntityCreators.h"
+#include "ECS/components/pawn/ComPawnAgent.h"
+#include "pawn/PawnBlackboard.h"
 
 using namespace Genius;
 
@@ -23,15 +25,15 @@ int ChangeLife(BuffEnvParam& env, BuffParam& buffParam)
 		if (nullptr == senderEntity || nullptr == receiverEntity)
 			break;
 
-		ComPawnAttribute* attCom = receiverEntity->GetComponent<ComPawnAttribute>();
-		if (nullptr == attCom)
+		ComPawnAgent* agentCom = receiverEntity->GetComponent<ComPawnAgent>();
+		if (nullptr == agentCom)
 			break;
 
 		if (env.apply)
 		{
-			attCom->curLife -= buffParam.params[0];
-			if (attCom->curLife < 0)
-				attCom->curLife = 0;
+			agentCom->GetBlackboard()->m_currentHP -= buffParam.params[0];
+			if (agentCom->GetBlackboard()->m_currentHP < 0)
+				agentCom->GetBlackboard()->m_currentHP = 0;
 		}
 
 	} while (false);
@@ -60,23 +62,23 @@ int DecLifeByPawn(BuffEnvParam& env, BuffParam& buffParam)
 
 		ComPawnAgent* tempComSender = senderEntity->GetComponent<ComPawnAgent>();
 		ComPawnAgent* tempComReceiver = receiverEntity->GetComponent<ComPawnAgent>();
-		ComPawnAttribute* attComReceiver = receiverEntity->GetComponent<ComPawnAttribute>();
+		ComPawnAgent* agentComReceiver = receiverEntity->GetComponent<ComPawnAgent>();
 		if (nullptr == tempComSender
 			|| nullptr == tempComReceiver
-			|| nullptr == attComReceiver)
+			|| nullptr == agentComReceiver)
 			break;
 
 		if (env.apply)
 		{
 			int realDecLife = 0;
-			int atkType = tempComSender->pRoleData->attackType;
+			int atkType = tempComSender->m_pRoleData->attackType;
 			switch (atkType)
 			{
 			case AT_Physic:
-				realDecLife = tempComSender->pRoleData->attackValue * (1.0f - tempComReceiver->pRoleData->antiPhysicValue*0.01f);
+				realDecLife = tempComSender->m_pRoleData->attackValue * (1.0f - tempComReceiver->m_pRoleData->antiPhysicValue*0.01f);
 				break;
 			case AT_Magic:
-				realDecLife = tempComSender->pRoleData->attackValue * (1.0f - tempComReceiver->pRoleData->antiMagicValue*0.01f);
+				realDecLife = tempComSender->m_pRoleData->attackValue * (1.0f - tempComReceiver->m_pRoleData->antiMagicValue*0.01f);
 				break;
 			default:
 				break;
@@ -85,9 +87,9 @@ int DecLifeByPawn(BuffEnvParam& env, BuffParam& buffParam)
 			if (realDecLife <= 0)
 				realDecLife = 1;
 			
-			attComReceiver->curLife -= realDecLife;
-			if (attComReceiver->curLife < 0)
-				attComReceiver->curLife = 0;
+			agentComReceiver->GetBlackboard()->m_currentHP -= realDecLife;
+			if (agentComReceiver->GetBlackboard()->m_currentHP < 0)
+				agentComReceiver->GetBlackboard()->m_currentHP = 0;
 
 			EventManager::GetInstance().FireEvent(HurtEvent(receiverEntity, - realDecLife));
 		}
@@ -109,17 +111,17 @@ int AddLifeByPawn(BuffEnvParam& env, BuffParam& buffParam)
 		if (nullptr == senderEntity || nullptr == receiverEntity)
 			break;
 
-		ComPawnAttribute* attComReceiver = receiverEntity->GetComponent<ComPawnAttribute>();
+		ComPawnAgent* agentComReceiver = receiverEntity->GetComponent<ComPawnAgent>();
 		ComPawnAgent* tempComReceiver = receiverEntity->GetComponent<ComPawnAgent>();
-		if (nullptr == attComReceiver || nullptr == tempComReceiver)
+		if (nullptr == agentComReceiver || nullptr == tempComReceiver)
 			break;
 
 		if (env.apply)
 		{
-			attComReceiver->curLife += buffParam.params[0];
-			int maxLife = tempComReceiver->pRoleData->baseLife;
-			if (attComReceiver->curLife > maxLife)
-				attComReceiver->curLife = maxLife;
+			agentComReceiver->GetBlackboard()->m_currentHP += buffParam.params[0];
+			int maxLife = tempComReceiver->m_pRoleData->baseLife;
+			if (agentComReceiver->GetBlackboard()->m_currentHP > maxLife)
+				agentComReceiver->GetBlackboard()->m_currentHP = maxLife;
 
 			EventManager::GetInstance().FireEvent(HurtEvent(receiverEntity, buffParam.params[0]));
 		}
@@ -150,10 +152,10 @@ int DecLifeByBullet(BuffEnvParam& env, BuffParam& buffParam)
 
 		ComBulletTemplate* tempComSender = senderEntity->GetComponent<ComBulletTemplate>();
 		ComPawnAgent* tempComReceiver = receiverEntity->GetComponent<ComPawnAgent>();
-		ComPawnAttribute* attComReceiver = receiverEntity->GetComponent<ComPawnAttribute>();
+		ComPawnAgent* agentComReceiver = receiverEntity->GetComponent<ComPawnAgent>();
 		if (nullptr == tempComSender
 			|| nullptr == tempComReceiver
-			|| nullptr == attComReceiver)
+			|| nullptr == agentComReceiver)
 			break;
 
 		if (env.apply)
@@ -163,10 +165,10 @@ int DecLifeByBullet(BuffEnvParam& env, BuffParam& buffParam)
 			switch (atkType)
 			{
 			case AT_Physic:
-				realDecLife = tempComSender->pBulletData->attackValue * (1.0f - tempComReceiver->pRoleData->antiPhysicValue*0.01f);
+				realDecLife = tempComSender->pBulletData->attackValue * (1.0f - tempComReceiver->m_pRoleData->antiPhysicValue*0.01f);
 				break;
 			case AT_Magic:
-				realDecLife = tempComSender->pBulletData->attackValue * (1.0f - tempComReceiver->pRoleData->antiMagicValue*0.01f);
+				realDecLife = tempComSender->pBulletData->attackValue * (1.0f - tempComReceiver->m_pRoleData->antiMagicValue*0.01f);
 				break;
 			default:
 				break;
@@ -175,9 +177,9 @@ int DecLifeByBullet(BuffEnvParam& env, BuffParam& buffParam)
 			if (realDecLife <= 0)
 				realDecLife = 1;
 
-			attComReceiver->curLife -= realDecLife;
-			if (attComReceiver->curLife < 0)
-				attComReceiver->curLife = 0;
+			agentComReceiver->GetBlackboard()->m_currentHP -= realDecLife;
+			if (agentComReceiver->GetBlackboard()->m_currentHP < 0)
+				agentComReceiver->GetBlackboard()->m_currentHP = 0;
 
 			EventManager::GetInstance().FireEvent(HurtEvent(receiverEntity, -realDecLife));
 		}

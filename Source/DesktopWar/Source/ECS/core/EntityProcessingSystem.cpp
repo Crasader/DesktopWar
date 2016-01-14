@@ -1,4 +1,4 @@
-// d:)
+
 #include "EntityProcessingSystem.h"
 
 #ifdef _DEBUG

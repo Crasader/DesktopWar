@@ -1,4 +1,4 @@
-// d:)
+
 #include "AnimDataMgr.h"
 #include "gfx/gfx.h"
 #include "Logger.h"

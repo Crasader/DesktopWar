@@ -5,12 +5,16 @@ namespace Genius
 {
 	class ComPawnAgent;
 
-	class PawnBlackBoard
+	class PawnBlackboard
 	{
 	public:
-		PawnBlackBoard();
-		~PawnBlackBoard();
+		PawnBlackboard(ComPawnAgent* agent);
+		~PawnBlackboard();
 
+
+	public:
+		ComPawnAgent*	m_pAgent;
+		int		m_currentHP;
 	};
 
 }

@@ -114,7 +114,6 @@
     <ClInclude Include="Source\ECS\components\pawn\ComPawnAction.h" />
     <ClInclude Include="Source\ECS\components\pawn\ComPawnAgent.h" />
     <ClInclude Include="Source\ECS\components\pawn\ComPawnAnim.h" />
-    <ClInclude Include="Source\ECS\components\pawn\ComPawnAttribute.h" />
     <ClInclude Include="Source\ECS\components\pawn\ComPawnBevtree.h" />
     <ClInclude Include="Source\ECS\components\pawn\ComPawnDebugDraw.h" />
     <ClInclude Include="Source\ECS\components\pawn\ComPawnDirection.h" />
@@ -252,7 +251,6 @@
     <ClCompile Include="Source\ECS\components\pawn\ComPawnAction.cpp" />
     <ClCompile Include="Source\ECS\components\pawn\ComPawnAgent.cpp" />
     <ClCompile Include="Source\ECS\components\pawn\ComPawnAnim.cpp" />
-    <ClCompile Include="Source\ECS\components\pawn\ComPawnAttribute.cpp" />
     <ClCompile Include="Source\ECS\components\pawn\ComPawnBevtree.cpp" />
     <ClCompile Include="Source\ECS\components\pawn\ComPawnDebugDraw.cpp" />
     <ClCompile Include="Source\ECS\components\pawn\ComPawnDirection.cpp" />

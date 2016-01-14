@@ -1,4 +1,4 @@
-// d:)
+
 #include "SystemPawnDebugDraw.h"
 #include "../../../event/EventManager.h"
 #include "../../EntityEvents.h"
@@ -34,8 +34,8 @@ void SystemPawnDebugDraw::ProcessEntity(Entity* e)
 		{
 			// attack range
 			Vec2 center(posCom->x, posCom->y);
-			float radiusNear = tempCom->pRoleData->fightRangeNear;
-			float radiusFar = tempCom->pRoleData->fightRangeFar;
+			float radiusNear = tempCom->m_pRoleData->fightRangeNear;
+			float radiusFar = tempCom->m_pRoleData->fightRangeFar;
 			debugCom->Clear();
 			debugCom->pNodeNearRange->drawCircle(center, radiusNear, 0, 12, true, Color4F::RED);
 			debugCom->pNodeFarRange->drawCircle(center, radiusFar, 0, 12, true, Color4F::RED);

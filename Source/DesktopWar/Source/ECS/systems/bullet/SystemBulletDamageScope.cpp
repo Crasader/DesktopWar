@@ -1,4 +1,4 @@
-// d:)
+
 #include "SystemBulletDamageScope.h"
 #include "event/EventManager.h"
 #include "../../EntityEvents.h"
@@ -12,6 +12,8 @@
 
 #include "../../components/common/ComTeam.h"
 #include "../../components/common/ComTarget.h"
+#include "../../components/pawn/ComPawnAgent.h"
+#include "pawn/PawnBlackboard.h"
 
 using namespace Genius;
 
@@ -111,8 +113,8 @@ void SystemBulletDamageScope::FindTargetsInScope(Entity* pEntity, int radius, bo
 		if (sameTeam && eneEntity->GetId() == pEntity->GetId())
 			continue;
 
-		ComPawnAttribute* enemyAttCom = eneEntity->GetComponent<ComPawnAttribute>();
-		if (enemyAttCom && enemyAttCom->curLife <= 0)
+		ComPawnAgent* enemyAgent = eneEntity->GetComponent<ComPawnAgent>();
+		if (enemyAgent && enemyAgent->GetBlackboard()->m_currentHP <= 0)
 			continue;
 
 		ComTeam* enComTeam = eneEntity->GetComponent<ComTeam>();

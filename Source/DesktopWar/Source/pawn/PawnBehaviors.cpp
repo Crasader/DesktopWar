@@ -1,4 +1,4 @@
-// d:)
+
 //#include "Genius.h"
 #include "PawnBehaviors.h"
 #include "ECS/components/pawn/ComPawnBevtree.h"
@@ -50,8 +50,8 @@ void PawnIdle::OnInitialize(BHUpdateContext& context)
 
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 	ComPawnAgent* tmpCom = data.pEntity->GetComponent<ComPawnAgent>();
-	m_totalDuration = RandUtility::RandomScale(tmpCom->pRoleData->IdleDuration, 0.3f);
-	m_changeDirDuration = RandUtility::RandomScale(tmpCom->pRoleData->IdleTurnFaceTime, 0.3f);
+	m_totalDuration = RandUtility::RandomScale(tmpCom->m_pRoleData->IdleDuration, 0.3f);
+	m_changeDirDuration = RandUtility::RandomScale(tmpCom->m_pRoleData->IdleTurnFaceTime, 0.3f);
 
 	EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Idle));
 	EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, data.pEntity));
@@ -139,7 +139,7 @@ void PawnDie::OnInitialize(BHUpdateContext& context)
 	m_timeCounter = 0;
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 	ComPawnAgent* tmpCom = data.pEntity->GetComponent<ComPawnAgent>();
-	m_duration = tmpCom->pRoleData->DeadBodyTime;
+	m_duration = tmpCom->m_pRoleData->DeadBodyTime;
 
 	EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, data.pEntity));
 	EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Die));
@@ -189,8 +189,8 @@ void PawnWander::OnInitialize(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 	ComPawnAgent* tmpCom = data.pEntity->GetComponent<ComPawnAgent>();
-	m_totalDuration = tmpCom->pRoleData->WanderDuration;
-	m_changeDirDuration = tmpCom->pRoleData->WanderChangeDirTime;
+	m_totalDuration = tmpCom->m_pRoleData->WanderDuration;
+	m_changeDirDuration = tmpCom->m_pRoleData->WanderChangeDirTime;
 
 	m_timeCounter = 0;
 	GoToSomewhere(context);
@@ -338,7 +338,7 @@ eBehaviorStatus PawnAttackNear::Update(BHUpdateContext& context)
 	ComPawnAnim* animCom = data.pEntity->GetComponent<ComPawnAnim>();
 	animCom->SetDebugLabel("a1u");
 
-	if (attackAnimCount >= tempCom->pRoleData->maxAttack1Times)
+	if (attackAnimCount >= tempCom->m_pRoleData->maxAttack1Times)
 		return BH_Success;
 	else
 		return BH_Running;

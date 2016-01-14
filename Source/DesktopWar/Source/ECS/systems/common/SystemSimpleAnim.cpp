@@ -1,4 +1,4 @@
-// d:)
+
 #include "SystemSimpleAnim.h"
 #include "event/EventManager.h"
 #include "../../EntityEvents.h"

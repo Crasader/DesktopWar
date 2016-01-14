@@ -1,5 +1,5 @@
 
-// d:)
+
 #include "SkillDataMgr.h"
 
 using namespace Genius;

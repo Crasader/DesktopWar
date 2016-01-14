@@ -1,5 +1,5 @@
 
-// d:)
+
 #include "BuffDataMgr.h"
 
 using namespace Genius;

@@ -13,10 +13,14 @@ namespace Genius
 	class ComPawnAgent : public Component
 	{
 	public:
-		RoleData*					pRoleData;
-		PawnBlackboard*		pBlackBoard;
+		RoleData*					m_pRoleData;
+		PawnBlackboard*		m_pBlackboard;
 
-		ComPawnAgent(int roleID);
+		ComPawnAgent(RoleData* pData);
+		~ComPawnAgent();
+
+	public:
+		PawnBlackboard*		GetBlackboard(){ return m_pBlackboard; }
 
 	};
 

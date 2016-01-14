@@ -1,5 +1,5 @@
 
-// d:)
+
 #include "FloatLabel.h"
 
 USING_NS_CC;

@@ -1,4 +1,4 @@
-// d:)
+
 #include "EventManager.h"
 
 using namespace Genius;

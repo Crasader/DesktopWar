@@ -1,4 +1,4 @@
-// d:)
+
 #include "GroupManager.h"
 #include "Entity.h"
 

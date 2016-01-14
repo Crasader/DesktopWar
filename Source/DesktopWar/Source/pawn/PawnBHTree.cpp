@@ -1,4 +1,4 @@
-// d:)
+
 #include "PawnBHTree.h"
 #include "PawnPrecondition.h"
 #include "AI/BehaviorTree/BehaviorLoader.h"

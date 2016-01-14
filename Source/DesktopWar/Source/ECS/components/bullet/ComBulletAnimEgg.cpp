@@ -1,4 +1,4 @@
-// d:)
+
 #include "ComBulletAnimEgg.h"
 #include "../../core/ECSWorld.h"
 #include "event/EventManager.h"

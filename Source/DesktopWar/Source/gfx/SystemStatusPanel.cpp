@@ -1,8 +1,9 @@
-// d:)
+
 #include "SystemStatusPanel.h"
 #include "CocosApp.h"
 #include "app/GameDefine.h"
 #include "ECS/ecs.h"
+#include "app/Config.h"
 
 USING_NS_CC;
 using namespace Genius;
@@ -29,10 +30,13 @@ bool SystemStatusPanel::Init()
 	m_lineCount = 0;
 	m_currentLine = 0;
 	
-	pDrawNode = DrawNode::create();
-	((CocosApp*)Application::getInstance())->GetScene()->addChild(pDrawNode);
-	pDrawNode->drawRect(Vec2(2, 2), Vec2((float)GameDefine::viewWidth-8, (float)GameDefine::viewHeight-2), Color4F::RED);
-	
+	if (cfg_EnableDrawViewRect)
+	{
+		pDrawNode = DrawNode::create();
+		((CocosApp*)Application::getInstance())->GetScene()->addChild(pDrawNode);
+		pDrawNode->drawRect(Vec2(2, 2), Vec2((float)GameDefine::viewWidth - 8, (float)GameDefine::viewHeight - 2), Color4F::RED);
+	}
+
 	return true;
 }
 

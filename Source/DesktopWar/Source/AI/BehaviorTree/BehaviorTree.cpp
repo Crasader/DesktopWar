@@ -1,4 +1,4 @@
-// d:)
+
 #include "BehaviorTree.h"
 
 AI_NS_BEGIN

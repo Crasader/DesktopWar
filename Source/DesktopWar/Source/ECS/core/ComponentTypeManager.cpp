@@ -1,4 +1,4 @@
-// d:)
+
 #include "ComponentTypeManager.h"
 
 namespace Genius

@@ -1,4 +1,4 @@
-// d:)
+
 #include "HumanGameControlSystem.h"
 #include "../pawn/SystemPawnFight.h"
 #include "../../core/SystemManager.h"

@@ -1,4 +1,4 @@
-// d:)
+
 #include "BuffAction.h"
 #include "BuffActionDataMgr.h"
 #include "UserActions.h"

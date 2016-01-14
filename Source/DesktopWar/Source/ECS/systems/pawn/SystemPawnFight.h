@@ -7,7 +7,7 @@
 #include "../../components/common/ComBoxCollider.h"
 #include "../../components/pawn/ComPawnFight.h"
 #include "../../components/pawn/ComPawnAnim.h"
-#include "../../components/pawn/ComPawnAttribute.h"
+
 #include "../../components/pawn/ComPawnAgent.h"
 
 namespace Genius
@@ -19,13 +19,13 @@ namespace Genius
 		ComponentMapper<ComBoxCollider>				colliderMapper;
 		ComponentMapper<ComPawnFight>				pawnFightMapper;
 		ComponentMapper<ComPawnAgent>		pawnAgentMapper;
-		ComponentMapper<ComPawnAttribute>		pawnAttributeMapper;
+		
 		ComponentMapper<ComPawnAnim>				pawnAnimMapper;
 
 	public:
 		SystemPawnFight()
 		{
-			SetComponentTypes<ComPawnFight, ComPosition, ComBoxCollider, ComPawnAgent, ComPawnAttribute, ComPawnAnim>();
+			SetComponentTypes<ComPawnFight, ComPosition, ComBoxCollider, ComPawnAgent, ComPawnAnim>();
 		}
 		virtual const char* GetName(){ return "SystemPawnFight"; }
 		virtual void Initialize();

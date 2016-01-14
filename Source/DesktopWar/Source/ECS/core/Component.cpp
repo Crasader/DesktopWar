@@ -1,4 +1,4 @@
-// d:)
+
 #include "Component.h"
 
 namespace Genius

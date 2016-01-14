@@ -1,4 +1,4 @@
-// d:)
+
 #include "ComPawnAgent.h"
 #include "RoleDataMgr.h"
 #include "pawn/PawnBlackboard.h"
@@ -7,8 +7,15 @@
 using namespace Genius;
 
 
-ComPawnAgent::ComPawnAgent(int roleID)
+ComPawnAgent::ComPawnAgent(RoleData* pData)
 {
-	RoleData* info = RoleDataMgr::GetSingleton()->GetRoleData(roleID);
-	pRoleData = info;
+	m_pRoleData = pData;
+
+	m_pBlackboard = new PawnBlackboard(this);
+}
+
+ComPawnAgent::~ComPawnAgent()
+{
+	if (m_pBlackboard)
+		delete m_pBlackboard;
 }

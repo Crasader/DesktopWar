@@ -1,5 +1,5 @@
 
-// d:)
+
 #include "ParticleTail.h"
 #include "base/CCDirector.h"
 #include "base/firePngData.h"

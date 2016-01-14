@@ -1,4 +1,4 @@
-// d:)
+
 #include "ComBulletDebugDraw.h"
 #include "gfx/gfx.h"
 

@@ -1,8 +1,10 @@
-// d:)
+
 #include "PawnPrecondition.h"
 #include "ECS/ecs.h"
 #include "ECS/core/Entity.h"
 #include "ECS/components/pawn/ComPawnBevtree.h"
+#include "ECS/components/pawn/ComPawnAgent.h"
+#include "pawn/PawnBlackboard.h"
 #include "data/RoleDataMgr.h"
 #include "Common/RandUtility.h"
 #include "Logger.h"
@@ -26,9 +28,9 @@ void Probablity::Reset()
 bool HaveHP::Check(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	ComPawnAttribute*attCom = data.pEntity->GetComponent<ComPawnAttribute>();
+	ComPawnAgent* attCom = data.pEntity->GetComponent<ComPawnAgent>();
 	if (attCom)
-		return attCom->curLife > 0;
+		return attCom->GetBlackboard()->m_currentHP > 0;
 
 	return true;
 }
@@ -36,10 +38,10 @@ bool HaveHP::Check(BHUpdateContext& context)
 bool LowHP::Check(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	ComPawnAttribute* attCom = data.pEntity->GetComponent<ComPawnAttribute>();
+	ComPawnAgent* attCom = data.pEntity->GetComponent<ComPawnAgent>();
 	ComPawnAgent* tempCom = data.pEntity->GetComponent<ComPawnAgent>();
 	if (attCom && tempCom)
-		return attCom->curLife < value * tempCom->pRoleData->baseLife;
+		return attCom->GetBlackboard()->m_currentHP < value * tempCom->m_pRoleData->baseLife;
 
 	return true;
 }
@@ -47,10 +49,10 @@ bool LowHP::Check(BHUpdateContext& context)
 bool HighHP::Check(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	ComPawnAttribute*attCom = data.pEntity->GetComponent<ComPawnAttribute>();
+	ComPawnAgent*attCom = data.pEntity->GetComponent<ComPawnAgent>();
 	ComPawnAgent* tempCom = data.pEntity->GetComponent<ComPawnAgent>();
 	if (attCom && tempCom)
-		return attCom->curLife >= value * tempCom->pRoleData->baseLife;
+		return attCom->GetBlackboard()->m_currentHP >= value * tempCom->m_pRoleData->baseLife;
 
 	return true;
 }

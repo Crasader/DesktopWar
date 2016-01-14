@@ -1,5 +1,5 @@
 
-// d:)
+
 #include "entityCreators.h"
 #include "ECS/ecs.h"
 #include "RoleDataMgr.h"
@@ -32,7 +32,7 @@ Entity* EntityCreator::CreatePawn(int id, float x, float y, int team)
 	}
 
 	Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
-	ent->AddComponent(new ComPawnAgent(roleInfo->id));
+	ent->AddComponent(new ComPawnAgent(roleInfo));
 	ent->AddComponent(new ComVelocity(0, 0));
 	ent->AddComponent(new ComPosition(x, y));
 	ent->AddComponent(new ComTeam(team));
@@ -47,7 +47,6 @@ Entity* EntityCreator::CreatePawn(int id, float x, float y, int team)
 	ent->AddComponent(new ComPawnDirection());
 	ent->AddComponent(new ComPawnBevtree(roleInfo->bevTreeFile));
 	ent->AddComponent(new ComPawnNavigation());
-	ent->AddComponent(new ComPawnAttribute(roleInfo->id));
 	ent->AddComponent(new ComPawnFight());
 	if (cfg_EnableDebugDraw) ent->AddComponent(new ComPawnDebugDraw());
 

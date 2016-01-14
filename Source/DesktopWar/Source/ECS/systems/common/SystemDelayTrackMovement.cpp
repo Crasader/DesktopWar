@@ -1,4 +1,4 @@
-// d:)
+
 #include "SystemDelayTrackMovement.h"
 #include "../../../event/EventManager.h"
 #include "../../EntityEvents.h"

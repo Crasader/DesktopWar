@@ -1,4 +1,4 @@
-// d:)
+
 #include "CocosApp.h"
 #include "app/Config.h"
 #include "app/GameDefine.h"

@@ -1,4 +1,4 @@
-// d:)
+
 #include "TabFile.h"
 #include <cstdlib>
 #include <fstream>

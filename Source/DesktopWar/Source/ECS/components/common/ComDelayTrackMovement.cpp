@@ -1,4 +1,4 @@
-// d:)
+
 #include "ComDelayTrackMovement.h"
 #include "ComPosition.h"
 #include "../../core/Entity.h"

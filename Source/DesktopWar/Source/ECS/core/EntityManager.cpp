@@ -1,4 +1,4 @@
-// d:)
+
 #include "EntityManager.h"
 #include "EntitySystem.h"
 #include "SystemManager.h"

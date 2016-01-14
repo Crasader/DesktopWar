@@ -1,4 +1,4 @@
-// d:)
+
 #include "SceneManager.h"
 #include "ECS/ecs.h"
 #include "CocosApp.h"
@@ -62,6 +62,7 @@ bool SortZOrderFunc(SortData data1, SortData data2)
 
 void SceneManager::RefreshPawnsZOrder()
 {
+	return;
 	auto sysMgr = ECSWorld::GetSingleton()->GetSystemManager();
 	SystemPawnAnim* fightSys = sysMgr->GetSystem<SystemPawnAnim>();
 	Bag<Entity*>& activities = fightSys->GetActivities();

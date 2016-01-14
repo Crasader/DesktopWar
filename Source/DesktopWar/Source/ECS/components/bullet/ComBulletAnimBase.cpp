@@ -1,4 +1,4 @@
-// d:)
+
 #include "ComBulletAnimBase.h"
 #include "gfx/gfx.h"
 

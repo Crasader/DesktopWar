@@ -1,4 +1,4 @@
-// d:)
+
 #include "SystemBezierMovement.h"
 #include "event/EventManager.h"
 #include "../../EntityEvents.h"

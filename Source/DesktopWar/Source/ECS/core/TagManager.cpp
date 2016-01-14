@@ -1,4 +1,4 @@
-// d:)
+
 #include "TagManager.h"
 //#include "World.h"
 #include "Entity.h"

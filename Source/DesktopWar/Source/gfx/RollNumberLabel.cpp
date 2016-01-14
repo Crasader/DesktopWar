@@ -1,5 +1,5 @@
 
-// d:)
+
 #include "RollNumberLabel.h"
 
 USING_NS_CC;

@@ -1,4 +1,4 @@
-// d:)
+
 #include "ComPawnFight.h"
 #include "pawn/PawnDefines.h"
 #include "RoleDataMgr.h"
@@ -33,10 +33,10 @@ bool ComPawnFight::Init()
 {
 	Entity* ent = this->GetOwner();
 	ComPawnAgent* tempCom = ent->GetComponent<ComPawnAgent>();
-	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->pRoleData->normalSkill1);
-	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->pRoleData->normalSkill2);
-	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->pRoleData->specialSkill1);
-	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->pRoleData->specialSkill2);
-	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->pRoleData->specialSkill3);
+	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->m_pRoleData->normalSkill1);
+	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->m_pRoleData->normalSkill2);
+	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->m_pRoleData->specialSkill1);
+	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->m_pRoleData->specialSkill2);
+	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->m_pRoleData->specialSkill3);
 	return true;
 }

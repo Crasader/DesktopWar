@@ -1,4 +1,4 @@
-// d:)
+
 #include "Entity.h"
 #include <sstream>
 #include "Component.h"

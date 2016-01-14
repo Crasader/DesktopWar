@@ -1,4 +1,4 @@
-// d:)
+
 #include "SystemPawnAnim.h"
 #include "event/EventManager.h"
 #include "../../EntityEvents.h"

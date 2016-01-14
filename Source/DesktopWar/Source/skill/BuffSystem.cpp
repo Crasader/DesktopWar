@@ -1,4 +1,4 @@
-// d:)
+
 #include "BuffSystem.h"
 
 using namespace Genius;

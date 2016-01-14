@@ -1,4 +1,4 @@
-// d:)
+
 #include <string>
 #include "tinyxml.h"
 #include "BehaviorCreators.h"

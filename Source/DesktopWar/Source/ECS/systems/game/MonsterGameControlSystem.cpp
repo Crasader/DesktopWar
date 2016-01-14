@@ -1,4 +1,4 @@
-// d:)
+
 #include "MonsterGameControlSystem.h"
 #include "../pawn/SystemPawnFight.h"
 #include "../../core/SystemManager.h"

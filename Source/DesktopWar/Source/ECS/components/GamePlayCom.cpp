@@ -1,4 +1,4 @@
-// d:)
+
 #include "GamePlayCom.h"
 
 using namespace Genius;

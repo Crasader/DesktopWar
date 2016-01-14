@@ -1,4 +1,4 @@
-// d:)
+
 #include <vector>
 #include "tinyxml.h"
 #include "GamePlay.h"

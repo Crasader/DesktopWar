@@ -23,7 +23,6 @@
 #include "components/pawn/ComPawnAgent.h"
 #include "components/pawn/ComPawnAction.h"
 #include "components/pawn/ComPawnAnim.h"
-#include "components/pawn/ComPawnAttribute.h"
 #include "components/pawn/ComPawnDebugDraw.h"
 #include "components/pawn/ComPawnDirection.h"
 #include "components/pawn/ComPawnFight.h"

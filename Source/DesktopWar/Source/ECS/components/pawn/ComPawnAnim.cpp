@@ -1,4 +1,4 @@
-// d:)
+
 #include "ComPawnAnim.h"
 #include "pawn/PawnDefines.h"
 #include "RoleDataMgr.h"

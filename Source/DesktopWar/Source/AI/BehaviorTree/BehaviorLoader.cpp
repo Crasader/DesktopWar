@@ -1,4 +1,4 @@
-// d:)
+
 #include "BehaviorLoader.h"
 #include "Behavior.h"
 #include "Precondition.h"
