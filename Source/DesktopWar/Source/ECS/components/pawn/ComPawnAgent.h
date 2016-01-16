@@ -8,7 +8,6 @@
 namespace Genius
 {
 	class PawnBlackboard;
-	class AnimSet;
 
 	class ComPawnAgent : public Component
 	{

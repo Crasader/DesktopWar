@@ -21,7 +21,6 @@
 #include "components/common/ComDelayTrackMovement.h"
 
 #include "components/pawn/ComPawnAgent.h"
-#include "components/pawn/ComPawnAction.h"
 #include "components/pawn/ComPawnAnim.h"
 #include "components/pawn/ComPawnDebugDraw.h"
 #include "components/pawn/ComPawnDirection.h"
@@ -51,7 +50,6 @@
 
 #include "systems/pawn/SystemPawnBevtree.h"
 #include "systems/pawn/SystemPawnAnim.h"
-#include "systems/pawn/SystemPawnAction.h"
 #include "systems/pawn/SystemPawnDirection.h"
 #include "systems/pawn/SystemPawnNavigation.h"
 #include "systems/pawn/SystemPawnFight.h"

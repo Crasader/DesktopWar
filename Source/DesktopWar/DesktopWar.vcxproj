@@ -111,7 +111,6 @@
     <ClInclude Include="Source\ECS\components\common\ComTarget.h" />
     <ClInclude Include="Source\ECS\components\common\ComTeam.h" />
     <ClInclude Include="Source\ECS\components\common\ComVelocity.h" />
-    <ClInclude Include="Source\ECS\components\pawn\ComPawnAction.h" />
     <ClInclude Include="Source\ECS\components\pawn\ComPawnAgent.h" />
     <ClInclude Include="Source\ECS\components\pawn\ComPawnAnim.h" />
     <ClInclude Include="Source\ECS\components\pawn\ComPawnBevtree.h" />
@@ -151,7 +150,6 @@
     <ClInclude Include="Source\ECS\systems\game\HumanGameControlSystem.h" />
     <ClInclude Include="Source\ECS\systems\game\MonsterGameControlSystem.h" />
     <ClInclude Include="Source\ECS\systems\pawn\SystemPawnNavigation.h" />
-    <ClInclude Include="Source\ECS\systems\pawn\SystemPawnAction.h" />
     <ClInclude Include="Source\ECS\systems\pawn\SystemPawnAnim.h" />
     <ClInclude Include="Source\ECS\systems\pawn\SystemPawnBevtree.h" />
     <ClInclude Include="Source\ECS\systems\pawn\SystemPawnDebugDraw.h" />
@@ -161,9 +159,11 @@
     <ClInclude Include="Source\gfx\GfxUtils.h" />
     <ClInclude Include="Source\gfx\RollNumberLabel.h" />
     <ClInclude Include="Source\pawn\anim\animFSM\AnimFSM.h" />
+    <ClInclude Include="Source\pawn\anim\animFSM\AnimFSMSimple.h" />
     <ClInclude Include="Source\pawn\anim\animSet\AnimSet.h" />
     <ClInclude Include="Source\pawn\anim\animSet\AnimSetSimple.h" />
     <ClInclude Include="Source\pawn\anim\animState\AnimState.h" />
+    <ClInclude Include="Source\pawn\anim\animState\AnimStateIdle.h" />
     <ClInclude Include="Source\pawn\BehaviorCreators.h" />
     <ClInclude Include="Source\pawn\BehaviorsAndPreconditions.h" />
     <ClInclude Include="Source\pawn\PawnBehaviors.h" />
@@ -248,7 +248,6 @@
     <ClCompile Include="Source\ECS\components\common\ComTarget.cpp" />
     <ClCompile Include="Source\ECS\components\common\ComTeam.cpp" />
     <ClCompile Include="Source\ECS\components\common\ComVelocity.cpp" />
-    <ClCompile Include="Source\ECS\components\pawn\ComPawnAction.cpp" />
     <ClCompile Include="Source\ECS\components\pawn\ComPawnAgent.cpp" />
     <ClCompile Include="Source\ECS\components\pawn\ComPawnAnim.cpp" />
     <ClCompile Include="Source\ECS\components\pawn\ComPawnBevtree.cpp" />
@@ -285,7 +284,6 @@
     <ClCompile Include="Source\ECS\systems\game\HumanGameControlSystem.cpp" />
     <ClCompile Include="Source\ECS\systems\game\MonsterGameControlSystem.cpp" />
     <ClCompile Include="Source\ECS\systems\pawn\SystemPawnNavigation.cpp" />
-    <ClCompile Include="Source\ECS\systems\pawn\SystemPawnAction.cpp" />
     <ClCompile Include="Source\ECS\systems\pawn\SystemPawnAnim.cpp" />
     <ClCompile Include="Source\ECS\systems\pawn\SystemPawnBevtree.cpp" />
     <ClCompile Include="Source\ECS\systems\pawn\SystemPawnDebugDraw.cpp" />
@@ -295,9 +293,11 @@
     <ClCompile Include="Source\gfx\GfxUtils.cpp" />
     <ClCompile Include="Source\gfx\RollNumberLabel.cpp" />
     <ClCompile Include="Source\pawn\anim\animFSM\AnimFSM.cpp" />
+    <ClCompile Include="Source\pawn\anim\animFSM\AnimFSMSimple.cpp" />
     <ClCompile Include="Source\pawn\anim\animSet\AnimSet.cpp" />
     <ClCompile Include="Source\pawn\anim\animSet\AnimSetSimple.cpp" />
     <ClCompile Include="Source\pawn\anim\animState\AnimState.cpp" />
+    <ClCompile Include="Source\pawn\anim\animState\AnimStateIdle.cpp" />
     <ClCompile Include="Source\pawn\BehaviorCreators.cpp" />
     <ClCompile Include="Source\pawn\PawnBehaviors.cpp" />
     <ClCompile Include="Source\pawn\PawnBHTree.cpp" />

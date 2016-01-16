@@ -43,7 +43,6 @@ Entity* EntityCreator::CreatePawn(int id, float x, float y, int team)
 	float height = paCom->GetHeight()*0.7f;
 	ent->AddComponent(new ComBoxCollider(false, 0, height*0.5f, width, height));
 	ent->AddComponent(new ComColliderHandler(nullptr, nullptr));
-	ent->AddComponent(new ComPawnAction(Action_Idle));
 	ent->AddComponent(new ComPawnDirection());
 	ent->AddComponent(new ComPawnBevtree(roleInfo->bevTreeFile));
 	ent->AddComponent(new ComPawnNavigation());

@@ -1,13 +1,14 @@
 
 #include "AnimSet.h"
 #include <string>
+#include "ECS/ecs.h"
 #include "cocos2d.h"
 #include "cocostudio/CocoStudio.h"
 
 using namespace Genius;
 
-AnimSet::AnimSet(Armature* armature):
-m_pArmature(armature)
+AnimSet::AnimSet(ComPawnAnim*	pComPawnAnim) :
+m_pComPawnAnim(pComPawnAnim)
 {
 	 
 }
@@ -17,10 +18,10 @@ AnimSet::~AnimSet()
 
 }
 
-bool AnimSet::HaveAnim(const char* name)
+bool AnimSet::HaveAnim(const std::string& name)
 {
-	return m_pArmature != nullptr
-		&& m_pArmature->getAnimation()
-		&& m_pArmature->getAnimation()->getAnimationData()
-		&& m_pArmature->getAnimation()->getAnimationData()->getMovement(name) != nullptr;
+	return m_pComPawnAnim->m_pBodyArmature != nullptr
+		&& m_pComPawnAnim->m_pBodyArmature->getAnimation()
+		&& m_pComPawnAnim->m_pBodyArmature->getAnimation()->getAnimationData()
+		&& m_pComPawnAnim->m_pBodyArmature->getAnimation()->getAnimationData()->getMovement(name) != nullptr;
 }

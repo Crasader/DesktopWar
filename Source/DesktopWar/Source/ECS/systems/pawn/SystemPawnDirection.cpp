@@ -32,8 +32,8 @@ bool SystemPawnDirection::HandleEvent(IEventData const &event)
 		if (pawnDir)
 		{
 			unsigned int dir = CalculateDirection(pawnDir, actionEvent.x, actionEvent.y);
-			pawnDir->m_lastFaceDir = pawnDir->m_faceDir;
-			pawnDir->m_faceDir = dir;
+			pawnDir->m_lastFaceDir = pawnDir->m_currentDir;
+			pawnDir->m_currentDir = dir;
 			EventManager::GetInstance().FireEvent(UpdateActionEvent(actionEvent.entity));
 		}
 	}
@@ -54,8 +54,8 @@ bool SystemPawnDirection::HandleEvent(IEventData const &event)
 		if (pawnDir && pawnPos)
 		{
 			unsigned int dir = CalculateDirection(pawnDir, actionEvent.x - pawnPos->x, actionEvent.y - pawnPos->y);
-			pawnDir->m_lastFaceDir = pawnDir->m_faceDir;
-			pawnDir->m_faceDir = dir;
+			pawnDir->m_lastFaceDir = pawnDir->m_currentDir;
+			pawnDir->m_currentDir = dir;
 			EventManager::GetInstance().FireEvent(UpdateActionEvent(actionEvent.entity));
 		}
 	}
@@ -73,7 +73,7 @@ unsigned int SystemPawnDirection::CalculateDirection(ComPawnDirection* pawnDir, 
 		return Face_Right;
 
 	float absTan = 2.0f;
-	unsigned int dir = pawnDir->m_faceDir;
+	unsigned int dir = pawnDir->m_currentDir;
 	if (x == 0.0f)
 	{
 		if (y == 0.0f)
@@ -122,12 +122,12 @@ void SystemPawnDirection::ChangeDirection(ComPawnDirection* dirCom, unsigned int
 
 	if (dir == Face_Turn)
 	{
-		dirCom->m_lastFaceDir = dirCom->m_faceDir;
-		dirCom->m_faceDir = dirCom->m_faceDir & Face_Left ? Face_Right : Face_Left;
+		dirCom->m_lastFaceDir = dirCom->m_currentDir;
+		dirCom->m_currentDir = dirCom->m_currentDir & Face_Left ? Face_Right : Face_Left;
 	}
 	else
 	{
-		dirCom->m_lastFaceDir = dirCom->m_faceDir;
-		dirCom->m_faceDir = dir;
+		dirCom->m_lastFaceDir = dirCom->m_currentDir;
+		dirCom->m_currentDir = dir;
 	}
 }

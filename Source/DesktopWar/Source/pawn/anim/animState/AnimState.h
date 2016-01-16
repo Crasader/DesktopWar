@@ -3,20 +3,37 @@
 
 namespace Genius
 {
+	class ComPawnAnim;
+
 	class AnimState
 	{
 	public:
 
-		AnimState();
+		AnimState(ComPawnAnim* comAnim);
 
 		virtual ~AnimState();
 
-		virtual void OnActive() = 0;
+		virtual void OnActive();
 
-		virtual void OnDeactive() = 0;
+		virtual void OnDeactive();
 
-		virtual void Update() = 0;
+		virtual void Update();
 
+		virtual void Initialize();
+
+		virtual void Release();
+
+	public:
+
+		void SetFinished(bool value){ m_isFinished = value; }
+
+		bool GetFinished(){ return m_isFinished; }
+
+	protected:
+		ComPawnAnim*		m_pComPawnAnim;
+
+	private:
+		bool		m_isFinished;
 	};
 
 }

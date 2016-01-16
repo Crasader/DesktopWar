@@ -3,20 +3,23 @@
 
 #include <vector>
 
+
 namespace Genius
 {
 	class AnimState;
-
+	class ComPawnAnim;
 
 	class AnimFSM
 	{
 	public:
 
-		AnimFSM();
+		AnimFSM(ComPawnAnim* pComAnim);
 
 		virtual ~AnimFSM();
 
 		virtual void Initialize();
+
+		virtual void Release();
 
 		virtual void UpdateCurrentState();
 
@@ -26,13 +29,15 @@ namespace Genius
 
 	protected:
 
-		std::vector<AnimState*>	m_stateList;
+		std::vector<AnimState*>	m_animStateList;
 
 		AnimState*			m_pCurrentState;
 
 		AnimState*			m_pNextState;
 
 		AnimState*			m_pDefaultState;
+
+		ComPawnAnim*	m_pComPawnAnim;
 
 	};
 

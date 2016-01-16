@@ -9,6 +9,8 @@
 #include "skill/SkillSystem.h"
 #include "skill/BuffSystem.h"
 #include "../../core/Entity.h"
+#include "pawn/anim/animFSM/AnimFSM.h"
+#include "pawn/anim/animFSM/AnimFSMSimple.h"
 #include "Logger.h"
 
 
@@ -19,11 +21,15 @@ using namespace Genius;
 /*                              ComPawnAnim                                        */
 /************************************************************************/
 ComPawnAnim::ComPawnAnim(int roleID) :
-m_curAction(Action_Idle)
+m_curAction(Action_Idle),
+m_pAnimFsm(nullptr)
 {
 	RoleData* roleData = RoleDataMgr::GetSingleton()->GetRoleData(roleID);
 	if (roleData)
 	{
+		// anim fsm
+		CreateAnimFSM(AFT_Simple);
+
 		m_pAvatarRoot = cocos2d::Node::create();
 		m_pBodyArmature = cocostudio::Armature::create(roleData->animSetName);
 		m_pAvatarRoot->addChild(m_pBodyArmature);
@@ -55,7 +61,7 @@ ComPawnAnim::~ComPawnAnim()
 	}
 }
 
-void ComPawnAnim::PlayAnimation(std::string name)
+void ComPawnAnim::PlayAnimation(const std::string& name)
 {
 	m_pBodyArmature->getAnimation()->play(name);
 }
@@ -156,4 +162,20 @@ void ComPawnAnim::PlayFloatNumber(int number, int y)
 void ComPawnAnim::SetDebugLabel(std::string text)
 {
 	m_pDebugLabel->setString(text);
+}
+
+void ComPawnAnim::CreateAnimFSM(int fsmType)
+{
+	if (m_pAnimFsm != nullptr)
+		return;
+
+	switch (fsmType)
+	{
+	case AFT_Simple:
+		m_pAnimFsm = new AnimFSMSimple(this);
+		break;
+	default:
+		m_pAnimFsm = new AnimFSMSimple(this);
+		break;
+	}
 }

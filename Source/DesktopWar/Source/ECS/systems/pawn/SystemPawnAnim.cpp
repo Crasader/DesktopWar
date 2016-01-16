@@ -68,8 +68,6 @@ void SystemPawnAnim::PlayAnimation(ComPawnAnim* animCom, ComPawnDirection* dirCo
 	if (nullptr == animCom->m_pAvatarRoot)
 		return;
 
-	
-
 	switch (act)
 	{
 	case Action_Idle:
@@ -107,7 +105,7 @@ void SystemPawnAnim::PlayAnimation(ComPawnAnim* animCom, ComPawnDirection* dirCo
 
 void SystemPawnAnim::PlayIdle(ComPawnAnim* animCom, ComPawnDirection* dirCom)
 {
-	if (dirCom->m_faceDir & Face_Left)
+	if (dirCom->m_currentDir & Face_Left)
 		animCom->PlayAnimation(PawnAnimName::IdleLeft);
 	else
 		animCom->PlayAnimation(PawnAnimName::IdleRight);
@@ -115,57 +113,57 @@ void SystemPawnAnim::PlayIdle(ComPawnAnim* animCom, ComPawnDirection* dirCom)
 
 void SystemPawnAnim::PlayDie(ComPawnAnim* animCom, ComPawnDirection* dirCom)
 {
-	if (dirCom->m_faceDir & Face_Left)
-		animCom->PlayAnimation("die_left");
+	if (dirCom->m_currentDir & Face_Left)
+		animCom->PlayAnimation(PawnAnimName::DieLeft);
 	else
-		animCom->PlayAnimation("die_right");
+		animCom->PlayAnimation(PawnAnimName::DieRight);
 }
 
 void SystemPawnAnim::PlayMove(ComPawnAnim* animCom, ComPawnDirection* dirCom)
 {
 	bool needAdjust = false;
 
-	if (dirCom->m_faceDir == Face_Left)
+	if (dirCom->m_currentDir == Face_Left)
 	{
 		animCom->PlayAnimation(PawnAnimName::MoveLeft);
 	}
-	else if (dirCom->m_faceDir == Face_Right)
+	else if (dirCom->m_currentDir == Face_Right)
 	{
 		animCom->PlayAnimation(PawnAnimName::MoveRight);
 	}
-	else if (dirCom->m_faceDir == Face_Up)
+	else if (dirCom->m_currentDir == Face_Up)
 	{
 		if (animCom->HaveThisAnimation(PawnAnimName::MoveUp))
 			animCom->PlayAnimation(PawnAnimName::MoveUp);
 		else
 			needAdjust = true;
 	}
-	else if (dirCom->m_faceDir == Face_Down)
+	else if (dirCom->m_currentDir == Face_Down)
 	{
 		if (animCom->HaveThisAnimation(PawnAnimName::MoveDown))
 			animCom->PlayAnimation(PawnAnimName::MoveDown);
 		else
 			needAdjust = true;
 	}
-	else if (dirCom->m_faceDir & Face_Up)
+	else if (dirCom->m_currentDir & Face_Up)
 	{
 		if (animCom->HaveThisAnimation(PawnAnimName::MoveUp))
 			animCom->PlayAnimation(PawnAnimName::MoveUp);
 		else
 		{
-			if (dirCom->m_faceDir & Face_Left)
+			if (dirCom->m_currentDir & Face_Left)
 				animCom->PlayAnimation(PawnAnimName::MoveLeft);
 			else
 				animCom->PlayAnimation(PawnAnimName::MoveRight);
 		}
 	}
-	else if (dirCom->m_faceDir & Face_Down)
+	else if (dirCom->m_currentDir & Face_Down)
 	{
 		if (animCom->HaveThisAnimation(PawnAnimName::MoveDown))
 			animCom->PlayAnimation(PawnAnimName::MoveDown);
 		else
 		{
-			if (dirCom->m_faceDir & Face_Right)
+			if (dirCom->m_currentDir & Face_Right)
 				animCom->PlayAnimation(PawnAnimName::MoveRight);
 			else
 				animCom->PlayAnimation(PawnAnimName::MoveLeft);
@@ -183,7 +181,7 @@ void SystemPawnAnim::PlayMove(ComPawnAnim* animCom, ComPawnDirection* dirCom)
 
 void SystemPawnAnim::PlayAtkNear(ComPawnAnim* animCom, ComPawnDirection* dirCom)
 {
-	if (dirCom->m_faceDir & Face_Left)
+	if (dirCom->m_currentDir & Face_Left)
 		animCom->PlayAnimation(PawnAnimName::Attack1Left);
 	else
 		animCom->PlayAnimation(PawnAnimName::Attack1Right);
@@ -191,7 +189,7 @@ void SystemPawnAnim::PlayAtkNear(ComPawnAnim* animCom, ComPawnDirection* dirCom)
 
 void SystemPawnAnim::PlayAtkNear2(ComPawnAnim* animCom, ComPawnDirection* dirCom)
 {
-	if (dirCom->m_faceDir & Face_Left)
+	if (dirCom->m_currentDir & Face_Left)
 		animCom->PlayAnimation(PawnAnimName::Attack2Left);
 	else
 		animCom->PlayAnimation(PawnAnimName::Attack2Right);
@@ -199,7 +197,7 @@ void SystemPawnAnim::PlayAtkNear2(ComPawnAnim* animCom, ComPawnDirection* dirCom
 
 void SystemPawnAnim::PlayAtkFar(ComPawnAnim* animCom, ComPawnDirection* dirCom)
 {
-	if (dirCom->m_faceDir & Face_Left)
+	if (dirCom->m_currentDir & Face_Left)
 		animCom->PlayAnimation(PawnAnimName::Attack3Left);
 	else
 		animCom->PlayAnimation(PawnAnimName::Attack3Right);
@@ -207,7 +205,7 @@ void SystemPawnAnim::PlayAtkFar(ComPawnAnim* animCom, ComPawnDirection* dirCom)
 
 void SystemPawnAnim::PlaySkill1(ComPawnAnim* animCom, ComPawnDirection* dirCom)
 {
-	if (dirCom->m_faceDir & Face_Left)
+	if (dirCom->m_currentDir & Face_Left)
 		animCom->PlayAnimation(PawnAnimName::Skill1Left);
 	else
 		animCom->PlayAnimation(PawnAnimName::Skill1Right);
@@ -215,7 +213,7 @@ void SystemPawnAnim::PlaySkill1(ComPawnAnim* animCom, ComPawnDirection* dirCom)
 
 void SystemPawnAnim::PlaySkill2(ComPawnAnim* animCom, ComPawnDirection* dirCom)
 {
-	if (dirCom->m_faceDir & Face_Left)
+	if (dirCom->m_currentDir & Face_Left)
 		animCom->PlayAnimation(PawnAnimName::Skill2Left);
 	else
 		animCom->PlayAnimation(PawnAnimName::Skill2Right);
@@ -223,7 +221,7 @@ void SystemPawnAnim::PlaySkill2(ComPawnAnim* animCom, ComPawnDirection* dirCom)
 
 void SystemPawnAnim::PlaySkill3(ComPawnAnim* animCom, ComPawnDirection* dirCom)
 {
-	if (dirCom->m_faceDir & Face_Left)
+	if (dirCom->m_currentDir & Face_Left)
 		animCom->PlayAnimation(PawnAnimName::Skill3Left);
 	else
 		animCom->PlayAnimation(PawnAnimName::Skill3Right);

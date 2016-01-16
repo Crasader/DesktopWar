@@ -4,8 +4,8 @@
 
 using namespace Genius;
 
-AnimSetSimple::AnimSetSimple(Armature* armature) :
-AnimSet(armature)
+AnimSetSimple::AnimSetSimple(ComPawnAnim*	pComPawnAnim) :
+AnimSet(pComPawnAnim)
 {
 
 }
@@ -15,120 +15,120 @@ AnimSetSimple::~AnimSetSimple()
 
 }
 
-const char* AnimSetSimple::GetIdleAnim(int direction)
+const std::string& AnimSetSimple::GetIdleAnim(int direction)
 {
 	if (direction & Face_Left)
-		return PawnAnimName::IdleLeft.c_str();
+		return PawnAnimName::IdleLeft;
 	else
-		return PawnAnimName::IdleRight.c_str();
+		return PawnAnimName::IdleRight;
 }
 
-const char* AnimSetSimple::GetMoveAnim(int direction)
+const std::string& AnimSetSimple::GetMoveAnim(int direction)
 {
 	bool needAdjust = false;
 
 	if (direction == Face_Left)
 	{
-		return PawnAnimName::MoveLeft.c_str();
+		return PawnAnimName::MoveLeft;
 	}
 	else if (direction == Face_Right)
 	{
-		return PawnAnimName::MoveRight.c_str();
+		return PawnAnimName::MoveRight;
 	}
 	else if (direction == Face_Up)
 	{
 		if (HaveAnim(PawnAnimName::MoveUp.c_str()))
-			return PawnAnimName::MoveUp.c_str();
+			return PawnAnimName::MoveUp;
 		else
 			needAdjust = true;
 	}
 	else if (direction == Face_Down)
 	{
 		if (HaveAnim(PawnAnimName::MoveDown.c_str()))
-			return PawnAnimName::MoveDown.c_str();
+			return PawnAnimName::MoveDown;
 		else
 			needAdjust = true;
 	}
 	else if (direction & Face_Up)
 	{
 		if (HaveAnim(PawnAnimName::MoveUp.c_str()))
-			return PawnAnimName::MoveUp.c_str();
+			return PawnAnimName::MoveUp;
 		else
 		{
 			if (direction & Face_Left)
-				return PawnAnimName::MoveLeft.c_str();
+				return PawnAnimName::MoveLeft;
 			else
-				return PawnAnimName::MoveRight.c_str();
+				return PawnAnimName::MoveRight;
 		}
 	}
 	else if (direction & Face_Down)
 	{
 		if (HaveAnim(PawnAnimName::MoveDown.c_str()))
-			return PawnAnimName::MoveDown.c_str();
+			return PawnAnimName::MoveDown;
 		else
 		{
 			if (direction & Face_Right)
-				return PawnAnimName::MoveRight.c_str();
+				return PawnAnimName::MoveRight;
 			else
-				return PawnAnimName::MoveLeft.c_str();
+				return PawnAnimName::MoveLeft;
 		}
 	}
 	// 没有对应动画，也没播放替代动作。
 	if (needAdjust)
 	{
 		if (direction & Face_Left)
-			return PawnAnimName::MoveLeft.c_str();
+			return PawnAnimName::MoveLeft;
 		else
-			return PawnAnimName::MoveRight.c_str();
+			return PawnAnimName::MoveRight;
 	}
 	
-	PawnAnimName::MoveLeft.c_str();
+	return PawnAnimName::MoveLeft;
 }
 
-const char* AnimSetSimple::GetDieAnim(int direction)
+const std::string& AnimSetSimple::GetDieAnim(int direction)
 {
 	if (direction & Face_Left)
-		return PawnAnimName::DieLeft.c_str();
+		return PawnAnimName::DieLeft;
 	else
-		return PawnAnimName::DieRight.c_str();
+		return PawnAnimName::DieRight;
 }
 
-const char* AnimSetSimple::GetAttackNearAnim(int direction)
+const std::string& AnimSetSimple::GetAttackNearAnim(int direction)
 {
 	if (direction & Face_Left)
-		return PawnAnimName::Attack1Left.c_str();
+		return PawnAnimName::Attack1Left;
 	else
-		return PawnAnimName::Attack1Right.c_str();
+		return PawnAnimName::Attack1Right;
 }
 
-const char* AnimSetSimple::GetAttackFarAnim(int direction)
+const std::string& AnimSetSimple::GetAttackFarAnim(int direction)
 {
 	if (direction & Face_Left)
-		return PawnAnimName::Attack2Left.c_str();
+		return PawnAnimName::Attack2Left;
 	else
-		return PawnAnimName::Attack2Right.c_str();
+		return PawnAnimName::Attack2Right;
 }
 
-const char* AnimSetSimple::GetSkill1Anim(int direction)
+const std::string& AnimSetSimple::GetSkill1Anim(int direction)
 {
 	if (direction & Face_Left)
-		return PawnAnimName::Skill1Left.c_str();
+		return PawnAnimName::Skill1Left;
 	else
-		return PawnAnimName::Skill1Right.c_str();
+		return PawnAnimName::Skill1Right;
 }
 
-const char* AnimSetSimple::GetSkill2Anim(int direction)
+const std::string& AnimSetSimple::GetSkill2Anim(int direction)
 {
 	if (direction & Face_Left)
-		return PawnAnimName::Skill2Left.c_str();
+		return PawnAnimName::Skill2Left;
 	else
-		return PawnAnimName::Skill2Right.c_str();
+		return PawnAnimName::Skill2Right;
 }
 
-const char* AnimSetSimple::GetSkill3Anim(int direction)
+const std::string& AnimSetSimple::GetSkill3Anim(int direction)
 {
 	if (direction & Face_Left)
-		return PawnAnimName::Skill3Left.c_str();
+		return PawnAnimName::Skill3Left;
 	else
-		return PawnAnimName::Skill3Right.c_str();
+		return PawnAnimName::Skill3Right;
 }

@@ -418,9 +418,6 @@
     <ClInclude Include="Source\ECS\components\common\ComVelocity.h">
       <Filter>Source\Logic\ESC\User\Component\common</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ECS\components\pawn\ComPawnAction.h">
-      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
-    </ClInclude>
     <ClInclude Include="Source\ECS\components\pawn\ComPawnAgent.h">
       <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
     </ClInclude>
@@ -441,9 +438,6 @@
     </ClInclude>
     <ClInclude Include="Source\ECS\components\pawn\ComPawnNavigation.h">
       <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ECS\systems\pawn\SystemPawnAction.h">
-      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
     </ClInclude>
     <ClInclude Include="Source\ECS\systems\pawn\SystemPawnAnim.h">
       <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
@@ -531,6 +525,12 @@
     </ClInclude>
     <ClInclude Include="Source\app\GameUtils.h">
       <Filter>Source\Logic\App</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\anim\animFSM\AnimFSMSimple.h">
+      <Filter>Source\Logic\Pawn\Anim\AnimFSM</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\anim\animState\AnimStateIdle.h">
+      <Filter>Source\Logic\Pawn\Anim\AnimState</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -799,9 +799,6 @@
     <ClCompile Include="Source\ECS\components\common\ComVelocity.cpp">
       <Filter>Source\Logic\ESC\User\Component\common</Filter>
     </ClCompile>
-    <ClCompile Include="Source\ECS\components\pawn\ComPawnAction.cpp">
-      <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
-    </ClCompile>
     <ClCompile Include="Source\ECS\components\pawn\ComPawnAgent.cpp">
       <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
     </ClCompile>
@@ -822,9 +819,6 @@
     </ClCompile>
     <ClCompile Include="Source\ECS\components\pawn\ComPawnNavigation.cpp">
       <Filter>Source\Logic\ESC\User\Component\pawn</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ECS\systems\pawn\SystemPawnAction.cpp">
-      <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
     </ClCompile>
     <ClCompile Include="Source\ECS\systems\pawn\SystemPawnAnim.cpp">
       <Filter>Source\Logic\ESC\User\System\Pawn</Filter>
@@ -900,6 +894,12 @@
     </ClCompile>
     <ClCompile Include="Source\app\GameDefine.cpp">
       <Filter>Source\Logic\App</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\anim\animFSM\AnimFSMSimple.cpp">
+      <Filter>Source\Logic\Pawn\Anim\AnimFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\anim\animState\AnimStateIdle.cpp">
+      <Filter>Source\Logic\Pawn\Anim\AnimState</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

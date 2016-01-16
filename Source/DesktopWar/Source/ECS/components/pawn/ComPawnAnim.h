@@ -8,10 +8,19 @@
 
 namespace Genius
 {
+	enum eAnimFsmType
+	{
+		AFT_Simple = 1,
+	};
+
+	class AnimSet;
+	class AnimFSM;
 
 	class ComPawnAnim : public cocos2d::Ref, public Component
 	{
 	public:
+		AnimSet*								m_pAnimSet;
+		AnimFSM*							m_pAnimFsm;
 		cocos2d::Node*					m_pAvatarRoot;
 		cocostudio::Armature*			m_pBodyArmature;
 		UIBar*									m_pLifeBar;
@@ -24,7 +33,7 @@ namespace Genius
 
 		float GetWidth();
 		float GetHeight();
-		void PlayAnimation(std::string name);
+		void PlayAnimation(const std::string& name);
 		void SetPosition(float x, float y);
 		bool HaveThisAnimation(std::string name);
 		void PlayFloatNumber(int number, int y);
@@ -34,6 +43,10 @@ namespace Genius
 	public:
 		void AnimationMovementCallback(cocostudio::Armature *cca, cocostudio::MovementEventType met, const std::string& cr);
 		void AnimationFrameCallback(cocostudio::Bone* bone, const std::string& eventName, int oriIdx, int currentIdx);
+
+	private:
+		void CreateAnimFSM(int fsmType);
+
 	};
 
 	

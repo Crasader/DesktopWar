@@ -129,12 +129,12 @@ bool Skill::TargetBullet(int owner, int targetID)
 
 	float startX = ownerPosCom->x;
 	float startY = ownerPosCom->y;
-	if (ownerDirCom->m_faceDir & Face_Left)
+	if (ownerDirCom->m_currentDir & Face_Left)
 	{
 		startX = ownerPosCom->x - ownerTempCom->m_pRoleData->bulletX;
 		startY = ownerPosCom->y + ownerTempCom->m_pRoleData->bulletY;
 	}
-	else if (ownerDirCom->m_faceDir & Face_Right)
+	else if (ownerDirCom->m_currentDir & Face_Right)
 	{
 		startX = ownerPosCom->x + ownerTempCom->m_pRoleData->bulletX;
 		startY = ownerPosCom->y + ownerTempCom->m_pRoleData->bulletY;
