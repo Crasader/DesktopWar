@@ -5,6 +5,7 @@
 #include "../../core/Component.h"
 #include "common/2Ddef.h"
 #include "gfx/gfx.h"
+#include "pawn/action/ActionHandler.h"
 
 namespace Genius
 {
@@ -16,7 +17,7 @@ namespace Genius
 	class AnimSet;
 	class AnimFSM;
 
-	class ComPawnAnim : public cocos2d::Ref, public Component
+	class ComPawnAnim : public cocos2d::Ref, public Component, public ActionHandler
 	{
 	public:
 		AnimSet*								m_pAnimSet;
@@ -30,6 +31,9 @@ namespace Genius
 	public:
 		ComPawnAnim(int roleID);
 		virtual ~ComPawnAnim();
+
+		virtual bool Init();
+		virtual void HandleAction(PawnAction* pAction);
 
 		float GetWidth();
 		float GetHeight();

@@ -1,6 +1,6 @@
 
 #include "ComPawnBevtree.h"
-#include "pawn/PawnBHTree.h"
+#include "pawn/bevtree/PawnBHTree.h"
 
 using namespace Genius;
 

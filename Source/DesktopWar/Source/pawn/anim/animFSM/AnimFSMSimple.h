@@ -18,7 +18,7 @@ namespace Genius
 
 		virtual void Initialize();
 
-		virtual void DoAction();
+		virtual void DoAction(PawnAction* pAction);
 
 	};
 

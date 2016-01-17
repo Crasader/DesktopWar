@@ -59,7 +59,6 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>tinyxml.lib;libcocos2d.lib;opengl32.lib;glew32.lib;libzlib.lib;libwebp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>D:\MyDev\Visual Leak Detector\lib\Win32;$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
@@ -158,19 +157,31 @@
     <ClInclude Include="Source\entity\EntityCreators.h" />
     <ClInclude Include="Source\gfx\GfxUtils.h" />
     <ClInclude Include="Source\gfx\RollNumberLabel.h" />
+    <ClInclude Include="Source\pawn\action\ActionDefine.h" />
+    <ClInclude Include="Source\pawn\action\ActionHandler.h" />
+    <ClInclude Include="Source\pawn\action\PawnAction.h" />
+    <ClInclude Include="Source\pawn\action\PawnActionAttackFar.h" />
+    <ClInclude Include="Source\pawn\action\PawnActionAttackNear.h" />
+    <ClInclude Include="Source\pawn\action\PawnActionDie.h" />
+    <ClInclude Include="Source\pawn\action\PawnActionFactory.h" />
+    <ClInclude Include="Source\pawn\action\PawnActionIdle.h" />
+    <ClInclude Include="Source\pawn\action\PawnActionMove.h" />
+    <ClInclude Include="Source\pawn\action\PawnActionSkill1.h" />
+    <ClInclude Include="Source\pawn\action\PawnActionSkill2.h" />
+    <ClInclude Include="Source\pawn\action\PawnActionSkill3.h" />
     <ClInclude Include="Source\pawn\anim\animFSM\AnimFSM.h" />
     <ClInclude Include="Source\pawn\anim\animFSM\AnimFSMSimple.h" />
     <ClInclude Include="Source\pawn\anim\animSet\AnimSet.h" />
     <ClInclude Include="Source\pawn\anim\animSet\AnimSetSimple.h" />
     <ClInclude Include="Source\pawn\anim\animState\AnimState.h" />
     <ClInclude Include="Source\pawn\anim\animState\AnimStateIdle.h" />
-    <ClInclude Include="Source\pawn\BehaviorCreators.h" />
-    <ClInclude Include="Source\pawn\BehaviorsAndPreconditions.h" />
-    <ClInclude Include="Source\pawn\PawnBehaviors.h" />
-    <ClInclude Include="Source\pawn\PawnBHTree.h" />
+    <ClInclude Include="Source\pawn\bevtree\BehaviorCreators.h" />
+    <ClInclude Include="Source\pawn\bevtree\BehaviorsAndPreconditions.h" />
+    <ClInclude Include="Source\pawn\bevtree\PawnBehaviors.h" />
+    <ClInclude Include="Source\pawn\bevtree\PawnBHTree.h" />
+    <ClInclude Include="Source\pawn\bevtree\PawnPrecondition.h" />
     <ClInclude Include="Source\pawn\PawnBlackboard.h" />
     <ClInclude Include="Source\pawn\PawnDefines.h" />
-    <ClInclude Include="Source\pawn\PawnPrecondition.h" />
     <ClInclude Include="WinWrapper.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
@@ -292,17 +303,27 @@
     <ClCompile Include="Source\entity\EntityCreators.cpp" />
     <ClCompile Include="Source\gfx\GfxUtils.cpp" />
     <ClCompile Include="Source\gfx\RollNumberLabel.cpp" />
+    <ClCompile Include="Source\pawn\action\PawnAction.cpp" />
+    <ClCompile Include="Source\pawn\action\PawnActionAttackFar.cpp" />
+    <ClCompile Include="Source\pawn\action\PawnActionAttackNear.cpp" />
+    <ClCompile Include="Source\pawn\action\PawnActionDie.cpp" />
+    <ClCompile Include="Source\pawn\action\PawnActionFactory.cpp" />
+    <ClCompile Include="Source\pawn\action\PawnActionIdle.cpp" />
+    <ClCompile Include="Source\pawn\action\PawnActionMove.cpp" />
+    <ClCompile Include="Source\pawn\action\PawnActionSkill1.cpp" />
+    <ClCompile Include="Source\pawn\action\PawnActionSkill2.cpp" />
+    <ClCompile Include="Source\pawn\action\PawnActionSkill3.cpp" />
     <ClCompile Include="Source\pawn\anim\animFSM\AnimFSM.cpp" />
     <ClCompile Include="Source\pawn\anim\animFSM\AnimFSMSimple.cpp" />
     <ClCompile Include="Source\pawn\anim\animSet\AnimSet.cpp" />
     <ClCompile Include="Source\pawn\anim\animSet\AnimSetSimple.cpp" />
     <ClCompile Include="Source\pawn\anim\animState\AnimState.cpp" />
     <ClCompile Include="Source\pawn\anim\animState\AnimStateIdle.cpp" />
-    <ClCompile Include="Source\pawn\BehaviorCreators.cpp" />
-    <ClCompile Include="Source\pawn\PawnBehaviors.cpp" />
-    <ClCompile Include="Source\pawn\PawnBHTree.cpp" />
+    <ClCompile Include="Source\pawn\bevtree\BehaviorCreators.cpp" />
+    <ClCompile Include="Source\pawn\bevtree\PawnBehaviors.cpp" />
+    <ClCompile Include="Source\pawn\bevtree\PawnBHTree.cpp" />
+    <ClCompile Include="Source\pawn\bevtree\PawnPrecondition.cpp" />
     <ClCompile Include="Source\pawn\PawnBlackboard.cpp" />
-    <ClCompile Include="Source\pawn\PawnPrecondition.cpp" />
     <ClCompile Include="WinWrapper.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Source\AI\BehaviorTree\Behavior.cpp" />

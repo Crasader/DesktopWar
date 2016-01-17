@@ -116,6 +116,15 @@
     <Filter Include="Source\Logic\ESC\User\Component\bullet">
       <UniqueIdentifier>{b670c9a9-86d4-4efa-beb4-74e5a3caeb12}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Logic\Pawn\Action">
+      <UniqueIdentifier>{c60cf0d0-68a7-4b1a-b844-b26c2794519c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Logic\Pawn\BevTree">
+      <UniqueIdentifier>{837e58ec-1634-40ab-84dc-9e7e9b4f037f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Logic\Pawn\Action\base">
+      <UniqueIdentifier>{d32ef041-86a0-40a1-94d2-73000950c662}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\common\2Ddef.h">
@@ -259,22 +268,7 @@
     <ClInclude Include="WinWrapper.h">
       <Filter>Source\Base\Win32</Filter>
     </ClInclude>
-    <ClInclude Include="Source\pawn\BehaviorCreators.h">
-      <Filter>Source\Logic\Pawn</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\pawn\BehaviorsAndPreconditions.h">
-      <Filter>Source\Logic\Pawn</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\pawn\PawnBehaviors.h">
-      <Filter>Source\Logic\Pawn</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\pawn\PawnBHTree.h">
-      <Filter>Source\Logic\Pawn</Filter>
-    </ClInclude>
     <ClInclude Include="Source\pawn\PawnDefines.h">
-      <Filter>Source\Logic\Pawn</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\pawn\PawnPrecondition.h">
       <Filter>Source\Logic\Pawn</Filter>
     </ClInclude>
     <ClInclude Include="Source\common\Performance.h">
@@ -532,6 +526,57 @@
     <ClInclude Include="Source\pawn\anim\animState\AnimStateIdle.h">
       <Filter>Source\Logic\Pawn\Anim\AnimState</Filter>
     </ClInclude>
+    <ClInclude Include="Source\pawn\action\PawnAction.h">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\action\PawnActionIdle.h">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\action\PawnActionAttackFar.h">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\action\PawnActionAttackNear.h">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\action\PawnActionDie.h">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\action\PawnActionMove.h">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\action\PawnActionSkill1.h">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\action\PawnActionSkill2.h">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\action\PawnActionSkill3.h">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\action\PawnActionFactory.h">
+      <Filter>Source\Logic\Pawn\Action\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\bevtree\BehaviorCreators.h">
+      <Filter>Source\Logic\Pawn\BevTree</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\bevtree\BehaviorsAndPreconditions.h">
+      <Filter>Source\Logic\Pawn\BevTree</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\bevtree\PawnBehaviors.h">
+      <Filter>Source\Logic\Pawn\BevTree</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\bevtree\PawnBHTree.h">
+      <Filter>Source\Logic\Pawn\BevTree</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\bevtree\PawnPrecondition.h">
+      <Filter>Source\Logic\Pawn\BevTree</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\action\ActionDefine.h">
+      <Filter>Source\Logic\Pawn\Action\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\action\ActionHandler.h">
+      <Filter>Source\Logic\Pawn\Action\base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -654,18 +699,6 @@
     </ClCompile>
     <ClCompile Include="WinWrapper.cpp">
       <Filter>Source\Base\Win32</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\pawn\BehaviorCreators.cpp">
-      <Filter>Source\Logic\Pawn</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\pawn\PawnBehaviors.cpp">
-      <Filter>Source\Logic\Pawn</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\pawn\PawnBHTree.cpp">
-      <Filter>Source\Logic\Pawn</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\pawn\PawnPrecondition.cpp">
-      <Filter>Source\Logic\Pawn</Filter>
     </ClCompile>
     <ClCompile Include="Source\common\Performance.cpp">
       <Filter>Source\Base\Common</Filter>
@@ -900,6 +933,48 @@
     </ClCompile>
     <ClCompile Include="Source\pawn\anim\animState\AnimStateIdle.cpp">
       <Filter>Source\Logic\Pawn\Anim\AnimState</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\action\PawnAction.cpp">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\action\PawnActionIdle.cpp">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\action\PawnActionAttackFar.cpp">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\action\PawnActionAttackNear.cpp">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\action\PawnActionDie.cpp">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\action\PawnActionMove.cpp">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\action\PawnActionSkill1.cpp">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\action\PawnActionSkill2.cpp">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\action\PawnActionSkill3.cpp">
+      <Filter>Source\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\action\PawnActionFactory.cpp">
+      <Filter>Source\Logic\Pawn\Action\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\bevtree\BehaviorCreators.cpp">
+      <Filter>Source\Logic\Pawn\BevTree</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\bevtree\PawnBehaviors.cpp">
+      <Filter>Source\Logic\Pawn\BevTree</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\bevtree\PawnBHTree.cpp">
+      <Filter>Source\Logic\Pawn\BevTree</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\bevtree\PawnPrecondition.cpp">
+      <Filter>Source\Logic\Pawn\BevTree</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

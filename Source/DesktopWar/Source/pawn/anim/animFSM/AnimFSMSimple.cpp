@@ -21,7 +21,7 @@ void AnimFSMSimple::Initialize()
 	m_animStateList.push_back(new AnimStateIdle(m_pComPawnAnim));
 }
 
-void AnimFSMSimple::DoAction()
+void AnimFSMSimple::DoAction(PawnAction* pAction)
 {
 
 }

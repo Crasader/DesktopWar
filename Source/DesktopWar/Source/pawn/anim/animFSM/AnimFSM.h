@@ -8,6 +8,7 @@ namespace Genius
 {
 	class AnimState;
 	class ComPawnAnim;
+	class PawnAction;
 
 	class AnimFSM
 	{
@@ -23,7 +24,7 @@ namespace Genius
 
 		virtual void UpdateCurrentState();
 
-		virtual void DoAction() = 0;
+		virtual void DoAction(PawnAction* pAction) = 0;
 
 		virtual void SwitchToNextState();
 

@@ -9,9 +9,12 @@
 #include "skill/SkillSystem.h"
 #include "skill/BuffSystem.h"
 #include "../../core/Entity.h"
+#include "ComPawnAgent.h"
+#include "pawn/PawnBlackboard.h"
 #include "pawn/anim/animFSM/AnimFSM.h"
 #include "pawn/anim/animFSM/AnimFSMSimple.h"
 #include "Logger.h"
+
 
 
 using namespace Genius;
@@ -59,6 +62,23 @@ ComPawnAnim::~ComPawnAnim()
 		m_pAvatarRoot->removeFromParent();
 		m_pAvatarRoot = nullptr;
 	}
+
+	GetOwner()->GetComponent<ComPawnAgent>()->GetBlackboard()->RemoveActionHandler(this);
+}
+
+bool	ComPawnAnim::Init()
+{
+	Component::Init();
+
+	GetOwner()->GetComponent<ComPawnAgent>()->GetBlackboard()->AddActionHandler(this);
+
+	return true;
+}
+
+void ComPawnAnim::HandleAction(PawnAction* pAction)
+{
+	if (m_pAnimFsm != nullptr)
+		m_pAnimFsm->DoAction(pAction);
 }
 
 void ComPawnAnim::PlayAnimation(const std::string& name)
