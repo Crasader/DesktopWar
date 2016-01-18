@@ -21,6 +21,9 @@ namespace Genius
 	public:
 		PawnBlackboard*		GetBlackboard(){ return m_pBlackboard; }
 
+	public:
+		void AddAction(int type);
+
 	};
 
 	

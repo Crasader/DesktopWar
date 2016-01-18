@@ -17,11 +17,11 @@ void SystemPawnNavigation::Initialize()
 	EventManager::GetInstance().AddListener(this, Event_navigateToEntity);
 }
 
-void SystemPawnNavigation::ProcessEntity(Entity* e)
+void SystemPawnNavigation::ProcessEntity(Entity* pEntity)
 {
-	ComPawnNavigation* navCom = navigationMapper.get(e);
-	ComPosition* posCom = positionMapper.get(e);
-	ComVelocity* velCom = velocityMapper.get(e);
+	ComPawnNavigation* navCom = navigationMapper.get(pEntity);
+	ComPosition* posCom = positionMapper.get(pEntity);
+	ComVelocity* velCom = velocityMapper.get(pEntity);
 	
 	if (navCom->curPointIndex >= 0 && navCom->curPointIndex < navCom->pathPoints.size())
 	{
@@ -37,14 +37,14 @@ void SystemPawnNavigation::ProcessEntity(Entity* e)
 			if (navCom->curPointIndex < navCom->pathPoints.size())
 			{
 				Point2D newDestPoint = navCom->pathPoints[navCom->curPointIndex];
-				EventManager::GetInstance().FireEvent(TransformEvent(Event_moveTo, e, newDestPoint.x, newDestPoint.y));
+				EventManager::GetInstance().FireEvent(TransformEvent(Event_moveTo, pEntity, newDestPoint.x, newDestPoint.y));
 			}
 			else
 			{
 				Point2D finalPoint = navCom->pathPoints[navCom->curPointIndex - 1];
 				navCom->arrived = true;
-				EventManager::GetInstance().FireEvent(TransformEvent(Event_setPosition, e, finalPoint.x, finalPoint.y));
-				EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, e));
+				EventManager::GetInstance().FireEvent(TransformEvent(Event_setPosition, pEntity, finalPoint.x, finalPoint.y));
+				EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, pEntity));
 			}
 		}
 	}

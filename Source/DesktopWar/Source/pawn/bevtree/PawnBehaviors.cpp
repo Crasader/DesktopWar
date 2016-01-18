@@ -6,6 +6,7 @@
 #include "ECS/EntityEvents.h"
 #include "ECS/ecs.h"
 #include "pawn/PawnDefines.h"
+#include "pawn/action/ActionDefine.h"
 #include "tinyxml.h"
 #include "Logger.h"
 #include "app/Config.h"
@@ -49,27 +50,22 @@ void PawnIdle::OnInitialize(BHUpdateContext& context)
 	m_changeDirTimeCounter = 0;
 
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	ComPawnAgent* tmpCom = data.pEntity->GetComponent<ComPawnAgent>();
-	m_totalDuration = RandUtility::RandomScale(tmpCom->m_pRoleData->IdleDuration, 0.3f);
-	m_changeDirDuration = RandUtility::RandomScale(tmpCom->m_pRoleData->IdleTurnFaceTime, 0.3f);
+	ComPawnAgent* agentCom = data.pEntity->GetComponent<ComPawnAgent>();
+	m_totalDuration = RandUtility::RandomScale(agentCom->m_pRoleData->IdleDuration, 0.3f);
+	m_changeDirDuration = RandUtility::RandomScale(agentCom->m_pRoleData->IdleTurnFaceTime, 0.3f);
 
-	EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Idle));
+	agentCom->AddAction(PAT_Idle);
+	//EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Idle));
 	EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, data.pEntity));
-
-	//LogInfo("enter PawnIdle");
 }
 
 void PawnIdle::OnTerminate(BHUpdateContext& context, eBehaviorStatus state)
 {
 	m_timeCounter = 0;
-	//LogInfo("exit PawnIdle");
 }
 
 bool PawnIdle::LoadFromXml(TiXmlElement* xml)
 {
-	//m_totalDuration = (float)atof(xml->Attribute("totalDuration"));
-	//m_changeDirDuration = (float)atof(xml->Attribute("changeDirDuration"));
-
 	return true;
 }
 
@@ -138,11 +134,12 @@ void PawnDie::OnInitialize(BHUpdateContext& context)
 {
 	m_timeCounter = 0;
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	ComPawnAgent* tmpCom = data.pEntity->GetComponent<ComPawnAgent>();
-	m_duration = tmpCom->m_pRoleData->DeadBodyTime;
+	ComPawnAgent* agentCom = data.pEntity->GetComponent<ComPawnAgent>();
+	m_duration = agentCom->m_pRoleData->DeadBodyTime;
 
 	EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, data.pEntity));
-	EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Die));
+	agentCom->AddAction(PAT_Die);
+	//EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Die));
 }
 
 void PawnDie::OnTerminate(BHUpdateContext& context, eBehaviorStatus state)
@@ -509,7 +506,10 @@ void PawnAttackFar::OnInitialize(BHUpdateContext& context)
 		ComPosition* tarPosCom = pTargetEntity->GetComponent<ComPosition>();
 		EventManager::GetInstance().FireEvent(TurnToEvent(data.pEntity, tarPosCom->x, tarPosCom->y));
 	}
-	EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Skill1));
+	
+	//EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Skill1));
+	ComPawnAgent* agentCom = data.pEntity->GetComponent<ComPawnAgent>();
+	agentCom->AddAction(PAT_Skill1);
 
 	ownerEntityID = data.pEntity->GetId();
 	//LogInfo("enter attack far");
@@ -578,7 +578,9 @@ void PawnSkill1::OnInitialize(BHUpdateContext& context)
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 
 	EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, data.pEntity));
-	EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Skill1));
+	//EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Skill1));
+	ComPawnAgent* agentCom = data.pEntity->GetComponent<ComPawnAgent>();
+	agentCom->AddAction(PAT_Skill1);
 
 	ComAnimationpleted = false;
 	ownerEntityID = data.pEntity->GetId();
@@ -650,7 +652,9 @@ void PawnSkill2::OnInitialize(BHUpdateContext& context)
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 
 	EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, data.pEntity));
-	EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Skill2));
+	//EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Skill2));
+	ComPawnAgent* agentCom = data.pEntity->GetComponent<ComPawnAgent>();
+	agentCom->AddAction(PAT_Skill2);
 
 	ComAnimationpleted = false;
 	ownerEntityID = data.pEntity->GetId();
@@ -722,7 +726,9 @@ void PawnSkill3::OnInitialize(BHUpdateContext& context)
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 
 	EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, data.pEntity));
-	EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Skill3));
+	//EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Skill3));
+	ComPawnAgent* agentCom = data.pEntity->GetComponent<ComPawnAgent>();
+	agentCom->AddAction(PAT_Skill3);
 
 	ComAnimationpleted = false;
 	ownerEntityID = data.pEntity->GetId();

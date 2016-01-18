@@ -61,6 +61,7 @@
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>tinyxml.lib;libcocos2d.lib;opengl32.lib;glew32.lib;libzlib.lib;libwebp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>D:\MyDev\Visual Leak Detector\lib\Win32;$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

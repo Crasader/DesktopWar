@@ -7,6 +7,7 @@
 #include "skill/SkillSystem.h"
 #include "app/GameDefine.h"
 #include "pawn/PawnBlackboard.h"
+#include "pawn/action/ActionDefine.h"
 #include "../../components/common/ComTeam.h"
 
 using namespace Genius;
@@ -107,7 +108,9 @@ void SystemPawnFight::HandleAttackTarget(IEventData const &evt)
 		if (posCom)
 		{
 			EventManager::GetInstance().FireEvent(TurnToEvent(castedEvent.entity, posCom->x, posCom->y));
-			EventManager::GetInstance().FireEvent(ActionEvent(castedEvent.entity, Action_Attack_Near));
+			//EventManager::GetInstance().FireEvent(ActionEvent(castedEvent.entity, Action_Attack_Near));
+			ComPawnAgent* agentCom = castedEvent.entity->GetComponent<ComPawnAgent>();
+			agentCom->AddAction(PAT_AttackNear);
 		}
 	}
 }
@@ -125,7 +128,9 @@ void SystemPawnFight::HandleAttackTarget2(IEventData const &evt)
 		if (posCom)
 		{
 			EventManager::GetInstance().FireEvent(TurnToEvent(castedEvent.entity, posCom->x, posCom->y));
-			EventManager::GetInstance().FireEvent(ActionEvent(castedEvent.entity, Action_Attack_Near2));
+			//EventManager::GetInstance().FireEvent(ActionEvent(castedEvent.entity, Action_Attack_Near2));
+			ComPawnAgent* agentCom = castedEvent.entity->GetComponent<ComPawnAgent>();
+			agentCom->AddAction(PAT_AttackNear);
 		}
 	}
 }

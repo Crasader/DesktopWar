@@ -1092,3 +1092,4 @@ temp/Debug/libcocos2d/libcocos2d.Build.CppClean.log
 temp/Debug/librecast/librecast.Build.CppClean.log
 temp/Debug/tinyxml/tinyxml.Build.CppClean.log
 temp/
+Source/cocos2d/external/Box2D/proj.win32/libbox2d.vcxproj.user

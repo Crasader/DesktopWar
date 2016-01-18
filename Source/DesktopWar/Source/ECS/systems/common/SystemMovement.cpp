@@ -68,7 +68,6 @@ bool SystemMovement::HandleEvent(IEventData const &event)
 			vel->x = delta.x * speed;
 			vel->y = delta.y * speed;
 
-			EventManager::GetInstance().FireEvent(ActionEvent(actionEvent.entity, Action_Move));
 			EventManager::GetInstance().FireEvent(VelocityChangedEvent(actionEvent.entity, vel->x, vel->y));
 		}
 	}
@@ -81,7 +80,6 @@ bool SystemMovement::HandleEvent(IEventData const &event)
 		{
 			vel->x = 0;
 			vel->y = 0;
-			EventManager::GetInstance().FireEvent(ActionEvent(actionEvent.entity, Action_Idle));
 		}
 	}
 		break;
