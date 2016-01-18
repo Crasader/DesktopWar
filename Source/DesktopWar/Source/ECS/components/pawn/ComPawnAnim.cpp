@@ -63,6 +63,9 @@ ComPawnAnim::~ComPawnAnim()
 		m_pAvatarRoot = nullptr;
 	}
 
+	if (m_pAnimFsm != nullptr)
+		delete m_pAnimFsm;
+
 	GetOwner()->GetComponent<ComPawnAgent>()->GetBlackboard()->RemoveActionHandler(this);
 }
 
