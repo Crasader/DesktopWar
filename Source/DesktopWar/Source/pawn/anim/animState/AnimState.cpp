@@ -40,3 +40,8 @@ void AnimState::Update()
 {
 
 }
+
+bool AnimState::HandleNewAction(PawnAction* pAction)
+{
+	return false;
+}

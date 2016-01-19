@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include <vector>
+#include <map>
 
 
 namespace Genius
@@ -26,11 +26,11 @@ namespace Genius
 
 		virtual void DoAction(PawnAction* pAction) = 0;
 
-		virtual void SwitchToNextState();
+		virtual void SwitchToNextState(PawnAction* pAction);
 
 	protected:
 
-		std::vector<AnimState*>	m_animStateList;
+		std::map<int, AnimState*>	m_animStateList;
 
 		AnimState*			m_pCurrentState;
 

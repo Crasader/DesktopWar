@@ -4,6 +4,7 @@
 namespace Genius
 {
 	class ComPawnAnim;
+	class PawnAction;
 
 	class AnimState
 	{
@@ -22,6 +23,8 @@ namespace Genius
 		virtual void Initialize();
 
 		virtual void Release();
+
+		virtual bool HandleNewAction(PawnAction* pAction);
 
 	public:
 

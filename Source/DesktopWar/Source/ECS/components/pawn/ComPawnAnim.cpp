@@ -13,6 +13,7 @@
 #include "pawn/PawnBlackboard.h"
 #include "pawn/anim/animFSM/AnimFSM.h"
 #include "pawn/anim/animFSM/AnimFSMSimple.h"
+#include "pawn/anim/animSet/AnimSetSimple.h"
 #include "Logger.h"
 
 
@@ -30,9 +31,6 @@ m_pAnimFsm(nullptr)
 	RoleData* roleData = RoleDataMgr::GetSingleton()->GetRoleData(roleID);
 	if (roleData)
 	{
-		// anim fsm
-		CreateAnimFSM(AFT_Simple);
-
 		m_pAvatarRoot = cocos2d::Node::create();
 		m_pBodyArmature = cocostudio::Armature::create(roleData->animSetName);
 		m_pAvatarRoot->addChild(m_pBodyArmature);
@@ -66,6 +64,9 @@ ComPawnAnim::~ComPawnAnim()
 	if (m_pAnimFsm != nullptr)
 		delete m_pAnimFsm;
 
+	if (m_pAnimSet != nullptr)
+		delete m_pAnimSet;
+
 	GetOwner()->GetComponent<ComPawnAgent>()->GetBlackboard()->RemoveActionHandler(this);
 }
 
@@ -74,6 +75,10 @@ bool	ComPawnAnim::Init()
 	Component::Init();
 
 	GetOwner()->GetComponent<ComPawnAgent>()->GetBlackboard()->AddActionHandler(this);
+
+	CreateAnimFSM(AFT_Simple);
+
+	m_pAnimSet = new AnimSetSimple(this);
 
 	return true;
 }
@@ -201,4 +206,6 @@ void ComPawnAnim::CreateAnimFSM(int fsmType)
 		m_pAnimFsm = new AnimFSMSimple(this);
 		break;
 	}
+
+	m_pAnimFsm->Initialize();
 }

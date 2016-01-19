@@ -1,6 +1,8 @@
 
 #include "AnimFSM.h"
 #include "../animState/AnimState.h"
+#include "pawn/action/ActionDefine.h"
+#include "pawn/action/PawnAction.h"
 
 using namespace Genius;
 
@@ -20,6 +22,7 @@ AnimFSM::~AnimFSM()
 
 void AnimFSM::Initialize()
 {
+	m_pDefaultState = m_animStateList.find(PAT_Idle) == m_animStateList.end() ? nullptr : m_animStateList[PAT_Idle];
 	m_pCurrentState = m_pDefaultState;
 }
 
@@ -27,8 +30,8 @@ void AnimFSM::Release()
 {
 	for (auto iter = m_animStateList.begin(); iter != m_animStateList.end(); ++iter)
 	{
-		if (*iter != nullptr)
-			delete *iter;
+		if (iter->second != nullptr)
+			delete iter->second;
 	}
 	m_animStateList.clear();
 }
@@ -51,7 +54,7 @@ void AnimFSM::UpdateCurrentState()
 	}
 }
 
-void AnimFSM::SwitchToNextState()
+void AnimFSM::SwitchToNextState(PawnAction* pAction)
 {
 	if (m_pCurrentState != nullptr)
 		m_pCurrentState->OnDeactive();
