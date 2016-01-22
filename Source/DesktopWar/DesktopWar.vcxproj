@@ -175,7 +175,11 @@
     <ClInclude Include="Source\pawn\anim\animSet\AnimSet.h" />
     <ClInclude Include="Source\pawn\anim\animSet\AnimSetSimple.h" />
     <ClInclude Include="Source\pawn\anim\animState\AnimState.h" />
+    <ClInclude Include="Source\pawn\anim\animState\AnimStateAttackFar.h" />
+    <ClInclude Include="Source\pawn\anim\animState\AnimStateAttackNear.h" />
+    <ClInclude Include="Source\pawn\anim\animState\AnimStateDie.h" />
     <ClInclude Include="Source\pawn\anim\animState\AnimStateIdle.h" />
+    <ClInclude Include="Source\pawn\anim\animState\AnimStateMove.h" />
     <ClInclude Include="Source\pawn\bevtree\BehaviorCreators.h" />
     <ClInclude Include="Source\pawn\bevtree\BehaviorsAndPreconditions.h" />
     <ClInclude Include="Source\pawn\bevtree\PawnBehaviors.h" />
@@ -319,7 +323,11 @@
     <ClCompile Include="Source\pawn\anim\animSet\AnimSet.cpp" />
     <ClCompile Include="Source\pawn\anim\animSet\AnimSetSimple.cpp" />
     <ClCompile Include="Source\pawn\anim\animState\AnimState.cpp" />
+    <ClCompile Include="Source\pawn\anim\animState\AnimStateAttackFar.cpp" />
+    <ClCompile Include="Source\pawn\anim\animState\AnimStateAttackNear.cpp" />
+    <ClCompile Include="Source\pawn\anim\animState\AnimStateDie.cpp" />
     <ClCompile Include="Source\pawn\anim\animState\AnimStateIdle.cpp" />
+    <ClCompile Include="Source\pawn\anim\animState\AnimStateMove.cpp" />
     <ClCompile Include="Source\pawn\bevtree\BehaviorCreators.cpp" />
     <ClCompile Include="Source\pawn\bevtree\PawnBehaviors.cpp" />
     <ClCompile Include="Source\pawn\bevtree\PawnBHTree.cpp" />

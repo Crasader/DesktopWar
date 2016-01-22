@@ -14,8 +14,8 @@ namespace Genius
 		Event_unknown,
 
 		// render
-		Event_startAction,
-		Event_updateAction,
+		//Event_startAction,
+		//Event_updateAction,
 		Event_changeDirection,
 
 		// transform
@@ -47,7 +47,7 @@ namespace Genius
 		Event_StopMove,
 	};
 
-	class ActionEvent : public IEventData
+	/*class ActionEvent : public IEventData
 	{
 	public:
 		ActionEvent(Entity* _entity, ActionType _action) :
@@ -58,9 +58,9 @@ namespace Genius
 
 		Entity*				entity;
 		ActionType		action;
-	};
+	};*/
 
-	class UpdateActionEvent : public IEventData
+	/*class UpdateActionEvent : public IEventData
 	{
 	public:
 		UpdateActionEvent(Entity* _entity) :
@@ -69,7 +69,7 @@ namespace Genius
 		{}
 
 		Entity*				entity;
-	};
+	};*/
 
 	class DirectionEvent : public IEventData
 	{

@@ -577,6 +577,18 @@
     <ClInclude Include="Source\pawn\action\ActionHandler.h">
       <Filter>Source\Logic\Pawn\Action\base</Filter>
     </ClInclude>
+    <ClInclude Include="Source\pawn\anim\animState\AnimStateAttackNear.h">
+      <Filter>Source\Logic\Pawn\Anim\AnimState</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\anim\animState\AnimStateDie.h">
+      <Filter>Source\Logic\Pawn\Anim\AnimState</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\anim\animState\AnimStateMove.h">
+      <Filter>Source\Logic\Pawn\Anim\AnimState</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pawn\anim\animState\AnimStateAttackFar.h">
+      <Filter>Source\Logic\Pawn\Anim\AnimState</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -975,6 +987,18 @@
     </ClCompile>
     <ClCompile Include="Source\pawn\bevtree\PawnPrecondition.cpp">
       <Filter>Source\Logic\Pawn\BevTree</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\anim\animState\AnimStateAttackNear.cpp">
+      <Filter>Source\Logic\Pawn\Anim\AnimState</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\anim\animState\AnimStateDie.cpp">
+      <Filter>Source\Logic\Pawn\Anim\AnimState</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\anim\animState\AnimStateMove.cpp">
+      <Filter>Source\Logic\Pawn\Anim\AnimState</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pawn\anim\animState\AnimStateAttackFar.cpp">
+      <Filter>Source\Logic\Pawn\Anim\AnimState</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

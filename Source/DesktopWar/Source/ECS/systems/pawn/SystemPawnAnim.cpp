@@ -13,8 +13,8 @@ void SystemPawnAnim::Initialize()
 	pawnDirectionMapper.init(*world);
 
 	// register event.
-	EventManager::GetInstance().AddListener(this, Event_startAction);
-	EventManager::GetInstance().AddListener(this, Event_updateAction);
+	//EventManager::GetInstance().AddListener(this, Event_startAction);
+	//EventManager::GetInstance().AddListener(this, Event_updateAction);
 }
 
 void SystemPawnAnim::ProcessEntity(Entity* e)
@@ -29,7 +29,7 @@ bool SystemPawnAnim::HandleEvent(IEventData const &event)
 {
 	EventType eType = event.GetType();
 
-	switch (eType)
+	/*switch (eType)
 	{
 	case Event_startAction:
 	{
@@ -47,7 +47,7 @@ bool SystemPawnAnim::HandleEvent(IEventData const &event)
 		this->PlayAnimation(animCom, dirCom, (ActionType)animCom->m_curAction);
 	}
 		break;
-	}
+	}*/
 
 	return true;
 }

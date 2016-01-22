@@ -34,7 +34,7 @@ bool SystemPawnDirection::HandleEvent(IEventData const &event)
 			unsigned int dir = CalculateDirection(pawnDir, actionEvent.x, actionEvent.y);
 			pawnDir->m_lastFaceDir = pawnDir->m_currentDir;
 			pawnDir->m_currentDir = dir;
-			EventManager::GetInstance().FireEvent(UpdateActionEvent(actionEvent.entity));
+			//EventManager::GetInstance().FireEvent(UpdateActionEvent(actionEvent.entity));
 		}
 	}
 		break;
@@ -43,7 +43,7 @@ bool SystemPawnDirection::HandleEvent(IEventData const &event)
 		const DirectionEvent & actionEvent = static_cast<const DirectionEvent &>(event);
 		ComPawnDirection* dirCom = pawnDirectionMapper.get(actionEvent.entity);
 		this->ChangeDirection(dirCom, actionEvent.dir);
-		EventManager::GetInstance().FireEvent(UpdateActionEvent(actionEvent.entity));
+		//EventManager::GetInstance().FireEvent(UpdateActionEvent(actionEvent.entity));
 	}
 		break;
 	case Event_turnTo:
@@ -56,7 +56,7 @@ bool SystemPawnDirection::HandleEvent(IEventData const &event)
 			unsigned int dir = CalculateDirection(pawnDir, actionEvent.x - pawnPos->x, actionEvent.y - pawnPos->y);
 			pawnDir->m_lastFaceDir = pawnDir->m_currentDir;
 			pawnDir->m_currentDir = dir;
-			EventManager::GetInstance().FireEvent(UpdateActionEvent(actionEvent.entity));
+			//EventManager::GetInstance().FireEvent(UpdateActionEvent(actionEvent.entity));
 		}
 	}
 		break;
