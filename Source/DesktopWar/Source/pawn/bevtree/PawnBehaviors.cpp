@@ -35,7 +35,7 @@ eBehaviorStatus PawnIdle::Update(BHUpdateContext& context)
 	if (m_changeDirTimeCounter > m_changeDirDuration)
 	{
 		m_changeDirTimeCounter = 0;
-		EventManager::GetInstance().FireEvent(DirectionEvent(data.pEntity, Face_Turn));
+		EventManager::GetInstance().FireEvent(TurnBackEvent(data.pEntity));
 	}
 
 	if (m_timeCounter > m_totalDuration)
@@ -55,7 +55,6 @@ void PawnIdle::OnInitialize(BHUpdateContext& context)
 	m_changeDirDuration = RandUtility::RandomScale(agentCom->m_pRoleData->IdleTurnFaceTime, 0.3f);
 
 	agentCom->AddAction(PAT_Idle);
-	//EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Idle));
 	EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, data.pEntity));
 }
 
@@ -96,6 +95,9 @@ void PawnMove::OnInitialize(BHUpdateContext& context)
 	float randx = (float)(rand() % 1000);
 	float randy = (float)(rand() % 600);
 	EventManager::GetInstance().FireEvent(TransformEvent(Event_navigateTo, data.pEntity, randx, randy));
+
+	ComPawnAgent* agentCom = data.pEntity->GetComponent<ComPawnAgent>();
+	agentCom->AddAction(PAT_Move);
 }
 
 void PawnMove::OnTerminate(BHUpdateContext& context, eBehaviorStatus state)
@@ -139,7 +141,6 @@ void PawnDie::OnInitialize(BHUpdateContext& context)
 
 	EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, data.pEntity));
 	agentCom->AddAction(PAT_Die);
-	//EventManager::GetInstance().FireEvent(ActionEvent(data.pEntity, Action_Die));
 }
 
 void PawnDie::OnTerminate(BHUpdateContext& context, eBehaviorStatus state)
@@ -255,7 +256,11 @@ void PawnWander::GoToSomewhere(BHUpdateContext& context)
 		destY = posCom->y;
 		break;
 	}
+
 	EventManager::GetInstance().FireEvent(TransformEvent(Event_navigateTo, data.pEntity, destX, destY));
+
+	ComPawnAgent* agentCom = data.pEntity->GetComponent<ComPawnAgent>();
+	agentCom->AddAction(PAT_Move);
 }
 
 

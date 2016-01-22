@@ -4,6 +4,7 @@
 #include "../../core/EntityProcessingSystem.h"
 #include "../../core/ComponentMapper.h"
 #include "../../components/common/ComPosition.h"
+#include "../../components/pawn/ComPawnAgent.h"
 #include "../../components/pawn/ComPawnDirection.h"
 
 
@@ -12,13 +13,14 @@ namespace Genius
 	class SystemPawnDirection : public EntityProcessingSystem
 	{
 	private:
-		ComponentMapper<ComPawnDirection>	pawnDirectionMapper;
 		ComponentMapper<ComPosition>				positionMapper;
+		ComponentMapper<ComPawnAgent>		pawnAgentMapper;
+		ComponentMapper<ComPawnDirection>	pawnDirectionMapper;
 
 	public:
 		SystemPawnDirection()
 		{
-			SetComponentTypes<ComPawnDirection, ComPosition>();
+			SetComponentTypes<ComPosition, ComPawnAgent, ComPawnDirection>();
 		}
 		virtual const char* GetName(){ return "SystemPawnDirection"; }
 		virtual void Initialize();

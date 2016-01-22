@@ -36,37 +36,52 @@ void AnimFSMSimple::Initialize()
 
 void AnimFSMSimple::DoAction(PawnAction* pAction)
 {
-	if (m_pCurrentState->HandleNewAction(pAction))
+	int actType = pAction->GetType();
+
+	if (actType == PAT_ChangeDir)
+	{
+		m_pCurrentState->OnActive();
+	}
+	else if (m_pCurrentState->HandleNewAction(pAction))
 	{
 		m_pNextState = nullptr;
 	}
 	else
 	{
-		int actType = pAction->GetType();
+		AnimState* pNewState = nullptr;
 
 		switch (actType)
 		{
 		case PAT_Idle:
-			m_pNextState = m_animStateList[actType];
+			pNewState = m_animStateList[actType];
 			break;
 		case PAT_Die:
-			m_pNextState = m_animStateList[actType];
+			pNewState = m_animStateList[actType];
 			break;
 		case PAT_Move:
-			m_pNextState = m_animStateList[actType];
+			pNewState = m_animStateList[actType];
 			break;
 		case PAT_AttackNear:
-			m_pNextState = m_animStateList[actType];
+			pNewState = m_animStateList[actType];
 			break;
 		case PAT_AttackFar:
-			m_pNextState = m_animStateList[actType];
+			pNewState = m_animStateList[actType];
+			break;
+		case PAT_Skill1:
+			pNewState = m_animStateList[actType];
+			break;
+		case PAT_Skill2:
+			break;
+		case PAT_Skill3:
 			break;
 		default:
 			break;
 		}
 
-		if (m_pNextState != nullptr)
+		if (pNewState != nullptr)
 		{
+			m_pNextState = pNewState;
+
 			SwitchToNextState(pAction);
 		}
 

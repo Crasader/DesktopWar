@@ -8,6 +8,7 @@
 #include "PawnActionSkill1.h"
 #include "PawnActionSkill2.h"
 #include "PawnActionSkill3.h"
+#include "PawnActionChangeDir.h"
 
 using namespace Genius;
 
@@ -61,6 +62,9 @@ PawnAction* PawnActionFactory::CreatePawnAction(int type)
 			break;
 		case PAT_Skill3:
 			pAction = new PawnActionSkill3();
+			break;
+		case PAT_ChangeDir:
+			pAction = new PawnActionChangeDir();
 			break;
 		default:
 			pAction = nullptr;

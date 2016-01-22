@@ -14,6 +14,8 @@ namespace Genius
 		PAT_Skill2,
 		PAT_Skill3,
 
+		PAT_ChangeDir,
+
 		PAT_Count,
 	};
 

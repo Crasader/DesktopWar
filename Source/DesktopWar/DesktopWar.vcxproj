@@ -163,6 +163,7 @@
     <ClInclude Include="Source\pawn\action\PawnAction.h" />
     <ClInclude Include="Source\pawn\action\PawnActionAttackFar.h" />
     <ClInclude Include="Source\pawn\action\PawnActionAttackNear.h" />
+    <ClInclude Include="Source\pawn\action\PawnActionChangeDir.h" />
     <ClInclude Include="Source\pawn\action\PawnActionDie.h" />
     <ClInclude Include="Source\pawn\action\PawnActionFactory.h" />
     <ClInclude Include="Source\pawn\action\PawnActionIdle.h" />
@@ -180,6 +181,9 @@
     <ClInclude Include="Source\pawn\anim\animState\AnimStateDie.h" />
     <ClInclude Include="Source\pawn\anim\animState\AnimStateIdle.h" />
     <ClInclude Include="Source\pawn\anim\animState\AnimStateMove.h" />
+    <ClInclude Include="Source\pawn\anim\animState\AnimStateSkill1.h" />
+    <ClInclude Include="Source\pawn\anim\animState\AnimStateSkill2.h" />
+    <ClInclude Include="Source\pawn\anim\animState\AnimStateSkill3.h" />
     <ClInclude Include="Source\pawn\bevtree\BehaviorCreators.h" />
     <ClInclude Include="Source\pawn\bevtree\BehaviorsAndPreconditions.h" />
     <ClInclude Include="Source\pawn\bevtree\PawnBehaviors.h" />
@@ -311,6 +315,7 @@
     <ClCompile Include="Source\pawn\action\PawnAction.cpp" />
     <ClCompile Include="Source\pawn\action\PawnActionAttackFar.cpp" />
     <ClCompile Include="Source\pawn\action\PawnActionAttackNear.cpp" />
+    <ClCompile Include="Source\pawn\action\PawnActionChangeDir.cpp" />
     <ClCompile Include="Source\pawn\action\PawnActionDie.cpp" />
     <ClCompile Include="Source\pawn\action\PawnActionFactory.cpp" />
     <ClCompile Include="Source\pawn\action\PawnActionIdle.cpp" />
@@ -328,6 +333,9 @@
     <ClCompile Include="Source\pawn\anim\animState\AnimStateDie.cpp" />
     <ClCompile Include="Source\pawn\anim\animState\AnimStateIdle.cpp" />
     <ClCompile Include="Source\pawn\anim\animState\AnimStateMove.cpp" />
+    <ClCompile Include="Source\pawn\anim\animState\AnimStateSkill1.cpp" />
+    <ClCompile Include="Source\pawn\anim\animState\AnimStateSkill2.cpp" />
+    <ClCompile Include="Source\pawn\anim\animState\AnimStateSkill3.cpp" />
     <ClCompile Include="Source\pawn\bevtree\BehaviorCreators.cpp" />
     <ClCompile Include="Source\pawn\bevtree\PawnBehaviors.cpp" />
     <ClCompile Include="Source\pawn\bevtree\PawnBHTree.cpp" />

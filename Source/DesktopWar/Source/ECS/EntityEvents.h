@@ -16,7 +16,7 @@ namespace Genius
 		// render
 		//Event_startAction,
 		//Event_updateAction,
-		Event_changeDirection,
+		Event_turnBack,
 
 		// transform
 		Event_setPosition,
@@ -71,17 +71,15 @@ namespace Genius
 		Entity*				entity;
 	};*/
 
-	class DirectionEvent : public IEventData
+	class TurnBackEvent : public IEventData
 	{
 	public:
-		DirectionEvent(Entity* _entity, unsigned int _dir) :
-			IEventData(Event_changeDirection),
-			entity(_entity),
-			dir(_dir)
+		TurnBackEvent(Entity* _entity) :
+			IEventData(Event_turnBack),
+			entity(_entity)
 		{}
 
 		Entity*		entity;
-		unsigned int		dir;
 	};
 
 	class TransformEvent : public IEventData

@@ -2,17 +2,19 @@
 #include "SystemPawnDirection.h"
 #include "event/EventManager.h"
 #include "../../EntityEvents.h"
+#include "pawn/action/ActionDefine.h"
 
 using namespace Genius;
 
 void SystemPawnDirection::Initialize()
 {
-	pawnDirectionMapper.init(*world);
 	positionMapper.init(*world);
+	pawnDirectionMapper.init(*world);
+	pawnAgentMapper.init(*world);
 
 	// register event.
 	EventManager::GetInstance().AddListener(this, Event_velocityChanged);
-	EventManager::GetInstance().AddListener(this, Event_changeDirection);
+	EventManager::GetInstance().AddListener(this, Event_turnBack);
 	EventManager::GetInstance().AddListener(this, Event_turnTo);
 }
 
@@ -28,35 +30,40 @@ bool SystemPawnDirection::HandleEvent(IEventData const &event)
 	case Event_velocityChanged:
 	{
 		const VelocityChangedEvent & actionEvent = static_cast<const VelocityChangedEvent &>(event);
+		ComPawnAgent* pawnAgent = pawnAgentMapper.get(actionEvent.entity);
 		ComPawnDirection* pawnDir = pawnDirectionMapper.get(actionEvent.entity);
-		if (pawnDir)
+		if (nullptr != pawnDir && nullptr != pawnAgent)
 		{
 			unsigned int dir = CalculateDirection(pawnDir, actionEvent.x, actionEvent.y);
 			pawnDir->m_lastFaceDir = pawnDir->m_currentDir;
 			pawnDir->m_currentDir = dir;
-			//EventManager::GetInstance().FireEvent(UpdateActionEvent(actionEvent.entity));
+
+			pawnAgent->AddAction(PAT_ChangeDir);
 		}
 	}
 		break;
-	case Event_changeDirection:
+	case Event_turnBack:
 	{
-		const DirectionEvent & actionEvent = static_cast<const DirectionEvent &>(event);
+		const TurnBackEvent & actionEvent = static_cast<const TurnBackEvent &>(event);
 		ComPawnDirection* dirCom = pawnDirectionMapper.get(actionEvent.entity);
-		this->ChangeDirection(dirCom, actionEvent.dir);
-		//EventManager::GetInstance().FireEvent(UpdateActionEvent(actionEvent.entity));
+		this->ChangeDirection(dirCom, Face_Turn);
+		ComPawnAgent* pawnAgent = pawnAgentMapper.get(actionEvent.entity);
+		pawnAgent->AddAction(PAT_ChangeDir);
 	}
 		break;
 	case Event_turnTo:
 	{
 		const TurnToEvent & actionEvent = static_cast<const TurnToEvent &>(event);
-		ComPawnDirection* pawnDir = pawnDirectionMapper.get(actionEvent.entity);
 		ComPosition* pawnPos = positionMapper.get(actionEvent.entity);
-		if (pawnDir && pawnPos)
+		ComPawnDirection* pawnDir = pawnDirectionMapper.get(actionEvent.entity);
+		ComPawnAgent* pawnAgent = pawnAgentMapper.get(actionEvent.entity);
+		if (nullptr != pawnDir && nullptr != pawnAgent)
 		{
 			unsigned int dir = CalculateDirection(pawnDir, actionEvent.x - pawnPos->x, actionEvent.y - pawnPos->y);
 			pawnDir->m_lastFaceDir = pawnDir->m_currentDir;
 			pawnDir->m_currentDir = dir;
-			//EventManager::GetInstance().FireEvent(UpdateActionEvent(actionEvent.entity));
+			
+			pawnAgent->AddAction(PAT_ChangeDir);
 		}
 	}
 		break;
