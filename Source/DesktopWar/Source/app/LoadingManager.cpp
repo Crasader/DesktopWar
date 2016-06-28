@@ -3,6 +3,7 @@
 #include "AnimDataMgr.h"
 #include "app/AppStatus/AppStateLoading.h"
 
+USING_NS_CC;
 using namespace Genius;
 
 LoadingManager::LoadingManager(AppStateLoading* pState)

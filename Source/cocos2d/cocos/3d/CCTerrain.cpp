@@ -22,11 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 
-#include "CCTerrain.h"
+#include "3d/CCTerrain.h"
 
 USING_NS_CC;
 #include <stdlib.h>
-#include <CCImage.h>
 #include <float.h>
 #include <set>
 #include "renderer/CCGLProgram.h"
@@ -39,40 +38,68 @@ USING_NS_CC;
 #include "base/CCDirector.h"
 #include "base/CCEventType.h"
 #include "2d/CCCamera.h"
+#include "platform/CCImage.h"
 
 NS_CC_BEGIN
 
 // check a number is power of two.
 static bool isPOT(int number)
 {
-    bool flag = false;  
-    if((number>0)&&(number&(number-1))==0)  
-        flag = true;  
-    return flag;  
+    bool flag = false;
+    if((number>0)&&(number&(number-1))==0)
+        flag = true;
+    return flag;
 }
 
 Terrain * Terrain::create(TerrainData &parameter, CrackFixedType fixedType)
 {
     Terrain * terrain = new (std::nothrow)Terrain();
-    terrain->setSkirtHeightRatio(parameter._skirtHeightRatio);
-    terrain->_terrainData = parameter;
-    terrain->_crackFixedType = fixedType;
-    terrain->_isCameraViewChanged = true;
+    if (terrain->initWithTerrainData(parameter, fixedType))
+    {
+        terrain->autorelease();
+        return terrain;
+    }
+    CC_SAFE_DELETE(terrain);
+    return terrain;
+}
+bool Terrain::initWithTerrainData(TerrainData &parameter, CrackFixedType fixedType)
+{
+    this->setSkirtHeightRatio(parameter._skirtHeightRatio);
+    this->_terrainData = parameter;
+    this->_crackFixedType = fixedType;
+    this->_isCameraViewChanged = true;
     //chunksize
-    terrain->_chunkSize = parameter._chunkSize;
-    bool initResult =true;
+    this->_chunkSize = parameter._chunkSize;
+    bool initResult = true;
 
     //init heightmap
-    initResult &= terrain->initHeightMap(parameter._heightMapSrc.c_str());
+    initResult &= this->initHeightMap(parameter._heightMapSrc);
     //init textures alpha map,detail Maps
-    initResult &= terrain->initTextures();
-    initResult &= terrain->initProperties();
-    terrain->autorelease();
-    if(!initResult)
-    {
-        CC_SAFE_DELETE(terrain);
-    }    
-    return terrain;
+    initResult &= this->initTextures();
+    initResult &= this->initProperties();
+
+    return initResult;
+}
+
+void cocos2d::Terrain::setLightMap(const std::string& fileName)
+{
+    CC_SAFE_RELEASE(_lightMap);
+    auto image = new (std::nothrow)Image();
+    image->initWithImageFile(fileName);
+    _lightMap = new (std::nothrow)Texture2D();
+    _lightMap->initWithImage(image);
+
+    Texture2D::TexParams tRepeatParams;//set texture parameters
+    tRepeatParams.magFilter = tRepeatParams.minFilter = GL_LINEAR;
+    tRepeatParams.wrapS = GL_REPEAT;
+    tRepeatParams.wrapT = GL_REPEAT;
+    _lightMap->setTexParameters(tRepeatParams);
+
+}
+
+void cocos2d::Terrain::setLightDir(const Vec3& lightDir)
+{
+    _lightDir = lightDir;
 }
 
 bool Terrain::initProperties()
@@ -107,7 +134,7 @@ void Terrain::onDraw(const Mat4 &transform, uint32_t flags)
         _terrainModelMatrix = modelMatrix;
         _quadRoot->preCalculateAABB(_terrainModelMatrix);
     }
-    
+
     auto glProgram = getGLProgram();
     glProgram->use();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
@@ -124,19 +151,19 @@ void Terrain::onDraw(const Mat4 &transform, uint32_t flags)
 
     GL::enableVertexAttribs(1<<_positionLocation | 1 << _texcordLocation | 1<<_normalLocation);
     glProgram->setUniformsForBuiltins(transform);
-
+    _glProgramState->applyUniforms();
+    glUniform3f(_lightDirLocation,_lightDir.x,_lightDir.y,_lightDir.z);
     if(!_alphaMap)
     {
-        glActiveTexture(GL_TEXTURE0);
         GL::bindTexture2D(_detailMapTextures[0]->getName());
+        //getGLProgramState()->setUniformTexture("")
         glUniform1i(_detailMapLocation[0],0);
         glUniform1i(_alphaIsHasAlphaMapLocation,0);
     }else
     {
         for(int i =0;i<_maxDetailMapValue;i++)
         {
-            glActiveTexture(GL_TEXTURE0+i);
-            GL::bindTexture2D(_detailMapTextures[i]->getName());
+            GL::bindTexture2DN(i,_detailMapTextures[i]->getName());
             glUniform1i(_detailMapLocation[i],i);
 
             glUniform1f(_detailMapSizeLocation[i],_terrainData._detailMaps[i]._detailMapSize);
@@ -144,11 +171,18 @@ void Terrain::onDraw(const Mat4 &transform, uint32_t flags)
 
         glUniform1i(_alphaIsHasAlphaMapLocation,1);
 
-        glActiveTexture(GL_TEXTURE4);
-        GL::bindTexture2D(_alphaMap->getName());
+        GL::bindTexture2DN(4, _alphaMap->getName());
         glUniform1i(_alphaMapLocation,4);
     }
-
+    if (_lightMap)
+    {
+        glUniform1i(_lightMapCheckLocation, 1);
+        GL::bindTexture2DN(5, _lightMap->getName());
+        glUniform1i(_lightMapLocation, 5);
+    }else
+    {
+        glUniform1i(_lightMapCheckLocation, 0);
+    }
     auto camera = Camera::getVisitingCamera();
 
     if(memcmp(&_CameraMatrix,&camera->getViewMatrix(),sizeof(Mat4))!=0)
@@ -167,9 +201,12 @@ void Terrain::onDraw(const Mat4 &transform, uint32_t flags)
 
     if(_isCameraViewChanged )
     {
-        _quadRoot->resetNeedDraw(true);//reset it 
+        _quadRoot->resetNeedDraw(true);//reset it
         //camera frustum culling
-        _quadRoot->cullByCamera(camera,_terrainModelMatrix);
+        if (_isEnableFrustumCull)
+        {
+            _quadRoot->cullByCamera(camera, _terrainModelMatrix);
+        }
     }
     _quadRoot->draw();
     if(_isCameraViewChanged)
@@ -186,9 +223,9 @@ void Terrain::onDraw(const Mat4 &transform, uint32_t flags)
 #endif
 }
 
-bool Terrain::initHeightMap(const char * heightMap)
+bool Terrain::initHeightMap(const std::string& heightMap)
 {
-    _heightMapImage = new Image();
+    _heightMapImage = new (std::nothrow) Image();
     _heightMapImage->initWithImageFile(heightMap);
     _data = _heightMapImage->getData();
     _imageWidth =_heightMapImage->getWidth();
@@ -207,7 +244,7 @@ bool Terrain::initHeightMap(const char * heightMap)
         {
             for(int n =0; n<chunk_amount_x;n++)
             {
-                _chunkesArray[m][n] = new Chunk();
+                _chunkesArray[m][n] = new (std::nothrow) Chunk();
                 _chunkesArray[m][n]->_terrain = this;
                 _chunkesArray[m][n]->_size = _chunkSize;
                 _chunkesArray[m][n]->generate(_imageWidth,_imageHeight,m,n,_data);
@@ -225,7 +262,7 @@ bool Terrain::initHeightMap(const char * heightMap)
                 if(m+1<chunk_amount_y) _chunkesArray[m][n]->_front = _chunkesArray[m+1][n];
             }
         }
-        _quadRoot = new QuadTree(0,0,_imageWidth,_imageHeight,this);
+        _quadRoot = new (std::nothrow) QuadTree(0,0,_imageWidth,_imageHeight,this);
         setLODDistance(_chunkSize.width,2*_chunkSize.width,3*_chunkSize.width);
         return true;
     }else
@@ -238,6 +275,8 @@ bool Terrain::initHeightMap(const char * heightMap)
 Terrain::Terrain()
 : _alphaMap(nullptr)
 , _stateBlock(nullptr)
+, _lightMap(nullptr)
+, _lightDir(-1.f, -1.f, 0.f)
 {
     _stateBlock = RenderState::StateBlock::create();
     CC_SAFE_RETAIN(_stateBlock);
@@ -385,7 +424,7 @@ void Terrain::calculateNormal()
     for(int i =0;i<_imageHeight-1;i+=1)
     {
         for(int j = 0;j<_imageWidth-1;j+=1)
-        { 
+        {
 
             int nLocIndex = i * _imageWidth + j;
             _indices.push_back (nLocIndex);
@@ -438,9 +477,9 @@ void Terrain::setIsEnableFrustumCull(bool bool_value)
 Terrain::~Terrain()
 {
     CC_SAFE_RELEASE(_stateBlock);
-
-    _alphaMap->release();
-    _heightMapImage->release();
+    CC_SAFE_RELEASE(_alphaMap);
+    CC_SAFE_RELEASE(_lightMap);
+    CC_SAFE_RELEASE(_heightMapImage);
     delete _quadRoot;
     for(int i=0;i<4;i++)
     {
@@ -460,12 +499,12 @@ Terrain::~Terrain()
         }
     }
 
-    for(int i =0;i<_chunkLodIndicesSet.size();i++)
+    for(size_t i =0;i<_chunkLodIndicesSet.size();i++)
     {
         glDeleteBuffers(1,&(_chunkLodIndicesSet[i]._chunkIndices._indices));
     }
 
-    for(int i =0;i<_chunkLodIndicesSkirtSet.size();i++)
+    for(size_t i =0;i<_chunkLodIndicesSkirtSet.size();i++)
     {
         glDeleteBuffers(1,&(_chunkLodIndicesSkirtSet[i]._chunkIndices._indices));
     }
@@ -502,10 +541,14 @@ cocos2d::Vec3 Terrain::getIntersectionPoint(const Ray & ray) const
     }
 }
 
-bool Terrain::getIntersectionPoint(const Ray & ray, Vec3 & intersectionPoint) const
+bool Terrain::getIntersectionPoint(const Ray & ray_, Vec3 & intersectionPoint) const
 {
+	// convert ray from world space to local space
+    Ray ray(ray_);
+    getWorldToNodeTransform().transformPoint(&(ray._origin));
+
     std::set<Chunk *> closeList;
-    Vec2 start = Vec2(ray._origin.x,ray._origin.z);
+    Vec2 start = Vec2(ray_._origin.x,ray_._origin.z);
     Vec2 dir = Vec2(ray._direction.x,ray._direction.z);
     start = convertToTerrainSpace(start);
     start.x /=(_terrainData._chunkSize.width+1);
@@ -587,7 +630,7 @@ cocos2d::Vec2 Terrain::convertToTerrainSpace(Vec2 worldSpaceXZ) const
     return Vec2(image_x,image_y);
 }
 
-void Terrain::resetHeightMap(const char * heightMap)
+void Terrain::resetHeightMap(const std::string& heightMap)
 {
     _heightMapImage->release();
     _vertices.clear();
@@ -648,7 +691,8 @@ Terrain::Chunk * cocos2d::Terrain::getChunkByIndex(int x, int y) const
 
 void Terrain::setAlphaMap(cocos2d::Texture2D * newAlphaMapTexture)
 {
-    _alphaMap->release();
+    CC_SAFE_RETAIN(newAlphaMapTexture);
+    CC_SAFE_RELEASE(_alphaMap);
     _alphaMap = newAlphaMapTexture;
 }
 
@@ -686,7 +730,7 @@ Terrain::ChunkIndices Terrain::lookForIndicesLOD(int neighborLod[4], int selfLod
         int test[5];
         memcpy(test,neighborLod,sizeof(int [4]));
         test[4] = selfLod;
-        for(int i =0;i<_chunkLodIndicesSet.size();i++)
+        for(size_t i =0;i<_chunkLodIndicesSet.size();i++)
         {
             if(memcmp(test,_chunkLodIndicesSet[i]._relativeLod,sizeof(test))==0)
             {
@@ -723,7 +767,7 @@ Terrain::ChunkIndices Terrain::lookForIndicesLODSkrit(int selfLod, bool * result
     return badResult;
     }
 
-    for(int i =0;i<_chunkLodIndicesSkirtSet.size();i++)
+    for(size_t i =0;i<_chunkLodIndicesSkirtSet.size();i++)
     {
         if(_chunkLodIndicesSkirtSet[i]._selfLod == selfLod)
         {
@@ -754,6 +798,14 @@ void Terrain::setSkirtHeightRatio(float ratio)
 
 void Terrain::onEnter()
 {
+#if CC_ENABLE_SCRIPT_BINDING
+    if (_scriptType == kScriptTypeJavascript)
+    {
+        if (ScriptEngineManager::sendNodeEventToJSExtended(this, kNodeOnEnter))
+            return;
+    }
+#endif
+
     Node::onEnter();
     _terrainModelMatrix = getNodeToWorldTransform();
     _quadRoot->preCalculateAABB(_terrainModelMatrix);
@@ -774,10 +826,10 @@ void Terrain::cacheUniformAttribLocation()
     }
     auto glProgram = getGLProgram();
     _alphaIsHasAlphaMapLocation = glGetUniformLocation(glProgram->getProgram(),"u_has_alpha");
+    _lightMapCheckLocation = glGetUniformLocation(glProgram->getProgram(), "u_has_light_map");
     if(!_alphaMap)
     {
         _detailMapLocation[0] = glGetUniformLocation(glProgram->getProgram(),"u_texture0");
-        
     }else
     {
         for(int i =0;i<_maxDetailMapValue;i++)
@@ -791,14 +843,21 @@ void Terrain::cacheUniformAttribLocation()
         }
         _alphaMapLocation = glGetUniformLocation(glProgram->getProgram(),"u_alphaMap");
     }
+    _lightMapLocation = glGetUniformLocation(glProgram->getProgram(),"u_lightMap");
+    _lightDirLocation = glGetUniformLocation(glProgram->getProgram(),"u_lightDir");
 }
 
 bool Terrain::initTextures()
 {
+    for (int i = 0; i < 4; i++)
+    {
+        _detailMapTextures[i] = nullptr;
+    }
+
     Texture2D::TexParams texParam;
     texParam.wrapS = GL_REPEAT;
     texParam.wrapT = GL_REPEAT;
-    if(!_terrainData._alphaMapSrc)
+    if(_terrainData._alphaMapSrc.empty())
     {
         auto textImage = new (std::nothrow)Image();
         textImage->initWithImageFile(_terrainData._detailMaps[0]._detailMapSrc);
@@ -813,7 +872,7 @@ bool Terrain::initTextures()
     }else
     {
         //alpha map
-        auto image = new (std::nothrow)Image(); 
+        auto image = new (std::nothrow)Image();
         image->initWithImageFile(_terrainData._alphaMapSrc);
         _alphaMap = new (std::nothrow)Texture2D();
         _alphaMap->initWithImage(image);
@@ -865,8 +924,8 @@ void Terrain::reload()
 
 void Terrain::Chunk::finish()
 {
-    //genearate two VBO ,the first for vertices, we just setup datas once ,won't changed at all
-    //the second vbo for the indices, because we use level of detail technique to each chunk, so we will modified frequently 
+    //generate two VBO ,the first for vertices, we just setup datas once ,won't changed at all
+    //the second vbo for the indices, because we use level of detail technique to each chunk, so we will modified frequently
     glGenBuffers(1,&_vbo);
 
     //only set for vertices vbo
@@ -880,7 +939,7 @@ void Terrain::Chunk::finish()
     for(int i =0;i<4;i++)
     {
         int step = 1<<_currentLod;
-        //reserve the indices size, the first part is the core part of the chunk, the second part & thid part is for fix crack 
+        //reserve the indices size, the first part is the core part of the chunk, the second part & third part is for fix crack
         int indicesAmount =(_terrain->_chunkSize.width/step+1)*(_terrain->_chunkSize.height/step+1)*6+(_terrain->_chunkSize.height/step)*6
             +(_terrain->_chunkSize.width/step)*6;
         _lod[i]._indices.reserve(indicesAmount);
@@ -940,7 +999,7 @@ void Terrain::Chunk::generate(int imgWidth, int imageHei, int m, int n, const un
                 }
             }
             // add four skirts
-           
+
             float skirtHeight =  _terrain->_skirtRatio *_terrain->_terrainData._mapScale*8;
             //#1
             _terrain->_skirtVerticesOffset[0] = (int)_originalVertices.size();
@@ -1057,7 +1116,7 @@ void Terrain::Chunk::updateIndicesLOD()
     {
         return;
     }
-    memcpy(_neighborOldLOD,currentNeighborLOD,sizeof(currentNeighborLOD)); 
+    memcpy(_neighborOldLOD,currentNeighborLOD,sizeof(currentNeighborLOD));
     _oldLod = _currentLod;
     int gridY = _size.height;
     int gridX = _size.width;
@@ -1067,12 +1126,12 @@ void Terrain::Chunk::updateIndicesLOD()
         ||(_back&&_back->_currentLod > _currentLod) || (_front && _front->_currentLod > _currentLod))
         //need update indices.
     {
-        //t-junction inner 
+        //t-junction inner
         _lod[_currentLod]._indices.clear();
         for(int i =step;i<gridY-step;i+=step)
         {
             for(int j = step;j<gridX-step;j+=step)
-            {  
+            {
                 int nLocIndex = i * (gridX+1) + j;
                 _lod[_currentLod]._indices.push_back (nLocIndex);
                 _lod[_currentLod]._indices.push_back (nLocIndex + step * (gridX+1));
@@ -1215,9 +1274,9 @@ void Terrain::Chunk::updateIndicesLOD()
         for(int i =0;i<gridY;i+=step)
         {
             for(int j = 0;j<gridX;j+=step)
-            { 
+            {
 
-                int nLocIndex = i * (gridX+1) + j; 
+                int nLocIndex = i * (gridX+1) + j;
                 _lod[_currentLod]._indices.push_back (nLocIndex);
                 _lod[_currentLod]._indices.push_back (nLocIndex + step * (gridX+1));
                 _lod[_currentLod]._indices.push_back (nLocIndex + step);
@@ -1234,7 +1293,7 @@ void Terrain::Chunk::updateIndicesLOD()
 void Terrain::Chunk::calculateAABB()
 {
     std::vector<Vec3>pos;
-    for(int i =0;i<_originalVertices.size();i++)
+    for(size_t i =0;i<_originalVertices.size();i++)
     {
         pos.push_back(_originalVertices[i]._position);
     }
@@ -1245,7 +1304,7 @@ void Terrain::Chunk::calculateSlope()
 {
     //find max slope
     auto lowest = _originalVertices[0]._position;
-    for(int i = 0;i<_originalVertices.size();i++)
+    for(size_t i = 0;i<_originalVertices.size();i++)
     {
         if(_originalVertices[i]._position.y< lowest.y)
         {
@@ -1253,7 +1312,7 @@ void Terrain::Chunk::calculateSlope()
         }
     }
     auto highest = _originalVertices[0]._position;
-    for(int i = 0;i<_originalVertices.size();i++)
+    for(size_t i = 0;i<_originalVertices.size();i++)
     {
         if(_originalVertices[i]._position.y> highest.y)
         {
@@ -1270,7 +1329,7 @@ bool Terrain::Chunk::getInsterctPointWithRay(const Ray& ray, Vec3 &interscetPoin
 {
     if (!ray.intersects(_aabb))
         return false;
-    
+
     float minDist = FLT_MAX;
     bool isFind = false;
     for (auto triangle : _trianglesList)
@@ -1287,7 +1346,7 @@ bool Terrain::Chunk::getInsterctPointWithRay(const Ray& ray, Vec3 &interscetPoin
             isFind =true;
         }
     }
-    
+
     return isFind;
 }
 
@@ -1321,7 +1380,7 @@ void Terrain::Chunk::updateVerticesForLOD()
     }
 
     glBufferData(GL_ARRAY_BUFFER, sizeof(TerrainVertexData)*_currentVertices.size(), &_currentVertices[0], GL_STREAM_DRAW);
-
+    _oldLod = _currentLod;
 }
 
 Terrain::Chunk::~Chunk()
@@ -1344,7 +1403,7 @@ void Terrain::Chunk::updateIndicesLODSkirt()
     for(int i =0;i<gridY;i+=step,k+=step)
     {
         for(int j = 0;j<gridX;j+=step)
-        {  
+        {
             int nLocIndex = i * (gridX+1) + j;
             _lod[_currentLod]._indices.push_back (nLocIndex);
             _lod[_currentLod]._indices.push_back (nLocIndex + step * (gridX+1));
@@ -1400,7 +1459,7 @@ void Terrain::Chunk::updateIndicesLODSkirt()
     {
         int nLocIndex = j;
         _lod[_currentLod]._indices.push_back (nLocIndex + step);
-        _lod[_currentLod]._indices.push_back (_terrain->_skirtVerticesOffset[3]+j); 
+        _lod[_currentLod]._indices.push_back (_terrain->_skirtVerticesOffset[3]+j);
         _lod[_currentLod]._indices.push_back (nLocIndex);
 
 
@@ -1428,13 +1487,13 @@ Terrain::QuadTree::QuadTree(int x, int y, int w, int h, Terrain * terrain)
     if(_width> terrain->_chunkSize.width &&_height >terrain->_chunkSize.height) //subdivision
     {
         _isTerminal = false;
-        this->_tl = new QuadTree(x,y,_width/2,_height/2,terrain);
+        this->_tl = new (std::nothrow) QuadTree(x,y,_width/2,_height/2,terrain);
         this->_tl->_parent = this;
-        this->_tr = new QuadTree(x+_width/2,y,_width/2,_height/2,terrain);
+        this->_tr = new (std::nothrow) QuadTree(x+_width/2,y,_width/2,_height/2,terrain);
         this->_tr->_parent = this;
-        this->_bl = new QuadTree(x,y+_height/2,_width/2,_height/2,terrain);
+        this->_bl = new (std::nothrow) QuadTree(x,y+_height/2,_width/2,_height/2,terrain);
         this->_bl->_parent = this;
-        this->_br = new QuadTree(x+_width/2,y+_height/2,_width/2,_height/2,terrain);
+        this->_br = new (std::nothrow) QuadTree(x+_width/2,y+_height/2,_width/2,_height/2,terrain);
         this->_br->_parent = this;
 
         _localAABB.merge(_tl->_localAABB);
@@ -1522,21 +1581,21 @@ Terrain::QuadTree::~QuadTree()
     if(_br) delete _br;
 }
 
-Terrain::TerrainData::TerrainData(const char * heightMapsrc , const char * textureSrc, const Size & chunksize, float height, float scale)
-{ 
+Terrain::TerrainData::TerrainData(const std::string& heightMapsrc , const std::string& textureSrc, const Size & chunksize, float height, float scale)
+{
     this->_heightMapSrc = heightMapsrc;
     this->_detailMaps[0]._detailMapSrc = textureSrc;
-    this->_alphaMapSrc = nullptr;
+    this->_alphaMapSrc = "";
     this->_chunkSize = chunksize;
     this->_mapHeight = height;
-    this->_mapScale = scale; 
+    this->_mapScale = scale;
     _skirtHeightRatio = 1;
 }
 
-Terrain::TerrainData::TerrainData(const char * heightMapsrc, const char * alphamap, const DetailMap& detail1, const DetailMap& detail2, const DetailMap& detail3, const DetailMap& detail4, const Size & chunksize, float height, float scale)
+Terrain::TerrainData::TerrainData(const std::string& heightMapsrc, const std::string& alphamap, const DetailMap& detail1, const DetailMap& detail2, const DetailMap& detail3, const DetailMap& detail4, const Size & chunksize, float height, float scale)
 {
     this->_heightMapSrc = heightMapsrc;
-    this->_alphaMapSrc = const_cast<char *>(alphamap);
+    this->_alphaMapSrc = alphamap;
     this->_detailMaps[0] = detail1;
     this->_detailMaps[1] = detail2;
     this->_detailMaps[2] = detail3;
@@ -1548,14 +1607,13 @@ Terrain::TerrainData::TerrainData(const char * heightMapsrc, const char * alpham
     _skirtHeightRatio = 1;
 }
 
-Terrain::TerrainData::TerrainData(const char* heightMapsrc, const char * alphamap, const DetailMap& detail1, const DetailMap& detail2, const DetailMap& detail3, const Size & chunksize /*= Size(32,32)*/, float height /*= 2*/, float scale /*= 0.1*/)
+Terrain::TerrainData::TerrainData(const std::string& heightMapsrc, const std::string& alphamap, const DetailMap& detail1, const DetailMap& detail2, const DetailMap& detail3, const Size & chunksize /*= Size(32,32)*/, float height /*= 2*/, float scale /*= 0.1*/)
 {
     this->_heightMapSrc = heightMapsrc;
-    this->_alphaMapSrc = const_cast<char *>(alphamap);
+    this->_alphaMapSrc = alphamap;
     this->_detailMaps[0] = detail1;
     this->_detailMaps[1] = detail2;
     this->_detailMaps[2] = detail3;
-    this->_detailMaps[3] = nullptr;
     this->_chunkSize = chunksize;
     this->_mapHeight = height;
     this->_mapScale = scale;
@@ -1568,7 +1626,7 @@ Terrain::TerrainData::TerrainData()
 
 }
 
-Terrain::DetailMap::DetailMap(const char * detailMapPath, float size /*= 35*/)
+Terrain::DetailMap::DetailMap(const std::string& detailMapPath, float size /*= 35*/)
 {
     this->_detailMapSrc = detailMapPath;
     this->_detailMapSize = size;
@@ -1576,7 +1634,7 @@ Terrain::DetailMap::DetailMap(const char * detailMapPath, float size /*= 35*/)
 
 Terrain::DetailMap::DetailMap()
 {
-    _detailMapSrc = ""; 
+    _detailMapSrc = "";
     _detailMapSize = 35;
 }
 
@@ -1634,7 +1692,7 @@ bool Terrain::Triangle::getInsterctPoint(const Ray &ray, Vec3& interScetPoint)co
         return false;
 
     // Q
-    Vec3 Q; 
+    Vec3 Q;
     Vec3::cross(T,E1,&Q);
 
     // Calculate v and make sure u + v <= 1

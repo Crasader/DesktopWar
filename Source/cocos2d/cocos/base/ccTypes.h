@@ -63,7 +63,7 @@ struct CC_DLL Color3B
     bool operator!=(const Color4B& right) const;
     bool operator!=(const Color4F& right) const;
 
-    bool equals(const Color3B& other)
+    bool equals(const Color3B& other) const
     {
         return (*this == other);
     }
@@ -93,6 +93,14 @@ struct CC_DLL Color4B
     Color4B(GLubyte _r, GLubyte _g, GLubyte _b, GLubyte _a);
     explicit Color4B(const Color3B& color);
     explicit Color4B(const Color4F& color);
+    
+    inline void set(GLubyte _r, GLubyte _g, GLubyte _b, GLubyte _a)
+    {
+        r = _r;
+        g = _g;
+        b = _b;
+        a = _a;
+    }
 
     bool operator==(const Color4B& right) const;
     bool operator==(const Color3B& right) const;
@@ -136,7 +144,7 @@ struct CC_DLL Color4F
     bool operator!=(const Color3B& right) const;
     bool operator!=(const Color4B& right) const;
 
-    bool equals(const Color4F &other)
+    bool equals(const Color4F &other) const
     {
         return (*this == other);
     }
@@ -427,6 +435,19 @@ enum class CC_DLL TextHAlignment
     RIGHT
 };
 
+/**
+* @brief Possible GlyphCollection used by Label.
+*
+* Specify a collections of characters to be load when Label created.
+* Consider using DYNAMIC.
+*/
+enum class GlyphCollection {
+    DYNAMIC,
+    NEHE,
+    ASCII,
+    CUSTOM
+};
+
 // Types for animation in particle systems
 
 /** @struct T2F_Quad
@@ -535,7 +556,7 @@ public:
     TextHAlignment        _alignment;
     /// vertical alignment
     TextVAlignment _vertAlignment;
-    /// renering box
+    /// rendering box
     Size                  _dimensions;
     /// font color
     Color3B               _fontFillColor;
@@ -549,14 +570,19 @@ public:
 };
 
 /**
- * @brief Possible LabelEffect used by Label.
+ * @brief Effects used by `Label`
  *
  */
 enum class LabelEffect {
+    // FIXME: Covert them to bitwise. More than one effect should be supported
     NORMAL,
     OUTLINE,
     SHADOW,
     GLOW,
+    ITALICS,
+    BOLD,
+    UNDERLINE,
+    STRIKETHROUGH,
     ALL
 };
 

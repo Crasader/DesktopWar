@@ -27,7 +27,10 @@ THE SOFTWARE.
 #include "platform/CCPlatformConfig.h"
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
 
-#include "UIEditBoxImpl.h"
+#include <agile.h>
+#include <concrt.h>
+
+#include "ui/UIEditBox/UIEditBoxImpl.h"
 
 NS_CC_BEGIN
 
@@ -110,14 +113,11 @@ namespace ui {
         virtual void setVisible(bool visible);
         virtual void setContentSize(const Size& size);
         virtual void setAnchorPoint(const Vec2& anchorPoint);
-        virtual void visit(void);
+        virtual void draw(cocos2d::Renderer *renderer, cocos2d::Mat4 const &transform, uint32_t flags) override;
         virtual void doAnimationWhenKeyboardMove(float duration, float distance);
         virtual void openKeyboard();
         virtual void closeKeyboard();
         virtual void onEnter(void);
-    private:
-        Platform::String^ stringToPlatformString(std::string strSrc);
-        std::string PlatformStringTostring(Platform::String^ strSrc);
     private:
         
         EditBoxWinRT^ m_editBoxWinrt;

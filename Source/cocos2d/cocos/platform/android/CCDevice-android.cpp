@@ -31,10 +31,10 @@ THE SOFTWARE.
 #include <android/log.h>
 #include <jni.h>
 #include "base/ccTypes.h"
-#include "jni/DPIJni.h"
-#include "jni/Java_org_cocos2dx_lib_Cocos2dxHelper.h"
-#include "jni/JniHelper.h"
+#include "platform/android/jni/JniHelper.h"
 #include "platform/CCFileUtils.h"
+
+static const std::string helperClassName = "org/cocos2dx/lib/Cocos2dxHelper";
 
 NS_CC_BEGIN
 
@@ -43,7 +43,7 @@ int Device::getDPI()
     static int dpi = -1;
     if (dpi == -1)
     {
-        dpi = (int)getDPIJNI();
+        dpi = JniHelper::callStaticIntMethod(helperClassName, "getDPI");
     }
     return dpi;
 }
@@ -52,17 +52,17 @@ void Device::setAccelerometerEnabled(bool isEnabled)
 {
     if (isEnabled)
     {
-        enableAccelerometerJni();
+        JniHelper::callStaticVoidMethod(helperClassName, "enableAccelerometer");
     }
     else
     {
-        disableAccelerometerJni();
+        JniHelper::callStaticVoidMethod(helperClassName, "disableAccelerometer");
     }
 }
 
 void Device::setAccelerometerInterval(float interval)
 {
-	setAccelerometerIntervalJni(interval);
+    JniHelper::callStaticVoidMethod(helperClassName, "setAccelerometerInterval", interval);
 }
 
 class BitmapDC
@@ -80,10 +80,10 @@ public:
     {
     }
 
-    bool getBitmapFromJavaShadowStroke(	const char *text,
-    									int nWidth,
-    									int nHeight,
-    									Device::TextAlign eAlignMask,
+    bool getBitmapFromJavaShadowStroke( const char *text,
+                                        int nWidth,
+                                        int nHeight,
+                                        Device::TextAlign eAlignMask,
                       const FontDefinition& textDefinition )
     {
            JniMethodInfo methodInfo;
@@ -102,7 +102,7 @@ public:
            // requires this portion of the path to be omitted for assets inside the app package.
            if (fullPathOrFontName.find("assets/") == 0)
            {
-               fullPathOrFontName = fullPathOrFontName.substr(strlen("assets/"));	// Chop out the 'assets/' portion of the path.
+               fullPathOrFontName = fullPathOrFontName.substr(strlen("assets/"));   // Chop out the 'assets/' portion of the path.
            }
 
            /**create bitmap
@@ -168,10 +168,14 @@ Data Device::getTextureDataForText(const char * text, const FontDefinition& text
     return ret;
 }
 
-
 void Device::setKeepScreenOn(bool value)
 {
-    setKeepScreenOnJni(value);
+    JniHelper::callStaticVoidMethod(helperClassName, "setKeepScreenOn", value);
+}
+
+void Device::vibrate(float duration)
+{
+    JniHelper::callStaticVoidMethod(helperClassName, "vibrate", duration);
 }
 
 NS_CC_END

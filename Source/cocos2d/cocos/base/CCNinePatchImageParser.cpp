@@ -21,7 +21,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
 ****************************************************************************/
-#include "CCNinePatchImageParser.h"
+#include "base/CCNinePatchImageParser.h"
 #include "platform/CCImage.h"
 #include "base/CCDirector.h"
 
@@ -184,10 +184,7 @@ Rect NinePatchImageParser::parseCapInset() const
                          verticalLine.y - verticalLine.x);
     }
     
-    capInsets = Rect(capInsets.origin.x / CC_CONTENT_SCALE_FACTOR(),
-                     capInsets.origin.y / CC_CONTENT_SCALE_FACTOR(),
-                     capInsets.size.width / CC_CONTENT_SCALE_FACTOR(),
-                     capInsets.size.height / CC_CONTENT_SCALE_FACTOR());
+    capInsets = CC_RECT_PIXELS_TO_POINTS(capInsets);
     return capInsets;
 }
 

@@ -24,8 +24,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 
+#include "platform/CCPlatformConfig.h"
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
+
 #include "network/HttpCookie.h"
-#include "HttpConnection-winrt.h"
+#include "network/HttpConnection-winrt.h"
 
 NS_CC_BEGIN
 
@@ -739,3 +742,5 @@ namespace network {
 }
 
 NS_CC_END
+
+#endif // #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)

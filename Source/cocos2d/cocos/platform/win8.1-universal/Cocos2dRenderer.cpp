@@ -18,8 +18,8 @@
 
 #include "Cocos2dRenderer.h"
 #include "AppDelegate.h"
-#include "CCGLViewImpl-winrt.h"
-#include "CCApplication.h"
+#include "platform/winrt/CCGLViewImpl-winrt.h"
+#include "platform/CCApplication.h"
 #include "cocos2d.h"
 #include "renderer/CCTextureCache.h"
 
@@ -32,9 +32,7 @@ using namespace Platform;
 using namespace Windows::UI::Core;
 using namespace Windows::UI::Xaml::Controls;
 using namespace Windows::Graphics::Display;
-
-USING_NS_CC;
-
+using namespace cocos2d;
 
 Cocos2dRenderer::Cocos2dRenderer(int width, int height, float dpi, DisplayOrientations orientation, CoreDispatcher^ dispatcher, Panel^ panel)
     : m_app(nullptr)
@@ -58,7 +56,7 @@ void Cocos2dRenderer::Resume()
     auto director = cocos2d::Director::getInstance();
     auto glview = director->getOpenGLView();
 
-    if (!glview) 
+    if (!glview)
     {
         GLViewImpl* glview = GLViewImpl::create("Test Cpp");
         glview->setDispatcher(m_dispatcher.Get());
@@ -153,6 +151,3 @@ void Cocos2dRenderer::QueueKeyboardEvent(WinRTKeyboardEventType type, Windows::U
 {
 	GLViewImpl::sharedOpenGLView()->QueueWinRTKeyboardEvent(type, args);
 }
-
-
-

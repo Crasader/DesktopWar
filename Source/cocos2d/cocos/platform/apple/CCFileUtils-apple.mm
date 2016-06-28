@@ -25,7 +25,9 @@ THE SOFTWARE.
 ****************************************************************************/
 #import <Foundation/Foundation.h>
 
-#include "CCFileUtils-apple.h"
+#include "platform/apple/CCFileUtils-apple.h"
+
+#include <ftw.h>
 
 #include <string>
 #include <stack>
@@ -58,7 +60,8 @@ static void addItemToArray(id item, ValueVector& array)
         const char* numType = [num objCType];
         if(num == (void*)kCFBooleanFalse || num == (void*)kCFBooleanTrue)
         {
-            array.push_back(Value([num boolValue]));
+            bool v = [num boolValue];
+            array.push_back(Value(v));
         }
         else if(strcmp(numType, @encode(float)) == 0)
         {
@@ -188,7 +191,8 @@ static void addValueToDict(id nsKey, id nsValue, ValueMap& dict)
         const char* numType = [num objCType];
         if(num == (void*)kCFBooleanFalse || num == (void*)kCFBooleanTrue)
         {
-             dict[key] = Value([num boolValue]);
+             bool v = [num boolValue];
+             dict[key] = Value(v);
         }
         else if(strcmp(numType, @encode(float)) == 0)
         {
@@ -392,6 +396,31 @@ bool FileUtilsApple::isFileExistInternal(const std::string& filePath) const
     return ret;
 }
 
+static int unlink_cb(const char *fpath, const struct stat *sb, int typeflag, struct FTW *ftwbuf)
+{
+    auto ret = remove(fpath);
+    if (ret)
+    {
+        log("Fail to remove: %s ",fpath);
+    }
+    
+    return ret;
+}
+
+bool FileUtilsApple::removeDirectory(const std::string& path)
+{
+    if (path.size() > 0 && path[path.size() - 1] != '/')
+    {
+        CCLOGERROR("Fail to remove directory, path must termniate with '/': %s", path.c_str());
+        return false;
+    }
+
+    if (nftw(path.c_str(),unlink_cb, 64, FTW_DEPTH | FTW_PHYS))
+        return false;
+    else
+        return true;
+}
+
 std::string FileUtilsApple::getFullPathForDirectoryAndFilename(const std::string& directory, const std::string& filename) const
 {
     if (directory[0] != '/')
@@ -439,9 +468,9 @@ ValueMap FileUtilsApple::getValueMapFromData(const char* filedata, int filesize)
     NSPropertyListFormat format;
     NSError* error;
     NSDictionary* dict = [NSPropertyListSerialization propertyListWithData:file options:NSPropertyListImmutable format:&format error:&error];
-    
+
     ValueMap ret;
-    
+
     if (dict != nil)
     {
         for (id key in [dict allKeys])
@@ -453,23 +482,43 @@ ValueMap FileUtilsApple::getValueMapFromData(const char* filedata, int filesize)
     return ret;
 }
 
-bool FileUtilsApple::writeToFile(ValueMap& dict, const std::string &fullPath)
+bool FileUtilsApple::writeToFile(const ValueMap& dict, const std::string &fullPath)
 {
+    return writeValueMapToFile(dict, fullPath);
+}
+
+bool FileUtils::writeValueMapToFile(const ValueMap& dict, const std::string& fullPath)
+{
+    
     //CCLOG("iOS||Mac Dictionary %d write to file %s", dict->_ID, fullPath.c_str());
     NSMutableDictionary *nsDict = [NSMutableDictionary dictionary];
-
+    
     for (auto iter = dict.begin(); iter != dict.end(); ++iter)
     {
         addObjectToNSDict(iter->first, iter->second, nsDict);
     }
-
+    
     NSString *file = [NSString stringWithUTF8String:fullPath.c_str()];
     // do it atomically
     [nsDict writeToFile:file atomically:YES];
-
+    
     return true;
 }
 
+bool FileUtils::writeValueVectorToFile(const ValueVector& vecData, const std::string& fullPath)
+{
+    NSString* path = [NSString stringWithUTF8String:fullPath.c_str()];
+    NSMutableArray* array = [NSMutableArray array];
+    
+    for (const auto &e : vecData)
+    {
+        addObjectToNSArray(e, array);
+    }
+    
+    [array writeToFile:path atomically:YES];
+    
+    return true;
+}
 ValueVector FileUtilsApple::getValueVectorFromFile(const std::string& filename)
 {
     //    NSString* pPath = [NSString stringWithUTF8String:pFileName];
@@ -492,4 +541,3 @@ ValueVector FileUtilsApple::getValueVectorFromFile(const std::string& filename)
 }
 
 NS_CC_END
-

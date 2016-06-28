@@ -57,7 +57,7 @@ class CC_DLL GLViewImpl : public GLView
 {
 public:
     static GLViewImpl* create(const std::string& viewName);
-    static GLViewImpl* createWithRect(const std::string& viewName, Rect size, float frameZoomFactor = 1.0f);
+    static GLViewImpl* createWithRect(const std::string& viewName, Rect size, float frameZoomFactor = 1.0f, bool resizable = false);
     static GLViewImpl* createWithFullScreen(const std::string& viewName);
     static GLViewImpl* createWithFullScreen(const std::string& viewName, const GLFWvidmode &videoMode, GLFWmonitor *monitor);
 
@@ -72,7 +72,7 @@ public:
 
     virtual void setViewPortInPoints(float x , float y , float w , float h) override;
     virtual void setScissorInPoints(float x , float y , float w , float h) override;
-
+    virtual Rect getScissorRect() const override;
 
     bool windowShouldClose() override;
     void pollEvents() override;
@@ -108,14 +108,14 @@ public:
 #endif /* (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) */
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
-    id getCocoaWindow() { return glfwGetCocoaWindow(_mainWindow); }
+    id getCocoaWindow() override { return glfwGetCocoaWindow(_mainWindow); }
 #endif // #if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
 
 protected:
-    GLViewImpl();
+    GLViewImpl(bool initglfw = true);
     virtual ~GLViewImpl();
 
-    bool initWithRect(const std::string& viewName, Rect rect, float frameZoomFactor);
+    bool initWithRect(const std::string& viewName, Rect rect, float frameZoomFactor, bool resizable);
     bool initWithFullScreen(const std::string& viewName);
     bool initWithFullscreen(const std::string& viewname, const GLFWvidmode &videoMode, GLFWmonitor *monitor);
 
@@ -146,6 +146,8 @@ protected:
     GLFWwindow* _mainWindow;
     GLFWmonitor* _monitor;
 
+    std::string _glfwError;
+
     float _mouseX;
     float _mouseY;
 
@@ -153,7 +155,7 @@ protected:
 
 private:
     CC_DISALLOW_COPY_AND_ASSIGN(GLViewImpl);
-
+//Locke
 public:
 	virtual void closeWindow();
 

@@ -25,7 +25,7 @@ namespace Genius
 		cocos2d::Node*					m_pAvatarRoot;
 		cocostudio::Armature*			m_pBodyArmature;
 		UIBar*									m_pLifeBar;
-		Label*									m_pDebugLabel;
+		cocos2d::Label*					m_pDebugLabel;
 		int										m_curAction;
 
 	public:

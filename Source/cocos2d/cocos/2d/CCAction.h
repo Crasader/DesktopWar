@@ -30,10 +30,16 @@ THE SOFTWARE.
 
 #include "base/CCRef.h"
 #include "math/CCGeometry.h"
+#include "base/CCScriptSupport.h"
 
 NS_CC_BEGIN
 
 class Node;
+
+enum {
+    kActionUpdate
+};
+
 /**
  * @addtogroup actions
  * @{
@@ -63,9 +69,9 @@ public:
         return nullptr;
     }
 
-    /** Returns a new action that performs the exactly the reverse action. 
+    /** Returns a new action that performs the exact reverse of the action. 
      *
-     * @return A new action that performs the exactly the reverse action.
+     * @return A new action that performs the exact reverse of the action.
      * @js NA
      */
     virtual Action* reverse() const
@@ -143,6 +149,16 @@ public:
      * @param tag Used to identify the action easily.
      */
     inline void setTag(int tag) { _tag = tag; }
+    /** Returns a flag field that is used to group the actions easily.
+     *
+     * @return A tag.
+     */
+    inline unsigned int getFlags() const { return _flags; }
+    /** Changes the flag field that is used to group the actions easily.
+     *
+     * @param tag Used to identify the action easily.
+     */
+    inline void setFlags(unsigned int flags) { _flags = flags; }
 
 CC_CONSTRUCTOR_ACCESS:
     Action();
@@ -159,7 +175,12 @@ protected:
     Node    *_target;
     /** The action tag. An identifier of the action. */
     int     _tag;
+    /** The action flag field. To categorize action into certain groups.*/
+    unsigned int _flags;
 
+#if CC_ENABLE_SCRIPT_BINDING
+    ccScriptType _scriptType;         ///< type of script binding, lua or javascript
+#endif
 private:
     CC_DISALLOW_COPY_AND_ASSIGN(Action);
 };
@@ -209,7 +230,6 @@ CC_CONSTRUCTOR_ACCESS:
 protected:
     //! Duration in seconds.
     float _duration;
-
 private:
     CC_DISALLOW_COPY_AND_ASSIGN(FiniteTimeAction);
 };
@@ -219,7 +239,7 @@ class RepeatForever;
 
 /** @class Speed
  * @brief Changes the speed of an action, making it take longer (speed>1)
- * or less (speed<1) time.
+ * or shorter (speed<1) time.
  * Useful to simulate 'slow motion' or 'fast forward' effect.
  * @warning This action can't be Sequenceable because it is not an IntervalAction.
  */
@@ -289,7 +309,7 @@ private:
  * @brief Follow is an action that "follows" a node.
  * Eg:
  * @code
- * layer->runAction(Follow::actionWithTarget(hero));
+ * layer->runAction(Follow::create(hero));
  * @endcode
  * Instead of using Camera as a "follower", use this action instead.
  * @since v0.99.2

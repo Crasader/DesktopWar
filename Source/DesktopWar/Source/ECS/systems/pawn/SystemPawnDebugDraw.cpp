@@ -8,6 +8,7 @@
 #include "2Ddef.h"
 #include "RoleDataMgr.h"
 
+USING_NS_CC;
 using namespace Genius;
 
 void SystemPawnDebugDraw::Initialize()

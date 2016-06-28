@@ -54,11 +54,11 @@ public:
     @brief    Run the message loop.
     */
     int run();
-
+//Locke
 	int geniusRun();
 
     /**
-    @brief    Get current applicaiton instance.
+    @brief    Get current application instance.
     @return Current application instance pointer.
     */
     static Application* getInstance();
@@ -67,16 +67,21 @@ public:
     CC_DEPRECATED_ATTRIBUTE static Application* sharedApplication();
     
     /* override functions */
-    virtual void setAnimationInterval(double interval);
+    virtual void setAnimationInterval(float interval);
     virtual LanguageType getCurrentLanguage();
 
-	virtual const char * getCurrentLanguageCode();
+    virtual const char * getCurrentLanguageCode();
     
     /**
      @brief Get target platform
      */
     virtual Platform getTargetPlatform();
     
+    /**
+    @brief Get application version
+    */
+    virtual std::string getVersion() override;
+
     /**
      @brief Open url in default browser
      @param String with url to open.
@@ -102,7 +107,7 @@ public:
     {
         return _startupScriptFilename;
     }
-
+//Locke
 	void closeWindow();
 
 protected:

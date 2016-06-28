@@ -24,18 +24,17 @@ THE SOFTWARE.
  ****************************************************************************/
 package org.cocos2dx.lib;
 
+import android.content.Context;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
-import android.content.Context;
-import android.media.AudioManager;
-import android.media.SoundPool;
-import android.util.Log;
-
-import com.chukong.cocosplay.client.CocosPlayClient;
 
 public class Cocos2dxSound {
     // ===========================================================
@@ -97,10 +96,6 @@ public class Cocos2dxSound {
     }
 
     public int preloadEffect(final String path) {
-        if (CocosPlayClient.isEnabled() && !CocosPlayClient.isDemo()) {
-            CocosPlayClient.updateAssets(path);
-        }
-        CocosPlayClient.notifyFileLoaded(path);
         Integer soundID = this.mPathSoundIDMap.get(path);
 
         if (soundID == null) {
