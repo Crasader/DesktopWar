@@ -1,0 +1,493 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3B0B58B1-2734-488E-A542-ECEC11EB2455}</ProjectGuid>
+    <RootNamespace>DesktopWar</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0'">v120</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0'">v120</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\cocos2d-x\cocos\2d\cocos2dx.props" />
+    <Import Project="..\..\cocos2d-x\cocos\2d\cocos2d_headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\cocos2d-x\cocos\2d\cocos2dx.props" />
+    <Import Project="..\..\cocos2d-x\cocos\2d\cocos2d_headers.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\temp\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration).win32\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LibraryPath>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>$(IntDir)game.tlb</TypeLibraryName>
+      <HeaderFileName>game.h</HeaderFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <InterfaceIdentifierFileName>game_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>game_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\tinyxml;$(ProjectDir)..\..\Genius\data;$(ProjectDir)..\..\Genius\common;$(ProjectDir)..\..\Genius;$(EngineRoot);$(EngineRoot)cocos;$(EngineRoot)external\spidermonkey\include\win32;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;STRICT;_DEBUG;XP_WIN;JS_HAVE___INTN;JS_INTPTR_TYPE=int;COCOS2D_DEBUG=1;COCOS2D_JAVASCRIPT=1;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_USRJSSTATIC;_USRLIBSIMSTATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4267;4251;4244;4800;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\include;$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>libcurl_imp.lib;mozjs-33.lib;ws2_32.lib;sqlite3.lib;websockets.lib;tinyxml.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup>
+    <CustomBuildStep>
+      <Command>xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\js-bindings\script" "$(OutDir)\script" /D /E /I /F /Y
+xcopy "$(ProjectDir)..\..\..\src" "$(OutDir)\src" /D /E /I /F /Y
+xcopy "$(ProjectDir)..\..\..\res" "$(OutDir)\res" /D /E /I /F /Y
+copy "$(ProjectDir)..\..\..\main.js" "$(OutDir)\" /Y
+copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
+      <Outputs>$(TargetName).cab</Outputs>
+      <Inputs>$(TargetFileName)</Inputs>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>$(IntDir)game.tlb</TypeLibraryName>
+      <HeaderFileName>game.h</HeaderFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <InterfaceIdentifierFileName>game_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>game_p.c</ProxyFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\Classes;$(EngineRoot);$(EngineRoot)cocos;$(EngineRoot)external\spidermonkey\include\win32;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;STRICT;NDEBUG;XP_WIN;JS_HAVE___INTN;JS_INTPTR_TYPE=int;COCOS2D_JAVASCRIPT=1;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_USRJSSTATIC;_USRLIBSIMSTATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <DisableSpecificWarnings>4267;4251;4244;4800;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\include;$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>libcurl_imp.lib;mozjs-33.lib;ws2_32.lib;sqlite3.lib;websockets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Genius\App\AppStatus\AppStateLaunch.h" />
+    <ClInclude Include="..\..\Genius\App\AppStatus\AppStateLoading.h" />
+    <ClInclude Include="..\..\Genius\App\AppStatus\AppState.h" />
+    <ClInclude Include="..\..\Genius\App\AppStatus\AppStateBattle.h" />
+    <ClInclude Include="..\..\Genius\app\Config.h" />
+    <ClInclude Include="..\..\Genius\app\GameDefine.h" />
+    <ClInclude Include="..\..\Genius\app\GameUtils.h" />
+    <ClInclude Include="..\..\Genius\App\LoadingManager.h" />
+    <ClInclude Include="..\..\Genius\App\WarApp.h" />
+    <ClInclude Include="..\..\Genius\bullet\BulletDefines.h" />
+    <ClInclude Include="..\..\Genius\common\Performance.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAgent.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAnimArrow.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAnimBase.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAnimBomb.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAnimEgg.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletDamageNone.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletDamageScope.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletDamageSingle.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletDebugDraw.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComAnimation.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComBezierMovement.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComBoxCollider.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComColliderHandler.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComDelayTrackMovement.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComParticle.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComPosition.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComTarget.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComTeam.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComVelocity.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnAgent.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnAnim.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnBevtree.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnDebugDraw.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnDirection.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnFight.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnNavigation.h" />
+    <ClInclude Include="..\..\Genius\ECS\core\BitSize.h" />
+    <ClInclude Include="..\..\Genius\ECS\core\Component.h" />
+    <ClInclude Include="..\..\Genius\ECS\core\ComponentMapper.h" />
+    <ClInclude Include="..\..\Genius\ECS\core\ComponentType.h" />
+    <ClInclude Include="..\..\Genius\ECS\core\ComponentTypeManager.h" />
+    <ClInclude Include="..\..\Genius\ECS\core\ECSWorld.h" />
+    <ClInclude Include="..\..\Genius\ECS\core\Entity.h" />
+    <ClInclude Include="..\..\Genius\ECS\core\EntityManager.h" />
+    <ClInclude Include="..\..\Genius\ECS\core\EntityProcessingSystem.h" />
+    <ClInclude Include="..\..\Genius\ECS\core\EntitySystem.h" />
+    <ClInclude Include="..\..\Genius\ECS\core\GroupManager.h" />
+    <ClInclude Include="..\..\Genius\ECS\core\ImmutableBag.h" />
+    <ClInclude Include="..\..\Genius\ECS\core\SystemBitManager.h" />
+    <ClInclude Include="..\..\Genius\ECS\core\SystemManager.h" />
+    <ClInclude Include="..\..\Genius\ECS\core\TagManager.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletAnim.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletArrowAnim.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletBombAnim.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageNone.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageScope.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageSingle.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletDebugDraw.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletEggAnim.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletTarget.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemBezierMovement.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemBoxCollider.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemDelayTrackMovement.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemMovement.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemSimpleAnim.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\game\HumanGameControlSystem.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\game\MonsterGameControlSystem.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnNavigation.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnAnim.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnBevtree.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnDirection.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnFight.h" />
+    <ClInclude Include="..\..\Genius\entity\EntityCreators.h" />
+    <ClInclude Include="..\..\Genius\gfx\GfxUtils.h" />
+    <ClInclude Include="..\..\Genius\gfx\RollNumberLabel.h" />
+    <ClInclude Include="..\..\Genius\pawn\action\ActionDefine.h" />
+    <ClInclude Include="..\..\Genius\pawn\action\ActionHandler.h" />
+    <ClInclude Include="..\..\Genius\pawn\action\PawnAction.h" />
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionAttackFar.h" />
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionAttackNear.h" />
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionChangeDir.h" />
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionDie.h" />
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionFactory.h" />
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionIdle.h" />
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionMove.h" />
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionSkill1.h" />
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionSkill2.h" />
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionSkill3.h" />
+    <ClInclude Include="..\..\Genius\pawn\anim\animFSM\AnimFSM.h" />
+    <ClInclude Include="..\..\Genius\pawn\anim\animFSM\AnimFSMSimple.h" />
+    <ClInclude Include="..\..\Genius\pawn\anim\animSet\AnimSet.h" />
+    <ClInclude Include="..\..\Genius\pawn\anim\animSet\AnimSetSimple.h" />
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimState.h" />
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateAttackFar.h" />
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateAttackNear.h" />
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateDie.h" />
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateIdle.h" />
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateMove.h" />
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateSkill1.h" />
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateSkill2.h" />
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateSkill3.h" />
+    <ClInclude Include="..\..\Genius\pawn\bevtree\BehaviorCreators.h" />
+    <ClInclude Include="..\..\Genius\pawn\bevtree\BehaviorsAndPreconditions.h" />
+    <ClInclude Include="..\..\Genius\pawn\bevtree\PawnBehaviors.h" />
+    <ClInclude Include="..\..\Genius\pawn\bevtree\PawnBHTree.h" />
+    <ClInclude Include="..\..\Genius\pawn\bevtree\PawnPrecondition.h" />
+    <ClInclude Include="..\..\Genius\pawn\PawnBlackboard.h" />
+    <ClInclude Include="..\..\Genius\pawn\PawnDefines.h" />
+    <ClInclude Include="WinWrapper.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="..\..\Genius\AI\AI.h" />
+    <ClInclude Include="..\..\Genius\AI\AIBaseDef.h" />
+    <ClInclude Include="..\..\Genius\AI\BehaviorTree\Behavior.h" />
+    <ClInclude Include="..\..\Genius\AI\BehaviorTree\BehaviorLoader.h" />
+    <ClInclude Include="..\..\Genius\AI\BehaviorTree\BehaviorTree.h" />
+    <ClInclude Include="..\..\Genius\AI\BehaviorTree\Precondition.h" />
+    <ClInclude Include="..\..\Genius\common\2Ddef.h" />
+    <ClInclude Include="..\..\Genius\common\AnyData.h" />
+    <ClInclude Include="..\..\Genius\common\GeniusDef.h" />
+    <ClInclude Include="..\..\Genius\common\Logger.h" />
+    <ClInclude Include="..\..\Genius\common\RandUtility.h" />
+    <ClInclude Include="..\..\Genius\common\Singleton.h" />
+    <ClInclude Include="..\..\Genius\common\TabFile.h" />
+    <ClInclude Include="..\..\Genius\common\TimeSystem.h" />
+    <ClInclude Include="..\..\Genius\data\AnimDataMgr.h" />
+    <ClInclude Include="..\..\Genius\data\BuffActionDataMgr.h" />
+    <ClInclude Include="..\..\Genius\data\BuffDataMgr.h" />
+    <ClInclude Include="..\..\Genius\data\BulletDataMgr.h" />
+    <ClInclude Include="..\..\Genius\data\DBSystem.h" />
+    <ClInclude Include="..\..\Genius\data\IDataManager.h" />
+    <ClInclude Include="..\..\Genius\data\RoleDataMgr.h" />
+    <ClInclude Include="..\..\Genius\data\SkillDataMgr.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\GamePlayCom.h" />
+    <ClInclude Include="..\..\Genius\ECS\ecs.h" />
+    <ClInclude Include="..\..\Genius\ECS\EntityEvents.h" />
+    <ClInclude Include="..\..\Genius\event\Event.h" />
+    <ClInclude Include="..\..\Genius\event\EventManager.h" />
+    <ClInclude Include="..\..\Genius\GamePlay.h" />
+    <ClInclude Include="..\..\Genius\gfx\BulletArrow.h" />
+    <ClInclude Include="..\..\Genius\gfx\CocosApp.h" />
+    <ClInclude Include="..\..\Genius\gfx\FloatLabel.h" />
+    <ClInclude Include="..\..\Genius\gfx\gfx.h" />
+    <ClInclude Include="..\..\Genius\gfx\ParticleTail.h" />
+    <ClInclude Include="..\..\Genius\gfx\SceneManager.h" />
+    <ClInclude Include="..\..\Genius\gfx\SystemStatusPanel.h" />
+    <ClInclude Include="..\..\Genius\gfx\UIBar.h" />
+    <ClInclude Include="..\..\Genius\PawnDefines.h" />
+    <ClInclude Include="..\..\Genius\skill\Buff.h" />
+    <ClInclude Include="..\..\Genius\skill\BuffAction.h" />
+    <ClInclude Include="..\..\Genius\skill\BuffSet.h" />
+    <ClInclude Include="..\..\Genius\skill\BuffSystem.h" />
+    <ClInclude Include="..\..\Genius\skill\Skill.h" />
+    <ClInclude Include="..\..\Genius\skill\SkillSet.h" />
+    <ClInclude Include="..\..\Genius\skill\SkillSystem.h" />
+    <ClInclude Include="..\..\Genius\skill\UserActions.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Genius\App\AppStatus\AppStateLaunch.cpp" />
+    <ClCompile Include="..\..\Genius\App\AppStatus\AppStateLoading.cpp" />
+    <ClCompile Include="..\..\Genius\App\AppStatus\AppState.cpp" />
+    <ClCompile Include="..\..\Genius\App\AppStatus\AppStateBattle.cpp" />
+    <ClCompile Include="..\..\Genius\app\GameDefine.cpp" />
+    <ClCompile Include="..\..\Genius\App\LoadingManager.cpp" />
+    <ClCompile Include="..\..\Genius\App\WarApp.cpp" />
+    <ClCompile Include="..\..\Genius\common\Performance.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAgent.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAnimArrow.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAnimBase.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAnimBomb.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAnimEgg.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletDamageNone.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletDamageScope.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletDamageSingle.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletDebugDraw.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComAnimation.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComBezierMovement.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComBoxCollider.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComColliderHandler.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComDelayTrackMovement.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComParticle.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComPosition.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComTarget.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComTeam.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComVelocity.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnAgent.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnAnim.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnBevtree.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnDebugDraw.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnDirection.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnFight.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnNavigation.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\core\Component.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\core\ComponentType.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\core\ComponentTypeManager.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\core\ECSWorld.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\core\Entity.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\core\EntityManager.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\core\EntityProcessingSystem.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\core\EntitySystem.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\core\GroupManager.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\core\SystemBitManager.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\core\SystemManager.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\core\TagManager.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletAnim.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletArrowAnim.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletBombAnim.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageNone.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageScope.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageSingle.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletDebugDraw.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletEggAnim.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletTarget.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemBezierMovement.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemBoxCollider.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemDelayTrackMovement.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemMovement.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemSimpleAnim.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\game\HumanGameControlSystem.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\game\MonsterGameControlSystem.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnNavigation.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnAnim.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnBevtree.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnDirection.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnFight.cpp" />
+    <ClCompile Include="..\..\Genius\entity\EntityCreators.cpp" />
+    <ClCompile Include="..\..\Genius\gfx\GfxUtils.cpp" />
+    <ClCompile Include="..\..\Genius\gfx\RollNumberLabel.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\action\PawnAction.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionAttackFar.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionAttackNear.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionChangeDir.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionDie.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionFactory.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionIdle.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionMove.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionSkill1.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionSkill2.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionSkill3.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\anim\animFSM\AnimFSM.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\anim\animFSM\AnimFSMSimple.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\anim\animSet\AnimSet.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\anim\animSet\AnimSetSimple.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimState.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateAttackFar.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateAttackNear.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateDie.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateIdle.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateMove.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateSkill1.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateSkill2.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateSkill3.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\bevtree\BehaviorCreators.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\bevtree\PawnBehaviors.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\bevtree\PawnBHTree.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\bevtree\PawnPrecondition.cpp" />
+    <ClCompile Include="..\..\Genius\pawn\PawnBlackboard.cpp" />
+    <ClCompile Include="WinWrapper.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="..\..\Genius\AI\BehaviorTree\Behavior.cpp" />
+    <ClCompile Include="..\..\Genius\AI\BehaviorTree\BehaviorLoader.cpp" />
+    <ClCompile Include="..\..\Genius\AI\BehaviorTree\BehaviorTree.cpp" />
+    <ClCompile Include="..\..\Genius\AI\BehaviorTree\Precondition.cpp" />
+    <ClCompile Include="..\..\Genius\common\Logger.cpp" />
+    <ClCompile Include="..\..\Genius\common\TabFile.cpp" />
+    <ClCompile Include="..\..\Genius\common\TimeSystem.cpp" />
+    <ClCompile Include="..\..\Genius\data\AnimDataMgr.cpp" />
+    <ClCompile Include="..\..\Genius\data\BuffActionDataMgr.cpp" />
+    <ClCompile Include="..\..\Genius\data\BuffDataMgr.cpp" />
+    <ClCompile Include="..\..\Genius\data\BulletDataMg.cpp" />
+    <ClCompile Include="..\..\Genius\data\DBSystem.cpp" />
+    <ClCompile Include="..\..\Genius\data\IDataManager.cpp" />
+    <ClCompile Include="..\..\Genius\data\RoleDataMgr.cpp" />
+    <ClCompile Include="..\..\Genius\data\SkillDataMgr.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\GamePlayCom.cpp" />
+    <ClCompile Include="..\..\Genius\event\EventManager.cpp" />
+    <ClCompile Include="..\..\Genius\GamePlay.cpp" />
+    <ClCompile Include="..\..\Genius\gfx\BulletArrow.cpp" />
+    <ClCompile Include="..\..\Genius\gfx\CocosApp.cpp" />
+    <ClCompile Include="..\..\Genius\gfx\FloatLabel.cpp" />
+    <ClCompile Include="..\..\Genius\gfx\ParticleTail.cpp" />
+    <ClCompile Include="..\..\Genius\gfx\SceneManager.cpp" />
+    <ClCompile Include="..\..\Genius\gfx\SystemStatusPanel.cpp" />
+    <ClCompile Include="..\..\Genius\gfx\UIBar.cpp" />
+    <ClCompile Include="..\..\Genius\skill\Buff.cpp" />
+    <ClCompile Include="..\..\Genius\skill\BuffAction.cpp" />
+    <ClCompile Include="..\..\Genius\skill\BuffSet.cpp" />
+    <ClCompile Include="..\..\Genius\skill\BuffSystem.cpp" />
+    <ClCompile Include="..\..\Genius\skill\Skill.cpp" />
+    <ClCompile Include="..\..\Genius\skill\SkillSet.cpp" />
+    <ClCompile Include="..\..\Genius\skill\SkillSystem.cpp" />
+    <ClCompile Include="..\..\Genius\skill\UserActions.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DesktopWar.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\game.ico" />
+    <Image Include="res\Genius.ico" />
+    <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\cocos2d-x\cocos\scripting\js-bindings\proj.win32\libjscocos2d.vcxproj">
+      <Project>{39379840-825a-45a0-b363-c09ffef864bd}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

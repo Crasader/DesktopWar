@@ -1,0 +1,1031 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Genius">
+      <UniqueIdentifier>{140986a8-5419-416c-a825-92714171e476}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Base">
+      <UniqueIdentifier>{eaa7c41c-8149-4fdc-9cf1-a06aa0d0ac88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic">
+      <UniqueIdentifier>{5ae185eb-89bc-4587-92dc-6996d3a9ae04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Base\Common">
+      <UniqueIdentifier>{95ef0653-1026-40c6-8115-2ccb46717e29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Base\Data">
+      <UniqueIdentifier>{cb746167-e71d-49d2-af06-9cb3702d2a5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Base\Event">
+      <UniqueIdentifier>{7bcd9087-3c85-436b-9e59-28c605e9b14c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Base\Gfx">
+      <UniqueIdentifier>{e6c17569-760f-4abe-b856-ec31353c34e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Base\Win32">
+      <UniqueIdentifier>{0ea839f1-b153-4e76-810c-0e17e1ed5a7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\AI">
+      <UniqueIdentifier>{159a0c37-fa33-4ab4-b12e-b44b3f6169b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\App">
+      <UniqueIdentifier>{ad4dc1ef-3909-4cb9-8913-dffe5c80580b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\Bullet">
+      <UniqueIdentifier>{95070cb4-5cec-4ce9-a9c9-feee4bfd4525}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\ESC">
+      <UniqueIdentifier>{85dce1c4-6430-4af7-89b0-5d0967d1c1d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\GamePlay">
+      <UniqueIdentifier>{d28ef591-bed7-4a3d-b3c1-1a9955cd841b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\Pawn">
+      <UniqueIdentifier>{8c235cdc-833f-47ab-909e-477d4558da2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\Skill">
+      <UniqueIdentifier>{2c12b8c7-eedb-42a6-9731-e47afa4afbce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\AI\BevTree">
+      <UniqueIdentifier>{0e1fcfca-d6d1-4440-a9ef-59e1c8dc0130}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\ESC\Core">
+      <UniqueIdentifier>{82228b30-966f-420e-bf01-34ccdfe88463}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\ESC\User">
+      <UniqueIdentifier>{3f9c4f58-3f41-42fd-9eeb-4dffc53953df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\ESC\Core\Component">
+      <UniqueIdentifier>{ac5a927d-f3c8-48d0-8494-e20c66807dff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\ESC\Core\Entity">
+      <UniqueIdentifier>{7382ebc2-1966-402b-b631-f07209f25d32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\ESC\Core\System">
+      <UniqueIdentifier>{2fb2aa39-4d95-4d8d-83e8-10081a5dab1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\ESC\User\Component">
+      <UniqueIdentifier>{66a0ea82-c130-4e4c-90dc-f25173936fd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\ESC\User\System">
+      <UniqueIdentifier>{9e1c2540-70c1-4186-8b85-421d2d183858}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\ESC\User\Event">
+      <UniqueIdentifier>{95a3e82f-f69b-4596-aa29-e58971735386}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\ESC\User\System\Bullet">
+      <UniqueIdentifier>{cbd972bc-46f1-4fa7-83eb-03decd549245}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\ESC\User\System\Common">
+      <UniqueIdentifier>{8a15b924-ebfb-4a55-82e6-a3d8809a2e1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\ESC\User\System\GamePlay">
+      <UniqueIdentifier>{a2863864-81b6-4c33-b5e5-f790f1ee7238}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\ESC\User\System\Pawn">
+      <UniqueIdentifier>{2ed719fd-bc09-4bf2-825f-991dc37accbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\Entity">
+      <UniqueIdentifier>{e7d0cde6-cc3a-4d0a-a1ba-143a973802f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\Pawn\Anim">
+      <UniqueIdentifier>{56818f6b-2930-47f9-8b17-0e54f115e109}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\Pawn\Anim\AnimFSM">
+      <UniqueIdentifier>{3eae6c33-2d1e-44d3-9499-46220a2ae3b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\Pawn\Anim\AnimState">
+      <UniqueIdentifier>{dd631534-adfa-429e-9900-26ed33010005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\Pawn\Anim\AnimSet">
+      <UniqueIdentifier>{f45cb523-9547-4d78-8ec4-8a58cacb5c95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\App\AppStatus">
+      <UniqueIdentifier>{20b7be3e-bd6e-453e-8b3b-614cc98f88c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\ESC\User\Component\common">
+      <UniqueIdentifier>{23fb624f-8964-474f-8f5c-23244a9f4fd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\ESC\User\Component\pawn">
+      <UniqueIdentifier>{1f3d725e-1d9c-4b3d-8f0e-39ee43f9351e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\ESC\User\Component\bullet">
+      <UniqueIdentifier>{b670c9a9-86d4-4efa-beb4-74e5a3caeb12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\Pawn\Action">
+      <UniqueIdentifier>{c60cf0d0-68a7-4b1a-b844-b26c2794519c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\Pawn\BevTree">
+      <UniqueIdentifier>{837e58ec-1634-40ab-84dc-9e7e9b4f037f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\Pawn\Action\base">
+      <UniqueIdentifier>{d32ef041-86a0-40a1-94d2-73000950c662}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Genius\common\2Ddef.h">
+      <Filter>Genius\Base\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\common\AnyData.h">
+      <Filter>Genius\Base\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\common\GeniusDef.h">
+      <Filter>Genius\Base\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\common\Logger.h">
+      <Filter>Genius\Base\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\common\RandUtility.h">
+      <Filter>Genius\Base\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\common\Singleton.h">
+      <Filter>Genius\Base\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\common\TabFile.h">
+      <Filter>Genius\Base\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\common\TimeSystem.h">
+      <Filter>Genius\Base\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\data\AnimDataMgr.h">
+      <Filter>Genius\Base\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\data\BuffActionDataMgr.h">
+      <Filter>Genius\Base\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\data\BuffDataMgr.h">
+      <Filter>Genius\Base\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\data\BulletDataMgr.h">
+      <Filter>Genius\Base\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\data\DBSystem.h">
+      <Filter>Genius\Base\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\data\IDataManager.h">
+      <Filter>Genius\Base\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\data\RoleDataMgr.h">
+      <Filter>Genius\Base\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\data\SkillDataMgr.h">
+      <Filter>Genius\Base\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\event\Event.h">
+      <Filter>Genius\Base\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\event\EventManager.h">
+      <Filter>Genius\Base\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\gfx\BulletArrow.h">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\gfx\CocosApp.h">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\gfx\FloatLabel.h">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\gfx\gfx.h">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\gfx\ParticleTail.h">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\gfx\SceneManager.h">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\gfx\SystemStatusPanel.h">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\gfx\UIBar.h">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\skill\Buff.h">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\skill\BuffAction.h">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\skill\BuffSet.h">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\skill\BuffSystem.h">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\skill\Skill.h">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\skill\SkillSet.h">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\skill\SkillSystem.h">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\skill\UserActions.h">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\PawnDefines.h">
+      <Filter>Genius\Logic\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\AI\BehaviorTree\Behavior.h">
+      <Filter>Genius\Logic\AI\BevTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\AI\BehaviorTree\BehaviorLoader.h">
+      <Filter>Genius\Logic\AI\BevTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\AI\BehaviorTree\BehaviorTree.h">
+      <Filter>Genius\Logic\AI\BevTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\AI\BehaviorTree\Precondition.h">
+      <Filter>Genius\Logic\AI\BevTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\AI\AI.h">
+      <Filter>Genius\Logic\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\AI\AIBaseDef.h">
+      <Filter>Genius\Logic\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\GamePlayCom.h">
+      <Filter>Genius\Logic\ESC\User\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\EntityEvents.h">
+      <Filter>Genius\Logic\ESC\User\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\GamePlay.h">
+      <Filter>Genius\Logic\GamePlay</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Genius\Base\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Genius\Base\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="WinWrapper.h">
+      <Filter>Genius\Base\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\PawnDefines.h">
+      <Filter>Genius\Logic\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\common\Performance.h">
+      <Filter>Genius\Base\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\gfx\GfxUtils.h">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\gfx\RollNumberLabel.h">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\anim\animSet\AnimSet.h">
+      <Filter>Genius\Logic\Pawn\Anim\AnimSet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimState.h">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\anim\animFSM\AnimFSM.h">
+      <Filter>Genius\Logic\Pawn\Anim\AnimFSM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\App\AppStatus\AppState.h">
+      <Filter>Genius\Logic\App\AppStatus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\App\AppStatus\AppStateBattle.h">
+      <Filter>Genius\Logic\App\AppStatus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\App\AppStatus\AppStateLoading.h">
+      <Filter>Genius\Logic\App\AppStatus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\App\AppStatus\AppStateLaunch.h">
+      <Filter>Genius\Logic\App\AppStatus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\anim\animSet\AnimSetSimple.h">
+      <Filter>Genius\Logic\Pawn\Anim\AnimSet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\core\ECSWorld.h">
+      <Filter>Genius\Logic\ESC\Core\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\core\EntityProcessingSystem.h">
+      <Filter>Genius\Logic\ESC\Core\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\core\EntitySystem.h">
+      <Filter>Genius\Logic\ESC\Core\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\core\GroupManager.h">
+      <Filter>Genius\Logic\ESC\Core\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\core\SystemBitManager.h">
+      <Filter>Genius\Logic\ESC\Core\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\core\SystemManager.h">
+      <Filter>Genius\Logic\ESC\Core\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\core\TagManager.h">
+      <Filter>Genius\Logic\ESC\Core\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\core\EntityManager.h">
+      <Filter>Genius\Logic\ESC\Core\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\core\Entity.h">
+      <Filter>Genius\Logic\ESC\Core\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\core\BitSize.h">
+      <Filter>Genius\Logic\ESC\Core\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\core\Component.h">
+      <Filter>Genius\Logic\ESC\Core\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\core\ComponentMapper.h">
+      <Filter>Genius\Logic\ESC\Core\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\core\ComponentType.h">
+      <Filter>Genius\Logic\ESC\Core\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\core\ComponentTypeManager.h">
+      <Filter>Genius\Logic\ESC\Core\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\core\ImmutableBag.h">
+      <Filter>Genius\Logic\ESC\Core\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\game\HumanGameControlSystem.h">
+      <Filter>Genius\Logic\ESC\User\System\GamePlay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\game\MonsterGameControlSystem.h">
+      <Filter>Genius\Logic\ESC\User\System\GamePlay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\PawnBlackboard.h">
+      <Filter>Genius\Logic\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAnimArrow.h">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAnimBase.h">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAnimBomb.h">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAnimEgg.h">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletDamageNone.h">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletDamageScope.h">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletDamageSingle.h">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletDebugDraw.h">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComAnimation.h">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComBezierMovement.h">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComBoxCollider.h">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComColliderHandler.h">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComDelayTrackMovement.h">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComParticle.h">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComPosition.h">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComTarget.h">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComTeam.h">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComVelocity.h">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnAgent.h">
+      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnAnim.h">
+      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnBevtree.h">
+      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnDebugDraw.h">
+      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnDirection.h">
+      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnFight.h">
+      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnNavigation.h">
+      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnAnim.h">
+      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnBevtree.h">
+      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.h">
+      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnDirection.h">
+      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnFight.h">
+      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemBoxCollider.h">
+      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemMovement.h">
+      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemSimpleAnim.h">
+      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletAnim.h">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletArrowAnim.h">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletBombAnim.h">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageNone.h">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageScope.h">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageSingle.h">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletDebugDraw.h">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletEggAnim.h">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletTarget.h">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemBezierMovement.h">
+      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemDelayTrackMovement.h">
+      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\ecs.h">
+      <Filter>Genius\Logic\ESC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnNavigation.h">
+      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAgent.h">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\bullet\BulletDefines.h">
+      <Filter>Genius\Logic\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\entity\EntityCreators.h">
+      <Filter>Genius\Logic\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\App\LoadingManager.h">
+      <Filter>Genius\Logic\App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\App\WarApp.h">
+      <Filter>Genius\Logic\App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\app\Config.h">
+      <Filter>Genius\Logic\App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\app\GameDefine.h">
+      <Filter>Genius\Logic\App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\app\GameUtils.h">
+      <Filter>Genius\Logic\App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\anim\animFSM\AnimFSMSimple.h">
+      <Filter>Genius\Logic\Pawn\Anim\AnimFSM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateIdle.h">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\action\PawnAction.h">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionIdle.h">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionAttackFar.h">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionAttackNear.h">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionDie.h">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionMove.h">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionSkill1.h">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionSkill2.h">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionSkill3.h">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionFactory.h">
+      <Filter>Genius\Logic\Pawn\Action\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\bevtree\BehaviorCreators.h">
+      <Filter>Genius\Logic\Pawn\BevTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\bevtree\BehaviorsAndPreconditions.h">
+      <Filter>Genius\Logic\Pawn\BevTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\bevtree\PawnBehaviors.h">
+      <Filter>Genius\Logic\Pawn\BevTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\bevtree\PawnBHTree.h">
+      <Filter>Genius\Logic\Pawn\BevTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\bevtree\PawnPrecondition.h">
+      <Filter>Genius\Logic\Pawn\BevTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\action\ActionDefine.h">
+      <Filter>Genius\Logic\Pawn\Action\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\action\ActionHandler.h">
+      <Filter>Genius\Logic\Pawn\Action\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateAttackNear.h">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateDie.h">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateMove.h">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateAttackFar.h">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateSkill1.h">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateSkill2.h">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateSkill3.h">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\pawn\action\PawnActionChangeDir.h">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DesktopWar.rc">
+      <Filter>Resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\game.ico">
+      <Filter>Resource</Filter>
+    </Image>
+    <Image Include="small.ico">
+      <Filter>Resource</Filter>
+    </Image>
+    <Image Include="res\Genius.ico">
+      <Filter>Resource</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Genius\common\Logger.cpp">
+      <Filter>Genius\Base\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\common\TabFile.cpp">
+      <Filter>Genius\Base\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\common\TimeSystem.cpp">
+      <Filter>Genius\Base\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\data\AnimDataMgr.cpp">
+      <Filter>Genius\Base\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\data\BuffActionDataMgr.cpp">
+      <Filter>Genius\Base\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\data\BuffDataMgr.cpp">
+      <Filter>Genius\Base\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\data\BulletDataMg.cpp">
+      <Filter>Genius\Base\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\data\DBSystem.cpp">
+      <Filter>Genius\Base\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\data\IDataManager.cpp">
+      <Filter>Genius\Base\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\data\RoleDataMgr.cpp">
+      <Filter>Genius\Base\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\data\SkillDataMgr.cpp">
+      <Filter>Genius\Base\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\event\EventManager.cpp">
+      <Filter>Genius\Base\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\gfx\BulletArrow.cpp">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\gfx\CocosApp.cpp">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\gfx\FloatLabel.cpp">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\gfx\ParticleTail.cpp">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\gfx\SceneManager.cpp">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\gfx\SystemStatusPanel.cpp">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\gfx\UIBar.cpp">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\skill\Buff.cpp">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\skill\BuffAction.cpp">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\skill\BuffSet.cpp">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\skill\BuffSystem.cpp">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\skill\Skill.cpp">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\skill\SkillSet.cpp">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\skill\SkillSystem.cpp">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\skill\UserActions.cpp">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\AI\BehaviorTree\Behavior.cpp">
+      <Filter>Genius\Logic\AI\BevTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\AI\BehaviorTree\BehaviorLoader.cpp">
+      <Filter>Genius\Logic\AI\BevTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\AI\BehaviorTree\BehaviorTree.cpp">
+      <Filter>Genius\Logic\AI\BevTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\AI\BehaviorTree\Precondition.cpp">
+      <Filter>Genius\Logic\AI\BevTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\GamePlayCom.cpp">
+      <Filter>Genius\Logic\ESC\User\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\GamePlay.cpp">
+      <Filter>Genius\Logic\GamePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Genius\Base\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Genius\Base\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="WinWrapper.cpp">
+      <Filter>Genius\Base\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\common\Performance.cpp">
+      <Filter>Genius\Base\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\gfx\GfxUtils.cpp">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\gfx\RollNumberLabel.cpp">
+      <Filter>Genius\Base\Gfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\anim\animSet\AnimSet.cpp">
+      <Filter>Genius\Logic\Pawn\Anim\AnimSet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimState.cpp">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\anim\animFSM\AnimFSM.cpp">
+      <Filter>Genius\Logic\Pawn\Anim\AnimFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\App\AppStatus\AppState.cpp">
+      <Filter>Genius\Logic\App\AppStatus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\App\AppStatus\AppStateBattle.cpp">
+      <Filter>Genius\Logic\App\AppStatus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\App\AppStatus\AppStateLoading.cpp">
+      <Filter>Genius\Logic\App\AppStatus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\App\AppStatus\AppStateLaunch.cpp">
+      <Filter>Genius\Logic\App\AppStatus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\anim\animSet\AnimSetSimple.cpp">
+      <Filter>Genius\Logic\Pawn\Anim\AnimSet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\core\ECSWorld.cpp">
+      <Filter>Genius\Logic\ESC\Core\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\core\EntityProcessingSystem.cpp">
+      <Filter>Genius\Logic\ESC\Core\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\core\EntitySystem.cpp">
+      <Filter>Genius\Logic\ESC\Core\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\core\GroupManager.cpp">
+      <Filter>Genius\Logic\ESC\Core\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\core\SystemBitManager.cpp">
+      <Filter>Genius\Logic\ESC\Core\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\core\SystemManager.cpp">
+      <Filter>Genius\Logic\ESC\Core\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\core\TagManager.cpp">
+      <Filter>Genius\Logic\ESC\Core\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\core\Entity.cpp">
+      <Filter>Genius\Logic\ESC\Core\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\core\EntityManager.cpp">
+      <Filter>Genius\Logic\ESC\Core\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\core\Component.cpp">
+      <Filter>Genius\Logic\ESC\Core\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\core\ComponentType.cpp">
+      <Filter>Genius\Logic\ESC\Core\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\core\ComponentTypeManager.cpp">
+      <Filter>Genius\Logic\ESC\Core\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\game\HumanGameControlSystem.cpp">
+      <Filter>Genius\Logic\ESC\User\System\GamePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\game\MonsterGameControlSystem.cpp">
+      <Filter>Genius\Logic\ESC\User\System\GamePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\PawnBlackboard.cpp">
+      <Filter>Genius\Logic\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAnimArrow.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAnimBase.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAnimBomb.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAnimEgg.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletDamageNone.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletDamageScope.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletDamageSingle.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletDebugDraw.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComAnimation.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComBezierMovement.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComBoxCollider.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComColliderHandler.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComDelayTrackMovement.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComParticle.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComPosition.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComTarget.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComTeam.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComVelocity.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnAgent.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnAnim.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnBevtree.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnDebugDraw.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnDirection.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnFight.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnNavigation.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnAnim.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnBevtree.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnDirection.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnFight.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemBoxCollider.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemMovement.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemSimpleAnim.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletAnim.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletArrowAnim.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletBombAnim.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageNone.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageScope.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageSingle.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletDebugDraw.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletEggAnim.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletTarget.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemBezierMovement.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemDelayTrackMovement.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnNavigation.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAgent.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\entity\EntityCreators.cpp">
+      <Filter>Genius\Logic\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\App\LoadingManager.cpp">
+      <Filter>Genius\Logic\App</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\App\WarApp.cpp">
+      <Filter>Genius\Logic\App</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\app\GameDefine.cpp">
+      <Filter>Genius\Logic\App</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\anim\animFSM\AnimFSMSimple.cpp">
+      <Filter>Genius\Logic\Pawn\Anim\AnimFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateIdle.cpp">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\action\PawnAction.cpp">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionIdle.cpp">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionAttackFar.cpp">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionAttackNear.cpp">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionDie.cpp">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionMove.cpp">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionSkill1.cpp">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionSkill2.cpp">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionSkill3.cpp">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionFactory.cpp">
+      <Filter>Genius\Logic\Pawn\Action\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\bevtree\BehaviorCreators.cpp">
+      <Filter>Genius\Logic\Pawn\BevTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\bevtree\PawnBehaviors.cpp">
+      <Filter>Genius\Logic\Pawn\BevTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\bevtree\PawnBHTree.cpp">
+      <Filter>Genius\Logic\Pawn\BevTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\bevtree\PawnPrecondition.cpp">
+      <Filter>Genius\Logic\Pawn\BevTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateAttackNear.cpp">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateDie.cpp">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateMove.cpp">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateAttackFar.cpp">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateSkill1.cpp">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateSkill2.cpp">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateSkill3.cpp">
+      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\pawn\action\PawnActionChangeDir.cpp">
+      <Filter>Genius\Logic\Pawn\Action</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
