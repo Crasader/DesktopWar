@@ -1,0 +1,3 @@
+python appbind.py
+
+pause
