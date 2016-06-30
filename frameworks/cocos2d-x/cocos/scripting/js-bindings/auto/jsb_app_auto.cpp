@@ -148,82 +148,8 @@ void js_register_app_GamePlay(JSContext *cx, JS::HandleObject global) {
     }
 }
 
-JSClass  *jsb_Logger_class;
-JSObject *jsb_Logger_prototype;
-
-
-
-void js_Logger_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (Logger)", obj);
-    js_proxy_t* nproxy;
-    js_proxy_t* jsproxy;
-    jsproxy = jsb_get_js_proxy(obj);
-    if (jsproxy) {
-        nproxy = jsb_get_native_proxy(jsproxy->ptr);
-
-        Logger *nobj = static_cast<Logger *>(nproxy->ptr);
-        if (nobj)
-            delete nobj;
-        
-        jsb_remove_proxy(nproxy, jsproxy);
-    }
-}
-
-void js_register_app_Logger(JSContext *cx, JS::HandleObject global) {
-    jsb_Logger_class = (JSClass *)calloc(1, sizeof(JSClass));
-    jsb_Logger_class->name = "Logger";
-    jsb_Logger_class->addProperty = JS_PropertyStub;
-    jsb_Logger_class->delProperty = JS_DeletePropertyStub;
-    jsb_Logger_class->getProperty = JS_PropertyStub;
-    jsb_Logger_class->setProperty = JS_StrictPropertyStub;
-    jsb_Logger_class->enumerate = JS_EnumerateStub;
-    jsb_Logger_class->resolve = JS_ResolveStub;
-    jsb_Logger_class->convert = JS_ConvertStub;
-    jsb_Logger_class->finalize = js_Logger_finalize;
-    jsb_Logger_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-    static JSPropertySpec properties[] = {
-        JS_PSG("__nativeObj", js_is_native_obj, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_PS_END
-    };
-
-    static JSFunctionSpec funcs[] = {
-        JS_FS_END
-    };
-
-    JSFunctionSpec *st_funcs = NULL;
-
-    jsb_Logger_prototype = JS_InitClass(
-        cx, global,
-        JS::NullPtr(), // parent proto
-        jsb_Logger_class,
-        dummy_constructor<Logger>, 0, // no constructor
-        properties,
-        funcs,
-        NULL, // no static properties
-        st_funcs);
-    // make the class enumerable in the registered namespace
-//  bool found;
-//FIXME: Removed in Firefox v27 
-//  JS_SetPropertyAttributes(cx, global, "Logger", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
-
-    // add the proto and JSClass to the type->js info hash table
-    TypeTest<Logger> t;
-    js_type_class_t *p;
-    std::string typeName = t.s_name();
-    if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
-    {
-        p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-        p->jsclass = jsb_Logger_class;
-        p->proto = jsb_Logger_prototype;
-        p->parentProto = NULL;
-        _js_global_type_map.insert(std::make_pair(typeName, p));
-    }
-}
-
 void register_all_app(JSContext* cx, JS::HandleObject obj) {
 
-    js_register_app_Logger(cx, ns);
     js_register_app_GamePlay(cx, ns);
 }
 

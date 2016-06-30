@@ -56,3 +56,9 @@ void Logger::LogError(const char* pInfo, ...)
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 }
 
+void Logger::print(const char* pInfo)
+{
+	LogWarning(pInfo);
+}
+
+

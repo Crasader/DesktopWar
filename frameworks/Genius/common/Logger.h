@@ -7,6 +7,8 @@ public:
 	static void LogInfo(const char* pInfo, ...);
 	static void LogWarning(const char* pInfo, ...);
 	static void LogError(const char* pInfo, ...);
+
+	static void print(const char* pInfo);
 };
 
 #endif

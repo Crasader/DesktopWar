@@ -162,12 +162,14 @@ def main():
         # if platform == 'win32':
         #     with _pushd(output_dir):
         #         _run_cmd('dos2unix *')
-        # move js file to ...
+		
+		# move js file to ...
         for key in cmd_args.keys():
             args = cmd_args[key]
     	    sourceDir = '%s/api/%s%s' % (output_dir, args[1], '_api.js')   
             targetDir = '%s../../../jsb/%s%s' % (project_root, args[1], '_api.js')
     	    shutil.copy(sourceDir,  targetDir)
+
 
         custom_cmd_args = {}
         if len(custom_cmd_args) > 0:
@@ -181,6 +183,8 @@ def main():
             # if platform == 'win32':
             #     with _pushd(output_dir):
             #         _run_cmd('dos2unix *')
+			
+		
 
         print '----------------------------------------'
         print 'Generating javascript bindings succeeds.'

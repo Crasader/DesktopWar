@@ -102,7 +102,7 @@ def main():
         print 'path: %s or path: %s are not valid! ' % (x86_llvm_path, x64_llvm_path)
         sys.exit(1)
 
-    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
     cocos_root = os.path.abspath(project_root)
     jsb_root = os.path.abspath(os.path.join(project_root, 'cocos/scripting/js-bindings'))
     cxx_generator_root = os.path.abspath(os.path.join(project_root, 'tools/bindings-generator'))
@@ -145,11 +145,12 @@ def main():
 
     try:
 
-        tojs_root = '%s/tools/tojs' % project_root
-        output_dir = '%s/cocos/scripting/js-bindings/auto' % project_root
+        tojs_root = '%s/tools/bindings-generator/test' % project_root
+        output_dir = '%s/tools/bindings-generator/test/simple_test_bindings' % project_root
 
-        cmd_args = {'app.ini': ('app', 'jsb_app_auto'),
-                    }
+        cmd_args = {
+            'test.ini': ('simple_test', 'autogentestbindings')
+        }
         target = 'spidermonkey'
         generator_py = '%s/generator.py' % cxx_generator_root
         for key in cmd_args.keys():
@@ -158,29 +159,6 @@ def main():
             print 'Generating bindings for %s...' % (key[:-4])
             command = '%s %s %s -s %s -t %s -o %s -n %s' % (python_bin, generator_py, cfg, args[0], target, output_dir, args[1])
             _run_cmd(command)
-
-        # if platform == 'win32':
-        #     with _pushd(output_dir):
-        #         _run_cmd('dos2unix *')
-        # move js file to ...
-        for key in cmd_args.keys():
-            args = cmd_args[key]
-    	    sourceDir = '%s/api/%s%s' % (output_dir, args[1], '_api.js')   
-            targetDir = '%s../../../jsb/%s%s' % (project_root, args[1], '_api.js')
-    	    shutil.copy(sourceDir,  targetDir)
-
-        custom_cmd_args = {}
-        if len(custom_cmd_args) > 0:
-            output_dir = '%s/frameworks/custom/auto' % project_root
-            for key in custom_cmd_args.keys():
-                args = custom_cmd_args[key]
-                cfg = '%s/%s' % (tojs_root, key)
-                print 'Generating bindings for %s...' % (key[:-4])
-                command = '%s %s %s -s %s -t %s -o %s -n %s' % (python_bin, generator_py, cfg, args[0], target, output_dir, args[1])
-                _run_cmd(command)
-            # if platform == 'win32':
-            #     with _pushd(output_dir):
-            #         _run_cmd('dos2unix *')
 
         print '----------------------------------------'
         print 'Generating javascript bindings succeeds.'
