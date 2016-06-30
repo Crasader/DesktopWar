@@ -259,18 +259,18 @@ this._prepareDebugger = function (global) {
     cc = global.cc;
     // exports = global;
     // load all functions exported in DevToolsUtils to global(exports)
-    require('script/debugger/DevToolsUtils.js', 'debug');
-    require('script/debugger/event-emitter.js', 'debug');
-    require('script/debugger/actors/utils/ScriptStore.js', 'debug');
-    require('script/debugger/actors/common.js', 'debug');
-    require('script/debugger/core/promise.js', 'debug');
-    require('script/debugger/transport.js', 'debug');
-    require('script/debugger/main.js', 'debug');
-    require('script/debugger/actors/object.js', 'debug');
-    require('script/debugger/actors/root.js', 'debug');
-    require('script/debugger/actors/script.js', 'debug');
-    require('script/debugger/actors/webconsole.js', 'debug')
-    require('script/debugger/actors/utils/TabSources.js', 'debug');
+    require('res/script/ccs/debugger/DevToolsUtils.js', 'debug');
+    require('res/script/ccs/debugger/event-emitter.js', 'debug');
+    require('res/script/ccs/debugger/actors/utils/ScriptStore.js', 'debug');
+    require('res/script/ccs/debugger/actors/common.js', 'debug');
+    require('res/script/ccs/debugger/core/promise.js', 'debug');
+    require('res/script/ccs/debugger/transport.js', 'debug');
+    require('res/script/ccs/debugger/main.js', 'debug');
+    require('res/script/ccs/debugger/actors/object.js', 'debug');
+    require('res/script/ccs/debugger/actors/root.js', 'debug');
+    require('res/script/ccs/debugger/actors/script.js', 'debug');
+    require('res/script/ccs/debugger/actors/webconsole.js', 'debug')
+    require('res/script/ccs/debugger/actors/utils/TabSources.js', 'debug');
     
     //DebuggerServer.addTestGlobal = function(aGlobal) {
       gTestGlobals.push(global);

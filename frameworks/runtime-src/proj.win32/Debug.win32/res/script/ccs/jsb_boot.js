@@ -1534,7 +1534,7 @@ cc._initDebugSetting = function (mode) {
 cc._engineLoaded = false;
 
 cc.initEngine = function (config, cb) {
-    require("script/jsb.js");
+    require("res/script/ccs/jsb.js");
     cc._renderType = cc.game.RENDER_TYPE_OPENGL;
     cc._initDebugSetting(config[cc.game.CONFIG_KEY.debugMode]);
     cc._engineLoaded = true;

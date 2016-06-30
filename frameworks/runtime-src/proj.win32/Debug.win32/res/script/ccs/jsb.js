@@ -25,58 +25,58 @@
 //
 
 // DO NOT ALTER THE ORDER
-require('script/jsb_cocos2d_constants.js');
-require('script/jsb_cocos2d.js');
-require('script/jsb_common.js');
-require('script/jsb_property_impls.js');
-require('script/jsb_property_apis.js');
-require('script/jsb_create_apis.js');
+require('res/script/ccs/jsb_cocos2d_constants.js');
+require('res/script/ccs/jsb_cocos2d.js');
+require('res/script/ccs/jsb_common.js');
+require('res/script/ccs/jsb_property_impls.js');
+require('res/script/ccs/jsb_property_apis.js');
+require('res/script/ccs/jsb_create_apis.js');
 
 if (window.ccs) {
-    require('script/studio/jsb_studio_boot.js');
-    require('script/studio/jsb_cocos2d_studio.js');
-    require('script/studio/jsb_studio_property_apis.js');
-    require('script/studio/jsb_studio_create_apis.js');
+    require('res/script/ccs/studio/jsb_studio_boot.js');
+    require('res/script/ccs/studio/jsb_cocos2d_studio.js');
+    require('res/script/ccs/studio/jsb_studio_property_apis.js');
+    require('res/script/ccs/studio/jsb_studio_create_apis.js');
 
-    require('script/studio/jsb_studio_load.js');
-    require('script/studio/parsers/action-1.x.js');
-    require('script/studio/parsers/action-2.x.js');
-    require('script/studio/parsers/scene-1.x.js');
-    require('script/studio/parsers/timelineParser-1.x.js');
-    require('script/studio/parsers/timelineParser-2.x.js');
-    require('script/studio/parsers/uiParser-1.x.js');
-    require('script/studio/parsers/compatible.js');
+    require('res/script/ccs/studio/jsb_studio_load.js');
+    require('res/script/ccs/studio/parsers/action-1.x.js');
+    require('res/script/ccs/studio/parsers/action-2.x.js');
+    require('res/script/ccs/studio/parsers/scene-1.x.js');
+    require('res/script/ccs/studio/parsers/timelineParser-1.x.js');
+    require('res/script/ccs/studio/parsers/timelineParser-2.x.js');
+    require('res/script/ccs/studio/parsers/uiParser-1.x.js');
+    require('res/script/ccs/studio/parsers/compatible.js');
 }
 
 if (window.ccui) {
-    require('script/ccui/jsb_cocos2d_ui.js');
-    require('script/ccui/jsb_ccui_property_impls.js');
-    require('script/ccui/jsb_ccui_property_apis.js');
-    require('script/ccui/jsb_ccui_create_apis.js');
-    require('script/ccui/jsb_ccui_deprecated.js');
+    require('res/script/ccs/ccui/jsb_cocos2d_ui.js');
+    require('res/script/ccs/ccui/jsb_ccui_property_impls.js');
+    require('res/script/ccs/ccui/jsb_ccui_property_apis.js');
+    require('res/script/ccs/ccui/jsb_ccui_create_apis.js');
+    require('res/script/ccs/ccui/jsb_ccui_deprecated.js');
 }
 
 if (cc.ControlButton) {
-    require('script/extension/jsb_cocos2d_extension.js');
-    require('script/extension/jsb_ext_property_apis.js');
-    require('script/extension/jsb_ext_create_apis.js');
+    require('res/script/ccs/extension/jsb_cocos2d_extension.js');
+    require('res/script/ccs/extension/jsb_ext_property_apis.js');
+    require('res/script/ccs/extension/jsb_ext_create_apis.js');
 }
 
 if (cc.PhysicsSprite) {
-    require('script/physicsSprite/jsb_physicsSprite.js');
+    require('res/script/ccs/physicsSprite/jsb_physicsSprite.js');
 }
 
 if (window.cp) {
     // chipmunk
-    require('script/chipmunk/jsb_chipmunk_constants.js');
-    require('script/chipmunk/jsb_chipmunk.js');
+    require('res/script/ccs/chipmunk/jsb_chipmunk_constants.js');
+    require('res/script/ccs/chipmunk/jsb_chipmunk.js');
 }
 
-require('script/jsb_opengl_constants.js');
-require('script/jsb_opengl.js');
+require('res/script/ccs/jsb_opengl_constants.js');
+require('res/script/ccs/jsb_opengl.js');
 
 if (cc.BuilderAnimationManager) {
-    require('script/jsb_cocosbuilder.js');
+    require('res/script/ccs/jsb_cocosbuilder.js');
 }
 
 if (jsb.fileUtils.isFileExist('jsb_pluginx.js') || jsb.fileUtils.isFileExist('jsb_pluginx.jsc')) {
@@ -86,27 +86,27 @@ if (jsb.fileUtils.isFileExist('jsb_pluginx.js') || jsb.fileUtils.isFileExist('js
 }
 
 if (window.sp) {
-    require('script/jsb_spine.js');
+    require('res/script/ccs/jsb_spine.js');
 }
 
 if (jsb.Sprite3D){
-    require('script/3d/jsb_cocos2d_3d.js');
+    require('res/script/ccs/3d/jsb_cocos2d_3d.js');
 }
 
 if (jsb.ParticleSystem3D) {
-    require('script/3d/jsb_cocos2d_3d_ext.js');
+    require('res/script/ccs/3d/jsb_cocos2d_3d_ext.js');
 }
 
 if (jsb.Physics3DObject) {
-    require("script/physics3d/jsb_physics3d.js");
+    require("res/script/ccs/physics3d/jsb_physics3d.js");
 }
 
 if (jsb.NavMeshAgent) {
-    require("script/navmesh/jsb_navmesh.js");
+    require("res/script/ccs/navmesh/jsb_navmesh.js");
 }
 
-require("script/jsb_audioengine.js");
+require("res/script/ccs/jsb_audioengine.js");
 
-require('script/jsb_loaders.js');
-require('script/jsb_pool.js');
-require('script/jsb_deprecated.js');
+require('res/script/ccs/jsb_loaders.js');
+require('res/script/ccs/jsb_pool.js');
+require('res/script/ccs/jsb_deprecated.js');

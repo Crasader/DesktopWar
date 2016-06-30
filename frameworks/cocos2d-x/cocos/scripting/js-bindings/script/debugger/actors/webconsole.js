@@ -36,7 +36,7 @@
 //          .ServerLoggingListener;
 // });
 
-let webutils = require('script/debugger/webconsole/utils.js', 'debug');
+let webutils = require('res/script/ccs/debugger/webconsole/utils.js', 'debug');
 
 Object.defineProperty(this, "JSPropertyProvider", {
   get: function() {
