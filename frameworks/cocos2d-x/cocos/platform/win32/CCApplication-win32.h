@@ -54,8 +54,6 @@ public:
     @brief    Run the message loop.
     */
     int run();
-//Locke
-	int geniusRun();
 
     /**
     @brief    Get current application instance.
@@ -107,8 +105,6 @@ public:
     {
         return _startupScriptFilename;
     }
-//Locke
-	void closeWindow();
 
 protected:
     HINSTANCE           _instance;

@@ -1837,16 +1837,6 @@ ArmatureAnimation : function (
 ccs.ArmatureDataManager = {
 
 /**
- * @method getAnimationDatas
- * @return {map_object}
- */
-getAnimationDatas : function (
-)
-{
-    return map_object;
-},
-
-/**
  * @method removeAnimationData
  * @param {String} arg0
  */
@@ -1996,6 +1986,16 @@ texturedata,
 str 
 )
 {
+},
+
+/**
+ * @method getAnimationDatas
+ * @return {map_object}
+ */
+getAnimationDatas : function (
+)
+{
+    return map_object;
 },
 
 /**

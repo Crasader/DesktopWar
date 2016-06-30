@@ -46,8 +46,8 @@ void AppStateLaunch::Update(float time)
 		m_soldierSpawned = true;
 		float baseX = GameDefine::viewWidth*0.5f;
 		float baseY = 0;
-		EntityCreator::CreatePawn("BigDevil_chase", baseX + 300, 133, Team_Monster);
-		EntityCreator::CreatePawn("HolyKnight", baseX - 300, 133, Team_Human);
+		//EntityCreator::CreatePawn("BigDevil_chase", baseX + 300, 133, Team_Monster);
+		//EntityCreator::CreatePawn("HolyKnight", baseX - 300, 133, Team_Human);
 	}
 
 	/*if (!m_isFadeOut && m_timePassed > maxLaunchTime)

@@ -2,8 +2,7 @@
 bool ${signature_name}_get_${name}(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    JS::RootedObject jsthis(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(jsthis);
+    js_proxy_t *proxy = jsb_get_js_proxy(args.thisv().toObjectOrNull());
     ${namespaced_class_name}* cobj = (${namespaced_class_name} *)(proxy ? proxy->ptr : NULL);
     JSB_PRECONDITION2( cobj, cx, false, "${signature_name}_get_${name} : Invalid Native Object");
 
@@ -32,16 +31,13 @@ bool ${signature_name}_get_${name}(JSContext *cx, uint32_t argc, jsval *vp)
 bool ${signature_name}_set_${name}(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    JS::RootedObject jsthis(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(jsthis);
+    js_proxy_t *proxy = jsb_get_js_proxy(args.thisv().toObjectOrNull());
     ${namespaced_class_name}* cobj = (${namespaced_class_name} *)(proxy ? proxy->ptr : NULL);
     JSB_PRECONDITION2( cobj, cx, false, "${signature_name}_set_${name} : Invalid Native Object");
 
     bool ok = true;
-#if $ntype.is_numeric
-    ${ntype.to_string($generator)} arg0 = 0;
-#elif $ntype.is_pointer
-    ${ntype.to_string($generator)} arg0 = nullptr;
+#if $ntype.is_object and not $ntype.object_can_convert($generator)
+    ${ntype.to_string($generator)}* arg0 = nullptr;
 #else
     ${ntype.to_string($generator)} arg0;
 #end if

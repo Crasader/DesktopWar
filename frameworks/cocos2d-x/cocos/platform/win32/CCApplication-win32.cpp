@@ -110,66 +110,6 @@ int Application::run()
     return 0;
 }
 
-int Application::geniusRun()
-{
-	PVRFrameEnableControlWindow(false);
-
-	// Main message loop:
-	LARGE_INTEGER nLast;
-	LARGE_INTEGER nNow;
-
-	QueryPerformanceCounter(&nLast);
-
-	initGLContextAttrs();
-
-	// Initialize instance and cocos2d.
-	if (!applicationDidFinishLaunching())
-	{
-		return 1;
-	}
-
-	auto director = Director::getInstance();
-	auto glview = director->getOpenGLView();
-
-	// Retain glview to avoid glview being released in the while loop
-	glview->retain();
-
-	ShowWindow(glview->getHwnd(), SW_SHOW);
-
-	while (!glview->windowShouldClose())
-	{
-		QueryPerformanceCounter(&nNow);
-		if (nNow.QuadPart - nLast.QuadPart > _animationInterval.QuadPart)
-		{
-			nLast.QuadPart = nNow.QuadPart - (nNow.QuadPart % _animationInterval.QuadPart);
-
-			director->mainLoop();
-			glview->pollEvents();
-		}
-		else
-		{
-			Sleep(1);
-		}
-	}
-
-	// Director should still do a cleanup if the window was closed manually.
-	if (glview->isOpenGLReady())
-	{
-		director->end();
-		director->mainLoop();
-		director = nullptr;
-	}
-	glview->release();
-	return 0;
-}
-
-void Application::closeWindow()
-{
-	auto director = cocos2d::Director::getInstance();
-	auto glview = director->getOpenGLView();
-	glview->closeWindow();
-}
-
 void Application::setAnimationInterval(float interval)
 {
     LARGE_INTEGER nFreq;

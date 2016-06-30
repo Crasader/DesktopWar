@@ -155,10 +155,6 @@ protected:
 
 private:
     CC_DISALLOW_COPY_AND_ASSIGN(GLViewImpl);
-//Locke
-public:
-	virtual void closeWindow();
-
 };
 
 NS_CC_END   // end of namespace   cocos2d

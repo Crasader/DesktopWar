@@ -631,7 +631,7 @@ void ScriptingCore::createGlobalContext() {
     
     JSAutoCompartment ac(_cx, _global.ref());
     
-    runScript("script/jsb_prepare.js");
+    runScript("res/script/ccs/jsb_prepare.js");
     
     for (std::vector<sc_register_sth>::iterator it = registrationList.begin(); it != registrationList.end(); it++) {
         sc_register_sth callback = *it;
@@ -2009,7 +2009,7 @@ void ScriptingCore::enableDebugger(unsigned int port)
         JS::RootedObject globalObj(_cx, _global.ref());
         JS_WrapObject(_cx, &globalObj);
         
-        runScript("script/jsb_debugger.js", rootedDebugObj);
+        runScript("res/script/ccs/jsb_debugger.js", rootedDebugObj);
         
         // prepare the debugger
         jsval argv = OBJECT_TO_JSVAL(globalObj);
