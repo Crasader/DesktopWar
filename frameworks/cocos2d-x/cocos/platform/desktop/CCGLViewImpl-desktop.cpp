@@ -355,6 +355,8 @@ bool GLViewImpl::initWithRect(const std::string& viewName, Rect rect, float fram
     glfwWindowHint(GLFW_ALPHA_BITS,_glContextAttrs.alphaBits);
     glfwWindowHint(GLFW_DEPTH_BITS,_glContextAttrs.depthBits);
     glfwWindowHint(GLFW_STENCIL_BITS,_glContextAttrs.stencilBits);
+	// Modified by Locke.
+	glfwWindowHint(GLFW_VISIBLE, GL_FALSE);
 
     int needWidth = rect.size.width * _frameZoomFactor;
     int neeHeight = rect.size.height * _frameZoomFactor;
@@ -426,6 +428,8 @@ bool GLViewImpl::initWithRect(const std::string& viewName, Rect rect, float fram
 
     // Enable point size by default.
     glEnable(GL_VERTEX_PROGRAM_POINT_SIZE);
+//Locke
+	m_hwnd = glfwGetWin32Window(_mainWindow);
 
     return true;
 }
@@ -937,6 +941,11 @@ bool GLViewImpl::initGlew()
 #endif // (CC_TARGET_PLATFORM != CC_PLATFORM_MAC)
 
     return true;
+}
+// Locke
+void GLViewImpl::closeWindow()
+{
+	glfwSetWindowShouldClose(_mainWindow, 1);
 }
 
 NS_CC_END // end of namespace cocos2d;

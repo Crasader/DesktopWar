@@ -402,6 +402,11 @@ protected:
     float _scaleX;
     float _scaleY;
     ResolutionPolicy _resolutionPolicy;
+// Locke
+	public:
+		HWND getHwnd(){ return m_hwnd; }
+		virtual void closeWindow(){}
+		HWND   m_hwnd;
 };
 
 // end of platform group
