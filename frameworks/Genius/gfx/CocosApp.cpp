@@ -14,6 +14,7 @@
 #include "scripting/js-bindings/auto/jsb_cocos2dx_spine_auto.hpp"
 #include "scripting/js-bindings/auto/jsb_cocos2dx_studio_auto.hpp"
 #include "scripting/js-bindings/auto/jsb_cocos2dx_ui_auto.hpp"
+#include "scripting/js-bindings/auto/jsb_app_auto.hpp"
 #include "scripting/js-bindings/manual/3d/jsb_cocos2dx_3d_manual.h"
 #include "scripting/js-bindings/manual/chipmunk/js_bindings_chipmunk_registration.h"
 #include "scripting/js-bindings/manual/cocosbuilder/js_bindings_ccbreader.h"
@@ -226,6 +227,10 @@ static void register_js()
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
 	sc->addRegisterCallback(JavaScriptObjCBridge::_js_register);
 #endif
+
+	// my api
+	sc->addRegisterCallback(register_all_app);
+
 	sc->start();
 	sc->runScript("res/script/ccs/jsb_boot.js");
 #if defined(COCOS2D_DEBUG) && (COCOS2D_DEBUG > 0)

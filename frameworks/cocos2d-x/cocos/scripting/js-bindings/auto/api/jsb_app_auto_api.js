@@ -21,3 +21,20 @@ SendHuman : function (
 },
 
 };
+
+/**
+ * @class Logger
+ */
+Logger = {
+
+/**
+ * @method print
+ * @param {char} arg0
+ */
+print : function (
+char 
+)
+{
+},
+
+};

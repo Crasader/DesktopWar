@@ -1,0 +1,14 @@
+   开发日志 by Locke
+
+------------------0:02 2016/7/1 星期五------------------
+【修改cocos源码】
+1.cocos/platform下关于windows窗口部分有几处修改，已被标记注释// Modified by Locke或 // Locke
+2.ScriptCore中修改了jsb_require.js jsb_boot.js jsb_debugger.js的默认路径，从script/变res/script/ccs/
+
+【修改cocos的js】
+1.多处require路径，从script/变res/script/ccs/
+
+
+
+
+
