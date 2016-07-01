@@ -2008,7 +2008,7 @@ bool js_cocos2dx_Node_setPhysicsBody(JSContext *cx, uint32_t argc, jsval *vp)
             JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
         } while (0);
         JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_Node_setPhysicsBody : Error processing arguments");
-        cobj->setPhysicsBody(arg0);
+        //cobj->setPhysicsBody(arg0);
         args.rval().setUndefined();
         return true;
     }
@@ -3581,10 +3581,10 @@ bool js_cocos2dx_Node_getPhysicsBody(JSContext *cx, uint32_t argc, jsval *vp)
     cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
     JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_Node_getPhysicsBody : Invalid Native Object");
     if (argc == 0) {
-        cocos2d::PhysicsBody* ret = cobj->getPhysicsBody();
+		cocos2d::PhysicsBody* ret = NULL;// cobj->getPhysicsBody();
         jsval jsret = JSVAL_NULL;
         if (ret) {
-            jsret = OBJECT_TO_JSVAL(js_get_or_create_jsobject<cocos2d::PhysicsBody>(cx, (cocos2d::PhysicsBody*)ret));
+			jsret = JSVAL_NULL;// OBJECT_TO_JSVAL(js_get_or_create_jsobject<cocos2d::PhysicsBody>(cx, (cocos2d::PhysicsBody*)ret));
         } else {
             jsret = JSVAL_NULL;
         };
@@ -5499,7 +5499,7 @@ bool js_cocos2dx_Scene_stepPhysicsAndNavigation(JSContext *cx, uint32_t argc, js
         double arg0 = 0;
         ok &= JS::ToNumber( cx, args.get(0), &arg0) && !isnan(arg0);
         JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_Scene_stepPhysicsAndNavigation : Error processing arguments");
-        cobj->stepPhysicsAndNavigation(arg0);
+        //cobj->stepPhysicsAndNavigation(arg0);
         args.rval().setUndefined();
         return true;
     }
