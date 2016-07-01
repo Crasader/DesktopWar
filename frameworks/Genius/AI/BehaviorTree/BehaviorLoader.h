@@ -3,9 +3,10 @@
 #include "../AIBaseDef.h"
 #include <string>
 #include <map>
-#include "tinyxml.h"
+#include "tinyxml2.h"
 
-class TiXmlElement;
+
+using namespace tinyxml2;
 
 AI_NS_BEGIN
 BHTREE_NS_BEGIN
@@ -13,8 +14,8 @@ BHTREE_NS_BEGIN
 class Behavior;
 class Precondition;
 
-typedef Behavior*(*BehaviorCreator)(TiXmlElement*);
-typedef Precondition*(*PreconditionCreator)(TiXmlElement*);
+typedef Behavior*(*BehaviorCreator)(XMLElement*);
+typedef Precondition*(*PreconditionCreator)(XMLElement*);
 
 struct BehaviorCreatorMap
 {
@@ -47,8 +48,8 @@ public:
 	Behavior*			LoadFromXml(std::string filePath);
 
 protected:
-	Behavior*			ParseXml(TiXmlElement* xmlNode);
-	Precondition*	ParsePrecondition(TiXmlElement* xmlNode);
+	Behavior*			ParseXml(XMLElement* xmlNode);
+	Precondition*	ParsePrecondition(XMLElement* xmlNode);
 	Precondition*	CreatePrecondition(std::string typeName);
 
 private:

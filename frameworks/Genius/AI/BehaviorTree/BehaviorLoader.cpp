@@ -64,13 +64,13 @@ void BehaviorLoader::RegisterPrecondition(std::string typeName, PreconditionCrea
 Behavior* BehaviorLoader::LoadFromXml(std::string filePath)
 {
 	Behavior* root = nullptr;
-	TiXmlDocument* doc = nullptr;
+	XMLDocument* doc = nullptr;
 	do 
 	{
-		doc = new TiXmlDocument();
+		doc = new XMLDocument();
 		if (!doc->LoadFile(filePath.c_str()))
 			break;
-		TiXmlElement* xmlRoot = doc->RootElement();
+		XMLElement* xmlRoot = doc->RootElement();
 		root = ParseXml(xmlRoot->FirstChildElement());
 
 	} while (0);
@@ -79,7 +79,7 @@ Behavior* BehaviorLoader::LoadFromXml(std::string filePath)
 	return root;
 }
 
-Behavior* BehaviorLoader::ParseXml(TiXmlElement* xmlNode)
+Behavior* BehaviorLoader::ParseXml(XMLElement* xmlNode)
 {
 	Behavior* root = nullptr;
 	Precondition* precondition = nullptr;
@@ -97,14 +97,14 @@ Behavior* BehaviorLoader::ParseXml(TiXmlElement* xmlNode)
 	if (nullptr == root)
 		return root;
 
-	TiXmlElement* preconditionXml = xmlNode->FirstChildElement("Precondition");
+	XMLElement* preconditionXml = xmlNode->FirstChildElement("Precondition");
 	if (preconditionXml)
 	{
 		precondition = ParsePrecondition(preconditionXml);
 		root->SetPrecondition(precondition);
 	}
 
-	for (TiXmlElement* node = xmlNode->FirstChildElement(); node; node = node->NextSiblingElement())
+	for (XMLElement* node = xmlNode->FirstChildElement(); node; node = node->NextSiblingElement())
 	{
 		Behavior* child = ParseXml(node);
 		if (child)
@@ -114,7 +114,7 @@ Behavior* BehaviorLoader::ParseXml(TiXmlElement* xmlNode)
 	return root;
 }
 
-Precondition* BehaviorLoader::ParsePrecondition(TiXmlElement* xmlNode)
+Precondition* BehaviorLoader::ParsePrecondition(XMLElement* xmlNode)
 {
 	Precondition* precondition = nullptr;
 
@@ -129,7 +129,7 @@ Precondition* BehaviorLoader::ParsePrecondition(TiXmlElement* xmlNode)
 		Logger::LogWarning("unknown precondition type %s", preconditionTypeName.c_str());
 	}
 
-	for (TiXmlElement* node = xmlNode->FirstChildElement(); node; node = node->NextSiblingElement())
+	for (XMLElement* node = xmlNode->FirstChildElement(); node; node = node->NextSiblingElement())
 	{
 		std::string typeName1 = node->Attribute("type");
 		auto iterPreFind = m_preconditionFactoryList.find(typeName1);

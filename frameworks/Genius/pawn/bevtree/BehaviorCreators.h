@@ -6,51 +6,54 @@
 USING_NS_AI
 USING_NS_BHTREE
 
-class TiXmlElement;
+namespace tinyxml2
+{
+	class XMLElement;
+};
 
 /************************************************************************/
 /*                                               behaviors							                       */
 /************************************************************************/
-Behavior* CreateSelector(TiXmlElement* xml);
-Behavior* CreateSequence(TiXmlElement* xml);
-Behavior* CreateParallel(TiXmlElement* xml);
+Behavior* CreateSelector(XMLElement* xml);
+Behavior* CreateSequence(XMLElement* xml);
+Behavior* CreateParallel(XMLElement* xml);
 
 /************************************************************************/
 /*                                               Preconditions							                       */
 /************************************************************************/
-Precondition* CreateTRUE(TiXmlElement* xml);
-Precondition* CreateNOT(TiXmlElement* xml);
-Precondition* CreateAND(TiXmlElement* xml);
-Precondition* CreateOR(TiXmlElement* xml);
+Precondition* CreateTRUE(XMLElement* xml);
+Precondition* CreateNOT(XMLElement* xml);
+Precondition* CreateAND(XMLElement* xml);
+Precondition* CreateOR(XMLElement* xml);
 
 /************************************************************************/
 /*                                               user behaviors							                       */
 /************************************************************************/
-/*Behavior* CreateSheepIdle(TiXmlElement* xml);
-Behavior* CreateSheepEat(TiXmlElement* xml);
-Behavior* CreateSheepDie(TiXmlElement* xml);*/
-Behavior* CreatePawnIdle(TiXmlElement* xml);
-Behavior* CreatePawnWander(TiXmlElement* xml);
-Behavior* CreatePawnChase(TiXmlElement* xml);
-Behavior* CreatePawnAttackNear(TiXmlElement* xml);
-Behavior* CreatePawnAttackNear2(TiXmlElement* xml);
-Behavior* CreatePawnAttackFar(TiXmlElement* xml);
-Behavior* CreatePawnMove(TiXmlElement* xml);
-Behavior* CreatePawnDie(TiXmlElement* xml);
-Behavior* CreatePawnSkill1(TiXmlElement* xml);
-Behavior* CreatePawnSkill2(TiXmlElement* xml);
-Behavior* CreatePawnSkill3(TiXmlElement* xml);
+/*Behavior* CreateSheepIdle(XMLElement* xml);
+Behavior* CreateSheepEat(XMLElement* xml);
+Behavior* CreateSheepDie(XMLElement* xml);*/
+Behavior* CreatePawnIdle(XMLElement* xml);
+Behavior* CreatePawnWander(XMLElement* xml);
+Behavior* CreatePawnChase(XMLElement* xml);
+Behavior* CreatePawnAttackNear(XMLElement* xml);
+Behavior* CreatePawnAttackNear2(XMLElement* xml);
+Behavior* CreatePawnAttackFar(XMLElement* xml);
+Behavior* CreatePawnMove(XMLElement* xml);
+Behavior* CreatePawnDie(XMLElement* xml);
+Behavior* CreatePawnSkill1(XMLElement* xml);
+Behavior* CreatePawnSkill2(XMLElement* xml);
+Behavior* CreatePawnSkill3(XMLElement* xml);
 
 /************************************************************************/
 /*                                               user preconditions							             */
 /************************************************************************/
-Precondition* CreateProbablity(TiXmlElement* xml);
-Precondition* CreateHaveHP(TiXmlElement* xml);
-Precondition* CreateLowHP(TiXmlElement* xml);
-Precondition* CreateHighHP(TiXmlElement* xml);
-Precondition* CreateHaveTarget(TiXmlElement* xml);
-Precondition* CreateReachTarget(TiXmlElement* xml);
-Precondition* CreateTargetInNearRange(TiXmlElement* xml);
-Precondition* CreateTargetInFarRange(TiXmlElement* xml);
+Precondition* CreateProbablity(XMLElement* xml);
+Precondition* CreateHaveHP(XMLElement* xml);
+Precondition* CreateLowHP(XMLElement* xml);
+Precondition* CreateHighHP(XMLElement* xml);
+Precondition* CreateHaveTarget(XMLElement* xml);
+Precondition* CreateReachTarget(XMLElement* xml);
+Precondition* CreateTargetInNearRange(XMLElement* xml);
+Precondition* CreateTargetInFarRange(XMLElement* xml);
 
 #endif

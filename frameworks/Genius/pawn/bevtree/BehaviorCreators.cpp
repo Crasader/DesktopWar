@@ -1,30 +1,31 @@
 
 #include <string>
-#include "tinyxml.h"
+#include "tinyxml2.h"
 #include "BehaviorCreators.h"
 //
 #include "PawnBehaviors.h"
 #include "PawnPrecondition.h"
 
+using namespace tinyxml2;
 
 /************************************************************************/
 /*                                               basic behaviors							                     */
 /************************************************************************/
-Behavior* CreateSelector(TiXmlElement* xml)
+Behavior* CreateSelector(XMLElement* xml)
 {
 	Selector* pBehavior = new Selector;
 	pBehavior->LoadFromXml(xml);
 	return pBehavior;
 }
 
-Behavior* CreateSequence(TiXmlElement* xml)
+Behavior* CreateSequence(XMLElement* xml)
 {
 	Sequence* pBehavior = new Sequence;
 	pBehavior->LoadFromXml(xml);
 	return pBehavior;
 }
 
-Behavior* CreateParallel(TiXmlElement* xml)
+Behavior* CreateParallel(XMLElement* xml)
 {
 	Parallel::ePolicy success = Parallel::RequireAll;
 	Parallel::ePolicy failure = Parallel::RequireOne;
@@ -47,25 +48,25 @@ Behavior* CreateParallel(TiXmlElement* xml)
 /************************************************************************/
 /*                                               basic preconditions					                    */
 /************************************************************************/
-Precondition* CreateTRUE(TiXmlElement* xml)
+Precondition* CreateTRUE(XMLElement* xml)
 {
 	PreconditionTrue* precondition = new PreconditionTrue;
 	return precondition;
 }
 
-Precondition* CreateNOT(TiXmlElement* xml)
+Precondition* CreateNOT(XMLElement* xml)
 {
 	PreconditionNot* precondition = new PreconditionNot();
 	return precondition;
 }
 
-Precondition* CreateAND(TiXmlElement* xml)
+Precondition* CreateAND(XMLElement* xml)
 {
 	PreconditionAnd* precondition = new PreconditionAnd();
 	return precondition;
 }
 
-Precondition* CreateOR(TiXmlElement* xml)
+Precondition* CreateOR(XMLElement* xml)
 {
 	PreconditionOr* precondition = new PreconditionOr();
 	return precondition;
@@ -74,98 +75,98 @@ Precondition* CreateOR(TiXmlElement* xml)
 /************************************************************************/
 /*                                               user behaviors							                     */
 /************************************************************************/
-/*Behavior* CreateSheepIdle(TiXmlElement* xml)
+/*Behavior* CreateSheepIdle(XMLElement* xml)
 {
 	SheepIdle* pBehavior = new SheepIdle;
 	pBehavior->LoadFromXml(xml);
 	return pBehavior;
 }
 
-Behavior* CreateSheepEat(TiXmlElement* xml)
+Behavior* CreateSheepEat(XMLElement* xml)
 {
 	SheepEat* pBehavior = new SheepEat;
 	pBehavior->LoadFromXml(xml);
 	return pBehavior;
 }
 
-Behavior* CreateSheepDie(TiXmlElement* xml)
+Behavior* CreateSheepDie(XMLElement* xml)
 {
 	SheepDie* pBehavior = new SheepDie;
 	pBehavior->LoadFromXml(xml);
 	return pBehavior;
 }*/
 
-Behavior* CreatePawnIdle(TiXmlElement* xml)
+Behavior* CreatePawnIdle(XMLElement* xml)
 {
 	PawnIdle* pBehavior = new PawnIdle;
 	pBehavior->LoadFromXml(xml);
 	return pBehavior;
 }
 
-Behavior* CreatePawnWander(TiXmlElement* xml)
+Behavior* CreatePawnWander(XMLElement* xml)
 {
 	PawnWander* pBehavior = new PawnWander;
 	pBehavior->LoadFromXml(xml);
 	return pBehavior;
 }
 
-Behavior* CreatePawnChase(TiXmlElement* xml)
+Behavior* CreatePawnChase(XMLElement* xml)
 {
 	PawnChase* pBehavior = new PawnChase;
 	pBehavior->LoadFromXml(xml);
 	return pBehavior;
 }
 
-Behavior* CreatePawnAttackNear(TiXmlElement* xml)
+Behavior* CreatePawnAttackNear(XMLElement* xml)
 {
 	PawnAttackNear* pBehavior = new PawnAttackNear;
 	pBehavior->LoadFromXml(xml);
 	return pBehavior;
 }
 
-Behavior* CreatePawnAttackNear2(TiXmlElement* xml)
+Behavior* CreatePawnAttackNear2(XMLElement* xml)
 {
 	PawnAttackNear2* pBehavior = new PawnAttackNear2;
 	pBehavior->LoadFromXml(xml);
 	return pBehavior;
 }
 
-Behavior* CreatePawnAttackFar(TiXmlElement* xml)
+Behavior* CreatePawnAttackFar(XMLElement* xml)
 {
 	PawnAttackFar* pBehavior = new PawnAttackFar;
 	pBehavior->LoadFromXml(xml);
 	return pBehavior;
 }
 
-Behavior* CreatePawnMove(TiXmlElement* xml)
+Behavior* CreatePawnMove(XMLElement* xml)
 {
 	PawnMove* pBehavior = new PawnMove;
 	pBehavior->LoadFromXml(xml);
 	return pBehavior;
 }
 
-Behavior* CreatePawnDie(TiXmlElement* xml)
+Behavior* CreatePawnDie(XMLElement* xml)
 {
 	PawnDie* pBehavior = new PawnDie;
 	pBehavior->LoadFromXml(xml);
 	return pBehavior;
 }
 
-Behavior* CreatePawnSkill1(TiXmlElement* xml)
+Behavior* CreatePawnSkill1(XMLElement* xml)
 {
 	PawnSkill1* pBehavior = new PawnSkill1;
 	pBehavior->LoadFromXml(xml);
 	return pBehavior;
 }
 
-Behavior* CreatePawnSkill2(TiXmlElement* xml)
+Behavior* CreatePawnSkill2(XMLElement* xml)
 {
 	PawnSkill2* pBehavior = new PawnSkill2;
 	pBehavior->LoadFromXml(xml);
 	return pBehavior;
 }
 
-Behavior* CreatePawnSkill3(TiXmlElement* xml)
+Behavior* CreatePawnSkill3(XMLElement* xml)
 {
 	PawnSkill3* pBehavior = new PawnSkill3;
 	pBehavior->LoadFromXml(xml);
@@ -176,7 +177,7 @@ Behavior* CreatePawnSkill3(TiXmlElement* xml)
 /*                                               user behaviors					     */
 /************************************************************************/
 
-Precondition* CreateProbablity(TiXmlElement* xml)
+Precondition* CreateProbablity(XMLElement* xml)
 {
 	Probablity* precondition = new Probablity();
 	float value = (float)atof(xml->Attribute("value"));
@@ -185,14 +186,14 @@ Precondition* CreateProbablity(TiXmlElement* xml)
 }
 
 
-Precondition* CreateHaveHP(TiXmlElement* xml)
+Precondition* CreateHaveHP(XMLElement* xml)
 {
 	HaveHP* precondition = new HaveHP();
 	return precondition;
 }
 
 
-Precondition* CreateLowHP(TiXmlElement* xml)
+Precondition* CreateLowHP(XMLElement* xml)
 {
 	LowHP* precondition = new LowHP();
 	float value = (float)atof(xml->Attribute("value"));
@@ -201,7 +202,7 @@ Precondition* CreateLowHP(TiXmlElement* xml)
 }
 
 
-Precondition* CreateHighHP(TiXmlElement* xml)
+Precondition* CreateHighHP(XMLElement* xml)
 {
 	HighHP* precondition = new HighHP();
 	float value = (float)atof(xml->Attribute("value"));
@@ -210,28 +211,28 @@ Precondition* CreateHighHP(TiXmlElement* xml)
 }
 
 
-Precondition* CreateHaveTarget(TiXmlElement* xml)
+Precondition* CreateHaveTarget(XMLElement* xml)
 {
 	HaveTarget* precondition = new HaveTarget();
 	return precondition;
 }
 
 
-Precondition* CreateReachTarget(TiXmlElement* xml)
+Precondition* CreateReachTarget(XMLElement* xml)
 {
 	ReachTarget* precondition = new ReachTarget();
 	return precondition;
 }
 
 
-Precondition* CreateTargetInNearRange(TiXmlElement* xml)
+Precondition* CreateTargetInNearRange(XMLElement* xml)
 {
 	TargetInNearRange* precondition = new TargetInNearRange();
 	return precondition;
 }
 
 
-Precondition* CreateTargetInFarRange(TiXmlElement* xml)
+Precondition* CreateTargetInFarRange(XMLElement* xml)
 {
 	TargetInFarRange* precondition = new TargetInFarRange();
 	return precondition;

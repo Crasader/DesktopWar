@@ -1,11 +1,12 @@
 
 #include <vector>
-#include "tinyxml.h"
+#include "tinyxml2.h"
 #include "GamePlay.h"
 #include "entity/EntityCreators.h"
 #include "pawn/PawnDefines.h"
 #include "Logger.h"
 
+using namespace tinyxml2;
 using namespace Genius;
 
 struct PawnBornInfo
@@ -96,14 +97,14 @@ void GamePlay::SendHuman()
 
 bool GamePlay::LoadFromConfig(std::string filePath)
 {
-	TiXmlDocument* doc = new TiXmlDocument();
+	XMLDocument* doc = new XMLDocument();
 	if (!doc->LoadFile(filePath.c_str()))
 		return false;
 
 	std::string forePath = filePath.substr(0, filePath.find_last_of("/") + 1);
 
-	TiXmlElement* root = doc->RootElement();
-	for (TiXmlElement* animSetNode = root->FirstChildElement(); animSetNode; animSetNode = animSetNode->NextSiblingElement())
+	XMLElement* root = doc->RootElement();
+	for (XMLElement* animSetNode = root->FirstChildElement(); animSetNode; animSetNode = animSetNode->NextSiblingElement())
 	{
 		PawnSequenceInfo seqInfo;
 		seqInfo.name = animSetNode->Attribute("name");
@@ -111,7 +112,7 @@ bool GamePlay::LoadFromConfig(std::string filePath)
 		seqInfo.x = atof(animSetNode->Attribute("x"));
 		seqInfo.y = atof(animSetNode->Attribute("y"));
 		seqInfo.done = false;
-		for (TiXmlElement* animNode = animSetNode->FirstChildElement(); animNode; animNode = animNode->NextSiblingElement())
+		for (XMLElement* animNode = animSetNode->FirstChildElement(); animNode; animNode = animNode->NextSiblingElement())
 		{
 			PawnBornInfo bornInfo;
 			bornInfo.pawnID = animNode->Attribute("type");

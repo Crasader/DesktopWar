@@ -1,7 +1,7 @@
 #pragma once
 #include "../AIBaseDef.h"
 
-class TiXmlElement;
+
 
 using namespace Genius;
 

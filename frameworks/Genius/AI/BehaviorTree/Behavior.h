@@ -3,8 +3,12 @@
 #include "../AIBaseDef.h"
 #include "Precondition.h"
 
-class TiXmlElement;
+namespace tinyxml2
+{
+	class XMLElement;
+};
 
+using namespace tinyxml2;
 using namespace Genius;
 
 AI_NS_BEGIN
@@ -35,7 +39,7 @@ public:
 	virtual void OnTerminate(BHUpdateContext& context, eBehaviorStatus state){}
 	virtual void OnAbort(BHUpdateContext& context){ Abort(context); }
 	virtual void AddChild(Behavior*){}
-	virtual bool LoadFromXml(TiXmlElement* xml){ return true; }
+	virtual bool LoadFromXml(XMLElement* xml){ return true; }
 
 	Behavior() : 
 		m_eStatus(BH_Invalid),

@@ -13,7 +13,7 @@ import re
 from contextlib import contextmanager
 
 # manualy set cocos path
-MyCocosPath = 'D:/MyDev/cocos2d-x-3.11.1'
+MyCocosPath = 'G:/MyDev/cocos2d-x-3.11.1'
 
 
 def _check_ndk_root_env():

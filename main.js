@@ -17,7 +17,7 @@ cc.game.run();
 */
 
 
-var aa = new Logger();
-aa.print("lolololol");
+//var aa = new Logger();
+Logger.print("lolololol");
 
 

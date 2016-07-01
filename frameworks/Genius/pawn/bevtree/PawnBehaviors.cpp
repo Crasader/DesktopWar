@@ -7,7 +7,7 @@
 #include "ECS/ecs.h"
 #include "pawn/PawnDefines.h"
 #include "pawn/action/ActionDefine.h"
-#include "tinyxml.h"
+#include "tinyxml2.h"
 #include "Logger.h"
 #include "app/Config.h"
 #include "app/GameDefine.h"
@@ -63,7 +63,7 @@ void PawnIdle::OnTerminate(BHUpdateContext& context, eBehaviorStatus state)
 	m_timeCounter = 0;
 }
 
-bool PawnIdle::LoadFromXml(TiXmlElement* xml)
+bool PawnIdle::LoadFromXml(XMLElement* xml)
 {
 	return true;
 }
@@ -105,7 +105,7 @@ void PawnMove::OnTerminate(BHUpdateContext& context, eBehaviorStatus state)
 	m_uiTimeCounter = 0;
 }
 
-bool PawnMove::LoadFromXml(TiXmlElement* xml)
+bool PawnMove::LoadFromXml(XMLElement* xml)
 {
 	return true;
 }
@@ -148,7 +148,7 @@ void PawnDie::OnTerminate(BHUpdateContext& context, eBehaviorStatus state)
 	m_timeCounter = 0;
 }
 
-bool PawnDie::LoadFromXml(TiXmlElement* xml)
+bool PawnDie::LoadFromXml(XMLElement* xml)
 {
 	//m_duration = (float)atof(xml->Attribute("totalDuration"));
 
@@ -201,10 +201,10 @@ void PawnWander::OnTerminate(BHUpdateContext& context, eBehaviorStatus state)
 	//LogInfo("exit PawnWander");
 }
 
-bool PawnWander::LoadFromXml(TiXmlElement* xml)
+bool PawnWander::LoadFromXml(XMLElement* xml)
 {
 	int wanderType = eWanderNone;
-	xml->Attribute("type", &wanderType);
+	wanderType = xml->IntAttribute("type");
 	if (wanderType > eWanderNone && wanderType < eWanderNum)
 		m_wanderType = wanderType;
 	else
@@ -307,7 +307,7 @@ void PawnChase::OnTerminate(BHUpdateContext& context, eBehaviorStatus state)
 	//LogInfo("exit PawnChase");
 }
 
-bool PawnChase::LoadFromXml(TiXmlElement* xml)
+bool PawnChase::LoadFromXml(XMLElement* xml)
 {
 	return true;
 }
@@ -371,7 +371,7 @@ void PawnAttackNear::OnTerminate(BHUpdateContext& context, eBehaviorStatus state
 	//LogInfo("exit PawnAttack");
 }
 
-bool PawnAttackNear::LoadFromXml(TiXmlElement* xml)
+bool PawnAttackNear::LoadFromXml(XMLElement* xml)
 {
 	return true;
 }
@@ -450,7 +450,7 @@ void PawnAttackNear2::OnTerminate(BHUpdateContext& context, eBehaviorStatus stat
 	animCom->SetDebugLabel("a2o");
 }
 
-bool PawnAttackNear2::LoadFromXml(TiXmlElement* xml)
+bool PawnAttackNear2::LoadFromXml(XMLElement* xml)
 {
 	return true;
 }
@@ -525,7 +525,7 @@ void PawnAttackFar::OnTerminate(BHUpdateContext& context, eBehaviorStatus state)
 	//LogInfo("exit PawnAttack far");
 }
 
-bool PawnAttackFar::LoadFromXml(TiXmlElement* xml)
+bool PawnAttackFar::LoadFromXml(XMLElement* xml)
 {
 	return true;
 }
@@ -599,7 +599,7 @@ void PawnSkill1::OnTerminate(BHUpdateContext& context, eBehaviorStatus state)
 	//LogInfo("exit useskill");
 }
 
-bool PawnSkill1::LoadFromXml(TiXmlElement* xml)
+bool PawnSkill1::LoadFromXml(XMLElement* xml)
 {
 	return true;
 }
@@ -673,7 +673,7 @@ void PawnSkill2::OnTerminate(BHUpdateContext& context, eBehaviorStatus state)
 	//LogInfo("exit useskill");
 }
 
-bool PawnSkill2::LoadFromXml(TiXmlElement* xml)
+bool PawnSkill2::LoadFromXml(XMLElement* xml)
 {
 	return true;
 }
@@ -747,7 +747,7 @@ void PawnSkill3::OnTerminate(BHUpdateContext& context, eBehaviorStatus state)
 	//LogInfo("exit useskill");
 }
 
-bool PawnSkill3::LoadFromXml(TiXmlElement* xml)
+bool PawnSkill3::LoadFromXml(XMLElement* xml)
 {
 	return true;
 }
@@ -805,7 +805,7 @@ void SheepIdle::OnTerminate(BHUpdateContext& context, eBehaviorStatus state)
 	m_uiIdleTimeCounter = 0;
 }
 
-bool SheepIdle::LoadFromXml(TiXmlElement* xml)
+bool SheepIdle::LoadFromXml(XMLElement* xml)
 {
 	return true;
 }
@@ -835,7 +835,7 @@ void SheepEat::OnTerminate(BHUpdateContext& context, eBehaviorStatus state)
 	m_uiIdleTimeCounter = 0;
 }
 
-bool SheepEat::LoadFromXml(TiXmlElement* xml)
+bool SheepEat::LoadFromXml(XMLElement* xml)
 {
 	return true;
 }
@@ -865,7 +865,7 @@ void SheepDie::OnTerminate(BHUpdateContext& context, eBehaviorStatus state)
 	m_uiIdleTimeCounter = 0;
 }
 
-bool SheepDie::LoadFromXml(TiXmlElement* xml)
+bool SheepDie::LoadFromXml(XMLElement* xml)
 {
 	return true;
 }*/

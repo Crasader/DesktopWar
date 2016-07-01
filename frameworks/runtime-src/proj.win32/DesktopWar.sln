@@ -23,8 +23,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libbullet", "..\..\cocos2d-
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "librecast", "..\..\cocos2d-x\external\recast\proj.win32\librecast.vcxproj", "{41E34993-647E-4282-8384-4AB1AE31A452}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tinyxml", "..\..\tinyxml\tinyxml.vcxproj", "{1761A7AB-ABE6-41A7-AB37-302A03C019C5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -59,10 +57,6 @@ Global
 		{41E34993-647E-4282-8384-4AB1AE31A452}.Debug|Win32.Build.0 = Debug|Win32
 		{41E34993-647E-4282-8384-4AB1AE31A452}.Release|Win32.ActiveCfg = Release|Win32
 		{41E34993-647E-4282-8384-4AB1AE31A452}.Release|Win32.Build.0 = Release|Win32
-		{1761A7AB-ABE6-41A7-AB37-302A03C019C5}.Debug|Win32.ActiveCfg = Debug|Win32
-		{1761A7AB-ABE6-41A7-AB37-302A03C019C5}.Debug|Win32.Build.0 = Debug|Win32
-		{1761A7AB-ABE6-41A7-AB37-302A03C019C5}.Release|Win32.ActiveCfg = Release|Win32
-		{1761A7AB-ABE6-41A7-AB37-302A03C019C5}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +65,5 @@ Global
 		{B7C2A162-DEC9-4418-972E-240AB3CBFCAE} = {8C6B0381-B325-4D7F-B1BB-474ABACE46AC}
 		{929480E7-23C0-4DF6-8456-096D71547116} = {8C6B0381-B325-4D7F-B1BB-474ABACE46AC}
 		{012DFF48-A13F-4F52-B07B-F8B9D21CE95B} = {8C6B0381-B325-4D7F-B1BB-474ABACE46AC}
-		{1761A7AB-ABE6-41A7-AB37-302A03C019C5} = {8C6B0381-B325-4D7F-B1BB-474ABACE46AC}
 	EndGlobalSection
 EndGlobal

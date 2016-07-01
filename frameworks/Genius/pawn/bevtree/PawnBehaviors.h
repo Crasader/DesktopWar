@@ -18,7 +18,7 @@ public:
 	virtual eBehaviorStatus Update(BHUpdateContext& context);
 	virtual void OnInitialize(BHUpdateContext& context);
 	virtual void OnTerminate(BHUpdateContext& context, eBehaviorStatus state);
-	virtual bool LoadFromXml(TiXmlElement* xml);
+	virtual bool LoadFromXml(XMLElement* xml);
 
 private:
 	float		m_totalDuration;
@@ -41,7 +41,7 @@ public:
 	virtual eBehaviorStatus Update(BHUpdateContext& context);
 	virtual void OnInitialize(BHUpdateContext& context);
 	virtual void OnTerminate(BHUpdateContext& context, eBehaviorStatus state);
-	virtual bool LoadFromXml(TiXmlElement* xml);
+	virtual bool LoadFromXml(XMLElement* xml);
 
 private:
 	float		m_uiMaxTime;
@@ -63,7 +63,7 @@ public:
 	virtual eBehaviorStatus Update(BHUpdateContext& context);
 	virtual void OnInitialize(BHUpdateContext& context);
 	virtual void OnTerminate(BHUpdateContext& context, eBehaviorStatus state);
-	virtual bool LoadFromXml(TiXmlElement* xml);
+	virtual bool LoadFromXml(XMLElement* xml);
 
 private:
 	float		m_duration;
@@ -91,7 +91,7 @@ public:
 	virtual eBehaviorStatus Update(BHUpdateContext& context);
 	virtual void OnInitialize(BHUpdateContext& context);
 	virtual void OnTerminate(BHUpdateContext& context, eBehaviorStatus state);
-	virtual bool LoadFromXml(TiXmlElement* xml);
+	virtual bool LoadFromXml(XMLElement* xml);
 
 private:
 	void		GoToSomewhere(BHUpdateContext& context);
@@ -116,7 +116,7 @@ public:
 	virtual eBehaviorStatus Update(BHUpdateContext& context);
 	virtual void OnInitialize(BHUpdateContext& context);
 	virtual void OnTerminate(BHUpdateContext& context, eBehaviorStatus state);
-	virtual bool LoadFromXml(TiXmlElement* xml);
+	virtual bool LoadFromXml(XMLElement* xml);
 
 private:
 	void		GoToTarget(BHUpdateContext& context);
@@ -139,7 +139,7 @@ public:
 	virtual eBehaviorStatus Update(BHUpdateContext& context);
 	virtual void OnInitialize(BHUpdateContext& context);
 	virtual void OnTerminate(BHUpdateContext& context, eBehaviorStatus state);
-	virtual bool LoadFromXml(TiXmlElement* xml);
+	virtual bool LoadFromXml(XMLElement* xml);
 
 	virtual bool HandleEvent(IEventData const &event);
 
@@ -160,7 +160,7 @@ public:
 	virtual eBehaviorStatus Update(BHUpdateContext& context);
 	virtual void OnInitialize(BHUpdateContext& context);
 	virtual void OnTerminate(BHUpdateContext& context, eBehaviorStatus state);
-	virtual bool LoadFromXml(TiXmlElement* xml);
+	virtual bool LoadFromXml(XMLElement* xml);
 
 	virtual bool HandleEvent(IEventData const &event);
 
@@ -181,7 +181,7 @@ public:
 	virtual eBehaviorStatus Update(BHUpdateContext& context);
 	virtual void OnInitialize(BHUpdateContext& context);
 	virtual void OnTerminate(BHUpdateContext& context, eBehaviorStatus state);
-	virtual bool LoadFromXml(TiXmlElement* xml);
+	virtual bool LoadFromXml(XMLElement* xml);
 
 	virtual bool HandleEvent(IEventData const &event);
 
@@ -202,7 +202,7 @@ public:
 	virtual eBehaviorStatus Update(BHUpdateContext& context);
 	virtual void OnInitialize(BHUpdateContext& context);
 	virtual void OnTerminate(BHUpdateContext& context, eBehaviorStatus state);
-	virtual bool LoadFromXml(TiXmlElement* xml);
+	virtual bool LoadFromXml(XMLElement* xml);
 
 	virtual bool HandleEvent(IEventData const &event);
 
@@ -223,7 +223,7 @@ public:
 	virtual eBehaviorStatus Update(BHUpdateContext& context);
 	virtual void OnInitialize(BHUpdateContext& context);
 	virtual void OnTerminate(BHUpdateContext& context, eBehaviorStatus state);
-	virtual bool LoadFromXml(TiXmlElement* xml);
+	virtual bool LoadFromXml(XMLElement* xml);
 
 	virtual bool HandleEvent(IEventData const &event);
 
@@ -244,7 +244,7 @@ public:
 	virtual eBehaviorStatus Update(BHUpdateContext& context);
 	virtual void OnInitialize(BHUpdateContext& context);
 	virtual void OnTerminate(BHUpdateContext& context, eBehaviorStatus state);
-	virtual bool LoadFromXml(TiXmlElement* xml);
+	virtual bool LoadFromXml(XMLElement* xml);
 
 	virtual bool HandleEvent(IEventData const &event);
 
@@ -267,7 +267,7 @@ public:
 	virtual eBehaviorStatus Update(BHUpdateContext& context);
 	virtual void OnInitialize(BHUpdateContext& context);
 	virtual void OnTerminate(BHUpdateContext& context, eBehaviorStatus state);
-	virtual bool LoadFromXml(TiXmlElement* xml);
+	virtual bool LoadFromXml(XMLElement* xml);
 
 private:
 	float		m_uiMaxIdleTime;
@@ -288,7 +288,7 @@ public:
 	virtual eBehaviorStatus Update(BHUpdateContext& context);
 	virtual void OnInitialize(BHUpdateContext& context);
 	virtual void OnTerminate(BHUpdateContext& context, eBehaviorStatus state);
-	virtual bool LoadFromXml(TiXmlElement* xml);
+	virtual bool LoadFromXml(XMLElement* xml);
 
 private:
 	float		m_uiMaxIdleTime;
@@ -309,7 +309,7 @@ public:
 	virtual eBehaviorStatus Update(BHUpdateContext& context);
 	virtual void OnInitialize(BHUpdateContext& context);
 	virtual void OnTerminate(BHUpdateContext& context, eBehaviorStatus state);
-	virtual bool LoadFromXml(TiXmlElement* xml);
+	virtual bool LoadFromXml(XMLElement* xml);
 
 private:
 	float		m_uiMaxIdleTime;
