@@ -12,6 +12,9 @@ import subprocess
 import re
 from contextlib import contextmanager
 
+# manualy set cocos path
+MyCocosPath = 'D:/MyDev/cocos2d-x-3.11.1'
+
 
 def _check_ndk_root_env():
     ''' Checking the environment NDK_ROOT, which will be used for building
@@ -102,7 +105,8 @@ def main():
         print 'path: %s or path: %s are not valid! ' % (x86_llvm_path, x64_llvm_path)
         sys.exit(1)
 
-    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+    MyProjectRoot = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+    project_root = MyCocosPath
     cocos_root = os.path.abspath(project_root)
     jsb_root = os.path.abspath(os.path.join(project_root, 'cocos/scripting/js-bindings'))
     cxx_generator_root = os.path.abspath(os.path.join(project_root, 'tools/bindings-generator'))
@@ -115,6 +119,7 @@ def main():
     config.set('DEFAULT', 'jsbdir', jsb_root)
     config.set('DEFAULT', 'cxxgeneratordir', cxx_generator_root)
     config.set('DEFAULT', 'extra_flags', '')
+    config.set('DEFAULT', 'mycocosdir', MyProjectRoot)
     
     if '3.5' in llvm_path:
         config.set('DEFAULT', 'clang_version', '3.5')
@@ -145,8 +150,8 @@ def main():
 
     try:
 
-        tojs_root = '%s/tools/tojs' % project_root
-        output_dir = '%s/cocos/scripting/js-bindings/auto' % project_root
+        tojs_root = '%s/tools/tojs' % MyProjectRoot
+        output_dir = '%s/cocos/scripting/js-bindings/auto' % MyProjectRoot
 
         cmd_args = {'app.ini': ('app', 'jsb_app_auto'),
                     }
