@@ -73,22 +73,24 @@ bool CocosApp::applicationDidFinishLaunching()
 {
 	// initialize director
 	auto director = Director::getInstance();
+	director->setDisplayStats(cfg_ShowFPS);
+	director->setAnimationInterval(1.0 / 30);
 	auto glview = director->getOpenGLView();
 	if (!glview)
 	{
-		glview = GLViewImpl::create("DesktopWar");
+		int width = GameDefine::viewWidth;// GetSystemMetrics(SM_CXSCREEN);
+		int height = GameDefine::viewHeight;
+		//cocos2d::Size designResolutionSize = cocos2d::Size((float)width, (float)height);
+		//glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
+		//glview->setFrameSize(designResolutionSize.width, designResolutionSize.height);
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
+		glview = cocos2d::GLViewImpl::create("DesktopWar");
+#else
+		glview = cocos2d::GLViewImpl::createWithRect("DesktopWar", Rect(0, 0, width, height));
+#endif
 		director->setOpenGLView(glview);
 		director->setClearColor(Color4F(0, 0, 0, 0.0f));
 	}
-	
-	int width = GameDefine::viewWidth;// GetSystemMetrics(SM_CXSCREEN);
-	int height = GameDefine::viewHeight;
-	cocos2d::Size designResolutionSize = cocos2d::Size((float)width, (float)height);
-
-	director->setDisplayStats(cfg_ShowFPS);
-	director->setAnimationInterval(1.0 / 30);
-	glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
-	glview->setFrameSize(designResolutionSize.width, designResolutionSize.height);
 
 	register_all_packages();
 	register_js();
@@ -112,6 +114,13 @@ void CocosApp::applicationWillEnterForeground()
 void CocosApp::setParent(HWND hwnd)
 {
 	m_hwnd = hwnd;
+}
+
+void CocosApp::RunScript()
+{
+	ScriptEngineProtocol *engine = ScriptingCore::getInstance();
+	ScriptEngineManager::getInstance()->setScriptEngine(engine);
+	ScriptingCore::getInstance()->runScript("res/script/main.js");
 }
 
 void CocosApp::PostRun()
@@ -236,9 +245,7 @@ static void register_js()
 #if defined(COCOS2D_DEBUG) && (COCOS2D_DEBUG > 0)
 	sc->enableDebugger();
 #endif
-	ScriptEngineProtocol *engine = ScriptingCore::getInstance();
-	ScriptEngineManager::getInstance()->setScriptEngine(engine);
-	ScriptingCore::getInstance()->runScript("res/script/main.js");
+	
 
 }
 

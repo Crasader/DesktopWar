@@ -69,7 +69,7 @@ void QuadCommand::reIndex(int indicesCount)
 {
     if (indicesCount > __indexCapacity)
     {
-        CCLOG("cocos2d: QuadCommand: resizing index size from [%d] to [%d]", __indexCapacity, indicesCount);
+        //CCLOG("cocos2d: QuadCommand: resizing index size from [%d] to [%d]", __indexCapacity, indicesCount);
         __indices = (GLushort*) realloc(__indices, indicesCount * sizeof(__indices[0]));
         __indexCapacity = indicesCount;
     }

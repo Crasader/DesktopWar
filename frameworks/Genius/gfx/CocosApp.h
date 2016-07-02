@@ -22,6 +22,8 @@ public:
 	void setParent(HWND hwnd);
 	cocos2d::Scene* GetScene(){ return m_pScene; }
 
+	void RunScript();
+
 	void PostRun();
 	void StepRun();
 	void AfterRun();
