@@ -586,6 +586,9 @@
     <ClInclude Include="..\..\Genius\pawn\action\PawnActionChangeDir.h">
       <Filter>Genius\Logic\Pawn\Action</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Genius\JSBHeaders.h">
+      <Filter>Genius</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">

@@ -11,7 +11,7 @@ ComBulletDebugDraw::ComBulletDebugDraw()
 	pNodeHurtRange = DrawNode::create();
 	pRoot->addChild(pNodeBoxCollider);
 	pRoot->addChild(pNodeHurtRange);
-	SceneManager::GetInstance().AddToMapLayer(pRoot);
+	SceneManager::GetSingleton()->AddToMapLayer(pRoot);
 }
 
 ComBulletDebugDraw::~ComBulletDebugDraw()

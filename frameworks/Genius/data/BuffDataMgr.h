@@ -4,7 +4,7 @@
 #include <map>
 #include <vector>
 #include "IDataManager.h"
-#include "Singleton.h"
+#include "../common/Singleton.h"
 
 namespace Genius
 {

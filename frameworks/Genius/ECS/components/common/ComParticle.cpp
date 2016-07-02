@@ -17,7 +17,7 @@ ComParticle::ComParticle(const std::string& fileName)
 	m_pAvatarRoot = cocos2d::Node::create();
 	m_pAvatarRoot->addChild(smoke);
 
-	SceneManager::GetInstance().AddToMapLayer(m_pAvatarRoot);
+	SceneManager::GetSingleton()->AddToMapLayer(m_pAvatarRoot);
 }
 
 ComParticle::~ComParticle()

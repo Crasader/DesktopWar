@@ -2,14 +2,14 @@
 #define _GENIUS_SCENE_H_
 
 #include "cocos2d.h"
+#include "common/Singleton.h"
 
 namespace Genius
 {
 	class SceneManager
 	{
 	public:
-		static SceneManager& GetInstance();
-
+		static  SceneManager*  GetSingleton();
 		bool Init();
 		void Update();
 		void AddToMapLayer(cocos2d::Node* node, float x = 0, float y = 0, int zOrder = 0);
@@ -19,9 +19,6 @@ namespace Genius
 	private:
 		void RefreshPawnsZOrder();
 		void UpdateSceneShake();
-
-	private:
-		SceneManager();
 
 	private:
 		cocos2d::Node*	m_root;

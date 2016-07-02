@@ -37,7 +37,7 @@ m_pAnimFsm(nullptr)
 		m_pLifeBar = UIBar::create(roleData->lifeBarType);
 		m_pLifeBar->setPosition(0, 0 + roleData->lifeBarHeight);
 		m_pAvatarRoot->addChild(m_pLifeBar);
-		SceneManager::GetInstance().AddToMapLayer(m_pAvatarRoot);
+		SceneManager::GetSingleton()->AddToMapLayer(m_pAvatarRoot);
 
 		m_pBodyArmature->getAnimation()->setFrameEventCallFunc(CC_CALLBACK_3(ComPawnAnim::AnimationFrameCallback, this, std::placeholders::_4));
 		m_pBodyArmature->getAnimation()->setMovementEventCallFunc(CC_CALLBACK_3(ComPawnAnim::AnimationMovementCallback, this));

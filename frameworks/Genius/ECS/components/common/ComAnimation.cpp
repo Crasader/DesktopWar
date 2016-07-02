@@ -11,7 +11,7 @@ ComAnimation::ComAnimation(const std::string& fileName)
 	m_pAvatarRoot = cocos2d::Node::create();
 	m_pBodyArmature = cocostudio::Armature::create(fileName);
 	m_pAvatarRoot->addChild(m_pBodyArmature);
-	SceneManager::GetInstance().AddToMapLayer(m_pAvatarRoot);
+	SceneManager::GetSingleton()->AddToMapLayer(m_pAvatarRoot);
 	m_pBodyArmature->getAnimation()->playWithIndex(0);
 }
 

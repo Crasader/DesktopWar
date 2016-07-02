@@ -1,20 +1,29 @@
 
 var GameState = Class.extend({
     
-    ctor:function () {
+    ctor:function ()
+    {
         
     },
     
-    OnEnter:function () {
+    OnEnter:function ()
+    {
         
     },
     
-    OnUpdate:function () {
+    OnUpdate:function ()
+    {
         
     },
     
-    OnExit:function () {
+    OnExit:function ()
+    {
         
+    },
+
+    ParseResourceList:function(loadMgr)
+    {
+
     }
     
 });

@@ -6,13 +6,13 @@
 #include "gfx/gfx.h"
 
 //class AppStateLoading;
-class LoadingManager : public cocos2d::Ref
+class LoadingManager : public cocos2d::Node
 {
 public:
 	enum ResourceType
 	{
-		Json,
-		Image,
+		Json = 1,
+		Image = 2,
 	};
 
 	struct ResourceInfo
@@ -29,12 +29,12 @@ public:
 
 
 public:
-	LoadingManager(/*AppStateLoading* pState*/);
+	LoadingManager();
 	~LoadingManager();
 
 	void GenerateUnLoadList();
 	void ClearLoadingList();
-	void AddResource(ResourceType t, std::string& path);
+	void AddResource(int type, std::string& path);
 	void StartLoading();
 
 	// false表示全部加载完毕

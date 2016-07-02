@@ -14,48 +14,63 @@ require("res/script/LoadingState.js");
 require("res/script/WarState.js");
 
 
-Log("lololol JS bang!");
+//Log("lololol JS bang!");
 
 
 var Game =
 {
-
     currentState:null,
     lastState:null,
     loadingState:null,
     lanchState:null,
     warState:null,
-    
+
+
+
     Init:function ()
     {
-        Log("Game Init");
+        //Log("Game Init");
         this.loadingState = new LoadingState();
-        this.lanchState = new LaunchState(),
-        this.warState = new WarState(),
-        this.ChangeState("Launch");
+        this.lanchState = new LaunchState();
+        this.warState = new WarState();
+        this.ChangeState(this.lanchState);
     },
 
-    ChangeState:function(state)
+
+    ChangeState:function(newState)
     {
-        var newState = null;
-        if(state == "Launch")
+        if(newState != this.lanchState && newState != this.warState)
         {
-            newState = this.lanchState;
+            Log("invalid state");
+            return;
         }
-        else if(state == "War")
+        if(newState == this.currentState)
         {
-            newState = this.warState;
+            Log("cannot enter the same state");
+            return;
         }
+
         this.lastState = this.currentState;
-        this.currentState = newState;
-        if (this.lastState != null)
-            this.lastState.OnExit();
-        this.currentState.OnEnter();
+        this.currentState = this.loadingState;
+        this.loadingState.SetTwoStatus(this.lastState, newState);
     },
+
 
     OnUpdate:function (timeDelta)
     {
-        Log("game onupdate "+timeDelta);
+        //Log("game onupdate "+timeDelta);
+        if(this.currentState != null)
+        {
+            if (this.currentState != this.lastState)
+            {
+                if (this.lastState != null)
+                    this.lastState.OnExit();
+                this.currentState.OnEnter();
+                this.lastState = this.currentState;
+            }
+            this.currentState.OnUpdate(timeDelta);
+        }
+
     }
 
 

@@ -10,7 +10,7 @@ ComBulletAnimBase::ComBulletAnimBase(const std::string& bodyFileName)
 	m_pBodyArmature = nullptr;
 
 	m_pAvatarRoot = cocos2d::Node::create();
-	SceneManager::GetInstance().AddToMapLayer(m_pAvatarRoot);
+	SceneManager::GetSingleton()->AddToMapLayer(m_pAvatarRoot);
 	
 	m_pBodyArmature = cocostudio::Armature::create(bodyFileName);
 	m_pBodyArmature->getAnimation()->playWithIndex(0);

@@ -250,6 +250,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\entity\EntityCreators.h" />
     <ClInclude Include="..\..\Genius\gfx\GfxUtils.h" />
     <ClInclude Include="..\..\Genius\gfx\RollNumberLabel.h" />
+    <ClInclude Include="..\..\Genius\JSBHeaders.h" />
     <ClInclude Include="..\..\Genius\pawn\action\ActionDefine.h" />
     <ClInclude Include="..\..\Genius\pawn\action\ActionHandler.h" />
     <ClInclude Include="..\..\Genius\pawn\action\PawnAction.h" />

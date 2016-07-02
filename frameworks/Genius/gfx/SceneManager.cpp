@@ -9,17 +9,12 @@
 using namespace Genius;
 USING_NS_CC;
 
-SceneManager& SceneManager::GetInstance()
+
+SceneManager*  SceneManager::GetSingleton()
 {
 	static SceneManager mgr;
-	return mgr;
+	return &mgr;
 }
-
-SceneManager::SceneManager():
-m_root(nullptr),
-m_pMapLayer(nullptr),
-m_bShakeScene(false)
-{}
 
 bool SceneManager::Init()
 {

@@ -1,20 +1,30 @@
 
 var WarState = GameState.extend({
     
-    ctor:function () {
+    ctor:function ()
+    {
         this._super();
     },
     
-    OnEnter:function () {
-        this._super();
+    OnEnter:function ()
+    {
+        Log("enter War");
     },
     
-    OnUpdate:function () {
-        this._super();
+    OnUpdate:function ()
+    {
+
     },
     
-    OnExit:function () {
-        this._super();
+    OnExit:function ()
+    {
+        Log("exit War");
+    },
+
+    ParseResourceList:function(loadMgr)
+    {
+        //loadMgr.AddResource(LoadingManager.ResourceType.Json, "HolyKnight");
+        //loadMgr.AddResource(LoadingManager.ResourceType.Json, "BigDevil");
     }
     
 });

@@ -27,12 +27,12 @@ void LoadingManager::ClearLoadingList()
 	m_resources.clear();
 }
 
-void LoadingManager::AddResource(ResourceType t, std::string& path)
+void LoadingManager::AddResource(int t, std::string& path)
 {
 	std::map<std::string, AnimInfo*>& animInfoList = AnimDataMgr::GetSingleton()->GetAnimInfoList();
 	if (animInfoList.find(path) != animInfoList.end())
 	{
-		m_resources.push_back(ResourceInfo(t, animInfoList[path]->filePath));
+		m_resources.push_back(ResourceInfo((ResourceType)t, animInfoList[path]->filePath));
 	}
 }
 

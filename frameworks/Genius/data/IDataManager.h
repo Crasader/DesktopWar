@@ -3,7 +3,7 @@
 
 
 #include <string>
-#include "TabFile.h"
+#include "../common/TabFile.h"
 
 namespace Genius
 {

@@ -14,7 +14,7 @@ ComPawnDebugDraw::ComPawnDebugDraw()
 	pRoot->addChild(pNodeBoxCollider);
 	pRoot->addChild(pNodeNearRange);
 	pRoot->addChild(pNodeFarRange);
-	SceneManager::GetInstance().AddToMapLayer(pRoot);
+	SceneManager::GetSingleton()->AddToMapLayer(pRoot);
 }
 
 ComPawnDebugDraw::~ComPawnDebugDraw()

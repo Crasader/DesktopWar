@@ -5,7 +5,7 @@
 #include <map>
 #include <vector>
 #include "IDataManager.h"
-#include "Singleton.h"
+#include "../common/Singleton.h"
 
 
 namespace Genius
@@ -17,6 +17,8 @@ namespace Genius
 	public:
 		std::string	name;
 		std::string	filePath;
+
+		std::string FilePath(){ return filePath; }
 
 	public:
 		virtual  bool  ParseBuffer(TabFile& reader, int row);
@@ -47,6 +49,13 @@ namespace Genius
 		std::map<std::string, AnimInfo*>& GetAnimInfoList()
 		{
 			return m_animInfoList;
+		}
+
+		static AnimInfo* FindAnimInfo(std::string name)
+		{
+			if (AnimDataMgr::GetSingleton()->GetAnimInfoList().find(name) != AnimDataMgr::GetSingleton()->GetAnimInfoList().end())
+				return AnimDataMgr::GetSingleton()->GetAnimInfoList()[name];
+			return nullptr;
 		}
 
 	protected:
