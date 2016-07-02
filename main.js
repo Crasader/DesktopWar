@@ -10,19 +10,28 @@ require("res/script/Utils.js");
 require("res/script/Class.js");
 require("res/script/GameState.js");
 require("res/script/LaunchState.js");
+require("res/script/LoadingState.js");
 require("res/script/WarState.js");
 
 
-var Game = {
+Log("lololol JS bang!");
+
+
+var Game =
+{
 
     currentState:null,
     lastState:null,
-    lanchState:new LaunchState(),
-    warState:new WarState(),
+    loadingState:null,
+    lanchState:null,
+    warState:null,
     
     Init:function ()
     {
         Log("Game Init");
+        this.loadingState = new LoadingState();
+        this.lanchState = new LaunchState(),
+        this.warState = new WarState(),
         this.ChangeState("Launch");
     },
 
@@ -42,15 +51,16 @@ var Game = {
         if (this.lastState != null)
             this.lastState.OnExit();
         this.currentState.OnEnter();
+    },
+
+    OnUpdate:function (timeDelta)
+    {
+        Log("game onupdate "+timeDelta);
     }
 
+
+
 };
-
-
-//...
-Log("lololol~ Let's go ! !");
-
-
 
 Game.Init();
 

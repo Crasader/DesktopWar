@@ -1,21 +1,13 @@
 
 
-class AppState;
+/*class AppState;
 class AppStateLoading;
 class AppStateLaunch;
-class AppStateBattle;
+class AppStateBattle;*/
 
 class WarApp
 {
 public:
-	WarApp():
-		m_pCurrentState(nullptr),
-		m_pLastState(nullptr)
-	{}
-
-	~WarApp()
-	{}
-
 	bool			Init();
 	void			Tick(float time);
 	void			Destroy();
@@ -23,16 +15,18 @@ public:
 	void			ShowAuthor(bool show);
 	void			SpawnOne(int team = 0);
 	void			KillAll();
-	void			SwitchState(int state);
-	void			SetCurrentState(AppState* state);
+	//void			SwitchState(int state);
+	//void			SetCurrentState(AppState* state);
 
 private:
-	void OpenConsole();
+	void			_Update_Fast(float time);
+	void			_Update_Normal(float time);
+	void			_Update_Slow(float time);
 
 private:
-	AppState*					m_pCurrentState;
+	/*AppState*					m_pCurrentState;
 	AppState*					m_pLastState;
 	AppStateLaunch*		m_pLaunchState;
 	AppStateLoading*	m_pLoadingState;
-	AppStateBattle*		m_pBattleState;
+	AppStateBattle*		m_pBattleState;*/
 };

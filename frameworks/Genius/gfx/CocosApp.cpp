@@ -74,7 +74,7 @@ bool CocosApp::applicationDidFinishLaunching()
 	// initialize director
 	auto director = Director::getInstance();
 	director->setDisplayStats(cfg_ShowFPS);
-	director->setAnimationInterval(1.0 / 30);
+	director->setAnimationInterval(1.0f / 30);
 	auto glview = director->getOpenGLView();
 	if (!glview)
 	{

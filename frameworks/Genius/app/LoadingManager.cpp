@@ -1,14 +1,14 @@
 
 #include "app/LoadingManager.h"
 #include "AnimDataMgr.h"
-#include "app/AppStatus/AppStateLoading.h"
+//#include "app/AppStatus/AppStateLoading.h"
 
 USING_NS_CC;
 using namespace Genius;
 
-LoadingManager::LoadingManager(AppStateLoading* pState)
+LoadingManager::LoadingManager(/*AppStateLoading* pState*/)
 {
-	m_pLoadingState = pState;
+	//m_pLoadingState = pState;
 }
 
 LoadingManager::~LoadingManager()
@@ -94,8 +94,8 @@ void LoadingManager::UpdateLoading()
 void LoadingManager::JsonLoadedCallback(float percent)
 {
 	m_loadedCount++;
-	if (m_pLoadingState)
-		m_pLoadingState->SetPercent(percent*100);
+	//if (m_pLoadingState)
+	//	m_pLoadingState->SetPercent(percent*100);
 }
 
 void LoadingManager::ImageLoadedCallback(cocos2d::Texture2D* texture)

@@ -46,7 +46,9 @@
       * Provide our own failure code since we're having trouble linking to
       * std::_Debug_message (bug 982310).
       */
+#ifndef _INVALID_MEMORY_ORDER
 #    define _INVALID_MEMORY_ORDER MOZ_CRASH("Invalid memory order")
+#  endif
 #  endif
 #  define MOZ_HAVE_CXX11_ATOMICS
 #endif

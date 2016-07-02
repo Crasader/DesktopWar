@@ -104,9 +104,6 @@
     <Filter Include="Genius\Logic\Pawn\Anim\AnimSet">
       <UniqueIdentifier>{f45cb523-9547-4d78-8ec4-8a58cacb5c95}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Genius\Logic\App\AppStatus">
-      <UniqueIdentifier>{20b7be3e-bd6e-453e-8b3b-614cc98f88c2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Genius\Logic\ESC\User\Component\common">
       <UniqueIdentifier>{23fb624f-8964-474f-8f5c-23244a9f4fd4}</UniqueIdentifier>
     </Filter>
@@ -288,18 +285,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Genius\pawn\anim\animFSM\AnimFSM.h">
       <Filter>Genius\Logic\Pawn\Anim\AnimFSM</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\App\AppStatus\AppState.h">
-      <Filter>Genius\Logic\App\AppStatus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\App\AppStatus\AppStateBattle.h">
-      <Filter>Genius\Logic\App\AppStatus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\App\AppStatus\AppStateLoading.h">
-      <Filter>Genius\Logic\App\AppStatus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\App\AppStatus\AppStateLaunch.h">
-      <Filter>Genius\Logic\App\AppStatus</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\pawn\anim\animSet\AnimSetSimple.h">
       <Filter>Genius\Logic\Pawn\Anim\AnimSet</Filter>
@@ -744,18 +729,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\pawn\anim\animFSM\AnimFSM.cpp">
       <Filter>Genius\Logic\Pawn\Anim\AnimFSM</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\App\AppStatus\AppState.cpp">
-      <Filter>Genius\Logic\App\AppStatus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\App\AppStatus\AppStateBattle.cpp">
-      <Filter>Genius\Logic\App\AppStatus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\App\AppStatus\AppStateLoading.cpp">
-      <Filter>Genius\Logic\App\AppStatus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\App\AppStatus\AppStateLaunch.cpp">
-      <Filter>Genius\Logic\App\AppStatus</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\pawn\anim\animSet\AnimSetSimple.cpp">
       <Filter>Genius\Logic\Pawn\Anim\AnimSet</Filter>

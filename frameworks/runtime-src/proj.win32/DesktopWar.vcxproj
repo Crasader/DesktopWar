@@ -177,10 +177,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Genius\App\AppStatus\AppStateLaunch.h" />
-    <ClInclude Include="..\..\Genius\App\AppStatus\AppStateLoading.h" />
-    <ClInclude Include="..\..\Genius\App\AppStatus\AppState.h" />
-    <ClInclude Include="..\..\Genius\App\AppStatus\AppStateBattle.h" />
     <ClInclude Include="..\..\Genius\app\Config.h" />
     <ClInclude Include="..\..\Genius\app\GameDefine.h" />
     <ClInclude Include="..\..\Genius\app\GameUtils.h" />
@@ -337,10 +333,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\skill\UserActions.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Genius\App\AppStatus\AppStateLaunch.cpp" />
-    <ClCompile Include="..\..\Genius\App\AppStatus\AppStateLoading.cpp" />
-    <ClCompile Include="..\..\Genius\App\AppStatus\AppState.cpp" />
-    <ClCompile Include="..\..\Genius\App\AppStatus\AppStateBattle.cpp" />
     <ClCompile Include="..\..\Genius\app\GameDefine.cpp" />
     <ClCompile Include="..\..\Genius\App\LoadingManager.cpp" />
     <ClCompile Include="..\..\Genius\App\WarApp.cpp" />
