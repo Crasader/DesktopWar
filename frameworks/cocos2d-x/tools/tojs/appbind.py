@@ -151,7 +151,7 @@ def main():
     try:
 
         tojs_root = '%s/tools/tojs' % MyProjectRoot
-        output_dir = '%s/cocos/scripting/js-bindings/auto' % MyProjectRoot
+        output_dir = '%s/../Genius/scripting/js-bindings/auto' % MyProjectRoot
 
         cmd_args = {'app.ini': ('app', 'jsb_app_auto'),
                     }

@@ -115,10 +115,14 @@ RollNumberLabel = {
 
 /**
  * @method setColor
- * @param {color3b_object} arg0
+ * @param {int} arg0
+ * @param {int} arg1
+ * @param {int} arg2
  */
 setColor : function (
-color3b 
+int, 
+int, 
+int 
 )
 {
 },

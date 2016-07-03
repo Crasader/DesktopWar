@@ -17,7 +17,7 @@ public:
 	virtual ~RollNumberLabel(){}
 	static RollNumberLabel *create();
 	virtual void update(float delta);
-	void setColor(const cocos2d::Color3B& color);
+	void setColor(int r, int g, int b);
 	void setStartNumber(int number);
 	void rollTo(int number);
 	bool isRollDone(){ return m_currentNumber == m_targetNumber; }

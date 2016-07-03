@@ -42,9 +42,9 @@ void RollNumberLabel::update(float delta)
 
 }
 
-void RollNumberLabel::setColor(const Color3B& color)
+void RollNumberLabel::setColor(int r, int g, int b)
 {
-	m_pLabel->setColor(color);
+	m_pLabel->setColor(cocos2d::Color3B(r, g, b));
 }
 
 void RollNumberLabel::setStartNumber(int number)

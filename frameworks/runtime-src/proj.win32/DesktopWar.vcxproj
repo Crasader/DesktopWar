@@ -284,6 +284,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\pawn\bevtree\PawnPrecondition.h" />
     <ClInclude Include="..\..\Genius\pawn\PawnBlackboard.h" />
     <ClInclude Include="..\..\Genius\pawn\PawnDefines.h" />
+    <ClInclude Include="..\..\Genius\scripting\js-bindings\auto\jsb_app_auto.hpp" />
     <ClInclude Include="WinWrapper.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
@@ -430,6 +431,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\pawn\bevtree\PawnBHTree.cpp" />
     <ClCompile Include="..\..\Genius\pawn\bevtree\PawnPrecondition.cpp" />
     <ClCompile Include="..\..\Genius\pawn\PawnBlackboard.cpp" />
+    <ClCompile Include="..\..\Genius\scripting\js-bindings\auto\jsb_app_auto.cpp" />
     <ClCompile Include="WinWrapper.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="..\..\Genius\AI\BehaviorTree\Behavior.cpp" />

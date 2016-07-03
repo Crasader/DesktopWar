@@ -424,16 +424,20 @@ bool js_app_RollNumberLabel_setColor(JSContext *cx, uint32_t argc, jsval *vp)
     js_proxy_t *proxy = jsb_get_js_proxy(obj);
     RollNumberLabel* cobj = (RollNumberLabel *)(proxy ? proxy->ptr : NULL);
     JSB_PRECONDITION2( cobj, cx, false, "js_app_RollNumberLabel_setColor : Invalid Native Object");
-    if (argc == 1) {
-        cocos2d::Color3B arg0;
-        ok &= jsval_to_cccolor3b(cx, args.get(0), &arg0);
+    if (argc == 3) {
+        int arg0 = 0;
+        int arg1 = 0;
+        int arg2 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        ok &= jsval_to_int32(cx, args.get(1), (int32_t *)&arg1);
+        ok &= jsval_to_int32(cx, args.get(2), (int32_t *)&arg2);
         JSB_PRECONDITION2(ok, cx, false, "js_app_RollNumberLabel_setColor : Error processing arguments");
-        cobj->setColor(arg0);
+        cobj->setColor(arg0, arg1, arg2);
         args.rval().setUndefined();
         return true;
     }
 
-    JS_ReportError(cx, "js_app_RollNumberLabel_setColor : wrong number of arguments: %d, was expecting %d", argc, 1);
+    JS_ReportError(cx, "js_app_RollNumberLabel_setColor : wrong number of arguments: %d, was expecting %d", argc, 3);
     return false;
 }
 bool js_app_RollNumberLabel_update(JSContext *cx, uint32_t argc, jsval *vp)
@@ -565,7 +569,7 @@ void js_register_app_RollNumberLabel(JSContext *cx, JS::HandleObject global) {
     };
 
     static JSFunctionSpec funcs[] = {
-        JS_FN("setColor", js_app_RollNumberLabel_setColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("setColor", js_app_RollNumberLabel_setColor, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("update", js_app_RollNumberLabel_update, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("setStartNumber", js_app_RollNumberLabel_setStartNumber, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("rollTo", js_app_RollNumberLabel_rollTo, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
