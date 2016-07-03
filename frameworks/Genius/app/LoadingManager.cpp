@@ -43,7 +43,7 @@ bool LoadingManager::IsLoadingDone()
 
 int LoadingManager::GetLoadingPercent()
 {
-	return 100 * m_loadedCount / m_resources.size();
+	return 100 * m_loadedCount / (float)m_resources.size();
 }
 
 void LoadingManager::StartLoading()

@@ -125,6 +125,9 @@
     <Filter Include="Genius\JSB">
       <UniqueIdentifier>{2b078783-efab-4cb3-991d-d5bd8b0a83d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Genius\JSB\auto">
+      <UniqueIdentifier>{b0f89fb1-0378-4bd2-85b9-a978ecf0292f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Genius\common\2Ddef.h">
@@ -589,10 +592,10 @@
     <ClInclude Include="..\..\Genius\pawn\action\PawnActionChangeDir.h">
       <Filter>Genius\Logic\Pawn\Action</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\JSBHeaders.h">
-      <Filter>Genius</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\scripting\js-bindings\auto\jsb_app_auto.hpp">
+      <Filter>Genius\JSB\auto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\JSBHeaders.h">
       <Filter>Genius\JSB</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1010,7 +1013,7 @@
       <Filter>Genius\Logic\Pawn\Action</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\scripting\js-bindings\auto\jsb_app_auto.cpp">
-      <Filter>Genius\JSB</Filter>
+      <Filter>Genius\JSB\auto</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

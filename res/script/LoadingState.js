@@ -36,12 +36,12 @@ var LoadingState = GameState.extend
                 pArmature.getAnimation().playWithIndex(0);
             }
 
-            percentLabel = RollNumberLabel.create();
-            this.uiRoot.addChild(percentLabel);
-            percentLabel.setStartNumber(0);
-            percentLabel.setColor(0,255,0);
-            percentLabel.setScale(1.5);
-            percentLabel.setPosition(x, y-20);
+            this.percentLabel = RollNumberLabel.create();
+            this.uiRoot.addChild(this.percentLabel);
+            this.percentLabel.setStartNumber(0);
+            this.percentLabel.setColor(0,255,0);
+            this.percentLabel.setScale(1.5);
+            this.percentLabel.setPosition(x, y-20);
         }
     },
     
@@ -49,12 +49,13 @@ var LoadingState = GameState.extend
     {
         //Log("update Loading");
         this.loadingManager.UpdateLoading();
-        if (this.loadingManager.IsLoadingDone())// && m_percentLabel->isRollDone())
-        {
-            Game.currentState = this.nextState;
-        }
         var percent = this.loadingManager.GetLoadingPercent();
-        percentLabel.rollTo(percent);
+        this.percentLabel.rollTo(percent);
+        if (this.loadingManager.IsLoadingDone() && this.percentLabel.isRollDone())
+        {
+           Game.currentState = this.nextState;
+        }
+
     },
     
     OnExit:function ()

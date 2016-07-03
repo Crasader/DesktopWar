@@ -10,7 +10,7 @@ RollNumberLabel* RollNumberLabel::create()
 	if (pRollNumberLabel)
 		pRollNumberLabel->autorelease();
 
-	pRollNumberLabel->m_rollInterval = 0.003f;
+	pRollNumberLabel->m_rollSpeed= 100;
 	pRollNumberLabel->m_pLabel = Label::createWithBMFont("res/font/arial16.fnt", "", TextHAlignment::CENTER);
 	pRollNumberLabel->m_pLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
 	pRollNumberLabel->addChild(pRollNumberLabel->m_pLabel);
@@ -24,20 +24,29 @@ void RollNumberLabel::update(float delta)
 	if (m_pLabel == nullptr)
 		return;
 
-	if (m_targetNumber != m_currentNumber)
+	m_timePassed += delta;
+
+	if (m_targetNumber != (int)m_currentNumber && m_timePassed > 0.05f)
 	{
-		m_timePassed += delta;
-		if (m_timePassed > m_rollInterval)
+		float count = m_timePassed / (1.0f / m_rollSpeed);;
+		if (m_targetNumber > (int)m_currentNumber)
 		{
-			m_timePassed = 0;
-			if (m_targetNumber > m_currentNumber)
-				m_currentNumber++;
-			else
-				m_currentNumber--;
-			std::stringstream stream;
-			stream << m_currentNumber << "%";
-			m_pLabel->setString(stream.str());
+			m_currentNumber += count;
+			if (m_currentNumber > m_targetNumber)
+				m_currentNumber = m_targetNumber;
 		}
+		else
+		{
+			m_currentNumber -= count;
+			if (m_currentNumber < m_targetNumber)
+				m_currentNumber = m_targetNumber;
+		}
+
+		m_timePassed = 0;
+		
+		std::stringstream stream;
+		stream << (int)m_currentNumber << "%";
+		m_pLabel->setString(stream.str());
 	}
 
 }
@@ -57,6 +66,5 @@ void RollNumberLabel::setStartNumber(int number)
 
 void RollNumberLabel::rollTo(int number)
 {
-	//m_currentNumber = m_targetNumber;
 	m_targetNumber = number;
 }
