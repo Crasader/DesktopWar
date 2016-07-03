@@ -91,7 +91,7 @@ int DecLifeByPawn(BuffEnvParam& env, BuffParam& buffParam)
 			if (agentComReceiver->GetBlackboard()->m_currentHP < 0)
 				agentComReceiver->GetBlackboard()->m_currentHP = 0;
 
-			EventManager::GetInstance().FireEvent(HurtEvent(receiverEntity, - realDecLife));
+			EventManager::GetSingleton()->FireEvent(HurtEvent(receiverEntity, - realDecLife));
 		}
 
 	} while (false);
@@ -123,7 +123,7 @@ int AddLifeByPawn(BuffEnvParam& env, BuffParam& buffParam)
 			if (agentComReceiver->GetBlackboard()->m_currentHP > maxLife)
 				agentComReceiver->GetBlackboard()->m_currentHP = maxLife;
 
-			EventManager::GetInstance().FireEvent(HurtEvent(receiverEntity, buffParam.params[0]));
+			EventManager::GetSingleton()->FireEvent(HurtEvent(receiverEntity, buffParam.params[0]));
 		}
 
 	} while (false);
@@ -181,7 +181,7 @@ int DecLifeByBullet(BuffEnvParam& env, BuffParam& buffParam)
 			if (agentComReceiver->GetBlackboard()->m_currentHP < 0)
 				agentComReceiver->GetBlackboard()->m_currentHP = 0;
 
-			EventManager::GetInstance().FireEvent(HurtEvent(receiverEntity, -realDecLife));
+			EventManager::GetSingleton()->FireEvent(HurtEvent(receiverEntity, -realDecLife));
 		}
 
 	} while (false);

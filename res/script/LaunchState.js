@@ -4,12 +4,12 @@ var LaunchState = GameState.extend
     
     ctor:function ()
     {
-        this._super();
+        this._super()
     },
     
     OnEnter:function ()
     {
-        Log("enter Launch");
+        Log("enter Launch")
     },
     
     OnUpdate:function ()
@@ -19,14 +19,14 @@ var LaunchState = GameState.extend
     
     OnExit:function ()
     {
-        Log("exit Launch");
+        Log("exit Launch")
     },
 
     ParseResourceList:function(loadMgr)
     {
-        loadMgr.AddResource(1, "HolyKnight");
-        loadMgr.AddResource(1, "BigDevil");
+        loadMgr.AddResource(1, "HolyKnight")
+        loadMgr.AddResource(1, "BigDevil")
     }
 
     
-});
+})

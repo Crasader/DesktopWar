@@ -1,24 +1,20 @@
 #ifndef _TIME_SYSTEM_H_
 #define _TIME_SYSTEM_H_
 
+#include "common/Singleton.h"
+
 namespace Genius
 {
-	class TimeSystem
+	class TimeSystem : public Genius::Singleton<TimeSystem>
 	{
 	public:
-		static TimeSystem&	GetInstance();
+		TimeSystem() :
+			m_lastTickTime(0){}
 		virtual ~TimeSystem(){}
 
 		bool		Init();
-
 		void		Tick(float time);
-
 		float	GetLastTickSecond();
-
-	private:
-		TimeSystem() :
-			m_lastTickTime(0)
-		{}
 
 	private:
 		float		m_lastTickTime;

@@ -4,16 +4,15 @@
 #include "Event.h"
 #include <map>
 #include <list>
+#include "common/Singleton.h"
 
 namespace Genius
 {
-	class EventManager
+	class EventManager : public Genius::Singleton<EventManager>
 	{
 	public:
 		static EventManager& GetInstance();
 		virtual ~EventManager();
-
-	private:
 		EventManager();
 
 	public:

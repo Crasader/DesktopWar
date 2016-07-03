@@ -18,7 +18,7 @@ void SystemBoxCollider::Initialize()
 	colliderMapper.init(*world);
 	handlerMapper.init(*world);
 	// register event.
-	//EventManager::GetInstance().AddListener(this, Event_xxx);
+	//EventManager::GetSingleton()->AddListener(this, Event_xxx);
 }
 
 void SystemBoxCollider::ProcessEntity(Entity* pEntity)

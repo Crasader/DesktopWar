@@ -35,7 +35,7 @@ void ComBulletAnimEgg::AnimationFrameCallback(cocostudio::Bone* bone, const std:
 {
 	if (eventName == "buff")
 	{
-		EventManager::GetInstance().FireEvent(BulletTriggerEvent(GetOwner()));
+		EventManager::GetSingleton()->FireEvent(BulletTriggerEvent(GetOwner()));
 	}
 	else
 	{

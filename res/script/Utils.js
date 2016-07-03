@@ -2,5 +2,5 @@
 
 function Log(text)
 {
-    Logger.print(text);
+    Logger.print(text)
 }

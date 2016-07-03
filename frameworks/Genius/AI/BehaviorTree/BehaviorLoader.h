@@ -4,6 +4,7 @@
 #include <string>
 #include <map>
 #include "tinyxml2.h"
+#include "common/Singleton.h"
 
 
 using namespace tinyxml2;
@@ -39,10 +40,9 @@ struct PreconditionCreatorMap
 };
 
 
-class BehaviorLoader
+class BehaviorLoader : public Genius::Singleton<BehaviorLoader>
 {
 public:
-	static BehaviorLoader&	GetInstance();
 	bool					Init(BehaviorCreatorMap bevArray[], PreconditionCreatorMap preArray[]);
 	bool					Destroy();
 	Behavior*			LoadFromXml(std::string filePath);

@@ -3,12 +3,12 @@ var WarState = GameState.extend({
     
     ctor:function ()
     {
-        this._super();
+        this._super()
     },
     
     OnEnter:function ()
     {
-        Log("enter War");
+        Log("enter War")
     },
     
     OnUpdate:function ()
@@ -18,13 +18,13 @@ var WarState = GameState.extend({
     
     OnExit:function ()
     {
-        Log("exit War");
+        Log("exit War")
     },
 
     ParseResourceList:function(loadMgr)
     {
-        //loadMgr.AddResource(LoadingManager.ResourceType.Json, "HolyKnight");
-        //loadMgr.AddResource(LoadingManager.ResourceType.Json, "BigDevil");
+        //loadMgr.AddResource(LoadingManager.ResourceType.Json, "HolyKnight")
+        //loadMgr.AddResource(LoadingManager.ResourceType.Json, "BigDevil")
     }
     
-});
+})

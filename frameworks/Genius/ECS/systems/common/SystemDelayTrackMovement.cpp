@@ -16,7 +16,7 @@ void SystemDelayTrackMovement::Initialize()
 	trackMapper.init(*world);
 
 	// register event.
-	//EventManager::GetInstance().AddListener(this, Event_xxx);
+	//EventManager::GetSingleton()->AddListener(this, Event_xxx);
 }
 
 void SystemDelayTrackMovement::ProcessEntity(Entity* pEntity)
@@ -50,7 +50,7 @@ void SystemDelayTrackMovement::ProcessEntity(Entity* pEntity)
 			toTarVec.y = pTrackCom->targetCachePosY - pPosCom->y;
 			if (toTarVec.Length() < Point2D(pVelCom->x, pVelCom->y).Length())
 			{
-				EventManager::GetInstance().FireEvent(ReachDestinationEvent(pEntity));
+				EventManager::GetSingleton()->FireEvent(ReachDestinationEvent(pEntity));
 				pTrackCom->isTracking = false;
 			}
 		}

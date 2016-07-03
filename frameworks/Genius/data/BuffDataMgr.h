@@ -43,7 +43,7 @@ namespace Genius
 	};
 #pragma pack(pop)
 
-	class BuffDataMgr : public IDataManager, public Singleton<BuffDataMgr>
+	class BuffDataMgr : public IDataManager, public Genius::Singleton<BuffDataMgr>
 	{
 	public:
 		BuffDataMgr(){}

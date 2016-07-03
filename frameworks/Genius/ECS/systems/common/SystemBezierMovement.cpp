@@ -24,7 +24,7 @@ void SystemBezierMovement::Initialize()
 	bezierMapper.init(*world);
 
 	// register event.
-	EventManager::GetInstance().AddListener(this, Event_StopMove);
+	EventManager::GetSingleton()->AddListener(this, Event_StopMove);
 }
 
 void SystemBezierMovement::ProcessEntity(Entity* pEntity)
@@ -64,7 +64,7 @@ void SystemBezierMovement::ProcessEntity(Entity* pEntity)
 	}
 	else
 	{
-		EventManager::GetInstance().FireEvent(ReachDestinationEvent(pEntity));
+		EventManager::GetSingleton()->FireEvent(ReachDestinationEvent(pEntity));
 		pVelCom->x = 0;
 		pVelCom->y = 0;
 	}

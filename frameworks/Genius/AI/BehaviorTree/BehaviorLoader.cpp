@@ -7,11 +7,6 @@
 AI_NS_BEGIN
 BHTREE_NS_BEGIN
 
-BehaviorLoader&	BehaviorLoader::GetInstance()
-{
-	static BehaviorLoader loader;
-	return loader;
-}
 
 bool BehaviorLoader::Init(BehaviorCreatorMap bevArray[], PreconditionCreatorMap preArray[])
 {

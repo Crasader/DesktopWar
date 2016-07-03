@@ -98,10 +98,10 @@ void js_app_AnimDataMgr_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_AnimDataMgr(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_AnimDataMgr_GetName(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_AnimDataMgr_FindAnimInfo(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_AnimDataMgr_GetSize(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_AnimDataMgr_Init(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_AnimDataMgr_Destroy(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_AnimDataMgr_FindAnimInfo(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_AnimDataMgr_AnimDataMgr(JSContext *cx, uint32_t argc, jsval *vp);
 
 #endif // __app_h__

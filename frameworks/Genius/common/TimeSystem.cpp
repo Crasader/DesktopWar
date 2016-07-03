@@ -3,11 +3,6 @@
 
 using namespace Genius;
 
-TimeSystem& TimeSystem::GetInstance()
-{
-	static TimeSystem inst;
-	return inst;
-}
 
 bool TimeSystem::Init()
 {

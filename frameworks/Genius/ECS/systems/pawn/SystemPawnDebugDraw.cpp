@@ -19,7 +19,7 @@ void SystemPawnDebugDraw::Initialize()
 	boxColliderMapper.init(*world);
 
 	// register event.
-	//EventManager::GetInstance().AddListener(this, Event_xxx);
+	//EventManager::GetSingleton()->AddListener(this, Event_xxx);
 }
 
 void SystemPawnDebugDraw::ProcessEntity(Entity* e)

@@ -13,9 +13,9 @@ void SystemPawnDirection::Initialize()
 	pawnAgentMapper.init(*world);
 
 	// register event.
-	EventManager::GetInstance().AddListener(this, Event_velocityChanged);
-	EventManager::GetInstance().AddListener(this, Event_turnBack);
-	EventManager::GetInstance().AddListener(this, Event_turnTo);
+	EventManager::GetSingleton()->AddListener(this, Event_velocityChanged);
+	EventManager::GetSingleton()->AddListener(this, Event_turnBack);
+	EventManager::GetSingleton()->AddListener(this, Event_turnTo);
 }
 
 void SystemPawnDirection::ProcessEntity(Entity* e)

@@ -999,6 +999,32 @@ bool js_app_AnimDataMgr_GetName(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_AnimDataMgr_GetName : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
+bool js_app_AnimDataMgr_FindAnimInfo(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::AnimDataMgr* cobj = (Genius::AnimDataMgr *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_AnimDataMgr_FindAnimInfo : Invalid Native Object");
+    if (argc == 1) {
+        std::string arg0;
+        ok &= jsval_to_std_string(cx, args.get(0), &arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_AnimDataMgr_FindAnimInfo : Error processing arguments");
+        Genius::AnimInfo* ret = cobj->FindAnimInfo(arg0);
+        jsval jsret = JSVAL_NULL;
+        if (ret) {
+            jsret = OBJECT_TO_JSVAL(js_get_or_create_jsobject<Genius::AnimInfo>(cx, (Genius::AnimInfo*)ret));
+        } else {
+            jsret = JSVAL_NULL;
+        };
+        args.rval().set(jsret);
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_AnimDataMgr_FindAnimInfo : wrong number of arguments: %d, was expecting %d", argc, 1);
+    return false;
+}
 bool js_app_AnimDataMgr_GetSize(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -1051,29 +1077,6 @@ bool js_app_AnimDataMgr_Destroy(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_AnimDataMgr_Destroy : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
-bool js_app_AnimDataMgr_FindAnimInfo(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    if (argc == 1) {
-        std::string arg0;
-        ok &= jsval_to_std_string(cx, args.get(0), &arg0);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_AnimDataMgr_FindAnimInfo : Error processing arguments");
-
-        Genius::AnimInfo* ret = Genius::AnimDataMgr::FindAnimInfo(arg0);
-        jsval jsret = JSVAL_NULL;
-        if (ret) {
-        jsret = OBJECT_TO_JSVAL(js_get_or_create_jsobject<Genius::AnimInfo>(cx, (Genius::AnimInfo*)ret));
-    } else {
-        jsret = JSVAL_NULL;
-    };
-        args.rval().set(jsret);
-        return true;
-    }
-    JS_ReportError(cx, "js_app_AnimDataMgr_FindAnimInfo : wrong number of arguments");
-    return false;
-}
-
 bool js_app_AnimDataMgr_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -1131,16 +1134,14 @@ void js_register_app_AnimDataMgr(JSContext *cx, JS::HandleObject global) {
 
     static JSFunctionSpec funcs[] = {
         JS_FN("GetName", js_app_AnimDataMgr_GetName, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("FindAnimInfo", js_app_AnimDataMgr_FindAnimInfo, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("GetSize", js_app_AnimDataMgr_GetSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Init", js_app_AnimDataMgr_Init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Destroy", js_app_AnimDataMgr_Destroy, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 
-    static JSFunctionSpec st_funcs[] = {
-        JS_FN("FindAnimInfo", js_app_AnimDataMgr_FindAnimInfo, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FS_END
-    };
+    JSFunctionSpec *st_funcs = NULL;
 
     JS::RootedObject parent_proto(cx, jsb_Genius_IDataManager_prototype);
     jsb_Genius_AnimDataMgr_prototype = JS_InitClass(

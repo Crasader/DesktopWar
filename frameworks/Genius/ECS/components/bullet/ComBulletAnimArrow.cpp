@@ -46,5 +46,5 @@ void ComBulletAnimArrow::AnimationMovementCallback(cocostudio::Armature *cca, co
 void ComBulletAnimArrow::AnimationFrameCallback(cocostudio::Bone* bone, const std::string& eventName, int oriIdx, int currentIdx)
 {
 	/*if (eventName == "buff")
-		EventManager::GetInstance().FireEvent(BulletHitEvent(this->GetOwner()));*/
+		EventManager::GetSingleton()->FireEvent(BulletHitEvent(this->GetOwner()));*/
 }

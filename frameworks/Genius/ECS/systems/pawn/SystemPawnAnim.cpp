@@ -13,8 +13,8 @@ void SystemPawnAnim::Initialize()
 	pawnDirectionMapper.init(*world);
 
 	// register event.
-	//EventManager::GetInstance().AddListener(this, Event_startAction);
-	//EventManager::GetInstance().AddListener(this, Event_updateAction);
+	//EventManager::GetSingleton()->AddListener(this, Event_startAction);
+	//EventManager::GetSingleton()->AddListener(this, Event_updateAction);
 }
 
 void SystemPawnAnim::ProcessEntity(Entity* e)

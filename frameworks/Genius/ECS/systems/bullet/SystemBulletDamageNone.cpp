@@ -19,7 +19,7 @@ void SystemBulletDamageNone::Initialize()
 	bulletTemplateMapper.init(*world);
 
 	// register event.
-	EventManager::GetInstance().AddListener(this, Event_BulletTrigger);
+	EventManager::GetSingleton()->AddListener(this, Event_BulletTrigger);
 }
 
 void SystemBulletDamageNone::ProcessEntity(Entity* pEntity)

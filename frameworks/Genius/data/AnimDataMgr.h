@@ -26,22 +26,22 @@ namespace Genius
 #pragma pack(pop)
 
 
-	class AnimDataMgr : public IDataManager, public Singleton<AnimDataMgr>
+	class AnimDataMgr : public IDataManager, public Genius::Singleton<AnimDataMgr>
 	{
 	public:
 		AnimDataMgr(){}
 		virtual ~AnimDataMgr(){}
 
 	public:
-		virtual bool			Init();
-		virtual void			Destroy();
+		virtual bool Init();
+		virtual void Destroy();
 
 		virtual std::string	GetName()
 		{
 			return "res/data/anim.txt";
 		}
 
-		virtual int				GetSize()
+		virtual int GetSize()
 		{
 			return m_animInfoList.size()*sizeof(m_animInfoList);
 		}
@@ -51,25 +51,19 @@ namespace Genius
 			return m_animInfoList;
 		}
 
-		static AnimInfo* FindAnimInfo(std::string name)
+		AnimInfo* FindAnimInfo(std::string name)
 		{
-			if (AnimDataMgr::GetSingleton()->GetAnimInfoList().find(name) != AnimDataMgr::GetSingleton()->GetAnimInfoList().end())
-				return AnimDataMgr::GetSingleton()->GetAnimInfoList()[name];
+			if (m_animInfoList.find(name) != m_animInfoList.end())
+				return m_animInfoList[name];
 			return nullptr;
 		}
 
 	protected:
 		virtual  bool  LoadData(TabFile& reader, int row);
 
-// 	public:
-// 		AnimationSetData& GetAnimSet(std::string name);
-// 
-// 	private:
-// 		bool LoadFromConfig(std::string file);
-
 	private:
 		std::map<std::string, AnimInfo*>		m_animInfoList;
-/*		std::map<std::string, AnimationSetData>		m_animSetCache;*/
+
 	};
 };
 

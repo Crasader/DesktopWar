@@ -13,8 +13,8 @@ void SystemPawnNavigation::Initialize()
 	velocityMapper.init(*world);
 	
 	// register event.
-	EventManager::GetInstance().AddListener(this, Event_navigateTo);
-	EventManager::GetInstance().AddListener(this, Event_navigateToEntity);
+	EventManager::GetSingleton()->AddListener(this, Event_navigateTo);
+	EventManager::GetSingleton()->AddListener(this, Event_navigateToEntity);
 }
 
 void SystemPawnNavigation::ProcessEntity(Entity* pEntity)
@@ -37,14 +37,14 @@ void SystemPawnNavigation::ProcessEntity(Entity* pEntity)
 			if (navCom->curPointIndex < navCom->pathPoints.size())
 			{
 				Point2D newDestPoint = navCom->pathPoints[navCom->curPointIndex];
-				EventManager::GetInstance().FireEvent(TransformEvent(Event_moveTo, pEntity, newDestPoint.x, newDestPoint.y));
+				EventManager::GetSingleton()->FireEvent(TransformEvent(Event_moveTo, pEntity, newDestPoint.x, newDestPoint.y));
 			}
 			else
 			{
 				Point2D finalPoint = navCom->pathPoints[navCom->curPointIndex - 1];
 				navCom->arrived = true;
-				EventManager::GetInstance().FireEvent(TransformEvent(Event_setPosition, pEntity, finalPoint.x, finalPoint.y));
-				EventManager::GetInstance().FireEvent(TransformEvent(Event_pawnStopMove, pEntity));
+				EventManager::GetSingleton()->FireEvent(TransformEvent(Event_setPosition, pEntity, finalPoint.x, finalPoint.y));
+				EventManager::GetSingleton()->FireEvent(TransformEvent(Event_pawnStopMove, pEntity));
 			}
 		}
 	}
@@ -70,7 +70,7 @@ bool SystemPawnNavigation::HandleEvent(IEventData const &event)
 			navCom->pathPoints.push_back(Point2D(castedEvent.x, castedEvent.y));
 			navCom->curPointIndex = 0;
 			navCom->arrived = false;
-			EventManager::GetInstance().FireEvent(TransformEvent(Event_moveTo, castedEvent.entity, 
+			EventManager::GetSingleton()->FireEvent(TransformEvent(Event_moveTo, castedEvent.entity, 
 				navCom->pathPoints[0].x, navCom->pathPoints[0].y));
 		}
 	}
@@ -93,7 +93,7 @@ bool SystemPawnNavigation::HandleEvent(IEventData const &event)
 			navCom->pathPoints.push_back(Point2D(posCom->x, posCom->y));
 			navCom->curPointIndex = 0;
 			navCom->arrived = false;
-			EventManager::GetInstance().FireEvent(TransformEvent(Event_moveTo, castedEvent.entity,
+			EventManager::GetSingleton()->FireEvent(TransformEvent(Event_moveTo, castedEvent.entity,
 				navCom->pathPoints[0].x, navCom->pathPoints[0].y));
 		}
 	}

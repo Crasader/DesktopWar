@@ -21,7 +21,7 @@ void SystemBulletDamageSingle::Initialize()
 	bulletTemplateMapper.init(*world);
 
 	// register event.
-	EventManager::GetInstance().AddListener(this, Event_BulletTrigger);
+	EventManager::GetSingleton()->AddListener(this, Event_BulletTrigger);
 }
 
 void SystemBulletDamageSingle::ProcessEntity(Entity* pEntity)
@@ -70,8 +70,8 @@ void SystemBulletDamageSingle::collisionHandler(int id1, int id2)
 	ComTeam* pOtherComTeam = pOtherEntity->GetComponent<ComTeam>();
 	if (pMyComTeam && pOtherComTeam && pMyComTeam->team != pOtherComTeam->team)
 	{
-		EventManager::GetInstance().FireEvent(BulletHitEvent(pEntity));
-		EventManager::GetInstance().FireEvent(StopMoveEvent(pEntity));
+		EventManager::GetSingleton()->FireEvent(BulletHitEvent(pEntity));
+		EventManager::GetSingleton()->FireEvent(StopMoveEvent(pEntity));
 
 		// 这里也是不合适，因为不一定碰撞之后就会触发buff。
 		ComBulletTemplate* bulletTempCom = bulletTemplateMapper.get(pEntity);

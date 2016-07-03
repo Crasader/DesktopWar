@@ -9,7 +9,7 @@ USING_NS_BHTREE
 
 bool PawnBHTree::CreateTree(const char* fileName)
 {
-	Behavior* root = BehaviorLoader::GetInstance().LoadFromXml(fileName);
+	Behavior* root = BehaviorLoader::GetSingleton()->LoadFromXml(fileName);
 	SetRoot(root);
 
 	return true;

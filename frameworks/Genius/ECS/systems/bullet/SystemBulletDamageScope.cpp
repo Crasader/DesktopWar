@@ -24,7 +24,7 @@ void SystemBulletDamageScope::Initialize()
 	bulletTemplateMapper.init(*world);
 
 	// register event.
-	EventManager::GetInstance().AddListener(this, Event_BulletTrigger);
+	EventManager::GetSingleton()->AddListener(this, Event_BulletTrigger);
 }
 
 void SystemBulletDamageScope::ProcessEntity(Entity* pEntity)
@@ -61,7 +61,7 @@ void SystemBulletDamageScope::OnCollision(int id1, int id2)
 	{
 		if (pMyComTarget->targetID == id2)
 		{
-			EventManager::GetInstance().FireEvent(BulletHitEvent(pEntity));
+			EventManager::GetSingleton()->FireEvent(BulletHitEvent(pEntity));
 		}
 	}
 	else if (pMyComTarget->targetType == Target_Location)

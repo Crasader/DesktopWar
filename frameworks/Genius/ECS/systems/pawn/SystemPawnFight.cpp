@@ -22,12 +22,12 @@ void SystemPawnFight::Initialize()
 	pawnAnimMapper.init(*world);
 
 	// register event.
-	EventManager::GetInstance().AddListener(this, Event_attackNear);
-	EventManager::GetInstance().AddListener(this, Event_attackNear2);
-	EventManager::GetInstance().AddListener(this, Event_skill1);
-	EventManager::GetInstance().AddListener(this, Event_skill2);
-	EventManager::GetInstance().AddListener(this, Event_skill3);
-	EventManager::GetInstance().AddListener(this, Event_Hurt);
+	EventManager::GetSingleton()->AddListener(this, Event_attackNear);
+	EventManager::GetSingleton()->AddListener(this, Event_attackNear2);
+	EventManager::GetSingleton()->AddListener(this, Event_skill1);
+	EventManager::GetSingleton()->AddListener(this, Event_skill2);
+	EventManager::GetSingleton()->AddListener(this, Event_skill3);
+	EventManager::GetSingleton()->AddListener(this, Event_Hurt);
 }
 
 void SystemPawnFight::ProcessEntity(Entity* pEntity)
@@ -107,8 +107,8 @@ void SystemPawnFight::HandleAttackTarget(IEventData const &evt)
 		auto posCom = enemy->GetComponent<ComPosition>();
 		if (posCom)
 		{
-			EventManager::GetInstance().FireEvent(TurnToEvent(castedEvent.entity, posCom->x, posCom->y));
-			//EventManager::GetInstance().FireEvent(ActionEvent(castedEvent.entity, Action_Attack_Near));
+			EventManager::GetSingleton()->FireEvent(TurnToEvent(castedEvent.entity, posCom->x, posCom->y));
+			//EventManager::GetSingleton()->FireEvent(ActionEvent(castedEvent.entity, Action_Attack_Near));
 			ComPawnAgent* agentCom = castedEvent.entity->GetComponent<ComPawnAgent>();
 			agentCom->AddAction(PAT_AttackNear);
 		}
@@ -127,8 +127,8 @@ void SystemPawnFight::HandleAttackTarget2(IEventData const &evt)
 		auto posCom = enemy->GetComponent<ComPosition>();
 		if (posCom)
 		{
-			EventManager::GetInstance().FireEvent(TurnToEvent(castedEvent.entity, posCom->x, posCom->y));
-			//EventManager::GetInstance().FireEvent(ActionEvent(castedEvent.entity, Action_Attack_Near2));
+			EventManager::GetSingleton()->FireEvent(TurnToEvent(castedEvent.entity, posCom->x, posCom->y));
+			//EventManager::GetSingleton()->FireEvent(ActionEvent(castedEvent.entity, Action_Attack_Near2));
 			ComPawnAgent* agentCom = castedEvent.entity->GetComponent<ComPawnAgent>();
 			agentCom->AddAction(PAT_AttackNear);
 		}

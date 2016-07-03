@@ -48,7 +48,7 @@ namespace Genius
 	};
 #pragma pack(pop)
 
-	class RoleDataMgr : public IDataManager, public Singleton<RoleDataMgr>
+	class RoleDataMgr : public IDataManager, public Genius::Singleton<RoleDataMgr>
 	{
 	public:
 		RoleDataMgr(){}

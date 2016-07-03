@@ -30,7 +30,7 @@ namespace Genius
 	};
 #pragma pack(pop)
 
-	class SkillDataMgr : public IDataManager, public Singleton<SkillDataMgr>
+	class SkillDataMgr : public IDataManager, public Genius::Singleton<SkillDataMgr>
 	{
 	public:
 		SkillDataMgr(){}

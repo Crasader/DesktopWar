@@ -125,11 +125,11 @@ void ComPawnAnim::AnimationMovementCallback(cocostudio::Armature *cca, cocostudi
 		//printf("START\n");
 		break;
 	case cocostudio::COMPLETE:
-		EventManager::GetInstance().FireEvent(AnimationMovementEvent(animName, (int)movType, this->GetOwner()->GetId()));
+		EventManager::GetSingleton()->FireEvent(AnimationMovementEvent(animName, (int)movType, this->GetOwner()->GetId()));
 		//printf("COMPLETE\n");
 		break;
 	case cocostudio::LOOP_COMPLETE:
-		EventManager::GetInstance().FireEvent(AnimationMovementEvent(animName, (int)movType, this->GetOwner()->GetId()));
+		EventManager::GetSingleton()->FireEvent(AnimationMovementEvent(animName, (int)movType, this->GetOwner()->GetId()));
 		break;
 	default:
 		break;
@@ -143,23 +143,23 @@ void ComPawnAnim::AnimationFrameCallback(cocostudio::Bone* bone, const std::stri
 
 	if (eventName == "attack")
 	{
-		EventManager::GetInstance().FireEvent(UseSkillEvent(this->GetOwner(), UseSkillEvent::NormalSkill1));
+		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetOwner(), UseSkillEvent::NormalSkill1));
 	}
 	else if (eventName == "attack2")
 	{
-		EventManager::GetInstance().FireEvent(UseSkillEvent(this->GetOwner(), UseSkillEvent::NormalSkill2));
+		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetOwner(), UseSkillEvent::NormalSkill2));
 	}
 	else if (eventName == "skill1")
 	{
-		EventManager::GetInstance().FireEvent(UseSkillEvent(this->GetOwner(), UseSkillEvent::SpecialSkill1));
+		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetOwner(), UseSkillEvent::SpecialSkill1));
 	}
 	else if (eventName == "skill2")
 	{
-		EventManager::GetInstance().FireEvent(UseSkillEvent(this->GetOwner(), UseSkillEvent::SpecialSkill2));
+		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetOwner(), UseSkillEvent::SpecialSkill2));
 	}
 	else if (eventName == "skill3")
 	{
-		EventManager::GetInstance().FireEvent(UseSkillEvent(this->GetOwner(), UseSkillEvent::SpecialSkill3));
+		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetOwner(), UseSkillEvent::SpecialSkill3));
 	}
 	else
 	{

@@ -26,4 +26,4 @@ var GameState = Class.extend({
 
     }
     
-});
+})

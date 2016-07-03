@@ -14,8 +14,8 @@ void SystemBulletArrowAnim::Initialize()
 	animMapper.init(*world);
 
 	// register event.
-	EventManager::GetInstance().AddListener(this, Event_BulletHit);
-	EventManager::GetInstance().AddListener(this, Event_ReachDestination);
+	EventManager::GetSingleton()->AddListener(this, Event_BulletHit);
+	EventManager::GetSingleton()->AddListener(this, Event_ReachDestination);
 }
 
 void SystemBulletArrowAnim::ProcessEntity(Entity* pEntity)

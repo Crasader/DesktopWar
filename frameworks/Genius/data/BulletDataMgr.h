@@ -37,7 +37,7 @@ namespace Genius
 	};
 #pragma pack(pop)
 
-	class BulletDataMgr : public IDataManager, public Singleton<BulletDataMgr>
+	class BulletDataMgr : public IDataManager, public Genius::Singleton<BulletDataMgr>
 	{
 	public:
 		BulletDataMgr(){}

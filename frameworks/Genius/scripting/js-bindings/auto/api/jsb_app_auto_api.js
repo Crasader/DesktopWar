@@ -346,6 +346,18 @@ GetName : function (
 },
 
 /**
+ * @method FindAnimInfo
+ * @param {String} arg0
+ * @return {Genius::AnimInfo}
+ */
+FindAnimInfo : function (
+str 
+)
+{
+    return Genius::AnimInfo;
+},
+
+/**
  * @method GetSize
  * @return {int}
  */
@@ -371,18 +383,6 @@ Init : function (
 Destroy : function (
 )
 {
-},
-
-/**
- * @method FindAnimInfo
- * @param {String} arg0
- * @return {Genius::AnimInfo}
- */
-FindAnimInfo : function (
-str 
-)
-{
-    return Genius::AnimInfo;
 },
 
 /**

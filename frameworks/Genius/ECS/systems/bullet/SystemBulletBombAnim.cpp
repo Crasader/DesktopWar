@@ -14,9 +14,9 @@ void SystemBulletBombAnim::Initialize()
 	animMapper.init(*world);
 
 	// register event.
-	EventManager::GetInstance().AddListener(this, Event_BulletHit);
-	EventManager::GetInstance().AddListener(this, Event_BulletLifeOver);
-	EventManager::GetInstance().AddListener(this, Event_ReachDestination);
+	EventManager::GetSingleton()->AddListener(this, Event_BulletHit);
+	EventManager::GetSingleton()->AddListener(this, Event_BulletLifeOver);
+	EventManager::GetSingleton()->AddListener(this, Event_ReachDestination);
 }
 
 void SystemBulletBombAnim::ProcessEntity(Entity* pEntity)

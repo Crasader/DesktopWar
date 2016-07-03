@@ -12,12 +12,12 @@ using namespace Genius;
 
 bool DBSystem::Init()
 {
-	AddDataManager(new RoleDataMgr);
-	AddDataManager(new AnimDataMgr);
-	AddDataManager(new SkillDataMgr);
-	AddDataManager(new BuffDataMgr);
-	AddDataManager(new BuffActionDataMgr);
-	AddDataManager(new BulletDataMgr);
+	AddDataManager(RoleDataMgr::GetSingleton());
+	AddDataManager(AnimDataMgr::GetSingleton());
+	AddDataManager(SkillDataMgr::GetSingleton());
+	AddDataManager(BuffDataMgr::GetSingleton());
+	AddDataManager(BuffActionDataMgr::GetSingleton());
+	AddDataManager(BulletDataMgr::GetSingleton());
 
 	for (auto iter = m_dataMgrList.begin(); iter != m_dataMgrList.end(); ++iter)
 	{

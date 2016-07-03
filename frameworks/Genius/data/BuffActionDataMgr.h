@@ -24,7 +24,7 @@ namespace Genius
 	};
 #pragma pack(pop)
 
-	class BuffActionDataMgr : public IDataManager, public Singleton<BuffActionDataMgr>
+	class BuffActionDataMgr : public IDataManager, public Genius::Singleton<BuffActionDataMgr>
 	{
 	public:
 		BuffActionDataMgr(){}

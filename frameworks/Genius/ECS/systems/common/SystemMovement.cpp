@@ -18,9 +18,9 @@ void SystemMovement::Initialize()
 	positionMapper.init(*world);
 
 	// register event.
-	EventManager::GetInstance().AddListener(this, Event_setPosition);
-	EventManager::GetInstance().AddListener(this, Event_moveTo);
-	EventManager::GetInstance().AddListener(this, Event_pawnStopMove);
+	EventManager::GetSingleton()->AddListener(this, Event_setPosition);
+	EventManager::GetSingleton()->AddListener(this, Event_moveTo);
+	EventManager::GetSingleton()->AddListener(this, Event_pawnStopMove);
 }
 
 void SystemMovement::ProcessEntity(Entity* e)
@@ -68,7 +68,7 @@ bool SystemMovement::HandleEvent(IEventData const &event)
 			vel->x = delta.x * speed;
 			vel->y = delta.y * speed;
 
-			EventManager::GetInstance().FireEvent(VelocityChangedEvent(actionEvent.entity, vel->x, vel->y));
+			EventManager::GetSingleton()->FireEvent(VelocityChangedEvent(actionEvent.entity, vel->x, vel->y));
 		}
 	}
 		break;

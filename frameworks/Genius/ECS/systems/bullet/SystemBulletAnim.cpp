@@ -14,7 +14,7 @@ void SystemBulletAnim::Initialize()
 	animMapper.init(*world);
 
 	// register event.
-	//EventManager::GetInstance().AddListener(this, Event_xxx);
+	//EventManager::GetSingleton()->AddListener(this, Event_xxx);
 }
 
 void SystemBulletAnim::ProcessEntity(Entity* pEntity)

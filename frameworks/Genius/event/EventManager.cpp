@@ -3,11 +3,6 @@
 
 using namespace Genius;
 
-EventManager& EventManager::GetInstance()
-{
-	static EventManager mgr;
-	return mgr;
-}
 
 EventManager::EventManager()
 {
