@@ -4,7 +4,7 @@
 #include "GamePlay.h"
 #include "entity/EntityCreators.h"
 #include "pawn/PawnDefines.h"
-#include "Logger.h"
+#include "Log.h"
 
 using namespace tinyxml2;
 using namespace Genius;

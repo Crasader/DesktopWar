@@ -14,7 +14,7 @@
 #include "pawn/anim/animFSM/AnimFSM.h"
 #include "pawn/anim/animFSM/AnimFSMSimple.h"
 #include "pawn/anim/animSet/AnimSetSimple.h"
-#include "Logger.h"
+#include "Log.h"
 
 
 USING_NS_CC;
@@ -163,7 +163,7 @@ void ComPawnAnim::AnimationFrameCallback(cocostudio::Bone* bone, const std::stri
 	}
 	else
 	{
-		Logger::LogWarning("unknown frame event.");
+		Log::Warning("unknown frame event.");
 	}
 }
 

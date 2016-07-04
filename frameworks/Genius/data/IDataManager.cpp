@@ -1,7 +1,7 @@
 ﻿
 #include "IDataManager.h"
 #include "TabFile.h"
-#include "Logger.h"
+#include "Log.h"
 
 using namespace Genius;
 
@@ -12,15 +12,15 @@ bool IDataManager::Init()
 	std::string filePath = GetName();
 	if (!tabFileReader.LoadFile(filePath))
 	{
-		Logger::LogError("load file failed : %s", filePath.c_str());
+		Log::Error("load file failed : %s", filePath.c_str());
 		return false;
 	}
 
-	int rowCount = tabFileReader.GetMaxRowCount();
-	int colCount = tabFileReader.GetMaxColCount();
+	int rowCount = tabFileReader.GetRowCount();
+	int colCount = tabFileReader.GetColCount();
 	if (rowCount < 1 || colCount < 1)
 	{
-		Logger::LogError("load file failed : %s", filePath.c_str());
+		Log::Error("load file failed : %s", filePath.c_str());
 		return false;
 	}
 
@@ -29,12 +29,12 @@ bool IDataManager::Init()
 		bool ret = LoadData(tabFileReader, i);
 		if (!ret)
 		{
-			Logger::LogError("load data failed, file %s, row %d", filePath.c_str(), rowCount);
+			Log::Error("load data failed, file %s, row %d", filePath.c_str(), rowCount);
 			return false;
 		}
 	}
 
-	Logger::LogInfo("Load file done : %s", filePath.c_str());
+	Log::Info("Load file done : %s", filePath.c_str());
 
 	return true;
 }

@@ -17,9 +17,6 @@
     <Filter Include="Genius\Base\Common">
       <UniqueIdentifier>{95ef0653-1026-40c6-8115-2ccb46717e29}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Genius\Base\Data">
-      <UniqueIdentifier>{cb746167-e71d-49d2-af06-9cb3702d2a5d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Genius\Base\Event">
       <UniqueIdentifier>{7bcd9087-3c85-436b-9e59-28c605e9b14c}</UniqueIdentifier>
     </Filter>
@@ -128,6 +125,12 @@
     <Filter Include="Genius\JSB\auto">
       <UniqueIdentifier>{b0f89fb1-0378-4bd2-85b9-a978ecf0292f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Genius\Logic\Data">
+      <UniqueIdentifier>{cb746167-e71d-49d2-af06-9cb3702d2a5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\Data\auto">
+      <UniqueIdentifier>{79b88561-f023-4ef2-8f4e-5bf2e53f8471}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Genius\common\2Ddef.h">
@@ -137,9 +140,6 @@
       <Filter>Genius\Base\Common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\common\GeniusDef.h">
-      <Filter>Genius\Base\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\common\Logger.h">
       <Filter>Genius\Base\Common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\common\RandUtility.h">
@@ -155,28 +155,25 @@
       <Filter>Genius\Base\Common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\data\AnimDataMgr.h">
-      <Filter>Genius\Base\Data</Filter>
+      <Filter>Genius\Logic\Data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\data\BuffActionDataMgr.h">
-      <Filter>Genius\Base\Data</Filter>
+      <Filter>Genius\Logic\Data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\data\BuffDataMgr.h">
-      <Filter>Genius\Base\Data</Filter>
+      <Filter>Genius\Logic\Data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\data\BulletDataMgr.h">
-      <Filter>Genius\Base\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\data\DBSystem.h">
-      <Filter>Genius\Base\Data</Filter>
+      <Filter>Genius\Logic\Data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\data\IDataManager.h">
-      <Filter>Genius\Base\Data</Filter>
+      <Filter>Genius\Logic\Data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\data\RoleDataMgr.h">
-      <Filter>Genius\Base\Data</Filter>
+      <Filter>Genius\Logic\Data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\data\SkillDataMgr.h">
-      <Filter>Genius\Base\Data</Filter>
+      <Filter>Genius\Logic\Data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\event\Event.h">
       <Filter>Genius\Base\Event</Filter>
@@ -598,6 +595,18 @@
     <ClInclude Include="..\..\Genius\JSBHeaders.h">
       <Filter>Genius\JSB</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Genius\data\BaseConfig.h">
+      <Filter>Genius\Logic\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\data\auto\anim_cfg.hpp">
+      <Filter>Genius\Logic\Data\auto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\data\ConfigPool.h">
+      <Filter>Genius\Logic\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\common\Log.h">
+      <Filter>Genius\Base\Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -616,9 +625,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Genius\common\Logger.cpp">
-      <Filter>Genius\Base\Common</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\common\TabFile.cpp">
       <Filter>Genius\Base\Common</Filter>
     </ClCompile>
@@ -626,28 +632,25 @@
       <Filter>Genius\Base\Common</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\data\AnimDataMgr.cpp">
-      <Filter>Genius\Base\Data</Filter>
+      <Filter>Genius\Logic\Data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\data\BuffActionDataMgr.cpp">
-      <Filter>Genius\Base\Data</Filter>
+      <Filter>Genius\Logic\Data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\data\BuffDataMgr.cpp">
-      <Filter>Genius\Base\Data</Filter>
+      <Filter>Genius\Logic\Data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\data\BulletDataMg.cpp">
-      <Filter>Genius\Base\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\data\DBSystem.cpp">
-      <Filter>Genius\Base\Data</Filter>
+      <Filter>Genius\Logic\Data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\data\IDataManager.cpp">
-      <Filter>Genius\Base\Data</Filter>
+      <Filter>Genius\Logic\Data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\data\RoleDataMgr.cpp">
-      <Filter>Genius\Base\Data</Filter>
+      <Filter>Genius\Logic\Data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\data\SkillDataMgr.cpp">
-      <Filter>Genius\Base\Data</Filter>
+      <Filter>Genius\Logic\Data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\event\EventManager.cpp">
       <Filter>Genius\Base\Event</Filter>
@@ -1014,6 +1017,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\scripting\js-bindings\auto\jsb_app_auto.cpp">
       <Filter>Genius\JSB\auto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\data\BaseConfig.cpp">
+      <Filter>Genius\Logic\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\data\ConfigPool.cpp">
+      <Filter>Genius\Logic\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\common\Log.cpp">
+      <Filter>Genius\Base\Common</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

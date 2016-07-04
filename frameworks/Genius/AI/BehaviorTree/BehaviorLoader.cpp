@@ -2,7 +2,7 @@
 #include "BehaviorLoader.h"
 #include "Behavior.h"
 #include "Precondition.h"
-#include "Logger.h"
+#include "Log.h"
 
 AI_NS_BEGIN
 BHTREE_NS_BEGIN
@@ -42,7 +42,7 @@ void BehaviorLoader::RegisterBehavior(std::string typeName, BehaviorCreator fact
 		m_behaviorFactoryList.insert(std::make_pair(typeName, factory));
 	}
 	else
-		Logger::LogWarning("register behavior repeated : %s", typeName.c_str());
+		Log::Warning("register behavior repeated : %s", typeName.c_str());
 }
 
 void BehaviorLoader::RegisterPrecondition(std::string typeName, PreconditionCreator factory)
@@ -53,7 +53,7 @@ void BehaviorLoader::RegisterPrecondition(std::string typeName, PreconditionCrea
 		m_preconditionFactoryList.insert(std::make_pair(typeName, factory));
 	}
 	else
-		Logger::LogWarning("register precondition repeated : %s", typeName.c_str());
+		Log::Warning("register precondition repeated : %s", typeName.c_str());
 }
 
 Behavior* BehaviorLoader::LoadFromXml(std::string filePath)
@@ -87,7 +87,7 @@ Behavior* BehaviorLoader::ParseXml(XMLElement* xmlNode)
 	}
 	else if (behaviorTypeName != "Precondition")
 	{
-		Logger::LogWarning("unknown behavior type : %s", behaviorTypeName.c_str());
+		Log::Warning("unknown behavior type : %s", behaviorTypeName.c_str());
 	}
 	if (nullptr == root)
 		return root;
@@ -121,7 +121,7 @@ Precondition* BehaviorLoader::ParsePrecondition(XMLElement* xmlNode)
 	}
 	else
 	{
-		Logger::LogWarning("unknown precondition type %s", preconditionTypeName.c_str());
+		Log::Warning("unknown precondition type %s", preconditionTypeName.c_str());
 	}
 
 	for (XMLElement* node = xmlNode->FirstChildElement(); node; node = node->NextSiblingElement())
@@ -134,7 +134,7 @@ Precondition* BehaviorLoader::ParsePrecondition(XMLElement* xmlNode)
 		}
 		else
 		{
-			Logger::LogError("unknown precondition type %s", typeName1.c_str());
+			Log::Error("unknown precondition type %s", typeName1.c_str());
 		}
 	}
 

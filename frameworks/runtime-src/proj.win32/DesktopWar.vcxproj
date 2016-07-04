@@ -184,6 +184,8 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\App\WarApp.h" />
     <ClInclude Include="..\..\Genius\bullet\BulletDefines.h" />
     <ClInclude Include="..\..\Genius\common\Performance.h" />
+    <ClInclude Include="..\..\Genius\data\auto\anim_cfg.hpp" />
+    <ClInclude Include="..\..\Genius\data\BaseConfig.h" />
     <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAgent.h" />
     <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAnimArrow.h" />
     <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAnimBase.h" />
@@ -297,7 +299,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\common\2Ddef.h" />
     <ClInclude Include="..\..\Genius\common\AnyData.h" />
     <ClInclude Include="..\..\Genius\common\GeniusDef.h" />
-    <ClInclude Include="..\..\Genius\common\Logger.h" />
+    <ClInclude Include="..\..\Genius\common\Log.h" />
     <ClInclude Include="..\..\Genius\common\RandUtility.h" />
     <ClInclude Include="..\..\Genius\common\Singleton.h" />
     <ClInclude Include="..\..\Genius\common\TabFile.h" />
@@ -306,7 +308,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\data\BuffActionDataMgr.h" />
     <ClInclude Include="..\..\Genius\data\BuffDataMgr.h" />
     <ClInclude Include="..\..\Genius\data\BulletDataMgr.h" />
-    <ClInclude Include="..\..\Genius\data\DBSystem.h" />
+    <ClInclude Include="..\..\Genius\data\ConfigPool.h" />
     <ClInclude Include="..\..\Genius\data\IDataManager.h" />
     <ClInclude Include="..\..\Genius\data\RoleDataMgr.h" />
     <ClInclude Include="..\..\Genius\data\SkillDataMgr.h" />
@@ -339,6 +341,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\App\LoadingManager.cpp" />
     <ClCompile Include="..\..\Genius\App\WarApp.cpp" />
     <ClCompile Include="..\..\Genius\common\Performance.cpp" />
+    <ClCompile Include="..\..\Genius\data\BaseConfig.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAgent.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAnimArrow.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAnimBase.cpp" />
@@ -438,14 +441,14 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\AI\BehaviorTree\BehaviorLoader.cpp" />
     <ClCompile Include="..\..\Genius\AI\BehaviorTree\BehaviorTree.cpp" />
     <ClCompile Include="..\..\Genius\AI\BehaviorTree\Precondition.cpp" />
-    <ClCompile Include="..\..\Genius\common\Logger.cpp" />
+    <ClCompile Include="..\..\Genius\common\Log.cpp" />
     <ClCompile Include="..\..\Genius\common\TabFile.cpp" />
     <ClCompile Include="..\..\Genius\common\TimeSystem.cpp" />
     <ClCompile Include="..\..\Genius\data\AnimDataMgr.cpp" />
     <ClCompile Include="..\..\Genius\data\BuffActionDataMgr.cpp" />
     <ClCompile Include="..\..\Genius\data\BuffDataMgr.cpp" />
     <ClCompile Include="..\..\Genius\data\BulletDataMg.cpp" />
-    <ClCompile Include="..\..\Genius\data\DBSystem.cpp" />
+    <ClCompile Include="..\..\Genius\data\ConfigPool.cpp" />
     <ClCompile Include="..\..\Genius\data\IDataManager.cpp" />
     <ClCompile Include="..\..\Genius\data\RoleDataMgr.cpp" />
     <ClCompile Include="..\..\Genius\data\SkillDataMgr.cpp" />

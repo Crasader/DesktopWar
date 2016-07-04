@@ -7,7 +7,7 @@
 #include "pawn/PawnBlackboard.h"
 #include "data/RoleDataMgr.h"
 #include "Common/RandUtility.h"
-#include "Logger.h"
+#include "Log.h"
 
 bool Probablity::Check(BHUpdateContext& context)
 {

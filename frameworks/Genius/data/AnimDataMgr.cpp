@@ -1,7 +1,7 @@
 
 #include "AnimDataMgr.h"
 #include "gfx/gfx.h"
-#include "Logger.h"
+#include "Log.h"
 
 
 using namespace Genius;

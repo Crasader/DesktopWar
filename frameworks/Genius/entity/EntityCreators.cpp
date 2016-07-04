@@ -5,7 +5,7 @@
 #include "RoleDataMgr.h"
 #include "BulletDataMgr.h"
 #include "bullet/BulletDefines.h"
-#include "Logger.h"
+#include "Log.h"
 #include "app/Config.h"
 #include "app/GameDefine.h"
 
@@ -16,7 +16,7 @@ Entity* EntityCreator::CreatePawn(std::string id, float x, float y, int team)
 	RoleData* roleInfo = RoleDataMgr::GetSingleton()->GetRoleData(id);
 	if (nullptr == roleInfo)
 	{
-		Logger::LogWarning("error role type : %s", id.c_str());
+		Log::Warning("error role type : %s", id.c_str());
 		return nullptr;
 	}
 	return CreatePawn(roleInfo->id, x, y, team);
@@ -27,7 +27,7 @@ Entity* EntityCreator::CreatePawn(int id, float x, float y, int team)
 	RoleData* roleInfo = RoleDataMgr::GetSingleton()->GetRoleData(id);
 	if (nullptr == roleInfo)
 	{
-		Logger::LogWarning("error role type : %d", id);
+		Log::Warning("error role type : %d", id);
 		return nullptr;
 	}
 
@@ -68,7 +68,7 @@ Entity* EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, f
 	BulletData* bulletInfo = BulletDataMgr::GetSingleton()->GetBulletData(bulletID);
 	if (nullptr == bulletInfo)
 	{
-		Logger::LogWarning("error bullet type : %d", bulletID);
+		Log::Warning("error bullet type : %d", bulletID);
 		return nullptr;
 	}
 

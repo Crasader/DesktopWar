@@ -3,7 +3,7 @@
 #include "gfx/gfx.h"
 #include "../../core/ECSWorld.h"
 #include "event/EventManager.h"
-#include "Logger.h"
+#include "Log.h"
 #include "../../EntityEvents.h"
 
 using namespace Genius;
@@ -67,6 +67,6 @@ void ComBulletAnimBomb::AnimationFrameCallback(cocostudio::Bone* bone, const std
 	}
 	else
 	{
-		Logger::LogWarning("unknown frame event.");
+		Log::Warning("unknown frame event.");
 	}
 }

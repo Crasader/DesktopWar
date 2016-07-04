@@ -79,6 +79,16 @@ float TabFile::GetFloatValue(int row_index, int col_index)
 	return (float)atof(m_file_data[row_index][col_index].size() > 0 ? m_file_data[row_index][col_index].c_str() : "0");
 }
 
+float TabFile::GetDoubleValue(int row_index, int col_index)
+{
+	return (double)atof(m_file_data[row_index][col_index].size() > 0 ? m_file_data[row_index][col_index].c_str() : "0");
+}
+
+float TabFile::GetLongValue(int row_index, int col_index)
+{
+	return (long)atol(m_file_data[row_index][col_index].size() > 0 ? m_file_data[row_index][col_index].c_str() : "0");
+}
+
 bool TabFile::GetBoolValue(int row_index, int col_index)
 {
 	return atoi(m_file_data[row_index][col_index].size() > 0 ? m_file_data[row_index][col_index].c_str() : "0") > 0 ? true : false;
@@ -89,12 +99,42 @@ string TabFile::GetStringValue(int row_index, int col_index)
 	return m_file_data[row_index][col_index];
 }
 
-int TabFile::GetMaxRowCount()
+int TabFile::ToInt(string& str)
+{
+	return atoi(str.c_str());
+}
+
+float TabFile::ToFloat(string& str)
+{
+	return (float)atof(str.c_str());
+}
+
+float TabFile::ToDouble(string& str)
+{
+	return atof(str.c_str());
+}
+
+float TabFile::ToLong(string& str)
+{
+	return atol(str.c_str());
+}
+
+bool TabFile::ToBool(string& str)
+{
+	return atoi(str.c_str()) > 0 ? true : false;
+}
+
+string TabFile::ToString(string& str)
+{
+	return str;
+}
+
+int TabFile::GetRowCount()
 {
 	return m_max_row_count;
 }
 
-int TabFile::GetMaxColCount()
+int TabFile::GetColCount()
 {
 	return m_max_col_count;
 }

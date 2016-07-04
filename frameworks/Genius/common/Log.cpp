@@ -1,5 +1,5 @@
 
-#include "Logger.h"
+#include "Log.h"
 #include <stdio.h>
 #include <time.h>
 #include <stdarg.h>
@@ -7,7 +7,7 @@
 
 #define BUFFER_LEN 1024
 
-void Logger::LogInfo(const char* pInfo, ...)
+void Log::Info(const char* pInfo, ...)
 {
 	char buffer[BUFFER_LEN] = "";
 	time_t t = time(nullptr);
@@ -24,7 +24,7 @@ void Logger::LogInfo(const char* pInfo, ...)
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 }
 
-void Logger::LogWarning(const char* pInfo, ...)
+void Log::Warning(const char* pInfo, ...)
 {
 	char buffer[BUFFER_LEN] = "";
 	time_t t = time(nullptr);
@@ -41,7 +41,7 @@ void Logger::LogWarning(const char* pInfo, ...)
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 }
 
-void Logger::LogError(const char* pInfo, ...)
+void Log::Error(const char* pInfo, ...)
 {
 	char buffer[BUFFER_LEN] = "";
 	time_t t = time(nullptr);
@@ -58,7 +58,7 @@ void Logger::LogError(const char* pInfo, ...)
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 }
 
-void Logger::print(const char* pInfo)
+void Log::print(const char* pInfo)
 {
 	char buffer[BUFFER_LEN] = "";
 	time_t t = time(nullptr);

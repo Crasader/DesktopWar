@@ -7,7 +7,7 @@
 #include "skill/SkillSystem.h"
 #include "skill/BuffSystem.h"
 #include "../../core/Entity.h"
-#include "Logger.h"
+#include "Log.h"
 
 #include "ComPawnAgent.h"
 

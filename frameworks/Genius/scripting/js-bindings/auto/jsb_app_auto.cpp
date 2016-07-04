@@ -109,7 +109,7 @@ bool js_app_Logger_print(JSContext *cx, uint32_t argc, jsval *vp)
         const char* arg0 = nullptr;
         std::string arg0_tmp; ok &= jsval_to_std_string(cx, args.get(0), &arg0_tmp); arg0 = arg0_tmp.c_str();
         JSB_PRECONDITION2(ok, cx, false, "js_app_Logger_print : Error processing arguments");
-        Logger::print(arg0);
+        Log::print(arg0);
         args.rval().setUndefined();
         return true;
     }
@@ -147,7 +147,7 @@ void js_register_app_Logger(JSContext *cx, JS::HandleObject global) {
         cx, global,
         JS::NullPtr(),
         jsb_Logger_class,
-        dummy_constructor<Logger>, 0, // no constructor
+        dummy_constructor<Log>, 0, // no constructor
         properties,
         funcs,
         NULL, // no static properties
@@ -159,7 +159,7 @@ void js_register_app_Logger(JSContext *cx, JS::HandleObject global) {
     JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
     JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
     // add the proto and JSClass to the type->js info hash table
-    jsb_register_class<Logger>(cx, jsb_Logger_class, proto, JS::NullPtr());
+    jsb_register_class<Log>(cx, jsb_Logger_class, proto, JS::NullPtr());
 }
 
 JSClass  *jsb_Genius_SceneManager_class;
