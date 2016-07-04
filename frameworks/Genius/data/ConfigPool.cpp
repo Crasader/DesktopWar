@@ -12,12 +12,15 @@
 
 
 using namespace std;
+using namespace cfg;
 using namespace Genius;
 
 bool ConfigPool::Init()
 {
 	map<string, string> fileMap;
+	map<string, size_t> typeMap;
 	fileMap["anim_cfg"] = "anim.tab";
+	typeMap["anim_cfg"] = typeid(anim_cfg).hash_code();
 	REG_CONFIG_CREATE(anim_cfg)
 
 	map<string, string>::iterator iter = fileMap.begin();
@@ -44,52 +47,37 @@ bool ConfigPool::Init()
 		}
 
 		map<int, BaseConfig*> oneMap;
-		m_pool.insert(make_pair(typeid(ConfigPool)., oneMap));
+		m_pool.insert(make_pair(typeMap[className], oneMap));
 
 		for (int i = 4; i < rowCount; ++i)
 		{
-			BaseConfig* pCfg = m_creators[className]();
+			BaseConfig* pCfg = (*m_creators[className])();
 			pCfg->Init(tabFile, i, 1);
-			oneMap.insert((std::make_pair((pCfg->id, pCfg));
+			oneMap.insert(make_pair(pCfg->id, pCfg));
 		}
 
 	}
-
-	/*AddDataManager(RoleDataMgr::GetSingleton());
-	AddDataManager(AnimDataMgr::GetSingleton());
-	AddDataManager(SkillDataMgr::GetSingleton());
-	AddDataManager(BuffDataMgr::GetSingleton());
-	AddDataManager(BuffActionDataMgr::GetSingleton());
-	AddDataManager(BulletDataMgr::GetSingleton());
-
-	for (auto iter = m_dataMgrList.begin(); iter != m_dataMgrList.end(); ++iter)
-	{
-		if (!(*iter)->Init())
-		{
-			Logger::LogError("DBSystem init failed !");
-			return false;
-		}
-	}*/
 
 	return true;
 }
 
 void ConfigPool::Destroy()
 {
-	for (auto iter = m_dataMgrList.begin(); iter != m_dataMgrList.end(); ++iter)
+	std::map<size_t, std::map<int, BaseConfig*>>::iterator iter = m_pool.begin();
+	for (; iter != m_pool.end(); ++iter)
 	{
-		(*iter)->Destroy();
-		delete *iter;
+		std::map<int, BaseConfig*>::iterator iter2 = iter->second.begin();
+		for (; iter2 != iter->second.end(); ++iter2)
+		{
+			if (iter2->second != nullptr)
+				delete iter2->second;
+		}
+		iter->second.clear();
 	}
-	m_dataMgrList.clear();
+	m_pool.clear();
 }
 
-/*void ConfigPool::AddDataManager(IDataManager* mgr)
-{
-	m_dataMgrList.push_back(mgr);
-}*/
-
-void ConfigPool::RegisterFactoryCreate(string className, create_config_class* func)
+void ConfigPool::RegisterFactoryCreate(string className, create_config_class func)
 {
 	m_creators.insert(make_pair(className, func));
 }

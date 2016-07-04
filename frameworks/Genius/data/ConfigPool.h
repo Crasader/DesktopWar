@@ -6,9 +6,9 @@
 #include "common/Singleton.h"
 #include "BaseConfig.h"
 
-namespace Genius
+namespace cfg
 {
-	class ConfigPool : public Singleton<ConfigPool>
+	class ConfigPool : public Genius::Singleton<ConfigPool>
 	{
 	public:
 		ConfigPool(){}
@@ -17,13 +17,13 @@ namespace Genius
 		bool Init();
 		void Destroy();
 
-		void RegisterFactoryCreate(std::string className, create_config_class* func);
+		void RegisterFactoryCreate(std::string className, create_config_class func);
 
 	private:
-		std::map<std::type_info, std::map<int, BaseConfig*>>	m_pool;
-		std::map<std::string, create_config_class*>					m_creators;
+		std::map<size_t, std::map<int, BaseConfig*>>		m_pool;
+		std::map<std::string, create_config_class>			m_creators;
 
-		std::vector<IDataManager*>		m_dataMgrList;
+		//std::vector<IDataManager*>		m_dataMgrList;
 	};
 };
 

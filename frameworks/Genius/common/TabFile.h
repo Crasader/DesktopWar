@@ -21,14 +21,14 @@ namespace Genius
 		float													GetDoubleValue(int row_index, int col_index);
 		float													GetLongValue(int row_index, int col_index);
 		bool													GetBoolValue(int row_index, int col_index);
-		std::string											GetStringValue(int row_index, int col_index);
+		std::string&										GetStringValue(int row_index, int col_index);
 
-		int													ToInt(string& str);
-		float													ToFloat(string& str);
-		float													ToDouble(string& str);
-		float													ToLong(string& str);
-		bool													ToBool(string& str);
-		string												ToString(string& str);
+		int													ToInt(std::string& str);
+		float													ToFloat(std::string& str);
+		float													ToDouble(std::string& str);
+		float													ToLong(std::string& str);
+		bool													ToBool(std::string& str);
+		std::string&										ToString(std::string& str);
 
 	public:
 		bool													LoadFile(const std::string& FileName);

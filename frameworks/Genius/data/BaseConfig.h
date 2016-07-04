@@ -7,35 +7,34 @@
 
 using namespace std;
 
-typedef Genius::BaseConfig* (*create_config_class)();
-
-namespace Genius
+namespace cfg
 {
 	class BaseConfig
 	{
 	public:
-		virtual int Init(TabFile& reader, int row, int colomn) = 0;
-		
-		void RegisterFactoryCreate(create_config_class* func, string& name);
+		int id;
+		string idStr;
+		virtual int Init(Genius::TabFile& reader, int row, int colomn);
 
 	public:
 		static string Separator;
 	};
 
-	string BaseConfig::Separator = ",";
-
 }
 
 // ÎªÁË·´Éä !
+
+typedef cfg::BaseConfig* (*create_config_class)(void);
+
 #define DECLARE_CONFIG_CREATE(class_name) \
-	static Genius::BaseConfig* CreateClass## class_name();
+	static cfg::BaseConfig* CreateClass## class_name();
 
 #define IMPL_CONFIG_CREATE(class_name) \
-	static Genius::BaseConfig* CreateClass## class_name(){\
+	cfg::BaseConfig* class_name::CreateClass## class_name(){\
 	return new class_name; \
 	};
 
 #define REG_CONFIG_CREATE(class_name) \
-	Genius::ConfigPool::GetSingleton()->RegisterFactoryCreate(#class_name, class_name::CreateClass## class_name);
+	cfg::ConfigPool::GetSingleton()->RegisterFactoryCreate(#class_name, class_name::CreateClass## class_name);
 
 

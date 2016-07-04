@@ -2,7 +2,7 @@
 
 namespace cfg
 {
-	class anim_cfg : public Genius::BaseConfig
+	class anim_cfg : public BaseConfig
 	{
 	public:
 
@@ -13,10 +13,10 @@ namespace cfg
 		double number3;
 		long number4;
 		bool number5;
+		string filePath;
 		int number6[3];
 		float number7[3];
 		string number8[3];
-		string filePath;
 
 		virtual int Init(Genius::TabFile& reader, int row, int col)
 		{
@@ -40,9 +40,13 @@ namespace cfg
 			if(reader.GetStringValue(row, col).length() > 0)
 				number5 = reader.GetBoolValue(row, col++);
 
+			filePath = "";
+			if(reader.GetStringValue(row, col).length() > 0)
+				filePath = reader.GetStringValue(row, col++);
+
 			for(int i=0; i<3; i++)
 				number6[i] = 6;
-			vector<string> number6Array = reader.Split(reader.GetStringValue(row, col++), Genius::BaseConfig::Separator);
+			vector<string> number6Array = reader.Split(reader.GetStringValue(row, col++), cfg::BaseConfig::Separator);
 			int number6Count = number6Array.size();
 			for(int i=0; i<3; i++)
 			{
@@ -54,7 +58,7 @@ namespace cfg
 
 			for(int i=0; i<3; i++)
 				number7[i] = 7;
-			vector<string> number7Array = reader.Split(reader.GetStringValue(row, col++), Genius::BaseConfig::Separator);
+			vector<string> number7Array = reader.Split(reader.GetStringValue(row, col++), cfg::BaseConfig::Separator);
 			int number7Count = number7Array.size();
 			for(int i=0; i<3; i++)
 			{
@@ -66,7 +70,7 @@ namespace cfg
 
 			for(int i=0; i<3; i++)
 				number8[i] = "lolol";
-			vector<string> number8Array = reader.Split(reader.GetStringValue(row, col++), Genius::BaseConfig::Separator);
+			vector<string> number8Array = reader.Split(reader.GetStringValue(row, col++), cfg::BaseConfig::Separator);
 			int number8Count = number8Array.size();
 			for(int i=0; i<3; i++)
 			{
@@ -76,14 +80,8 @@ namespace cfg
 					number8[i] = "lolol";
 			}
 
-			filePath = "";
-			if(reader.GetStringValue(row, col).length() > 0)
-				filePath = reader.GetStringValue(row, col++);
-
 			return col;
 		}
 	};
-
 	IMPL_CONFIG_CREATE(anim_cfg)
-
 };

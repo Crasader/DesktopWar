@@ -94,7 +94,7 @@ bool TabFile::GetBoolValue(int row_index, int col_index)
 	return atoi(m_file_data[row_index][col_index].size() > 0 ? m_file_data[row_index][col_index].c_str() : "0") > 0 ? true : false;
 }
 
-string TabFile::GetStringValue(int row_index, int col_index)
+string& TabFile::GetStringValue(int row_index, int col_index)
 {
 	return m_file_data[row_index][col_index];
 }
@@ -124,7 +124,7 @@ bool TabFile::ToBool(string& str)
 	return atoi(str.c_str()) > 0 ? true : false;
 }
 
-string TabFile::ToString(string& str)
+string& TabFile::ToString(string& str)
 {
 	return str;
 }

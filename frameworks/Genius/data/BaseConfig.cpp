@@ -3,10 +3,16 @@
 
 using namespace std;
 
+using namespace cfg;
 using namespace Genius;
 
-void BaseConfig::RegisterFactoryCreate(create_config_class* func, string& name)
-{
+string BaseConfig::Separator = ",";
 
+int BaseConfig::Init(Genius::TabFile& reader, int row, int col)
+{
+	idStr = reader.GetStringValue(row, col);
+	id = reader.ToInt(idStr);
+
+	return ++col;
 }
 
