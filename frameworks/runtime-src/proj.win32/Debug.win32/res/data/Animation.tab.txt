@@ -1,0 +1,11 @@
+title	id	filePath
+注释	动画名	文件
+string	string	string
+""	"str"	""
+	Jedi2	res/anim/Jedi2/Jedi2.ExportJson
+	Tkdo	res/anim/Tkdo/Tkdo.ExportJson
+	Militia	res/anim/Militia/Militia.ExportJson
+	Footman	res/anim/Footman/Footman.ExportJson
+	Knight	res/anim/Knight/Knight.ExportJson
+	HolyKnight	res/anim/HolyKnight/HolyKnight.ExportJson
+	Barbarian	res/anim/Barbarian/Barbarian.ExportJson

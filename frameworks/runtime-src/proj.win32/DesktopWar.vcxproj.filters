@@ -154,27 +154,6 @@
     <ClInclude Include="..\..\Genius\common\TimeSystem.h">
       <Filter>Genius\Base\Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\data\AnimDataMgr.h">
-      <Filter>Genius\Logic\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\data\BuffActionDataMgr.h">
-      <Filter>Genius\Logic\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\data\BuffDataMgr.h">
-      <Filter>Genius\Logic\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\data\BulletDataMgr.h">
-      <Filter>Genius\Logic\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\data\IDataManager.h">
-      <Filter>Genius\Logic\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\data\RoleDataMgr.h">
-      <Filter>Genius\Logic\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\data\SkillDataMgr.h">
-      <Filter>Genius\Logic\Data</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\event\Event.h">
       <Filter>Genius\Base\Event</Filter>
     </ClInclude>
@@ -598,14 +577,29 @@
     <ClInclude Include="..\..\Genius\data\BaseConfig.h">
       <Filter>Genius\Logic\Data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\data\auto\anim_cfg.hpp">
-      <Filter>Genius\Logic\Data\auto</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\data\ConfigPool.h">
       <Filter>Genius\Logic\Data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\common\Log.h">
       <Filter>Genius\Base\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\data\auto\Animation_cfg.hpp">
+      <Filter>Genius\Logic\Data\auto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\data\auto\Buff_cfg.hpp">
+      <Filter>Genius\Logic\Data\auto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\data\auto\BuffAction_cfg.hpp">
+      <Filter>Genius\Logic\Data\auto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\data\auto\Bullet_cfg.hpp">
+      <Filter>Genius\Logic\Data\auto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\data\auto\Role_cfg.hpp">
+      <Filter>Genius\Logic\Data\auto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\data\auto\Skill_cfg.hpp">
+      <Filter>Genius\Logic\Data\auto</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -630,27 +624,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\common\TimeSystem.cpp">
       <Filter>Genius\Base\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\data\AnimDataMgr.cpp">
-      <Filter>Genius\Logic\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\data\BuffActionDataMgr.cpp">
-      <Filter>Genius\Logic\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\data\BuffDataMgr.cpp">
-      <Filter>Genius\Logic\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\data\BulletDataMg.cpp">
-      <Filter>Genius\Logic\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\data\IDataManager.cpp">
-      <Filter>Genius\Logic\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\data\RoleDataMgr.cpp">
-      <Filter>Genius\Logic\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\data\SkillDataMgr.cpp">
-      <Filter>Genius\Logic\Data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\event\EventManager.cpp">
       <Filter>Genius\Base\Event</Filter>
