@@ -5,13 +5,14 @@
 #include "event/EventManager.h"
 #include "ECS/EntityEvents.h"
 #include "ECS/ecs.h"
-#include "data/RoleDataMgr.h"
-#include "data/BulletDataMgr.h"
+#include "data/auto/Role_cfg.hpp"
+#include "data/auto/Bullet_cfg.hpp"
 #include "entity/EntityCreators.h"
 #include "ECS/components/pawn/ComPawnAgent.h"
 #include "pawn/PawnBlackboard.h"
 
 using namespace Genius;
+using namespace cfg;
 
 int ChangeLife(BuffEnvParam& env, BuffParam& buffParam)
 {

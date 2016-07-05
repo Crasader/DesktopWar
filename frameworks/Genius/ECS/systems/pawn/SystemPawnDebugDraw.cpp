@@ -6,7 +6,7 @@
 #include "../../core/Entity.h"
 
 #include "2Ddef.h"
-#include "RoleDataMgr.h"
+#include "data/auto/Role_cfg.hpp"
 
 USING_NS_CC;
 using namespace Genius;

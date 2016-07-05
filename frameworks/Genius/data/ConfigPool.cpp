@@ -1,27 +1,54 @@
 
-#include "ConfigPool.h"
-#include "RoleDataMgr.h"
-#include "AnimDataMgr.h"
-#include "SkillDataMgr.h"
-#include "BuffDataMgr.h"
-#include "BuffActionDataMgr.h"
-#include "BulletDataMgr.h"
 #include "Log.h"
-
-#include "auto/anim_cfg.hpp"
+#include "ConfigPool.h"
+#include "Headers.h"
 
 
 using namespace std;
 using namespace cfg;
 using namespace Genius;
 
+// 注册cfg类和文件
+#define INSERT_CFG_TO_MAP(class_name, file_name)\
+	fileMap[#class_name] = file_name; \
+	typeMap[#class_name] = typeid(class_name).hash_code(); \
+	REG_CONFIG_CREATE(class_name);
+
 bool ConfigPool::Init()
 {
 	map<string, string> fileMap;
 	map<string, size_t> typeMap;
-	fileMap["anim_cfg"] = "anim.tab";
-	typeMap["anim_cfg"] = typeid(anim_cfg).hash_code();
-	REG_CONFIG_CREATE(anim_cfg)
+
+	INSERT_CFG_TO_MAP(Animation_cfg, "Animation.tab");
+	INSERT_CFG_TO_MAP(Buff_cfg, "Buff.tab");
+	INSERT_CFG_TO_MAP(BuffAction_cfg, "BuffAction.tab");
+	INSERT_CFG_TO_MAP(Bullet_cfg, "Bullet.tab");
+	INSERT_CFG_TO_MAP(Role_cfg, "Role.tab");
+	INSERT_CFG_TO_MAP(Skill_cfg, "Skill.tab");
+
+	/*fileMap["Animation_cfg"] = "Animation.tab";
+	typeMap["Animation_cfg"] = typeid(Animation_cfg).hash_code();
+	REG_CONFIG_CREATE(Animation_cfg);
+
+	fileMap["Buff_cfg"] = "Buff.tab";
+	typeMap["Buff_cfg"] = typeid(Buff_cfg).hash_code();
+	REG_CONFIG_CREATE(Buff_cfg);
+
+	fileMap["BuffAction_cfg"] = "BuffAction.tab";
+	typeMap["BuffAction_cfg"] = typeid(BuffAction_cfg).hash_code();
+	REG_CONFIG_CREATE(BuffAction_cfg);
+
+	fileMap["Bullet_cfg"] = "Bullet.tab";
+	typeMap["Bullet_cfg"] = typeid(Bullet_cfg).hash_code();
+	REG_CONFIG_CREATE(Bullet_cfg);
+
+	fileMap["Role_cfg"] = "Role.tab";
+	typeMap["Role_cfg"] = typeid(Role_cfg).hash_code();
+	REG_CONFIG_CREATE(Role_cfg);
+
+	fileMap["Skill_cfg"] = "Skill.tab";
+	typeMap["Skill_cfg"] = typeid(Skill_cfg).hash_code();
+	REG_CONFIG_CREATE(Skill_cfg);*/
 
 	map<string, string>::iterator iter = fileMap.begin();
 	while (iter != fileMap.end())
@@ -80,6 +107,45 @@ void ConfigPool::Destroy()
 void ConfigPool::RegisterFactoryCreate(string className, create_config_class func)
 {
 	m_creators.insert(make_pair(className, func));
+}
+
+template <typename T>
+T* ConfigPool::GetConfig(int id)
+{
+	size_t key = typeid(T).hash_code();
+	if (m_pool.find(m_pool) != m_pool.end())
+	{
+		auto mp = m_pool[key];
+		if (mp.find(id) != mp.end())
+			return mp[id];
+		else
+			return nullptr;
+	}
+	else
+	{
+		return nullptr;
+	}
+}
+
+template <typename T>
+T* ConfigPool::GetConfig(std::string& id)
+{
+	return nullptr;
+}
+
+template <typename T>
+std::map<int, BaseConfig*>& ConfigPool::GetConfigMap()
+{
+	size_t key = typeid(T).hash_code();
+	if (m_pool.find(m_pool) != m_pool.end())
+	{
+		return m_pool[key];
+	}
+	else
+	{
+		static std::map<int, BaseConfig*> sMap;
+		return sMap;
+	}
 }
 
 

@@ -191,6 +191,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\data\auto\Role_cfg.hpp" />
     <ClInclude Include="..\..\Genius\data\auto\Skill_cfg.hpp" />
     <ClInclude Include="..\..\Genius\data\BaseConfig.h" />
+    <ClInclude Include="..\..\Genius\data\Headers.h" />
     <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAgent.h" />
     <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAnimArrow.h" />
     <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAnimBase.h" />

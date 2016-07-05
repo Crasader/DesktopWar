@@ -1,14 +1,14 @@
 
 #include "ComPawnAgent.h"
-#include "RoleDataMgr.h"
+#include "data/auto/Role_cfg.hpp"
 #include "pawn/PawnBlackboard.h"
 #include "pawn/action/PawnActionFactory.h"
 
 
 using namespace Genius;
+using namespace cfg;
 
-
-ComPawnAgent::ComPawnAgent(RoleData* pData)
+ComPawnAgent::ComPawnAgent(Role_cfg* pData)
 {
 	m_pRoleData = pData;
 

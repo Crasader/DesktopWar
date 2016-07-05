@@ -1,6 +1,6 @@
 
 #include "BuffSet.h"
-#include "BuffDataMgr.h"
+#include "data/auto/Buff_cfg.hpp"
 
 using namespace Genius;
 

@@ -7,15 +7,15 @@
 namespace Genius
 {
 	class BulletBlackboard;
-	class BulletData;
+	class Bullet_cfg;
 
 	class ComBulletAgent : public Component
 	{
 	public:
-		BulletData*					pBulletData;
+		Bullet_cfg*					pBulletData;
 		BulletBlackboard*			pBlackBoard;
 
-		ComBulletAgent(BulletData* pData);
+		ComBulletAgent(Bullet_cfg* pData);
 
 	};
 

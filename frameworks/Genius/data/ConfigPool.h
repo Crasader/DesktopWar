@@ -17,6 +17,15 @@ namespace cfg
 		bool Init();
 		void Destroy();
 
+		template <typename T>
+		T* GetConfig(int id);
+
+		template <typename T>
+		T* GetConfig(std::string& id);
+
+		template <typename T>
+		std::map<int, BaseConfig*>& GetConfigMap();
+
 		void RegisterFactoryCreate(std::string className, create_config_class func);
 
 	private:

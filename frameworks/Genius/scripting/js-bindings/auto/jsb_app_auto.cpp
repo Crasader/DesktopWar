@@ -922,7 +922,7 @@ bool js_app_AnimInfo_FilePath(JSContext *cx, uint32_t argc, jsval *vp)
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
     JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
     js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::AnimInfo* cobj = (Genius::AnimInfo *)(proxy ? proxy->ptr : NULL);
+    Genius::Animation_cfg* cobj = (Genius::AnimInfo *)(proxy ? proxy->ptr : NULL);
     JSB_PRECONDITION2( cobj, cx, false, "js_app_AnimInfo_FilePath : Invalid Native Object");
     if (argc == 0) {
         std::string ret = cobj->FilePath();
@@ -1011,10 +1011,10 @@ bool js_app_AnimDataMgr_FindAnimInfo(JSContext *cx, uint32_t argc, jsval *vp)
         std::string arg0;
         ok &= jsval_to_std_string(cx, args.get(0), &arg0);
         JSB_PRECONDITION2(ok, cx, false, "js_app_AnimDataMgr_FindAnimInfo : Error processing arguments");
-        Genius::AnimInfo* ret = cobj->FindAnimInfo(arg0);
+        Genius::Animation_cfg* ret = cobj->FindAnimInfo(arg0);
         jsval jsret = JSVAL_NULL;
         if (ret) {
-            jsret = OBJECT_TO_JSVAL(js_get_or_create_jsobject<Genius::AnimInfo>(cx, (Genius::AnimInfo*)ret));
+            jsret = OBJECT_TO_JSVAL(js_get_or_create_jsobject<Genius::AnimInfo>(cx, (Genius::Animation_cfg*)ret));
         } else {
             jsret = JSVAL_NULL;
         };

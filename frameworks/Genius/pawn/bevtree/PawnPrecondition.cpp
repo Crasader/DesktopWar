@@ -5,7 +5,7 @@
 #include "ECS/components/pawn/ComPawnBevtree.h"
 #include "ECS/components/pawn/ComPawnAgent.h"
 #include "pawn/PawnBlackboard.h"
-#include "data/RoleDataMgr.h"
+#include "data/auto/Role_cfg.hpp"
 #include "Common/RandUtility.h"
 #include "Log.h"
 

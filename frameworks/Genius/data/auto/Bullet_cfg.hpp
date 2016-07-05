@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../BaseConfig.h"
 
 namespace cfg
@@ -58,7 +60,7 @@ namespace cfg
 			if(reader.GetStringValue(row, col).length() > 0)
 				boxHeight = reader.GetIntValue(row, col++);
 
-			bodyAnim = 0;
+			bodyAnim = "";
 			if(reader.GetStringValue(row, col).length() > 0)
 				bodyAnim = reader.GetStringValue(row, col++);
 

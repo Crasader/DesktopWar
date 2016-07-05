@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../BaseConfig.h"
 
 namespace cfg

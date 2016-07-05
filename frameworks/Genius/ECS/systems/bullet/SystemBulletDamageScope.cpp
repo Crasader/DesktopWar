@@ -4,7 +4,7 @@
 #include "../../EntityEvents.h"
 #include "../../core/Entity.h"
 #include "2Ddef.h"
-#include "data/BulletDataMgr.h"
+#include "data/auto/Bullet_cfg.hpp"
 #include "../../core/ECSWorld.h"
 #include "../../core/SystemManager.h"
 #include "../pawn/SystemPawnFight.h"
@@ -81,13 +81,13 @@ bool SystemBulletDamageScope::TriggerBulletBuff(IEventData const &evt)
 	if (nullptr == bulletTempCom || nullptr == attackCom)
 		return false;
 
-	const BulletData* bulletInfo = bulletTempCom->pBulletData;
+	const Bullet_cfg* bulletInfo = bulletTempCom->pBulletData;
 
 	std::vector<Entity*> targets;
 	FindTargetsInScope(ownerEntity, bulletInfo->buffTargetRadius, false, targets);
 	for (auto iter = targets.begin(); iter != targets.end(); ++iter)
 	{
-		for (int i = 0; i < BulletData::BuffNum; ++i)
+		for (int i = 0; i < Bullet_cfg::BuffNum; ++i)
 		{
 			if (bulletInfo->buffs[i] != 0)
 				BuffSystem::GetSingleton().AddBuff(ownerEntity->GetId(), (*iter)->GetId(), bulletInfo->buffs[i]);

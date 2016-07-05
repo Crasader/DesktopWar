@@ -1,15 +1,16 @@
 
 #include "BuffAction.h"
-#include "BuffActionDataMgr.h"
+#include "data/auto/BuffAction_cfg.hpp"
 #include "UserActions.h"
 
 using namespace Genius;
+using namespace cfg;
 
 /************************************************************************/
 /*                                          BuffAction                            */
 /************************************************************************/
 
-void BuffAction::SetTemplate(BuffActionData* data)
+void BuffAction::SetTemplate(BuffAction_cfg* data)
 {
 	if (nullptr == data)
 		return;
@@ -19,7 +20,7 @@ void BuffAction::SetTemplate(BuffActionData* data)
 	BuffParam actionParam;
 	actionParam.buffIndex = data->id;
 	actionParam.buffType = data->buffType;
-	for (int i = 0; i < MaxActionParamNum; ++i)
+	for (int i = 0; i < 3; ++i)
 		actionParam.params[i] = data->params[i];
 	actionParam.paramStr;
 

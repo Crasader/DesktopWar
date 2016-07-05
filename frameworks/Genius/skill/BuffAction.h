@@ -5,6 +5,11 @@
 
 #define MaxParamNum 5
 
+namespace cfg
+{
+	class BuffAction_cfg;
+}
+
 namespace Genius
 {
 	class Buff;
@@ -32,7 +37,7 @@ namespace Genius
 		BuffActionFunction func;
 	};
 
-	class BuffActionData;
+	
 	class BuffAction
 	{
 		struct _Function
@@ -42,7 +47,7 @@ namespace Genius
 		};
 
 	public:
-		void SetTemplate(BuffActionData* data);
+		void SetTemplate(cfg::BuffAction_cfg* data);
 		bool IsConditionRight(BuffEnvParam&);
 		int operator()(BuffEnvParam&);
 		BuffActionFunction FindFunc(std::string& name);
@@ -52,7 +57,7 @@ namespace Genius
 		int ParseCondition();
 
 	private:
-		BuffActionData*		m_templateData;
+		cfg::BuffAction_cfg*		m_templateData;
 		_Function					m_action;
 		_Function					m_condition;
 	};

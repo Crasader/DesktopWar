@@ -11,7 +11,7 @@
 #include "Log.h"
 #include "app/Config.h"
 #include "app/GameDefine.h"
-#include "RoleDataMgr.h"
+#include "data/auto/Role_cfg.hpp"
 #include "RandUtility.h"
 
 USING_NS_BHTREE

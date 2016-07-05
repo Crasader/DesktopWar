@@ -1,13 +1,13 @@
 
 #include "ComBulletAgent.h"
-#include "BulletDataMgr.h"
+#include "data/auto/Bullet_cfg.hpp"
 #include "pawn/PawnBlackboard.h"
 
 
 using namespace Genius;
 
 
-ComBulletAgent::ComBulletAgent(BulletData* pData)
+ComBulletAgent::ComBulletAgent(Bullet_cfg* pData)
 {
 	pBulletData = pData;
 }

@@ -3,7 +3,7 @@
 #include "event/EventManager.h"
 #include "../../EntityEvents.h"
 #include "../../core/Entity.h"
-#include "RoleDataMgr.h"
+#include "data/auto/Role_cfg.hpp"
 #include "skill/SkillSystem.h"
 #include "app/GameDefine.h"
 #include "pawn/PawnBlackboard.h"

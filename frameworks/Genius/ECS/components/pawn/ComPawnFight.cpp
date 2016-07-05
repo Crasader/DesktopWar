@@ -1,7 +1,7 @@
 
 #include "ComPawnFight.h"
 #include "pawn/PawnDefines.h"
-#include "RoleDataMgr.h"
+#include "data/auto/Role_cfg.hpp"
 #include "event/EventManager.h"
 #include "../../EntityEvents.h"
 #include "skill/SkillSystem.h"

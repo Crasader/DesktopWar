@@ -4,13 +4,14 @@
 #include "../../EntityEvents.h"
 #include "../../core/Entity.h"
 #include "2Ddef.h"
-#include "data/BulletDataMgr.h"
+#include "data/auto/Bullet_cfg.hpp"
 #include "../../core/ECSWorld.h"
 #include "../../core/SystemManager.h"
 #include "../pawn/SystemPawnFight.h"
 #include "skill/BuffSystem.h"
 
 using namespace Genius;
+using namespace cfg;
 
 void SystemBulletDamageNone::Initialize()
 {
@@ -49,8 +50,8 @@ bool SystemBulletDamageNone::TriggerBulletBuff(IEventData const &evt)
 	ComBulletDamageNone* pAttackCom = damageMapper.get(pOwnerEntity);
 
 	ComBulletTemplate* bulletTempCom = bulletTemplateMapper.get(pOwnerEntity);
-	const BulletData* bulletInfo = bulletTempCom->pBulletData;
-	for (int i = 0; i < BulletData::BuffNum; ++i)
+	const Bullet_cfg* bulletInfo = bulletTempCom->pBulletData;
+	for (int i = 0; i < Bullet_cfg::BuffNum; ++i)
 	{
 		if (bulletInfo->buffs[i] != 0)
 			BuffSystem::GetSingleton().AddBuff(pOwnerEntity->GetId(), Entity::InvalidID, bulletInfo->buffs[i]);

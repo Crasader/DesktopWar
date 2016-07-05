@@ -1,14 +1,15 @@
 
 #include "app/LoadingManager.h"
-#include "AnimDataMgr.h"
-//#include "app/AppStatus/AppStateLoading.h"
+#include "data/auto/Animation_cfg.hpp"
+#include "data/ConfigPool.h"
 
 USING_NS_CC;
+using namespace cfg;
 using namespace Genius;
 
-LoadingManager::LoadingManager(/*AppStateLoading* pState*/)
+LoadingManager::LoadingManager()
 {
-	//m_pLoadingState = pState;
+	
 }
 
 LoadingManager::~LoadingManager()
@@ -29,7 +30,7 @@ void LoadingManager::ClearLoadingList()
 
 void LoadingManager::AddResource(int t, std::string& path)
 {
-	std::map<std::string, AnimInfo*>& animInfoList = AnimDataMgr::GetSingleton()->GetAnimInfoList();
+	std::map<std::string, Animation_cfg*>& animInfoList = cfg::ConfigPool::GetSingleton()->GetConfigMap<Animation_cfg>();
 	if (animInfoList.find(path) != animInfoList.end())
 	{
 		m_resources.push_back(ResourceInfo((ResourceType)t, animInfoList[path]->filePath));

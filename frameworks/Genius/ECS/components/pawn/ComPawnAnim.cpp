@@ -1,9 +1,9 @@
 
 #include "ComPawnAnim.h"
 #include "pawn/PawnDefines.h"
-#include "RoleDataMgr.h"
+#include "data/auto/Role_cfg.hpp"
 #include "gfx/gfx.h"
-#include "AnimDataMgr.h"
+#include "data/auto/Animation_cfg.hpp"
 #include "event/EventManager.h"
 #include "../../EntityEvents.h"
 #include "skill/SkillSystem.h"
@@ -19,6 +19,7 @@
 
 USING_NS_CC;
 using namespace Genius;
+using namespace cfg;
 
 
 /************************************************************************/
@@ -28,7 +29,7 @@ ComPawnAnim::ComPawnAnim(int roleID) :
 m_curAction(Action_Idle),
 m_pAnimFsm(nullptr)
 {
-	RoleData* roleData = RoleDataMgr::GetSingleton()->GetRoleData(roleID);
+	Role_cfg* roleData = RoleDataMgr::GetSingleton()->GetRoleData(roleID);
 	if (roleData)
 	{
 		m_pAvatarRoot = cocos2d::Node::create();

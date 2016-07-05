@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../BaseConfig.h"
 
 namespace cfg
@@ -8,33 +10,31 @@ namespace cfg
 
 		DECLARE_CONFIG_CREATE(BuffAction_cfg)
 
-		int type;
+		int buffType;
 		string function;
-		int param1;
-		int param2;
-		int param3;
+		int params[3];
 
 		virtual int Init(Genius::TabFile& reader, int row, int col)
 		{
-			type = 0;
+			buffType = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				type = reader.GetIntValue(row, col++);
+				buffType = reader.GetIntValue(row, col++);
 
 			function = "";
 			if(reader.GetStringValue(row, col).length() > 0)
 				function = reader.GetStringValue(row, col++);
 
-			param1 = 0;
-			if(reader.GetStringValue(row, col).length() > 0)
-				param1 = reader.GetIntValue(row, col++);
-
-			param2 = 0;
-			if(reader.GetStringValue(row, col).length() > 0)
-				param2 = reader.GetIntValue(row, col++);
-
-			param3 = 0;
-			if(reader.GetStringValue(row, col).length() > 0)
-				param3 = reader.GetIntValue(row, col++);
+			for(int i=0; i<3; i++)
+				params[i] = 0;
+			vector<string> paramsArray = reader.Split(reader.GetStringValue(row, col++), cfg::BaseConfig::Separator);
+			int paramsCount = paramsArray.size();
+			for(int i=0; i<3; i++)
+			{
+				if(i < paramsCount)
+					params[i] = reader.ToInt(paramsArray[i]);
+				else
+					params[i] = 0;
+			}
 
 			return col;
 		}

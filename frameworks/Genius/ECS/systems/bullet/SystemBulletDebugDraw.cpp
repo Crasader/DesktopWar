@@ -6,9 +6,10 @@
 #include "../../core/Entity.h"
 
 #include "2Ddef.h"
-#include "BulletDataMgr.h"
+#include "data/auto/Bullet_cfg.hpp"
 
 using namespace Genius;
+using namespace cfg;
 
 void SystemBulletDebugDraw::Initialize()
 {

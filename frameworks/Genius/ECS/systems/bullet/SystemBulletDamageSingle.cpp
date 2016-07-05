@@ -4,7 +4,7 @@
 #include "../../EntityEvents.h"
 #include "../../core/Entity.h"
 #include "2Ddef.h"
-#include "data/BulletDataMgr.h"
+#include "data/auto/Bullet_cfg.hpp"
 #include "../../core/ECSWorld.h"
 #include "../../core/SystemManager.h"
 #include "../pawn/SystemPawnFight.h"
@@ -13,6 +13,7 @@
 #include "../../components/common/ComTeam.h"
 
 using namespace Genius;
+using namespace cfg;
 
 void SystemBulletDamageSingle::Initialize()
 {
@@ -77,8 +78,8 @@ void SystemBulletDamageSingle::collisionHandler(int id1, int id2)
 		ComBulletTemplate* bulletTempCom = bulletTemplateMapper.get(pEntity);
 		if (bulletTempCom)
 		{
-			const BulletData* bulletInfo = bulletTempCom->pBulletData;
-			for (int i = 0; i < BulletData::BuffNum; ++i)
+			const Bullet_cfg* bulletInfo = bulletTempCom->pBulletData;
+			for (int i = 0; i < Bullet_cfg::BuffNum; ++i)
 			{
 				if (bulletInfo->buffs[i] != 0)
 					BuffSystem::GetSingleton().AddBuff(pEntity->GetId(), pOtherEntity->GetId(), bulletInfo->buffs[i]);
@@ -126,8 +127,8 @@ bool SystemBulletDamageSingle::TriggerBulletBuff(IEventData const &evt)
 	if (pOtherEntity)
 	{
 		ComBulletTemplate* bulletTempCom = bulletTemplateMapper.get(pOwnerEntity);
-		const BulletData* bulletInfo = bulletTempCom->pBulletData;
-		for (int i = 0; i < BulletData::BuffNum; ++i)
+		const Bullet_cfg* bulletInfo = bulletTempCom->pBulletData;
+		for (int i = 0; i < Bullet_cfg::BuffNum; ++i)
 		{
 			if (bulletInfo->buffs[i] != 0)
 				BuffSystem::GetSingleton().AddBuff(pOwnerEntity->GetId(), pAttackCom->targetID, bulletInfo->buffs[i]);

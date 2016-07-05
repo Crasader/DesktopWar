@@ -4,6 +4,11 @@
 #include <vector>
 #include "BuffAction.h"
 
+namespace cfg
+{
+	class Buff_cfg;
+}
+
 namespace Genius
 {
 	enum EBuffPileType
@@ -51,8 +56,8 @@ namespace Genius
 		EBuffRet_Kill = 1 << 2,
 	};
 
-	class BuffData;
-	class BuffStrategyData;
+	
+	
 	class Buff
 	{
 	public:
@@ -93,7 +98,7 @@ namespace Genius
 		bool EndEffect();
 
 	private:
-		BuffData*					m_buffTemplate;
+		cfg::Buff_cfg*					m_buffTemplate;
 		//BuffStrategyData*	m_strategyTemplate;
 		int				m_senderID;
 		int				m_receiverID;

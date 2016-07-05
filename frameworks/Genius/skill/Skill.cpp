@@ -2,9 +2,9 @@
 #include "Skill.h"
 #include "Log.h"
 #include "ECS/ecs.h"
-#include "data/RoleDataMgr.h"
+#include "data/auto/Role_cfg.hpp"
 #include "data/SkillDataMgr.h"
-#include "data/BulletDataMgr.h"
+#include "data/auto/Bullet_cfg.hpp"
 #include "BuffSystem.h"
 #include "entity/EntityCreators.h"
 

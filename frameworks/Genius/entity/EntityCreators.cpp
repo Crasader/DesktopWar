@@ -2,18 +2,19 @@
 
 #include "entityCreators.h"
 #include "ECS/ecs.h"
-#include "RoleDataMgr.h"
-#include "BulletDataMgr.h"
+#include "data/auto/Role_cfg.hpp"
+#include "data/auto/Bullet_cfg.hpp"
 #include "bullet/BulletDefines.h"
 #include "Log.h"
 #include "app/Config.h"
 #include "app/GameDefine.h"
 
 using namespace Genius;
+using namespace cfg;
 
 Entity* EntityCreator::CreatePawn(std::string id, float x, float y, int team)
 {
-	RoleData* roleInfo = RoleDataMgr::GetSingleton()->GetRoleData(id);
+	Role_cfg* roleInfo = RoleDataMgr::GetSingleton()->GetRoleData(id);
 	if (nullptr == roleInfo)
 	{
 		Log::Warning("error role type : %s", id.c_str());
@@ -24,7 +25,7 @@ Entity* EntityCreator::CreatePawn(std::string id, float x, float y, int team)
 
 Entity* EntityCreator::CreatePawn(int id, float x, float y, int team)
 {
-	RoleData* roleInfo = RoleDataMgr::GetSingleton()->GetRoleData(id);
+	Role_cfg* roleInfo = RoleDataMgr::GetSingleton()->GetRoleData(id);
 	if (nullptr == roleInfo)
 	{
 		Log::Warning("error role type : %d", id);
@@ -65,7 +66,7 @@ Entity* EntityCreator::CreatePawn(int id, float x, float y, int team)
 
 Entity* EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float y, int team, float destX, float destY)
 {
-	BulletData* bulletInfo = BulletDataMgr::GetSingleton()->GetBulletData(bulletID);
+	Bullet_cfg* bulletInfo = BulletDataMgr::GetSingleton()->GetBulletData(bulletID);
 	if (nullptr == bulletInfo)
 	{
 		Log::Warning("error bullet type : %d", bulletID);
