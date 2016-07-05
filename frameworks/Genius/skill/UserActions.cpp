@@ -75,10 +75,10 @@ int DecLifeByPawn(BuffEnvParam& env, BuffParam& buffParam)
 			int atkType = tempComSender->m_pRoleData->attackType;
 			switch (atkType)
 			{
-			case AT_Physic:
+			case 1:
 				realDecLife = tempComSender->m_pRoleData->attackValue * (1.0f - tempComReceiver->m_pRoleData->antiPhysicValue*0.01f);
 				break;
-			case AT_Magic:
+			case 2:
 				realDecLife = tempComSender->m_pRoleData->attackValue * (1.0f - tempComReceiver->m_pRoleData->antiMagicValue*0.01f);
 				break;
 			default:
@@ -165,10 +165,10 @@ int DecLifeByBullet(BuffEnvParam& env, BuffParam& buffParam)
 			int atkType = tempComSender->pBulletData->attackType;
 			switch (atkType)
 			{
-			case AT_Physic:
+			case 1:
 				realDecLife = tempComSender->pBulletData->attackValue * (1.0f - tempComReceiver->m_pRoleData->antiPhysicValue*0.01f);
 				break;
-			case AT_Magic:
+			case 2:
 				realDecLife = tempComSender->pBulletData->attackValue * (1.0f - tempComReceiver->m_pRoleData->antiMagicValue*0.01f);
 				break;
 			default:

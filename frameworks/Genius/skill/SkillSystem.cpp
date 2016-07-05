@@ -1,8 +1,10 @@
 
 #include "SkillSystem.h"
-#include "data/SkillDataMgr.h"
+#include "data/auto/Skill_cfg.hpp"
+#include "data/ConfigPool.h"
 
 using namespace Genius;
+using namespace cfg;
 
 SkillSystem& SkillSystem::GetSingleton()
 {
@@ -38,7 +40,7 @@ bool	 SkillSystem::LoadSkill(int owner, int skillID)
 	}
 	iterFind = m_skillSets.find(owner);
 
-	SkillData* skillData = SkillDataMgr::GetSingleton()->GetSkillData(skillID);
+	Skill_cfg* skillData = ConfigPool::GetSingleton()->GetConfig<Skill_cfg>(skillID);
 	if (skillData)
 	{
 		iterFind->second.AddSkill(skillData->id);

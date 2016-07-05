@@ -7,6 +7,5 @@
 #include "app/LoadingManager.h"
 #include "gfx/SceneManager.h"
 #include "gfx/RollNumberLabel.h"
-#include "data/AnimDataMgr.h"
 
 #endif

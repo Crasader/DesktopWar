@@ -3,16 +3,19 @@
 
 #include "../../core/Component.h"
 
+namespace cfg
+{
+	class Bullet_cfg;
+}
+
 namespace Genius
 {
-	class BulletData;
-
 	class ComBulletTemplate : public Component
 	{
 	public:
-		const BulletData*	pBulletData;
+		const cfg::Bullet_cfg*	pBulletData;
 
-		ComBulletTemplate(BulletData* _bulletInfo);
+		ComBulletTemplate(cfg::Bullet_cfg* _bulletInfo);
 	};
 };
 

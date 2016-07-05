@@ -4,6 +4,7 @@
 #include "ECS/ecs.h"
 #include "data/auto/Role_cfg.hpp"
 #include "data/auto/Bullet_cfg.hpp"
+#include "data/ConfigPool.h"
 #include "bullet/BulletDefines.h"
 #include "Log.h"
 #include "app/Config.h"
@@ -14,7 +15,7 @@ using namespace cfg;
 
 Entity* EntityCreator::CreatePawn(std::string id, float x, float y, int team)
 {
-	Role_cfg* roleInfo = RoleDataMgr::GetSingleton()->GetRoleData(id);
+	Role_cfg* roleInfo = ConfigPool::GetSingleton()->GetConfig<Role_cfg>(id);
 	if (nullptr == roleInfo)
 	{
 		Log::Warning("error role type : %s", id.c_str());
@@ -25,7 +26,7 @@ Entity* EntityCreator::CreatePawn(std::string id, float x, float y, int team)
 
 Entity* EntityCreator::CreatePawn(int id, float x, float y, int team)
 {
-	Role_cfg* roleInfo = RoleDataMgr::GetSingleton()->GetRoleData(id);
+	Role_cfg* roleInfo = ConfigPool::GetSingleton()->GetConfig<Role_cfg>(id);
 	if (nullptr == roleInfo)
 	{
 		Log::Warning("error role type : %d", id);
@@ -66,7 +67,7 @@ Entity* EntityCreator::CreatePawn(int id, float x, float y, int team)
 
 Entity* EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float y, int team, float destX, float destY)
 {
-	Bullet_cfg* bulletInfo = BulletDataMgr::GetSingleton()->GetBulletData(bulletID);
+	Bullet_cfg* bulletInfo = ConfigPool::GetSingleton()->GetConfig<Bullet_cfg>(bulletID);
 	if (nullptr == bulletInfo)
 	{
 		Log::Warning("error bullet type : %d", bulletID);

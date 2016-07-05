@@ -19,7 +19,7 @@ namespace cfg
 		int boxWidth;
 		int boxHeight;
 		string bodyAnim;
-		int tailAnim;
+		string tailAnim;
 		int buffTargetStyle;
 		int buffTargetRadius;
 		int attackValue;
@@ -64,9 +64,9 @@ namespace cfg
 			if(reader.GetStringValue(row, col).length() > 0)
 				bodyAnim = reader.GetStringValue(row, col++);
 
-			tailAnim = 0;
+			tailAnim = "";
 			if(reader.GetStringValue(row, col).length() > 0)
-				tailAnim = reader.GetIntValue(row, col++);
+				tailAnim = reader.GetStringValue(row, col++);
 
 			buffTargetStyle = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
@@ -99,7 +99,5 @@ namespace cfg
 			return col;
 		}
 	};
-
-IMPL_CONFIG_CREATE(Bullet_cfg)
-
+	IMPL_CONFIG_CREATE(Bullet_cfg)
 };

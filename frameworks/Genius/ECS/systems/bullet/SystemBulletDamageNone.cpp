@@ -51,7 +51,7 @@ bool SystemBulletDamageNone::TriggerBulletBuff(IEventData const &evt)
 
 	ComBulletTemplate* bulletTempCom = bulletTemplateMapper.get(pOwnerEntity);
 	const Bullet_cfg* bulletInfo = bulletTempCom->pBulletData;
-	for (int i = 0; i < Bullet_cfg::BuffNum; ++i)
+	for (int i = 0; i < 3; ++i)
 	{
 		if (bulletInfo->buffs[i] != 0)
 			BuffSystem::GetSingleton().AddBuff(pOwnerEntity->GetId(), Entity::InvalidID, bulletInfo->buffs[i]);

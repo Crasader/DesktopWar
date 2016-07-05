@@ -4,18 +4,22 @@
 #include <string>
 #include "../../core/Component.h"
 
+namespace cfg
+{
+	class Bullet_cfg;
+}
+
 namespace Genius
 {
 	class BulletBlackboard;
-	class Bullet_cfg;
 
 	class ComBulletAgent : public Component
 	{
 	public:
-		Bullet_cfg*					pBulletData;
+		cfg::Bullet_cfg*					pBulletData;
 		BulletBlackboard*			pBlackBoard;
 
-		ComBulletAgent(Bullet_cfg* pData);
+		ComBulletAgent(cfg::Bullet_cfg* pData);
 
 	};
 

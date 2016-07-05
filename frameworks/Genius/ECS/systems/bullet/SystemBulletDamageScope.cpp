@@ -16,6 +16,7 @@
 #include "pawn/PawnBlackboard.h"
 
 using namespace Genius;
+using namespace cfg;
 
 void SystemBulletDamageScope::Initialize()
 {
@@ -87,7 +88,7 @@ bool SystemBulletDamageScope::TriggerBulletBuff(IEventData const &evt)
 	FindTargetsInScope(ownerEntity, bulletInfo->buffTargetRadius, false, targets);
 	for (auto iter = targets.begin(); iter != targets.end(); ++iter)
 	{
-		for (int i = 0; i < Bullet_cfg::BuffNum; ++i)
+		for (int i = 0; i < 3; ++i)
 		{
 			if (bulletInfo->buffs[i] != 0)
 				BuffSystem::GetSingleton().AddBuff(ownerEntity->GetId(), (*iter)->GetId(), bulletInfo->buffs[i]);

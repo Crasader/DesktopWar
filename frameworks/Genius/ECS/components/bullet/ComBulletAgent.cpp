@@ -5,6 +5,7 @@
 
 
 using namespace Genius;
+using namespace cfg;
 
 
 ComBulletAgent::ComBulletAgent(Bullet_cfg* pData)

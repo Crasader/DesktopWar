@@ -23,23 +23,6 @@ SendHuman : function (
 };
 
 /**
- * @class Logger
- */
-Logger = {
-
-/**
- * @method print
- * @param {char} arg0
- */
-print : function (
-char 
-)
-{
-},
-
-};
-
-/**
  * @class SceneManager
  */
 SceneManager = {
@@ -212,11 +195,11 @@ UpdateLoading : function (
 /**
  * @method AddResource
  * @param {int} arg0
- * @param {String} arg1
+ * @param {int} arg1
  */
 AddResource : function (
 int, 
-str 
+int 
 )
 {
 },
@@ -262,134 +245,6 @@ ClearLoadingList : function (
  * @constructor
  */
 LoadingManager : function (
-)
-{
-},
-
-};
-
-/**
- * @class IDataManager
- */
-IDataManager = {
-
-/**
- * @method GetSize
- * @return {int}
- */
-GetSize : function (
-)
-{
-    return 0;
-},
-
-/**
- * @method Destroy
- */
-Destroy : function (
-)
-{
-},
-
-/**
- * @method Init
- * @return {bool}
- */
-Init : function (
-)
-{
-    return false;
-},
-
-/**
- * @method GetName
- * @return {String}
- */
-GetName : function (
-)
-{
-    return ;
-},
-
-};
-
-/**
- * @class AnimInfo
- */
-AnimInfo = {
-
-/**
- * @method FilePath
- * @return {String}
- */
-FilePath : function (
-)
-{
-    return ;
-},
-
-};
-
-/**
- * @class AnimDataMgr
- */
-AnimDataMgr = {
-
-/**
- * @method GetName
- * @return {String}
- */
-GetName : function (
-)
-{
-    return ;
-},
-
-/**
- * @method FindAnimInfo
- * @param {String} arg0
- * @return {Genius::AnimInfo}
- */
-FindAnimInfo : function (
-str 
-)
-{
-    return Genius::AnimInfo;
-},
-
-/**
- * @method GetSize
- * @return {int}
- */
-GetSize : function (
-)
-{
-    return 0;
-},
-
-/**
- * @method Init
- * @return {bool}
- */
-Init : function (
-)
-{
-    return false;
-},
-
-/**
- * @method Destroy
- */
-Destroy : function (
-)
-{
-},
-
-/**
- * @method AnimDataMgr
- * @constructor
- */
-AnimDataMgr : function (
 )
 {
 },

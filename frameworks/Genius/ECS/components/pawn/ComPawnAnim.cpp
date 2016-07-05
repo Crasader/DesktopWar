@@ -2,6 +2,7 @@
 #include "ComPawnAnim.h"
 #include "pawn/PawnDefines.h"
 #include "data/auto/Role_cfg.hpp"
+#include "data/ConfigPool.h"
 #include "gfx/gfx.h"
 #include "data/auto/Animation_cfg.hpp"
 #include "event/EventManager.h"
@@ -29,7 +30,7 @@ ComPawnAnim::ComPawnAnim(int roleID) :
 m_curAction(Action_Idle),
 m_pAnimFsm(nullptr)
 {
-	Role_cfg* roleData = RoleDataMgr::GetSingleton()->GetRoleData(roleID);
+	Role_cfg* roleData = ConfigPool::GetSingleton()->GetConfig<Role_cfg>(roleID);
 	if (roleData)
 	{
 		m_pAvatarRoot = cocos2d::Node::create();

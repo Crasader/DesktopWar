@@ -3,16 +3,18 @@
 #include "Log.h"
 #include "ECS/ecs.h"
 #include "data/auto/Role_cfg.hpp"
-#include "data/SkillDataMgr.h"
+#include "data/auto/Skill_cfg.hpp"
 #include "data/auto/Bullet_cfg.hpp"
+#include "data/ConfigPool.h"
 #include "BuffSystem.h"
 #include "entity/EntityCreators.h"
 
 using namespace Genius;
+using namespace cfg;
 
 void Skill::SetSkillType(int tp)
 {
-	auto skillData = SkillDataMgr::GetSingleton()->GetSkillData(tp);
+	auto skillData = ConfigPool::GetSingleton()->GetConfig<Skill_cfg>(tp);
 	m_skillData = skillData;
 }
 
@@ -67,7 +69,7 @@ bool Skill::TargetOne(int owner, int target)
 	auto pawnAttCom = entTarget->GetComponent<ComPawnAgent>();
 	if (pawnAttCom)
 	{
-		for (int i = 0; i < SkillData::MaxBuffNum; ++i)
+		for (int i = 0; i < 3; ++i)
 		{
 			if (m_skillData->buffs[i] != 0)
 				BuffSystem::GetSingleton().AddBuff(m_ownerID, target, m_skillData->buffs[i]);
@@ -98,7 +100,7 @@ bool Skill::TargetScope(int owner, int target)
 	
 	for (auto iter = targets.begin(); iter != targets.end(); ++iter)
 	{
-		for (int i = 0; i < SkillData::MaxBuffNum; ++i)
+		for (int i = 0; i < 3; ++i)
 		{
 			if (m_skillData->buffs[i] != 0)
 				BuffSystem::GetSingleton().AddBuff(m_ownerID, (*iter)->GetId(), m_skillData->buffs[i]);

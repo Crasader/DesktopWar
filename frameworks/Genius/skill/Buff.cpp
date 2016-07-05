@@ -1,9 +1,13 @@
 
 #include "Buff.h"
-#include "data/BuffDataMgr.h"
-#include "data/BuffActionDataMgr.h"
+#include "data/auto/Buff_cfg.hpp"
+#include "data/auto/BuffAction_cfg.hpp"
+#include "data/ConfigPool.h"
+
 
 using namespace Genius;
+using namespace cfg;
+
 
 Buff::Buff() :
 m_buffTemplate(nullptr),
@@ -21,7 +25,7 @@ m_cycleCount(0)
 
 bool Buff::LoadFromTemplate(int tempID)
 {
-	auto buffTemplate = BuffDataMgr::GetSingleton()->GetBuffData(tempID);
+	auto buffTemplate = ConfigPool::GetSingleton()->GetConfig<Buff_cfg>(tempID);
 	if (nullptr == buffTemplate)
 		return false;
 	
@@ -30,7 +34,7 @@ bool Buff::LoadFromTemplate(int tempID)
 	m_curPileCount = 0;
 
 	// at beginning
-	for (auto iter = buffTemplate->beginActions.begin(); iter != buffTemplate->beginActions.end(); ++iter)
+	/*for (auto iter = buffTemplate->beginActions.begin(); iter != buffTemplate->beginActions.end(); ++iter)
 	{
 		auto actionTemplate = BuffActionDataMgr::GetSingleton()->GetBuffActionData(*iter);
 		if (nullptr == actionTemplate)
@@ -38,10 +42,10 @@ bool Buff::LoadFromTemplate(int tempID)
 		Effect effect;
 		effect.action.SetTemplate(actionTemplate);
 		m_beginActions.push_back(effect);
-	}
+	}*/
 
 	// cycling
-	for (auto iter = buffTemplate->cycleActions.begin(); iter != buffTemplate->cycleActions.end(); ++iter)
+	/*for (auto iter = buffTemplate->cycleActions.begin(); iter != buffTemplate->cycleActions.end(); ++iter)
 	{
 		auto actionTemplate = BuffActionDataMgr::GetSingleton()->GetBuffActionData(*iter);
 		if (actionTemplate)
@@ -54,10 +58,10 @@ bool Buff::LoadFromTemplate(int tempID)
 				m_cycleActions.push_back(eff_cyc);
 			}
 		}
-	}
+	}*/
 
 	// effect
-	for (auto iter = buffTemplate->effectActions.begin(); iter != buffTemplate->effectActions.end(); ++iter)
+	/*for (auto iter = buffTemplate->effectActions.begin(); iter != buffTemplate->effectActions.end(); ++iter)
 	{
 		auto actionTemplate = BuffActionDataMgr::GetSingleton()->GetBuffActionData(*iter);
 		if (nullptr == actionTemplate)
@@ -65,10 +69,10 @@ bool Buff::LoadFromTemplate(int tempID)
 		Effect effect;
 		effect.action.SetTemplate(actionTemplate);
 		m_effectActions.push_back(effect);
-	}
+	}*/
 
 	// in the end
-	for (auto iter = buffTemplate->endActions.begin(); iter != buffTemplate->endActions.end(); ++iter)
+	/*for (auto iter = buffTemplate->endActions.begin(); iter != buffTemplate->endActions.end(); ++iter)
 	{
 		auto actionData = BuffActionDataMgr::GetSingleton()->GetBuffActionData(*iter);
 		if (nullptr == actionData)
@@ -76,7 +80,7 @@ bool Buff::LoadFromTemplate(int tempID)
 		Effect effect;
 		effect.action.SetTemplate(actionData);
 		m_endActions.push_back(effect);
-	}
+	}*/
 	
 	return false;
 }

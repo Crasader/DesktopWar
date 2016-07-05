@@ -1,12 +1,16 @@
 
 #include "BuffSet.h"
 #include "data/auto/Buff_cfg.hpp"
+#include "data/ConfigPool.h"
+
 
 using namespace Genius;
+using namespace cfg;
+
 
 int BuffSet::AddBuff(int senderID, int buffTemplateID)
 {
-	auto buffTempData = BuffDataMgr::GetSingleton()->GetBuffData(buffTemplateID);
+	auto buffTempData = ConfigPool::GetSingleton()->GetConfig<Buff_cfg>(buffTemplateID);
 	Buff newBuff;
 	newBuff.LoadFromTemplate(buffTemplateID);
 	for (auto iter = m_buffInsts.begin(); iter != m_buffInsts.end(); ++iter)

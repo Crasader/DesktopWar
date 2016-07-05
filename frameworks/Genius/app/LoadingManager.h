@@ -34,7 +34,7 @@ public:
 
 	void GenerateUnLoadList();
 	void ClearLoadingList();
-	void AddResource(int type, std::string& path);
+	void AddResource(int type, int id);
 	void StartLoading();
 
 	// false表示全部加载完毕

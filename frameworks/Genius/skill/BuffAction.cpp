@@ -26,7 +26,7 @@ void BuffAction::SetTemplate(BuffAction_cfg* data)
 
 	m_action.param = actionParam;
 
-	m_action.pFunc = FindFunc(data->action);
+	m_action.pFunc = FindFunc(data->function);
 }
 
 bool BuffAction::IsConditionRight(BuffEnvParam&)

@@ -15,15 +15,6 @@ void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_GamePlay_SendMonster(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_GamePlay_SendHuman(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_Logger_class;
-extern JSObject *jsb_Logger_prototype;
-
-bool js_app_Logger_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_Logger_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_Logger(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_Logger_print(JSContext *cx, uint32_t argc, jsval *vp);
-
 extern JSClass  *jsb_Genius_SceneManager_class;
 extern JSObject *jsb_Genius_SceneManager_prototype;
 
@@ -68,40 +59,5 @@ bool js_app_LoadingManager_GetLoadingPercent(JSContext *cx, uint32_t argc, jsval
 bool js_app_LoadingManager_GenerateUnLoadList(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_LoadingManager_ClearLoadingList(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_LoadingManager_LoadingManager(JSContext *cx, uint32_t argc, jsval *vp);
-
-extern JSClass  *jsb_Genius_IDataManager_class;
-extern JSObject *jsb_Genius_IDataManager_prototype;
-
-bool js_app_IDataManager_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_IDataManager_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_IDataManager(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_IDataManager_GetSize(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_IDataManager_Destroy(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_IDataManager_Init(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_IDataManager_GetName(JSContext *cx, uint32_t argc, jsval *vp);
-
-extern JSClass  *jsb_Genius_AnimInfo_class;
-extern JSObject *jsb_Genius_AnimInfo_prototype;
-
-bool js_app_AnimInfo_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_AnimInfo_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_AnimInfo(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_AnimInfo_FilePath(JSContext *cx, uint32_t argc, jsval *vp);
-
-extern JSClass  *jsb_Genius_AnimDataMgr_class;
-extern JSObject *jsb_Genius_AnimDataMgr_prototype;
-
-bool js_app_AnimDataMgr_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_AnimDataMgr_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_AnimDataMgr(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_AnimDataMgr_GetName(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_AnimDataMgr_FindAnimInfo(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_AnimDataMgr_GetSize(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_AnimDataMgr_Init(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_AnimDataMgr_Destroy(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_AnimDataMgr_AnimDataMgr(JSContext *cx, uint32_t argc, jsval *vp);
 
 #endif // __app_h__

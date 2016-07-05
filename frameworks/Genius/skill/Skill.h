@@ -1,6 +1,11 @@
 #ifndef _GENIUS_SKILL_H_
 #define _GENIUS_SKILL_H_
 
+namespace cfg
+{
+	class Skill_cfg;
+}
+
 namespace Genius
 {
 	// ¹¥»÷(Ë÷µÐ)·½Ê½
@@ -20,7 +25,7 @@ namespace Genius
 		TTT_Self,
 	};
 
-	class SkillData;
+	
 	class Skill
 	{
 	public:
@@ -39,7 +44,7 @@ namespace Genius
 		bool TargetBullet(int owner, int target);
 
 	private:
-		SkillData* m_skillData;
+		cfg::Skill_cfg* m_skillData;
 		int			m_ownerID;
 	};
 

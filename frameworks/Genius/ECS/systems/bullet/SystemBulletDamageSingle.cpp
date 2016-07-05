@@ -79,7 +79,7 @@ void SystemBulletDamageSingle::collisionHandler(int id1, int id2)
 		if (bulletTempCom)
 		{
 			const Bullet_cfg* bulletInfo = bulletTempCom->pBulletData;
-			for (int i = 0; i < Bullet_cfg::BuffNum; ++i)
+			for (int i = 0; i < 3; ++i)
 			{
 				if (bulletInfo->buffs[i] != 0)
 					BuffSystem::GetSingleton().AddBuff(pEntity->GetId(), pOtherEntity->GetId(), bulletInfo->buffs[i]);
@@ -128,7 +128,7 @@ bool SystemBulletDamageSingle::TriggerBulletBuff(IEventData const &evt)
 	{
 		ComBulletTemplate* bulletTempCom = bulletTemplateMapper.get(pOwnerEntity);
 		const Bullet_cfg* bulletInfo = bulletTempCom->pBulletData;
-		for (int i = 0; i < Bullet_cfg::BuffNum; ++i)
+		for (int i = 0; i < 3; ++i)
 		{
 			if (bulletInfo->buffs[i] != 0)
 				BuffSystem::GetSingleton().AddBuff(pOwnerEntity->GetId(), pAttackCom->targetID, bulletInfo->buffs[i]);
