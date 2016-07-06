@@ -26,30 +26,6 @@ bool ConfigPool::Init()
 	INSERT_CFG_TO_MAP(Role_cfg, "Role.tab");
 	INSERT_CFG_TO_MAP(Skill_cfg, "Skill.tab");
 
-	/*fileMap["Animation_cfg"] = "Animation.tab";
-	typeMap["Animation_cfg"] = typeid(Animation_cfg).hash_code();
-	REG_CONFIG_CREATE(Animation_cfg);
-
-	fileMap["Buff_cfg"] = "Buff.tab";
-	typeMap["Buff_cfg"] = typeid(Buff_cfg).hash_code();
-	REG_CONFIG_CREATE(Buff_cfg);
-
-	fileMap["BuffAction_cfg"] = "BuffAction.tab";
-	typeMap["BuffAction_cfg"] = typeid(BuffAction_cfg).hash_code();
-	REG_CONFIG_CREATE(BuffAction_cfg);
-
-	fileMap["Bullet_cfg"] = "Bullet.tab";
-	typeMap["Bullet_cfg"] = typeid(Bullet_cfg).hash_code();
-	REG_CONFIG_CREATE(Bullet_cfg);
-
-	fileMap["Role_cfg"] = "Role.tab";
-	typeMap["Role_cfg"] = typeid(Role_cfg).hash_code();
-	REG_CONFIG_CREATE(Role_cfg);
-
-	fileMap["Skill_cfg"] = "Skill.tab";
-	typeMap["Skill_cfg"] = typeid(Skill_cfg).hash_code();
-	REG_CONFIG_CREATE(Skill_cfg);*/
-
 	map<string, string>::iterator iter = fileMap.begin();
 	while (iter != fileMap.end())
 	{

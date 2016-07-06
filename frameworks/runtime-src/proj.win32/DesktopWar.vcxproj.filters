@@ -1003,5 +1003,23 @@
     <ClCompile Include="..\..\Genius\common\Log.cpp">
       <Filter>Genius\Base\Common</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Genius\data\auto\Animation_cfg.cpp">
+      <Filter>Genius\Logic\Data\auto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\data\auto\Buff_cfg.cpp">
+      <Filter>Genius\Logic\Data\auto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\data\auto\BuffAction_cfg.cpp">
+      <Filter>Genius\Logic\Data\auto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\data\auto\Bullet_cfg.cpp">
+      <Filter>Genius\Logic\Data\auto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\data\auto\Role_cfg.cpp">
+      <Filter>Genius\Logic\Data\auto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\data\auto\Skill_cfg.cpp">
+      <Filter>Genius\Logic\Data\auto</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

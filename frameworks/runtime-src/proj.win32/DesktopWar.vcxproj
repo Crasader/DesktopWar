@@ -340,6 +340,12 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\App\LoadingManager.cpp" />
     <ClCompile Include="..\..\Genius\App\WarApp.cpp" />
     <ClCompile Include="..\..\Genius\common\Performance.cpp" />
+    <ClCompile Include="..\..\Genius\data\auto\Animation_cfg.cpp" />
+    <ClCompile Include="..\..\Genius\data\auto\BuffAction_cfg.cpp" />
+    <ClCompile Include="..\..\Genius\data\auto\Buff_cfg.cpp" />
+    <ClCompile Include="..\..\Genius\data\auto\Bullet_cfg.cpp" />
+    <ClCompile Include="..\..\Genius\data\auto\Role_cfg.cpp" />
+    <ClCompile Include="..\..\Genius\data\auto\Skill_cfg.cpp" />
     <ClCompile Include="..\..\Genius\data\BaseConfig.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAgent.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAnimArrow.cpp" />

@@ -30,7 +30,7 @@ void LoadingManager::ClearLoadingList()
 
 void LoadingManager::AddResource(int t, int id)
 {
-	auto animInfoList = cfg::ConfigPool::GetSingleton()->GetConfigMap<Animation_cfg>();
+	auto animInfoList = ConfigPool::GetSingleton()->GetConfigMap<Animation_cfg>();
 	if (animInfoList.find(id) != animInfoList.end())
 	{
 		m_resources.push_back(ResourceInfo((ResourceType)t, ((Animation_cfg*)(animInfoList[id]))->filePath));

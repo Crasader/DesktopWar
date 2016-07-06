@@ -1,3 +1,6 @@
+
+#pragma once
+
 #include "../BaseConfig.h"
 
 namespace cfg
@@ -8,18 +11,8 @@ namespace cfg
 
 		DECLARE_CONFIG_CREATE(Animation_cfg)
 
+		virtual int Init(Genius::TabFile& reader, int row, int col);
+
 		string filePath;
-
-		virtual int Init(Genius::TabFile& reader, int row, int col)
-		{
-			filePath = "";
-			if(reader.GetStringValue(row, col).length() > 0)
-				filePath = reader.GetStringValue(row, col++);
-
-			return col;
-		}
 	};
-
-IMPL_CONFIG_CREATE(Animation_cfg)
-
 };
