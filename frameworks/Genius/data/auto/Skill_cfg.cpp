@@ -6,6 +6,7 @@ IMPL_CONFIG_CREATE(Skill_cfg);
 
 		int Skill_cfg::Init(Genius::TabFile& reader, int row, int col)
 		{
+			col = BaseConfig::Init(reader, row, col);
 			findTargetStyle = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
 				findTargetStyle = reader.GetIntValue(row, col++);

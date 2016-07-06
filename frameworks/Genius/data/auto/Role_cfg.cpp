@@ -6,6 +6,7 @@ IMPL_CONFIG_CREATE(Role_cfg);
 
 		int Role_cfg::Init(Genius::TabFile& reader, int row, int col)
 		{
+			col = BaseConfig::Init(reader, row, col);
 			nameID = "";
 			if(reader.GetStringValue(row, col).length() > 0)
 				nameID = reader.GetStringValue(row, col++);

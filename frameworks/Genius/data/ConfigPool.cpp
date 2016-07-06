@@ -50,7 +50,6 @@ bool ConfigPool::Init()
 		}
 
 		map<int, BaseConfig*> oneMap;
-		m_pool.insert(make_pair(typeMap[className], oneMap));
 
 		for (int i = 4; i < rowCount; ++i)
 		{
@@ -65,6 +64,8 @@ bool ConfigPool::Init()
 				oneMap.insert(make_pair(n, pCfg));
 			}
 		}
+
+		m_pool.insert(make_pair(typeMap[className], oneMap));
 
 	}
 
