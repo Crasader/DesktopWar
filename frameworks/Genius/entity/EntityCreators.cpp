@@ -16,7 +16,7 @@ using namespace cfg;
 Entity* EntityCreator::CreatePawn(std::string id, float x, float y, int team)
 {
 	return NULL;
-	/*Role_cfg* roleInfo = FIND_CFG(Role_cfg, id);// ConfigPool::GetSingleton()->GetConfig<Role_cfg>(id);
+	/*Role_cfg* roleInfo = FIND_CFG(Role_cfg, id);
 	if (nullptr == roleInfo)
 	{
 		Log::Warning("error role type : %s", id.c_str());
@@ -27,7 +27,7 @@ Entity* EntityCreator::CreatePawn(std::string id, float x, float y, int team)
 
 Entity* EntityCreator::CreatePawn(int id, float x, float y, int team)
 {
-	Role_cfg* roleInfo = FIND_CFG(Role_cfg, id);// ConfigPool::GetSingleton()->GetConfig<Role_cfg>(id);
+	Role_cfg* roleInfo = FIND_CFG(Role_cfg, id);
 	if (nullptr == roleInfo)
 	{
 		Log::Warning("error role type : %d", id);
@@ -68,7 +68,7 @@ Entity* EntityCreator::CreatePawn(int id, float x, float y, int team)
 
 Entity* EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float y, int team, float destX, float destY)
 {
-	Bullet_cfg* bulletInfo = FIND_CFG(Bullet_cfg, bulletID);// ConfigPool::GetSingleton()->GetConfig<Bullet_cfg>(bulletID);
+	Bullet_cfg* bulletInfo = FIND_CFG(Bullet_cfg, bulletID);
 	if (nullptr == bulletInfo)
 	{
 		Log::Warning("error bullet type : %d", bulletID);

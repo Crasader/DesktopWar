@@ -14,7 +14,7 @@ using namespace cfg;
 
 void Skill::SetSkillType(int skillId)
 {
-	auto skillData = FIND_CFG(Skill_cfg, skillId);// ConfigPool::GetSingleton()->GetConfig<Skill_cfg>(tp);
+	auto skillData = FIND_CFG(Skill_cfg, skillId);
 	m_skillData = skillData;
 }
 

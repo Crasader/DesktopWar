@@ -7,6 +7,7 @@ IMPL_CONFIG_CREATE(Bullet_cfg);
 		int Bullet_cfg::Init(Genius::TabFile& reader, int row, int col)
 		{
 			col = BaseConfig::Init(reader, row, col);
+
 			movable = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
 				movable = reader.GetIntValue(row, col++);

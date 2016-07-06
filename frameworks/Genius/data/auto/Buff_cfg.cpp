@@ -7,6 +7,7 @@ IMPL_CONFIG_CREATE(Buff_cfg);
 		int Buff_cfg::Init(Genius::TabFile& reader, int row, int col)
 		{
 			col = BaseConfig::Init(reader, row, col);
+
 			series = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
 				series = reader.GetIntValue(row, col++);

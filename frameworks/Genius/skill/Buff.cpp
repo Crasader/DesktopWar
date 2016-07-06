@@ -25,7 +25,7 @@ m_cycleCount(0)
 
 bool Buff::LoadFromTemplate(int tempID)
 {
-	auto buffTemplate = FIND_CFG(Buff_cfg, tempID);// ConfigPool::GetSingleton()->GetConfig<Buff_cfg>(tempID);
+	auto buffTemplate = FIND_CFG(Buff_cfg, tempID);
 	if (nullptr == buffTemplate)
 		return false;
 	

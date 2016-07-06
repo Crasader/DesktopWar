@@ -8,7 +8,7 @@ using namespace std;
 using namespace cfg;
 using namespace Genius;
 
-// 注册cfg类和文件
+
 #define INSERT_CFG_TO_MAP(class_name, file_name)\
 	fileMap[#class_name] = file_name; \
 	typeMap[#class_name] = typeid(class_name).hash_code(); \
@@ -91,45 +91,6 @@ void ConfigPool::Destroy()
 void ConfigPool::RegisterFactoryCreate(string className, create_config_class func)
 {
 	m_creators.insert(make_pair(className, func));
-}
-
-template <typename T>
-T* ConfigPool::GetConfig(int id)
-{
-	size_t key = typeid(T).hash_code();
-	if (m_pool.find(key) != m_pool.end())
-	{
-		auto mp = m_pool[key];
-		if (mp.find(id) != mp.end())
-			return mp[id];
-		else
-			return nullptr;
-	}
-	else
-	{
-		return nullptr;
-	}
-}
-
-template <typename T>
-T* ConfigPool::GetConfig(std::string& id)
-{
-	return nullptr;
-}
-
-template <typename T>
-std::map<int, BaseConfig*>& ConfigPool::GetConfigMap()
-{
-	size_t key = typeid(T).hash_code();
-	if (m_pool.find(key) != m_pool.end())
-	{
-		return m_pool[key];
-	}
-	else
-	{
-		static std::map<int, BaseConfig*> sMap;
-		return sMap;
-	}
 }
 
 BaseConfig* ConfigPool::GetConfig(size_t hash, int id)

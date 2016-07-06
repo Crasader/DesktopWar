@@ -40,7 +40,7 @@ bool	 SkillSystem::LoadSkill(int owner, int skillID)
 	}
 	iterFind = m_skillSets.find(owner);
 
-	Skill_cfg* skillData = FIND_CFG(Skill_cfg, skillID);// ConfigPool::GetSingleton()->GetConfig<Skill_cfg>(skillID);
+	Skill_cfg* skillData = FIND_CFG(Skill_cfg, skillID);
 	if (skillData)
 	{
 		iterFind->second.AddSkill(skillData->id);

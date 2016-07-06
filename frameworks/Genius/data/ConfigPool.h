@@ -19,15 +19,6 @@ namespace cfg
 		bool Init();
 		void Destroy();
 
-		template <typename T>
-		T* GetConfig(int id);
-
-		template <typename T>
-		T* GetConfig(std::string& id);
-
-		template <typename T>
-		std::map<int, BaseConfig*>& GetConfigMap();
-
 		BaseConfig* GetConfig(size_t hash, int id);
 		BaseConfig* GetConfig(size_t hash, std::string id);
 		std::map<int, BaseConfig*>& GetConfigMap(size_t hash);
@@ -38,11 +29,9 @@ namespace cfg
 		std::map<size_t, std::map<int, BaseConfig*>>		m_pool;
 		std::map<std::string, create_config_class>			m_creators;
 
-		//std::vector<IDataManager*>		m_dataMgrList;
 	};
 };
 
-//#define HASH(classname) typeid(classname).hash_code() 
 
 #define FIND_CFG(classname, id)\
 	(classname*)cfg::ConfigPool::GetSingleton()->GetConfig(typeid(classname).hash_code(), id);

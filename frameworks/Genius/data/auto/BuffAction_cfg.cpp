@@ -7,6 +7,7 @@ IMPL_CONFIG_CREATE(BuffAction_cfg);
 		int BuffAction_cfg::Init(Genius::TabFile& reader, int row, int col)
 		{
 			col = BaseConfig::Init(reader, row, col);
+
 			buffType = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
 				buffType = reader.GetIntValue(row, col++);
