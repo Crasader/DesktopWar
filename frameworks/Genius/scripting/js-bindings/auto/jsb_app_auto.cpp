@@ -98,6 +98,70 @@ void js_register_app_GamePlay(JSContext *cx, JS::HandleObject global) {
     jsb_register_class<GamePlay>(cx, jsb_GamePlay_class, proto, JS::NullPtr());
 }
 
+JSClass  *jsb_Log_class;
+JSObject *jsb_Log_prototype;
+
+bool js_app_Log_print(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 1) {
+        const char* arg0 = nullptr;
+        std::string arg0_tmp; ok &= jsval_to_std_string(cx, args.get(0), &arg0_tmp); arg0 = arg0_tmp.c_str();
+        JSB_PRECONDITION2(ok, cx, false, "js_app_Log_print : Error processing arguments");
+        Log::print(arg0);
+        args.rval().setUndefined();
+        return true;
+    }
+    JS_ReportError(cx, "js_app_Log_print : wrong number of arguments");
+    return false;
+}
+
+
+void js_register_app_Log(JSContext *cx, JS::HandleObject global) {
+    jsb_Log_class = (JSClass *)calloc(1, sizeof(JSClass));
+    jsb_Log_class->name = "Log";
+    jsb_Log_class->addProperty = JS_PropertyStub;
+    jsb_Log_class->delProperty = JS_DeletePropertyStub;
+    jsb_Log_class->getProperty = JS_PropertyStub;
+    jsb_Log_class->setProperty = JS_StrictPropertyStub;
+    jsb_Log_class->enumerate = JS_EnumerateStub;
+    jsb_Log_class->resolve = JS_ResolveStub;
+    jsb_Log_class->convert = JS_ConvertStub;
+    jsb_Log_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+    static JSPropertySpec properties[] = {
+        JS_PS_END
+    };
+
+    static JSFunctionSpec funcs[] = {
+        JS_FS_END
+    };
+
+    static JSFunctionSpec st_funcs[] = {
+        JS_FN("print", js_app_Log_print, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+    };
+
+    jsb_Log_prototype = JS_InitClass(
+        cx, global,
+        JS::NullPtr(),
+        jsb_Log_class,
+        dummy_constructor<Log>, 0, // no constructor
+        properties,
+        funcs,
+        NULL, // no static properties
+        st_funcs);
+
+    JS::RootedObject proto(cx, jsb_Log_prototype);
+    JS::RootedValue className(cx, std_string_to_jsval(cx, "Log"));
+    JS_SetProperty(cx, proto, "_className", className);
+    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
+    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
+    // add the proto and JSClass to the type->js info hash table
+    jsb_register_class<Log>(cx, jsb_Log_class, proto, JS::NullPtr());
+}
+
 JSClass  *jsb_Genius_SceneManager_class;
 JSObject *jsb_Genius_SceneManager_prototype;
 
@@ -583,9 +647,9 @@ bool js_app_LoadingManager_AddResource(JSContext *cx, uint32_t argc, jsval *vp)
     JSB_PRECONDITION2( cobj, cx, false, "js_app_LoadingManager_AddResource : Invalid Native Object");
     if (argc == 2) {
         int arg0 = 0;
-        int arg1 = 0;
+        std::string arg1;
         ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
-        ok &= jsval_to_int32(cx, args.get(1), (int32_t *)&arg1);
+        ok &= jsval_to_std_string(cx, args.get(1), &arg1);
         JSB_PRECONDITION2(ok, cx, false, "js_app_LoadingManager_AddResource : Error processing arguments");
         cobj->AddResource(arg0, arg1);
         args.rval().setUndefined();
@@ -736,6 +800,7 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
     JS::RootedObject ns(cx, ScriptingCore::getInstance()->getGlobalObject());
 
     js_register_app_SceneManager(cx, ns);
+    js_register_app_Log(cx, ns);
     js_register_app_GamePlay(cx, ns);
     js_register_app_RollNumberLabel(cx, ns);
     js_register_app_LoadingManager(cx, ns);

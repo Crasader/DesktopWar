@@ -16,7 +16,7 @@ var LoadingState = GameState.extend
     
     OnEnter:function ()
     {
-        Log("enter Loading")
+        print("enter Loading")
         if (this.uiRoot == null)
         {
             this.uiRoot = new cc.Node()
@@ -47,7 +47,7 @@ var LoadingState = GameState.extend
     
     OnUpdate:function ()
     {
-        //Log("update Loading")
+        //print("update Loading")
         this.loadingManager.UpdateLoading()
         var percent = this.loadingManager.GetLoadingPercent()
         this.percentLabel.rollTo(percent)
@@ -60,7 +60,7 @@ var LoadingState = GameState.extend
     
     OnExit:function ()
     {
-        Log("exit Loading")
+        print("exit Loading")
         if(this.uiRoot != null)
         {
             this.uiRoot.removeFromParent()

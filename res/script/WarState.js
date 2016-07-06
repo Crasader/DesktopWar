@@ -8,7 +8,7 @@ var WarState = GameState.extend({
     
     OnEnter:function ()
     {
-        Log("enter War")
+        print("enter War")
     },
     
     OnUpdate:function ()
@@ -18,7 +18,7 @@ var WarState = GameState.extend({
     
     OnExit:function ()
     {
-        Log("exit War")
+        print("exit War")
     },
 
     ParseResourceList:function(loadMgr)

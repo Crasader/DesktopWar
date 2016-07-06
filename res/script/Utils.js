@@ -1,6 +1,6 @@
 
 
-function Log(text)
+function print(text)
 {
-    Logger.print(text)
+    Log.print(text)
 }

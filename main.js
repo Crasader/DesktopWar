@@ -16,8 +16,8 @@ require("res/script/LoadingState.js")
 require("res/script/WarState.js")
 
 
-Log(Config.anim["Tkdo"].filePath)
-//Log("lololol JS bang!")
+print(Config.anim["Tkdo"].filePath)
+//print("lololol JS bang!")
 
 
 var Game =
@@ -32,7 +32,7 @@ var Game =
 
     Init:function ()
     {
-        //Log("Game Init")
+        //print("Game Init")
         this.loadingState = new LoadingState()
         this.lanchState = new LaunchState()
         this.warState = new WarState()
@@ -44,12 +44,12 @@ var Game =
     {
         if(newState != this.lanchState && newState != this.warState)
         {
-            Log("invalid state")
+            print("invalid state")
             return
         }
         if(newState == this.currentState)
         {
-            Log("cannot enter the same state")
+            print("cannot enter the same state")
             return
         }
 
@@ -61,7 +61,7 @@ var Game =
 
     OnUpdate:function (timeDelta)
     {
-        //Log("game onupdate "+timeDelta)
+        //print("game onupdate "+timeDelta)
         if(this.currentState != null)
         {
             if (this.currentState != this.lastState)

@@ -28,13 +28,11 @@ void LoadingManager::ClearLoadingList()
 	m_resources.clear();
 }
 
-void LoadingManager::AddResource(int t, int id)
+void LoadingManager::AddResource(int t, std::string id)
 {
-	auto animInfoList = ConfigPool::GetSingleton()->GetConfigMap<Animation_cfg>();
-	if (animInfoList.find(id) != animInfoList.end())
-	{
-		m_resources.push_back(ResourceInfo((ResourceType)t, ((Animation_cfg*)(animInfoList[id]))->filePath));
-	}
+	auto anim = FIND_CFG_STR(Animation_cfg, id);
+	if (nullptr != anim)
+		m_resources.push_back(ResourceInfo((ResourceType)t, anim->filePath));
 }
 
 bool LoadingManager::IsLoadingDone()

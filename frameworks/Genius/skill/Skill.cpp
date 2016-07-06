@@ -12,9 +12,9 @@
 using namespace Genius;
 using namespace cfg;
 
-void Skill::SetSkillType(int tp)
+void Skill::SetSkillType(int skillId)
 {
-	auto skillData = ConfigPool::GetSingleton()->GetConfig<Skill_cfg>(tp);
+	auto skillData = FIND_CFG(Skill_cfg, skillId);// ConfigPool::GetSingleton()->GetConfig<Skill_cfg>(tp);
 	m_skillData = skillData;
 }
 

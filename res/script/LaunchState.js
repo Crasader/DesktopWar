@@ -9,7 +9,7 @@ var LaunchState = GameState.extend
     
     OnEnter:function ()
     {
-        Log("enter Launch")
+        print("enter Launch")
     },
     
     OnUpdate:function ()
@@ -19,7 +19,7 @@ var LaunchState = GameState.extend
     
     OnExit:function ()
     {
-        Log("exit Launch")
+        print("exit Launch")
     },
 
     ParseResourceList:function(loadMgr)

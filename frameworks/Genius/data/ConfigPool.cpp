@@ -19,12 +19,12 @@ bool ConfigPool::Init()
 	map<string, string> fileMap;
 	map<string, size_t> typeMap;
 
-	INSERT_CFG_TO_MAP(Animation_cfg, "Animation.tab");
-	INSERT_CFG_TO_MAP(Buff_cfg, "Buff.tab");
-	INSERT_CFG_TO_MAP(BuffAction_cfg, "BuffAction.tab");
-	INSERT_CFG_TO_MAP(Bullet_cfg, "Bullet.tab");
-	INSERT_CFG_TO_MAP(Role_cfg, "Role.tab");
-	INSERT_CFG_TO_MAP(Skill_cfg, "Skill.tab");
+	INSERT_CFG_TO_MAP(Animation_cfg, "Animation.txt");
+	INSERT_CFG_TO_MAP(Buff_cfg, "Buff.txt");
+	INSERT_CFG_TO_MAP(BuffAction_cfg, "BuffAction.txt");
+	INSERT_CFG_TO_MAP(Bullet_cfg, "Bullet.txt");
+	INSERT_CFG_TO_MAP(Role_cfg, "Role.txt");
+	INSERT_CFG_TO_MAP(Skill_cfg, "Skill.txt");
 
 	map<string, string>::iterator iter = fileMap.begin();
 	while (iter != fileMap.end())
@@ -34,7 +34,7 @@ bool ConfigPool::Init()
 		iter++;
 
 		TabFile tabFile;
-		string filePath = fileName;
+		string filePath = "res/data/" + fileName;
 		if (!tabFile.LoadFile(filePath))
 		{
 			Log::Error("load file failed : %s", filePath.c_str());
@@ -56,7 +56,14 @@ bool ConfigPool::Init()
 		{
 			BaseConfig* pCfg = (*m_creators[className])();
 			pCfg->Init(tabFile, i, 1);
-			oneMap.insert(make_pair(pCfg->id, pCfg));
+			if (pCfg->id > 0)
+				oneMap.insert(make_pair(pCfg->id, pCfg));
+			else
+			{
+				std::hash<std::string> h;
+				size_t n = h(pCfg->idStr);
+				oneMap.insert(make_pair(n, pCfg));
+			}
 		}
 
 	}
@@ -89,7 +96,7 @@ template <typename T>
 T* ConfigPool::GetConfig(int id)
 {
 	size_t key = typeid(T).hash_code();
-	if (m_pool.find(m_pool) != m_pool.end())
+	if (m_pool.find(key) != m_pool.end())
 	{
 		auto mp = m_pool[key];
 		if (mp.find(id) != mp.end())
@@ -113,7 +120,57 @@ template <typename T>
 std::map<int, BaseConfig*>& ConfigPool::GetConfigMap()
 {
 	size_t key = typeid(T).hash_code();
-	if (m_pool.find(m_pool) != m_pool.end())
+	if (m_pool.find(key) != m_pool.end())
+	{
+		return m_pool[key];
+	}
+	else
+	{
+		static std::map<int, BaseConfig*> sMap;
+		return sMap;
+	}
+}
+
+BaseConfig* ConfigPool::GetConfig(size_t hash, int id)
+{
+	size_t key = hash;
+	if (m_pool.find(key) != m_pool.end())
+	{
+		auto mp = m_pool[key];
+		if (mp.find(id) != mp.end())
+			return mp[id];
+		else
+			return nullptr;
+	}
+	else
+	{
+		return nullptr;
+	}
+}
+
+BaseConfig* ConfigPool::GetConfig(size_t hash, std::string id)
+{
+	size_t key = hash;
+	if (m_pool.find(key) != m_pool.end())
+	{
+		auto mp = m_pool[key];
+		std::hash<std::string> h;
+		size_t n = h(id);
+		if (mp.find(n) != mp.end())
+			return mp[n];
+		else
+			return nullptr;
+	}
+	else
+	{
+		return nullptr;
+	}
+}
+
+std::map<int, BaseConfig*>& ConfigPool::GetConfigMap(size_t hash)
+{
+	size_t key = hash;
+	if (m_pool.find(key) != m_pool.end())
 	{
 		return m_pool[key];
 	}

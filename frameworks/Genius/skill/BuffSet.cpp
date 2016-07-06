@@ -10,7 +10,7 @@ using namespace cfg;
 
 int BuffSet::AddBuff(int senderID, int buffTemplateID)
 {
-	auto buffTempData = ConfigPool::GetSingleton()->GetConfig<Buff_cfg>(buffTemplateID);
+	auto buffTempData = FIND_CFG(Buff_cfg, buffTemplateID);// ConfigPool::GetSingleton()->GetConfig<Buff_cfg>(buffTemplateID);
 	Buff newBuff;
 	newBuff.LoadFromTemplate(buffTemplateID);
 	for (auto iter = m_buffInsts.begin(); iter != m_buffInsts.end(); ++iter)

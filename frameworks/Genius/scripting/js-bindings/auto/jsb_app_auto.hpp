@@ -15,6 +15,15 @@ void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_GamePlay_SendMonster(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_GamePlay_SendHuman(JSContext *cx, uint32_t argc, jsval *vp);
 
+extern JSClass  *jsb_Log_class;
+extern JSObject *jsb_Log_prototype;
+
+bool js_app_Log_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_Log_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_Log(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_Log_print(JSContext *cx, uint32_t argc, jsval *vp);
+
 extern JSClass  *jsb_Genius_SceneManager_class;
 extern JSObject *jsb_Genius_SceneManager_prototype;
 

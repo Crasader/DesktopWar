@@ -23,6 +23,23 @@ SendHuman : function (
 };
 
 /**
+ * @class Log
+ */
+Log = {
+
+/**
+ * @method print
+ * @param {char} arg0
+ */
+print : function (
+char 
+)
+{
+},
+
+};
+
+/**
  * @class SceneManager
  */
 SceneManager = {
@@ -195,11 +212,11 @@ UpdateLoading : function (
 /**
  * @method AddResource
  * @param {int} arg0
- * @param {int} arg1
+ * @param {String} arg1
  */
 AddResource : function (
 int, 
-int 
+str 
 )
 {
 },

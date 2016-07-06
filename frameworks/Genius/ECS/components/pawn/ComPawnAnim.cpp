@@ -30,7 +30,7 @@ ComPawnAnim::ComPawnAnim(int roleID) :
 m_curAction(Action_Idle),
 m_pAnimFsm(nullptr)
 {
-	Role_cfg* roleData = ConfigPool::GetSingleton()->GetConfig<Role_cfg>(roleID);
+	Role_cfg* roleData = FIND_CFG(Role_cfg, roleID);// ConfigPool::GetSingleton()->GetConfig<Role_cfg>(roleID);
 	if (roleData)
 	{
 		m_pAvatarRoot = cocos2d::Node::create();
