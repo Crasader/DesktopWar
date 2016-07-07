@@ -193,16 +193,10 @@
     <ClInclude Include="..\..\Genius\skill\BuffSet.h">
       <Filter>Genius\Logic\Skill</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\skill\BuffSystem.h">
-      <Filter>Genius\Logic\Skill</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\skill\Skill.h">
       <Filter>Genius\Logic\Skill</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\skill\SkillSet.h">
-      <Filter>Genius\Logic\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\skill\SkillSystem.h">
       <Filter>Genius\Logic\Skill</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\skill\UserActions.h">
@@ -604,6 +598,12 @@
     <ClInclude Include="..\..\Genius\data\Headers.h">
       <Filter>Genius\Logic\Data</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Genius\skill\SkillManager.h">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\skill\BuffManager.h">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -661,16 +661,10 @@
     <ClCompile Include="..\..\Genius\skill\BuffSet.cpp">
       <Filter>Genius\Logic\Skill</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\skill\BuffSystem.cpp">
-      <Filter>Genius\Logic\Skill</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\skill\Skill.cpp">
       <Filter>Genius\Logic\Skill</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\skill\SkillSet.cpp">
-      <Filter>Genius\Logic\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\skill\SkillSystem.cpp">
       <Filter>Genius\Logic\Skill</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\skill\UserActions.cpp">
@@ -1020,6 +1014,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\data\auto\Skill_cfg.cpp">
       <Filter>Genius\Logic\Data\auto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\skill\SkillManager.cpp">
+      <Filter>Genius\Logic\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\skill\BuffManager.cpp">
+      <Filter>Genius\Logic\Skill</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

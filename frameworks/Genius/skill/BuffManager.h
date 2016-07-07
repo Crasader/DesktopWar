@@ -1,16 +1,16 @@
-#ifndef _GENIUS_BUFFSYSTEM_H_
-#define _GENIUS_BUFFSYSTEM_H_
+#ifndef _GENIUS_BUFFMGR_H_
+#define _GENIUS_BUFFMGR_H_
 
 #include <map>
 #include "BuffSet.h"
+#include "common/Singleton.h"
 
 namespace Genius
 {
-	class BuffSystem
+	class BuffManager : public Singleton<BuffManager>
 	{
 	public:
-		static BuffSystem& GetSingleton();
-		~BuffSystem(){}
+		BuffManager();
 
 		void Update(float elapse);
 		bool AddBuff(int senderID, int targetID, int buffID);
@@ -18,10 +18,6 @@ namespace Genius
 		void RemoveAllBuff();
 
 		int	GetBuffCount();
-
-	private:
-		BuffSystem();
-
 	private:
 		std::map<int, BuffSet>		m_buffSets;
 		float		m_timeCounter;

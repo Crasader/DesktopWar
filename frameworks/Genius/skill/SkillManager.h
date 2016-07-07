@@ -1,17 +1,16 @@
-#ifndef _GENIUS_SKILLSYSTEM_H_
-#define _GENIUS_SKILLSYSTEM_H_
+#ifndef _GENIUS_SKILLMGR_H_
+#define _GENIUS_SKILLMGR_H_
 
 #include <map>
 #include "SkillSet.h"
+#include "common/Singleton.h"
 
 namespace Genius
 {
-	class SkillSystem
+	class SkillManager : public Singleton<SkillManager>
 	{
 	public:
-		static SkillSystem& GetSingleton();
-	private:
-		SkillSystem();
+		SkillManager();
 
 	public:
 		void		Update(float elapse);

@@ -1,24 +1,19 @@
 
-#include "SkillSystem.h"
+#include "SkillManager.h"
 #include "data/auto/Skill_cfg.hpp"
 #include "data/ConfigPool.h"
 
 using namespace Genius;
 using namespace cfg;
 
-SkillSystem& SkillSystem::GetSingleton()
-{
-	static SkillSystem inst;
-	return inst;
-}
 
-SkillSystem::SkillSystem() :
+SkillManager::SkillManager() :
 m_timeCounter(0)
 {
 
 }
 
-void SkillSystem::Update(float elapse)
+void SkillManager::Update(float elapse)
 {
 	m_timeCounter += elapse;
 	if (m_timeCounter < 1)
@@ -31,7 +26,7 @@ void SkillSystem::Update(float elapse)
 	}
 }
 
-bool	 SkillSystem::LoadSkill(int owner, int skillID)
+bool	 SkillManager::LoadSkill(int owner, int skillID)
 {
 	auto iterFind = m_skillSets.find(owner);
 	if (iterFind == m_skillSets.end())
@@ -49,12 +44,12 @@ bool	 SkillSystem::LoadSkill(int owner, int skillID)
 	return true;
 }
 
-bool	 SkillSystem::SaveSkill(int owner)
+bool	 SkillManager::SaveSkill(int owner)
 {
 	return true;
 }
 
-bool	 SkillSystem::CanUseSkill(int owner, int target, int skill)
+bool	 SkillManager::CanUseSkill(int owner, int target, int skill)
 {
 	auto iterFind = m_skillSets.find(owner);
 	if (iterFind != m_skillSets.end())
@@ -63,7 +58,7 @@ bool	 SkillSystem::CanUseSkill(int owner, int target, int skill)
 		return false;
 }
 
-bool SkillSystem::UseSkill(int owner, int target, int skill)
+bool SkillManager::UseSkill(int owner, int target, int skill)
 {
 	auto iterFind = m_skillSets.find(owner);
 	if (iterFind != m_skillSets.end())
@@ -72,14 +67,14 @@ bool SkillSystem::UseSkill(int owner, int target, int skill)
 		return false;
 }
 
-void SkillSystem::ClearSkill(int owner)
+void SkillManager::ClearSkill(int owner)
 {
 	auto iterFind = m_skillSets.find(owner);
 	if (iterFind != m_skillSets.end())
 		m_skillSets.erase(iterFind);
 }
 
-void SkillSystem::ClearAllSkill()
+void SkillManager::ClearAllSkill()
 {
 	m_skillSets.clear();
 }

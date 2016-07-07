@@ -329,10 +329,10 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\skill\Buff.h" />
     <ClInclude Include="..\..\Genius\skill\BuffAction.h" />
     <ClInclude Include="..\..\Genius\skill\BuffSet.h" />
-    <ClInclude Include="..\..\Genius\skill\BuffSystem.h" />
+    <ClInclude Include="..\..\Genius\skill\BuffManager.h" />
     <ClInclude Include="..\..\Genius\skill\Skill.h" />
     <ClInclude Include="..\..\Genius\skill\SkillSet.h" />
-    <ClInclude Include="..\..\Genius\skill\SkillSystem.h" />
+    <ClInclude Include="..\..\Genius\skill\SkillManager.h" />
     <ClInclude Include="..\..\Genius\skill\UserActions.h" />
   </ItemGroup>
   <ItemGroup>
@@ -463,10 +463,10 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\skill\Buff.cpp" />
     <ClCompile Include="..\..\Genius\skill\BuffAction.cpp" />
     <ClCompile Include="..\..\Genius\skill\BuffSet.cpp" />
-    <ClCompile Include="..\..\Genius\skill\BuffSystem.cpp" />
+    <ClCompile Include="..\..\Genius\skill\BuffManager.cpp" />
     <ClCompile Include="..\..\Genius\skill\Skill.cpp" />
     <ClCompile Include="..\..\Genius\skill\SkillSet.cpp" />
-    <ClCompile Include="..\..\Genius\skill\SkillSystem.cpp" />
+    <ClCompile Include="..\..\Genius\skill\SkillManager.cpp" />
     <ClCompile Include="..\..\Genius\skill\UserActions.cpp" />
   </ItemGroup>
   <ItemGroup>

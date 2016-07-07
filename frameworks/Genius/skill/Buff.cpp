@@ -25,13 +25,21 @@ m_cycleCount(0)
 
 bool Buff::LoadFromTemplate(int tempID)
 {
-	auto buffTemplate = FIND_CFG(Buff_cfg, tempID);
-	if (nullptr == buffTemplate)
+	auto buffCfg = FIND_CFG(Buff_cfg, tempID);
+	if (nullptr == buffCfg)
 		return false;
 	
-	m_buffTemplate = buffTemplate;
-	m_duration = (float)(buffTemplate->duration);
+	m_buffTemplate = buffCfg;
+	m_duration = (float)(buffCfg->duration);
 	m_curPileCount = 0;
+
+	auto actionCfg = FIND_CFG(BuffAction_cfg, buffCfg->actionType);
+	if (nullptr != actionCfg)
+	{
+		Effect effect;
+		effect.action.SetTemplate(actionCfg);
+		m_beginActions.push_back(effect);
+	}
 
 	// at beginning
 	/*for (auto iter = buffTemplate->beginActions.begin(); iter != buffTemplate->beginActions.end(); ++iter)

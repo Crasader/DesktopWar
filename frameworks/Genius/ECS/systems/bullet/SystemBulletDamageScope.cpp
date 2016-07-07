@@ -8,7 +8,7 @@
 #include "../../core/ECSWorld.h"
 #include "../../core/SystemManager.h"
 #include "../pawn/SystemPawnFight.h"
-#include "skill/BuffSystem.h"
+#include "skill/BuffManager.h"
 
 #include "../../components/common/ComTeam.h"
 #include "../../components/common/ComTarget.h"
@@ -91,7 +91,7 @@ bool SystemBulletDamageScope::TriggerBulletBuff(IEventData const &evt)
 		for (int i = 0; i < 3; ++i)
 		{
 			if (bulletInfo->buffs[i] != 0)
-				BuffSystem::GetSingleton().AddBuff(ownerEntity->GetId(), (*iter)->GetId(), bulletInfo->buffs[i]);
+				BuffManager::GetSingleton()->AddBuff(ownerEntity->GetId(), (*iter)->GetId(), bulletInfo->buffs[i]);
 		}
 	}
 

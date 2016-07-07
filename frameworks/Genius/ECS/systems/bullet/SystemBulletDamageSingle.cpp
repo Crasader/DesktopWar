@@ -8,7 +8,7 @@
 #include "../../core/ECSWorld.h"
 #include "../../core/SystemManager.h"
 #include "../pawn/SystemPawnFight.h"
-#include "skill/BuffSystem.h"
+#include "skill/BuffManager.h"
 
 #include "../../components/common/ComTeam.h"
 
@@ -82,7 +82,7 @@ void SystemBulletDamageSingle::collisionHandler(int id1, int id2)
 			for (int i = 0; i < 3; ++i)
 			{
 				if (bulletInfo->buffs[i] != 0)
-					BuffSystem::GetSingleton().AddBuff(pEntity->GetId(), pOtherEntity->GetId(), bulletInfo->buffs[i]);
+					BuffManager::GetSingleton()->AddBuff(pEntity->GetId(), pOtherEntity->GetId(), bulletInfo->buffs[i]);
 			}
 		}
 	}
@@ -131,7 +131,7 @@ bool SystemBulletDamageSingle::TriggerBulletBuff(IEventData const &evt)
 		for (int i = 0; i < 3; ++i)
 		{
 			if (bulletInfo->buffs[i] != 0)
-				BuffSystem::GetSingleton().AddBuff(pOwnerEntity->GetId(), pAttackCom->targetID, bulletInfo->buffs[i]);
+				BuffManager::GetSingleton()->AddBuff(pOwnerEntity->GetId(), pAttackCom->targetID, bulletInfo->buffs[i]);
 		}
 	}
 	

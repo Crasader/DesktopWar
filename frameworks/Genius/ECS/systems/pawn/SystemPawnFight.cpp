@@ -4,7 +4,7 @@
 #include "../../EntityEvents.h"
 #include "../../core/Entity.h"
 #include "data/auto/Role_cfg.hpp"
-#include "skill/SkillSystem.h"
+#include "skill/SkillManager.h"
 #include "app/GameDefine.h"
 #include "pawn/PawnBlackboard.h"
 #include "pawn/action/ActionDefine.h"
@@ -144,29 +144,29 @@ void SystemPawnFight::HandleUseSkill(IEventData const &evt)
 	switch (castedEvent.skillType)
 	{
 	case UseSkillEvent::NormalSkill1:
-		ret = SkillSystem::GetSingleton().CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->normalSkill1);
+		ret = SkillManager::GetSingleton()->CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->normalSkill1);
 		if (ret)
-			SkillSystem::GetSingleton().UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->normalSkill1);
+			SkillManager::GetSingleton()->UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->normalSkill1);
 		break;
 	case UseSkillEvent::NormalSkill2:
-		ret = SkillSystem::GetSingleton().CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->normalSkill2);
+		ret = SkillManager::GetSingleton()->CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->normalSkill2);
 		if (ret)
-			SkillSystem::GetSingleton().UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->normalSkill1);
+			SkillManager::GetSingleton()->UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->normalSkill1);
 		break;
 	case UseSkillEvent::SpecialSkill1:
-		ret = SkillSystem::GetSingleton().CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill1);
+		ret = SkillManager::GetSingleton()->CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill1);
 		if (ret)
-			SkillSystem::GetSingleton().UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill1);
+			SkillManager::GetSingleton()->UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill1);
 		break;
 	case UseSkillEvent::SpecialSkill2:
-		ret = SkillSystem::GetSingleton().CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill2);
+		ret = SkillManager::GetSingleton()->CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill2);
 		if (ret)
-			SkillSystem::GetSingleton().UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill2);
+			SkillManager::GetSingleton()->UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill2);
 		break;
 	case UseSkillEvent::SpecialSkill3:
-		ret = SkillSystem::GetSingleton().CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill3);
+		ret = SkillManager::GetSingleton()->CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill3);
 		if (ret)
-			SkillSystem::GetSingleton().UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill3);
+			SkillManager::GetSingleton()->UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_pRoleData->specialSkill3);
 		break;
 	default:
 		return;

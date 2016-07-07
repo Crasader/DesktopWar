@@ -4,8 +4,8 @@
 #include "data/auto/Role_cfg.hpp"
 #include "event/EventManager.h"
 #include "../../EntityEvents.h"
-#include "skill/SkillSystem.h"
-#include "skill/BuffSystem.h"
+#include "skill/SkillManager.h"
+#include "skill/BuffManager.h"
 #include "../../core/Entity.h"
 #include "Log.h"
 
@@ -25,18 +25,18 @@ isTargetInFarRange(false)
 ComPawnFight::~ComPawnFight()
 {
 	int id = GetOwner()->GetId();
-	SkillSystem::GetSingleton().ClearSkill(id);
-	BuffSystem::GetSingleton().RemoveBuff(id);
+	SkillManager::GetSingleton()->ClearSkill(id);
+	BuffManager::GetSingleton()->RemoveBuff(id);
 }
 
 bool ComPawnFight::Init()
 {
 	Entity* ent = this->GetOwner();
 	ComPawnAgent* tempCom = ent->GetComponent<ComPawnAgent>();
-	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->m_pRoleData->normalSkill1);
-	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->m_pRoleData->normalSkill2);
-	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->m_pRoleData->specialSkill1);
-	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->m_pRoleData->specialSkill2);
-	SkillSystem::GetSingleton().LoadSkill(ent->GetId(), tempCom->m_pRoleData->specialSkill3);
+	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_pRoleData->normalSkill1);
+	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_pRoleData->normalSkill2);
+	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_pRoleData->specialSkill1);
+	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_pRoleData->specialSkill2);
+	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_pRoleData->specialSkill3);
 	return true;
 }

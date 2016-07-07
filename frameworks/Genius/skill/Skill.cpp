@@ -6,7 +6,7 @@
 #include "data/auto/Skill_cfg.hpp"
 #include "data/auto/Bullet_cfg.hpp"
 #include "data/ConfigPool.h"
-#include "BuffSystem.h"
+#include "BuffManager.h"
 #include "entity/EntityCreators.h"
 
 using namespace Genius;
@@ -72,7 +72,7 @@ bool Skill::TargetOne(int owner, int target)
 		for (int i = 0; i < 3; ++i)
 		{
 			if (m_skillData->buffs[i] != 0)
-				BuffSystem::GetSingleton().AddBuff(m_ownerID, target, m_skillData->buffs[i]);
+				BuffManager::GetSingleton()->AddBuff(m_ownerID, target, m_skillData->buffs[i]);
 		}
 		return true;
 	}
@@ -103,7 +103,7 @@ bool Skill::TargetScope(int owner, int target)
 		for (int i = 0; i < 3; ++i)
 		{
 			if (m_skillData->buffs[i] != 0)
-				BuffSystem::GetSingleton().AddBuff(m_ownerID, (*iter)->GetId(), m_skillData->buffs[i]);
+				BuffManager::GetSingleton()->AddBuff(m_ownerID, (*iter)->GetId(), m_skillData->buffs[i]);
 		}
 	}
 	

@@ -1,21 +1,16 @@
 
-#include "BuffSystem.h"
+#include "BuffManager.h"
 
 using namespace Genius;
 
-BuffSystem& BuffSystem::GetSingleton()
-{
-	static BuffSystem sys;
-	return sys;
-}
 
-BuffSystem::BuffSystem():
+BuffManager::BuffManager():
 m_timeCounter(0)
 {
 
 }
 
-void BuffSystem::Update(float elapse)
+void BuffManager::Update(float elapse)
 {
 	m_timeCounter += elapse;
 	if (m_timeCounter < 1)
@@ -28,7 +23,7 @@ void BuffSystem::Update(float elapse)
 	}
 }
 
-bool BuffSystem::AddBuff(int senderID, int targetID, int buffID)
+bool BuffManager::AddBuff(int senderID, int targetID, int buffID)
 {
 	auto iterFind = m_buffSets.find(targetID);
 	if (iterFind == m_buffSets.end())
@@ -41,14 +36,14 @@ bool BuffSystem::AddBuff(int senderID, int targetID, int buffID)
 	return true;
 }
 
-void BuffSystem::RemoveBuff(int targetID)
+void BuffManager::RemoveBuff(int targetID)
 {
 	auto iterFind = m_buffSets.find(targetID);
 	if (iterFind != m_buffSets.end())
 		iterFind->second.KillAllBuff();
 }
 
-void BuffSystem::RemoveAllBuff()
+void BuffManager::RemoveAllBuff()
 {
 	for (auto iter = m_buffSets.begin(); iter != m_buffSets.end(); ++iter)
 	{
@@ -56,7 +51,7 @@ void BuffSystem::RemoveAllBuff()
 	}
 }
 
-int BuffSystem::GetBuffCount()
+int BuffManager::GetBuffCount()
 {
 	int count = 0;
 	for (auto iter = m_buffSets.begin(); iter != m_buffSets.end(); ++iter)
