@@ -131,6 +131,12 @@
     <Filter Include="Genius\Logic\Data\auto">
       <UniqueIdentifier>{79b88561-f023-4ef2-8f4e-5bf2e53f8471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Genius\Logic\Skill\skillLogic">
+      <UniqueIdentifier>{a383d16e-9f2d-4d06-ab2b-eaa648e8bf15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Genius\Logic\Skill\buffLogic">
+      <UniqueIdentifier>{1adc5c63-051b-4444-a21b-d0bc9d39cf5b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Genius\common\2Ddef.h">
@@ -604,6 +610,18 @@
     <ClInclude Include="..\..\Genius\skill\BuffManager.h">
       <Filter>Genius\Logic\Skill</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Genius\skill\buffLogic\BuffLogic.h">
+      <Filter>Genius\Logic\Skill\buffLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\skill\skillLogic\SkillLogic.h">
+      <Filter>Genius\Logic\Skill\skillLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\skill\buffLogic\BL_ChangeAttr.h">
+      <Filter>Genius\Logic\Skill\buffLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\skill\skillLogic\SL_Buff.h">
+      <Filter>Genius\Logic\Skill\skillLogic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -1020,6 +1038,18 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\skill\BuffManager.cpp">
       <Filter>Genius\Logic\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\skill\buffLogic\BuffLogic.cpp">
+      <Filter>Genius\Logic\Skill\buffLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\skill\skillLogic\SkillLogic.cpp">
+      <Filter>Genius\Logic\Skill\skillLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\skill\buffLogic\BL_ChangeAttr.cpp">
+      <Filter>Genius\Logic\Skill\buffLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\skill\skillLogic\SL_Buff.cpp">
+      <Filter>Genius\Logic\Skill\skillLogic</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

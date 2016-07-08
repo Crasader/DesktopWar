@@ -7,6 +7,7 @@
 #include "data/auto/Bullet_cfg.hpp"
 #include "data/ConfigPool.h"
 #include "BuffManager.h"
+#include "buffLogic/BuffLogic.h"
 #include "entity/EntityCreators.h"
 
 using namespace Genius;

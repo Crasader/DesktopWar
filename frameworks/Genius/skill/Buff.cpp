@@ -3,6 +3,7 @@
 #include "data/auto/Buff_cfg.hpp"
 #include "data/auto/BuffAction_cfg.hpp"
 #include "data/ConfigPool.h"
+#include "buffLogic/BuffLogic.h"
 
 
 using namespace Genius;
