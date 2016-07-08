@@ -8,13 +8,17 @@ IMPL_CONFIG_CREATE(Skill_cfg);
 		{
 			col = BaseConfig::Init(reader, row, col);
 
-			findTargetStyle = 0;
+			logicId = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				findTargetStyle = reader.GetIntValue(row, col++);
+				logicId = reader.GetIntValue(row, col++);
 
-			findTargetRadius = 0;
+			targetType = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				findTargetRadius = reader.GetIntValue(row, col++);
+				targetType = reader.GetIntValue(row, col++);
+
+			radius = 0;
+			if(reader.GetStringValue(row, col).length() > 0)
+				radius = reader.GetIntValue(row, col++);
 
 			targetTeam = 0;
 			if(reader.GetStringValue(row, col).length() > 0)

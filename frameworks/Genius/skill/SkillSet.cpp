@@ -8,7 +8,7 @@ void SkillSet::Update(float elpase)
 
 }
 
-bool SkillSet::CanUseSkill(int owner, int target, int skill)
+bool SkillSet::CanTrigger(int owner, int target, int skill)
 {
 	auto iterFind = m_skills.find(skill);
 	if (iterFind != m_skills.end())
@@ -17,7 +17,7 @@ bool SkillSet::CanUseSkill(int owner, int target, int skill)
 		return false;
 }
 
-bool	 SkillSet::UseSkill(int owner, int target, int skill)
+bool	 SkillSet::TriggerSkill(int owner, int target, int skill)
 {
 	auto iterFind = m_skills.find(skill);
 	if (iterFind != m_skills.end())
@@ -34,7 +34,7 @@ void SkillSet::AddSkill(int skill)
 		m_skills.insert(std::make_pair(skill, Skill(m_ownerID)));
 	}
 	iterFind = m_skills.find(skill);
-	iterFind->second.SetSkillType(skill);
+	iterFind->second.SetSkillCfg(skill);
 }
 
 void SkillSet::Clear()

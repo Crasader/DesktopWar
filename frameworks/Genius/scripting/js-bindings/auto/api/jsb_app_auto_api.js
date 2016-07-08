@@ -267,3 +267,68 @@ LoadingManager : function (
 },
 
 };
+
+/**
+ * @class EntityCreator
+ */
+EntityCreator = {
+
+/**
+ * @method CreateBullet
+ * @param {int} arg0
+ * @param {int} arg1
+ * @param {float} arg2
+ * @param {float} arg3
+ * @param {int} arg4
+ * @param {float} arg5
+ * @param {float} arg6
+ * @return {int}
+ */
+CreateBullet : function (
+int, 
+int, 
+float, 
+float, 
+int, 
+float, 
+float 
+)
+{
+    return 0;
+},
+
+/**
+ * @method CreatePawn
+ * @param {int} arg0
+ * @param {float} arg1
+ * @param {float} arg2
+ * @param {int} arg3
+ * @return {int}
+ */
+CreatePawn : function (
+int, 
+float, 
+float, 
+int 
+)
+{
+    return 0;
+},
+
+/**
+ * @method CreateBornPoint
+ * @param {float} arg0
+ * @param {float} arg1
+ * @param {int} arg2
+ * @return {int}
+ */
+CreateBornPoint : function (
+float, 
+float, 
+int 
+)
+{
+    return 0;
+},
+
+};

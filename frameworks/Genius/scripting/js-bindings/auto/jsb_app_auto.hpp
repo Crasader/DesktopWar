@@ -69,4 +69,15 @@ bool js_app_LoadingManager_GenerateUnLoadList(JSContext *cx, uint32_t argc, jsva
 bool js_app_LoadingManager_ClearLoadingList(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_LoadingManager_LoadingManager(JSContext *cx, uint32_t argc, jsval *vp);
 
+extern JSClass  *jsb_Genius_EntityCreator_class;
+extern JSObject *jsb_Genius_EntityCreator_prototype;
+
+bool js_app_EntityCreator_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_EntityCreator_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_EntityCreator(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_EntityCreator_CreateBullet(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityCreator_CreatePawn(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityCreator_CreateBornPoint(JSContext *cx, uint32_t argc, jsval *vp);
+
 #endif // __app_h__

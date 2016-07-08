@@ -13,8 +13,9 @@ namespace cfg
 
 		virtual int Init(Genius::TabFile& reader, int row, int col);
 
-		int findTargetStyle;
-		int findTargetRadius;
+		int logicId;
+		int targetType;
+		int radius;
 		int targetTeam;
 		int costType;
 		int costNum;

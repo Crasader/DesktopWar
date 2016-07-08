@@ -9,6 +9,8 @@ var LaunchState = GameState.extend
     
     OnEnter:function ()
     {
+        //EntityCreator.CreatePawn(2012, 300, 133, 2)
+        EntityCreator.CreatePawn(1007, 500, 133, 1)
         print("enter Launch")
     },
     

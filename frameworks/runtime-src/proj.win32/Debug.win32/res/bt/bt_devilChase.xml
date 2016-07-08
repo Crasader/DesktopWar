@@ -20,7 +20,7 @@
 		</Selector>
 		<Sequence>
 			<Precondition type = "HaveHP"/>
-			<PawnWander type = 2>
+			<PawnWander type = "2">
 			</PawnWander>
 		</Sequence>
 	</Selector>

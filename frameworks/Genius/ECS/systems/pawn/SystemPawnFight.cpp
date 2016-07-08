@@ -293,7 +293,7 @@ int SystemPawnFight::FindNearestTarget(Entity* pEntity, bool sameTeam, bool incl
 	return enemyId;
 }
 
-void SystemPawnFight::FindTargetsInScope(int entityID, int scopeSize, bool sameTeam, bool includeSelf, std::vector<Entity*>& eneityIDList)
+void SystemPawnFight::FindTargetsInScope(int entityID, int scopeSize, bool sameTeam, bool includeSelf, std::vector<int>& eneityIDList)
 {
 	Entity* pEntity = world->GetEntity(entityID);
 	ComPosition* myPosCom = positionMapper.get(pEntity);
@@ -327,7 +327,7 @@ void SystemPawnFight::FindTargetsInScope(int entityID, int scopeSize, bool sameT
 		float len = vecBetween.Length();
 		if (len < scopeSize)
 		{
-			eneityIDList.push_back(pEnemyEntity);
+			eneityIDList.push_back(pEnemyEntity->GetId());
 		}
 	}
 }

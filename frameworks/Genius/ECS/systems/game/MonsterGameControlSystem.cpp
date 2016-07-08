@@ -43,12 +43,13 @@ void MonsterGameControlSystem::ProcessEntity(Entity* pEntity)
 
 Entity* MonsterGameControlSystem::SpawnOne(float x, float y)
 {
-	const int humTypeCount = 11;
+	return nullptr;
+	/*const int humTypeCount = 11;
 	std::string humanNames[humTypeCount] = { "Goblin", "Orc", "Sahman", "Ogre", "Bandit", "Brigand", "Wulf", "Juggernaut", "NoxiousCreeeper", "ShadowArcher", "NoxiousSon" };
 
 	static int humIndex = 0;
 	Entity* entity = EntityCreator::CreatePawn(humanNames[humIndex++], x, y, Team_Monster);
 	humIndex = humIndex % humTypeCount;
 
-	return entity;
+	return entity;*/
 }

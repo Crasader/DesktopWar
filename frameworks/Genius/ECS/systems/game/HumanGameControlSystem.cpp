@@ -44,12 +44,13 @@ void HumanGameControlSystem::ProcessEntity(Entity* pEntity)
 
 Entity* HumanGameControlSystem::SpawnOne(float x, float y)
 {
-	const int humTypeCount = 3;
+	return nullptr;
+	/*const int humTypeCount = 3;
 	std::string humanNames[humTypeCount] = { "Jedi2", "Jedi", "Tkdo" };
 
 	static int humIndex = 0;
 	Entity* entity = EntityCreator::CreatePawn(humanNames[humIndex++], x, y, Team_Human);
 	humIndex = humIndex % humTypeCount;
 
-	return entity;
+	return entity;*/
 }

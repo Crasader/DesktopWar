@@ -2,7 +2,7 @@
 
 #include "ImmutableBag.h"
 #include "EntitySystem.h"
-#include "../event/Event.h"
+#include "event/Event.h"
 
 namespace Genius
 {

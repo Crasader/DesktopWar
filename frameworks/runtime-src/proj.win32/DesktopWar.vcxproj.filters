@@ -622,6 +622,9 @@
     <ClInclude Include="..\..\Genius\skill\skillLogic\SL_Buff.h">
       <Filter>Genius\Logic\Skill\skillLogic</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Genius\skill\skillLogic\SL_Bullet.h">
+      <Filter>Genius\Logic\Skill\skillLogic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -1049,6 +1052,9 @@
       <Filter>Genius\Logic\Skill\buffLogic</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\skill\skillLogic\SL_Buff.cpp">
+      <Filter>Genius\Logic\Skill\skillLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\skill\skillLogic\SL_Bullet.cpp">
       <Filter>Genius\Logic\Skill\skillLogic</Filter>
     </ClCompile>
   </ItemGroup>

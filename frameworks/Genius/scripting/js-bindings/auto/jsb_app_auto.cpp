@@ -795,12 +795,142 @@ void js_register_app_LoadingManager(JSContext *cx, JS::HandleObject global) {
     jsb_register_class<LoadingManager>(cx, jsb_LoadingManager_class, proto, parent_proto);
 }
 
+JSClass  *jsb_Genius_EntityCreator_class;
+JSObject *jsb_Genius_EntityCreator_prototype;
+
+bool js_app_EntityCreator_CreateBullet(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 7) {
+        int arg0 = 0;
+        int arg1 = 0;
+        double arg2 = 0;
+        double arg3 = 0;
+        int arg4 = 0;
+        double arg5 = 0;
+        double arg6 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        ok &= jsval_to_int32(cx, args.get(1), (int32_t *)&arg1);
+        ok &= JS::ToNumber( cx, args.get(2), &arg2) && !std::isnan(arg2);
+        ok &= JS::ToNumber( cx, args.get(3), &arg3) && !std::isnan(arg3);
+        ok &= jsval_to_int32(cx, args.get(4), (int32_t *)&arg4);
+        ok &= JS::ToNumber( cx, args.get(5), &arg5) && !std::isnan(arg5);
+        ok &= JS::ToNumber( cx, args.get(6), &arg6) && !std::isnan(arg6);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityCreator_CreateBullet : Error processing arguments");
+
+        int ret = Genius::EntityCreator::CreateBullet(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
+        jsval jsret = JSVAL_NULL;
+        jsret = int32_to_jsval(cx, ret);
+        args.rval().set(jsret);
+        return true;
+    }
+    JS_ReportError(cx, "js_app_EntityCreator_CreateBullet : wrong number of arguments");
+    return false;
+}
+
+bool js_app_EntityCreator_CreatePawn(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 4) {
+        int arg0 = 0;
+        double arg1 = 0;
+        double arg2 = 0;
+        int arg3 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        ok &= JS::ToNumber( cx, args.get(1), &arg1) && !std::isnan(arg1);
+        ok &= JS::ToNumber( cx, args.get(2), &arg2) && !std::isnan(arg2);
+        ok &= jsval_to_int32(cx, args.get(3), (int32_t *)&arg3);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityCreator_CreatePawn : Error processing arguments");
+
+        int ret = Genius::EntityCreator::CreatePawn(arg0, arg1, arg2, arg3);
+        jsval jsret = JSVAL_NULL;
+        jsret = int32_to_jsval(cx, ret);
+        args.rval().set(jsret);
+        return true;
+    }
+    JS_ReportError(cx, "js_app_EntityCreator_CreatePawn : wrong number of arguments");
+    return false;
+}
+
+bool js_app_EntityCreator_CreateBornPoint(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 3) {
+        double arg0 = 0;
+        double arg1 = 0;
+        int arg2 = 0;
+        ok &= JS::ToNumber( cx, args.get(0), &arg0) && !std::isnan(arg0);
+        ok &= JS::ToNumber( cx, args.get(1), &arg1) && !std::isnan(arg1);
+        ok &= jsval_to_int32(cx, args.get(2), (int32_t *)&arg2);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityCreator_CreateBornPoint : Error processing arguments");
+
+        int ret = Genius::EntityCreator::CreateBornPoint(arg0, arg1, arg2);
+        jsval jsret = JSVAL_NULL;
+        jsret = int32_to_jsval(cx, ret);
+        args.rval().set(jsret);
+        return true;
+    }
+    JS_ReportError(cx, "js_app_EntityCreator_CreateBornPoint : wrong number of arguments");
+    return false;
+}
+
+
+void js_register_app_EntityCreator(JSContext *cx, JS::HandleObject global) {
+    jsb_Genius_EntityCreator_class = (JSClass *)calloc(1, sizeof(JSClass));
+    jsb_Genius_EntityCreator_class->name = "EntityCreator";
+    jsb_Genius_EntityCreator_class->addProperty = JS_PropertyStub;
+    jsb_Genius_EntityCreator_class->delProperty = JS_DeletePropertyStub;
+    jsb_Genius_EntityCreator_class->getProperty = JS_PropertyStub;
+    jsb_Genius_EntityCreator_class->setProperty = JS_StrictPropertyStub;
+    jsb_Genius_EntityCreator_class->enumerate = JS_EnumerateStub;
+    jsb_Genius_EntityCreator_class->resolve = JS_ResolveStub;
+    jsb_Genius_EntityCreator_class->convert = JS_ConvertStub;
+    jsb_Genius_EntityCreator_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+    static JSPropertySpec properties[] = {
+        JS_PS_END
+    };
+
+    static JSFunctionSpec funcs[] = {
+        JS_FS_END
+    };
+
+    static JSFunctionSpec st_funcs[] = {
+        JS_FN("CreateBullet", js_app_EntityCreator_CreateBullet, 7, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("CreatePawn", js_app_EntityCreator_CreatePawn, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("CreateBornPoint", js_app_EntityCreator_CreateBornPoint, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+    };
+
+    jsb_Genius_EntityCreator_prototype = JS_InitClass(
+        cx, global,
+        JS::NullPtr(),
+        jsb_Genius_EntityCreator_class,
+        dummy_constructor<Genius::EntityCreator>, 0, // no constructor
+        properties,
+        funcs,
+        NULL, // no static properties
+        st_funcs);
+
+    JS::RootedObject proto(cx, jsb_Genius_EntityCreator_prototype);
+    JS::RootedValue className(cx, std_string_to_jsval(cx, "EntityCreator"));
+    JS_SetProperty(cx, proto, "_className", className);
+    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
+    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
+    // add the proto and JSClass to the type->js info hash table
+    jsb_register_class<Genius::EntityCreator>(cx, jsb_Genius_EntityCreator_class, proto, JS::NullPtr());
+}
+
 void register_all_app(JSContext* cx, JS::HandleObject obj) {
     // Get the global ns
     JS::RootedObject ns(cx, ScriptingCore::getInstance()->getGlobalObject());
 
     js_register_app_SceneManager(cx, ns);
     js_register_app_Log(cx, ns);
+    js_register_app_EntityCreator(cx, ns);
     js_register_app_GamePlay(cx, ns);
     js_register_app_RollNumberLabel(cx, ns);
     js_register_app_LoadingManager(cx, ns);

@@ -18,19 +18,21 @@ typedef void* (*SkillLogicCreatorFunc)(void);
 
 namespace Genius
 {
+	class Skill;
+
 	class SkillLogic
 	{
 	public:
 		virtual ~SkillLogic(){};
-		virtual void OnActive() = 0;
-		virtual void OnDeactive() = 0;
+		virtual void OnActive(Skill* skill) = 0;
+		virtual void OnDeactive(Skill* skill) = 0;
 
 	public:
 		enum LogicType
 		{
 			Unknown = 0,
 			Buff = 1,
-			Translation = 2,
+			Bullet = 2,
 
 			Count,
 		};

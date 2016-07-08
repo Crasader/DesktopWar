@@ -64,7 +64,7 @@ void GamePlay::Update(float time)
 		PawnBornInfo& bornInfo = *iter;
 		if ((!bornInfo.done) && timePassed - seqInfo.time > bornInfo.time)
 		{
-			EntityCreator::CreatePawn(bornInfo.pawnID, seqInfo.x + bornInfo.x, seqInfo.y + bornInfo.y, Team_Monster);
+			//EntityCreator::CreatePawn(bornInfo.pawnID, seqInfo.x + bornInfo.x, seqInfo.y + bornInfo.y, Team_Monster);
 			bornInfo.done = true;
 		}
 		if (!bornInfo.done)

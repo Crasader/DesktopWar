@@ -8,6 +8,10 @@ IMPL_CONFIG_CREATE(Buff_cfg);
 		{
 			col = BaseConfig::Init(reader, row, col);
 
+			logicId = 0;
+			if(reader.GetStringValue(row, col).length() > 0)
+				logicId = reader.GetIntValue(row, col++);
+
 			series = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
 				series = reader.GetIntValue(row, col++);

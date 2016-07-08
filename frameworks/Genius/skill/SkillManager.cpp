@@ -53,7 +53,7 @@ bool	 SkillManager::CanUseSkill(int owner, int target, int skill)
 {
 	auto iterFind = m_skillSets.find(owner);
 	if (iterFind != m_skillSets.end())
-		return iterFind->second.CanUseSkill(owner, target, skill);
+		return iterFind->second.CanTrigger(owner, target, skill);
 	else
 		return false;
 }
@@ -62,7 +62,7 @@ bool SkillManager::UseSkill(int owner, int target, int skill)
 {
 	auto iterFind = m_skillSets.find(owner);
 	if (iterFind != m_skillSets.end())
-		return iterFind->second.UseSkill(owner, target, skill);
+		return iterFind->second.TriggerSkill(owner, target, skill);
 	else
 		return false;
 }

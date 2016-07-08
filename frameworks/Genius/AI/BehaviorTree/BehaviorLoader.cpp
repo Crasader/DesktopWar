@@ -63,9 +63,13 @@ Behavior* BehaviorLoader::LoadFromXml(std::string filePath)
 	do 
 	{
 		doc = new XMLDocument();
-		if (!doc->LoadFile(filePath.c_str()))
+		XMLError eRet = doc->LoadFile(filePath.c_str());
+		if (tinyxml2::XML_NO_ERROR != eRet)
+		{
+			Log::Error("XML File Error");
 			break;
-		XMLElement* xmlRoot = doc->RootElement();
+		}
+		XMLElement* xmlRoot = doc->FirstChildElement("BehaviorTree");
 		root = ParseXml(xmlRoot->FirstChildElement());
 
 	} while (0);

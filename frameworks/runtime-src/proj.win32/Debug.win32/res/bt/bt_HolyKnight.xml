@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <BehaviorTree>
 	<Selector>
 		<PawnDie>
@@ -8,7 +9,7 @@
 		<Selector>
 			<Selector>
 				<PawnSkill1>
-					<Precondition type = "LowHP" value = 0.4/>
+					<Precondition type = "LowHP" value = "0.4"/>
 				</PawnSkill1>
 				<Selector>
 					<Precondition type = "HaveTarget"/>
@@ -19,7 +20,7 @@
 							<PawnAttackNear2/>
 						</Sequence>
 						<PawnSkill2>
-							<Precondition type = "Probablity" value = 0.5/>
+							<Precondition type = "Probablity" value = "0.5"/>
 						</PawnSkill2>
 					</Sequence>
 					<PawnChase>

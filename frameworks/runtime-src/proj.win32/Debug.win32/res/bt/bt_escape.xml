@@ -7,7 +7,7 @@
 		</PawnDie>
 		<Sequence>
 			<Precondition type = "HaveHP"/>
-			<PawnWander type = 2>
+			<PawnWander type = "2">
 			</PawnWander>
 			<PawnIdle>
 			</PawnIdle>

@@ -13,6 +13,7 @@ namespace cfg
 
 		virtual int Init(Genius::TabFile& reader, int row, int col);
 
+		int logicId;
 		int series;
 		int hurtType;
 		int duration;

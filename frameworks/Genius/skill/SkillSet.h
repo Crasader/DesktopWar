@@ -14,8 +14,8 @@ namespace Genius
 		{}
 
 		void		Update(float elpase);
-		bool		CanUseSkill(int owner, int target, int skill);
-		bool		UseSkill(int owner, int target, int skill);
+		bool		CanTrigger(int owner, int target, int skill);
+		bool		TriggerSkill(int owner, int target, int skill);
 		void		AddSkill(int skill);
 		void		Clear();
 

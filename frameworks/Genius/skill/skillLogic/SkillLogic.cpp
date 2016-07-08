@@ -1,8 +1,10 @@
 
 #include "SkillLogic.h"
-#include "common//Log.h"
+#include "common/Log.h"
 
 #include "SL_Buff.h"
+#include "SL_Bullet.h"
+
 
 using namespace Genius;
 
@@ -36,7 +38,7 @@ SkillLogic* SkillLogic::GetLogic(int type)
 	if (sLogicCreator.size() == 0)
 	{
 		REGISTER_SKILLLOGIC_CREATOR(LogicType::Buff, SL_Buff);
-		//REGISTER_SKILLLOGIC_CREATOR(LogicType::ChangeAttr, ChangeAttr);
+		REGISTER_SKILLLOGIC_CREATOR(LogicType::Bullet, SL_Bullet);
 	}
 
 	if (type <= LogicType::Unknown || type >= LogicType::Count)

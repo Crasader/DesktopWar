@@ -5,13 +5,13 @@
 
 namespace Genius
 {
-	class SL_Buff : public SkillLogic
+	class SL_Bullet : public SkillLogic
 	{
 	public:
 		virtual void OnActive(Skill* skill);
 		virtual void OnDeactive(Skill* skill);
 
-		DECLARE_SKILLLOGIC_CREATOR(SL_Buff)
+		DECLARE_SKILLLOGIC_CREATOR(SL_Bullet)
 
 	};
 
