@@ -9,3 +9,17 @@ string	string	string
 	Knight	res/anim/Knight/Knight.ExportJson
 	HolyKnight	res/anim/HolyKnight/HolyKnight.ExportJson
 	Barbarian	res/anim/Barbarian/Barbarian.ExportJson
+	Goblin	res/anim/Goblin/Goblin.ExportJson
+	Orc	res/anim/Orc/Orc.ExportJson
+	Sahman	res/anim/Sahman/Sahman.ExportJson
+	Ogre	res/anim/Ogre/Ogre.ExportJson
+	Bandit	res/anim/Bandit/Bandit.ExportJson
+	Brigand	res/anim/Brigand/Brigand.ExportJson
+	Wulf	res/anim/Wulf/Wulf.ExportJson
+	Juggernaut	res/anim/Juggernaut/Juggernaut.ExportJson
+	NoxiousCreeeper	res/anim/NoxiousCreeeper/NoxiousCreeeper.ExportJson
+	ShadowArcher	res/anim/ShadowArcher/ShadowArcher.ExportJson
+	NoxiousSon	res/anim/NoxiousSon/NoxiousSon.ExportJson
+	BigDevil	res/anim/BigDevil/BigDevil.ExportJson
+	Militia	res/anim/Militia/Militia.ExportJson
+	Footman	res/anim/Footman/Footman.ExportJson
