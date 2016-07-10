@@ -30,10 +30,8 @@ bool TabFile::LoadFile(const string& FileName)
 	{
 		vector<string> col_data = SplitCol(row_data[i]);
 		if (i == 0)
-		{
 			m_max_col_count = col_data.size();
-			continue;
-		}
+		
 		if (col_data.size() == m_max_col_count)
 			m_file_data.push_back(col_data);
 	}

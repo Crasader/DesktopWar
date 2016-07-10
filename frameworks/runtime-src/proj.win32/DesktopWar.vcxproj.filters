@@ -193,9 +193,6 @@
     <ClInclude Include="..\..\Genius\skill\Buff.h">
       <Filter>Genius\Logic\Skill</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\skill\BuffAction.h">
-      <Filter>Genius\Logic\Skill</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\skill\BuffSet.h">
       <Filter>Genius\Logic\Skill</Filter>
     </ClInclude>
@@ -203,9 +200,6 @@
       <Filter>Genius\Logic\Skill</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\skill\SkillSet.h">
-      <Filter>Genius\Logic\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\skill\UserActions.h">
       <Filter>Genius\Logic\Skill</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\PawnDefines.h">
@@ -625,6 +619,12 @@
     <ClInclude Include="..\..\Genius\skill\skillLogic\SL_Bullet.h">
       <Filter>Genius\Logic\Skill\skillLogic</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Genius\skill\buffLogic\BL_Damage.h">
+      <Filter>Genius\Logic\Skill\buffLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\skill\buffLogic\BL_Spawn.h">
+      <Filter>Genius\Logic\Skill\buffLogic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -676,9 +676,6 @@
     <ClCompile Include="..\..\Genius\skill\Buff.cpp">
       <Filter>Genius\Logic\Skill</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\skill\BuffAction.cpp">
-      <Filter>Genius\Logic\Skill</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\skill\BuffSet.cpp">
       <Filter>Genius\Logic\Skill</Filter>
     </ClCompile>
@@ -686,9 +683,6 @@
       <Filter>Genius\Logic\Skill</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\skill\SkillSet.cpp">
-      <Filter>Genius\Logic\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\skill\UserActions.cpp">
       <Filter>Genius\Logic\Skill</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\AI\BehaviorTree\Behavior.cpp">
@@ -1056,6 +1050,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\skill\skillLogic\SL_Bullet.cpp">
       <Filter>Genius\Logic\Skill\skillLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\skill\buffLogic\BL_Damage.cpp">
+      <Filter>Genius\Logic\Skill\buffLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\skill\buffLogic\BL_Spawn.cpp">
+      <Filter>Genius\Logic\Skill\buffLogic</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -10,8 +10,8 @@ var LaunchState = GameState.extend
     OnEnter:function ()
     {
         //EntityCreator.CreatePawn(2012, 700, 133, 2)
-        EntityCreator.CreatePawn(2011, 300, 133, 2)
-        EntityCreator.CreatePawn(1007, 500, 133, 1)
+        EntityCreator.CreatePawn(2009, 300, 133, 2)
+        //EntityCreator.CreatePawn(1007, 500, 133, 1)
         print("enter Launch")
     },
     
@@ -28,8 +28,12 @@ var LaunchState = GameState.extend
     ParseResourceList:function(loadMgr)
     {
         loadMgr.AddRole(2012)
-        loadMgr.AddRole(2011)
+        loadMgr.AddRole(2009)
         loadMgr.AddRole(1007)
+
+        loadMgr.AddAnim(3001)
+        loadMgr.AddAnim(3002)
+        loadMgr.AddAnim(3003)
     }
 
     

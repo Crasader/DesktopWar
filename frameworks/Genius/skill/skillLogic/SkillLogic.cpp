@@ -37,6 +37,7 @@ SkillLogic* SkillLogic::GetLogic(int type)
 {
 	if (sLogicCreator.size() == 0)
 	{
+		// дкетРязЂВсskillТпМ­
 		REGISTER_SKILLLOGIC_CREATOR(LogicType::Buff, SL_Buff);
 		REGISTER_SKILLLOGIC_CREATOR(LogicType::Bullet, SL_Bullet);
 	}

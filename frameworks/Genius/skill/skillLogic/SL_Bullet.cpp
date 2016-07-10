@@ -30,13 +30,13 @@ void SL_Bullet::OnActive(Skill* skill)
 		float startY = ownerPosCom->y;
 		if (ownerDirCom->m_currentDir & Face_Left)
 		{
-			startX = ownerPosCom->x - ownerTempCom->m_pRoleData->bulletX;
-			startY = ownerPosCom->y + ownerTempCom->m_pRoleData->bulletY;
+			startX = ownerPosCom->x - ownerTempCom->m_roleCfg->bulletX;
+			startY = ownerPosCom->y + ownerTempCom->m_roleCfg->bulletY;
 		}
 		else if (ownerDirCom->m_currentDir & Face_Right)
 		{
-			startX = ownerPosCom->x + ownerTempCom->m_pRoleData->bulletX;
-			startY = ownerPosCom->y + ownerTempCom->m_pRoleData->bulletY;
+			startX = ownerPosCom->x + ownerTempCom->m_roleCfg->bulletX;
+			startY = ownerPosCom->y + ownerTempCom->m_roleCfg->bulletY;
 		}
 		else
 		{

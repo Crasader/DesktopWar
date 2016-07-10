@@ -12,7 +12,7 @@ int BuffSet::AddBuff(int senderID, int buffTemplateID)
 {
 	auto buffTempData = FIND_CFG(Buff_cfg, buffTemplateID);
 	Buff newBuff;
-	newBuff.LoadFromTemplate(buffTemplateID);
+	newBuff.Init(buffTemplateID);
 	for (auto iter = m_buffInsts.begin(); iter != m_buffInsts.end(); ++iter)
 	{
 		Buff& curBuff = iter->second;
@@ -20,19 +20,15 @@ int BuffSet::AddBuff(int senderID, int buffTemplateID)
 		{
 			int curBuffInstID = curBuff.GetInstID();
 			int curPileType = curBuff.GetPileType();
-			if (newBuff.GetSeriesType() == curBuff.GetSeriesType())
+			if (newBuff.GetSeries() == curBuff.GetSeries())
 			{
-				if (curPileType == EBuffPile_Replace)
+				if (curPileType == Pile_Replace)
 				{
 					return ReplaceBuff(curBuffInstID, senderID, buffTemplateID);
 				}
-				else if (curPileType == EBuffPile_OnlyOne)
+				else if (curPileType == Pile_OnlyOne)
 				{
 					return false;
-				}
-				else if (curPileType == EBuffPile_DoNothing)
-				{
-					;
 				}
 			}
 		}
@@ -56,7 +52,7 @@ int BuffSet::TileBuff(int senderID, int buffTemplateID)
 	m_instIDCounter++;
 	m_buffInsts[m_instIDCounter] = newBuff;
 	m_buffInsts[m_instIDCounter].SetInstID(m_instIDCounter);
-	m_buffInsts[m_instIDCounter].LoadFromTemplate(buffTemplateID);
+	m_buffInsts[m_instIDCounter].Init(buffTemplateID);
 	m_buffInsts[m_instIDCounter].m_senderID = senderID;
 	m_buffInsts[m_instIDCounter].m_receiverID = m_ownerID;
 	m_buffInsts[m_instIDCounter].m_alive = true;

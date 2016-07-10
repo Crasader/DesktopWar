@@ -5,6 +5,39 @@
 
 namespace Genius
 {
+	// 属性类别
+	enum AttrType
+	{
+		ATNone = 0,
+		HP = 1,
+		MoveSpeed = 2,
+		AttackSpeed = 3,
+		AttackStren = 4,
+		DefencePhy = 5,
+		DefenceMag = 6,
+		Dodge = 7,
+
+		Count,
+	};
+
+	// 伤害类别
+	enum HurtType
+	{
+		HTNone = 0,
+		Phy = 1,
+		Mag = 2,
+	};
+
+	//属性计算方式(固定值、百分比、npc自适应、bullet自适应)
+	enum CalcType
+	{
+		CTNone = 0,
+		Fixed = 1,
+		Percent = 2,
+		NPC = 3,
+		Bullet = 4,
+	};
+
 	enum ActionType
 	{
 		Action_Min,
@@ -56,8 +89,8 @@ namespace Genius
 		const std::string Attack2Right = "attack2_right";
 		const std::string Attack3Left = "attack3_left";
 		const std::string Attack3Right = "attack3_right";
-		const std::string Skill1Left = "skill1_left";
-		const std::string Skill1Right = "skill1_right";
+		const std::string Skill1Left = "skill_left";
+		const std::string Skill1Right = "skill_right";
 		const std::string Skill2Left = "skill2_left";
 		const std::string Skill2Right = "skill2_right";
 		const std::string Skill3Left = "skill3_left";

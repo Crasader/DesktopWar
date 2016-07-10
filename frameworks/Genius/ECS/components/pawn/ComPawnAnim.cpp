@@ -156,7 +156,7 @@ void ComPawnAnim::AnimationFrameCallback(cocostudio::Bone* bone, const std::stri
 	{
 		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetOwner(), UseSkillEvent::NormalSkill2));
 	}
-	else if (eventName == "skill1")
+	else if (eventName == "skill")
 	{
 		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetOwner(), UseSkillEvent::SpecialSkill1));
 	}
@@ -170,7 +170,7 @@ void ComPawnAnim::AnimationFrameCallback(cocostudio::Bone* bone, const std::stri
 	}
 	else
 	{
-		Log::Warning("unknown frame event.");
+		Log::Warning("unknown frame event : %s", eventName.c_str());
 	}
 }
 

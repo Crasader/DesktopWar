@@ -30,7 +30,7 @@ bool HaveHP::Check(BHUpdateContext& context)
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 	ComPawnAgent* attCom = data.pEntity->GetComponent<ComPawnAgent>();
 	if (attCom)
-		return attCom->GetBlackboard()->m_currentHP > 0;
+		return attCom->GetBlackboard()->GetAttr(AttrType::HP) > 0;
 
 	return true;
 }
@@ -41,7 +41,7 @@ bool LowHP::Check(BHUpdateContext& context)
 	ComPawnAgent* attCom = data.pEntity->GetComponent<ComPawnAgent>();
 	ComPawnAgent* tempCom = data.pEntity->GetComponent<ComPawnAgent>();
 	if (attCom && tempCom)
-		return attCom->GetBlackboard()->m_currentHP < value * tempCom->m_pRoleData->baseLife;
+		return attCom->GetBlackboard()->GetAttr(AttrType::HP) < value * tempCom->m_roleCfg->baseLife;
 
 	return true;
 }
@@ -52,7 +52,7 @@ bool HighHP::Check(BHUpdateContext& context)
 	ComPawnAgent*attCom = data.pEntity->GetComponent<ComPawnAgent>();
 	ComPawnAgent* tempCom = data.pEntity->GetComponent<ComPawnAgent>();
 	if (attCom && tempCom)
-		return attCom->GetBlackboard()->m_currentHP >= value * tempCom->m_pRoleData->baseLife;
+		return attCom->GetBlackboard()->GetAttr(AttrType::HP) >= value * tempCom->m_roleCfg->baseLife;
 
 	return true;
 }

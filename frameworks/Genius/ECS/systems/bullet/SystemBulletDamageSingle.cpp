@@ -19,7 +19,7 @@ void SystemBulletDamageSingle::Initialize()
 {
 	positionMapper.init(*world);
 	damageMapper.init(*world);
-	bulletTemplateMapper.init(*world);
+	agentMapper.init(*world);
 
 	// register event.
 	EventManager::GetSingleton()->AddListener(this, Event_BulletTrigger);
@@ -75,10 +75,10 @@ void SystemBulletDamageSingle::collisionHandler(int id1, int id2)
 		EventManager::GetSingleton()->FireEvent(StopMoveEvent(pEntity));
 
 		// 这里也是不合适，因为不一定碰撞之后就会触发buff。
-		ComBulletTemplate* bulletTempCom = bulletTemplateMapper.get(pEntity);
-		if (bulletTempCom)
+		ComBulletAgent* bulletAgent = agentMapper.get(pEntity);
+		if (bulletAgent)
 		{
-			const Bullet_cfg* bulletInfo = bulletTempCom->pBulletData;
+			const Bullet_cfg* bulletInfo = bulletAgent->pBulletData;
 			for (int i = 0; i < 3; ++i)
 			{
 				if (bulletInfo->buffs[i] != 0)
@@ -102,7 +102,7 @@ void SystemBulletDamageSingle::collisionHandler(int id1, int id2)
 		pVelCom->y = 0;
 		pAttackCom->targetID = id2;
 
-		ComBulletTemplate* bulletTempCom = bulletTemplateMapper.get(pEntity);
+		ComBulletAgent* bulletAgent = agentMapper.get(pOwnerEntity);
 		if (nullptr != bulletTempCom)
 		{
 			const BulletData* bulletInfo = bulletTempCom->pBulletData;
@@ -126,8 +126,8 @@ bool SystemBulletDamageSingle::TriggerBulletBuff(IEventData const &evt)
 	Entity* pOtherEntity = ECSWorld::GetSingleton()->GetEntity(pAttackCom->targetID);
 	if (pOtherEntity)
 	{
-		ComBulletTemplate* bulletTempCom = bulletTemplateMapper.get(pOwnerEntity);
-		const Bullet_cfg* bulletInfo = bulletTempCom->pBulletData;
+		ComBulletAgent* bulletAgent = agentMapper.get(pOwnerEntity);
+		const Bullet_cfg* bulletInfo = bulletAgent->pBulletData;
 		for (int i = 0; i < 3; ++i)
 		{
 			if (bulletInfo->buffs[i] != 0)

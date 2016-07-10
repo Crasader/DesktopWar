@@ -18,19 +18,23 @@ typedef void* (*BuffLogicCreatorFunc)(void);
 
 namespace Genius
 {
+	class  Buff;
+
 	class BuffLogic
 	{
 	public:
 		virtual ~BuffLogic(){};
-		virtual void OnActive() = 0;
-		virtual void OnDeactive() = 0;
+		virtual void OnActive(Buff* buff) = 0;
+		virtual void OnDeactive(Buff* buff) = 0;
+		virtual void OnEffect(Buff* buff) = 0;
 
 	public:
 		enum LogicType
 		{
 			Unknown			= 0,
-			ChangeAttr		= 1,
-			Coma				= 2,
+			ChangeAttr		= 1,		// 该属性
+			Damage			= 2,		// 伤害（来自npc 或 子弹）
+			Spawn				= 3,		// 召唤、出生npc
 
 			Count,
 		};

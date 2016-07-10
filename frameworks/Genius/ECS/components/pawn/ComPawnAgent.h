@@ -12,7 +12,7 @@ namespace Genius
 	class ComPawnAgent : public Component
 	{
 	public:
-		cfg::Role_cfg*					m_pRoleData;
+		cfg::Role_cfg*					m_roleCfg;
 		PawnBlackboard*		m_pBlackboard;
 
 		ComPawnAgent(cfg::Role_cfg* pData);

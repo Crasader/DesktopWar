@@ -17,7 +17,7 @@ void SystemBulletDamageNone::Initialize()
 {
 	positionMapper.init(*world);
 	damageMapper.init(*world);
-	bulletTemplateMapper.init(*world);
+	agentMapper.init(*world);
 
 	// register event.
 	EventManager::GetSingleton()->AddListener(this, Event_BulletTrigger);
@@ -49,8 +49,8 @@ bool SystemBulletDamageNone::TriggerBulletBuff(IEventData const &evt)
 
 	ComBulletDamageNone* pAttackCom = damageMapper.get(pOwnerEntity);
 
-	ComBulletTemplate* bulletTempCom = bulletTemplateMapper.get(pOwnerEntity);
-	const Bullet_cfg* bulletInfo = bulletTempCom->pBulletData;
+	ComBulletAgent* bulletAgent = agentMapper.get(pOwnerEntity);
+	const Bullet_cfg* bulletInfo = bulletAgent->pBulletData;
 	for (int i = 0; i < 3; ++i)
 	{
 		if (bulletInfo->buffs[i] != 0)

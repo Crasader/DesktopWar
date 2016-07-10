@@ -35,8 +35,8 @@ void SystemPawnDebugDraw::ProcessEntity(Entity* e)
 		{
 			// attack range
 			Vec2 center(posCom->x, posCom->y);
-			float radiusNear = tempCom->m_pRoleData->fightRangeNear;
-			float radiusFar = tempCom->m_pRoleData->fightRangeFar;
+			float radiusNear = tempCom->m_roleCfg->fightRangeNear;
+			float radiusFar = tempCom->m_roleCfg->fightRangeFar;
 			debugCom->Clear();
 			debugCom->pNodeNearRange->drawCircle(center, radiusNear, 0, 12, true, Color4F::RED);
 			debugCom->pNodeFarRange->drawCircle(center, radiusFar, 0, 12, true, Color4F::RED);

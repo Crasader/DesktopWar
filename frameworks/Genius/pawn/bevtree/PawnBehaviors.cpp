@@ -51,8 +51,8 @@ void PawnIdle::OnInitialize(BHUpdateContext& context)
 
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 	ComPawnAgent* agentCom = data.pEntity->GetComponent<ComPawnAgent>();
-	m_totalDuration = RandUtility::RandomScale(agentCom->m_pRoleData->IdleDuration, 0.3f);
-	m_changeDirDuration = RandUtility::RandomScale(agentCom->m_pRoleData->IdleTurnFaceTime, 0.3f);
+	m_totalDuration = RandUtility::RandomScale(agentCom->m_roleCfg->IdleDuration, 0.3f);
+	m_changeDirDuration = RandUtility::RandomScale(agentCom->m_roleCfg->IdleTurnFaceTime, 0.3f);
 
 	agentCom->AddAction(PAT_Idle);
 	EventManager::GetSingleton()->FireEvent(TransformEvent(Event_pawnStopMove, data.pEntity));
@@ -137,7 +137,7 @@ void PawnDie::OnInitialize(BHUpdateContext& context)
 	m_timeCounter = 0;
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 	ComPawnAgent* agentCom = data.pEntity->GetComponent<ComPawnAgent>();
-	m_duration = agentCom->m_pRoleData->DeadBodyTime;
+	m_duration = agentCom->m_roleCfg->DeadBodyTime;
 
 	EventManager::GetSingleton()->FireEvent(TransformEvent(Event_pawnStopMove, data.pEntity));
 	agentCom->AddAction(PAT_Die);
@@ -187,8 +187,8 @@ void PawnWander::OnInitialize(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 	ComPawnAgent* tmpCom = data.pEntity->GetComponent<ComPawnAgent>();
-	m_totalDuration = tmpCom->m_pRoleData->WanderDuration;
-	m_changeDirDuration = tmpCom->m_pRoleData->WanderChangeDirTime;
+	m_totalDuration = tmpCom->m_roleCfg->WanderDuration;
+	m_changeDirDuration = tmpCom->m_roleCfg->WanderChangeDirTime;
 
 	m_timeCounter = 0;
 	GoToSomewhere(context);
@@ -340,7 +340,7 @@ eBehaviorStatus PawnAttackNear::Update(BHUpdateContext& context)
 	ComPawnAnim* animCom = data.pEntity->GetComponent<ComPawnAnim>();
 	animCom->SetDebugLabel("a1u");
 
-	if (attackAnimCount >= tempCom->m_pRoleData->maxAttack1Times)
+	if (attackAnimCount >= tempCom->m_roleCfg->maxAttack1Times)
 		return BH_Success;
 	else
 		return BH_Running;

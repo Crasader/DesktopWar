@@ -14,7 +14,7 @@ void SystemBulletTarget::Initialize()
 {
 	positionMapper.init(*world);
 	targetMapper.init(*world);
-	templateMapper.init(*world);
+	agentMapper.init(*world);
 
 	// register event.
 	//EventManager::GetSingleton()->AddListener(this, Event_xxx);

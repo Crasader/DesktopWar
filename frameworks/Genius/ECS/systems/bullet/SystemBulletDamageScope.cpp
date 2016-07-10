@@ -22,7 +22,7 @@ void SystemBulletDamageScope::Initialize()
 {
 	positionMapper.init(*world);
 	damageMapper.init(*world);
-	bulletTemplateMapper.init(*world);
+	agentMapper.init(*world);
 
 	// register event.
 	EventManager::GetSingleton()->AddListener(this, Event_BulletTrigger);
@@ -78,11 +78,11 @@ bool SystemBulletDamageScope::TriggerBulletBuff(IEventData const &evt)
 	if (!IsMyEntity(ownerEntity))
 		return false;
 	ComBulletDamageScope* attackCom = damageMapper.get(ownerEntity);
-	ComBulletTemplate* bulletTempCom = bulletTemplateMapper.get(ownerEntity);
-	if (nullptr == bulletTempCom || nullptr == attackCom)
+	ComBulletAgent* bulletAgent = agentMapper.get(ownerEntity);
+	if (nullptr == bulletAgent || nullptr == attackCom)
 		return false;
 
-	const Bullet_cfg* bulletInfo = bulletTempCom->pBulletData;
+	const Bullet_cfg* bulletInfo = bulletAgent->pBulletData;
 
 	std::vector<Entity*> targets;
 	FindTargetsInScope(ownerEntity, bulletInfo->buffTargetRadius, false, targets);
@@ -115,7 +115,7 @@ void SystemBulletDamageScope::FindTargetsInScope(Entity* pEntity, int radius, bo
 			continue;
 
 		ComPawnAgent* enemyAgent = eneEntity->GetComponent<ComPawnAgent>();
-		if (enemyAgent && enemyAgent->GetBlackboard()->m_currentHP <= 0)
+		if (enemyAgent && enemyAgent->GetBlackboard()->GetAttr(AttrType::HP) <= 0)
 			continue;
 
 		ComTeam* enComTeam = eneEntity->GetComponent<ComTeam>();

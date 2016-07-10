@@ -51,12 +51,12 @@ namespace Genius
 		int GetOwner(){ return m_ownerID; }
 		void		SetSkillCfg(int tp);
 		cfg::Skill_cfg* GetSkillCfg(){ return m_skillData; }
-		std::vector<int>& GetTargetList(){ return targetList; }
+		std::vector<int>& GetTargetList(){ return m_targetList; }
 
 	private:
 		cfg::Skill_cfg* m_skillData;
 		int			m_ownerID;
-		std::vector<int> targetList;
+		std::vector<int> m_targetList;
 	};
 
 }

@@ -14,13 +14,14 @@ namespace cfg
 		virtual int Init(Genius::TabFile& reader, int row, int col);
 
 		int logicId;
-		int series;
-		int hurtType;
+		int attrType;
+		int modType;
+		int calType;
+		int value;
 		int duration;
 		int jumpTime;
-		int maxPileCount;
+		int series;
 		int pileType;
-		int actionID;
-		int actionType;
+		int maxPileCount;
 	};
 };

@@ -30,7 +30,7 @@ bool Skill::Trigger(int owner, int target)
 	if (nullptr == m_skillData)
 		return false;
 
-	targetList.clear();
+	m_targetList.clear();
 
 	switch (m_skillData->targetType)
 	{
@@ -66,6 +66,7 @@ void Skill::_TargetOne(int owner, int target)
 	default:
 		return;
 	}
+	m_targetList.push_back(target);
 }
 
 void Skill::_TargetScope(int owner, int target)
@@ -76,10 +77,10 @@ void Skill::_TargetScope(int owner, int target)
 	switch (m_skillData->targetTeam)
 	{
 	case TTT_Enemy:
-		fightSys->FindTargetsInScope(owner, m_skillData->radius, false, false, targetList);
+		fightSys->FindTargetsInScope(owner, m_skillData->radius, false, false, m_targetList);
 		break;
 	case TTT_Self:
-		fightSys->FindTargetsInScope(owner, m_skillData->radius, true, true, targetList);
+		fightSys->FindTargetsInScope(owner, m_skillData->radius, true, true, m_targetList);
 		break;
 	default:
 		return;

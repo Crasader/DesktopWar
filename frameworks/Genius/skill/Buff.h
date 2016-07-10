@@ -2,7 +2,6 @@
 #define _GENIUS_BUFF_H_
 
 #include <vector>
-#include "BuffAction.h"
 
 namespace cfg
 {
@@ -13,13 +12,13 @@ namespace Genius
 {
 	enum EBuffPileType
 	{
-		EBuffPile_None,		// default
-		EBuffPile_Replace,		// replace the same series.
-		EBuffPile_OnlyOne,	// if this series exist, then do not add buff.
-		EBuffPile_DoNothing,	// do nothing.
+		Pile_None,
+		Pile_Replace,
+		Pile_OnlyOne,
+		Pile_JustDoIt,
 	};
 
-	struct Effect
+	/*struct Effect
 	{
 		Effect()
 		{
@@ -27,15 +26,15 @@ namespace Genius
 		}
 		bool effected;
 		BuffAction action;
-	};
+	};*/
 
 	enum EffectCycleType
 	{
-		EffectCycleType_Interval,
-		EffectCycleType_Point,
+		EffectCycle_Interval,
+		EffectCycle_Point,
 	};
 
-	struct EffectCycle
+	/*struct EffectCycle
 	{
 		EffectCycle()
 		{
@@ -46,7 +45,7 @@ namespace Genius
 		int m_interval;
 		BuffAction action;
 	};
-
+	*/
 	enum EbuffRet
 	{
 		EBuffRet_Invalid = -1,
@@ -63,17 +62,17 @@ namespace Genius
 	public:
 		friend class BuffSet;
 
-		enum EBuffHurtType
+		enum EBuffModType
 		{
-			EBuffHurtType_None = 0,
-			EBuffHurtType_Add,
-			EBuffHurtType_Sub,
+			EBuffMod_None = 0,
+			EBuffMod_Add = 1,
+			EBuffMod_Dec = 2,
 		};
 
 	public:
 		Buff();
 
-		bool		LoadFromTemplate(int tempID);
+		bool		Init(int cfg);
 		int		Update(float elapse);
 
 		int		AddPile();
@@ -84,12 +83,13 @@ namespace Genius
 		int		GetInstID(){ return m_instID; }
 		void		SetInstID(int id){ m_instID = id; }
 		bool		IsAlive();
-		int		GetSeriesType();
+		cfg::Buff_cfg* GetCfg(){ return m_cfg; }
+		int		GetSeries();
 		int		GetPileType();
 		float		GetMaxPersist();
 		int		GetSender(){ return m_senderID; }
 		int		GetReceiver(){ return m_receiverID; }
-		int		GetType();
+		int		GetModType();
 
 	private:
 		bool Begin();
@@ -98,22 +98,21 @@ namespace Genius
 		bool EndEffect();
 
 	private:
-		cfg::Buff_cfg*					m_buffTemplate;
-		//BuffStrategyData*	m_strategyTemplate;
+		cfg::Buff_cfg*			m_cfg;
 		int				m_senderID;
 		int				m_receiverID;
 		int				m_instID;
-		float			m_duration;
-		float			m_life;
-		float			m_lastActionTime;
+		float				m_duration;
+		float				m_life;
+		float				m_lastActionTime;
 		int				m_curPileCount;
 		int				m_skillID;
 		bool				m_alive;
 		int				m_cycleCount;
-		std::vector<Effect>			m_beginActions;
+		/*std::vector<Effect>			m_beginActions;
 		std::vector<EffectCycle>	m_cycleActions;
 		std::vector <Effect>			m_effectActions;
-		std::vector <Effect>			m_endActions;
+		std::vector <Effect>			m_endActions;*/
 	};
 
 }

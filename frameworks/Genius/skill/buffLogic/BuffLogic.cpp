@@ -3,6 +3,9 @@
 #include "common//Log.h"
 
 #include "BL_ChangeAttr.h"
+#include "BL_Damage.h"
+#include "BL_Spawn.h"
+
 
 using namespace Genius;
 
@@ -35,8 +38,10 @@ BuffLogic* BuffLogic::GetLogic(int type)
 {
 	if (sLogicCreator.size() == 0)
 	{
+		// ÔÚÕâÀï×¢²ábuffÂß¼­
 		REGISTER_BUFFLOGIC_CREATOR(LogicType::ChangeAttr, BL_ChangeAttr);
-		//REGISTER_BUFFLOGIC_CREATOR(LogicType::ChangeAttr, BL_ChangeAttr);
+		REGISTER_BUFFLOGIC_CREATOR(LogicType::Damage, BL_Damage);
+		REGISTER_BUFFLOGIC_CREATOR(LogicType::Spawn, BL_Spawn);
 	}
 
 	if (type <= LogicType::Unknown || type >= LogicType::Count)

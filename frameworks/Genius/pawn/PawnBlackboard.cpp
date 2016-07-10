@@ -3,13 +3,22 @@
 #include "ECS/components/pawn/ComPawnAgent.h"
 #include "action/PawnActionFactory.h"
 #include "action/ActionHandler.h"
+#include "pawn/PawnDefines.h"
+#include "common/Log.h"
 
 using namespace Genius;
 
 PawnBlackboard::PawnBlackboard(ComPawnAgent* agent)
 {
 	m_pAgent = agent;
-	m_currentHP = agent->m_pRoleData->baseLife;
+	auto cfg = agent->m_roleCfg;
+	SetAttr(AttrType::HP, cfg->baseLife);
+	SetAttr(AttrType::MoveSpeed, 1);
+	SetAttr(AttrType::AttackSpeed, 1);
+	SetAttr(AttrType::AttackStren, cfg->attackValue);
+	SetAttr(AttrType::DefencePhy, cfg->antiPhysicValue);
+	SetAttr(AttrType::DefenceMag, cfg->antiMagicValue);
+	SetAttr(AttrType::Dodge, cfg->dodgeValue);
 }
 
 PawnBlackboard::~PawnBlackboard()
@@ -79,14 +88,44 @@ void PawnBlackboard::RemoveActionHandler(ActionHandler* pHandler)
 }
 
 
+int PawnBlackboard::GetAttr(int type)
+{
+	if (type <= AttrType::ATNone && type >= AttrType::Count)
+	{
+		Log::Error("PawnBlackboard.GetAttr : wrong type %d", type);
+		return 0;
+	}
 
+	return m_attr[type];
+}
 
+void PawnBlackboard::SetAttr(int type, int value)
+{
+	if (type <= AttrType::ATNone && type >= AttrType::Count)
+	{
+		Log::Error("PawnBlackboard.SetAttr : wrong type %d", type);
+		return;
+	}
 
+	m_attr[type] = value;
 
+	if (m_attr[type] < 0)
+		m_attr[type] = 0;
+}
 
+void PawnBlackboard::ModAttr(int type, int value)
+{
+	if (type <= AttrType::ATNone && type >= AttrType::Count)
+	{
+		Log::Error("PawnBlackboard.SetAttr : wrong type %d", type);
+		return;
+	}
 
+	m_attr[type] = m_attr[type] + value;
 
-
+	if (m_attr[type] < 0)
+		m_attr[type] = 0;
+}
 
 
 

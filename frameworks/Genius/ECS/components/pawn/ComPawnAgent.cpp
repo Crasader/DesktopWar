@@ -10,7 +10,7 @@ using namespace cfg;
 
 ComPawnAgent::ComPawnAgent(Role_cfg* pData)
 {
-	m_pRoleData = pData;
+	m_roleCfg = pData;
 
 	m_pBlackboard = new PawnBlackboard(this);
 }

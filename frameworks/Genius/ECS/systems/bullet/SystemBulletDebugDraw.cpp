@@ -15,7 +15,7 @@ void SystemBulletDebugDraw::Initialize()
 {
 	debugDrawMapper.init(*world);
 	positionMapper.init(*world);
-	templateMapper.init(*world);
+	agentMapper.init(*world);
 	boxColliderMapper.init(*world);
 
 	// register event.
@@ -26,16 +26,16 @@ void SystemBulletDebugDraw::ProcessEntity(Entity* e)
 {
 	ComBulletDebugDraw* debugCom = debugDrawMapper.get(e);
 	ComPosition* posCom = positionMapper.get(e);
-	ComBulletTemplate* tempCom = templateMapper.get(e);
+	ComBulletAgent* bulletAgent = agentMapper.get(e);
 	ComBoxCollider* ComBoxCollider = boxColliderMapper.get(e);
 	
-	if (nullptr != debugCom && nullptr != posCom && nullptr != tempCom && nullptr != ComBoxCollider)
+	if (nullptr != debugCom && nullptr != posCom && nullptr != bulletAgent && nullptr != ComBoxCollider)
 	{
 		do
 		{
 			// attack range
 			Vec2 center(posCom->x, posCom->y);
-			float radiusNear = tempCom->pBulletData->buffTargetRadius;
+			float radiusNear = bulletAgent->pBulletData->buffTargetRadius;
 			debugCom->Clear();
 			debugCom->pNodeHurtRange->drawCircle(center, radiusNear, 0, 12, true, Color4F::RED);
 		} while (false);

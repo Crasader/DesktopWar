@@ -4,7 +4,7 @@
 #include "../../core/ComponentMapper.h"
 #include "../../components/common/ComPosition.h"
 #include "../../components/common/ComTarget.h"
-#include "../../components/bullet/ComBulletTemplate.h"
+#include "../../components//bullet/ComBulletAgent.h"
 
 namespace Genius
 {
@@ -13,12 +13,12 @@ namespace Genius
 	private:
 		ComponentMapper<ComPosition> positionMapper;
 		ComponentMapper<ComTarget> targetMapper;
-		ComponentMapper<ComBulletTemplate> templateMapper;
+		ComponentMapper<ComBulletAgent> agentMapper;
 
 	public:
 		SystemBulletTarget()
 		{
-			SetComponentTypes<ComPosition, ComTarget, ComBulletTemplate>();
+			SetComponentTypes<ComPosition, ComTarget, ComBulletAgent>();
 		}
 		virtual const char* GetName(){ return "SystemBulletTarget"; }
 		virtual void Initialize();

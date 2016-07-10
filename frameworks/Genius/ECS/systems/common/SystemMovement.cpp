@@ -63,7 +63,7 @@ bool SystemMovement::HandleEvent(IEventData const &event)
 			ComPawnAgent* pawnTemp = actionEvent.entity->GetComponent<ComPawnAgent>();
 			if (pawnTemp)
 			{
-				speed = pawnTemp->m_pRoleData->moveSpeed;
+				speed = pawnTemp->m_roleCfg->moveSpeed;
 			}
 			vel->x = delta.x * speed;
 			vel->y = delta.y * speed;

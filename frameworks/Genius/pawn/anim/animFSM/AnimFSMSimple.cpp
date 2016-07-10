@@ -1,12 +1,16 @@
 
 #include "AnimFSMSimple.h"
+#include "pawn/action/ActionDefine.h"
+#include "pawn/action/PawnAction.h"
 #include "../animState/AnimStateIdle.h"
 #include "../animState/AnimStateDie.h"
 #include "../animState/AnimStateMove.h"
 #include "../animState/AnimStateAttackNear.h"
 #include "../animState/AnimStateAttackFar.h"
-#include "pawn/action/ActionDefine.h"
-#include "pawn/action/PawnAction.h"
+#include "../animState/AnimStateSkill1.h"
+#include "../animState/AnimStateSkill2.h"
+#include "../animState/AnimStateSkill3.h"
+
 
 using namespace Genius;
 
@@ -30,6 +34,9 @@ void AnimFSMSimple::Initialize()
 	m_animStateList.insert(std::make_pair(PAT_Move, new AnimStateMove(m_pComPawnAnim)));
 	m_animStateList.insert(std::make_pair(PAT_AttackNear, new AnimStateAttackNear(m_pComPawnAnim)));
 	m_animStateList.insert(std::make_pair(PAT_AttackFar, new AnimStateAttackFar(m_pComPawnAnim)));
+	m_animStateList.insert(std::make_pair(PAT_Skill1, new AnimStateSkill1(m_pComPawnAnim)));
+	m_animStateList.insert(std::make_pair(PAT_Skill2, new AnimStateSkill2(m_pComPawnAnim)));
+	m_animStateList.insert(std::make_pair(PAT_Skill3, new AnimStateSkill3(m_pComPawnAnim)));
 
 	AnimFSM::Initialize();
 }
@@ -71,8 +78,10 @@ void AnimFSMSimple::DoAction(PawnAction* pAction)
 			pNewState = m_animStateList[actType];
 			break;
 		case PAT_Skill2:
+			pNewState = m_animStateList[actType];
 			break;
 		case PAT_Skill3:
+			pNewState = m_animStateList[actType];
 			break;
 		default:
 			break;

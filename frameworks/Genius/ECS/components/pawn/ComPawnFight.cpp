@@ -33,10 +33,10 @@ bool ComPawnFight::Init()
 {
 	Entity* ent = this->GetOwner();
 	ComPawnAgent* tempCom = ent->GetComponent<ComPawnAgent>();
-	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_pRoleData->normalSkill1);
-	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_pRoleData->normalSkill2);
-	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_pRoleData->specialSkill1);
-	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_pRoleData->specialSkill2);
-	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_pRoleData->specialSkill3);
+	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_roleCfg->normalSkill1);
+	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_roleCfg->normalSkill2);
+	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_roleCfg->specialSkill1);
+	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_roleCfg->specialSkill2);
+	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_roleCfg->specialSkill3);
 	return true;
 }
