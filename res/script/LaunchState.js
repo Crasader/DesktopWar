@@ -27,9 +27,9 @@ var LaunchState = GameState.extend
 
     ParseResourceList:function(loadMgr)
     {
-        loadMgr.AddResource(1, "HolyKnight")
-        loadMgr.AddResource(1, "BigDevil")
-        loadMgr.AddResource(1, "NoxiousSon")
+        loadMgr.AddRole(2012)
+        loadMgr.AddRole(2011)
+        loadMgr.AddRole(1007)
     }
 
     

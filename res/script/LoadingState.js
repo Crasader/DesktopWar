@@ -33,11 +33,11 @@ var LoadingState = GameState.extend
             this.percentLabel.setScale(1.5)
             this.percentLabel.setPosition(x, y-20)
 
-            var animInfo = Config.anim["Loading_King"]
+            var animInfo = Config.Animation["4001"]
             if (animInfo != null)
             {
                 ccs.ArmatureDataManager.getInstance().addArmatureFileInfo(animInfo.filePath)
-                var pArmature = ccs.Armature.create("Loading_King")
+                var pArmature = ccs.Armature.create(animInfo.name)
                 pArmature.setPosition(x, y)
                 this.uiRoot.addChild(pArmature)
                 pArmature.getAnimation().playWithIndex(0)

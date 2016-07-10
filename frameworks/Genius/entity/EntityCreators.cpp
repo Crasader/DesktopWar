@@ -4,6 +4,7 @@
 #include "ECS/ecs.h"
 #include "data/auto/Role_cfg.hpp"
 #include "data/auto/Bullet_cfg.hpp"
+#include "data/auto/Animation_cfg.hpp"
 #include "data/ConfigPool.h"
 #include "bullet/BulletDefines.h"
 #include "Log.h"
@@ -12,17 +13,7 @@
 
 using namespace Genius;
 using namespace cfg;
-/*
-Entity* EntityCreator::CreatePawn(std::string id, float x, float y, int team)
-{
-	Role_cfg* roleInfo = FIND_CFG(Role_cfg, id);
-	if (nullptr == roleInfo)
-	{
-		Log::Warning("error role type : %s", id.c_str());
-		return nullptr;
-	
-	return CreatePawn(roleInfo->id, x, y, team);
-}*/
+
 
 int EntityCreator::CreatePawn(int id, float x, float y, int team)
 {
@@ -67,45 +58,52 @@ int EntityCreator::CreatePawn(int id, float x, float y, int team)
 
 int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float y, int team, float destX, float destY)
 {
-	Bullet_cfg* bulletInfo = FIND_CFG(Bullet_cfg, bulletID);
-	if (nullptr == bulletInfo)
+	Bullet_cfg* bulletCfg = FIND_CFG(Bullet_cfg, bulletID);
+	if (nullptr == bulletCfg)
 	{
-		Log::Warning("error bullet type : %d", bulletID);
+		Log::Warning("error bullet id : %d", bulletID);
+		return 0;
+	}
+
+	auto anim_cfg = FIND_CFG(Animation_cfg, bulletCfg->bodyAnim);
+	if (nullptr == anim_cfg)
+	{
+		Log::Warning("error bullet anim id : %d", bulletID);
 		return 0;
 	}
 
 	Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
-	ent->AddComponent(new ComBulletAgent(bulletInfo));
+	ent->AddComponent(new ComBulletAgent(bulletCfg));
 	ent->AddComponent(new ComPosition(x, y));
 	ent->AddComponent(new ComTeam(team));
-	ent->AddComponent(new ComBoxCollider(true, 0, 0, bulletInfo->boxWidth, bulletInfo->boxHeight));
+	ent->AddComponent(new ComBoxCollider(true, 0, 0, bulletCfg->boxWidth, bulletCfg->boxHeight));
 	if (cfg_EnableDebugDraw) ent->AddComponent(new ComBulletDebugDraw());
 	
-	if (bulletInfo->moveType == BulletMoveType::BMT_Line)
+	if (bulletCfg->moveType == BulletMoveType::BMT_Line)
 	{
 		ent->AddComponent(new ComVelocity(0, 0));
 		ent->AddComponent(new ComBulletDamageNone());
-		ent->AddComponent(new ComBulletAnimEgg(bulletInfo->bodyAnim));
+		ent->AddComponent(new ComBulletAnimEgg(anim_cfg->name));
 	}
-	else if (bulletInfo->moveType == BulletMoveType::BMT_Bezier)
+	else if (bulletCfg->moveType == BulletMoveType::BMT_Bezier)
 	{
 		ent->AddComponent(new ComVelocity(0, 0));
 		ent->AddComponent(new ComTarget(Target_Location, 0, destX, destY));
-		ent->AddComponent(new ComBezierMovement(x, y, destX, destY, (abs(x - destX) + abs(y - destY)) / bulletInfo->flySpeed));
+		ent->AddComponent(new ComBezierMovement(x, y, destX, destY, (abs(x - destX) + abs(y - destY)) / bulletCfg->flySpeed));
 		ent->AddComponent(new ComBulletDamageSingle());
-		ent->AddComponent(new ComBulletAnimArrow(bulletInfo->bodyAnim));
+		ent->AddComponent(new ComBulletAnimArrow(anim_cfg->name));
 		SystemBulletDamageSingle* atkSys = ECSWorld::GetSingleton()->GetSystemManager()->GetSystem<SystemBulletDamageSingle>();
 		ent->AddComponent(new ComColliderHandler(std::bind(&SystemBulletDamageSingle::collisionHandler, atkSys, std::placeholders::_1, std::placeholders::_2),nullptr));
 	}
-	else if(bulletInfo->moveType == BulletMoveType::BMT_Tracking)
+	else if(bulletCfg->moveType == BulletMoveType::BMT_Tracking)
 	{
 		SystemPawnFight* fightSys = ECSWorld::GetSingleton()->GetSystemManager()->GetSystem<SystemPawnFight>();
 		int tarEntityID = fightSys->FindFirstTargetByTeam(team);
-		ent->AddComponent(new ComVelocity(0, bulletInfo->flySpeed));
+		ent->AddComponent(new ComVelocity(0, bulletCfg->flySpeed));
 		ent->AddComponent(new ComTarget(Target_Entity, tarEntityID));
-		ent->AddComponent(new ComDelayTrackMoving(tarEntityID, bulletInfo->findTargetDelay));
+		ent->AddComponent(new ComDelayTrackMoving(tarEntityID, bulletCfg->findTargetDelay));
 		ent->AddComponent(new ComBulletDamageScope());
-		ent->AddComponent(new ComBulletAnimBomb(bulletInfo->bodyAnim, bulletInfo->tailAnim));
+		ent->AddComponent(new ComBulletAnimBomb(anim_cfg->name, bulletCfg->tailAnim));
 		SystemBulletDamageScope* atkSys = ECSWorld::GetSingleton()->GetSystemManager()->GetSystem<SystemBulletDamageScope>();
 		ent->AddComponent(new ComColliderHandler(std::bind(&SystemBulletDamageScope::OnCollision, atkSys, std::placeholders::_1, std::placeholders::_2),nullptr));
 	}

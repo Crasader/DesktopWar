@@ -34,7 +34,11 @@ public:
 
 	void GenerateUnLoadList();
 	void ClearLoadingList();
-	void AddResource(int type, std::string id);
+	
+	void AddAnim(int id);
+	void AddRole(int id);
+	void AddBullet(int id);
+
 	void StartLoading();
 
 	// false表示全部加载完毕

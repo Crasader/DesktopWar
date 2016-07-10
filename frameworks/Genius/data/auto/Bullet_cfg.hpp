@@ -21,7 +21,7 @@ namespace cfg
 		int maxLifeTime;
 		int boxWidth;
 		int boxHeight;
-		string bodyAnim;
+		int bodyAnim;
 		string tailAnim;
 		int buffTargetStyle;
 		int buffTargetRadius;

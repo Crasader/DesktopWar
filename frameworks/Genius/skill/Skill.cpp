@@ -50,6 +50,7 @@ bool Skill::Trigger(int owner, int target)
 
 	_ActiveMe();
 
+	return true;
 }
 
 void Skill::_TargetOne(int owner, int target)

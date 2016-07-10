@@ -16,7 +16,6 @@ require("res/script/LoadingState.js")
 require("res/script/WarState.js")
 
 
-print(Config.anim["Tkdo"].filePath)
 //print("lololol JS bang!")
 
 

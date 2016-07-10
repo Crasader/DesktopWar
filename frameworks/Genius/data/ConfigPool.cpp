@@ -57,12 +57,6 @@ bool ConfigPool::Init()
 			pCfg->Init(tabFile, i, 1);
 			if (pCfg->id > 0)
 				oneMap.insert(make_pair(pCfg->id, pCfg));
-			else
-			{
-				std::hash<std::string> h;
-				size_t n = h(pCfg->idStr);
-				oneMap.insert(make_pair(n, pCfg));
-			}
 		}
 
 		m_pool.insert(make_pair(typeMap[className], oneMap));
@@ -101,25 +95,6 @@ BaseConfig* ConfigPool::GetConfig(size_t hash, int id)
 		auto mp = m_pool[key];
 		if (mp.find(id) != mp.end())
 			return mp[id];
-		else
-			return nullptr;
-	}
-	else
-	{
-		return nullptr;
-	}
-}
-
-BaseConfig* ConfigPool::GetConfig(size_t hash, std::string id)
-{
-	size_t key = hash;
-	if (m_pool.find(key) != m_pool.end())
-	{
-		auto mp = m_pool[key];
-		std::hash<std::string> h;
-		size_t n = h(id);
-		if (mp.find(n) != mp.end())
-			return mp[n];
 		else
 			return nullptr;
 	}

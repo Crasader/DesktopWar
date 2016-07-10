@@ -1,3 +1,3 @@
 ﻿var Config = {}
 
-require("res/script/configs/anim.js")
+require("res/script/configs/Animation.js")

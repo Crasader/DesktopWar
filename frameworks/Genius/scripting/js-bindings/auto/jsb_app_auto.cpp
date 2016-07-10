@@ -621,6 +621,46 @@ bool js_app_LoadingManager_StartLoading(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_LoadingManager_StartLoading : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
+bool js_app_LoadingManager_AddBullet(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    LoadingManager* cobj = (LoadingManager *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_LoadingManager_AddBullet : Invalid Native Object");
+    if (argc == 1) {
+        int arg0 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_LoadingManager_AddBullet : Error processing arguments");
+        cobj->AddBullet(arg0);
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_LoadingManager_AddBullet : wrong number of arguments: %d, was expecting %d", argc, 1);
+    return false;
+}
+bool js_app_LoadingManager_AddAnim(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    LoadingManager* cobj = (LoadingManager *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_LoadingManager_AddAnim : Invalid Native Object");
+    if (argc == 1) {
+        int arg0 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_LoadingManager_AddAnim : Error processing arguments");
+        cobj->AddAnim(arg0);
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_LoadingManager_AddAnim : wrong number of arguments: %d, was expecting %d", argc, 1);
+    return false;
+}
 bool js_app_LoadingManager_UpdateLoading(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -637,26 +677,20 @@ bool js_app_LoadingManager_UpdateLoading(JSContext *cx, uint32_t argc, jsval *vp
     JS_ReportError(cx, "js_app_LoadingManager_UpdateLoading : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
-bool js_app_LoadingManager_AddResource(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_app_LoadingManager_GenerateUnLoadList(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
     JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
     js_proxy_t *proxy = jsb_get_js_proxy(obj);
     LoadingManager* cobj = (LoadingManager *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_LoadingManager_AddResource : Invalid Native Object");
-    if (argc == 2) {
-        int arg0 = 0;
-        std::string arg1;
-        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
-        ok &= jsval_to_std_string(cx, args.get(1), &arg1);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_LoadingManager_AddResource : Error processing arguments");
-        cobj->AddResource(arg0, arg1);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_LoadingManager_GenerateUnLoadList : Invalid Native Object");
+    if (argc == 0) {
+        cobj->GenerateUnLoadList();
         args.rval().setUndefined();
         return true;
     }
 
-    JS_ReportError(cx, "js_app_LoadingManager_AddResource : wrong number of arguments: %d, was expecting %d", argc, 2);
+    JS_ReportError(cx, "js_app_LoadingManager_GenerateUnLoadList : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
 bool js_app_LoadingManager_IsLoadingDone(JSContext *cx, uint32_t argc, jsval *vp)
@@ -695,20 +729,24 @@ bool js_app_LoadingManager_GetLoadingPercent(JSContext *cx, uint32_t argc, jsval
     JS_ReportError(cx, "js_app_LoadingManager_GetLoadingPercent : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
-bool js_app_LoadingManager_GenerateUnLoadList(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_app_LoadingManager_AddRole(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
     JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
     js_proxy_t *proxy = jsb_get_js_proxy(obj);
     LoadingManager* cobj = (LoadingManager *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_LoadingManager_GenerateUnLoadList : Invalid Native Object");
-    if (argc == 0) {
-        cobj->GenerateUnLoadList();
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_LoadingManager_AddRole : Invalid Native Object");
+    if (argc == 1) {
+        int arg0 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_LoadingManager_AddRole : Error processing arguments");
+        cobj->AddRole(arg0);
         args.rval().setUndefined();
         return true;
     }
 
-    JS_ReportError(cx, "js_app_LoadingManager_GenerateUnLoadList : wrong number of arguments: %d, was expecting %d", argc, 0);
+    JS_ReportError(cx, "js_app_LoadingManager_AddRole : wrong number of arguments: %d, was expecting %d", argc, 1);
     return false;
 }
 bool js_app_LoadingManager_ClearLoadingList(JSContext *cx, uint32_t argc, jsval *vp)
@@ -764,11 +802,13 @@ void js_register_app_LoadingManager(JSContext *cx, JS::HandleObject global) {
 
     static JSFunctionSpec funcs[] = {
         JS_FN("StartLoading", js_app_LoadingManager_StartLoading, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("AddBullet", js_app_LoadingManager_AddBullet, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("AddAnim", js_app_LoadingManager_AddAnim, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("UpdateLoading", js_app_LoadingManager_UpdateLoading, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("AddResource", js_app_LoadingManager_AddResource, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("GenerateUnLoadList", js_app_LoadingManager_GenerateUnLoadList, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("IsLoadingDone", js_app_LoadingManager_IsLoadingDone, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("GetLoadingPercent", js_app_LoadingManager_GetLoadingPercent, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("GenerateUnLoadList", js_app_LoadingManager_GenerateUnLoadList, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("AddRole", js_app_LoadingManager_AddRole, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("ClearLoadingList", js_app_LoadingManager_ClearLoadingList, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };

@@ -15,7 +15,7 @@ namespace cfg
 
 		string nameID;
 		string nameCN;
-		string animSetName;
+		int animSetId;
 		string bevTreeFile;
 		int moveSpeed;
 		int viewRange;

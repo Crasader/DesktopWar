@@ -40,9 +40,9 @@ IMPL_CONFIG_CREATE(Bullet_cfg);
 			if(reader.GetStringValue(row, col).length() > 0)
 				boxHeight = reader.GetIntValue(row, col++);
 
-			bodyAnim = "";
+			bodyAnim = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				bodyAnim = reader.GetStringValue(row, col++);
+				bodyAnim = reader.GetIntValue(row, col++);
 
 			tailAnim = "";
 			if(reader.GetStringValue(row, col).length() > 0)

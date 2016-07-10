@@ -13,6 +13,7 @@ namespace cfg
 
 		virtual int Init(Genius::TabFile& reader, int row, int col);
 
+		string name;
 		string filePath;
 	};
 };

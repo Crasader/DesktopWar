@@ -10,7 +10,7 @@ string BaseConfig::Separator = ",";
 
 int BaseConfig::Init(Genius::TabFile& reader, int row, int col)
 {
-	idStr = reader.GetStringValue(row, col);
+	auto idStr = reader.GetStringValue(row, col);
 	id = reader.ToInt(idStr);
 
 	return ++col;

@@ -61,11 +61,13 @@ void js_app_LoadingManager_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_LoadingManager(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_LoadingManager_StartLoading(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_LoadingManager_AddBullet(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_LoadingManager_AddAnim(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_LoadingManager_UpdateLoading(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_LoadingManager_AddResource(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_LoadingManager_GenerateUnLoadList(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_LoadingManager_IsLoadingDone(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_LoadingManager_GetLoadingPercent(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_LoadingManager_GenerateUnLoadList(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_LoadingManager_AddRole(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_LoadingManager_ClearLoadingList(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_LoadingManager_LoadingManager(JSContext *cx, uint32_t argc, jsval *vp);
 

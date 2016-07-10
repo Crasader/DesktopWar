@@ -202,6 +202,26 @@ StartLoading : function (
 },
 
 /**
+ * @method AddBullet
+ * @param {int} arg0
+ */
+AddBullet : function (
+int 
+)
+{
+},
+
+/**
+ * @method AddAnim
+ * @param {int} arg0
+ */
+AddAnim : function (
+int 
+)
+{
+},
+
+/**
  * @method UpdateLoading
  */
 UpdateLoading : function (
@@ -210,13 +230,9 @@ UpdateLoading : function (
 },
 
 /**
- * @method AddResource
- * @param {int} arg0
- * @param {String} arg1
+ * @method GenerateUnLoadList
  */
-AddResource : function (
-int, 
-str 
+GenerateUnLoadList : function (
 )
 {
 },
@@ -242,9 +258,11 @@ GetLoadingPercent : function (
 },
 
 /**
- * @method GenerateUnLoadList
+ * @method AddRole
+ * @param {int} arg0
  */
-GenerateUnLoadList : function (
+AddRole : function (
+int 
 )
 {
 },

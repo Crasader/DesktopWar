@@ -30,22 +30,27 @@ ComPawnAnim::ComPawnAnim(int roleID) :
 m_curAction(Action_Idle),
 m_pAnimFsm(nullptr)
 {
-	Role_cfg* roleData = FIND_CFG(Role_cfg, roleID);
-	if (roleData)
+	auto roleCfg = FIND_CFG(Role_cfg, roleID);
+	if (roleCfg)
 	{
+		//root node
 		m_pAvatarRoot = cocos2d::Node::create();
-		m_pBodyArmature = cocostudio::Armature::create(roleData->animSetName);
-		m_pAvatarRoot->addChild(m_pBodyArmature);
-		m_pLifeBar = UIBar::create(roleData->lifeBarType);
-		m_pLifeBar->setPosition(0, 0 + roleData->lifeBarHeight);
-		m_pAvatarRoot->addChild(m_pLifeBar);
 		SceneManager::GetSingleton()->AddToMapLayer(m_pAvatarRoot);
-
-		m_pBodyArmature->getAnimation()->setFrameEventCallFunc(CC_CALLBACK_3(ComPawnAnim::AnimationFrameCallback, this, std::placeholders::_4));
-		m_pBodyArmature->getAnimation()->setMovementEventCallFunc(CC_CALLBACK_3(ComPawnAnim::AnimationMovementCallback, this));
-
-		PlayAnimation(PawnAnimName::IdleLeft);
-
+		// life bar
+		m_pLifeBar = UIBar::create(roleCfg->lifeBarType);
+		m_pLifeBar->setPosition(0, 0 + roleCfg->lifeBarHeight);
+		m_pAvatarRoot->addChild(m_pLifeBar);
+		//anim
+		auto animCfg = FIND_CFG(Animation_cfg, roleCfg->animSetId);
+		if (animCfg)
+		{
+			m_pBodyArmature = cocostudio::Armature::create(animCfg->name);
+			m_pAvatarRoot->addChild(m_pBodyArmature);
+			m_pBodyArmature->getAnimation()->setFrameEventCallFunc(CC_CALLBACK_3(ComPawnAnim::AnimationFrameCallback, this, std::placeholders::_4));
+			m_pBodyArmature->getAnimation()->setMovementEventCallFunc(CC_CALLBACK_3(ComPawnAnim::AnimationMovementCallback, this));
+			PlayAnimation(PawnAnimName::IdleLeft);
+		}
+		//debug label
 		m_pDebugLabel = Label::createWithBMFont("res/font/arial16.fnt", "- -", TextHAlignment::LEFT);
 		m_pDebugLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
 		m_pDebugLabel->setScale(0.8f);

@@ -16,9 +16,9 @@ IMPL_CONFIG_CREATE(Role_cfg);
 			if(reader.GetStringValue(row, col).length() > 0)
 				nameCN = reader.GetStringValue(row, col++);
 
-			animSetName = "";
+			animSetId = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				animSetName = reader.GetStringValue(row, col++);
+				animSetId = reader.GetIntValue(row, col++);
 
 			bevTreeFile = "";
 			if(reader.GetStringValue(row, col).length() > 0)

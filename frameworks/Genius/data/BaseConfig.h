@@ -13,7 +13,6 @@ namespace cfg
 	{
 	public:
 		int id;
-		string idStr;
 		virtual int Init(Genius::TabFile& reader, int row, int colomn);
 
 	public:

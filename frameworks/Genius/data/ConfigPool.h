@@ -20,7 +20,6 @@ namespace cfg
 		void Destroy();
 
 		BaseConfig* GetConfig(size_t hash, int id);
-		BaseConfig* GetConfig(size_t hash, std::string id);
 		std::map<int, BaseConfig*>& GetConfigMap(size_t hash);
 
 		void RegisterFactoryCreate(std::string className, create_config_class func);
@@ -34,9 +33,6 @@ namespace cfg
 
 
 #define FIND_CFG(classname, id)\
-	(classname*)cfg::ConfigPool::GetSingleton()->GetConfig(typeid(classname).hash_code(), id);
-
-#define FIND_CFG_STR(classname, id)\
 	(classname*)cfg::ConfigPool::GetSingleton()->GetConfig(typeid(classname).hash_code(), id);
 
 #define FIND_CFG_MAP(classname)\

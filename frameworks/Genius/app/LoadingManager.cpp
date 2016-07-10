@@ -1,6 +1,8 @@
 
 #include "app/LoadingManager.h"
 #include "data/auto/Animation_cfg.hpp"
+#include "data/auto/Role_cfg.hpp"
+#include "data/auto/Bullet_cfg.hpp"
 #include "data/ConfigPool.h"
 
 USING_NS_CC;
@@ -28,11 +30,25 @@ void LoadingManager::ClearLoadingList()
 	m_resources.clear();
 }
 
-void LoadingManager::AddResource(int t, std::string id)
+void LoadingManager::AddAnim(int id)
 {
-	auto anim = FIND_CFG_STR(Animation_cfg, id);
-	if (nullptr != anim)
-		m_resources.push_back(ResourceInfo((ResourceType)t, anim->filePath));
+	auto cfg = FIND_CFG(Animation_cfg, id);
+	if (nullptr != cfg)
+		m_resources.push_back(ResourceInfo(ResourceType::Json, cfg->filePath));
+}
+
+void LoadingManager::AddRole(int id)
+{
+	auto cfg = FIND_CFG(Role_cfg, id);
+	if (nullptr != cfg)
+		AddAnim(cfg->animSetId);
+}
+
+void LoadingManager::AddBullet(int id)
+{
+	auto cfg = FIND_CFG(Bullet_cfg, id);
+	if (nullptr != cfg)
+		AddAnim(cfg->bodyAnim);
 }
 
 bool LoadingManager::IsLoadingDone()
