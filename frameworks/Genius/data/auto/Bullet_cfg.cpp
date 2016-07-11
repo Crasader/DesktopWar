@@ -10,59 +10,73 @@ IMPL_CONFIG_CREATE(Bullet_cfg);
 
 			movable = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				movable = reader.GetIntValue(row, col++);
+				movable = reader.GetIntValue(row, col);
+			col++;
 
 			moveType = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				moveType = reader.GetIntValue(row, col++);
+				moveType = reader.GetIntValue(row, col);
+			col++;
 
 			targetIsEntity = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				targetIsEntity = reader.GetIntValue(row, col++);
+				targetIsEntity = reader.GetIntValue(row, col);
+			col++;
 
 			flySpeed = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				flySpeed = reader.GetIntValue(row, col++);
+				flySpeed = reader.GetIntValue(row, col);
+			col++;
 
 			findTargetDelay = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				findTargetDelay = reader.GetIntValue(row, col++);
+				findTargetDelay = reader.GetIntValue(row, col);
+			col++;
 
 			maxLifeTime = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				maxLifeTime = reader.GetIntValue(row, col++);
+				maxLifeTime = reader.GetIntValue(row, col);
+			col++;
 
 			boxWidth = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				boxWidth = reader.GetIntValue(row, col++);
+				boxWidth = reader.GetIntValue(row, col);
+			col++;
 
 			boxHeight = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				boxHeight = reader.GetIntValue(row, col++);
+				boxHeight = reader.GetIntValue(row, col);
+			col++;
 
 			bodyAnim = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				bodyAnim = reader.GetIntValue(row, col++);
+				bodyAnim = reader.GetIntValue(row, col);
+			col++;
 
 			tailAnim = "";
 			if(reader.GetStringValue(row, col).length() > 0)
-				tailAnim = reader.GetStringValue(row, col++);
+				tailAnim = reader.GetStringValue(row, col);
+			col++;
 
 			buffTargetStyle = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				buffTargetStyle = reader.GetIntValue(row, col++);
+				buffTargetStyle = reader.GetIntValue(row, col);
+			col++;
 
 			buffTargetRadius = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				buffTargetRadius = reader.GetIntValue(row, col++);
+				buffTargetRadius = reader.GetIntValue(row, col);
+			col++;
 
 			attackValue = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				attackValue = reader.GetIntValue(row, col++);
+				attackValue = reader.GetIntValue(row, col);
+			col++;
 
 			attackType = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				attackType = reader.GetIntValue(row, col++);
+				attackType = reader.GetIntValue(row, col);
+			col++;
 
 			for(int i=0; i<3; i++)
 				buffs[i] = 0;
@@ -70,7 +84,7 @@ IMPL_CONFIG_CREATE(Bullet_cfg);
 			int buffsCount = buffsArray.size();
 			for(int i=0; i<3; i++)
 			{
-				if(i < buffsCount)
+				if(i < buffsCount && buffsArray[i].length() > 0)
 					buffs[i] = reader.ToInt(buffsArray[i]);
 				else
 					buffs[i] = 0;

@@ -10,119 +10,148 @@ IMPL_CONFIG_CREATE(Role_cfg);
 
 			nameID = "";
 			if(reader.GetStringValue(row, col).length() > 0)
-				nameID = reader.GetStringValue(row, col++);
+				nameID = reader.GetStringValue(row, col);
+			col++;
 
 			nameCN = "";
 			if(reader.GetStringValue(row, col).length() > 0)
-				nameCN = reader.GetStringValue(row, col++);
+				nameCN = reader.GetStringValue(row, col);
+			col++;
 
 			animSetId = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				animSetId = reader.GetIntValue(row, col++);
+				animSetId = reader.GetIntValue(row, col);
+			col++;
 
 			bevTreeFile = "";
 			if(reader.GetStringValue(row, col).length() > 0)
-				bevTreeFile = reader.GetStringValue(row, col++);
+				bevTreeFile = reader.GetStringValue(row, col);
+			col++;
 
 			moveSpeed = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				moveSpeed = reader.GetIntValue(row, col++);
+				moveSpeed = reader.GetIntValue(row, col);
+			col++;
 
 			viewRange = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				viewRange = reader.GetIntValue(row, col++);
+				viewRange = reader.GetIntValue(row, col);
+			col++;
 
 			fightRangeNear = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				fightRangeNear = reader.GetIntValue(row, col++);
+				fightRangeNear = reader.GetIntValue(row, col);
+			col++;
 
 			fightRangeFar = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				fightRangeFar = reader.GetIntValue(row, col++);
+				fightRangeFar = reader.GetIntValue(row, col);
+			col++;
 
 			baseLife = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				baseLife = reader.GetIntValue(row, col++);
+				baseLife = reader.GetIntValue(row, col);
+			col++;
 
 			attackValue = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				attackValue = reader.GetIntValue(row, col++);
+				attackValue = reader.GetIntValue(row, col);
+			col++;
 
 			attackType = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				attackType = reader.GetIntValue(row, col++);
+				attackType = reader.GetIntValue(row, col);
+			col++;
 
 			antiPhysicValue = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				antiPhysicValue = reader.GetIntValue(row, col++);
+				antiPhysicValue = reader.GetIntValue(row, col);
+			col++;
 
 			antiMagicValue = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				antiMagicValue = reader.GetIntValue(row, col++);
+				antiMagicValue = reader.GetIntValue(row, col);
+			col++;
 
 			dodgeValue = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				dodgeValue = reader.GetIntValue(row, col++);
+				dodgeValue = reader.GetIntValue(row, col);
+			col++;
 
 			normalSkill1 = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				normalSkill1 = reader.GetIntValue(row, col++);
+				normalSkill1 = reader.GetIntValue(row, col);
+			col++;
 
 			maxAttack1Times = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				maxAttack1Times = reader.GetIntValue(row, col++);
+				maxAttack1Times = reader.GetIntValue(row, col);
+			col++;
 
 			normalSkill2 = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				normalSkill2 = reader.GetIntValue(row, col++);
+				normalSkill2 = reader.GetIntValue(row, col);
+			col++;
 
 			specialSkill1 = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				specialSkill1 = reader.GetIntValue(row, col++);
+				specialSkill1 = reader.GetIntValue(row, col);
+			col++;
 
 			specialSkill2 = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				specialSkill2 = reader.GetIntValue(row, col++);
+				specialSkill2 = reader.GetIntValue(row, col);
+			col++;
 
 			specialSkill3 = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				specialSkill3 = reader.GetIntValue(row, col++);
+				specialSkill3 = reader.GetIntValue(row, col);
+			col++;
 
 			lifeBarType = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				lifeBarType = reader.GetIntValue(row, col++);
+				lifeBarType = reader.GetIntValue(row, col);
+			col++;
 
 			lifeBarHeight = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				lifeBarHeight = reader.GetIntValue(row, col++);
+				lifeBarHeight = reader.GetIntValue(row, col);
+			col++;
 
 			IdleDuration = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				IdleDuration = reader.GetIntValue(row, col++);
+				IdleDuration = reader.GetIntValue(row, col);
+			col++;
 
 			IdleTurnFaceTime = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				IdleTurnFaceTime = reader.GetIntValue(row, col++);
+				IdleTurnFaceTime = reader.GetIntValue(row, col);
+			col++;
 
 			WanderDuration = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				WanderDuration = reader.GetIntValue(row, col++);
+				WanderDuration = reader.GetIntValue(row, col);
+			col++;
 
 			WanderChangeDirTime = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				WanderChangeDirTime = reader.GetIntValue(row, col++);
+				WanderChangeDirTime = reader.GetIntValue(row, col);
+			col++;
 
 			DeadBodyTime = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				DeadBodyTime = reader.GetIntValue(row, col++);
+				DeadBodyTime = reader.GetIntValue(row, col);
+			col++;
 
 			bulletX = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				bulletX = reader.GetIntValue(row, col++);
+				bulletX = reader.GetIntValue(row, col);
+			col++;
 
 			bulletY = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
-				bulletY = reader.GetIntValue(row, col++);
+				bulletY = reader.GetIntValue(row, col);
+			col++;
 
 			return col;
 		}

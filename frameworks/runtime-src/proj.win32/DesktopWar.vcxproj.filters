@@ -583,9 +583,6 @@
     <ClInclude Include="..\..\Genius\data\auto\Buff_cfg.hpp">
       <Filter>Genius\Logic\Data\auto</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\data\auto\BuffAction_cfg.hpp">
-      <Filter>Genius\Logic\Data\auto</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\data\auto\Bullet_cfg.hpp">
       <Filter>Genius\Logic\Data\auto</Filter>
     </ClInclude>
@@ -1022,9 +1019,6 @@
       <Filter>Genius\Logic\Data\auto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\data\auto\Buff_cfg.cpp">
-      <Filter>Genius\Logic\Data\auto</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\data\auto\BuffAction_cfg.cpp">
       <Filter>Genius\Logic\Data\auto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\data\auto\Bullet_cfg.cpp">

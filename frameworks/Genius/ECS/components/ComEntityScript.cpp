@@ -16,5 +16,5 @@ ComEntityScript::~ComEntityScript()
 
 bool ComEntityScript::Init()
 {
-
+	return true;
 }

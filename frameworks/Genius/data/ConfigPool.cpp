@@ -21,7 +21,6 @@ bool ConfigPool::Init()
 
 	INSERT_CFG_TO_MAP(Animation_cfg, "Animation.txt");
 	INSERT_CFG_TO_MAP(Buff_cfg, "Buff.txt");
-	INSERT_CFG_TO_MAP(BuffAction_cfg, "BuffAction.txt");
 	INSERT_CFG_TO_MAP(Bullet_cfg, "Bullet.txt");
 	INSERT_CFG_TO_MAP(Role_cfg, "Role.txt");
 	INSERT_CFG_TO_MAP(Skill_cfg, "Skill.txt");

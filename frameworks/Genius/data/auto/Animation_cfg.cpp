@@ -10,11 +10,13 @@ IMPL_CONFIG_CREATE(Animation_cfg);
 
 			name = "";
 			if(reader.GetStringValue(row, col).length() > 0)
-				name = reader.GetStringValue(row, col++);
+				name = reader.GetStringValue(row, col);
+			col++;
 
 			filePath = "";
 			if(reader.GetStringValue(row, col).length() > 0)
-				filePath = reader.GetStringValue(row, col++);
+				filePath = reader.GetStringValue(row, col);
+			col++;
 
 			return col;
 		}
