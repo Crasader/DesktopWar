@@ -39,6 +39,7 @@
 #include "components/bullet/ComBulletAnimEgg.h"
 
 #include "components/GamePlayCom.h"
+#include "components/ComEntityScript.h"
 
 
 // systems
@@ -68,5 +69,5 @@
 #include "systems/game/HumanGameControlSystem.h"
 #include "systems/game/MonsterGameControlSystem.h"
 
-
+#include "systems/SystemEntityScript.h"
 

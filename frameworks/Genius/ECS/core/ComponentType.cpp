@@ -1,5 +1,6 @@
 
 #include "ComponentType.h"
+
 namespace Genius
 {
 
