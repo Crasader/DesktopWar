@@ -394,9 +394,6 @@
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnNavigation.h">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnAnim.h">
-      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnBevtree.h">
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
     </ClInclude>
@@ -628,6 +625,9 @@
     <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletAnim.h">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnAnim.h">
+      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -856,9 +856,6 @@
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnNavigation.cpp">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnAnim.cpp">
-      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnBevtree.cpp">
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
     </ClCompile>
@@ -1062,6 +1059,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletAnim.cpp">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnAnim.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

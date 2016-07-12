@@ -14,8 +14,8 @@ namespace Genius
 		Event_unknown,
 
 		// render
-		//Event_startAction,
-		//Event_updateAction,
+		Event_nodeCreated,
+		Event_entityDestroy,
 		Event_turnBack,
 
 		// transform
@@ -47,29 +47,29 @@ namespace Genius
 		Event_StopMove,
 	};
 
-	/*class ActionEvent : public IEventData
+	class NodeCreatedEvent : public IEventData
 	{
 	public:
-		ActionEvent(Entity* _entity, ActionType _action) :
-			IEventData(Event_startAction),
+		NodeCreatedEvent(Entity* _entity, void* _node) :
+			IEventData(Event_nodeCreated),
 			entity(_entity),
-			action(_action)
+			node(_node)
 		{}
 
 		Entity*				entity;
-		ActionType		action;
-	};*/
+		void*				node;
+	};
 
-	/*class UpdateActionEvent : public IEventData
+	class EntityDectroyEvent : public IEventData
 	{
 	public:
-		UpdateActionEvent(Entity* _entity) :
-			IEventData(Event_updateAction),
+		EntityDectroyEvent(Entity* _entity) :
+			IEventData(Event_entityDestroy),
 			entity(_entity)
 		{}
 
 		Entity*				entity;
-	};*/
+	};
 
 	class TurnBackEvent : public IEventData
 	{

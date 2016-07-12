@@ -11,7 +11,6 @@ namespace Genius
 	class EventManager : public Genius::Singleton<EventManager>
 	{
 	public:
-		static EventManager& GetInstance();
 		virtual ~EventManager();
 		EventManager();
 

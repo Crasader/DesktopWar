@@ -36,6 +36,7 @@ m_pAnimFsm(nullptr)
 		//root node
 		m_pAvatarRoot = cocos2d::Node::create();
 		SceneManager::GetSingleton()->AddToMapLayer(m_pAvatarRoot);
+		
 		// life bar
 		m_pLifeBar = UIBar::create(roleCfg->lifeBarType);
 		m_pLifeBar->setPosition(0, 0 + roleCfg->lifeBarHeight);
@@ -86,6 +87,8 @@ bool	ComPawnAnim::Init()
 	CreateAnimFSM(AFT_Simple);
 
 	m_pAnimSet = new AnimSetSimple(this);
+
+	EventManager::GetSingleton()->FireEvent(NodeCreatedEvent(GetOwner(), m_pAvatarRoot));
 
 	return true;
 }

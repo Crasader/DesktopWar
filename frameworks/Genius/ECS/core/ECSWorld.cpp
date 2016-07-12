@@ -5,6 +5,8 @@
 #include "EntitySystem.h"
 #include "EntityManager.h"
 #include "SystemBitManager.h"
+#include "event/EventManager.h"
+#include "ECS/EntityEvents.h"
 #include <windows.h>
 
 namespace Genius
@@ -39,7 +41,10 @@ namespace Genius
 	void ECSWorld::DeleteEntity(Entity* e)
 	{
 		if (!m_deletedEntities.contains(e))
+		{
 			m_deletedEntities.add(e);
+			EventManager::GetSingleton()->FireEvent(EntityDectroyEvent(e));
+		}
 	}
 
 	float ECSWorld::GetDeltaTime()

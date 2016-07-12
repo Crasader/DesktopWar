@@ -52,7 +52,7 @@ bool SystemPawnAnim::HandleEvent(IEventData const &event)
 	return true;
 }
 
-void SystemPawnAnim::PlayAnimation(ComPawnAnim* animCom, ComPawnDirection* dirCom, ActionType act)
+/*void SystemPawnAnim::PlayAnimation(ComPawnAnim* animCom, ComPawnDirection* dirCom, ActionType act)
 {
 	if (nullptr == animCom || nullptr == dirCom)
 		return;
@@ -226,3 +226,4 @@ void SystemPawnAnim::PlaySkill3(ComPawnAnim* animCom, ComPawnDirection* dirCom)
 	else
 		animCom->PlayAnimation(PawnAnimName::Skill3Right);
 }
+*/

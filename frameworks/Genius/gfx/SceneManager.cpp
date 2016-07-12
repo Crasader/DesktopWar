@@ -1,6 +1,8 @@
 
 #include "SceneManager.h"
 #include "ECS/ecs.h"
+#include "event/EventManager.h"
+#include "ECS/EntityEvents.h"
 #include "CocosApp.h"
 #include "app/GameDefine.h"
 #include <algorithm>
@@ -24,6 +26,9 @@ bool SceneManager::Init()
 	m_root->setCascadeOpacityEnabled(true);
 	m_pMapLayer->setCascadeOpacityEnabled(true);
 	((CocosApp*)Application::getInstance())->GetScene()->addChild(m_root);
+
+	EventManager::GetSingleton()->AddListener(this, Event_nodeCreated);
+	EventManager::GetSingleton()->AddListener(this, Event_entityDestroy);
 	return true;
 }
 
@@ -43,40 +48,19 @@ void SceneManager::AddToMapLayer(cocos2d::Node* node, float x/* = 0*/, float y/*
 	node->setPosition(x, y);
 }
 
-struct SortData
-{
-	Entity* entity;
-	ComPosition* posCom;
-	SortData(Entity* ent, ComPosition* pos) : entity(ent), posCom(pos){}
-};
 
-bool SortZOrderFunc(SortData data1, SortData data2)
+bool SortZOrderFunc(const EntityNodeData& data1, const EntityNodeData& data2)
 {
-	return (data1.posCom->y > data2.posCom->y);
+	return (data1.node->getPositionY() > data2.node->getPositionY());
 }
 
 void SceneManager::RefreshPawnsZOrder()
 {
-	return;
-	auto sysMgr = ECSWorld::GetSingleton()->GetSystemManager();
-	SystemPawnAnim* fightSys = sysMgr->GetSystem<SystemPawnAnim>();
-	Bag<Entity*>& activities = fightSys->GetActivities();
-	std::vector<SortData> sortedList;
-	for (int i = 0; i < activities.getCount(); i++)
-	{
-		Entity* pEntity = activities.get(i);
-		ComPosition* posCom = pEntity->GetComponent<ComPosition>();
-		SortData data(pEntity, posCom);
-		sortedList.push_back(data);
-	}
-
-	std::sort(sortedList.begin(), sortedList.end(), SortZOrderFunc);
+	m_entityNodes.sort(SortZOrderFunc);
 	int zorderStart = 1;
-	for (auto iter = sortedList.begin(); iter != sortedList.end(); ++iter)
+	for (auto iter = m_entityNodes.begin(); iter != m_entityNodes.end(); ++iter)
 	{
-		Entity* pEntity = (*iter).entity;
-		ComPawnAnim* animCom = pEntity->GetComponent<ComPawnAnim>();
-		animCom->m_pAvatarRoot->setLocalZOrder(zorderStart);
+		(*iter).node->setLocalZOrder(zorderStart);
 		zorderStart++;
 	}
 }
@@ -115,3 +99,41 @@ void SceneManager::UpdateSceneShake()
 		}
 	}
 }
+
+
+bool SceneManager::HandleEvent(IEventData const &evt)
+{
+	EventType eType = evt.GetType();
+	switch (eType)
+	{
+	case Event_nodeCreated:
+	{const NodeCreatedEvent & nodeEvent = static_cast<const NodeCreatedEvent &>(evt);
+	EntityNodeData data;
+	data.entityID = nodeEvent.entity->GetId();
+	data.node = (Node*)nodeEvent.node;
+	m_entityNodes.push_back(data); }
+		break;
+	case Event_entityDestroy:
+	{const EntityDectroyEvent & desEvent = static_cast<const EntityDectroyEvent &>(evt);
+	int id = desEvent.entity->GetId();
+	for (auto iter = m_entityNodes.begin(); iter != m_entityNodes.end(); ++iter)
+	{
+		if ((*iter).entityID == id)
+		{
+			m_entityNodes.erase(iter);
+			break;
+		}
+	}
+	}
+	break;
+	}
+
+	return true;
+}
+
+
+
+
+
+
+

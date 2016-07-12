@@ -249,8 +249,8 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemSimpleAnim.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\game\HumanGameControlSystem.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\game\MonsterGameControlSystem.h" />
-    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnNavigation.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnAnim.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnNavigation.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnBevtree.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnDirection.h" />
@@ -407,8 +407,8 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemSimpleAnim.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\game\HumanGameControlSystem.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\game\MonsterGameControlSystem.cpp" />
-    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnNavigation.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnAnim.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnNavigation.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnBevtree.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnDirection.cpp" />

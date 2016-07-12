@@ -33,7 +33,7 @@ namespace Genius
 	public:
 		virtual bool HandleEvent(IEventData const &event);
 
-	private:
+	/*private:
 		void PlayAnimation(ComPawnAnim* animCom, ComPawnDirection* dirCom, ActionType act);
 
 		void PlayIdle(ComPawnAnim* animCom, ComPawnDirection* dirCom);
@@ -44,7 +44,7 @@ namespace Genius
 		void PlayAtkFar(ComPawnAnim* animCom, ComPawnDirection* dirCom);
 		void PlaySkill1(ComPawnAnim* animCom, ComPawnDirection* dirCom);
 		void PlaySkill2(ComPawnAnim* animCom, ComPawnDirection* dirCom);
-		void PlaySkill3(ComPawnAnim* animCom, ComPawnDirection* dirCom);
+		void PlaySkill3(ComPawnAnim* animCom, ComPawnDirection* dirCom);*/
 	};
 };
 
