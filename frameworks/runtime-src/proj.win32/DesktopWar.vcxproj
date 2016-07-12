@@ -217,7 +217,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnDirection.h" />
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnFight.h" />
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnNavigation.h" />
-    <ClInclude Include="..\..\Genius\ECS\components\ComEntityScript.h" />
     <ClInclude Include="..\..\Genius\ECS\core\BitSize.h" />
     <ClInclude Include="..\..\Genius\ECS\core\Component.h" />
     <ClInclude Include="..\..\Genius\ECS\core\ComponentMapper.h" />
@@ -233,6 +232,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\ECS\core\SystemBitManager.h" />
     <ClInclude Include="..\..\Genius\ECS\core\SystemManager.h" />
     <ClInclude Include="..\..\Genius\ECS\core\TagManager.h" />
+    <ClInclude Include="..\..\Genius\ECS\EntityWrapper.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletAnim.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletArrowAnim.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletBombAnim.h" />
@@ -255,7 +255,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnDirection.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnFight.h" />
-    <ClInclude Include="..\..\Genius\ECS\systems\SystemEntityScript.h" />
     <ClInclude Include="..\..\Genius\entity\EntityCreators.h" />
     <ClInclude Include="..\..\Genius\gfx\GfxUtils.h" />
     <ClInclude Include="..\..\Genius\gfx\RollNumberLabel.h" />
@@ -378,7 +377,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnDirection.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnFight.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnNavigation.cpp" />
-    <ClCompile Include="..\..\Genius\ECS\components\ComEntityScript.cpp" />
     <ClCompile Include="..\..\Genius\ECS\core\Component.cpp" />
     <ClCompile Include="..\..\Genius\ECS\core\ComponentType.cpp" />
     <ClCompile Include="..\..\Genius\ECS\core\ComponentTypeManager.cpp" />
@@ -391,6 +389,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\ECS\core\SystemBitManager.cpp" />
     <ClCompile Include="..\..\Genius\ECS\core\SystemManager.cpp" />
     <ClCompile Include="..\..\Genius\ECS\core\TagManager.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\EntityWrapper.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletAnim.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletArrowAnim.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletBombAnim.cpp" />
@@ -413,7 +412,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnDirection.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnFight.cpp" />
-    <ClCompile Include="..\..\Genius\ECS\systems\SystemEntityScript.cpp" />
     <ClCompile Include="..\..\Genius\entity\EntityCreators.cpp" />
     <ClCompile Include="..\..\Genius\gfx\GfxUtils.cpp" />
     <ClCompile Include="..\..\Genius\gfx\RollNumberLabel.cpp" />

@@ -7,13 +7,11 @@
  */
 
 
-require("res/script/Utils.js")
-require("res/script/Class.js")
-require("res/script/Configs.js")
-require("res/script/GameState.js")
-require("res/script/LaunchState.js")
-require("res/script/LoadingState.js")
-require("res/script/WarState.js")
+require("res/script/mainfuncs.js")
+LoadScript("res/script/Class.js")
+LoadScript("res/script/Configs.js")
+LoadScript("res/script/GameState.js")
+
 
 
 //print("lololol JS bang!")

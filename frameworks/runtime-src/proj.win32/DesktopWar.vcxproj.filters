@@ -616,17 +616,14 @@
     <ClInclude Include="..\..\Genius\skill\buffLogic\BL_Spawn.h">
       <Filter>Genius\Logic\Skill\buffLogic</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\components\ComEntityScript.h">
-      <Filter>Genius\Logic\ESC\User\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\systems\SystemEntityScript.h">
-      <Filter>Genius\Logic\ESC\User\System</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletAnim.h">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnAnim.h">
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\EntityWrapper.h">
+      <Filter>Genius\Logic\ESC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1051,17 +1048,14 @@
     <ClCompile Include="..\..\Genius\skill\buffLogic\BL_Spawn.cpp">
       <Filter>Genius\Logic\Skill\buffLogic</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\components\ComEntityScript.cpp">
-      <Filter>Genius\Logic\ESC\User\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\systems\SystemEntityScript.cpp">
-      <Filter>Genius\Logic\ESC\User\System</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletAnim.cpp">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnAnim.cpp">
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\EntityWrapper.cpp">
+      <Filter>Genius\Logic\ESC</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
