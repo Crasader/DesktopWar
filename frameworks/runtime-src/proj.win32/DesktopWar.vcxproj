@@ -255,6 +255,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnDirection.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnFight.h" />
+    <ClInclude Include="..\..\Genius\ECS\WorldWrapper.h" />
     <ClInclude Include="..\..\Genius\entity\EntityCreators.h" />
     <ClInclude Include="..\..\Genius\gfx\GfxUtils.h" />
     <ClInclude Include="..\..\Genius\gfx\RollNumberLabel.h" />
@@ -412,6 +413,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnDirection.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnFight.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\WorldWrapper.cpp" />
     <ClCompile Include="..\..\Genius\entity\EntityCreators.cpp" />
     <ClCompile Include="..\..\Genius\gfx\GfxUtils.cpp" />
     <ClCompile Include="..\..\Genius\gfx\RollNumberLabel.cpp" />

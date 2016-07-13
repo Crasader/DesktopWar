@@ -1,22 +1,32 @@
 
 #include "EntityWrapper.h"
+#include "ECS/ecs.h"
+
 
 using namespace Genius;
 
-Component* EntityWrapper::AddTransform()
+
+EntityWrapper::EntityWrapper(Entity* ent)
 {
-	return nullptr;
+	m_entity = ent;
 }
 
-Component* AddPawnAnim()
+int EntityWrapper::GetID()
 {
-	return nullptr;
+	return m_entity->GetId();
 }
 
-Component* AddPawnAgent()
+
+Genius::Component* EntityWrapper::AddComponent(const char* name)
 {
-	return nullptr;
+	Genius::Component* com = nullptr;
+	string comName = name;
+	if (comName == "ComPosition")
+		com = new ComPosition();
+
+	return com;
 }
+
 
 
 

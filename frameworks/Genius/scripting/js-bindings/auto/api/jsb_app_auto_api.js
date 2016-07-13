@@ -53,22 +53,6 @@ ShakeScene : function (
 },
 
 /**
- * @method AddToMapLayer
- * @param {cc.Node} arg0
- * @param {float} arg1
- * @param {float} arg2
- * @param {int} arg3
- */
-AddToMapLayer : function (
-node, 
-float, 
-float, 
-int 
-)
-{
-},
-
-/**
  * @method Init
  * @return {bool}
  */
@@ -82,6 +66,22 @@ Init : function (
  * @method Update
  */
 Update : function (
+)
+{
+},
+
+/**
+ * @method AddToMapLayer
+ * @param {cc.Node} arg0
+ * @param {float} arg1
+ * @param {float} arg2
+ * @param {int} arg3
+ */
+AddToMapLayer : function (
+node, 
+float, 
+float, 
+int 
 )
 {
 },
@@ -347,6 +347,63 @@ int
 )
 {
     return 0;
+},
+
+};
+
+/**
+ * @class EntityWrapper
+ */
+Entity = {
+
+/**
+ * @method GetID
+ * @return {int}
+ */
+GetID : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method AddComponent
+ * @param {char} arg0
+ * @return {Genius::Component}
+ */
+AddComponent : function (
+char 
+)
+{
+    return Genius::Component;
+},
+
+/**
+ * @method EntityWrapper
+ * @constructor
+ * @param {Genius::Entity} arg0
+ */
+EntityWrapper : function (
+entity 
+)
+{
+},
+
+};
+
+/**
+ * @class WorldWrapper
+ */
+World = {
+
+/**
+ * @method CreateEntity
+ * @return {Genius::EntityWrapper}
+ */
+CreateEntity : function (
+)
+{
+    return Genius::EntityWrapper;
 },
 
 };

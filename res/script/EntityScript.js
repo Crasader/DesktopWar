@@ -23,6 +23,11 @@ var EntityScript = Class.extend({
         this.entity = ent
     },
 
+    GetEntity:function()
+    {
+        return this.entity;
+    },
+
     LoadComponent:function(name)
     {
 

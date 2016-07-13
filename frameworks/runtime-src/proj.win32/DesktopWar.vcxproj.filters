@@ -625,6 +625,9 @@
     <ClInclude Include="..\..\Genius\ECS\EntityWrapper.h">
       <Filter>Genius\Logic\ESC</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\WorldWrapper.h">
+      <Filter>Genius\Logic\ESC</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -1055,6 +1058,9 @@
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\EntityWrapper.cpp">
+      <Filter>Genius\Logic\ESC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\WorldWrapper.cpp">
       <Filter>Genius\Logic\ESC</Filter>
     </ClCompile>
   </ItemGroup>

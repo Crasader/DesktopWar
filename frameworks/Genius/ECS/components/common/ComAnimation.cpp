@@ -6,7 +6,7 @@ using namespace Genius;
 using namespace cocos2d;
 
 
-ComAnimation::ComAnimation(const std::string& fileName)
+void ComAnimation::Create(const std::string& fileName)
 {
 	m_pAvatarRoot = cocos2d::Node::create();
 	m_pBodyArmature = cocostudio::Armature::create(fileName);

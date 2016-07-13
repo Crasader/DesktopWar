@@ -14,6 +14,10 @@ namespace Genius
 		float y;
 
 	public:
+		ComPosition():
+			x(0),
+			y(0)
+		{}
 		ComPosition(float _x, float _y):
 			x(_x),
 			y(_y)

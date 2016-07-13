@@ -32,9 +32,9 @@ void js_app_SceneManager_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_SceneManager(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_SceneManager_ShakeScene(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_SceneManager_AddToMapLayer(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_SceneManager_Init(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_SceneManager_Update(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_SceneManager_AddToMapLayer(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_SceneManager_GetMapLayer(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_SceneManager_GetSingleton(JSContext *cx, uint32_t argc, jsval *vp);
 
@@ -81,5 +81,25 @@ void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_EntityCreator_CreateBullet(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityCreator_CreatePawn(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityCreator_CreateBornPoint(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_EntityWrapper_class;
+extern JSObject *jsb_Genius_EntityWrapper_prototype;
+
+bool js_app_EntityWrapper_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_EntityWrapper_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_EntityWrapper(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_EntityWrapper_GetID(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityWrapper_AddComponent(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityWrapper_EntityWrapper(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_WorldWrapper_class;
+extern JSObject *jsb_Genius_WorldWrapper_prototype;
+
+bool js_app_WorldWrapper_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_WorldWrapper_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_WorldWrapper(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_WorldWrapper_CreateEntity(JSContext *cx, uint32_t argc, jsval *vp);
 
 #endif // __app_h__

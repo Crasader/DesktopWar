@@ -28,17 +28,22 @@ function ForceGC()
 }
 
 
-var EntityMap = {}
-function CreateEntity(entCPP)
+var Entities = {}
+function CreateEntity()
 {
+    var entCpp = World.CreateEntity()
     var ent = new EntityScript()
-    ent.SetEntity(entCPP)
-    var guid = entCPP.getId()
-    EntityMap[guid] = ent
+    ent.SetEntity(entCpp)
+    var guid = entCpp.getId()
+    Entities[guid] = ent
 
     return ent
 }
 
 
-
+function SpawnPrefab(name)
+{
+    var so = new Soldier()
+    so.fn()
+}
 

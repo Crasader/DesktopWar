@@ -2,9 +2,13 @@
 
 var Soldier = Class.extend({
 
-    fn:function(entityCPP)
+    fn:function()
     {
-        var entity = CreateEntity(entityCPP)
+        var entity = CreateEntity()
+        var entCpp = entity.GetEntity()
+        entCpp.AddComponent("Position")
+        entCpp.AddComponent("PawnAnim")
+
         entity.LoadComponent("bev")
     },
 

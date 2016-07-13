@@ -119,13 +119,17 @@ int EntityCreator::CreateBornPoint(float x, float y, int team)
 	ent->AddComponent(new ComTeam(team));
 	if (team == Team_Human)
 	{
-		ent->AddComponent(new ComAnimation("BornPointHuman"));
+		auto anim = new ComAnimation();
+		anim->Create("BornPointHuman");
+		ent->AddComponent(anim);
 		ent->AddComponent(new HumanGameControlCom());
 		ECSWorld::GetSingleton()->GetTagManager()->Subscribe(GameDefine::Tag_HumanBornPoint, ent);
 	}
 	else if (team == Team_Monster)
 	{
-		ent->AddComponent(new ComAnimation("BornPointMonster"));
+		auto anim = new ComAnimation();
+		anim->Create("BornPointMonster");
+		ent->AddComponent(anim);
 		ent->AddComponent(new MonsterGameControlCom());
 		ECSWorld::GetSingleton()->GetTagManager()->Subscribe(GameDefine::Tag_MonsterBornPoint, ent);
 	}

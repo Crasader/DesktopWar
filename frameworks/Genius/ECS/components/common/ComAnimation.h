@@ -11,12 +11,13 @@ namespace Genius
 	class ComAnimation : public Component
 	{
 	public:
-		cocos2d::Node*					m_pAvatarRoot;
+		cocos2d::Node*				m_pAvatarRoot;
 		cocostudio::Armature*		m_pBodyArmature;
 
 	public:
-		ComAnimation(const std::string& fileName);
+		ComAnimation(){}
 		~ComAnimation();
+		void Create(const std::string& fileName);
 	};
 
 };

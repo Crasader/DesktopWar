@@ -200,6 +200,40 @@ bool js_app_SceneManager_ShakeScene(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_SceneManager_ShakeScene : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
+bool js_app_SceneManager_Init(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::SceneManager* cobj = (Genius::SceneManager *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_SceneManager_Init : Invalid Native Object");
+    if (argc == 0) {
+        bool ret = cobj->Init();
+        jsval jsret = JSVAL_NULL;
+        jsret = BOOLEAN_TO_JSVAL(ret);
+        args.rval().set(jsret);
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_SceneManager_Init : wrong number of arguments: %d, was expecting %d", argc, 0);
+    return false;
+}
+bool js_app_SceneManager_Update(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::SceneManager* cobj = (Genius::SceneManager *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_SceneManager_Update : Invalid Native Object");
+    if (argc == 0) {
+        cobj->Update();
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_SceneManager_Update : wrong number of arguments: %d, was expecting %d", argc, 0);
+    return false;
+}
 bool js_app_SceneManager_AddToMapLayer(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -288,40 +322,6 @@ bool js_app_SceneManager_AddToMapLayer(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_SceneManager_AddToMapLayer : wrong number of arguments: %d, was expecting %d", argc, 1);
     return false;
 }
-bool js_app_SceneManager_Init(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::SceneManager* cobj = (Genius::SceneManager *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_SceneManager_Init : Invalid Native Object");
-    if (argc == 0) {
-        bool ret = cobj->Init();
-        jsval jsret = JSVAL_NULL;
-        jsret = BOOLEAN_TO_JSVAL(ret);
-        args.rval().set(jsret);
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_SceneManager_Init : wrong number of arguments: %d, was expecting %d", argc, 0);
-    return false;
-}
-bool js_app_SceneManager_Update(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::SceneManager* cobj = (Genius::SceneManager *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_SceneManager_Update : Invalid Native Object");
-    if (argc == 0) {
-        cobj->Update();
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_SceneManager_Update : wrong number of arguments: %d, was expecting %d", argc, 0);
-    return false;
-}
 bool js_app_SceneManager_GetMapLayer(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -382,9 +382,9 @@ void js_register_app_SceneManager(JSContext *cx, JS::HandleObject global) {
 
     static JSFunctionSpec funcs[] = {
         JS_FN("ShakeScene", js_app_SceneManager_ShakeScene, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("AddToMapLayer", js_app_SceneManager_AddToMapLayer, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Init", js_app_SceneManager_Init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Update", js_app_SceneManager_Update, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("AddToMapLayer", js_app_SceneManager_AddToMapLayer, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("GetMapLayer", js_app_SceneManager_GetMapLayer, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
@@ -964,13 +964,221 @@ void js_register_app_EntityCreator(JSContext *cx, JS::HandleObject global) {
     jsb_register_class<Genius::EntityCreator>(cx, jsb_Genius_EntityCreator_class, proto, JS::NullPtr());
 }
 
+JSClass  *jsb_Genius_EntityWrapper_class;
+JSObject *jsb_Genius_EntityWrapper_prototype;
+
+bool js_app_EntityWrapper_GetID(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::EntityWrapper* cobj = (Genius::EntityWrapper *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_EntityWrapper_GetID : Invalid Native Object");
+    if (argc == 0) {
+        int ret = cobj->GetID();
+        jsval jsret = JSVAL_NULL;
+        jsret = int32_to_jsval(cx, ret);
+        args.rval().set(jsret);
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_EntityWrapper_GetID : wrong number of arguments: %d, was expecting %d", argc, 0);
+    return false;
+}
+bool js_app_EntityWrapper_AddComponent(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::EntityWrapper* cobj = (Genius::EntityWrapper *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_EntityWrapper_AddComponent : Invalid Native Object");
+    if (argc == 1) {
+        const char* arg0 = nullptr;
+        std::string arg0_tmp; ok &= jsval_to_std_string(cx, args.get(0), &arg0_tmp); arg0 = arg0_tmp.c_str();
+        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityWrapper_AddComponent : Error processing arguments");
+        Genius::Component* ret = cobj->AddComponent(arg0);
+        jsval jsret = JSVAL_NULL;
+        if (ret) {
+            jsret = OBJECT_TO_JSVAL(js_get_or_create_jsobject<Genius::Component>(cx, (Genius::Component*)ret));
+        } else {
+            jsret = JSVAL_NULL;
+        };
+        args.rval().set(jsret);
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_EntityWrapper_AddComponent : wrong number of arguments: %d, was expecting %d", argc, 1);
+    return false;
+}
+bool js_app_EntityWrapper_constructor(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    Genius::Entity* arg0 = nullptr;
+    do {
+            if (args.get(0).isNull()) { arg0 = nullptr; break; }
+            if (!args.get(0).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg0 = (Genius::Entity*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+        } while (0);
+    JSB_PRECONDITION2(ok, cx, false, "js_app_EntityWrapper_constructor : Error processing arguments");
+    Genius::EntityWrapper* cobj = new (std::nothrow) Genius::EntityWrapper(arg0);
+
+    js_type_class_t *typeClass = js_get_type_from_native<Genius::EntityWrapper>(cobj);
+
+    // link the native object with the javascript object
+    JS::RootedObject jsobj(cx, jsb_create_weak_jsobject(cx, cobj, typeClass, "Genius::EntityWrapper"));
+    args.rval().set(OBJECT_TO_JSVAL(jsobj));
+    if (JS_HasProperty(cx, jsobj, "_ctor", &ok) && ok)
+        ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(jsobj), "_ctor", args);
+    return true;
+}
+
+
+void js_Genius_EntityWrapper_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (EntityWrapper)", obj);
+    js_proxy_t* nproxy;
+    js_proxy_t* jsproxy;
+    JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
+    JS::RootedObject jsobj(cx, obj);
+    jsproxy = jsb_get_js_proxy(jsobj);
+    if (jsproxy) {
+        Genius::EntityWrapper *nobj = static_cast<Genius::EntityWrapper *>(jsproxy->ptr);
+        nproxy = jsb_get_native_proxy(jsproxy->ptr);
+
+        if (nobj) {
+            jsb_remove_proxy(nproxy, jsproxy);
+            delete nobj;
+        }
+        else
+            jsb_remove_proxy(nullptr, jsproxy);
+    }
+}
+void js_register_app_EntityWrapper(JSContext *cx, JS::HandleObject global) {
+    jsb_Genius_EntityWrapper_class = (JSClass *)calloc(1, sizeof(JSClass));
+    jsb_Genius_EntityWrapper_class->name = "Entity";
+    jsb_Genius_EntityWrapper_class->addProperty = JS_PropertyStub;
+    jsb_Genius_EntityWrapper_class->delProperty = JS_DeletePropertyStub;
+    jsb_Genius_EntityWrapper_class->getProperty = JS_PropertyStub;
+    jsb_Genius_EntityWrapper_class->setProperty = JS_StrictPropertyStub;
+    jsb_Genius_EntityWrapper_class->enumerate = JS_EnumerateStub;
+    jsb_Genius_EntityWrapper_class->resolve = JS_ResolveStub;
+    jsb_Genius_EntityWrapper_class->convert = JS_ConvertStub;
+    jsb_Genius_EntityWrapper_class->finalize = js_Genius_EntityWrapper_finalize;
+    jsb_Genius_EntityWrapper_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+    static JSPropertySpec properties[] = {
+        JS_PS_END
+    };
+
+    static JSFunctionSpec funcs[] = {
+        JS_FN("GetID", js_app_EntityWrapper_GetID, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("AddComponent", js_app_EntityWrapper_AddComponent, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+    };
+
+    JSFunctionSpec *st_funcs = NULL;
+
+    jsb_Genius_EntityWrapper_prototype = JS_InitClass(
+        cx, global,
+        JS::NullPtr(),
+        jsb_Genius_EntityWrapper_class,
+        js_app_EntityWrapper_constructor, 0, // constructor
+        properties,
+        funcs,
+        NULL, // no static properties
+        st_funcs);
+
+    JS::RootedObject proto(cx, jsb_Genius_EntityWrapper_prototype);
+    JS::RootedValue className(cx, std_string_to_jsval(cx, "EntityWrapper"));
+    JS_SetProperty(cx, proto, "_className", className);
+    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
+    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
+    // add the proto and JSClass to the type->js info hash table
+    jsb_register_class<Genius::EntityWrapper>(cx, jsb_Genius_EntityWrapper_class, proto, JS::NullPtr());
+}
+
+JSClass  *jsb_Genius_WorldWrapper_class;
+JSObject *jsb_Genius_WorldWrapper_prototype;
+
+bool js_app_WorldWrapper_CreateEntity(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::WorldWrapper* cobj = (Genius::WorldWrapper *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_WorldWrapper_CreateEntity : Invalid Native Object");
+    if (argc == 0) {
+        Genius::EntityWrapper* ret = cobj->CreateEntity();
+        jsval jsret = JSVAL_NULL;
+        if (ret) {
+            jsret = OBJECT_TO_JSVAL(js_get_or_create_jsobject<Genius::EntityWrapper>(cx, (Genius::EntityWrapper*)ret));
+        } else {
+            jsret = JSVAL_NULL;
+        };
+        args.rval().set(jsret);
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_WorldWrapper_CreateEntity : wrong number of arguments: %d, was expecting %d", argc, 0);
+    return false;
+}
+
+void js_register_app_WorldWrapper(JSContext *cx, JS::HandleObject global) {
+    jsb_Genius_WorldWrapper_class = (JSClass *)calloc(1, sizeof(JSClass));
+    jsb_Genius_WorldWrapper_class->name = "World";
+    jsb_Genius_WorldWrapper_class->addProperty = JS_PropertyStub;
+    jsb_Genius_WorldWrapper_class->delProperty = JS_DeletePropertyStub;
+    jsb_Genius_WorldWrapper_class->getProperty = JS_PropertyStub;
+    jsb_Genius_WorldWrapper_class->setProperty = JS_StrictPropertyStub;
+    jsb_Genius_WorldWrapper_class->enumerate = JS_EnumerateStub;
+    jsb_Genius_WorldWrapper_class->resolve = JS_ResolveStub;
+    jsb_Genius_WorldWrapper_class->convert = JS_ConvertStub;
+    jsb_Genius_WorldWrapper_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+    static JSPropertySpec properties[] = {
+        JS_PS_END
+    };
+
+    static JSFunctionSpec funcs[] = {
+        JS_FN("CreateEntity", js_app_WorldWrapper_CreateEntity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+    };
+
+    JSFunctionSpec *st_funcs = NULL;
+
+    jsb_Genius_WorldWrapper_prototype = JS_InitClass(
+        cx, global,
+        JS::NullPtr(),
+        jsb_Genius_WorldWrapper_class,
+        dummy_constructor<Genius::WorldWrapper>, 0, // no constructor
+        properties,
+        funcs,
+        NULL, // no static properties
+        st_funcs);
+
+    JS::RootedObject proto(cx, jsb_Genius_WorldWrapper_prototype);
+    JS::RootedValue className(cx, std_string_to_jsval(cx, "WorldWrapper"));
+    JS_SetProperty(cx, proto, "_className", className);
+    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
+    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
+    // add the proto and JSClass to the type->js info hash table
+    jsb_register_class<Genius::WorldWrapper>(cx, jsb_Genius_WorldWrapper_class, proto, JS::NullPtr());
+}
+
 void register_all_app(JSContext* cx, JS::HandleObject obj) {
     // Get the global ns
     JS::RootedObject ns(cx, ScriptingCore::getInstance()->getGlobalObject());
 
     js_register_app_SceneManager(cx, ns);
+    js_register_app_EntityWrapper(cx, ns);
     js_register_app_Log(cx, ns);
     js_register_app_EntityCreator(cx, ns);
+    js_register_app_WorldWrapper(cx, ns);
     js_register_app_GamePlay(cx, ns);
     js_register_app_RollNumberLabel(cx, ns);
     js_register_app_LoadingManager(cx, ns);
