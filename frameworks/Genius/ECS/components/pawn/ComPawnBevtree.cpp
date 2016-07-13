@@ -4,13 +4,8 @@
 
 using namespace Genius;
 
-ComPawnBevtree::ComPawnBevtree(std::string fileName)
-{
-	m_tree = nullptr;
-	InitTree(fileName);
-}
 
-void ComPawnBevtree::InitTree(std::string fileName)
+void ComPawnBevtree::Create(std::string fileName)
 {
 	m_tree = new PawnBHTree;
 	m_tree->Init(fileName.c_str());

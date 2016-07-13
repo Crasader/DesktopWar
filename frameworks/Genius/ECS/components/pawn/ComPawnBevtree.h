@@ -2,7 +2,7 @@
 #ifndef _BEVTREE_COMPONENT_H_
 #define _BEVTREE_COMPONENT_H_
 
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 #include "AI/AI.h"
 #include <string>
 
@@ -18,15 +18,13 @@ namespace Genius
 		float		timeDelta;
 	};
 
-	class ComPawnBevtree : public Genius::Component
+	class ComPawnBevtree : public Genius::IComponent
 	{
 	public:
-		ComPawnBevtree(std::string fileName);
 
 		virtual ~ComPawnBevtree();
 
-	private:
-		void InitTree(std::string fileName);
+		void Create(std::string fileName);
 
 	public:
 		PawnBHTree*	m_tree;

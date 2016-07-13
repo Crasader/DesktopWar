@@ -1,22 +1,19 @@
 
 #pragma once
 
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 
 namespace Genius
 {
 
-	class ComVelocity : public Component
+	class ComVelocity : public IComponent
 	{
 	public:
 		float x;
 		float y;
 
 	public:
-		ComVelocity(float _x, float _y) :
-			x(_x),
-			y(_y)
-		{}
+
 	};
 	
 };

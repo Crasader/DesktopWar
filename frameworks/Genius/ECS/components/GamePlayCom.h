@@ -1,13 +1,13 @@
 #pragma once
 
-#include "../core/Component.h"
+#include "../core/IComponent.h"
 
 namespace Genius
 {
 	/************************************************************************/
 	/*                                     GameControlCom                                 */
 	/************************************************************************/
-	class GameControlCom : public Component
+	class GameControlCom : public IComponent
 	{
 	public:
 		float		gameTimePassed;

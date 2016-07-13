@@ -10,7 +10,7 @@ namespace Genius
 	class ComBulletAnimEgg : public ComBulletAnimBase
 	{
 	public:
-		ComBulletAnimEgg(const std::string& bodyFileName);
+		void Create(const std::string& bodyFileName);
 		void AnimationMovementCallback(cocostudio::Armature *cca, cocostudio::MovementEventType movType, const std::string& animName);
 		void AnimationFrameCallback(cocostudio::Bone* bone, const std::string& eventName, int oriIdx, int currentIdx);
 	};

@@ -2,13 +2,13 @@
 #pragma once
 
 
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 #include "../../core/Entity.h"
 
 namespace Genius
 {
 	
-	class ComTarget : public Component
+	class ComTarget : public IComponent
 	{
 	public:
 		int		targetType;
@@ -17,12 +17,7 @@ namespace Genius
 		float		targetY;
 
 	public:
-		ComTarget(int _type, int _id = Entity::InvalidID, float _x = 0, float _y = 0) :
-			targetType(_type),
-			targetID(_id),
-			targetX(_x),
-			targetY(_y)
-		{}
+		void Create(int _type, int _id = Entity::InvalidID, float _x = 0, float _y = 0);
 	};
 
 };

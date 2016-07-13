@@ -2,24 +2,21 @@
 #pragma once
 
 
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 #include <functional>
 
 namespace Genius
 {
 
-	class ComColliderHandler : public Component
+	class ComColliderHandler : public IComponent
 	{
 	public:
 		std::function<void(int, int)> _enterColliderListener;
 		std::function<void(int, int)> _exitColliderListener;
 
 	public:
-		ComColliderHandler(std::function<void(int, int)> _enterFunc, std::function<void(int, int)> _exitFunc) :
-			_enterColliderListener(_enterFunc),
-			_exitColliderListener(_exitFunc)
-		{}
-		~ComColliderHandler(){}
+		void Create(std::function<void(int, int)> _enterFunc, std::function<void(int, int)> _exitFunc);
+
 	};
 
 };

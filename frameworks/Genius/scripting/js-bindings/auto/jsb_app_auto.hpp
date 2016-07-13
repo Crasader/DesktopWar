@@ -5,16 +5,6 @@
 #include "jsapi.h"
 #include "jsfriendapi.h"
 
-extern JSClass  *jsb_GamePlay_class;
-extern JSObject *jsb_GamePlay_prototype;
-
-bool js_app_GamePlay_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_GamePlay_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_GamePlay(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_GamePlay_SendMonster(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_GamePlay_SendHuman(JSContext *cx, uint32_t argc, jsval *vp);
-
 extern JSClass  *jsb_Log_class;
 extern JSObject *jsb_Log_prototype;
 
@@ -71,6 +61,263 @@ bool js_app_LoadingManager_AddRole(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_LoadingManager_ClearLoadingList(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_LoadingManager_LoadingManager(JSContext *cx, uint32_t argc, jsval *vp);
 
+extern JSClass  *jsb_Genius_IComponent_class;
+extern JSObject *jsb_Genius_IComponent_prototype;
+
+bool js_app_IComponent_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_IComponent_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_IComponent(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+
+extern JSClass  *jsb_Genius_ComPosition_class;
+extern JSObject *jsb_Genius_ComPosition_prototype;
+
+bool js_app_ComPosition_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComPosition_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComPosition(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+
+extern JSClass  *jsb_Genius_ComVelocity_class;
+extern JSObject *jsb_Genius_ComVelocity_prototype;
+
+bool js_app_ComVelocity_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComVelocity_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComVelocity(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+
+extern JSClass  *jsb_Genius_ComBoxCollider_class;
+extern JSObject *jsb_Genius_ComBoxCollider_prototype;
+
+bool js_app_ComBoxCollider_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComBoxCollider_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComBoxCollider(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComBoxCollider_Create(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComColliderHandler_class;
+extern JSObject *jsb_Genius_ComColliderHandler_prototype;
+
+bool js_app_ComColliderHandler_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComColliderHandler_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComColliderHandler(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComColliderHandler_Create(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComAnimation_class;
+extern JSObject *jsb_Genius_ComAnimation_prototype;
+
+bool js_app_ComAnimation_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComAnimation_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComAnimation(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComAnimation_Create(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComAnimation_ComAnimation(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComTeam_class;
+extern JSObject *jsb_Genius_ComTeam_prototype;
+
+bool js_app_ComTeam_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComTeam_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComTeam(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+
+extern JSClass  *jsb_Genius_ComTarget_class;
+extern JSObject *jsb_Genius_ComTarget_prototype;
+
+bool js_app_ComTarget_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComTarget_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComTarget(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComTarget_Create(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComParticle_class;
+extern JSObject *jsb_Genius_ComParticle_prototype;
+
+bool js_app_ComParticle_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComParticle_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComParticle(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComParticle_Create(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComBezierMovement_class;
+extern JSObject *jsb_Genius_ComBezierMovement_prototype;
+
+bool js_app_ComBezierMovement_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComBezierMovement_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComBezierMovement(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComBezierMovement_Create(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComBezierMovement_Stop(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComBezierMovement_IsDone(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComPawnAgent_class;
+extern JSObject *jsb_Genius_ComPawnAgent_prototype;
+
+bool js_app_ComPawnAgent_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComPawnAgent_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComPawnAgent(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComPawnAgent_Create(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnAgent_AddAction(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnAgent_GetBlackboard(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComPawnAnim_class;
+extern JSObject *jsb_Genius_ComPawnAnim_prototype;
+
+bool js_app_ComPawnAnim_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComPawnAnim_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComPawnAnim(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComPawnAnim_AnimationMovementCallback(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnAnim_PlayFloatNumber(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnAnim_HaveThisAnimation(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnAnim_HandleAction(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnAnim_Create(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnAnim_GetHeight(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnAnim_PlayAnimation(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnAnim_GetWidth(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnAnim_Init(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnAnim_SetDebugLabel(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnAnim_SetPosition(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnAnim_AnimationFrameCallback(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComPawnDebugDraw_class;
+extern JSObject *jsb_Genius_ComPawnDebugDraw_prototype;
+
+bool js_app_ComPawnDebugDraw_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComPawnDebugDraw_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComPawnDebugDraw(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComPawnDebugDraw_Create(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnDebugDraw_Clear(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComPawnDirection_class;
+extern JSObject *jsb_Genius_ComPawnDirection_prototype;
+
+bool js_app_ComPawnDirection_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComPawnDirection_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComPawnDirection(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComPawnDirection_ComPawnDirection(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComPawnFight_class;
+extern JSObject *jsb_Genius_ComPawnFight_prototype;
+
+bool js_app_ComPawnFight_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComPawnFight_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComPawnFight(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComPawnFight_Init(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnFight_ComPawnFight(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComPawnNavigation_class;
+extern JSObject *jsb_Genius_ComPawnNavigation_prototype;
+
+bool js_app_ComPawnNavigation_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComPawnNavigation_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComPawnNavigation(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComPawnNavigation_MoveTo(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnNavigation_ComPawnNavigation(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComPawnBevtree_class;
+extern JSObject *jsb_Genius_ComPawnBevtree_prototype;
+
+bool js_app_ComPawnBevtree_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComPawnBevtree_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComPawnBevtree(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComPawnBevtree_Create(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComBulletAgent_class;
+extern JSObject *jsb_Genius_ComBulletAgent_prototype;
+
+bool js_app_ComBulletAgent_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComBulletAgent_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComBulletAgent(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComBulletAgent_Create(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComBulletAnimBase_class;
+extern JSObject *jsb_Genius_ComBulletAnimBase_prototype;
+
+bool js_app_ComBulletAnimBase_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComBulletAnimBase_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComBulletAnimBase(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComBulletAnimBase_Create(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComBulletAnimArrow_class;
+extern JSObject *jsb_Genius_ComBulletAnimArrow_prototype;
+
+bool js_app_ComBulletAnimArrow_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComBulletAnimArrow_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComBulletAnimArrow(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComBulletAnimArrow_AnimationMovementCallback(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComBulletAnimArrow_Create(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComBulletAnimArrow_AnimationFrameCallback(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComBulletAnimArrow_StayStill(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComBulletAnimBomb_class;
+extern JSObject *jsb_Genius_ComBulletAnimBomb_prototype;
+
+bool js_app_ComBulletAnimBomb_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComBulletAnimBomb_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComBulletAnimBomb(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComBulletAnimBomb_AnimationMovementCallback(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComBulletAnimBomb_Create(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComBulletAnimBomb_AnimationFrameCallback(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComBulletAnimBomb_StartExplode(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComBulletDamageNone_class;
+extern JSObject *jsb_Genius_ComBulletDamageNone_prototype;
+
+bool js_app_ComBulletDamageNone_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComBulletDamageNone_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComBulletDamageNone(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComBulletDamageNone_ComBulletDamageNone(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComBulletDamageScope_class;
+extern JSObject *jsb_Genius_ComBulletDamageScope_prototype;
+
+bool js_app_ComBulletDamageScope_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComBulletDamageScope_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComBulletDamageScope(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComBulletDamageScope_ComBulletDamageScope(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComBulletDamageSingle_class;
+extern JSObject *jsb_Genius_ComBulletDamageSingle_prototype;
+
+bool js_app_ComBulletDamageSingle_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComBulletDamageSingle_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComBulletDamageSingle(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+
+extern JSClass  *jsb_Genius_ComBulletDebugDraw_class;
+extern JSObject *jsb_Genius_ComBulletDebugDraw_prototype;
+
+bool js_app_ComBulletDebugDraw_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComBulletDebugDraw_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComBulletDebugDraw(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComBulletDebugDraw_Clear(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComBulletDebugDraw_ComBulletDebugDraw(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_ComBulletAnimEgg_class;
+extern JSObject *jsb_Genius_ComBulletAnimEgg_prototype;
+
+bool js_app_ComBulletAnimEgg_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComBulletAnimEgg_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComBulletAnimEgg(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComBulletAnimEgg_AnimationMovementCallback(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComBulletAnimEgg_Create(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComBulletAnimEgg_AnimationFrameCallback(JSContext *cx, uint32_t argc, jsval *vp);
+
 extern JSClass  *jsb_Genius_EntityCreator_class;
 extern JSObject *jsb_Genius_EntityCreator_prototype;
 
@@ -101,5 +348,23 @@ void js_app_WorldWrapper_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_WorldWrapper(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_WorldWrapper_CreateEntity(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_WorldWrapper_GetWorld(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_PawnBlackboard_class;
+extern JSObject *jsb_Genius_PawnBlackboard_prototype;
+
+bool js_app_PawnBlackboard_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_PawnBlackboard_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_PawnBlackboard(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_PawnBlackboard_AddAction(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_PawnBlackboard_SetAttr(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_PawnBlackboard_ModAttr(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_PawnBlackboard_FinishAction(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_PawnBlackboard_AddActionHandler(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_PawnBlackboard_Update(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_PawnBlackboard_GetAttr(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_PawnBlackboard_RemoveActionHandler(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_PawnBlackboard_PawnBlackboard(JSContext *cx, uint32_t argc, jsval *vp);
 
 #endif // __app_h__

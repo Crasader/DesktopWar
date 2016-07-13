@@ -1,14 +1,14 @@
 
 #pragma once
 
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 #include "../../core/Entity.h"
 #include "gfx/gfx.h"
 
 namespace Genius
 {
 
-	class ComAnimation : public Component
+	class ComAnimation : public IComponent
 	{
 	public:
 		cocos2d::Node*				m_pAvatarRoot;

@@ -1,7 +1,7 @@
 #pragma  once
 
 #include "ImmutableBag.h"
-#include "Component.h"
+#include "IComponent.h"
 #include "ComponentTypeManager.h"
 
 
@@ -19,7 +19,7 @@ namespace Genius
 		void				Remove(Entity* e);
 		void				RemoveComponentsOfEntity(Entity* e);
 		bool				IsActive(int entityId);
-		void				AddComponent(Entity* e, Component* com);
+		void				AddComponent(Entity* e, IComponent* com);
 		void				Refresh(Entity* e);
 
 		void				RemoveAllEntities();
@@ -31,10 +31,10 @@ namespace Genius
 			RemoveComponent(e, ComponentTypeManager::getTypeFor<c>());
 		}
 
-		Component * GetComponent(Entity* e, ComponentType& type);
+		IComponent * GetComponent(Entity* e, ComponentType& type);
 
 		template<typename c>
-		Component * GetComponent(Entity* e)
+		IComponent * GetComponent(Entity* e)
 		{
 			ComponentType type = ComponentTypeManager::getTypeFor<c>();
 			return GetComponent(e, type);
@@ -45,7 +45,7 @@ namespace Genius
 		long				GetTotalCreated();
 		long				GetTotalRemoved();
 
-		Bag<Component*>& GetComponents(Entity* e);
+		Bag<IComponent*>& GetComponents(Entity* e);
 
 
 	private:
@@ -58,8 +58,8 @@ namespace Genius
 		long							m_totalCreated;
 		long							m_totalRemoved;
 
-		Bag<Bag<Component*>*>		m_componentsByType;
-		Bag<Component*>					m_entityComponents;
+		Bag<Bag<IComponent*>*>		m_componentsByType;
+		Bag<IComponent*>					m_entityComponents;
 
 	};
 };

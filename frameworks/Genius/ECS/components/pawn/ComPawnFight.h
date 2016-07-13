@@ -2,7 +2,7 @@
 #pragma once
 
 #include <string>
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 #include "pawn/PawnDefines.h"
 #include "common/2Ddef.h"
 #include "gfx/gfx.h"
@@ -10,7 +10,7 @@
 namespace Genius
 {
 
-	class ComPawnFight : public Component
+	class ComPawnFight : public IComponent
 	{
 	public:
 		int		enemyID;

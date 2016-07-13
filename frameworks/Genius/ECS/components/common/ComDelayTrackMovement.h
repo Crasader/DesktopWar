@@ -2,13 +2,13 @@
 #pragma once
 
 
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 
 
 namespace Genius
 {
 	
-	class ComDelayTrackMoving : public Component
+	class ComDelayTrackMoving : public IComponent
 	{
 	public:
 		int		targetEntityID;
@@ -19,14 +19,7 @@ namespace Genius
 		bool		isTracking;
 
 	public:
-		ComDelayTrackMoving(int _targetID, float _delayTime) :
-			targetEntityID(_targetID),
-			lifeTime(0),
-			delayTime(_delayTime),
-			targetCachePosX(1500),
-			targetCachePosY(100),
-			isTracking(true)
-		{}
+		void Create(int _targetID, float _delayTime);
 
 		virtual bool Init();
 	};

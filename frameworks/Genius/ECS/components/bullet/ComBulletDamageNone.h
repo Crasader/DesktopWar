@@ -1,11 +1,11 @@
 
 #pragma once
 
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 
 namespace Genius
 {
-	class ComBulletDamageNone : public Component
+	class ComBulletDamageNone : public IComponent
 	{
 	public:
 		ComBulletDamageNone()

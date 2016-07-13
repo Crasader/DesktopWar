@@ -27,14 +27,19 @@ function ForceGC()
     forceGC()
 }
 
+function GetWorld()
+{
+    return World.GetWorld()
+}
+
 
 var Entities = {}
 function CreateEntity()
 {
-    var entCpp = World.CreateEntity()
+    var entCpp = GetWorld().CreateEntity()
     var ent = new EntityScript()
     ent.SetEntity(entCpp)
-    var guid = entCpp.getId()
+    var guid = entCpp.GetID()
     Entities[guid] = ent
 
     return ent

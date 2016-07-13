@@ -2,7 +2,7 @@
 #pragma once
 
 #include <string>
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 
 namespace cfg
 {
@@ -13,13 +13,13 @@ namespace Genius
 {
 	class BulletBlackboard;
 
-	class ComBulletAgent : public Component
+	class ComBulletAgent : public IComponent
 	{
 	public:
 		cfg::Bullet_cfg*					pBulletData;
 		BulletBlackboard*			pBlackBoard;
 
-		ComBulletAgent(cfg::Bullet_cfg* pData);
+		void Create(cfg::Bullet_cfg* pData);
 
 	};
 

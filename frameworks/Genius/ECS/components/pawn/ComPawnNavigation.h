@@ -2,7 +2,7 @@
 #pragma once
 
 #include <string>
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 #include "pawn/PawnDefines.h"
 #include "common/2Ddef.h"
 #include "gfx/gfx.h"
@@ -10,7 +10,7 @@
 namespace Genius
 {
 
-	class ComPawnNavigation : public Component
+	class ComPawnNavigation : public IComponent
 	{
 	public:
 		std::vector<Point2D>	pathPoints;

@@ -16,7 +16,7 @@ namespace Genius
 		const static std::string explodeAnimName;
 
 	public:
-		ComBulletAnimBomb(const std::string& bodyFileName, const std::string& tailFileName);
+		void Create(const std::string& bodyFileName, const std::string& tailFileName);
 		
 		void StartExplode();
 		void AnimationMovementCallback(cocostudio::Armature *cca, cocostudio::MovementEventType movType, const std::string& animName);

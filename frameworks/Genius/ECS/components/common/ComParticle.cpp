@@ -6,7 +6,7 @@ using namespace Genius;
 USING_NS_CC;
 
 
-ComParticle::ComParticle(const std::string& fileName)
+void ComParticle::Create(const std::string& fileName)
 {
 	auto smoke = ParticleSmoke::create();
 	smoke->setTexture(Director::getInstance()->getTextureCache()->addImage(fileName));

@@ -4,7 +4,7 @@
 
 using namespace Genius;
 
-ComBulletAnimBase::ComBulletAnimBase(const std::string& bodyFileName)
+void ComBulletAnimBase::Create(const std::string& bodyFileName)
 {
 	m_pAvatarRoot = nullptr;
 	m_pBodyArmature = nullptr;

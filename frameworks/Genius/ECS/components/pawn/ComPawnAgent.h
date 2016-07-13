@@ -2,20 +2,20 @@
 #pragma once
 
 #include <string>
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 #include "data/auto/Role_cfg.hpp"
 
 namespace Genius
 {
 	class PawnBlackboard;
 
-	class ComPawnAgent : public Component
+	class ComPawnAgent : public IComponent
 	{
 	public:
 		cfg::Role_cfg*					m_roleCfg;
 		PawnBlackboard*		m_pBlackboard;
 
-		ComPawnAgent(cfg::Role_cfg* pData);
+		void Create(cfg::Role_cfg* pData);
 		~ComPawnAgent();
 
 	public:

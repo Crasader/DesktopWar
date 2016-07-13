@@ -26,10 +26,10 @@ using namespace cfg;
 /************************************************************************/
 /*                              ComPawnAnim                                        */
 /************************************************************************/
-ComPawnAnim::ComPawnAnim(int roleID) :
-m_curAction(Action_Idle),
-m_pAnimFsm(nullptr)
+void ComPawnAnim::Create(int roleID)
 {
+	m_curAction = Action_Idle;
+	m_pAnimFsm = nullptr;
 	auto roleCfg = FIND_CFG(Role_cfg, roleID);
 	if (roleCfg)
 	{
@@ -80,7 +80,7 @@ ComPawnAnim::~ComPawnAnim()
 
 bool	ComPawnAnim::Init()
 {
-	Component::Init();
+	IComponent::Init();
 
 	GetOwner()->GetComponent<ComPawnAgent>()->GetBlackboard()->AddActionHandler(this);
 

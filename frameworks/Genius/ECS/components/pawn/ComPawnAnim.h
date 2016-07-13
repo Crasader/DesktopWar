@@ -2,7 +2,7 @@
 #pragma once
 
 #include <string>
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 #include "common/2Ddef.h"
 #include "gfx/gfx.h"
 #include "pawn/action/ActionHandler.h"
@@ -17,7 +17,7 @@ namespace Genius
 	class AnimSet;
 	class AnimFSM;
 
-	class ComPawnAnim : public cocos2d::Ref, public Component, public ActionHandler
+	class ComPawnAnim : public cocos2d::Ref, public IComponent, public ActionHandler
 	{
 	public:
 		AnimSet*								m_pAnimSet;
@@ -29,7 +29,7 @@ namespace Genius
 		int										m_curAction;
 
 	public:
-		ComPawnAnim(int roleID);
+		void Create(int roleID);
 		virtual ~ComPawnAnim();
 
 		virtual bool Init();

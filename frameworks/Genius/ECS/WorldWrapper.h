@@ -12,6 +12,7 @@ namespace Genius
 	class WorldWrapper : public Singleton<WorldWrapper>
 	{
 	public:
+		static WorldWrapper* GetWorld();
 		EntityWrapper* CreateEntity();
 		
 

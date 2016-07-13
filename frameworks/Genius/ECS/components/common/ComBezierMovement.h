@@ -1,13 +1,13 @@
 
 #pragma once
 
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 
 
 namespace Genius
 {
 	
-	class ComBezierMovement : public Component
+	class ComBezierMovement : public IComponent
 	{
 	public:
 		float controlPoint1X;		// Ïà¶ÔstartX
@@ -24,19 +24,7 @@ namespace Genius
 		float timePassed;
 
 	public:
-		ComBezierMovement(float _startx, float _starty, float _destx, float _desty, float _duration) :
-			startX(_startx),
-			startY(_starty),
-			deltaX(_destx - _startx),
-			deltaY(_desty - _starty),
-			controlPoint1X(0),
-			controlPoint1Y(100),
-			controlPoint2X(_destx - _startx),
-			controlPoint2Y(100),
-			duration(_duration),
-			timePassed(0)
-		{}
-
+		void Create(float _startx, float _starty, float _destx, float _desty, float _duration);
 		bool IsDone(){ return timePassed >= duration; }
 		void Stop(){ timePassed = duration; }
 	};

@@ -16,7 +16,7 @@ namespace Genius
 		const static std::string stopAnimName;
 
 	public:
-		ComBulletAnimArrow(const std::string& bodyFileName);
+		void Create(const std::string& bodyFileName);
 		
 		void StayStill();
 		void AnimationMovementCallback(cocostudio::Armature *cca, cocostudio::MovementEventType movType, const std::string& animName);

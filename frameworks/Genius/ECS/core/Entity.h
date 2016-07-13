@@ -11,7 +11,7 @@
 
 namespace Genius
 {
-	class Component;
+	class IComponent;
 	class ComponentType;
 	class ECSWorld;
 	
@@ -50,7 +50,7 @@ namespace Genius
 
 		std::string			ToString();
 
-		Component*		AddComponent(Component * c);
+		IComponent*		AddComponent(IComponent * c);
 
 		//Might change to non template
 		template<typename c>
@@ -60,7 +60,7 @@ namespace Genius
 		}
 
 		void					RemoveComponent(ComponentType & type);
-		Component*		GetComponent(ComponentType & type);
+		IComponent*		GetComponent(ComponentType & type);
 
 		template<typename c>
 		c * GetComponent()
@@ -68,7 +68,7 @@ namespace Genius
 			return (c*)m_pEntityManager->GetComponent(this, ComponentTypeManager::getTypeFor<c>());
 		}
 
-		ImmutableBag<Component*>& GetComponents();
+		ImmutableBag<IComponent*>& GetComponents();
 
 		bool					IsActive();
 		void					Refresh();

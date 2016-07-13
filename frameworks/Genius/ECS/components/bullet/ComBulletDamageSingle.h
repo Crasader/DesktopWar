@@ -1,20 +1,18 @@
 
 #pragma once
 
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 #include "../../core/Entity.h"
 
 namespace Genius
 {
-	class ComBulletDamageSingle : public Component
+	class ComBulletDamageSingle : public IComponent
 	{
 	public:
 		int		targetID;
 
 	public:
-		ComBulletDamageSingle():
-			targetID(Entity::InvalidID)
-		{}
+
 	};
 };
 

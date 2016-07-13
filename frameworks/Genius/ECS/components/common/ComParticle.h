@@ -2,19 +2,19 @@
 #pragma once
 
 
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 #include "gfx/gfx.h"
 
 namespace Genius
 {
 
-	class ComParticle : public Component
+	class ComParticle : public IComponent
 	{
 	public:
 		cocos2d::Node*					m_pAvatarRoot;
 
 	public:
-		ComParticle(const std::string& fileName);
+		void Create(const std::string& fileName);
 		~ComParticle();
 	};
 

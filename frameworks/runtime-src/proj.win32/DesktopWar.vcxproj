@@ -218,7 +218,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnFight.h" />
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnNavigation.h" />
     <ClInclude Include="..\..\Genius\ECS\core\BitSize.h" />
-    <ClInclude Include="..\..\Genius\ECS\core\Component.h" />
+    <ClInclude Include="..\..\Genius\ECS\core\IComponent.h" />
     <ClInclude Include="..\..\Genius\ECS\core\ComponentMapper.h" />
     <ClInclude Include="..\..\Genius\ECS\core\ComponentType.h" />
     <ClInclude Include="..\..\Genius\ECS\core\ComponentTypeManager.h" />
@@ -378,7 +378,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnDirection.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnFight.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnNavigation.cpp" />
-    <ClCompile Include="..\..\Genius\ECS\core\Component.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\core\IComponent.cpp" />
     <ClCompile Include="..\..\Genius\ECS\core\ComponentType.cpp" />
     <ClCompile Include="..\..\Genius\ECS\core\ComponentTypeManager.cpp" />
     <ClCompile Include="..\..\Genius\ECS\core\ECSWorld.cpp" />

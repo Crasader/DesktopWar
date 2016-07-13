@@ -25,22 +25,44 @@ int EntityCreator::CreatePawn(int id, float x, float y, int team)
 	}
 
 	Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
-	ent->AddComponent(new ComPawnAgent(roleInfo));
-	ent->AddComponent(new ComVelocity(0, 0));
-	ent->AddComponent(new ComPosition(x, y));
-	ent->AddComponent(new ComTeam(team));
-	ent->AddComponent(new ComTarget(Target_Entity));
-	ComPawnAnim* paCom = new ComPawnAnim(id);
+	auto agent = new ComPawnAgent();
+	agent->Create(roleInfo);
+	ent->AddComponent(agent);
+	auto vel = new ComVelocity();
+	vel->x = 0; vel->y = 0;
+	ent->AddComponent(vel);
+	auto pos = new ComPosition();
+	pos->x = x; pos->y = y;
+	ent->AddComponent(pos);
+	auto tm = new ComTeam();
+	tm->team = team;
+	ent->AddComponent(tm);
+	auto targ = new ComTarget();
+	targ->Create(Target_Entity);
+	ent->AddComponent(targ);
+	ComPawnAnim* paCom = new ComPawnAnim();
+	paCom->Create(id);
 	ent->AddComponent(paCom);
 	float width = paCom->GetWidth()*0.5f;
 	float height = paCom->GetHeight()*0.7f;
-	ent->AddComponent(new ComBoxCollider(false, 0, height*0.5f, width, height));
-	ent->AddComponent(new ComColliderHandler(nullptr, nullptr));
+	auto box = new ComBoxCollider();
+	box->Create(false, 0, height*0.5f, width, height);
+	ent->AddComponent(box);
+	auto han = new ComColliderHandler();
+	han->Create(nullptr, nullptr);
+	ent->AddComponent(han);
 	ent->AddComponent(new ComPawnDirection());
-	ent->AddComponent(new ComPawnBevtree(roleInfo->bevTreeFile));
+	auto bev = new ComPawnBevtree();
+	bev->Create(roleInfo->bevTreeFile);
+	ent->AddComponent(bev);
 	ent->AddComponent(new ComPawnNavigation());
 	ent->AddComponent(new ComPawnFight());
-	if (cfg_EnableDebugDraw) ent->AddComponent(new ComPawnDebugDraw());
+	if (cfg_EnableDebugDraw)
+	{
+		auto dd = new ComPawnDebugDraw();
+		dd->Create();
+		ent->AddComponent(dd);
+	}
 
 	if (team == Team_Human)
 	{
@@ -73,39 +95,73 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	}
 
 	Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
-	ent->AddComponent(new ComBulletAgent(bulletCfg));
-	ent->AddComponent(new ComPosition(x, y));
-	ent->AddComponent(new ComTeam(team));
-	ent->AddComponent(new ComBoxCollider(true, 0, 0, bulletCfg->boxWidth, bulletCfg->boxHeight));
+	auto bagent = new ComBulletAgent();
+	bagent->Create(bulletCfg);
+	ent->AddComponent(bagent);
+	auto pos = new ComPosition();
+	pos->x = x; pos->y = y;
+	ent->AddComponent(pos);
+	auto tm = new ComTeam();
+	tm->team = team;
+	ent->AddComponent(tm);
+	auto box = new ComBoxCollider();
+	box->Create(true, 0, 0, bulletCfg->boxWidth, bulletCfg->boxHeight);
+	ent->AddComponent(box);
 	if (cfg_EnableDebugDraw) ent->AddComponent(new ComBulletDebugDraw());
 	
 	if (bulletCfg->moveType == BulletMoveType::BMT_Line)
 	{
-		ent->AddComponent(new ComVelocity(0, 0));
+		auto vel = new ComVelocity();
+		vel->x = 0; vel->y = 0;
+		ent->AddComponent(vel);
 		ent->AddComponent(new ComBulletDamageNone());
-		ent->AddComponent(new ComBulletAnimEgg(anim_cfg->name));
+		auto baegg = new ComBulletAnimEgg();
+		baegg->Create(anim_cfg->name);
+		ent->AddComponent(baegg);
 	}
 	else if (bulletCfg->moveType == BulletMoveType::BMT_Bezier)
 	{
-		ent->AddComponent(new ComVelocity(0, 0));
-		ent->AddComponent(new ComTarget(Target_Location, 0, destX, destY));
-		ent->AddComponent(new ComBezierMovement(x, y, destX, destY, (abs(x - destX) + abs(y - destY)) / bulletCfg->flySpeed));
-		ent->AddComponent(new ComBulletDamageSingle());
-		ent->AddComponent(new ComBulletAnimArrow(anim_cfg->name));
+		auto vel = new ComVelocity();
+		vel->x = 0; vel->y = 0;
+		ent->AddComponent(vel);
+		auto targ = new ComTarget();
+		targ->Create(Target_Location, 0, destX, destY);
+		ent->AddComponent(targ);
+		auto bez = new ComBezierMovement();
+		bez->Create(x, y, destX, destY, (abs(x - destX) + abs(y - destY)) / bulletCfg->flySpeed);
+		ent->AddComponent(bez);
+		auto dmgs = new ComBulletDamageSingle();
+		dmgs->targetID = targetEntityID;
+		ent->AddComponent(dmgs);
+		auto banim = new ComBulletAnimArrow();
+		banim->Create(anim_cfg->name);
+		ent->AddComponent(banim);
 		SystemBulletDamageSingle* atkSys = ECSWorld::GetSingleton()->GetSystemManager()->GetSystem<SystemBulletDamageSingle>();
-		ent->AddComponent(new ComColliderHandler(std::bind(&SystemBulletDamageSingle::collisionHandler, atkSys, std::placeholders::_1, std::placeholders::_2),nullptr));
+		auto han = new ComColliderHandler();
+		han->Create(std::bind(&SystemBulletDamageSingle::collisionHandler, atkSys, std::placeholders::_1, std::placeholders::_2), nullptr);
+		ent->AddComponent(han);
 	}
 	else if(bulletCfg->moveType == BulletMoveType::BMT_Tracking)
 	{
 		SystemPawnFight* fightSys = ECSWorld::GetSingleton()->GetSystemManager()->GetSystem<SystemPawnFight>();
 		int tarEntityID = fightSys->FindFirstTargetByTeam(team);
-		ent->AddComponent(new ComVelocity(0, bulletCfg->flySpeed));
-		ent->AddComponent(new ComTarget(Target_Entity, tarEntityID));
-		ent->AddComponent(new ComDelayTrackMoving(tarEntityID, bulletCfg->findTargetDelay));
+		auto vel = new ComVelocity();
+		vel->x = 0; vel->y = bulletCfg->flySpeed;
+		ent->AddComponent(vel);
+		auto targ = new ComTarget();
+		targ->Create(Target_Entity, tarEntityID);
+		ent->AddComponent(targ);
+		auto delayTrack = new ComDelayTrackMoving();
+		delayTrack->Create(tarEntityID, bulletCfg->findTargetDelay);
+		ent->AddComponent(delayTrack);
 		ent->AddComponent(new ComBulletDamageScope());
-		ent->AddComponent(new ComBulletAnimBomb(anim_cfg->name, bulletCfg->tailAnim));
+		auto bom = new ComBulletAnimBomb();
+		bom->Create(anim_cfg->name, bulletCfg->tailAnim);
+		ent->AddComponent(bom);
 		SystemBulletDamageScope* atkSys = ECSWorld::GetSingleton()->GetSystemManager()->GetSystem<SystemBulletDamageScope>();
-		ent->AddComponent(new ComColliderHandler(std::bind(&SystemBulletDamageScope::OnCollision, atkSys, std::placeholders::_1, std::placeholders::_2),nullptr));
+		auto han = new ComColliderHandler();
+		han->Create(std::bind(&SystemBulletDamageScope::OnCollision, atkSys, std::placeholders::_1, std::placeholders::_2), nullptr);
+		ent->AddComponent(han);
 	}
 	
 	ent->Refresh();
@@ -115,8 +171,12 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 int EntityCreator::CreateBornPoint(float x, float y, int team)
 {
 	Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
-	ent->AddComponent(new ComPosition(x, y));
-	ent->AddComponent(new ComTeam(team));
+	auto pos = new ComPosition();
+	pos->x = x; pos->y = y;
+	ent->AddComponent(pos);
+	auto tm = new ComTeam();
+	tm->team = team;
+	ent->AddComponent(tm);
 	if (team == Team_Human)
 	{
 		auto anim = new ComAnimation();

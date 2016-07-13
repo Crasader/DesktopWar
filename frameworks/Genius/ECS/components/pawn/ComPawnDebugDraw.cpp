@@ -5,7 +5,7 @@ USING_NS_CC;
 using namespace Genius;
 
 
-ComPawnDebugDraw::ComPawnDebugDraw()
+void ComPawnDebugDraw::Create()
 {
 	pRoot = Node::create();
 	pNodeBoxCollider = DrawNode::create();

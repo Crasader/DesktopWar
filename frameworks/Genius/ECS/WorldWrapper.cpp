@@ -6,6 +6,11 @@
 
 using namespace Genius;
 
+WorldWrapper* WorldWrapper::GetWorld()
+{
+	return WorldWrapper::GetSingleton();
+}
+
 
 EntityWrapper* WorldWrapper::CreateEntity()
 {

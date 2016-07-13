@@ -295,9 +295,6 @@
     <ClInclude Include="..\..\Genius\ECS\core\BitSize.h">
       <Filter>Genius\Logic\ESC\Core\Component</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\core\Component.h">
-      <Filter>Genius\Logic\ESC\Core\Component</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\core\ComponentMapper.h">
       <Filter>Genius\Logic\ESC\Core\Component</Filter>
     </ClInclude>
@@ -628,6 +625,9 @@
     <ClInclude Include="..\..\Genius\ECS\WorldWrapper.h">
       <Filter>Genius\Logic\ESC</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\core\IComponent.h">
+      <Filter>Genius\Logic\ESC\Core\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -762,9 +762,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\core\EntityManager.cpp">
       <Filter>Genius\Logic\ESC\Core\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\core\Component.cpp">
-      <Filter>Genius\Logic\ESC\Core\Component</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\core\ComponentType.cpp">
       <Filter>Genius\Logic\ESC\Core\Component</Filter>
@@ -1062,6 +1059,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\WorldWrapper.cpp">
       <Filter>Genius\Logic\ESC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\core\IComponent.cpp">
+      <Filter>Genius\Logic\ESC\Core\Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

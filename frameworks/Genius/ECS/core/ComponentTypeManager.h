@@ -5,7 +5,7 @@
 #include <assert.h>
 #include <bitset>
 #include "ComponentType.h"
-#include "Component.h"
+#include "IComponent.h"
 
 namespace Genius
 {
@@ -33,7 +33,7 @@ namespace Genius
 			//Check if we are being legal with components and shizzle
 			//Component * c = (component*)0;
 
-			assert((std::is_base_of<Component, c >::value == true));
+			assert((std::is_base_of<IComponent, c >::value == true));
 
 			return getTypeFor(typeid(c));
 		}
@@ -48,7 +48,7 @@ namespace Genius
 			//Check if we are being legal with components and shizzle
 			//Component * c = (component*)0;
 
-			assert((std::is_base_of< Component, c >::value == true));
+			assert((std::is_base_of< IComponent, c >::value == true));
 			return getTypeFor(typeid(c)).getBit();
 		}
 
@@ -59,7 +59,7 @@ namespace Genius
 		static int GetId()
 		{
 			//Check if we are being legal with components and shizzle
-			assert((std::is_base_of< Component, c >::value == true));
+			assert((std::is_base_of< IComponent, c >::value == true));
 			return getTypeFor(typeid(c)).GetId();
 		};
 	};

@@ -8,7 +8,7 @@ using namespace Genius;
 using namespace cfg;
 
 
-ComBulletAgent::ComBulletAgent(Bullet_cfg* pData)
+void ComBulletAgent::Create(Bullet_cfg* pData)
 {
 	pBulletData = pData;
 }

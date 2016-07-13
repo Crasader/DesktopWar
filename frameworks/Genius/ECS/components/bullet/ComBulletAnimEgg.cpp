@@ -7,9 +7,9 @@
 
 using namespace Genius;
 
-ComBulletAnimEgg::ComBulletAnimEgg(const std::string& bodyFileName):
-	ComBulletAnimBase(bodyFileName)
+void ComBulletAnimEgg::Create(const std::string& bodyFileName)
 {
+	ComBulletAnimBase::Create(bodyFileName);
 	m_pBodyArmature->getAnimation()->setFrameEventCallFunc(CC_CALLBACK_3(ComBulletAnimEgg::AnimationFrameCallback, this, std::placeholders::_4));
 	m_pBodyArmature->getAnimation()->setMovementEventCallFunc(CC_CALLBACK_3(ComBulletAnimEgg::AnimationMovementCallback, this));
 }

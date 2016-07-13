@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 #include "cocos2d.h"
 #include "cocostudio/CocoStudio.h"
 
@@ -9,7 +9,7 @@ using namespace cocos2d;
 
 namespace Genius
 {
-	class ComBulletDebugDraw : public Component
+	class ComBulletDebugDraw : public IComponent
 	{
 	public:
 		cocos2d::Node*			pRoot;

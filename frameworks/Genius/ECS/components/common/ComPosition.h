@@ -2,26 +2,19 @@
 #pragma once
 
 
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 
 namespace Genius
 {
 	
-	class ComPosition : public Component
+	class ComPosition : public IComponent
 	{
 	public:
 		float x;
 		float y;
 
 	public:
-		ComPosition():
-			x(0),
-			y(0)
-		{}
-		ComPosition(float _x, float _y):
-			x(_x),
-			y(_y)
-		{}
+
 	};
 
 };

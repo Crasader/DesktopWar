@@ -5,7 +5,7 @@
 
 namespace Genius
 {
-	class Component;
+	class IComponent;
 	class Entity;
 	/************************************************************************/
 	/*                                ½Å±¾×¨ÓÃ                                      */
@@ -15,7 +15,7 @@ namespace Genius
 	public:
 		EntityWrapper(Entity* ent);
 
-		Component* AddComponent(const char* name);
+		IComponent* AddComponent(const char* name);
 
 		//Entity* GetEntity(){ return m_entity; }
 

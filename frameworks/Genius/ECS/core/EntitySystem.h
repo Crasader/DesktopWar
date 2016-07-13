@@ -2,7 +2,7 @@
 
 #include <bitset>
 #include "BitSize.h"
-#include "Component.h"
+#include "IComponent.h"
 #include <iostream>
 #include <assert.h>
 #include <typeinfo>

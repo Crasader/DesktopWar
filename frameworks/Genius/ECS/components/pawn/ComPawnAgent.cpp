@@ -8,7 +8,7 @@
 using namespace Genius;
 using namespace cfg;
 
-ComPawnAgent::ComPawnAgent(Role_cfg* pData)
+void ComPawnAgent::Create(Role_cfg* pData)
 {
 	m_roleCfg = pData;
 

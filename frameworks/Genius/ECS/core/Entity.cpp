@@ -1,7 +1,7 @@
 
 #include "Entity.h"
 #include <sstream>
-#include "Component.h"
+#include "IComponent.h"
 #include "ECSWorld.h"
 //#include "EntityManager.h"
 
@@ -34,12 +34,12 @@ namespace Genius
 		m_typeBits |= bit;
 	}
 
-	Component* Entity::GetComponent(ComponentType & type)
+	IComponent* Entity::GetComponent(ComponentType & type)
 	{
 		return m_pEntityManager->GetComponent(this, type);
 	}
 
-	ImmutableBag<Component*> & Entity::GetComponents()
+	ImmutableBag<IComponent*> & Entity::GetComponents()
 	{
 		return m_pEntityManager->GetComponents(this);
 	}
@@ -74,7 +74,7 @@ namespace Genius
 		m_pWorld->RefreshEntity(this);
 	}
 
-	Component* Entity::AddComponent(Component * c)
+	IComponent* Entity::AddComponent(IComponent * c)
 	{
 		m_pEntityManager->AddComponent(this, c);
 		c->Init();

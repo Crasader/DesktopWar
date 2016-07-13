@@ -2,20 +2,18 @@
 #pragma once
 
 
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 
 namespace Genius
 {
 
-	class ComTeam : public Component
+	class ComTeam : public IComponent
 	{
 	public:
 		int team;
 
 	public:
-		ComTeam(int _team):
-			team(_team)
-		{}
+
 	};
 
 };

@@ -2,7 +2,7 @@
 #pragma once
 
 #include <string>
-#include "../../core/Component.h"
+#include "../../core/IComponent.h"
 #include "pawn/PawnDefines.h"
 #include "common/2Ddef.h"
 #include "gfx/gfx.h"
@@ -10,7 +10,7 @@
 namespace Genius
 {
 
-	class ComPawnDirection : public Component
+	class ComPawnDirection : public IComponent
 	{
 	public:
 		unsigned int	m_currentDir;

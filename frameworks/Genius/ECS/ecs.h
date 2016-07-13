@@ -1,7 +1,7 @@
 #pragma once
 
 // core
-#include "core/Component.h"
+#include "core/IComponent.h"
 #include "core/Entity.h"
 #include "core/EntityManager.h"
 #include "core/SystemManager.h"

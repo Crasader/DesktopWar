@@ -4,7 +4,7 @@
 #include "SystemManager.h"
 #include "BitSize.h"
 #include "ECSWorld.h"
-#include "Component.h"
+#include "IComponent.h"
 #include "Entity.h"
 
 namespace Genius
@@ -20,7 +20,7 @@ namespace Genius
 		m_totalRemoved = 0;
 	};
 
-	void EntityManager::AddComponent(Entity* pEntity, Component * pCom)
+	void EntityManager::AddComponent(Entity* pEntity, IComponent * pCom)
 	{
 		if (nullptr == pEntity || nullptr == pCom)
 			return;
@@ -33,11 +33,11 @@ namespace Genius
 			m_componentsByType.set(type.GetId(), nullptr);
 		}
 
-		Bag<Component*> * components = m_componentsByType.get(type.GetId());
+		Bag<IComponent*> * components = m_componentsByType.get(type.GetId());
 
 		if (components == nullptr)
 		{
-			components = new Bag<Component*>();
+			components = new Bag<IComponent*>();
 			m_componentsByType.set(type.GetId(), components);
 		}
 
@@ -93,12 +93,12 @@ namespace Genius
 		return m_totalRemoved;
 	};
 
-	Component * EntityManager::GetComponent(Entity* pEntity, ComponentType & type)
+	IComponent * EntityManager::GetComponent(Entity* pEntity, ComponentType & type)
 	{
 		if (nullptr == pEntity)
 			return nullptr;
 
-		Bag<Component*>* bag = m_componentsByType.get(type.GetId());
+		Bag<IComponent*>* bag = m_componentsByType.get(type.GetId());
 
 		if (bag != nullptr && pEntity->GetId() < bag->getCapacity())
 			return bag->get(pEntity->GetId());
@@ -109,17 +109,17 @@ namespace Genius
 	/**
 	 * Retrieves all components for one entity.
 	 */
-	Bag<Component*>& EntityManager::GetComponents(Entity* pEntity)
+	Bag<IComponent*>& EntityManager::GetComponents(Entity* pEntity)
 	{
 		m_entityComponents.clear();
 
 		for (int i = 0; i < m_componentsByType.getCapacity(); i++)
 		{
-			Bag<Component*> * components = m_componentsByType.get(i);
+			Bag<IComponent*> * components = m_componentsByType.get(i);
 
 			if (components != nullptr && pEntity->GetId() < components->getCapacity())
 			{
-				Component * c = components->get(pEntity->GetId());
+				IComponent * c = components->get(pEntity->GetId());
 
 				if (c != nullptr)
 				{
@@ -167,7 +167,7 @@ namespace Genius
 		if (nullptr == pEntity)
 			return;
 
-		Bag<Component* > * components = m_componentsByType.get(type.GetId());
+		Bag<IComponent* > * components = m_componentsByType.get(type.GetId());
 
 		delete components->get(pEntity->GetId());
 		components->set(pEntity->GetId(), nullptr);
@@ -182,7 +182,7 @@ namespace Genius
 
 		for (int i = 0; i < m_componentsByType.getCapacity(); i++)
 		{
-			Bag<Component*> * components = m_componentsByType.get(i);
+			Bag<IComponent*> * components = m_componentsByType.get(i);
 
 			if (components != nullptr && pEntity->GetId() < components->getCapacity())
 			{

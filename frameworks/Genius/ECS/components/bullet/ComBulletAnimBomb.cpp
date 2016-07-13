@@ -11,9 +11,9 @@ using namespace cocostudio;
 
 const std::string ComBulletAnimBomb::explodeAnimName = "explode";
 
-ComBulletAnimBomb::ComBulletAnimBomb(const std::string& bodyFileName, const std::string& tailFileName):
-	ComBulletAnimBase(bodyFileName)
+void ComBulletAnimBomb::Create(const std::string& bodyFileName, const std::string& tailFileName)
 {
+	ComBulletAnimBase::Create(bodyFileName);
 	m_pBodyArmature->getAnimation()->setFrameEventCallFunc(CC_CALLBACK_3(ComBulletAnimBomb::AnimationFrameCallback, this, std::placeholders::_4));
 	m_pBodyArmature->getAnimation()->setMovementEventCallFunc(CC_CALLBACK_3(ComBulletAnimBomb::AnimationMovementCallback, this));
 

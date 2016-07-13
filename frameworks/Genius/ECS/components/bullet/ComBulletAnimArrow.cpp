@@ -17,9 +17,9 @@ void ComBulletAnimArrow::StayStill()
 	}
 }
 
-ComBulletAnimArrow::ComBulletAnimArrow(const std::string& bodyFileName):
-	ComBulletAnimBase(bodyFileName)
+void ComBulletAnimArrow::Create(const std::string& bodyFileName)
 {
+	ComBulletAnimBase::Create(bodyFileName);
 	m_pBodyArmature->getAnimation()->setFrameEventCallFunc(CC_CALLBACK_3(ComBulletAnimArrow::AnimationFrameCallback, this, std::placeholders::_4));
 	m_pBodyArmature->getAnimation()->setMovementEventCallFunc(CC_CALLBACK_3(ComBulletAnimArrow::AnimationMovementCallback, this));
 }
