@@ -386,6 +386,16 @@ ComAnimation : function (
  */
 ComTeam = {
 
+/**
+ * @method SetTeam
+ * @param {int} arg0
+ */
+SetTeam : function (
+int 
+)
+{
+},
+
 };
 
 /**

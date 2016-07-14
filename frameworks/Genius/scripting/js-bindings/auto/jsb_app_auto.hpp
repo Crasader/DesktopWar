@@ -115,6 +115,7 @@ bool js_app_ComTeam_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_app_ComTeam_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_ComTeam(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComTeam_SetTeam(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComTarget_class;
 extern JSObject *jsb_Genius_ComTarget_prototype;

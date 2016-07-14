@@ -1,6 +1,7 @@
 
 #include "EntityWrapper.h"
 #include "ECS/ecs.h"
+#include "common/Log.h"
 
 
 using namespace Genius;
@@ -39,6 +40,7 @@ Genius::IComponent* EntityWrapper::AddComponent(const char* name)
 		com = new ComBezierMovement();
 	else if (comName == "ComDelayTrackMovement")
 		com = new ComDelayTrackMoving();
+
 	else if (comName == "ComPawnAgent")
 		com = new ComPawnAgent();
 	else if (comName == "ComPawnAnim")
@@ -73,8 +75,10 @@ Genius::IComponent* EntityWrapper::AddComponent(const char* name)
 	else if (comName == "ComBulletAnimEgg")
 		com = new ComBulletAnimEgg();
 
-	m_entity->AddComponent(com);
-	m_entity->Refresh();
+	if (com != nullptr)
+		m_entity->AddComponent(com);
+	else
+		Log::Error("com not exist : %s", name);
 
 	return com;
 }

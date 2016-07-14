@@ -15,6 +15,7 @@ WorldWrapper* WorldWrapper::GetWorld()
 EntityWrapper* WorldWrapper::CreateEntity()
 {
 	Entity* ent = ECSWorld::GetSingleton()->CreateEntity();
+	ent->Refresh();
 	EntityWrapper* entWrapper = new EntityWrapper(ent);
 
 	entityMap[ent->GetId()] = entWrapper;

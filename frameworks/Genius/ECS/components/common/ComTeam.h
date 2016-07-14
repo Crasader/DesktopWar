@@ -13,7 +13,10 @@ namespace Genius
 		int team;
 
 	public:
-
+		void SetTeam(int t)
+		{
+			team = t;
+		}
 	};
 
 };

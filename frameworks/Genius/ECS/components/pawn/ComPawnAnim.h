@@ -17,7 +17,7 @@ namespace Genius
 	class AnimSet;
 	class AnimFSM;
 
-	class ComPawnAnim : public cocos2d::Ref, public IComponent, public ActionHandler
+	class ComPawnAnim : public IComponent, public ActionHandler, public cocos2d::Ref
 	{
 	public:
 		AnimSet*								m_pAnimSet;

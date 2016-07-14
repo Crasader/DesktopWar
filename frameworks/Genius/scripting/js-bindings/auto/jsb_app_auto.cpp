@@ -1218,6 +1218,26 @@ void js_register_app_ComAnimation(JSContext *cx, JS::HandleObject global) {
 JSClass  *jsb_Genius_ComTeam_class;
 JSObject *jsb_Genius_ComTeam_prototype;
 
+bool js_app_ComTeam_SetTeam(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::ComTeam* cobj = (Genius::ComTeam *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComTeam_SetTeam : Invalid Native Object");
+    if (argc == 1) {
+        int arg0 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_ComTeam_SetTeam : Error processing arguments");
+        cobj->SetTeam(arg0);
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_ComTeam_SetTeam : wrong number of arguments: %d, was expecting %d", argc, 1);
+    return false;
+}
 
 extern JSObject *jsb_Genius_IComponent_prototype;
 
@@ -1238,6 +1258,7 @@ void js_register_app_ComTeam(JSContext *cx, JS::HandleObject global) {
     };
 
     static JSFunctionSpec funcs[] = {
+        JS_FN("SetTeam", js_app_ComTeam_SetTeam, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 
