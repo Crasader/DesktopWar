@@ -3,14 +3,19 @@
 
 using namespace Genius;
 
-
-void ComTransform::Create(float _x, float _y, float _vx, float _vy, int _dir)
+void ComTransform::SetPosition(float _x, float _y)
 {
 	x = _x;
 	y = _y;
-	vx = _vx;
-	vy = _vy;
-	curDir = _dir;
-	lastDir = 0;
+}
+void ComTransform::SetVelocity(float _x, float _y)
+{
+	vx = _x;
+	vy = _y;
+}
+void ComTransform::SetDirection(int dir)
+{
+	lastDir = curDir;
+	curDir = dir;
 }
 

@@ -16,7 +16,10 @@ namespace Genius
 		int curDir;
 		int lastDir;
 
-		void Create(float _x, float _y, float _vx, float _vy, int _dir);
+	public:
+		void SetPosition(float _x, float _y);
+		void SetVelocity(float _x, float _y);
+		void SetDirection(int dir);
 
 	};
 	

@@ -271,6 +271,47 @@ IComponent = {
 };
 
 /**
+ * @class ComTransform
+ */
+ComTransform = {
+
+/**
+ * @method SetPosition
+ * @param {float} arg0
+ * @param {float} arg1
+ */
+SetPosition : function (
+float, 
+float 
+)
+{
+},
+
+/**
+ * @method SetVelocity
+ * @param {float} arg0
+ * @param {float} arg1
+ */
+SetVelocity : function (
+float, 
+float 
+)
+{
+},
+
+/**
+ * @method SetDirection
+ * @param {int} arg0
+ */
+SetDirection : function (
+int 
+)
+{
+},
+
+};
+
+/**
  * @class ComBoxCollider
  */
 ComBoxCollider = {

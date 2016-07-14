@@ -59,6 +59,14 @@ void ComPawnAnim::Create(int roleID)
 		m_pDebugLabel->setPosition(0, -10);
 		m_pAvatarRoot->addChild(m_pDebugLabel);
 	}
+
+	GetOwner()->GetComponent<ComPawnAgent>()->GetBlackboard()->AddActionHandler(this);
+
+	CreateAnimFSM(AFT_Simple);
+
+	m_pAnimSet = new AnimSetSimple(this);
+
+	EventManager::GetSingleton()->FireEvent(NodeCreatedEvent(GetOwner(), m_pAvatarRoot));
 }
 
 ComPawnAnim::~ComPawnAnim()
@@ -81,14 +89,6 @@ ComPawnAnim::~ComPawnAnim()
 bool	ComPawnAnim::Init()
 {
 	IComponent::Init();
-
-	GetOwner()->GetComponent<ComPawnAgent>()->GetBlackboard()->AddActionHandler(this);
-
-	CreateAnimFSM(AFT_Simple);
-
-	m_pAnimSet = new AnimSetSimple(this);
-
-	EventManager::GetSingleton()->FireEvent(NodeCreatedEvent(GetOwner(), m_pAvatarRoot));
 
 	return true;
 }

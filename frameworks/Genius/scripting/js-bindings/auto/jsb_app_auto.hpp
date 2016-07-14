@@ -69,6 +69,17 @@ void js_app_IComponent_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_IComponent(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 
+extern JSClass  *jsb_Genius_ComTransform_class;
+extern JSObject *jsb_Genius_ComTransform_prototype;
+
+bool js_app_ComTransform_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComTransform_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComTransform(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComTransform_SetPosition(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComTransform_SetVelocity(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComTransform_SetDirection(JSContext *cx, uint32_t argc, jsval *vp);
+
 extern JSClass  *jsb_Genius_ComBoxCollider_class;
 extern JSObject *jsb_Genius_ComBoxCollider_prototype;
 

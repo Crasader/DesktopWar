@@ -801,6 +801,121 @@ void js_register_app_IComponent(JSContext *cx, JS::HandleObject global) {
     jsb_register_class<Genius::IComponent>(cx, jsb_Genius_IComponent_class, proto, JS::NullPtr());
 }
 
+JSClass  *jsb_Genius_ComTransform_class;
+JSObject *jsb_Genius_ComTransform_prototype;
+
+bool js_app_ComTransform_SetPosition(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::ComTransform* cobj = (Genius::ComTransform *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComTransform_SetPosition : Invalid Native Object");
+    if (argc == 2) {
+        double arg0 = 0;
+        double arg1 = 0;
+        ok &= JS::ToNumber( cx, args.get(0), &arg0) && !std::isnan(arg0);
+        ok &= JS::ToNumber( cx, args.get(1), &arg1) && !std::isnan(arg1);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_ComTransform_SetPosition : Error processing arguments");
+        cobj->SetPosition(arg0, arg1);
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_ComTransform_SetPosition : wrong number of arguments: %d, was expecting %d", argc, 2);
+    return false;
+}
+bool js_app_ComTransform_SetVelocity(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::ComTransform* cobj = (Genius::ComTransform *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComTransform_SetVelocity : Invalid Native Object");
+    if (argc == 2) {
+        double arg0 = 0;
+        double arg1 = 0;
+        ok &= JS::ToNumber( cx, args.get(0), &arg0) && !std::isnan(arg0);
+        ok &= JS::ToNumber( cx, args.get(1), &arg1) && !std::isnan(arg1);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_ComTransform_SetVelocity : Error processing arguments");
+        cobj->SetVelocity(arg0, arg1);
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_ComTransform_SetVelocity : wrong number of arguments: %d, was expecting %d", argc, 2);
+    return false;
+}
+bool js_app_ComTransform_SetDirection(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::ComTransform* cobj = (Genius::ComTransform *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComTransform_SetDirection : Invalid Native Object");
+    if (argc == 1) {
+        int arg0 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_ComTransform_SetDirection : Error processing arguments");
+        cobj->SetDirection(arg0);
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_ComTransform_SetDirection : wrong number of arguments: %d, was expecting %d", argc, 1);
+    return false;
+}
+
+extern JSObject *jsb_Genius_IComponent_prototype;
+
+void js_register_app_ComTransform(JSContext *cx, JS::HandleObject global) {
+    jsb_Genius_ComTransform_class = (JSClass *)calloc(1, sizeof(JSClass));
+    jsb_Genius_ComTransform_class->name = "ComTransform";
+    jsb_Genius_ComTransform_class->addProperty = JS_PropertyStub;
+    jsb_Genius_ComTransform_class->delProperty = JS_DeletePropertyStub;
+    jsb_Genius_ComTransform_class->getProperty = JS_PropertyStub;
+    jsb_Genius_ComTransform_class->setProperty = JS_StrictPropertyStub;
+    jsb_Genius_ComTransform_class->enumerate = JS_EnumerateStub;
+    jsb_Genius_ComTransform_class->resolve = JS_ResolveStub;
+    jsb_Genius_ComTransform_class->convert = JS_ConvertStub;
+    jsb_Genius_ComTransform_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+    static JSPropertySpec properties[] = {
+        JS_PS_END
+    };
+
+    static JSFunctionSpec funcs[] = {
+        JS_FN("SetPosition", js_app_ComTransform_SetPosition, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("SetVelocity", js_app_ComTransform_SetVelocity, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("SetDirection", js_app_ComTransform_SetDirection, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+    };
+
+    JSFunctionSpec *st_funcs = NULL;
+
+    JS::RootedObject parent_proto(cx, jsb_Genius_IComponent_prototype);
+    jsb_Genius_ComTransform_prototype = JS_InitClass(
+        cx, global,
+        parent_proto,
+        jsb_Genius_ComTransform_class,
+        dummy_constructor<Genius::ComTransform>, 0, // no constructor
+        properties,
+        funcs,
+        NULL, // no static properties
+        st_funcs);
+
+    JS::RootedObject proto(cx, jsb_Genius_ComTransform_prototype);
+    JS::RootedValue className(cx, std_string_to_jsval(cx, "ComTransform"));
+    JS_SetProperty(cx, proto, "_className", className);
+    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
+    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
+    // add the proto and JSClass to the type->js info hash table
+    jsb_register_class<Genius::ComTransform>(cx, jsb_Genius_ComTransform_class, proto, parent_proto);
+}
+
 JSClass  *jsb_Genius_ComBoxCollider_class;
 JSObject *jsb_Genius_ComBoxCollider_prototype;
 
@@ -3912,6 +4027,7 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
     js_register_app_WorldWrapper(cx, ns);
     js_register_app_ComPawnDirection(cx, ns);
     js_register_app_ComParticle(cx, ns);
+    js_register_app_ComTransform(cx, ns);
     js_register_app_ComPawnAnim(cx, ns);
     js_register_app_ComBulletDebugDraw(cx, ns);
     js_register_app_ComBulletDamageSingle(cx, ns);

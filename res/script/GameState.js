@@ -140,13 +140,15 @@ var LaunchState = GameState.extend
     {
         //EntityCreator.CreatePawn(2012, 700, 133, 2)
         //EntityCreator.CreatePawn(2009, 300, 133, 2)
+        /*
         EntityCreator.CreatePawn(2011, 300, 133, 2)
         EntityCreator.CreatePawn(2011, 280, 120, 2)
         EntityCreator.CreatePawn(2011, 260, 140, 2)
         EntityCreator.CreatePawn(1007, 500, 133, 1)
         EntityCreator.CreatePawn(1007, 520, 120, 1)
         EntityCreator.CreatePawn(1007, 540, 140, 1)
-        //Soldier.Create(2011)
+        */
+        Soldier.Create(2011)
         print("enter Launch")
     },
 

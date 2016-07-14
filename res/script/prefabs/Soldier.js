@@ -8,10 +8,8 @@ var Soldier = {
         var entCpp = entity.GetEntity()
         //entity.LoadComponent("bev")
         var posCom = entCpp.AddComponent(ComponentName.Transform)
-        posCom.x = 100
-        posCom.y = 100
-        posCom.vx = 0
-        posCom.vy = 0
+        posCom.SetPosition(100, 100)
+        posCom.SetVelocity(0, 0)
 
 		var roleCfg = Config.Role[id]
 
