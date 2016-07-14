@@ -33,18 +33,6 @@ namespace Genius
 	public:
 		virtual bool HandleEvent(IEventData const &event);
 
-	/*private:
-		void PlayAnimation(ComPawnAnim* animCom, ComPawnDirection* dirCom, ActionType act);
-
-		void PlayIdle(ComPawnAnim* animCom, ComPawnDirection* dirCom);
-		void PlayDie(ComPawnAnim* animCom, ComPawnDirection* dirCom);
-		void PlayMove(ComPawnAnim* animCom, ComPawnDirection* dirCom);
-		void PlayAtkNear(ComPawnAnim* animCom, ComPawnDirection* dirCom);
-		void PlayAtkNear2(ComPawnAnim* animCom, ComPawnDirection* dirCom);
-		void PlayAtkFar(ComPawnAnim* animCom, ComPawnDirection* dirCom);
-		void PlaySkill1(ComPawnAnim* animCom, ComPawnDirection* dirCom);
-		void PlaySkill2(ComPawnAnim* animCom, ComPawnDirection* dirCom);
-		void PlaySkill3(ComPawnAnim* animCom, ComPawnDirection* dirCom);*/
 	};
 };
 
