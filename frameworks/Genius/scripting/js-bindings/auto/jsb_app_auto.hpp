@@ -69,22 +69,6 @@ void js_app_IComponent_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_IComponent(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 
-extern JSClass  *jsb_Genius_ComPosition_class;
-extern JSObject *jsb_Genius_ComPosition_prototype;
-
-bool js_app_ComPosition_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_ComPosition_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_ComPosition(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-
-extern JSClass  *jsb_Genius_ComVelocity_class;
-extern JSObject *jsb_Genius_ComVelocity_prototype;
-
-bool js_app_ComVelocity_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_ComVelocity_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_ComVelocity(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-
 extern JSClass  *jsb_Genius_ComBoxCollider_class;
 extern JSObject *jsb_Genius_ComBoxCollider_prototype;
 

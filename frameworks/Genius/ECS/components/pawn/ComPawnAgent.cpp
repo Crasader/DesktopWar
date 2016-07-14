@@ -1,16 +1,23 @@
 
 #include "ComPawnAgent.h"
+#include "data/ConfigPool.h"
 #include "data/auto/Role_cfg.hpp"
 #include "pawn/PawnBlackboard.h"
 #include "pawn/action/PawnActionFactory.h"
+#include "common/Log.h"
 
 
 using namespace Genius;
 using namespace cfg;
 
-void ComPawnAgent::Create(Role_cfg* pData)
+void ComPawnAgent::Create(int roleCfgID)
 {
-	m_roleCfg = pData;
+	m_roleCfg = FIND_CFG(Role_cfg, roleCfgID);
+
+	if (nullptr == m_roleCfg)
+	{
+		Log::Error("ComPawnAgent::Create : wrong roleCfgID %d", roleCfgID);
+	}
 
 	m_pBlackboard = new PawnBlackboard(this);
 }

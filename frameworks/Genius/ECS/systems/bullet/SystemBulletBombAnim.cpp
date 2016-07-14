@@ -10,7 +10,7 @@ using namespace Genius;
 void SystemBulletBombAnim::Initialize()
 {
 	positionMapper.init(*world);
-	velocityMapper.init(*world);
+	
 	animMapper.init(*world);
 
 	// register event.
@@ -21,8 +21,8 @@ void SystemBulletBombAnim::Initialize()
 
 void SystemBulletBombAnim::ProcessEntity(Entity* pEntity)
 {
-	ComPosition* pPosCom = positionMapper.get(pEntity);
-	ComVelocity* pVelCom = velocityMapper.get(pEntity);
+	ComTransform* pPosCom = positionMapper.get(pEntity);
+	
 	ComBulletAnimBomb* animCom = animMapper.get(pEntity);
 
 	animCom->m_pAvatarRoot->setPosition(pPosCom->x, pPosCom->y);
@@ -30,24 +30,24 @@ void SystemBulletBombAnim::ProcessEntity(Entity* pEntity)
 	if (animCom->m_pBodyArmature)
 		rotation = animCom->m_pBodyArmature->getRotation();
 
-	if (pVelCom->x == 0)
+	if (pPosCom->vx == 0)
 	{
-		if (pVelCom->y != 0)
+		if (pPosCom->vy != 0)
 			rotation = -90;
 	}
-	else if (pVelCom->x > 0)
+	else if (pPosCom->vx > 0)
 	{
-		if (pVelCom->y * pVelCom->x >= 0)
-			rotation = -180 * atan(pVelCom->y / pVelCom->x) / PI;
-		else if (pVelCom->y * pVelCom->x < 0)
-			rotation = -180 * atan(pVelCom->y / pVelCom->x) / PI;
+		if (pPosCom->vy * pPosCom->vx >= 0)
+			rotation = -180 * atan(pPosCom->vy / pPosCom->vx) / PI;
+		else if (pPosCom->vy * pPosCom->vx < 0)
+			rotation = -180 * atan(pPosCom->vy / pPosCom->vx) / PI;
 	}
 	else
 	{
-		if (pVelCom->y * pVelCom->x >= 0)
-			rotation = 180 - 180 * atan(pVelCom->y / pVelCom->x) / PI;
-		else if (pVelCom->y * pVelCom->x < 0)
-			rotation = 180 - 180 * atan(pVelCom->y / pVelCom->x) / PI;
+		if (pPosCom->vy * pPosCom->vx >= 0)
+			rotation = 180 - 180 * atan(pPosCom->vy / pPosCom->vx) / PI;
+		else if (pPosCom->vy * pPosCom->vx < 0)
+			rotation = 180 - 180 * atan(pPosCom->vy / pPosCom->vx) / PI;
 	}
 	
 	if (animCom->m_pBodyArmature)
@@ -82,9 +82,9 @@ void SystemBulletBombAnim::OnBulletHit(IEventData const &evnt)
 	ComBulletAnimBomb* pAnimCom = animMapper.get(pOwnerEntity);
 	pAnimCom->StartExplode();
 
-	ComVelocity* pVelCom = velocityMapper.get(pOwnerEntity);
-	pVelCom->x = 0;
-	pVelCom->y = 0;
+	auto pPosCom = positionMapper.get(pOwnerEntity);
+	pPosCom->vx = 0;
+	pPosCom->vy = 0;
 }
 
 void SystemBulletBombAnim::OnReachDest(IEventData const &evnt)

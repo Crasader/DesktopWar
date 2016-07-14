@@ -3,23 +3,21 @@
 
 #include "../../core/EntityProcessingSystem.h"
 #include "../../core/ComponentMapper.h"
-#include "../../components/common/ComPosition.h"
-#include "../../components/common/ComVelocity.h"
+#include "../../components/common/ComTransform.h"
 
 namespace Genius
 {
-	class SystemMovement : public EntityProcessingSystem
+	class SystemTransform : public EntityProcessingSystem
 	{
 	private:
-		ComponentMapper<ComVelocity> velocityMapper;
-		ComponentMapper<ComPosition> positionMapper;
+		ComponentMapper<ComTransform> transMapper;
 
 	public:
-		SystemMovement()
+		SystemTransform()
 		{
-			SetComponentTypes<ComVelocity, ComPosition>();
+			SetComponentTypes<ComTransform>();
 		}
-		virtual const char* GetName(){ return "SystemMovement"; }
+		virtual const char* GetName(){ return "SystemTransform"; }
 		virtual void Initialize();
 
 		virtual void ProcessEntity(Entity* e);

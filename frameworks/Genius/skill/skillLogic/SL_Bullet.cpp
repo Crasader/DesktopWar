@@ -19,7 +19,7 @@ void SL_Bullet::OnActive(Skill* skill)
 		if (nullptr == ownerEntity)
 			return;
 
-		ComPosition* ownerPosCom = ownerEntity->GetComponent<ComPosition>();
+		ComTransform* ownerPosCom = ownerEntity->GetComponent<ComTransform>();
 		ComTeam* ownerComTeam = ownerEntity->GetComponent<ComTeam>();
 		ComPawnAgent* ownerTempCom = ownerEntity->GetComponent<ComPawnAgent>();
 		ComPawnDirection* ownerDirCom = ownerEntity->GetComponent<ComPawnDirection>();
@@ -50,7 +50,7 @@ void SL_Bullet::OnActive(Skill* skill)
 		if (nullptr != tarEntity)
 		{
 			// 有目标就直接飞向目标
-			ComPosition* posCom = tarEntity->GetComponent<ComPosition>();
+			ComTransform* posCom = tarEntity->GetComponent<ComTransform>();
 			EntityCreator::CreateBullet(skillCfg->bulletID, targetID, startX, startY, team, posCom->x, posCom->y);
 		}
 		else

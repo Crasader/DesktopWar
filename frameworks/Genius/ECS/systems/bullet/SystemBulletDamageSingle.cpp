@@ -27,8 +27,8 @@ void SystemBulletDamageSingle::Initialize()
 
 void SystemBulletDamageSingle::ProcessEntity(Entity* pEntity)
 {
-	/*ComPosition* posCom = positionMapper.get(pEntity);
-	ComVelocity* pVelCom = velocityMapper.get(pEntity);
+	/*ComTransform* posCom = positionMapper.get(pEntity);
+	
 	ComBulletDamageSingle* pAttackCom = attackMapper.get(pEntity);
 	ComBulletAnimBase* pAnimCom = bulletAnimMapper.get(pEntity);
 	ComBulletTemplate* pTemplateCom = bulletTemplateMapper.get(pEntity);
@@ -39,8 +39,8 @@ void SystemBulletDamageSingle::ProcessEntity(Entity* pEntity)
 	{
 		pAnimCom->ShowBody(false);
 		pAnimCom->StartExplode();
-		pVelCom->x = 0;
-		pVelCom->y = 0;
+		pPosCom->vx = 0;
+		pPosCom->vy = 0;
 	}*/
 }
 
@@ -87,7 +87,7 @@ void SystemBulletDamageSingle::collisionHandler(int id1, int id2)
 		}
 	}
 	/*
-	ComVelocity* pVelCom = velocityMapper.get(pEntity);
+	
 	ComBezierMovement* pTrackCom = trackingMapper.get(pEntity);
 	ComBulletDamageSingle* pAttackCom = attackMapper.get(pEntity);
 	ComPawnFight* eneFightCom = pOtherEntity->getComponent<ComPawnFight>();
@@ -98,8 +98,8 @@ void SystemBulletDamageSingle::collisionHandler(int id1, int id2)
 		ComBulletAnimBase* pAnimCom = bulletAnimMapper.get(pEntity);
 		pAnimCom->ShowBody(false);
 		pAnimCom->Destroy();
-		pVelCom->x = 0;
-		pVelCom->y = 0;
+		pPosCom->vx = 0;
+		pPosCom->vy = 0;
 		pAttackCom->targetID = id2;
 
 		ComBulletAgent* bulletAgent = agentMapper.get(pOwnerEntity);

@@ -4,7 +4,7 @@
 #include "../../core/EntityProcessingSystem.h"
 #include "../../core/ComponentMapper.h"
 
-#include "../../components/common/ComPosition.h"
+#include "../../components/common/ComTransform.h"
 #include "../../components/pawn/ComPawnAnim.h"
 #include "../../components/pawn/ComPawnDirection.h"
 
@@ -17,13 +17,13 @@ namespace Genius
 	{
 	private:
 		ComponentMapper<ComPawnAnim>	pawnAnimMapper;
-		ComponentMapper<ComPosition>		positionMapper;
+		ComponentMapper<ComTransform>		positionMapper;
 		ComponentMapper<ComPawnDirection>	pawnDirectionMapper;
 
 	public:
 		SystemPawnAnim()
 		{
-			SetComponentTypes<ComPawnAnim, ComPosition, ComPawnDirection>();
+			SetComponentTypes<ComPawnAnim, ComTransform, ComPawnDirection>();
 		}
 		virtual const char* GetName(){ return "SystemPawnAnim"; }
 		virtual void Initialize();

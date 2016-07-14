@@ -3,7 +3,7 @@
 
 #include "../../core/EntityProcessingSystem.h"
 #include "../../core/ComponentMapper.h"
-#include "../../components/common/ComPosition.h"
+#include "../../components/common/ComTransform.h"
 #include "../../components/common/ComBoxCollider.h"
 #include "../../components/pawn/ComPawnFight.h"
 #include "../../components/pawn/ComPawnAnim.h"
@@ -15,7 +15,7 @@ namespace Genius
 	class SystemPawnFight : public EntityProcessingSystem
 	{
 	private:
-		ComponentMapper<ComPosition>					positionMapper;
+		ComponentMapper<ComTransform>					positionMapper;
 		ComponentMapper<ComBoxCollider>				colliderMapper;
 		ComponentMapper<ComPawnFight>				pawnFightMapper;
 		ComponentMapper<ComPawnAgent>		pawnAgentMapper;
@@ -25,7 +25,7 @@ namespace Genius
 	public:
 		SystemPawnFight()
 		{
-			SetComponentTypes<ComPawnFight, ComPosition, ComBoxCollider, ComPawnAgent, ComPawnAnim>();
+			SetComponentTypes<ComPawnFight, ComTransform, ComBoxCollider, ComPawnAgent, ComPawnAnim>();
 		}
 		virtual const char* GetName(){ return "SystemPawnFight"; }
 		virtual void Initialize();

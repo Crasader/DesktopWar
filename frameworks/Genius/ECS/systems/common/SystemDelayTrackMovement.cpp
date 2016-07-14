@@ -12,7 +12,7 @@ using namespace Genius;
 void SystemDelayTrackMovement::Initialize()
 {
 	positionMapper.init(*world);
-	velocityMapper.init(*world);
+	
 	trackMapper.init(*world);
 
 	// register event.
@@ -21,14 +21,14 @@ void SystemDelayTrackMovement::Initialize()
 
 void SystemDelayTrackMovement::ProcessEntity(Entity* pEntity)
 {
-	ComPosition* pPosCom = positionMapper.get(pEntity);
-	ComVelocity* pVelCom = velocityMapper.get(pEntity);
+	ComTransform* pPosCom = positionMapper.get(pEntity);
+	
 	ComDelayTrackMoving* pTrackCom = trackMapper.get(pEntity);
 
 	if (!pTrackCom->isTracking)
 	{
-		pVelCom->x = 0;
-		pVelCom->y = 0;
+		pPosCom->vx = 0;
+		pPosCom->vy = 0;
 	}
 
 	pTrackCom->lifeTime += world->GetDeltaTime();
@@ -39,7 +39,7 @@ void SystemDelayTrackMovement::ProcessEntity(Entity* pEntity)
 		if (nullptr != pTarEntity)
 		{
 			// 锁定了entity就飞向它
-			ComPosition* pTarPosCom = pTarEntity->GetComponent<ComPosition>();
+			ComTransform* pTarPosCom = pTarEntity->GetComponent<ComTransform>();
 			toTarVec.x = pTarPosCom->x - pPosCom->x;
 			toTarVec.y = pTarPosCom->y - pPosCom->y;
 		}
@@ -48,23 +48,23 @@ void SystemDelayTrackMovement::ProcessEntity(Entity* pEntity)
 			// Entity已经消失，飞向一开始记录的位置
 			toTarVec.x = pTrackCom->targetCachePosX - pPosCom->x;
 			toTarVec.y = pTrackCom->targetCachePosY - pPosCom->y;
-			if (toTarVec.Length() < Point2D(pVelCom->x, pVelCom->y).Length())
+			if (toTarVec.Length() < Point2D(pPosCom->vx, pPosCom->vy).Length())
 			{
 				EventManager::GetSingleton()->FireEvent(ReachDestinationEvent(pEntity));
 				pTrackCom->isTracking = false;
 			}
 		}
 		toTarVec.Normalize();
-		Point2D curVelVec(pVelCom->x, pVelCom->y);
+		Point2D curVelVec(pPosCom->vx, pPosCom->vy);
 		float velLen = curVelVec.Length();
 		curVelVec.Normalize();
 		Point2D deltaVec(toTarVec.x - curVelVec.x, toTarVec.y - curVelVec.y);
-		pVelCom->x += deltaVec.x;
-		pVelCom->y += deltaVec.y;
+		pPosCom->vx += deltaVec.x;
+		pPosCom->vy += deltaVec.y;
 
 		// 临时这样计算8
-		pVelCom->x = toTarVec.x * velLen;
-		pVelCom->y = toTarVec.y * velLen;
+		pPosCom->vx = toTarVec.x * velLen;
+		pPosCom->vy = toTarVec.y * velLen;
 	}
 }
 

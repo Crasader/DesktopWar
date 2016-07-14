@@ -2,8 +2,8 @@
 
 #include "../../core/EntityProcessingSystem.h"
 #include "../../core/ComponentMapper.h"
-#include "../../components/common/ComPosition.h"
-#include "../../components/common/ComVelocity.h"
+#include "../../components/common/ComTransform.h"
+
 #include "../../components/common/ComBezierMovement.h"
 
 
@@ -12,14 +12,14 @@ namespace Genius
 	class SystemBezierMovement : public EntityProcessingSystem
 	{
 	private:
-		ComponentMapper<ComPosition> positionMapper;
-		ComponentMapper<ComVelocity> velocityMapper;
+		ComponentMapper<ComTransform> positionMapper;
+		
 		ComponentMapper<ComBezierMovement> bezierMapper;
 
 	public:
 		SystemBezierMovement()
 		{
-			SetComponentTypes<ComPosition, ComVelocity, ComBezierMovement>();
+			SetComponentTypes<ComTransform, ComBezierMovement>();
 		}
 		virtual const char* GetName(){ return "SystemBezierMovement"; }
 		virtual void Initialize();

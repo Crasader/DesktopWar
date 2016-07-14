@@ -358,16 +358,10 @@
     <ClInclude Include="..\..\Genius\ECS\components\common\ComParticle.h">
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\components\common\ComPosition.h">
-      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\components\common\ComTarget.h">
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\components\common\ComTeam.h">
-      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\components\common\ComVelocity.h">
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnAgent.h">
@@ -406,9 +400,6 @@
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemBoxCollider.h">
       <Filter>Genius\Logic\ESC\User\System\Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemMovement.h">
-      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemSimpleAnim.h">
       <Filter>Genius\Logic\ESC\User\System\Common</Filter>
     </ClInclude>
@@ -441,9 +432,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemDelayTrackMovement.h">
       <Filter>Genius\Logic\ESC\User\System\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\ecs.h">
-      <Filter>Genius\Logic\ESC</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnNavigation.h">
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
@@ -627,6 +615,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\core\IComponent.h">
       <Filter>Genius\Logic\ESC\Core\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComTransform.h">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemTransform.h">
+      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -820,16 +814,10 @@
     <ClCompile Include="..\..\Genius\ECS\components\common\ComParticle.cpp">
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\components\common\ComPosition.cpp">
-      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\components\common\ComTarget.cpp">
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\components\common\ComTeam.cpp">
-      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\components\common\ComVelocity.cpp">
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnAgent.cpp">
@@ -866,9 +854,6 @@
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemBoxCollider.cpp">
-      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemMovement.cpp">
       <Filter>Genius\Logic\ESC\User\System\Common</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemSimpleAnim.cpp">
@@ -1062,6 +1047,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\core\IComponent.cpp">
       <Filter>Genius\Logic\ESC\Core\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComTransform.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemTransform.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

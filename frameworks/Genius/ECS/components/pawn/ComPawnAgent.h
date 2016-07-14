@@ -15,7 +15,7 @@ namespace Genius
 		cfg::Role_cfg*					m_roleCfg;
 		PawnBlackboard*		m_pBlackboard;
 
-		void Create(cfg::Role_cfg* pData);
+		void Create(int roleCfgID);
 		~ComPawnAgent();
 
 	public:

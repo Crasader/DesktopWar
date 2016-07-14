@@ -20,7 +20,7 @@ using namespace Genius;
 void SystemBezierMovement::Initialize()
 {
 	positionMapper.init(*world);
-	velocityMapper.init(*world);
+	
 	bezierMapper.init(*world);
 
 	// register event.
@@ -29,8 +29,8 @@ void SystemBezierMovement::Initialize()
 
 void SystemBezierMovement::ProcessEntity(Entity* pEntity)
 {
-	ComPosition* pPosCom = positionMapper.get(pEntity);
-	ComVelocity* pVelCom = velocityMapper.get(pEntity);
+	ComTransform* pPosCom = positionMapper.get(pEntity);
+	
 	ComBezierMovement* pBezierCom = bezierMapper.get(pEntity);
 
 	if (pBezierCom->IsDone())
@@ -59,14 +59,14 @@ void SystemBezierMovement::ProcessEntity(Entity* pEntity)
 		pPosCom->x = pBezierCom->startX + x;
 		pPosCom->y = pBezierCom->startY + y;
 
-		pVelCom->x = pPosCom->x - oldX;
-		pVelCom->y = pPosCom->y - oldY;
+		pPosCom->vx = pPosCom->x - oldX;
+		pPosCom->vy = pPosCom->y - oldY;
 	}
 	else
 	{
 		EventManager::GetSingleton()->FireEvent(ReachDestinationEvent(pEntity));
-		pVelCom->x = 0;
-		pVelCom->y = 0;
+		pPosCom->vx = 0;
+		pPosCom->vy = 0;
 	}
 }
 

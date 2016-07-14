@@ -271,20 +271,6 @@ IComponent = {
 };
 
 /**
- * @class ComPosition
- */
-ComPosition = {
-
-};
-
-/**
- * @class ComVelocity
- */
-ComVelocity = {
-
-};
-
-/**
  * @class ComBoxCollider
  */
 ComBoxCollider = {
@@ -451,10 +437,10 @@ ComPawnAgent = {
 
 /**
  * @method Create
- * @param {cfg::Role_cfg} arg0
+ * @param {int} arg0
  */
 Create : function (
-role_cfg 
+int 
 )
 {
 },

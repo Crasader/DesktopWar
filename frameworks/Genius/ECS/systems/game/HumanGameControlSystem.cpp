@@ -21,7 +21,7 @@ void HumanGameControlSystem::ProcessEntity(Entity* pEntity)
 	return;
 	HumanGameControlCom* myGameControl = gameControlMapper.get(pEntity);
 	ComTeam* myComTeam = teamMapper.get(pEntity);
-	ComPosition* myComPosition = positionMapper.get(pEntity);
+	ComTransform* myComTransform = positionMapper.get(pEntity);
 
 	float deltaTime = world->GetDeltaTime();
 	myGameControl->gameTimePassed += deltaTime;
@@ -38,7 +38,7 @@ void HumanGameControlSystem::ProcessEntity(Entity* pEntity)
 		&& myGameControl->gameTimePassed - myGameControl->lastSpawnTime > 8)
 	{
 		myGameControl->lastSpawnTime = myGameControl->gameTimePassed;
-		SpawnOne(myComPosition->x, myComPosition->y);
+		SpawnOne(myComTransform->x, myComTransform->y);
 	}
 };
 

@@ -3,7 +3,7 @@
 
 #include "../../core/EntityProcessingSystem.h"
 #include "../../core/ComponentMapper.h"
-#include "../../components/common/ComPosition.h"
+#include "../../components/common/ComTransform.h"
 #include "../../components/common/ComAnimation.h"
 
 namespace Genius
@@ -12,12 +12,12 @@ namespace Genius
 	{
 	private:
 		ComponentMapper<ComAnimation>	animMapper;
-		ComponentMapper<ComPosition>		positionMapper;
+		ComponentMapper<ComTransform>		positionMapper;
 
 	public:
 		SystemSimpleAnim()
 		{
-			SetComponentTypes<ComAnimation, ComPosition>();
+			SetComponentTypes<ComAnimation, ComTransform>();
 		}
 		virtual const char* GetName(){ return "SystemSimpleAnim"; }
 		virtual void Initialize();

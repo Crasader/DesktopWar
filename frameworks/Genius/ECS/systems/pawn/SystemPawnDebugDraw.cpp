@@ -25,7 +25,7 @@ void SystemPawnDebugDraw::Initialize()
 void SystemPawnDebugDraw::ProcessEntity(Entity* e)
 {
 	ComPawnDebugDraw* debugCom = debugDrawMapper.get(e);
-	ComPosition* posCom = positionMapper.get(e);
+	ComTransform* posCom = positionMapper.get(e);
 	ComPawnAgent* tempCom = pawnAgentMapper.get(e);
 	ComBoxCollider* ComBoxCollider = boxColliderMapper.get(e);
 	

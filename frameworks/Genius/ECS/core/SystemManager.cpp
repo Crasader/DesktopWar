@@ -21,7 +21,7 @@ namespace Genius
 
 	void SystemManager::Init()
 	{
-		this->AddSystem(new SystemMovement());
+		this->AddSystem(new SystemTransform());
 		this->AddSystem(new SystemSimpleAnim());
 		this->AddSystem(new SystemBoxCollider());
 		this->AddSystem(new SystemBezierMovement());

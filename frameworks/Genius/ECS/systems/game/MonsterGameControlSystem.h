@@ -3,7 +3,7 @@
 
 #include "../../core/EntityProcessingSystem.h"
 #include "../../core/ComponentMapper.h"
-#include "../../components/common/ComPosition.h"
+#include "../../components/common/ComTransform.h"
 #include "../../components/common/ComTeam.h"
 #include "../../components/GamePlayCom.h"
 
@@ -14,12 +14,12 @@ namespace Genius
 	private:
 		ComponentMapper<MonsterGameControlCom>	gameControlMapper;
 		ComponentMapper<ComTeam>	teamMapper;
-		ComponentMapper<ComPosition>	positionMapper;
+		ComponentMapper<ComTransform>	positionMapper;
 
 	public:
 		MonsterGameControlSystem()
 		{
-			SetComponentTypes<MonsterGameControlCom, ComTeam, ComPosition>();
+			SetComponentTypes<MonsterGameControlCom, ComTeam, ComTransform>();
 		}
 		virtual const char* GetName(){ return "MonsterGameControlSystem"; }
 		virtual void Initialize();

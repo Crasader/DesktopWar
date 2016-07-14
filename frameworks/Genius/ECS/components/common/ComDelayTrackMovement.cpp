@@ -1,6 +1,6 @@
 
 #include "ComDelayTrackMovement.h"
-#include "ComPosition.h"
+#include "ComTransform.h"
 #include "../../core/Entity.h"
 #include "../../core/ECSWorld.h"
 
@@ -24,7 +24,7 @@ bool ComDelayTrackMoving::Init()
 	Entity* pTarEntity = ECSWorld::GetSingleton()->GetEntity(targetEntityID);
 	if (pTarEntity)
 	{
-		ComPosition* pTarPosCom = pTarEntity->GetComponent<ComPosition>();
+		ComTransform* pTarPosCom = pTarEntity->GetComponent<ComTransform>();
 		if (pTarPosCom)
 		{
 			targetCachePosX = pTarPosCom->x;

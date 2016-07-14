@@ -14,7 +14,7 @@ void SystemSimpleAnim::Initialize()
 void SystemSimpleAnim::ProcessEntity(Entity* e)
 {
 	ComAnimation* render = animMapper.get(e);
-	ComPosition* pos = positionMapper.get(e);
+	ComTransform* pos = positionMapper.get(e);
 	if (render && render->m_pAvatarRoot)
 		render->m_pAvatarRoot->setPosition(pos->x, pos->y);
 };

@@ -1,5 +1,5 @@
 
-#include "SystemMovement.h"
+#include "SystemTransform.h"
 #include "event/EventManager.h"
 #include "../../EntityEvents.h"
 #include "pawn/PawnDefines.h"
@@ -12,10 +12,9 @@
 
 using namespace Genius;
 
-void SystemMovement::Initialize()
+void SystemTransform::Initialize()
 {
-	velocityMapper.init(*world);
-	positionMapper.init(*world);
+	transMapper.init(*world);
 
 	// register event.
 	EventManager::GetSingleton()->AddListener(this, Event_setPosition);
@@ -23,13 +22,14 @@ void SystemMovement::Initialize()
 	EventManager::GetSingleton()->AddListener(this, Event_pawnStopMove);
 }
 
-void SystemMovement::ProcessEntity(Entity* e)
+void SystemTransform::ProcessEntity(Entity* e)
 {
-	positionMapper.get(e)->x += velocityMapper.get(e)->x * world->GetDeltaTime();
-	positionMapper.get(e)->y += velocityMapper.get(e)->y * world->GetDeltaTime();
+	auto tranCom = transMapper.get(e);
+	tranCom->x += tranCom->vx * world->GetDeltaTime();
+	tranCom->y += tranCom->vy * world->GetDeltaTime();
 }
 
-bool SystemMovement::HandleEvent(IEventData const &event)
+bool SystemTransform::HandleEvent(IEventData const &event)
 {
 	EventType eType = event.GetType();
 
@@ -38,7 +38,7 @@ bool SystemMovement::HandleEvent(IEventData const &event)
 	case Event_setPosition:
 	{
 		const TransformEvent & actionEvent = static_cast<const TransformEvent &>(event);
-		ComPosition* pos = positionMapper.get(actionEvent.entity);
+		auto pos = transMapper.get(actionEvent.entity);
 		if (pos)
 		{
 			pos->x = actionEvent.x;
@@ -49,13 +49,12 @@ bool SystemMovement::HandleEvent(IEventData const &event)
 	case Event_moveTo:
 	{
 		const TransformEvent & actionEvent = static_cast<const TransformEvent &>(event);
-		ComPosition* pos = positionMapper.get(actionEvent.entity);
-		ComVelocity* vel = velocityMapper.get(actionEvent.entity);
-		if (pos && vel)
+		auto tran = transMapper.get(actionEvent.entity);
+		if (tran)
 		{
 			//printf("mov to %f, %f\n", actionEvent.x, actionEvent.y);
-			float dx = actionEvent.x - pos->x;
-			float dy = actionEvent.y - pos->y;
+			float dx = actionEvent.x - tran->x;
+			float dy = actionEvent.y - tran->y;
 			Point2D delta(dx, dy);
 			delta.Normalize();
 			
@@ -65,21 +64,21 @@ bool SystemMovement::HandleEvent(IEventData const &event)
 			{
 				speed = pawnTemp->m_roleCfg->moveSpeed;
 			}
-			vel->x = delta.x * speed;
-			vel->y = delta.y * speed;
+			tran->vx = delta.x * speed;
+			tran->vy = delta.y * speed;
 
-			EventManager::GetSingleton()->FireEvent(VelocityChangedEvent(actionEvent.entity, vel->x, vel->y));
+			EventManager::GetSingleton()->FireEvent(VelocityChangedEvent(actionEvent.entity, tran->vx, tran->vy));
 		}
 	}
 		break;
 	case Event_pawnStopMove:
 	{
 		const TransformEvent & actionEvent = static_cast<const TransformEvent &>(event);
-		ComVelocity* vel = velocityMapper.get(actionEvent.entity);
+		auto vel = transMapper.get(actionEvent.entity);
 		if (vel)
 		{
-			vel->x = 0;
-			vel->y = 0;
+			vel->vx = 0;
+			vel->vy = 0;
 		}
 	}
 		break;

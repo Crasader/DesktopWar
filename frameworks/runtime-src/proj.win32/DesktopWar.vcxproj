@@ -206,10 +206,9 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\ECS\components\common\ComColliderHandler.h" />
     <ClInclude Include="..\..\Genius\ECS\components\common\ComDelayTrackMovement.h" />
     <ClInclude Include="..\..\Genius\ECS\components\common\ComParticle.h" />
-    <ClInclude Include="..\..\Genius\ECS\components\common\ComPosition.h" />
     <ClInclude Include="..\..\Genius\ECS\components\common\ComTarget.h" />
     <ClInclude Include="..\..\Genius\ECS\components\common\ComTeam.h" />
-    <ClInclude Include="..\..\Genius\ECS\components\common\ComVelocity.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComTransform.h" />
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnAgent.h" />
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnAnim.h" />
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnBevtree.h" />
@@ -245,7 +244,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemBezierMovement.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemBoxCollider.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemDelayTrackMovement.h" />
-    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemMovement.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemTransform.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemSimpleAnim.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\game\HumanGameControlSystem.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\game\MonsterGameControlSystem.h" />
@@ -320,7 +319,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\common\TimeSystem.h" />
     <ClInclude Include="..\..\Genius\data\ConfigPool.h" />
     <ClInclude Include="..\..\Genius\ECS\components\GamePlayCom.h" />
-    <ClInclude Include="..\..\Genius\ECS\ecs.h" />
     <ClInclude Include="..\..\Genius\ECS\EntityEvents.h" />
     <ClInclude Include="..\..\Genius\event\Event.h" />
     <ClInclude Include="..\..\Genius\event\EventManager.h" />
@@ -367,10 +365,9 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\ECS\components\common\ComColliderHandler.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\common\ComDelayTrackMovement.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\common\ComParticle.cpp" />
-    <ClCompile Include="..\..\Genius\ECS\components\common\ComPosition.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\common\ComTarget.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\common\ComTeam.cpp" />
-    <ClCompile Include="..\..\Genius\ECS\components\common\ComVelocity.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComTransform.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnAgent.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnAnim.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnBevtree.cpp" />
@@ -403,7 +400,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemBezierMovement.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemBoxCollider.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemDelayTrackMovement.cpp" />
-    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemMovement.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemTransform.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemSimpleAnim.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\game\HumanGameControlSystem.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\game\MonsterGameControlSystem.cpp" />

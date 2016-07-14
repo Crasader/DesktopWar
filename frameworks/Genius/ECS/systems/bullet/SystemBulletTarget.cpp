@@ -22,7 +22,7 @@ void SystemBulletTarget::Initialize()
 
 void SystemBulletTarget::ProcessEntity(Entity* pEntity)
 {
-	//ComPosition* posCom = positionMapper.get(pEntity);
+	//ComTransform* posCom = positionMapper.get(pEntity);
 }
 
 bool SystemBulletTarget::HandleEvent(IEventData const &event)

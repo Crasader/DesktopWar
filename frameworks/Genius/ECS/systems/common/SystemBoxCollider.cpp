@@ -27,7 +27,7 @@ void SystemBoxCollider::ProcessEntity(Entity* pEntity)
 	if (!colliderCom->positive)
 		return;
 
-	ComPosition* posCom = positionMapper.get(pEntity);
+	ComTransform* posCom = positionMapper.get(pEntity);
 	ComColliderHandler* handlerCom = handlerMapper.get(pEntity);
 
 	// 更新所在区域
@@ -45,7 +45,7 @@ void SystemBoxCollider::ProcessEntity(Entity* pEntity)
 			continue;
 		}
 		
-		ComPosition* oldPosCom = positionMapper.get(pOldCollidedEntity);
+		ComTransform* oldPosCom = positionMapper.get(pOldCollidedEntity);
 		ComBoxCollider* oldColliderCom = colliderMapper.get(pOldCollidedEntity);
 		if (!IsCollidedBetween(posCom, colliderCom, oldPosCom, oldColliderCom))
 		{
@@ -63,7 +63,7 @@ void SystemBoxCollider::ProcessEntity(Entity* pEntity)
 		if (pEntity == pOtherEntity)
 			continue;
 		
-		ComPosition* otherPosCom = positionMapper.get(pOtherEntity);
+		ComTransform* otherPosCom = positionMapper.get(pOtherEntity);
 		ComBoxCollider* otherColliderCom = colliderMapper.get(pOtherEntity);
 		// 先判断是否在相邻区域内
 		bool isInAreas = GameUtils::IsInAreasAround(colliderCom->areaID, (int)otherPosCom->x, (int)otherPosCom->y);
@@ -97,7 +97,7 @@ bool SystemBoxCollider::HandleEvent(IEventData const &event)
 	return true;
 }
 
-bool SystemBoxCollider::IsCollidedBetween(ComPosition* posCom, ComBoxCollider* colliderCom, ComPosition* otherPosCom, ComBoxCollider* otherColliderCom)
+bool SystemBoxCollider::IsCollidedBetween(ComTransform* posCom, ComBoxCollider* colliderCom, ComTransform* otherPosCom, ComBoxCollider* otherColliderCom)
 {
 	float distX = (posCom->x + colliderCom->centerX) - (otherPosCom->x + otherColliderCom->centerX);
 	distX = distX > 0 ? distX : -distX;

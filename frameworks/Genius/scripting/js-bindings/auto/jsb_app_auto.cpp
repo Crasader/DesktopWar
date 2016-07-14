@@ -801,102 +801,6 @@ void js_register_app_IComponent(JSContext *cx, JS::HandleObject global) {
     jsb_register_class<Genius::IComponent>(cx, jsb_Genius_IComponent_class, proto, JS::NullPtr());
 }
 
-JSClass  *jsb_Genius_ComPosition_class;
-JSObject *jsb_Genius_ComPosition_prototype;
-
-
-extern JSObject *jsb_Genius_IComponent_prototype;
-
-void js_register_app_ComPosition(JSContext *cx, JS::HandleObject global) {
-    jsb_Genius_ComPosition_class = (JSClass *)calloc(1, sizeof(JSClass));
-    jsb_Genius_ComPosition_class->name = "ComPosition";
-    jsb_Genius_ComPosition_class->addProperty = JS_PropertyStub;
-    jsb_Genius_ComPosition_class->delProperty = JS_DeletePropertyStub;
-    jsb_Genius_ComPosition_class->getProperty = JS_PropertyStub;
-    jsb_Genius_ComPosition_class->setProperty = JS_StrictPropertyStub;
-    jsb_Genius_ComPosition_class->enumerate = JS_EnumerateStub;
-    jsb_Genius_ComPosition_class->resolve = JS_ResolveStub;
-    jsb_Genius_ComPosition_class->convert = JS_ConvertStub;
-    jsb_Genius_ComPosition_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-    static JSPropertySpec properties[] = {
-        JS_PS_END
-    };
-
-    static JSFunctionSpec funcs[] = {
-        JS_FS_END
-    };
-
-    JSFunctionSpec *st_funcs = NULL;
-
-    JS::RootedObject parent_proto(cx, jsb_Genius_IComponent_prototype);
-    jsb_Genius_ComPosition_prototype = JS_InitClass(
-        cx, global,
-        parent_proto,
-        jsb_Genius_ComPosition_class,
-        dummy_constructor<Genius::ComPosition>, 0, // no constructor
-        properties,
-        funcs,
-        NULL, // no static properties
-        st_funcs);
-
-    JS::RootedObject proto(cx, jsb_Genius_ComPosition_prototype);
-    JS::RootedValue className(cx, std_string_to_jsval(cx, "ComPosition"));
-    JS_SetProperty(cx, proto, "_className", className);
-    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
-    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
-    // add the proto and JSClass to the type->js info hash table
-    jsb_register_class<Genius::ComPosition>(cx, jsb_Genius_ComPosition_class, proto, parent_proto);
-}
-
-JSClass  *jsb_Genius_ComVelocity_class;
-JSObject *jsb_Genius_ComVelocity_prototype;
-
-
-extern JSObject *jsb_Genius_IComponent_prototype;
-
-void js_register_app_ComVelocity(JSContext *cx, JS::HandleObject global) {
-    jsb_Genius_ComVelocity_class = (JSClass *)calloc(1, sizeof(JSClass));
-    jsb_Genius_ComVelocity_class->name = "ComVelocity";
-    jsb_Genius_ComVelocity_class->addProperty = JS_PropertyStub;
-    jsb_Genius_ComVelocity_class->delProperty = JS_DeletePropertyStub;
-    jsb_Genius_ComVelocity_class->getProperty = JS_PropertyStub;
-    jsb_Genius_ComVelocity_class->setProperty = JS_StrictPropertyStub;
-    jsb_Genius_ComVelocity_class->enumerate = JS_EnumerateStub;
-    jsb_Genius_ComVelocity_class->resolve = JS_ResolveStub;
-    jsb_Genius_ComVelocity_class->convert = JS_ConvertStub;
-    jsb_Genius_ComVelocity_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-    static JSPropertySpec properties[] = {
-        JS_PS_END
-    };
-
-    static JSFunctionSpec funcs[] = {
-        JS_FS_END
-    };
-
-    JSFunctionSpec *st_funcs = NULL;
-
-    JS::RootedObject parent_proto(cx, jsb_Genius_IComponent_prototype);
-    jsb_Genius_ComVelocity_prototype = JS_InitClass(
-        cx, global,
-        parent_proto,
-        jsb_Genius_ComVelocity_class,
-        dummy_constructor<Genius::ComVelocity>, 0, // no constructor
-        properties,
-        funcs,
-        NULL, // no static properties
-        st_funcs);
-
-    JS::RootedObject proto(cx, jsb_Genius_ComVelocity_prototype);
-    JS::RootedValue className(cx, std_string_to_jsval(cx, "ComVelocity"));
-    JS_SetProperty(cx, proto, "_className", className);
-    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
-    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
-    // add the proto and JSClass to the type->js info hash table
-    jsb_register_class<Genius::ComVelocity>(cx, jsb_Genius_ComVelocity_class, proto, parent_proto);
-}
-
 JSClass  *jsb_Genius_ComBoxCollider_class;
 JSObject *jsb_Genius_ComBoxCollider_prototype;
 
@@ -1543,16 +1447,8 @@ bool js_app_ComPawnAgent_Create(JSContext *cx, uint32_t argc, jsval *vp)
     Genius::ComPawnAgent* cobj = (Genius::ComPawnAgent *)(proxy ? proxy->ptr : NULL);
     JSB_PRECONDITION2( cobj, cx, false, "js_app_ComPawnAgent_Create : Invalid Native Object");
     if (argc == 1) {
-        cfg::Role_cfg* arg0 = nullptr;
-        do {
-            if (args.get(0).isNull()) { arg0 = nullptr; break; }
-            if (!args.get(0).isObject()) { ok = false; break; }
-            js_proxy_t *jsProxy;
-            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
-            jsProxy = jsb_get_js_proxy(tmpObj);
-            arg0 = (cfg::Role_cfg*)(jsProxy ? jsProxy->ptr : NULL);
-            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
-        } while (0);
+        int arg0 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
         JSB_PRECONDITION2(ok, cx, false, "js_app_ComPawnAgent_Create : Error processing arguments");
         cobj->Create(arg0);
         args.rval().setUndefined();
@@ -4002,7 +3898,6 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
     js_register_app_ComPawnAgent(cx, ns);
     js_register_app_ComBulletAnimBase(cx, ns);
     js_register_app_ComBulletAnimArrow(cx, ns);
-    js_register_app_ComVelocity(cx, ns);
     js_register_app_EntityWrapper(cx, ns);
     js_register_app_ComPawnNavigation(cx, ns);
     js_register_app_ComPawnBevtree(cx, ns);
@@ -4022,7 +3917,6 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
     js_register_app_ComBulletDamageSingle(cx, ns);
     js_register_app_SceneManager(cx, ns);
     js_register_app_ComBulletAnimEgg(cx, ns);
-    js_register_app_ComPosition(cx, ns);
     js_register_app_ComBezierMovement(cx, ns);
     js_register_app_ComBulletAnimBomb(cx, ns);
     js_register_app_ComPawnFight(cx, ns);

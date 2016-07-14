@@ -22,7 +22,7 @@ void MonsterGameControlSystem::ProcessEntity(Entity* pEntity)
 
 	MonsterGameControlCom* myGameControl = gameControlMapper.get(pEntity);
 	ComTeam* myComTeam = teamMapper.get(pEntity);
-	ComPosition* myComPosition = positionMapper.get(pEntity);
+	ComTransform* myComTransform = positionMapper.get(pEntity);
 
 	float deltaTime = world->GetDeltaTime();
 	myGameControl->gameTimePassed += deltaTime;
@@ -37,7 +37,7 @@ void MonsterGameControlSystem::ProcessEntity(Entity* pEntity)
 		&& myGameControl->gameTimePassed - myGameControl->lastSpawnTime > 10)
 	{
 		myGameControl->lastSpawnTime = myGameControl->gameTimePassed;
-		SpawnOne(myComPosition->x, myComPosition->y);
+		SpawnOne(myComTransform->x, myComTransform->y);
 	}
 };
 

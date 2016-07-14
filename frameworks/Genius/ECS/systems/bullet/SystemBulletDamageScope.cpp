@@ -100,7 +100,7 @@ bool SystemBulletDamageScope::TriggerBulletBuff(IEventData const &evt)
 
 void SystemBulletDamageScope::FindTargetsInScope(Entity* pEntity, int radius, bool sameTeam, std::vector<Entity*>& eneityIDList)
 {
-	ComPosition* myPosCom = positionMapper.get(pEntity);
+	ComTransform* myPosCom = positionMapper.get(pEntity);
 	ComBulletDamageScope* myAttackCom = damageMapper.get(pEntity);
 	ComTeam* myComTeam = pEntity->GetComponent<ComTeam>();
 	int myTeam = myComTeam->team;
@@ -127,7 +127,7 @@ void SystemBulletDamageScope::FindTargetsInScope(Entity* pEntity, int radius, bo
 			)
 			continue;
 
-		ComPosition* enePosCom = eneEntity->GetComponent<ComPosition>();
+		ComTransform* enePosCom = eneEntity->GetComponent<ComTransform>();
 		Point2D vecBetween(myPosCom->x - enePosCom->x, myPosCom->y - enePosCom->y);
 		float len = vecBetween.Length();
 		if (len < radius)

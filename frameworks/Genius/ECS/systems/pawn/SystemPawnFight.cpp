@@ -104,7 +104,7 @@ void SystemPawnFight::HandleAttackTarget(IEventData const &evt)
 		Entity* enemy = ECSWorld::GetSingleton()->GetEntity(fightCom->enemyID);
 		if (nullptr == enemy)
 			return;
-		auto posCom = enemy->GetComponent<ComPosition>();
+		auto posCom = enemy->GetComponent<ComTransform>();
 		if (posCom)
 		{
 			EventManager::GetSingleton()->FireEvent(TurnToEvent(castedEvent.entity, posCom->x, posCom->y));
@@ -124,7 +124,7 @@ void SystemPawnFight::HandleAttackTarget2(IEventData const &evt)
 		Entity* enemy = ECSWorld::GetSingleton()->GetEntity(fightCom->enemyID);
 		if (nullptr == enemy)
 			return;
-		auto posCom = enemy->GetComponent<ComPosition>();
+		auto posCom = enemy->GetComponent<ComTransform>();
 		if (posCom)
 		{
 			EventManager::GetSingleton()->FireEvent(TurnToEvent(castedEvent.entity, posCom->x, posCom->y));
@@ -189,7 +189,7 @@ bool SystemPawnFight::IsOldTargetVaild(Entity* pEntity)
 	if (nullptr == pEntity)
 		return false;
 
-	ComPosition* myPosCom = positionMapper.get(pEntity);
+	ComTransform* myPosCom = positionMapper.get(pEntity);
 	ComBoxCollider* myBoxCom = colliderMapper.get(pEntity);
 	ComPawnFight* myFightCom = pawnFightMapper.get(pEntity);
 	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
@@ -211,7 +211,7 @@ bool SystemPawnFight::IsOldTargetVaild(Entity* pEntity)
 		return false;
 	}
 
-	ComPosition* enePosCom = enemyEntity->GetComponent<ComPosition>();
+	ComTransform* enePosCom = enemyEntity->GetComponent<ComTransform>();
 	ComBoxCollider* eneBoxCom = enemyEntity->GetComponent<ComBoxCollider>();
 	Point2D vecBetween(myPosCom->x - enePosCom->x, myPosCom->y - enePosCom->y);
 	float len = vecBetween.Length();
@@ -232,7 +232,7 @@ bool SystemPawnFight::IsOldTargetVaild(Entity* pEntity)
 
 int SystemPawnFight::FindNearestTarget(Entity* pEntity, bool sameTeam, bool includeSelf)
 {
-	ComPosition* myPosCom = positionMapper.get(pEntity);
+	ComTransform* myPosCom = positionMapper.get(pEntity);
 	ComPawnFight* myFightCom = pawnFightMapper.get(pEntity);
 	ComTeam* myComTeam = pEntity->GetComponent<ComTeam>();
 	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
@@ -272,7 +272,7 @@ int SystemPawnFight::FindNearestTarget(Entity* pEntity, bool sameTeam, bool incl
 			)
 			continue;*/
 
-		ComPosition* enePosCom = pEnemyEntity->GetComponent<ComPosition>();
+		ComTransform* enePosCom = pEnemyEntity->GetComponent<ComTransform>();
 		Point2D vecBetween(myPosCom->x - enePosCom->x, myPosCom->y - enePosCom->y);
 		float len = vecBetween.Length();
 		if (len < myTempCom->m_roleCfg->viewRange)
@@ -296,7 +296,7 @@ int SystemPawnFight::FindNearestTarget(Entity* pEntity, bool sameTeam, bool incl
 void SystemPawnFight::FindTargetsInScope(int entityID, int scopeSize, bool sameTeam, bool includeSelf, std::vector<int>& eneityIDList)
 {
 	Entity* pEntity = world->GetEntity(entityID);
-	ComPosition* myPosCom = positionMapper.get(pEntity);
+	ComTransform* myPosCom = positionMapper.get(pEntity);
 	ComPawnFight* myFightCom = pawnFightMapper.get(pEntity);
 	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
 	ComTeam* myComTeam = pEntity->GetComponent<ComTeam>();
@@ -322,7 +322,7 @@ void SystemPawnFight::FindTargetsInScope(int entityID, int scopeSize, bool sameT
 			)
 			continue;
 
-		ComPosition* enePosCom = pEnemyEntity->GetComponent<ComPosition>();
+		ComTransform* enePosCom = pEnemyEntity->GetComponent<ComTransform>();
 		Point2D vecBetween(myPosCom->x - enePosCom->x, myPosCom->y - enePosCom->y);
 		float len = vecBetween.Length();
 		if (len < scopeSize)
@@ -337,7 +337,7 @@ void SystemPawnFight::UpdateLifeBar(Entity* pEntity)
 	if (nullptr == pEntity)
 		return;
 
-	//ComPosition* myPosCom = positionMapper.get(pEntity);
+	//ComTransform* myPosCom = positionMapper.get(pEntity);
 	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
 	ComPawnAgent* myAttCom = pawnAgentMapper.get(pEntity);
 	ComPawnAnim* animCom = pawnAnimMapper.get(pEntity);

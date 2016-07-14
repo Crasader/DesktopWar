@@ -4,8 +4,8 @@
 #include "../../core/EntityProcessingSystem.h"
 #include "../../core/ComponentMapper.h"
 
-#include "../../components/common/ComPosition.h"
-#include "../../components/common/ComVelocity.h"
+#include "../../components/common/ComTransform.h"
+
 #include "../../components/pawn/ComPawnNavigation.h"
 
 namespace Genius
@@ -14,13 +14,12 @@ namespace Genius
 	{
 	private:
 		ComponentMapper<ComPawnNavigation>	navigationMapper;
-		ComponentMapper<ComPosition>					positionMapper;
-		ComponentMapper<ComVelocity>					velocityMapper;
+		ComponentMapper<ComTransform>					positionMapper;
 
 	public:
 		SystemPawnNavigation()
 		{
-			SetComponentTypes<ComPawnNavigation, ComPosition>();
+			SetComponentTypes<ComPawnNavigation, ComTransform>();
 		}
 		virtual const char* GetName(){ return "SystemPawnNavigation"; }
 		virtual void Initialize();

@@ -10,7 +10,7 @@ using namespace Genius;
 void SystemBulletAnim::Initialize()
 {
 	positionMapper.init(*world);
-	velocityMapper.init(*world);
+	
 	animMapper.init(*world);
 
 	// register event.
@@ -19,29 +19,28 @@ void SystemBulletAnim::Initialize()
 
 void SystemBulletAnim::ProcessEntity(Entity* pEntity)
 {
-	ComPosition* pPosCom = positionMapper.get(pEntity);
-	ComVelocity* pVelCom = velocityMapper.get(pEntity);
+	ComTransform* pPosCom = positionMapper.get(pEntity);
 	ComBulletAnimBase* animCom = animMapper.get(pEntity);
 
 	animCom->m_pAvatarRoot->setPosition(pPosCom->x, pPosCom->y);
 	float rotation = 0;
-	if (pVelCom->x == 0)
+	if (pPosCom->vx == 0)
 	{
 		rotation = 90;
 	}
-	else if (pVelCom->x > 0)
+	else if (pPosCom->vx > 0)
 	{
-		if (pVelCom->y * pVelCom->x >= 0)
-			rotation = -180 * atan(pVelCom->y / pVelCom->x) / PI;
-		else if (pVelCom->y * pVelCom->x < 0)
-			rotation = -180 * atan(pVelCom->y / pVelCom->x) / PI;
+		if (pPosCom->vy * pPosCom->vx >= 0)
+			rotation = -180 * atan(pPosCom->vy / pPosCom->vx) / PI;
+		else if (pPosCom->vy * pPosCom->vx < 0)
+			rotation = -180 * atan(pPosCom->vy / pPosCom->vx) / PI;
 	}
 	else
 	{
-		if (pVelCom->y * pVelCom->x >= 0)
-			rotation = 180 - 180 * atan(pVelCom->y / pVelCom->x) / PI;
-		else if (pVelCom->y * pVelCom->x < 0)
-			rotation = 180 - 180 * atan(pVelCom->y / pVelCom->x) / PI;
+		if (pPosCom->vy * pPosCom->vx >= 0)
+			rotation = 180 - 180 * atan(pPosCom->vy / pPosCom->vx) / PI;
+		else if (pPosCom->vy * pPosCom->vx < 0)
+			rotation = 180 - 180 * atan(pPosCom->vy / pPosCom->x) / PI;
 	}
 	
 	if (animCom->m_pBodyArmature)

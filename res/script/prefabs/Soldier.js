@@ -2,55 +2,49 @@
 
 var Soldier = {
 
-    Create:function()
+    Create:function(id)
     {
         var entity = CreateEntity()
         var entCpp = entity.GetEntity()
         //entity.LoadComponent("bev")
-        var posCom = entCpp.AddComponent(ComponentName.Position)
-        posCom.x = 100;
-        posCom.y = 100;
-        var velCom = entCpp.AddComponent(ComponentName.Velocity)
-        velCom.x = 0;
-        velCom.y = 0;
+        var posCom = entCpp.AddComponent(ComponentName.Transform)
+        posCom.x = 100
+        posCom.y = 100
+        posCom.vx = 0
+        posCom.vy = 0
 
+		var roleCfg = Config.Role[id]
 
-        //Role_cfg* roleInfo = FIND_CFG(Role_cfg, id);
-
-
-        //Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
-       // var agent = new ComPawnAgent();
-        //agentCpp.Create(roleInfo);
         var agent = entCpp.AddComponent(ComponentName.PawnAgent)
-        //var tm = new ComTeam();
-        //tm->team = team;
+		agent.Create(id)
+
         var tm = entCpp.AddComponent(ComponentName.Team)
-       // var targ = new ComTarget();
-        //targ->Create(Target_Entity);
+        tm.team = 1
+
         var targ = entCpp.AddComponent(ComponentName.Target)
-        //var paCom = new ComPawnAnim();
-        //paCom->Create(id);
+        targ.Create(1)
+
         var paCom = entCpp.AddComponent(ComponentName.PawnAnim)
-        var width = paCom.GetWidth()*0.5;
-        var height = paCom.GetHeight()*0.7;
-        //var box = new ComBoxCollider();
-        //box->Create(false, 0, height*0.5f, width, height);
+        paCom.Create(id)
+
+        var width = paCom.GetWidth()*0.5
+        var height = paCom.GetHeight()*0.7
+
         var box = entCpp.AddComponent(ComponentName.BoxCollider)
-        //var han = new ComColliderHandler();
-       // han->Create(nullptr, nullptr);
+        box.Create(false, 0, height*0.5, width, height)
+
         var han = entCpp.AddComponent(ComponentName.ColliderHandler)
+        han.Create(null, null)
+
         var dir = entCpp.AddComponent(ComponentName.PawnDirection)
-        //var bev = new ComPawnBevtree();
-        //bev->Create(roleInfo->bevTreeFile);
+
         var bev = entCpp.AddComponent(ComponentName.PawnBevtree)
+        bev.Create(roleCfg.bevTreeFile)
+
         var nav = entCpp.AddComponent(ComponentName.PawnNavigation)
         var fht = entCpp.AddComponent(ComponentName.PawnFight)
-        //if (cfg_EnableDebugDraw)
-        //{
-            //var dd = new ComPawnDebugDraw();
-           // dd->Create();
-            var dd = entCpp.AddComponent(ComponentName.PawnDebugDraw)
-        //}
+
+        var dd = entCpp.AddComponent(ComponentName.PawnDebugDraw)
 
 
     },

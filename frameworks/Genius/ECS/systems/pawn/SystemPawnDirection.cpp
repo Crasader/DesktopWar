@@ -54,7 +54,7 @@ bool SystemPawnDirection::HandleEvent(IEventData const &event)
 	case Event_turnTo:
 	{
 		const TurnToEvent & actionEvent = static_cast<const TurnToEvent &>(event);
-		ComPosition* pawnPos = positionMapper.get(actionEvent.entity);
+		ComTransform* pawnPos = positionMapper.get(actionEvent.entity);
 		ComPawnDirection* pawnDir = pawnDirectionMapper.get(actionEvent.entity);
 		ComPawnAgent* pawnAgent = pawnAgentMapper.get(actionEvent.entity);
 		if (nullptr != pawnDir && nullptr != pawnAgent)

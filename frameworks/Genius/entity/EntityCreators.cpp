@@ -26,13 +26,12 @@ int EntityCreator::CreatePawn(int id, float x, float y, int team)
 
 	Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
 	auto agent = new ComPawnAgent();
-	agent->Create(roleInfo);
+	agent->Create(id);
 	ent->AddComponent(agent);
-	auto vel = new ComVelocity();
-	vel->x = 0; vel->y = 0;
-	ent->AddComponent(vel);
-	auto pos = new ComPosition();
+
+	auto pos = new ComTransform();
 	pos->x = x; pos->y = y;
+	pos->vx = 0; pos->vy = 0;
 	ent->AddComponent(pos);
 	auto tm = new ComTeam();
 	tm->team = team;
@@ -98,7 +97,7 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	auto bagent = new ComBulletAgent();
 	bagent->Create(bulletCfg);
 	ent->AddComponent(bagent);
-	auto pos = new ComPosition();
+	auto pos = new ComTransform();
 	pos->x = x; pos->y = y;
 	ent->AddComponent(pos);
 	auto tm = new ComTeam();
@@ -111,9 +110,8 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	
 	if (bulletCfg->moveType == BulletMoveType::BMT_Line)
 	{
-		auto vel = new ComVelocity();
-		vel->x = 0; vel->y = 0;
-		ent->AddComponent(vel);
+		pos->vx = 0; pos->vy = 0;
+
 		ent->AddComponent(new ComBulletDamageNone());
 		auto baegg = new ComBulletAnimEgg();
 		baegg->Create(anim_cfg->name);
@@ -121,9 +119,7 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	}
 	else if (bulletCfg->moveType == BulletMoveType::BMT_Bezier)
 	{
-		auto vel = new ComVelocity();
-		vel->x = 0; vel->y = 0;
-		ent->AddComponent(vel);
+		pos->vx = 0; pos->vy = 0;
 		auto targ = new ComTarget();
 		targ->Create(Target_Location, 0, destX, destY);
 		ent->AddComponent(targ);
@@ -145,9 +141,8 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	{
 		SystemPawnFight* fightSys = ECSWorld::GetSingleton()->GetSystemManager()->GetSystem<SystemPawnFight>();
 		int tarEntityID = fightSys->FindFirstTargetByTeam(team);
-		auto vel = new ComVelocity();
-		vel->x = 0; vel->y = bulletCfg->flySpeed;
-		ent->AddComponent(vel);
+		pos->vx = 0; pos->vy = bulletCfg->flySpeed;
+
 		auto targ = new ComTarget();
 		targ->Create(Target_Entity, tarEntityID);
 		ent->AddComponent(targ);
@@ -171,7 +166,7 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 int EntityCreator::CreateBornPoint(float x, float y, int team)
 {
 	Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
-	auto pos = new ComPosition();
+	auto pos = new ComTransform();
 	pos->x = x; pos->y = y;
 	ent->AddComponent(pos);
 	auto tm = new ComTeam();

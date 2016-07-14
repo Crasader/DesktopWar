@@ -2,8 +2,8 @@
 
 #include "../../core/EntityProcessingSystem.h"
 #include "../../core/ComponentMapper.h"
-#include "../../components/common/ComPosition.h"
-#include "../../components/common/ComVelocity.h"
+#include "../../components/common/ComTransform.h"
+
 #include "../../components/bullet/ComBulletAnimEgg.h"
 
 namespace Genius
@@ -11,14 +11,14 @@ namespace Genius
 	class SystemBulletEggAnim : public EntityProcessingSystem
 	{
 	private:
-		ComponentMapper<ComPosition> positionMapper;
-		ComponentMapper<ComVelocity> velocityMapper;
+		ComponentMapper<ComTransform> positionMapper;
+		
 		ComponentMapper<ComBulletAnimEgg> animMapper;
 
 	public:
 		SystemBulletEggAnim()
 		{
-			SetComponentTypes<ComPosition, ComVelocity, ComBulletAnimEgg>();
+			SetComponentTypes<ComTransform, ComBulletAnimEgg>();
 		}
 		virtual const char* GetName(){ return "SystemBulletEggAnim"; }
 		virtual void Initialize();

@@ -10,7 +10,7 @@ void SystemPawnNavigation::Initialize()
 {
 	navigationMapper.init(*world);
 	positionMapper.init(*world);
-	velocityMapper.init(*world);
+	
 	
 	// register event.
 	EventManager::GetSingleton()->AddListener(this, Event_navigateTo);
@@ -20,15 +20,15 @@ void SystemPawnNavigation::Initialize()
 void SystemPawnNavigation::ProcessEntity(Entity* pEntity)
 {
 	ComPawnNavigation* navCom = navigationMapper.get(pEntity);
-	ComPosition* posCom = positionMapper.get(pEntity);
-	ComVelocity* velCom = velocityMapper.get(pEntity);
+	ComTransform* posCom = positionMapper.get(pEntity);
+	
 	
 	if (navCom->curPointIndex >= 0 && navCom->curPointIndex < navCom->pathPoints.size())
 	{
 		Point2D curPoint(posCom->x, posCom->y);
 		Point2D destPoint = navCom->pathPoints[navCom->curPointIndex];
 		Point2D distVec = destPoint - curPoint;
-		Point2D velVec(velCom->x, velCom->y);
+		Point2D velVec(posCom->vx, posCom->vy);
 		float velLen = velVec.Length() * world->GetDeltaTime();
 		float disLen = distVec.Length();
 		if (disLen <= 0 || disLen < velLen)
@@ -81,7 +81,7 @@ bool SystemPawnNavigation::HandleEvent(IEventData const &event)
 		Entity* tarEntity = world->GetEntity(castedEvent.id);
 		if (nullptr == tarEntity)
 			break;
-		ComPosition* posCom = tarEntity->GetComponent<ComPosition>();
+		ComTransform* posCom = tarEntity->GetComponent<ComTransform>();
 		ComPawnNavigation* navCom = navigationMapper.get(castedEvent.entity);
 		if (navCom && posCom)
 		{

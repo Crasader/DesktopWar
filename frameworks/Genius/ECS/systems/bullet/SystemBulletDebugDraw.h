@@ -2,7 +2,7 @@
 
 #include "../../core/EntityProcessingSystem.h"
 #include "../../core/ComponentMapper.h"
-#include "../../components/common/ComPosition.h"
+#include "../../components/common/ComTransform.h"
 #include "../../components/common/ComBoxCollider.h"
 #include "../../components/bullet/ComBulletDebugDraw.h"
 #include "../../components//bullet/ComBulletAgent.h"
@@ -13,14 +13,14 @@ namespace Genius
 	{
 	private:
 		ComponentMapper<ComBulletDebugDraw> debugDrawMapper;
-		ComponentMapper<ComPosition> positionMapper;
+		ComponentMapper<ComTransform> positionMapper;
 		ComponentMapper<ComBoxCollider> boxColliderMapper;
 		ComponentMapper<ComBulletAgent> agentMapper;
 
 	public:
 		SystemBulletDebugDraw()
 		{
-			SetComponentTypes<ComBulletDebugDraw, ComPosition, ComBoxCollider, ComBulletAgent>();
+			SetComponentTypes<ComBulletDebugDraw, ComTransform, ComBoxCollider, ComBulletAgent>();
 		}
 		virtual const char* GetName(){ return "SystemBulletDebugDraw"; }
 		virtual void Initialize();

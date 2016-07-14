@@ -9,8 +9,7 @@
 
 
 // components
-#include "components/common/ComPosition.h"
-#include "components/common/ComVelocity.h"
+#include "components/common/ComTransform.h"
 #include "components/common/ComBoxCollider.h"
 #include "components/common/ComColliderHandler.h"
 #include "components/common/ComAnimation.h"
@@ -43,7 +42,7 @@
 
 
 // systems
-#include "systems/common/SystemMovement.h"
+#include "systems/common/SystemTransform.h"
 #include "systems/common/SystemSimpleAnim.h"
 #include "systems/common/SystemBoxCollider.h"
 #include "systems/common/SystemBezierMovement.h"

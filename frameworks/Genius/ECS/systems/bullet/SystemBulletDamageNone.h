@@ -2,7 +2,7 @@
 
 #include "../../core/EntityProcessingSystem.h"
 #include "../../core/ComponentMapper.h"
-#include "../../components/common/ComPosition.h"
+#include "../../components/common/ComTransform.h"
 #include "../../components/bullet/ComBulletDamageNone.h"
 #include "../../components//bullet/ComBulletAgent.h"
 
@@ -11,14 +11,14 @@ namespace Genius
 	class SystemBulletDamageNone : public EntityProcessingSystem
 	{
 	private:
-		ComponentMapper<ComPosition> positionMapper;
+		ComponentMapper<ComTransform> positionMapper;
 		ComponentMapper<ComBulletDamageNone> damageMapper;
 		ComponentMapper<ComBulletAgent> agentMapper;
 
 	public:
 		SystemBulletDamageNone()
 		{
-			SetComponentTypes<ComPosition, ComBulletDamageNone, ComBulletAgent>();
+			SetComponentTypes<ComTransform, ComBulletDamageNone, ComBulletAgent>();
 		}
 		virtual const char* GetName(){ return "SystemBulletDamageNone"; }
 		virtual void Initialize();

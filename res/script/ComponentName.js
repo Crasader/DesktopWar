@@ -2,8 +2,7 @@
 
 var ComponentName =
 {
-    Position:"ComPosition",
-    Velocity:"ComVelocity",
+    Transform:"ComTransform",
     BoxCollider:"ComBoxCollider",
     ColliderHandler:"ComColliderHandler",
     Animation:"ComAnimation",

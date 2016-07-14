@@ -21,10 +21,8 @@ Genius::IComponent* EntityWrapper::AddComponent(const char* name)
 {
 	Genius::IComponent* com = nullptr;
 	string comName = name;
-	if (comName == "ComPosition")
-		com = new ComPosition();
-	else if (comName == "ComVelocity")
-		com = new ComVelocity();
+	if (comName == "ComTransform")
+		com = new ComTransform();
 	else if (comName == "ComBoxCollider")
 		com = new ComBoxCollider();
 	else if (comName == "ComColliderHandler")
@@ -74,6 +72,9 @@ Genius::IComponent* EntityWrapper::AddComponent(const char* name)
 		com = new ComBulletDebugDraw();
 	else if (comName == "ComBulletAnimEgg")
 		com = new ComBulletAnimEgg();
+
+	m_entity->AddComponent(com);
+	m_entity->Refresh();
 
 	return com;
 }

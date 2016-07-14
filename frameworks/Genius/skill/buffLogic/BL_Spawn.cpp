@@ -40,7 +40,7 @@ void BL_Spawn::OnEffect(Buff* buff)
 			break;
 		}
 
-		ComPosition* posCom = senderEntity->GetComponent<ComPosition>();
+		ComTransform* posCom = senderEntity->GetComponent<ComTransform>();
 		if (nullptr == posCom)
 			break;
 

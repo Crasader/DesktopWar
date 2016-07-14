@@ -2,7 +2,7 @@
 
 #include "../../core/EntityProcessingSystem.h"
 #include "../../core/ComponentMapper.h"
-#include "../../components/common/ComPosition.h"
+#include "../../components/common/ComTransform.h"
 #include "../../components/common/ComBoxCollider.h"
 #include "../../components/common/ComColliderHandler.h"
 namespace Genius
@@ -10,14 +10,14 @@ namespace Genius
 	class SystemBoxCollider : public EntityProcessingSystem
 	{
 	private:
-		ComponentMapper<ComPosition> positionMapper;
+		ComponentMapper<ComTransform> positionMapper;
 		ComponentMapper<ComBoxCollider> colliderMapper;
 		ComponentMapper<ComColliderHandler> handlerMapper;
 
 	public:
 		SystemBoxCollider()
 		{
-			SetComponentTypes<ComPosition, ComBoxCollider, ComColliderHandler>();
+			SetComponentTypes<ComTransform, ComBoxCollider, ComColliderHandler>();
 		}
 		virtual const char* GetName(){ return "SystemBoxCollider"; }
 		virtual void Initialize();
@@ -27,7 +27,7 @@ namespace Genius
 		virtual bool HandleEvent(IEventData const &event);
 
 	private:
-		bool IsCollidedBetween(ComPosition* posCom, ComBoxCollider* colliderCom, ComPosition* otherPosCom, ComBoxCollider* otherColliderCom);
+		bool IsCollidedBetween(ComTransform* posCom, ComBoxCollider* colliderCom, ComTransform* otherPosCom, ComBoxCollider* otherColliderCom);
 		bool IsAlreadyCollided(ComBoxCollider* colliderCom, Entity* entity2);
 	};
 };

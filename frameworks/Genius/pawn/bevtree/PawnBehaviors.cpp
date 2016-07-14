@@ -216,7 +216,7 @@ bool PawnWander::LoadFromXml(XMLElement* xml)
 void PawnWander::GoToSomewhere(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
-	ComPosition* posCom = data.pEntity->GetComponent<ComPosition>();
+	ComTransform* posCom = data.pEntity->GetComponent<ComTransform>();
 	ComTeam* pComTeam = data.pEntity->GetComponent<ComTeam>();
 
 	int width = GameDefine::viewWidth;
@@ -508,7 +508,7 @@ void PawnAttackFar::OnInitialize(BHUpdateContext& context)
 	Entity* pTargetEntity = ECSWorld::GetSingleton()->GetEntity(fightCom->enemyID);
 	if (nullptr != pTargetEntity)
 	{
-		ComPosition* tarPosCom = pTargetEntity->GetComponent<ComPosition>();
+		ComTransform* tarPosCom = pTargetEntity->GetComponent<ComTransform>();
 		EventManager::GetSingleton()->FireEvent(TurnToEvent(data.pEntity, tarPosCom->x, tarPosCom->y));
 	}
 	
