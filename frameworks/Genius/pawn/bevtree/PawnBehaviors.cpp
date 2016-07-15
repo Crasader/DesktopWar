@@ -13,6 +13,8 @@
 #include "app/GameDefine.h"
 #include "data/auto/Role_cfg.hpp"
 #include "RandUtility.h"
+#include "pawn/PawnBlackboard.h"
+
 
 USING_NS_BHTREE
 using namespace Genius;
@@ -217,11 +219,11 @@ void PawnWander::GoToSomewhere(BHUpdateContext& context)
 {
 	EntityBevInputData& data = context.GetRealDataType<EntityBevInputData>();
 	ComTransform* posCom = data.pEntity->GetComponent<ComTransform>();
-	ComTeam* pComTeam = data.pEntity->GetComponent<ComTeam>();
+	ComPawnAgent* pComAgent = data.pEntity->GetComponent<ComPawnAgent>();
 
 	int width = GameDefine::viewWidth;
 	int height = GameDefine::viewHeight;
-	bool tooLeft = pComTeam->team == Team_Human ? false : true;
+	bool tooLeft = pComAgent->GetBlackboard()->team == Team_Human ? false : true;
 	bool tooTop = posCom->y < height - posCom->y;
 	int maxDistance = 200;
 

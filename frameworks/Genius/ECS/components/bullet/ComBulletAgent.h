@@ -21,6 +21,7 @@ namespace Genius
 	public:
 		cfg::Bullet_cfg*					pBulletData;
 		BulletBlackboard*			pBlackBoard;
+		int team;
 
 		void Create(cfg::Bullet_cfg* pData);
 

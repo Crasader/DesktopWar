@@ -9,8 +9,8 @@
 #include "../../core/SystemManager.h"
 #include "../pawn/SystemPawnFight.h"
 #include "skill/BuffManager.h"
+#include "pawn/PawnBlackboard.h"
 
-#include "../../components/common/ComTeam.h"
 
 using namespace Genius;
 using namespace cfg;
@@ -67,9 +67,10 @@ void SystemBulletDamageSingle::collisionHandler(int id1, int id2)
 	if (nullptr == pOtherEntity)
 		return;
 
-	ComTeam* pMyComTeam = pEntity->GetComponent<ComTeam>();
-	ComTeam* pOtherComTeam = pOtherEntity->GetComponent<ComTeam>();
-	if (pMyComTeam && pOtherComTeam && pMyComTeam->team != pOtherComTeam->team)
+	auto pMyComAgent = agentMapper.get(pEntity);
+	auto pOtherComTeam = pOtherEntity->GetComponent<ComPawnAgent>();
+
+	if (pMyComAgent && pOtherComTeam && pMyComAgent->team != pOtherComTeam->GetBlackboard()->team)
 	{
 		EventManager::GetSingleton()->FireEvent(BulletHitEvent(pEntity));
 		EventManager::GetSingleton()->FireEvent(StopMoveEvent(pEntity));

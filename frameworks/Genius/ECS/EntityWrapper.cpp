@@ -21,7 +21,7 @@ static void _lazyInitComFuncs()
 	REG_CREATE_COM(ComBoxCollider);
 	REG_CREATE_COM(ComColliderHandler);
 	REG_CREATE_COM(ComAnimation);
-	REG_CREATE_COM(ComTeam);
+	//REG_CREATE_COM(ComTeam);
 	REG_CREATE_COM(ComTarget);
 	REG_CREATE_COM(ComParticle);
 	REG_CREATE_COM(ComBezierMovement);

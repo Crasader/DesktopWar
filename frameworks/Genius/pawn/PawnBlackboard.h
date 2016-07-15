@@ -33,6 +33,7 @@ namespace Genius
 	public:
 		ComPawnAgent*	m_pAgent;
 
+		int team;
 		/*int		m_HP;
 		int		m_moveSpeed;
 		int		m_attackSpeed;

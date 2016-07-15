@@ -17,8 +17,8 @@ var Soldier = {
         var agent = entCpp.AddComponent(ComponentName.PawnAgent);
 		agent.Create(id);
 
-        var tm = entCpp.AddComponent(ComponentName.Team);
-        tm.SetTeam(team);
+        //var tm = entCpp.AddComponent(ComponentName.Team);
+        //tm.SetTeam(team);
 
         var targ = entCpp.AddComponent(ComponentName.Target);
         targ.Create(0,0,0,0);

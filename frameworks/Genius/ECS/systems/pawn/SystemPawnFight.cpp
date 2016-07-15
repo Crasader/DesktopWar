@@ -8,7 +8,7 @@
 #include "app/GameDefine.h"
 #include "pawn/PawnBlackboard.h"
 #include "pawn/action/ActionDefine.h"
-#include "../../components/common/ComTeam.h"
+
 
 using namespace Genius;
 
@@ -234,7 +234,7 @@ int SystemPawnFight::FindNearestTarget(Entity* pEntity, bool sameTeam, bool incl
 {
 	ComTransform* myPosCom = transMapper.get(pEntity);
 	ComPawnFight* myFightCom = pawnFightMapper.get(pEntity);
-	ComTeam* myComTeam = pEntity->GetComponent<ComTeam>();
+	//ComTeam* myComTeam = pEntity->GetComponent<ComTeam>();
 	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
 	int enemyId = Entity::InvalidID;
 	float minDist = 0;
@@ -242,11 +242,11 @@ int SystemPawnFight::FindNearestTarget(Entity* pEntity, bool sameTeam, bool incl
 	std::string targetTag;
 	if (sameTeam)
 	{
-		targetTag = myComTeam->team == Team_Human ? GameDefine::Tag_Soldier : GameDefine::Tag_Monster;
+		targetTag = myTempCom->GetBlackboard()->team == Team_Human ? GameDefine::Tag_Soldier : GameDefine::Tag_Monster;
 	}
 	else
 	{
-		targetTag = myComTeam->team == Team_Human ? GameDefine::Tag_Monster : GameDefine::Tag_Soldier;
+		targetTag = myTempCom->GetBlackboard()->team == Team_Human ? GameDefine::Tag_Monster : GameDefine::Tag_Soldier;
 	}
 	entity_map& activities = world->GetEntitiesByTag(targetTag);
 	if (activities.size() == 0)
@@ -300,7 +300,8 @@ void SystemPawnFight::FindTargetsInScope(int entityID, int scopeSize, bool sameT
 	ComTransform* myPosCom = transMapper.get(pEntity);
 	ComPawnFight* myFightCom = pawnFightMapper.get(pEntity);
 	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
-	ComTeam* myComTeam = pEntity->GetComponent<ComTeam>();
+	//ComTeam* myComTeam = pEntity->GetComponent<ComTeam>();
+	int myTeam = myTempCom->GetBlackboard()->team;
 
 	Bag<Entity*>& activities = GetActivities();
 	for (int i = 0; i < activities.getCount(); i++)
@@ -313,13 +314,14 @@ void SystemPawnFight::FindTargetsInScope(int entityID, int scopeSize, bool sameT
 		if (enemyAttCom && enemyAttCom->GetBlackboard()->GetAttr(AttrType::HP)<= 0)
 			continue;
 
+		int enemyTeam = enemyAttCom->GetBlackboard()->team;
 		//ComPawnFight* eneFightCom = eneEntity->getComponent<ComPawnFight>();
-		ComTeam* enComTeam = pEnemyEntity->GetComponent<ComTeam>();
-		if (sameTeam && myComTeam->team != enComTeam->team)
+		//auto enComTeam = pEnemyEntity->GetComponent<ComTeam>();
+		if (sameTeam && myTeam != enemyTeam)
 			continue;
 
 		if ((!sameTeam)
-			&& ((myComTeam->team == Team_Human && enComTeam->team != Team_Monster) || (myComTeam->team == Team_Monster && enComTeam->team != Team_Human))
+			&& ((myTeam == Team_Human && enemyTeam != Team_Monster) || (myTeam == Team_Monster && enemyTeam != Team_Human))
 			)
 			continue;
 
@@ -354,8 +356,8 @@ int SystemPawnFight::FindFirstTargetByTeam(int team)
 	for (int i = 0; i < fightActivities.getCount(); i++)
 	{
 		Entity* pEnemyEntity = fightActivities.get(i);
-		ComTeam* enComTeam = pEnemyEntity->GetComponent<ComTeam>();
-		if (enComTeam->team == tarTeam)
+		auto enComAgent = pEnemyEntity->GetComponent<ComPawnAgent>();
+		if (enComAgent->GetBlackboard()->team == tarTeam)
 		{
 			tarEntityID = pEnemyEntity->GetId();
 			break;

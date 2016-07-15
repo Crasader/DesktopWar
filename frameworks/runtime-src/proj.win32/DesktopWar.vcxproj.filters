@@ -349,9 +349,6 @@
     <ClInclude Include="..\..\Genius\ECS\components\common\ComTarget.h">
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\components\common\ComTeam.h">
-      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnAgent.h">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClInclude>
@@ -791,9 +788,6 @@
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\components\common\ComTarget.cpp">
-      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\components\common\ComTeam.cpp">
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnAgent.cpp">

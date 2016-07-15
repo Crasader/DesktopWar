@@ -13,7 +13,6 @@
 #include "components/common/ComBoxCollider.h"
 #include "components/common/ComColliderHandler.h"
 #include "components/common/ComAnimation.h"
-#include "components/common/ComTeam.h"
 #include "components/common/ComTarget.h"
 #include "components/common/ComParticle.h"
 #include "components/common/ComBezierMovement.h"

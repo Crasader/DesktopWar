@@ -10,7 +10,6 @@
 #include "../pawn/SystemPawnFight.h"
 #include "skill/BuffManager.h"
 
-#include "../../components/common/ComTeam.h"
 #include "../../components/common/ComTarget.h"
 #include "../../components/pawn/ComPawnAgent.h"
 #include "pawn/PawnBlackboard.h"
@@ -102,8 +101,8 @@ void SystemBulletDamageScope::FindTargetsInScope(Entity* pEntity, int radius, bo
 {
 	ComTransform* myPosCom = transMapper.get(pEntity);
 	ComBulletDamageScope* myAttackCom = damageMapper.get(pEntity);
-	ComTeam* myComTeam = pEntity->GetComponent<ComTeam>();
-	int myTeam = myComTeam->team;
+	auto myComAgent = agentMapper.get(pEntity);
+	int myTeam = myComAgent->team;
 
 	auto sysMgr = ECSWorld::GetSingleton()->GetSystemManager();
 	SystemPawnFight* fightSys = sysMgr->GetSystem<SystemPawnFight>();
@@ -118,12 +117,12 @@ void SystemBulletDamageScope::FindTargetsInScope(Entity* pEntity, int radius, bo
 		if (enemyAgent && enemyAgent->GetBlackboard()->GetAttr(AttrType::HP) <= 0)
 			continue;
 
-		ComTeam* enComTeam = eneEntity->GetComponent<ComTeam>();
-		if (sameTeam && myTeam != enComTeam->team)
+		int enemyTeam = enemyAgent->GetBlackboard()->team;
+		if (sameTeam && myTeam != enemyTeam)
 			continue;
 
 		if ((!sameTeam)
-			&& ((myTeam == Team_Human && enComTeam->team != Team_Monster) || (myTeam == Team_Monster && enComTeam->team != Team_Human))
+			&& ((myTeam == PawnTeam::Team_Human && enemyTeam != PawnTeam::Team_Monster) || (myTeam == PawnTeam::Team_Monster && enemyTeam != PawnTeam::Team_Human))
 			)
 			continue;
 

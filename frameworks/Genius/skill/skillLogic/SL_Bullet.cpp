@@ -4,6 +4,7 @@
 #include "data/auto/Skill_cfg.hpp"
 #include "ECS/ecs.h"
 #include "entity/EntityCreators.h"
+#include "pawn/PawnBlackboard.h"
 
 using namespace Genius;
 
@@ -20,30 +21,30 @@ void SL_Bullet::OnActive(Skill* skill)
 			return;
 
 		ComTransform* ownerPosCom = ownerEntity->GetComponent<ComTransform>();
-		ComTeam* ownerComTeam = ownerEntity->GetComponent<ComTeam>();
-		ComPawnAgent* ownerTempCom = ownerEntity->GetComponent<ComPawnAgent>();
+		//ComTeam* ownerComTeam = ownerEntity->GetComponent<ComTeam>();
+		ComPawnAgent* ownerAgentCom = ownerEntity->GetComponent<ComPawnAgent>();
 		ComTransform* ownerDirCom = ownerEntity->GetComponent<ComTransform>();
-		if (nullptr == ownerComTeam || nullptr == ownerTempCom || nullptr == ownerDirCom)
+		if (nullptr == ownerAgentCom || nullptr == ownerDirCom)
 			return;
 
 		float startX = ownerPosCom->x;
 		float startY = ownerPosCom->y;
 		if (ownerPosCom->curDir & Face_Left)
 		{
-			startX = ownerPosCom->x - ownerTempCom->m_roleCfg->bulletX;
-			startY = ownerPosCom->y + ownerTempCom->m_roleCfg->bulletY;
+			startX = ownerPosCom->x - ownerAgentCom->m_roleCfg->bulletX;
+			startY = ownerPosCom->y + ownerAgentCom->m_roleCfg->bulletY;
 		}
 		else if (ownerPosCom->curDir & Face_Right)
 		{
-			startX = ownerPosCom->x + ownerTempCom->m_roleCfg->bulletX;
-			startY = ownerPosCom->y + ownerTempCom->m_roleCfg->bulletY;
+			startX = ownerPosCom->x + ownerAgentCom->m_roleCfg->bulletX;
+			startY = ownerPosCom->y + ownerAgentCom->m_roleCfg->bulletY;
 		}
 		else
 		{
 			startX = startX;
 		}
 
-		int team = ownerComTeam->team;
+		int team = ownerAgentCom->GetBlackboard()->team;
 		int targetID = *iter;
 		auto skillCfg = skill->GetSkillCfg();
 		Entity* tarEntity = ECSWorld::GetSingleton()->GetEntity(targetID);

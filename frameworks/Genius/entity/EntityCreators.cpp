@@ -33,9 +33,9 @@ int EntityCreator::CreatePawn(int id, float x, float y, int team)
 	pos->x = x; pos->y = y;
 	pos->vx = 0; pos->vy = 0;
 	ent->AddComponent(pos);
-	auto tm = new ComTeam();
-	tm->team = team;
-	ent->AddComponent(tm);
+	//auto tm = new ComTeam();
+	//tm->team = team;
+	//ent->AddComponent(tm);
 	auto targ = new ComTarget();
 	targ->Create(Target_Entity);
 	ent->AddComponent(targ);
@@ -100,9 +100,9 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	auto pos = new ComTransform();
 	pos->x = x; pos->y = y;
 	ent->AddComponent(pos);
-	auto tm = new ComTeam();
-	tm->team = team;
-	ent->AddComponent(tm);
+// 	auto tm = new ComTeam();
+// 	tm->team = team;
+//	ent->AddComponent(tm);
 	auto box = new ComBoxCollider();
 	box->Create(true, 0, 0, bulletCfg->boxWidth, bulletCfg->boxHeight);
 	ent->AddComponent(box);
@@ -165,13 +165,13 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 
 int EntityCreator::CreateBornPoint(float x, float y, int team)
 {
-	Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
+	/*Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
 	auto pos = new ComTransform();
 	pos->x = x; pos->y = y;
 	ent->AddComponent(pos);
-	auto tm = new ComTeam();
-	tm->team = team;
-	ent->AddComponent(tm);
+// 	auto tm = new ComTeam();
+// 	tm->team = team;
+// 	ent->AddComponent(tm);
 	if (team == Team_Human)
 	{
 		auto anim = new ComAnimation();
@@ -190,5 +190,6 @@ int EntityCreator::CreateBornPoint(float x, float y, int team)
 	}
 
 	ent->Refresh();
-	return ent->GetId();
+	return ent->GetId();*/
+	return 0;
 }

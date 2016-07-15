@@ -44,11 +44,11 @@ void BL_Spawn::OnEffect(Buff* buff)
 		if (nullptr == posCom)
 			break;
 
-		ComTeam* teamCom = senderEntity->GetComponent<ComTeam>();
-		if (nullptr == teamCom)
+		ComBulletAgent* bulletAgent = senderEntity->GetComponent<ComBulletAgent>();
+		if (nullptr == bulletAgent)
 			break;
 
-		EntityCreator::CreatePawn(buff->GetCfg()->calType, posCom->x, posCom->y, teamCom->team);
+		EntityCreator::CreatePawn(buff->GetCfg()->calType, posCom->x, posCom->y, bulletAgent->team);
 
 	}while (false);
 
