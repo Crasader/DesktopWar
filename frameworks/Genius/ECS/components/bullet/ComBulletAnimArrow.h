@@ -13,6 +13,9 @@ namespace Genius
 	class ComBulletAnimArrow : public ComBulletAnimBase
 	{
 	public:
+		COM_CREATE_FN_DECL(ComBulletAnimArrow);
+
+	public:
 		const static std::string stopAnimName;
 
 	public:

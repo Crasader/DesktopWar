@@ -11,7 +11,7 @@ namespace Genius
 	class SystemBulletTarget : public EntityProcessingSystem
 	{
 	private:
-		ComponentMapper<ComTransform> positionMapper;
+		ComponentMapper<ComTransform> transMapper;
 		ComponentMapper<ComTarget> targetMapper;
 		ComponentMapper<ComBulletAgent> agentMapper;
 

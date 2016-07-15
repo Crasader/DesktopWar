@@ -80,9 +80,6 @@
     <Filter Include="Genius\Logic\ESC\User\System\Common">
       <UniqueIdentifier>{8a15b924-ebfb-4a55-82e6-a3d8809a2e1c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Genius\Logic\ESC\User\System\GamePlay">
-      <UniqueIdentifier>{a2863864-81b6-4c33-b5e5-f790f1ee7238}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Genius\Logic\ESC\User\System\Pawn">
       <UniqueIdentifier>{2ed719fd-bc09-4bf2-825f-991dc37accbf}</UniqueIdentifier>
     </Filter>
@@ -223,9 +220,6 @@
     <ClInclude Include="..\..\Genius\AI\AIBaseDef.h">
       <Filter>Genius\Logic\AI</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\components\GamePlayCom.h">
-      <Filter>Genius\Logic\ESC\User\Component</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\EntityEvents.h">
       <Filter>Genius\Logic\ESC\User\Event</Filter>
     </ClInclude>
@@ -307,12 +301,6 @@
     <ClInclude Include="..\..\Genius\ECS\core\ImmutableBag.h">
       <Filter>Genius\Logic\ESC\Core\Component</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\systems\game\HumanGameControlSystem.h">
-      <Filter>Genius\Logic\ESC\User\System\GamePlay</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\systems\game\MonsterGameControlSystem.h">
-      <Filter>Genius\Logic\ESC\User\System\GamePlay</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\pawn\PawnBlackboard.h">
       <Filter>Genius\Logic\Pawn</Filter>
     </ClInclude>
@@ -376,9 +364,6 @@
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnDebugDraw.h">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnDirection.h">
-      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnFight.h">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClInclude>
@@ -389,9 +374,6 @@
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.h">
-      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnDirection.h">
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnFight.h">
@@ -622,6 +604,9 @@
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemTransform.h">
       <Filter>Genius\Logic\ESC\User\System\Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\ecs.h">
+      <Filter>Genius\Logic\ESC</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -694,9 +679,6 @@
     <ClCompile Include="..\..\Genius\AI\BehaviorTree\Precondition.cpp">
       <Filter>Genius\Logic\AI\BevTree</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\components\GamePlayCom.cpp">
-      <Filter>Genius\Logic\ESC\User\Component</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\GamePlay.cpp">
       <Filter>Genius\Logic\GamePlay</Filter>
     </ClCompile>
@@ -763,12 +745,6 @@
     <ClCompile Include="..\..\Genius\ECS\core\ComponentTypeManager.cpp">
       <Filter>Genius\Logic\ESC\Core\Component</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\systems\game\HumanGameControlSystem.cpp">
-      <Filter>Genius\Logic\ESC\User\System\GamePlay</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\systems\game\MonsterGameControlSystem.cpp">
-      <Filter>Genius\Logic\ESC\User\System\GamePlay</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\pawn\PawnBlackboard.cpp">
       <Filter>Genius\Logic\Pawn</Filter>
     </ClCompile>
@@ -832,9 +808,6 @@
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnDebugDraw.cpp">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnDirection.cpp">
-      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnFight.cpp">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClCompile>
@@ -845,9 +818,6 @@
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.cpp">
-      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnDirection.cpp">
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnFight.cpp">

@@ -8,6 +8,8 @@
 using namespace Genius;
 
 
+COM_CREATE_FN_IMPL(ComDelayTrackMoving);
+
 void ComDelayTrackMoving::Create(int _targetID, float _delayTime)
 {
 	targetEntityID = _targetID;

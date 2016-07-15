@@ -5,6 +5,8 @@
 using namespace Genius;
 
 
+COM_CREATE_FN_IMPL(ComBezierMovement);
+
 void ComBezierMovement::Create(float _startx, float _starty, float _destx, float _desty, float _duration)
 {
 	startX = _startx;

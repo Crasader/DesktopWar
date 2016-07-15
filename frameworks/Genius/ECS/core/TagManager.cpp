@@ -1,6 +1,5 @@
 
 #include "TagManager.h"
-//#include "World.h"
 #include "Entity.h"
 
 namespace Genius
@@ -8,46 +7,62 @@ namespace Genius
 
 	TagManager::TagManager()
 	{
-		//this->world = &world;
 	}
 
-	Entity& TagManager::GetEntity(const std::string tag)
+	entity_map& TagManager::GetEntitys(const std::string& tag)
 	{
-		return *tagByEntity[tag];
+		return tagMap[tag];
 	}
 
-	bool TagManager::IsSubscribed(const std::string tag)
+	bool TagManager::IsSubscribed(const std::string& tag, Entity* entity)
 	{
-		return (tagByEntity[tag] != nullptr);
+		if (nullptr == entity)
+			return false;
+		auto it = tagMap.find(tag);
+		if (it != tagMap.end())
+		{
+			if (it->second.find(entity->GetId()) != it->second.end())
+				return true;
+		}
+		return false;
 	}
 
-	void TagManager::Remove(Entity* pEntity)
+	void TagManager::Remove(Entity* entity)
 	{
-		if (nullptr == pEntity)
+		if (nullptr == entity)
 			return;
 
 		//TODO find cleaner way to remove by value
-		for (auto& it : tagByEntity)
+		for (auto& it : tagMap)
 		{
-			if (it.second == pEntity)
+			auto& it2 = it.second.find(entity->GetId());
+			if (it2 != it.second.end())
 			{
-				tagByEntity.erase(it.first);
+				it.second.erase(it2);
 				return;
 			}
 		}
 
 	}
 
-	void TagManager::UnSubscribe(const std::string tag)
+	void TagManager::UnSubscribe(const std::string& tag, Entity* entity)
 	{
-		//tagByEntity[tag] = nullptr;
-		tagByEntity.erase(tag);
+		if (nullptr == entity)
+			return;
+		auto it = tagMap.find(tag);
+		if (it != tagMap.end())
+		{
+			auto it2 = it->second.find(entity->GetId());
+			if (it2 != it->second.end())
+				it->second.erase(it2);
+		}
 	}
 
-	void TagManager::Subscribe(std::string tag, Entity* e)
+	void TagManager::Subscribe(const std::string& tag, Entity* entity)
 	{
-		Remove(e);
-		tagByEntity[tag] = e;
+		if (nullptr == entity)
+			return;
+		tagMap[tag][entity->GetId()] = entity;
 	}
 
 }

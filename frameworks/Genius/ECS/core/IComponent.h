@@ -1,5 +1,11 @@
 #pragma once
 
+#define COM_CREATE_FN_DECL(classname)\
+	static IComponent* create_## classname();
+
+#define COM_CREATE_FN_IMPL(classname)\
+	IComponent* classname::create_## classname()\
+	{return new classname; }
 
 namespace Genius
 {

@@ -10,6 +10,8 @@
 using namespace Genius;
 using namespace cfg;
 
+COM_CREATE_FN_IMPL(ComPawnAgent);
+
 void ComPawnAgent::Create(int roleCfgID)
 {
 	m_roleCfg = FIND_CFG(Role_cfg, roleCfgID);

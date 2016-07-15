@@ -10,7 +10,7 @@ namespace Genius
 	class SystemBoxCollider : public EntityProcessingSystem
 	{
 	private:
-		ComponentMapper<ComTransform> positionMapper;
+		ComponentMapper<ComTransform> transMapper;
 		ComponentMapper<ComBoxCollider> colliderMapper;
 		ComponentMapper<ComColliderHandler> handlerMapper;
 

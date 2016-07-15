@@ -13,6 +13,9 @@ namespace Genius
 	class ComPawnNavigation : public IComponent
 	{
 	public:
+		COM_CREATE_FN_DECL(ComPawnNavigation);
+
+	public:
 		std::vector<Point2D>	pathPoints;
 		unsigned int					curPointIndex;
 		bool									arrived;

@@ -10,6 +10,9 @@ namespace Genius
 	class ComBezierMovement : public IComponent
 	{
 	public:
+		COM_CREATE_FN_DECL(ComBezierMovement);
+
+	public:
 		float controlPoint1X;		// 相对startX
 		float controlPoint1Y;		// 相对startY
 		float controlPoint2X;		// 相对startX

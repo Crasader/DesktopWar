@@ -12,6 +12,9 @@ namespace Genius
 	class ComBoxCollider : public IComponent
 	{
 	public:
+		COM_CREATE_FN_DECL(ComBoxCollider);
+
+	public:
 		bool	positive;		// 主动进行碰撞计算，true用在例如子弹，false用在pawn.
 		float centerX;
 		float centerY;

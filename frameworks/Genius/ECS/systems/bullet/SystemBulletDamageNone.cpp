@@ -15,7 +15,7 @@ using namespace cfg;
 
 void SystemBulletDamageNone::Initialize()
 {
-	positionMapper.init(*world);
+	transMapper.init(*world);
 	damageMapper.init(*world);
 	agentMapper.init(*world);
 

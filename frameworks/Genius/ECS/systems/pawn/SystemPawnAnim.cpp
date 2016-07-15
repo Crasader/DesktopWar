@@ -8,15 +8,15 @@ using namespace Genius;
 
 void SystemPawnAnim::Initialize()
 {
-	positionMapper.init(*world);
+	transMapper.init(*world);
 	pawnAnimMapper.init(*world);
-	pawnDirectionMapper.init(*world);
+	transMapper.init(*world);
 }
 
 void SystemPawnAnim::ProcessEntity(Entity* e)
 {
 	ComPawnAnim* render = pawnAnimMapper.get(e);
-	ComTransform* pos = positionMapper.get(e);
+	ComTransform* pos = transMapper.get(e);
 	if (render && render->m_pAvatarRoot)
 		render->m_pAvatarRoot->setPosition(pos->x, pos->y);
 };

@@ -11,6 +11,8 @@ using namespace cocostudio;
 
 const std::string ComBulletAnimBomb::explodeAnimName = "explode";
 
+COM_CREATE_FN_IMPL(ComBulletAnimBomb);
+
 void ComBulletAnimBomb::Create(const std::string& bodyFileName, const std::string& tailFileName)
 {
 	ComBulletAnimBase::Create(bodyFileName);

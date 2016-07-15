@@ -11,6 +11,9 @@ namespace Genius
 	class ComAnimation : public IComponent
 	{
 	public:
+		COM_CREATE_FN_DECL(ComAnimation);
+
+	public:
 		cocos2d::Node*				m_pAvatarRoot;
 		cocostudio::Armature*		m_pBodyArmature;
 

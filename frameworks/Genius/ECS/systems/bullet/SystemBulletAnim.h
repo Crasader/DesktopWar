@@ -11,7 +11,7 @@ namespace Genius
 	class SystemBulletAnim : public EntityProcessingSystem
 	{
 	private:
-		ComponentMapper<ComTransform> positionMapper;
+		ComponentMapper<ComTransform> transMapper;
 		
 		ComponentMapper<ComBulletAnimBase> animMapper;
 

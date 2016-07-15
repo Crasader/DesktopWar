@@ -11,7 +11,7 @@ namespace Genius
 	class SystemBulletDamageNone : public EntityProcessingSystem
 	{
 	private:
-		ComponentMapper<ComTransform> positionMapper;
+		ComponentMapper<ComTransform> transMapper;
 		ComponentMapper<ComBulletDamageNone> damageMapper;
 		ComponentMapper<ComBulletAgent> agentMapper;
 

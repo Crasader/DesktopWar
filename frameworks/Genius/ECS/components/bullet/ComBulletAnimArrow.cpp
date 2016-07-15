@@ -7,6 +7,8 @@ using namespace cocostudio;
 
 const std::string ComBulletAnimArrow::stopAnimName = "stop";
 
+COM_CREATE_FN_IMPL(ComBulletAnimArrow);
+
 void ComBulletAnimArrow::StayStill()
 {
 	if (m_pBodyArmature)

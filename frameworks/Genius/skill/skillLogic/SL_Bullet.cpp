@@ -22,18 +22,18 @@ void SL_Bullet::OnActive(Skill* skill)
 		ComTransform* ownerPosCom = ownerEntity->GetComponent<ComTransform>();
 		ComTeam* ownerComTeam = ownerEntity->GetComponent<ComTeam>();
 		ComPawnAgent* ownerTempCom = ownerEntity->GetComponent<ComPawnAgent>();
-		ComPawnDirection* ownerDirCom = ownerEntity->GetComponent<ComPawnDirection>();
+		ComTransform* ownerDirCom = ownerEntity->GetComponent<ComTransform>();
 		if (nullptr == ownerComTeam || nullptr == ownerTempCom || nullptr == ownerDirCom)
 			return;
 
 		float startX = ownerPosCom->x;
 		float startY = ownerPosCom->y;
-		if (ownerDirCom->m_currentDir & Face_Left)
+		if (ownerPosCom->curDir & Face_Left)
 		{
 			startX = ownerPosCom->x - ownerTempCom->m_roleCfg->bulletX;
 			startY = ownerPosCom->y + ownerTempCom->m_roleCfg->bulletY;
 		}
-		else if (ownerDirCom->m_currentDir & Face_Right)
+		else if (ownerPosCom->curDir & Face_Right)
 		{
 			startX = ownerPosCom->x + ownerTempCom->m_roleCfg->bulletX;
 			startY = ownerPosCom->y + ownerTempCom->m_roleCfg->bulletY;

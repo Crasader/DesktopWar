@@ -14,7 +14,7 @@ namespace Genius
 	{
 	private:
 		ComponentMapper<ComPawnDebugDraw> debugDrawMapper;
-		ComponentMapper<ComTransform> positionMapper;
+		ComponentMapper<ComTransform> transMapper;
 		ComponentMapper<ComPawnAgent>pawnAgentMapper;
 		ComponentMapper<ComBoxCollider> boxColliderMapper;
 

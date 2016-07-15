@@ -11,7 +11,7 @@ namespace Genius
 	class SystemDelayTrackMovement : public EntityProcessingSystem
 	{
 	private:
-		ComponentMapper<ComTransform> positionMapper;
+		ComponentMapper<ComTransform> transMapper;
 		
 		ComponentMapper<ComDelayTrackMoving> trackMapper;
 

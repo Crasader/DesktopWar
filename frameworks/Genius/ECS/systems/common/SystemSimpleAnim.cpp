@@ -7,14 +7,14 @@ using namespace Genius;
 
 void SystemSimpleAnim::Initialize()
 {
-	positionMapper.init(*world);
+	transMapper.init(*world);
 	animMapper.init(*world);
 }
 
 void SystemSimpleAnim::ProcessEntity(Entity* e)
 {
 	ComAnimation* render = animMapper.get(e);
-	ComTransform* pos = positionMapper.get(e);
+	ComTransform* pos = transMapper.get(e);
 	if (render && render->m_pAvatarRoot)
 		render->m_pAvatarRoot->setPosition(pos->x, pos->y);
 };

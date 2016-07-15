@@ -19,7 +19,7 @@ using namespace Genius;
 
 void SystemBezierMovement::Initialize()
 {
-	positionMapper.init(*world);
+	transMapper.init(*world);
 	
 	bezierMapper.init(*world);
 
@@ -29,7 +29,7 @@ void SystemBezierMovement::Initialize()
 
 void SystemBezierMovement::ProcessEntity(Entity* pEntity)
 {
-	ComTransform* pPosCom = positionMapper.get(pEntity);
+	ComTransform* pPosCom = transMapper.get(pEntity);
 	
 	ComBezierMovement* pBezierCom = bezierMapper.get(pEntity);
 

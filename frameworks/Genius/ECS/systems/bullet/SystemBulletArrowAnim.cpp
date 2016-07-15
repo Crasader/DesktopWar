@@ -9,7 +9,7 @@ using namespace Genius;
 
 void SystemBulletArrowAnim::Initialize()
 {
-	positionMapper.init(*world);
+	transMapper.init(*world);
 	
 	animMapper.init(*world);
 
@@ -20,7 +20,7 @@ void SystemBulletArrowAnim::Initialize()
 
 void SystemBulletArrowAnim::ProcessEntity(Entity* pEntity)
 {
-	ComTransform* pPosCom = positionMapper.get(pEntity);
+	ComTransform* pPosCom = transMapper.get(pEntity);
 	
 	ComBulletAnimArrow* animCom = animMapper.get(pEntity);
 
@@ -79,7 +79,7 @@ void SystemBulletArrowAnim::OnBulletHit(IEventData const &evnt)
 	ComBulletAnimArrow* pAnimCom = animMapper.get(pOwnerEntity);
 	pOwnerEntity->Remove();
 
-	auto pPosCom = positionMapper.get(pOwnerEntity);
+	auto pPosCom = transMapper.get(pOwnerEntity);
 	pPosCom->vx = 0;
 	pPosCom->vy = 0;
 }

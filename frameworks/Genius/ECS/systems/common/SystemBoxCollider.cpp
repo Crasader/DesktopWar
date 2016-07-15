@@ -14,7 +14,7 @@ using namespace Genius;
 
 void SystemBoxCollider::Initialize()
 {
-	positionMapper.init(*world);
+	transMapper.init(*world);
 	colliderMapper.init(*world);
 	handlerMapper.init(*world);
 	// register event.
@@ -27,7 +27,7 @@ void SystemBoxCollider::ProcessEntity(Entity* pEntity)
 	if (!colliderCom->positive)
 		return;
 
-	ComTransform* posCom = positionMapper.get(pEntity);
+	ComTransform* posCom = transMapper.get(pEntity);
 	ComColliderHandler* handlerCom = handlerMapper.get(pEntity);
 
 	// 更新所在区域
@@ -45,7 +45,7 @@ void SystemBoxCollider::ProcessEntity(Entity* pEntity)
 			continue;
 		}
 		
-		ComTransform* oldPosCom = positionMapper.get(pOldCollidedEntity);
+		ComTransform* oldPosCom = transMapper.get(pOldCollidedEntity);
 		ComBoxCollider* oldColliderCom = colliderMapper.get(pOldCollidedEntity);
 		if (!IsCollidedBetween(posCom, colliderCom, oldPosCom, oldColliderCom))
 		{
@@ -63,7 +63,7 @@ void SystemBoxCollider::ProcessEntity(Entity* pEntity)
 		if (pEntity == pOtherEntity)
 			continue;
 		
-		ComTransform* otherPosCom = positionMapper.get(pOtherEntity);
+		ComTransform* otherPosCom = transMapper.get(pOtherEntity);
 		ComBoxCollider* otherColliderCom = colliderMapper.get(pOtherEntity);
 		// 先判断是否在相邻区域内
 		bool isInAreas = GameUtils::IsInAreasAround(colliderCom->areaID, (int)otherPosCom->x, (int)otherPosCom->y);

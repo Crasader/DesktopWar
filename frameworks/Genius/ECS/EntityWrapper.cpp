@@ -3,13 +3,57 @@
 #include "ECS/ecs.h"
 #include "common/Log.h"
 
+typedef IComponent* (*CreateComFunc)(void);
+
+static unordered_map<std::string, CreateComFunc> sCreateComFuncs;
+
+#define REG_CREATE_COM(classname)\
+	sCreateComFuncs[#classname] = classname::create_## classname;
 
 using namespace Genius;
+
+
+static void _lazyInitComFuncs()
+{
+	if (sCreateComFuncs.size() != 0)
+		return;
+	REG_CREATE_COM(ComTransform);
+	REG_CREATE_COM(ComBoxCollider);
+	REG_CREATE_COM(ComColliderHandler);
+	REG_CREATE_COM(ComAnimation);
+	REG_CREATE_COM(ComTeam);
+	REG_CREATE_COM(ComTarget);
+	REG_CREATE_COM(ComParticle);
+	REG_CREATE_COM(ComBezierMovement);
+	REG_CREATE_COM(ComDelayTrackMoving);
+
+	REG_CREATE_COM(ComPawnAgent);
+	REG_CREATE_COM(ComPawnAnim);
+	REG_CREATE_COM(ComPawnDebugDraw);
+	REG_CREATE_COM(ComPawnFight);
+	REG_CREATE_COM(ComPawnNavigation);
+	REG_CREATE_COM(ComPawnBevtree);
+
+	REG_CREATE_COM(ComBulletAgent);
+	REG_CREATE_COM(ComBulletAnimArrow);
+	REG_CREATE_COM(ComBulletAnimBase);
+	REG_CREATE_COM(ComBulletAnimBomb);
+	REG_CREATE_COM(ComBulletDamageNone);
+	REG_CREATE_COM(ComBulletDamageScope);
+	REG_CREATE_COM(ComBulletDamageSingle);
+	REG_CREATE_COM(ComBulletDebugDraw);
+	REG_CREATE_COM(ComBulletAnimEgg);
+}
 
 
 EntityWrapper::EntityWrapper(Entity* ent)
 {
 	m_entity = ent;
+}
+
+EntityWrapper::~EntityWrapper()
+{
+
 }
 
 int EntityWrapper::GetID()
@@ -20,60 +64,15 @@ int EntityWrapper::GetID()
 
 Genius::IComponent* EntityWrapper::AddComponent(const char* name)
 {
+	_lazyInitComFuncs();
+
 	Genius::IComponent* com = nullptr;
 	string comName = name;
-	if (comName == "ComTransform")
-		com = new ComTransform();
-	else if (comName == "ComBoxCollider")
-		com = new ComBoxCollider();
-	else if (comName == "ComColliderHandler")
-		com = new ComColliderHandler();
-	else if (comName == "ComAnimation")
-		com = new ComAnimation();
-	else if (comName == "ComTeam")
-		com = new ComTeam();
-	else if (comName == "ComTarget")
-		com = new ComTarget();
-	else if (comName == "ComParticle")
-		com = new ComParticle();
-	else if (comName == "ComBezierMovement")
-		com = new ComBezierMovement();
-	else if (comName == "ComDelayTrackMovement")
-		com = new ComDelayTrackMoving();
-
-	else if (comName == "ComPawnAgent")
-		com = new ComPawnAgent();
-	else if (comName == "ComPawnAnim")
-		com = new ComPawnAnim();
-	else if (comName == "ComPawnDebugDraw")
-		com = new ComPawnDebugDraw();
-	else if (comName == "ComPawnDirection")
-		com = new ComPawnDirection();
-	else if (comName == "ComPawnFight")
-		com = new ComPawnFight();
-	else if (comName == "ComPawnNavigation")
-		com = new ComPawnNavigation();
-	else if (comName == "ComPawnBevtree")
-		com = new ComPawnBevtree();
-
-	else if (comName == "ComBulletAgent")
-		com = new ComBulletAgent();
-	else if (comName == "ComBulletAnimArrow")
-		com = new ComBulletAnimArrow();
-	else if (comName == "ComBulletAnimBase")
-		com = new ComBulletAnimBase();
-	else if (comName == "ComBulletAnimBomb")
-		com = new ComBulletAnimBomb();
-	else if (comName == "ComBulletDamageNone")
-		com = new ComBulletDamageNone();
-	else if (comName == "ComBulletDamageScope")
-		com = new ComBulletDamageScope();
-	else if (comName == "ComBulletDamageSingle")
-		com = new ComBulletDamageSingle();
-	else if (comName == "ComBulletDebugDraw")
-		com = new ComBulletDebugDraw();
-	else if (comName == "ComBulletAnimEgg")
-		com = new ComBulletAnimEgg();
+	auto iter = sCreateComFuncs.find(comName);
+	if (iter != sCreateComFuncs.end())
+	{
+		com = (*iter->second)();
+	}
 
 	if (com != nullptr)
 		m_entity->AddComponent(com);
@@ -84,5 +83,15 @@ Genius::IComponent* EntityWrapper::AddComponent(const char* name)
 }
 
 
+void EntityWrapper::AddTag(const char* tag)
+{
+	ECSWorld::GetSingleton()->AddTag(this->m_entity, tag);
+}
+
+
+void EntityWrapper::RemoveTag(const char* tag)
+{
+	ECSWorld::GetSingleton()->RemoveTag(this->m_entity, tag);
+}
 
 

@@ -15,7 +15,7 @@ using namespace Genius;
 void SystemPawnFight::Initialize()
 {
 	pawnFightMapper.init(*world);
-	positionMapper.init(*world);
+	transMapper.init(*world);
 	colliderMapper.init(*world);
 	pawnAgentMapper.init(*world);
 	pawnAgentMapper.init(*world);
@@ -189,7 +189,7 @@ bool SystemPawnFight::IsOldTargetVaild(Entity* pEntity)
 	if (nullptr == pEntity)
 		return false;
 
-	ComTransform* myPosCom = positionMapper.get(pEntity);
+	ComTransform* myPosCom = transMapper.get(pEntity);
 	ComBoxCollider* myBoxCom = colliderMapper.get(pEntity);
 	ComPawnFight* myFightCom = pawnFightMapper.get(pEntity);
 	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
@@ -232,29 +232,30 @@ bool SystemPawnFight::IsOldTargetVaild(Entity* pEntity)
 
 int SystemPawnFight::FindNearestTarget(Entity* pEntity, bool sameTeam, bool includeSelf)
 {
-	ComTransform* myPosCom = positionMapper.get(pEntity);
+	ComTransform* myPosCom = transMapper.get(pEntity);
 	ComPawnFight* myFightCom = pawnFightMapper.get(pEntity);
 	ComTeam* myComTeam = pEntity->GetComponent<ComTeam>();
 	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
 	int enemyId = Entity::InvalidID;
 	float minDist = 0;
 	//Bag<Entity*>& activities = getActivities();
-	std::string targetGroup;
+	std::string targetTag;
 	if (sameTeam)
 	{
-		targetGroup = myComTeam->team == Team_Human ? GameDefine::Group_Human : GameDefine::Group_Monster;
+		targetTag = myComTeam->team == Team_Human ? GameDefine::Tag_Soldier : GameDefine::Tag_Monster;
 	}
 	else
 	{
-		targetGroup = myComTeam->team == Team_Human ? GameDefine::Group_Monster : GameDefine::Group_Human;
+		targetTag = myComTeam->team == Team_Human ? GameDefine::Tag_Monster : GameDefine::Tag_Soldier;
 	}
-	ImmutableBag<Entity*>* activities = world->GetGroupManager()->GetEntities(targetGroup);
-	if (nullptr == activities)
+	entity_map& activities = world->GetEntitiesByTag(targetTag);
+	if (activities.size() == 0)
 		return Entity::InvalidID;
 
-	for (int i = 0; i < activities->getCount(); i++)
+	//for (int i = 0; i < activities->getCount(); i++)
+	for (auto& it : activities)
 	{
-		Entity* pEnemyEntity = activities->get(i);
+		Entity* pEnemyEntity = it.second;// activities->get(i);
 		if ((! includeSelf) && pEnemyEntity->GetId() == pEntity->GetId())
 			continue;
 
@@ -296,7 +297,7 @@ int SystemPawnFight::FindNearestTarget(Entity* pEntity, bool sameTeam, bool incl
 void SystemPawnFight::FindTargetsInScope(int entityID, int scopeSize, bool sameTeam, bool includeSelf, std::vector<int>& eneityIDList)
 {
 	Entity* pEntity = world->GetEntity(entityID);
-	ComTransform* myPosCom = positionMapper.get(pEntity);
+	ComTransform* myPosCom = transMapper.get(pEntity);
 	ComPawnFight* myFightCom = pawnFightMapper.get(pEntity);
 	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
 	ComTeam* myComTeam = pEntity->GetComponent<ComTeam>();
@@ -337,7 +338,7 @@ void SystemPawnFight::UpdateLifeBar(Entity* pEntity)
 	if (nullptr == pEntity)
 		return;
 
-	//ComTransform* myPosCom = positionMapper.get(pEntity);
+	//ComTransform* myPosCom = transMapper.get(pEntity);
 	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
 	ComPawnAgent* myAttCom = pawnAgentMapper.get(pEntity);
 	ComPawnAnim* animCom = pawnAnimMapper.get(pEntity);

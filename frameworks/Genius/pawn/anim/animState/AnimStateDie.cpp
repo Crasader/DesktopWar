@@ -3,7 +3,7 @@
 #include "../animSet/AnimSet.h"
 #include "ECS/core/Entity.h"
 #include "ECS/components/pawn/ComPawnAnim.h"
-#include "ECS/components/pawn/ComPawnDirection.h"
+#include "ECS/components/common/ComTransform.h"
 
 
 using namespace Genius;
@@ -43,10 +43,10 @@ void AnimStateDie::Initialize()
 
 void AnimStateDie::PlayAnim()
 {
-	ComPawnDirection* pComPawnDir = m_pComPawnAnim->GetOwner()->GetComponent<ComPawnDirection>();
+	ComTransform* pComPawnDir = m_pComPawnAnim->GetOwner()->GetComponent<ComTransform>();
 	if (nullptr == pComPawnDir)
 		return;
 
-	auto name = m_pComPawnAnim->m_pAnimSet->GetDieAnim(pComPawnDir->m_currentDir);
+	auto name = m_pComPawnAnim->m_pAnimSet->GetDieAnim(pComPawnDir->curDir);
 	m_pComPawnAnim->PlayAnimation(name);
 }

@@ -7,6 +7,8 @@
 
 using namespace Genius;
 
+COM_CREATE_FN_IMPL(ComBulletAnimEgg);
+
 void ComBulletAnimEgg::Create(const std::string& bodyFileName)
 {
 	ComBulletAnimBase::Create(bodyFileName);

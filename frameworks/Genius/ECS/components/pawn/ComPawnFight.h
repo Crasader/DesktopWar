@@ -13,6 +13,9 @@ namespace Genius
 	class ComPawnFight : public IComponent
 	{
 	public:
+		COM_CREATE_FN_DECL(ComPawnFight);
+
+	public:
 		int		enemyID;
 		bool		haveTarget;
 		bool		isTargetInNearRange;

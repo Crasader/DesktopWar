@@ -8,6 +8,8 @@ using namespace Genius;
 using namespace cfg;
 
 
+COM_CREATE_FN_IMPL(ComBulletAgent);
+
 void ComBulletAgent::Create(Bullet_cfg* pData)
 {
 	pBulletData = pData;

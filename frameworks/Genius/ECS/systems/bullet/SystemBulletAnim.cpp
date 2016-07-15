@@ -9,7 +9,7 @@ using namespace Genius;
 
 void SystemBulletAnim::Initialize()
 {
-	positionMapper.init(*world);
+	transMapper.init(*world);
 	
 	animMapper.init(*world);
 
@@ -19,7 +19,7 @@ void SystemBulletAnim::Initialize()
 
 void SystemBulletAnim::ProcessEntity(Entity* pEntity)
 {
-	ComTransform* pPosCom = positionMapper.get(pEntity);
+	ComTransform* pPosCom = transMapper.get(pEntity);
 	ComBulletAnimBase* animCom = animMapper.get(pEntity);
 
 	animCom->m_pAvatarRoot->setPosition(pPosCom->x, pPosCom->y);

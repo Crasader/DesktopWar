@@ -20,6 +20,9 @@ namespace Genius
 	class ComPawnAnim : public IComponent, public ActionHandler, public cocos2d::Ref
 	{
 	public:
+		COM_CREATE_FN_DECL(ComPawnAnim);
+
+	public:
 		AnimSet*								m_pAnimSet;
 		AnimFSM*							m_pAnimFsm;
 		cocos2d::Node*					m_pAvatarRoot;

@@ -12,6 +12,9 @@ namespace Genius
 	class ComPawnAgent : public IComponent
 	{
 	public:
+		COM_CREATE_FN_DECL(ComPawnAgent);
+
+	public:
 		cfg::Role_cfg*					m_roleCfg;
 		PawnBlackboard*		m_pBlackboard;
 

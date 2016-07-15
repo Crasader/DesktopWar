@@ -4,6 +4,8 @@
 
 using namespace Genius;
 
+COM_CREATE_FN_IMPL(ComBulletAnimBase);
+
 void ComBulletAnimBase::Create(const std::string& bodyFileName)
 {
 	m_pAvatarRoot = nullptr;

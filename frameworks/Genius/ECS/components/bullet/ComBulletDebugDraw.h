@@ -12,6 +12,9 @@ namespace Genius
 	class ComBulletDebugDraw : public IComponent
 	{
 	public:
+		COM_CREATE_FN_DECL(ComBulletDebugDraw);
+
+	public:
 		cocos2d::Node*			pRoot;
 		cocos2d::DrawNode*	pNodeBoxCollider;
 		cocos2d::DrawNode*	pNodeHurtRange;

@@ -11,6 +11,9 @@ namespace Genius
 	class ComParticle : public IComponent
 	{
 	public:
+		COM_CREATE_FN_DECL(ComParticle);
+
+	public:
 		cocos2d::Node*					m_pAvatarRoot;
 
 	public:

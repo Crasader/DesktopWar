@@ -15,7 +15,7 @@ namespace Genius
 	class SystemPawnFight : public EntityProcessingSystem
 	{
 	private:
-		ComponentMapper<ComTransform>					positionMapper;
+		ComponentMapper<ComTransform>					transMapper;
 		ComponentMapper<ComBoxCollider>				colliderMapper;
 		ComponentMapper<ComPawnFight>				pawnFightMapper;
 		ComponentMapper<ComPawnAgent>		pawnAgentMapper;

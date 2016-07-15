@@ -11,6 +11,9 @@ namespace Genius
 	class ComDelayTrackMoving : public IComponent
 	{
 	public:
+		COM_CREATE_FN_DECL(ComDelayTrackMoving);
+
+	public:
 		int		targetEntityID;
 		float		lifeTime;
 		float		delayTime;

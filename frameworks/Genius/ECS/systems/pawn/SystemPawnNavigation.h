@@ -14,7 +14,7 @@ namespace Genius
 	{
 	private:
 		ComponentMapper<ComPawnNavigation>	navigationMapper;
-		ComponentMapper<ComTransform>					positionMapper;
+		ComponentMapper<ComTransform>					transMapper;
 
 	public:
 		SystemPawnNavigation()

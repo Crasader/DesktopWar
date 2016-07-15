@@ -187,15 +187,6 @@ void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_ComPawnDebugDraw_Create(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnDebugDraw_Clear(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_Genius_ComPawnDirection_class;
-extern JSObject *jsb_Genius_ComPawnDirection_prototype;
-
-bool js_app_ComPawnDirection_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_ComPawnDirection_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_ComPawnDirection(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_ComPawnDirection_ComPawnDirection(JSContext *cx, uint32_t argc, jsval *vp);
-
 extern JSClass  *jsb_Genius_ComPawnFight_class;
 extern JSObject *jsb_Genius_ComPawnFight_prototype;
 
@@ -333,6 +324,8 @@ void js_app_EntityWrapper_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_EntityWrapper(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_EntityWrapper_GetID(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityWrapper_RemoveTag(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityWrapper_AddTag(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityWrapper_AddComponent(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityWrapper_EntityWrapper(JSContext *cx, uint32_t argc, jsval *vp);
 

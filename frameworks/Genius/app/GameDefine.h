@@ -23,7 +23,7 @@ namespace GameDefine
 	const std::string Tag_MonsterBornPoint = "MonsterBP";
 
 	// Group
-	const std::string Group_Human = "HumanGP";
-	const std::string Group_Monster = "MonsterGP";
+	const std::string Tag_Soldier = "Soldier";
+	const std::string Tag_Monster = "Monster";
 	
 };

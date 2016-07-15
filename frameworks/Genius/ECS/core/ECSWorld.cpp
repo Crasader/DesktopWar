@@ -19,21 +19,20 @@ namespace Genius
 
 	ECSWorld::ECSWorld()
 	{
-		//TODO add more managers
-		m_pSystemManager = new SystemManager(*this);
-		m_pEntityManager = new EntityManager(this);
-		m_pGroupManager = new GroupManager();
-		m_pTagManager = new TagManager();
+		m_sysMgr = new SystemManager(*this);
+		m_entityMgr = new EntityManager(this);
+		m_groupMgr = new GroupManager();
+		m_pTagMgr = new TagManager();
 		m_deltaTime = 0;
 	}
 
 	void ECSWorld::Destroy()
 	{
 		//Entity manager should be deleted first.
-		delete m_pEntityManager;
-		delete m_pSystemManager;
-		delete m_pGroupManager;
-		delete m_pTagManager;
+		delete m_entityMgr;
+		delete m_sysMgr;
+		delete m_groupMgr;
+		delete m_pTagMgr;
 		ComponentTypeManager::deleteComponentTypes();
 		SystemBitManager::RemoveBitSets();
 	}
@@ -54,22 +53,22 @@ namespace Genius
 
 	SystemManager* ECSWorld::GetSystemManager()
 	{
-		return m_pSystemManager;
+		return m_sysMgr;
 	}
 
 	EntityManager* ECSWorld::GetEntityManager()
 	{
-		return m_pEntityManager;
+		return m_entityMgr;
 	}
 
 	GroupManager* ECSWorld::GetGroupManager()
 	{
-		return m_pGroupManager;
+		return m_groupMgr;
 	}
 
 	TagManager* ECSWorld::GetTagManager()
 	{
-		return m_pTagManager;
+		return m_pTagMgr;
 	}
 
 	void ECSWorld::LoopStart()
@@ -79,7 +78,7 @@ namespace Genius
 			for (int i = 0; i < m_refreshedEntities.getCount(); i++)
 			{
 				//TODO ADD  MANAGERs
-				m_pEntityManager->Refresh(m_refreshedEntities.get(i));
+				m_entityMgr->Refresh(m_refreshedEntities.get(i));
 			}
 			m_refreshedEntities.clear();
 		}
@@ -89,9 +88,9 @@ namespace Genius
 			for (int i = 0; i < m_deletedEntities.getCount(); i++)
 			{
 				Entity* e = m_deletedEntities.get(i);
-				m_pGroupManager->Remove(e);
-				m_pTagManager->Remove(e);
-				m_pEntityManager->Remove(e);
+				m_groupMgr->Remove(e);
+				m_pTagMgr->Remove(e);
+				m_entityMgr->Remove(e);
 			}
 			m_deletedEntities.clear();
 		}
@@ -100,7 +99,7 @@ namespace Genius
 
 	void ECSWorld::Process()
 	{
-		Bag<EntitySystem*>& systems = m_pSystemManager->GetSystems();
+		Bag<EntitySystem*>& systems = m_sysMgr->GetSystems();
 		for (int i = 0; i < systems.getCount(); ++i)
 		{
 			int startTime = GetTickCount();
@@ -112,22 +111,22 @@ namespace Genius
 
 	EntitySystem* ECSWorld::AddSystem(EntitySystem* stm)
 	{
-		return m_pSystemManager->AddSystem(stm);
+		return m_sysMgr->AddSystem(stm);
 	}
 
 	void ECSWorld::Initialize()
 	{
-		m_pSystemManager->Init();
+		m_sysMgr->Init();
 	}
 
 	Entity* ECSWorld::CreateEntity()
 	{
-		return m_pEntityManager->Create();
+		return m_entityMgr->Create();
 	}
 
 	Entity* ECSWorld::GetEntity(int entityId)
 	{
-		return m_pEntityManager->GetEntity(entityId);
+		return m_entityMgr->GetEntity(entityId);
 	}
 
 
@@ -150,4 +149,20 @@ namespace Genius
 	{
 		return m_sysCostTime;
 	}
+
+	void ECSWorld::AddTag(Entity* entity, const std::string& tag)
+	{
+		m_pTagMgr->Subscribe(tag, entity);
+	}
+
+	void ECSWorld::RemoveTag(Entity* entity, const std::string& tag)
+	{
+		m_pTagMgr->UnSubscribe(tag, entity);
+	}
+
+	entity_map& ECSWorld::GetEntitiesByTag(const std::string& tag)
+	{
+		return m_pTagMgr->GetEntitys(tag);
+	}
+
 };

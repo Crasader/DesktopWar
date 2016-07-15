@@ -5,6 +5,8 @@
 using namespace Genius;
 
 
+COM_CREATE_FN_IMPL(ComPawnBevtree);
+
 void ComPawnBevtree::Create(std::string fileName)
 {
 	m_tree = new PawnBHTree;

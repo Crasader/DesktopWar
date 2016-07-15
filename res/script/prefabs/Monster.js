@@ -1,6 +1,6 @@
-//士兵预制，配置了组件，资源，状态等
+//怪物预制，配置了组件，资源，状态等
 
-var Soldier = {
+var Monster = {
 
     Create:function(id, posx, posy, team)
     {
@@ -43,7 +43,7 @@ var Soldier = {
         var fht = entCpp.AddComponent(ComponentName.PawnFight);
 
         //var dd = entCpp.AddComponent(ComponentName.PawnDebugDraw);
-        entCpp.AddTag(Defines.Tag_Soldier)
+        entCpp.AddTag(Defines.Tag_Monster);
 
         return inst;
     },

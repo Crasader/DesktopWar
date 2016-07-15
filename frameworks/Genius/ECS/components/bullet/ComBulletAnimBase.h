@@ -12,6 +12,9 @@ namespace Genius
 	class ComBulletAnimBase : public IComponent
 	{
 	public:
+		COM_CREATE_FN_DECL(ComBulletAnimBase);
+
+	public:
 		cocos2d::Node*				m_pAvatarRoot;
 		cocostudio::Armature*		m_pBodyArmature;
 

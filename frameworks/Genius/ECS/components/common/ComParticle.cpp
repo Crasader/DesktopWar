@@ -6,6 +6,8 @@ using namespace Genius;
 USING_NS_CC;
 
 
+COM_CREATE_FN_IMPL(ComParticle);
+
 void ComParticle::Create(const std::string& fileName)
 {
 	auto smoke = ParticleSmoke::create();

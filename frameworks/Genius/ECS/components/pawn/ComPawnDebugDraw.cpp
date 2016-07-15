@@ -5,6 +5,8 @@ USING_NS_CC;
 using namespace Genius;
 
 
+COM_CREATE_FN_IMPL(ComPawnDebugDraw);
+
 void ComPawnDebugDraw::Create()
 {
 	pRoot = Node::create();

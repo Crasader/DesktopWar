@@ -12,7 +12,7 @@ namespace Genius
 	class SystemBezierMovement : public EntityProcessingSystem
 	{
 	private:
-		ComponentMapper<ComTransform> positionMapper;
+		ComponentMapper<ComTransform> transMapper;
 		
 		ComponentMapper<ComBezierMovement> bezierMapper;
 

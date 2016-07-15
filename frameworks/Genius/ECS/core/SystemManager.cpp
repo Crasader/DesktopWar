@@ -27,7 +27,6 @@ namespace Genius
 		this->AddSystem(new SystemBezierMovement());
 		this->AddSystem(new SystemDelayTrackMovement());
 		this->AddSystem(new SystemPawnAnim());
-		this->AddSystem(new SystemPawnDirection());
 		this->AddSystem(new SystemPawnBevtree());
 		this->AddSystem(new SystemPawnNavigation());
 		this->AddSystem(new SystemPawnFight());
@@ -41,8 +40,6 @@ namespace Genius
 		this->AddSystem(new SystemBulletBombAnim());
 		this->AddSystem(new SystemBulletEggAnim());
 		this->AddSystem(new SystemBulletTarget());
-		this->AddSystem(new HumanGameControlSystem());
-		this->AddSystem(new MonsterGameControlSystem());
 
 		for (int i = 0; i < m_bagged.getCount(); i++)
 		{

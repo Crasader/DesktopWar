@@ -13,6 +13,9 @@ namespace Genius
 	class ComPawnDebugDraw : public IComponent
 	{
 	public:
+		COM_CREATE_FN_DECL(ComPawnDebugDraw);
+
+	public:
 		cocos2d::Node*			pRoot;
 		cocos2d::DrawNode*	pNodeBoxCollider;
 		cocos2d::DrawNode*	pNodeNearRange;

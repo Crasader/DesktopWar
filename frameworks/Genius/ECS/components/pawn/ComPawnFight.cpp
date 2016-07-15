@@ -15,6 +15,8 @@
 using namespace Genius;
 
 
+COM_CREATE_FN_IMPL(ComPawnFight);
+
 ComPawnFight::ComPawnFight() :
 enemyID(-1),
 haveTarget(false),

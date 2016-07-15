@@ -40,14 +40,19 @@ namespace Genius
 
 		const std::map<EntitySystem*, int>& GetSysCostTime();
 
+		// Tag
+		void AddTag(Entity* entity, const std::string& tag);
+		void RemoveTag(Entity* entity, const std::string& tag);
+		entity_map& GetEntitiesByTag(const std::string& tag);
+
 	private:
 		ECSWorld();
 
 	private:
-		SystemManager*		m_pSystemManager;
-		EntityManager*		m_pEntityManager;
-		TagManager*			m_pTagManager;
-		GroupManager*		m_pGroupManager;
+		SystemManager*		m_sysMgr;
+		EntityManager*		m_entityMgr;
+		TagManager*			m_pTagMgr;
+		GroupManager*		m_groupMgr;
 		Bag<Entity*>			m_refreshedEntities;
 		Bag<Entity*>			m_deletedEntities;
 		float							m_deltaTime;

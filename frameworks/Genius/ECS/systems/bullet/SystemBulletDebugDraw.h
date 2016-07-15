@@ -13,7 +13,7 @@ namespace Genius
 	{
 	private:
 		ComponentMapper<ComBulletDebugDraw> debugDrawMapper;
-		ComponentMapper<ComTransform> positionMapper;
+		ComponentMapper<ComTransform> transMapper;
 		ComponentMapper<ComBoxCollider> boxColliderMapper;
 		ComponentMapper<ComBulletAgent> agentMapper;
 

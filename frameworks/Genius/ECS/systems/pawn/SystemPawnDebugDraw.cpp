@@ -14,7 +14,7 @@ using namespace Genius;
 void SystemPawnDebugDraw::Initialize()
 {
 	debugDrawMapper.init(*world);
-	positionMapper.init(*world);
+	transMapper.init(*world);
 	pawnAgentMapper.init(*world);
 	boxColliderMapper.init(*world);
 
@@ -25,7 +25,7 @@ void SystemPawnDebugDraw::Initialize()
 void SystemPawnDebugDraw::ProcessEntity(Entity* e)
 {
 	ComPawnDebugDraw* debugCom = debugDrawMapper.get(e);
-	ComTransform* posCom = positionMapper.get(e);
+	ComTransform* posCom = transMapper.get(e);
 	ComPawnAgent* tempCom = pawnAgentMapper.get(e);
 	ComBoxCollider* ComBoxCollider = boxColliderMapper.get(e);
 	

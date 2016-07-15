@@ -14,7 +14,7 @@ using namespace cfg;
 void SystemBulletDebugDraw::Initialize()
 {
 	debugDrawMapper.init(*world);
-	positionMapper.init(*world);
+	transMapper.init(*world);
 	agentMapper.init(*world);
 	boxColliderMapper.init(*world);
 
@@ -25,7 +25,7 @@ void SystemBulletDebugDraw::Initialize()
 void SystemBulletDebugDraw::ProcessEntity(Entity* e)
 {
 	ComBulletDebugDraw* debugCom = debugDrawMapper.get(e);
-	ComTransform* posCom = positionMapper.get(e);
+	ComTransform* posCom = transMapper.get(e);
 	ComBulletAgent* bulletAgent = agentMapper.get(e);
 	ComBoxCollider* ComBoxCollider = boxColliderMapper.get(e);
 	

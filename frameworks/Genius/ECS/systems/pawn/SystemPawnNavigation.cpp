@@ -9,7 +9,7 @@ using namespace Genius;
 void SystemPawnNavigation::Initialize()
 {
 	navigationMapper.init(*world);
-	positionMapper.init(*world);
+	transMapper.init(*world);
 	
 	
 	// register event.
@@ -20,7 +20,7 @@ void SystemPawnNavigation::Initialize()
 void SystemPawnNavigation::ProcessEntity(Entity* pEntity)
 {
 	ComPawnNavigation* navCom = navigationMapper.get(pEntity);
-	ComTransform* posCom = positionMapper.get(pEntity);
+	ComTransform* posCom = transMapper.get(pEntity);
 	
 	
 	if (navCom->curPointIndex >= 0 && navCom->curPointIndex < navCom->pathPoints.size())

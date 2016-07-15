@@ -11,6 +11,9 @@ namespace Genius
 	class ComTarget : public IComponent
 	{
 	public:
+		COM_CREATE_FN_DECL(ComTarget);
+
+	public:
 		int		targetType;
 		int		targetID;
 		float		targetX;

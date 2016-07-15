@@ -12,7 +12,7 @@ using namespace Genius;
 
 void SystemBulletTarget::Initialize()
 {
-	positionMapper.init(*world);
+	transMapper.init(*world);
 	targetMapper.init(*world);
 	agentMapper.init(*world);
 
@@ -22,7 +22,7 @@ void SystemBulletTarget::Initialize()
 
 void SystemBulletTarget::ProcessEntity(Entity* pEntity)
 {
-	//ComTransform* posCom = positionMapper.get(pEntity);
+	//ComTransform* posCom = transMapper.get(pEntity);
 }
 
 bool SystemBulletTarget::HandleEvent(IEventData const &event)

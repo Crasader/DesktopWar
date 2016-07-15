@@ -11,6 +11,9 @@ namespace Genius
 	class ComColliderHandler : public IComponent
 	{
 	public:
+		COM_CREATE_FN_DECL(ComColliderHandler);
+
+	public:
 		std::function<void(int, int)> _enterColliderListener;
 		std::function<void(int, int)> _exitColliderListener;
 

@@ -26,8 +26,8 @@ namespace Genius
 		virtual bool HandleEvent(IEventData const &event);
 
 	private:
-		unsigned int CalculateDirection(float x, float y);
-
+		int CalculateDirection(int pawnDir, float x, float y);
+		void ChangeDirection(ComTransform* dirCom, unsigned int dir);
 	};
 };
 

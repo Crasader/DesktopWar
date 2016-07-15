@@ -11,7 +11,7 @@ using namespace Genius;
 
 void SystemDelayTrackMovement::Initialize()
 {
-	positionMapper.init(*world);
+	transMapper.init(*world);
 	
 	trackMapper.init(*world);
 
@@ -21,7 +21,7 @@ void SystemDelayTrackMovement::Initialize()
 
 void SystemDelayTrackMovement::ProcessEntity(Entity* pEntity)
 {
-	ComTransform* pPosCom = positionMapper.get(pEntity);
+	ComTransform* pPosCom = transMapper.get(pEntity);
 	
 	ComDelayTrackMoving* pTrackCom = trackMapper.get(pEntity);
 

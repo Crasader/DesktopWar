@@ -50,7 +50,7 @@ int EntityCreator::CreatePawn(int id, float x, float y, int team)
 	auto han = new ComColliderHandler();
 	han->Create(nullptr, nullptr);
 	ent->AddComponent(han);
-	ent->AddComponent(new ComPawnDirection());
+	ent->AddComponent(new ComTransform());
 	auto bev = new ComPawnBevtree();
 	bev->Create(roleInfo->bevTreeFile);
 	ent->AddComponent(bev);
@@ -65,11 +65,11 @@ int EntityCreator::CreatePawn(int id, float x, float y, int team)
 
 	if (team == Team_Human)
 	{
-		ECSWorld::GetSingleton()->GetGroupManager()->Set(GameDefine::Group_Human, ent);
+		ECSWorld::GetSingleton()->GetGroupManager()->Set(GameDefine::Tag_Soldier, ent);
 	}
 	else if (team == Team_Monster)
 	{
-		ECSWorld::GetSingleton()->GetGroupManager()->Set(GameDefine::Group_Monster, ent);
+		ECSWorld::GetSingleton()->GetGroupManager()->Set(GameDefine::Tag_Monster, ent);
 	}
 	
 	ent->Refresh();
@@ -177,16 +177,16 @@ int EntityCreator::CreateBornPoint(float x, float y, int team)
 		auto anim = new ComAnimation();
 		anim->Create("BornPointHuman");
 		ent->AddComponent(anim);
-		ent->AddComponent(new HumanGameControlCom());
-		ECSWorld::GetSingleton()->GetTagManager()->Subscribe(GameDefine::Tag_HumanBornPoint, ent);
+		//ent->AddComponent(new HumanGameControlCom());
+		ECSWorld::GetSingleton()->AddTag(ent, GameDefine::Tag_HumanBornPoint);
 	}
 	else if (team == Team_Monster)
 	{
 		auto anim = new ComAnimation();
 		anim->Create("BornPointMonster");
 		ent->AddComponent(anim);
-		ent->AddComponent(new MonsterGameControlCom());
-		ECSWorld::GetSingleton()->GetTagManager()->Subscribe(GameDefine::Tag_MonsterBornPoint, ent);
+		//ent->AddComponent(new MonsterGameControlCom());
+		ECSWorld::GetSingleton()->AddTag(ent, GameDefine::Tag_MonsterBornPoint);
 	}
 
 	ent->Refresh();

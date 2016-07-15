@@ -4,6 +4,8 @@
 
 using namespace Genius;
 
+COM_CREATE_FN_IMPL(ComBulletDebugDraw);
+
 ComBulletDebugDraw::ComBulletDebugDraw()
 {
 	pRoot = Node::create();

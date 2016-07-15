@@ -3,6 +3,8 @@
 
 using namespace Genius;
 
+COM_CREATE_FN_IMPL(ComTransform);
+
 void ComTransform::SetPosition(float _x, float _y)
 {
 	x = _x;

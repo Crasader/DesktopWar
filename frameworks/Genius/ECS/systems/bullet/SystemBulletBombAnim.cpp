@@ -9,7 +9,7 @@ using namespace Genius;
 
 void SystemBulletBombAnim::Initialize()
 {
-	positionMapper.init(*world);
+	transMapper.init(*world);
 	
 	animMapper.init(*world);
 
@@ -21,7 +21,7 @@ void SystemBulletBombAnim::Initialize()
 
 void SystemBulletBombAnim::ProcessEntity(Entity* pEntity)
 {
-	ComTransform* pPosCom = positionMapper.get(pEntity);
+	ComTransform* pPosCom = transMapper.get(pEntity);
 	
 	ComBulletAnimBomb* animCom = animMapper.get(pEntity);
 
@@ -82,7 +82,7 @@ void SystemBulletBombAnim::OnBulletHit(IEventData const &evnt)
 	ComBulletAnimBomb* pAnimCom = animMapper.get(pOwnerEntity);
 	pAnimCom->StartExplode();
 
-	auto pPosCom = positionMapper.get(pOwnerEntity);
+	auto pPosCom = transMapper.get(pOwnerEntity);
 	pPosCom->vx = 0;
 	pPosCom->vy = 0;
 }

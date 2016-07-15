@@ -9,7 +9,7 @@ using namespace Genius;
 
 void SystemBulletEggAnim::Initialize()
 {
-	positionMapper.init(*world);
+	transMapper.init(*world);
 	
 	animMapper.init(*world);
 
@@ -20,7 +20,7 @@ void SystemBulletEggAnim::Initialize()
 
 void SystemBulletEggAnim::ProcessEntity(Entity* pEntity)
 {
-	ComTransform* pPosCom = positionMapper.get(pEntity);
+	ComTransform* pPosCom = transMapper.get(pEntity);
 	
 	ComBulletAnimEgg* animCom = animMapper.get(pEntity);
 

@@ -12,7 +12,7 @@ namespace Genius
 	{
 	private:
 		ComponentMapper<ComAnimation>	animMapper;
-		ComponentMapper<ComTransform>		positionMapper;
+		ComponentMapper<ComTransform>		transMapper;
 
 	public:
 		SystemSimpleAnim()

@@ -17,7 +17,7 @@ using namespace cfg;
 
 void SystemBulletDamageSingle::Initialize()
 {
-	positionMapper.init(*world);
+	transMapper.init(*world);
 	damageMapper.init(*world);
 	agentMapper.init(*world);
 
@@ -27,7 +27,7 @@ void SystemBulletDamageSingle::Initialize()
 
 void SystemBulletDamageSingle::ProcessEntity(Entity* pEntity)
 {
-	/*ComTransform* posCom = positionMapper.get(pEntity);
+	/*ComTransform* posCom = transMapper.get(pEntity);
 	
 	ComBulletDamageSingle* pAttackCom = attackMapper.get(pEntity);
 	ComBulletAnimBase* pAnimCom = bulletAnimMapper.get(pEntity);

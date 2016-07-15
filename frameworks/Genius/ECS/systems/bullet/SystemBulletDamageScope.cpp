@@ -20,7 +20,7 @@ using namespace cfg;
 
 void SystemBulletDamageScope::Initialize()
 {
-	positionMapper.init(*world);
+	transMapper.init(*world);
 	damageMapper.init(*world);
 	agentMapper.init(*world);
 
@@ -100,7 +100,7 @@ bool SystemBulletDamageScope::TriggerBulletBuff(IEventData const &evt)
 
 void SystemBulletDamageScope::FindTargetsInScope(Entity* pEntity, int radius, bool sameTeam, std::vector<Entity*>& eneityIDList)
 {
-	ComTransform* myPosCom = positionMapper.get(pEntity);
+	ComTransform* myPosCom = transMapper.get(pEntity);
 	ComBulletDamageScope* myAttackCom = damageMapper.get(pEntity);
 	ComTeam* myComTeam = pEntity->GetComponent<ComTeam>();
 	int myTeam = myComTeam->team;

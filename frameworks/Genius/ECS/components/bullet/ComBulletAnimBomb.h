@@ -13,6 +13,9 @@ namespace Genius
 	class ComBulletAnimBomb : public ComBulletAnimBase
 	{
 	public:
+		COM_CREATE_FN_DECL(ComBulletAnimBomb);
+
+	public:
 		const static std::string explodeAnimName;
 
 	public:

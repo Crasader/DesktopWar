@@ -21,6 +21,9 @@ namespace Genius
 	class ComPawnBevtree : public Genius::IComponent
 	{
 	public:
+		COM_CREATE_FN_DECL(ComPawnBevtree);
+
+	public:
 
 		virtual ~ComPawnBevtree();
 

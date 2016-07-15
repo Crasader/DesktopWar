@@ -6,6 +6,8 @@ using namespace Genius;
 using namespace cocos2d;
 
 
+COM_CREATE_FN_IMPL(ComAnimation);
+
 void ComAnimation::Create(const std::string& fileName)
 {
 	m_pAvatarRoot = cocos2d::Node::create();

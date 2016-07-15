@@ -6,7 +6,7 @@
 
 #include "../../components/common/ComTransform.h"
 #include "../../components/pawn/ComPawnAnim.h"
-#include "../../components/pawn/ComPawnDirection.h"
+
 
 #include "../../../common/2Ddef.h"
 #include "../../../pawn/PawnDefines.h"
@@ -17,13 +17,12 @@ namespace Genius
 	{
 	private:
 		ComponentMapper<ComPawnAnim>	pawnAnimMapper;
-		ComponentMapper<ComTransform>		positionMapper;
-		ComponentMapper<ComPawnDirection>	pawnDirectionMapper;
+		ComponentMapper<ComTransform>		transMapper;
 
 	public:
 		SystemPawnAnim()
 		{
-			SetComponentTypes<ComPawnAnim, ComTransform, ComPawnDirection>();
+			SetComponentTypes<ComPawnAnim, ComTransform>();
 		}
 		virtual const char* GetName(){ return "SystemPawnAnim"; }
 		virtual void Initialize();

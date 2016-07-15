@@ -685,22 +685,6 @@ Clear : function (
 };
 
 /**
- * @class ComPawnDirection
- */
-ComPawnDirection = {
-
-/**
- * @method ComPawnDirection
- * @constructor
- */
-ComPawnDirection : function (
-)
-{
-},
-
-};
-
-/**
  * @class ComPawnFight
  */
 ComPawnFight = {
@@ -1105,6 +1089,26 @@ GetID : function (
 )
 {
     return 0;
+},
+
+/**
+ * @method RemoveTag
+ * @param {char} arg0
+ */
+RemoveTag : function (
+char 
+)
+{
+},
+
+/**
+ * @method AddTag
+ * @param {char} arg0
+ */
+AddTag : function (
+char 
+)
+{
 },
 
 /**

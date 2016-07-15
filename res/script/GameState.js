@@ -141,12 +141,12 @@ var LaunchState = GameState.extend
         //Soldier.Create(2012, 700, 133, 2);
         //Soldier.Create(2009, 300, 133, 2);
 
-        Soldier.Create(2011, 300, 133, 2);
-        Soldier.Create(2011, 280, 120, 2);
-        Soldier.Create(2011, 260, 140, 2);
+        Monster.Create(2011, 300, 133, 2);
+        //Soldier.Create(2011, 280, 120, 2);
+        //Soldier.Create(2011, 260, 140, 2);
         Soldier.Create(1007, 500, 133, 1);
-        Soldier.Create(1007, 520, 120, 1);
-        Soldier.Create(1007, 540, 140, 1);
+        //Soldier.Create(1007, 520, 120, 1);
+        //Soldier.Create(1007, 540, 140, 1);
 
         print("enter Launch");
     },
