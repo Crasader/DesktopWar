@@ -8,6 +8,7 @@
 #include "event/EventManager.h"
 #include "ECS/EntityEvents.h"
 #include "entity/EntityCreators.h"
+#include "entity/EntityUtility.h"
 
 
 using namespace Genius;
@@ -48,7 +49,10 @@ void BL_Spawn::OnEffect(Buff* buff)
 		if (nullptr == bulletAgent)
 			break;
 
-		EntityCreator::CreatePawn(buff->GetCfg()->calType, posCom->x, posCom->y, bulletAgent->GetBlackboard()->team);
+		bool isTagged = EntityUtility::IsTagged(GameDefine::Tag_Soldier, senderEntity);
+		const string& targetTag = isTagged ? GameDefine::Tag_Soldier : GameDefine::Tag_Monster;
+
+		EntityCreator::CreatePawn(buff->GetCfg()->calType, posCom->x, posCom->y, targetTag);
 
 	}while (false);
 

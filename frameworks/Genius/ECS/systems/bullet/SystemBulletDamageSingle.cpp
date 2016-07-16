@@ -68,9 +68,9 @@ void SystemBulletDamageSingle::collisionHandler(int id1, int id2)
 		return;
 
 	auto pMyComAgent = agentMapper.get(pEntity);
-	auto pOtherComTeam = pOtherEntity->GetComponent<ComPawnAgent>();
+	//auto pOtherComTeam = pOtherEntity->GetComponent<ComPawnAgent>();
 
-	if (pMyComAgent && pOtherComTeam && pMyComAgent->GetBlackboard()->team != pOtherComTeam->GetBlackboard()->team)
+	if (pMyComAgent)// && pOtherComTeam && pMyComAgent->GetBlackboard()->team != pOtherComTeam->GetBlackboard()->team)
 	{
 		EventManager::GetSingleton()->FireEvent(BulletHitEvent(pEntity));
 		EventManager::GetSingleton()->FireEvent(StopMoveEvent(pEntity));

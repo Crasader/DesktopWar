@@ -297,17 +297,6 @@ bool js_app_ComBulletAnimEgg_Create(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComBulletAnimEgg_AnimationFrameCallback(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComBulletAnimEgg_create_ComBulletAnimEgg(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_Genius_EntityCreator_class;
-extern JSObject *jsb_Genius_EntityCreator_prototype;
-
-bool js_app_EntityCreator_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_EntityCreator_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_EntityCreator(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_EntityCreator_CreateBullet(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_EntityCreator_CreatePawn(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_EntityCreator_CreateBornPoint(JSContext *cx, uint32_t argc, jsval *vp);
-
 extern JSClass  *jsb_Genius_EntityWrapper_class;
 extern JSObject *jsb_Genius_EntityWrapper_prototype;
 
@@ -315,10 +304,10 @@ bool js_app_EntityWrapper_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_app_EntityWrapper_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_EntityWrapper(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_EntityWrapper_GetID(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_EntityWrapper_RemoveTag(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityWrapper_AddTag(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityWrapper_RemoveTag(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityWrapper_AddComponent(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityWrapper_GetID(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityWrapper_EntityWrapper(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_WorldWrapper_class;

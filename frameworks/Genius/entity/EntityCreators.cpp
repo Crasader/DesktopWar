@@ -15,7 +15,7 @@ using namespace Genius;
 using namespace cfg;
 
 
-int EntityCreator::CreatePawn(int id, float x, float y, int team)
+int EntityCreator::CreatePawn(int id, float x, float y, const std::string& tag)
 {
 	Role_cfg* roleInfo = FIND_CFG(Role_cfg, id);
 	if (nullptr == roleInfo)
@@ -33,29 +33,29 @@ int EntityCreator::CreatePawn(int id, float x, float y, int team)
 	pos->x = x; pos->y = y;
 	pos->vx = 0; pos->vy = 0;
 	ent->AddComponent(pos);
-	//auto tm = new ComTeam();
-	//tm->team = team;
-	//ent->AddComponent(tm);
-// 	auto targ = new ComTarget();
-// 	targ->Create(Target_Entity);
-// 	ent->AddComponent(targ);
+
 	ComPawnAnim* paCom = new ComPawnAnim();
 	paCom->Create(id);
 	ent->AddComponent(paCom);
+
 	float width = paCom->GetWidth()*0.5f;
 	float height = paCom->GetHeight()*0.7f;
 	auto box = new ComBoxCollider();
 	box->Create(false, 0, height*0.5f, width, height);
 	ent->AddComponent(box);
+
 	auto han = new ComColliderHandler();
 	han->Create(nullptr, nullptr);
 	ent->AddComponent(han);
-	ent->AddComponent(new ComTransform());
+
 	auto bev = new ComPawnBevtree();
 	bev->Create(roleInfo->bevTreeFile);
 	ent->AddComponent(bev);
+
 	ent->AddComponent(new ComPawnNavigation());
+
 	ent->AddComponent(new ComPawnFight());
+
 	if (cfg_EnableDebugDraw)
 	{
 		auto dd = new ComPawnDebugDraw();
@@ -63,11 +63,11 @@ int EntityCreator::CreatePawn(int id, float x, float y, int team)
 		ent->AddComponent(dd);
 	}
 
-	if (team == Team_Human)
+	if (tag == GameDefine::Tag_Soldier)
 	{
 		ECSWorld::GetSingleton()->GetGroupManager()->Set(GameDefine::Tag_Soldier, ent);
 	}
-	else if (team == Team_Monster)
+	else if (tag == GameDefine::Tag_Soldier)
 	{
 		ECSWorld::GetSingleton()->GetGroupManager()->Set(GameDefine::Tag_Monster, ent);
 	}
@@ -77,7 +77,7 @@ int EntityCreator::CreatePawn(int id, float x, float y, int team)
 	return ent->GetId();
 }
 
-int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float y, int team, float destX, float destY)
+int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float y, const std::string& tag, float destX, float destY)
 {
 	Bullet_cfg* bulletCfg = FIND_CFG(Bullet_cfg, bulletID);
 	if (nullptr == bulletCfg)
@@ -94,24 +94,20 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	}
 
 	Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
-// 	auto bagent = new ComPawnAgent();
-// 	bagent->Create(bulletCfg);
-// 	ent->AddComponent(bagent);
+
 	auto pos = new ComTransform();
 	pos->x = x; pos->y = y;
 	ent->AddComponent(pos);
-// 	auto tm = new ComTeam();
-// 	tm->team = team;
-//	ent->AddComponent(tm);
+
 	auto box = new ComBoxCollider();
 	box->Create(true, 0, 0, bulletCfg->boxWidth, bulletCfg->boxHeight);
 	ent->AddComponent(box);
+
 	if (cfg_EnableDebugDraw) ent->AddComponent(new ComBulletDebugDraw());
 	
 	if (bulletCfg->moveType == BulletMoveType::BMT_Line)
 	{
 		pos->vx = 0; pos->vy = 0;
-
 		ent->AddComponent(new ComBulletDamageNone());
 		auto baegg = new ComBulletAnimEgg();
 		baegg->Create(anim_cfg->name);
@@ -140,7 +136,7 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	else if(bulletCfg->moveType == BulletMoveType::BMT_Tracking)
 	{
 		SystemPawnFight* fightSys = ECSWorld::GetSingleton()->GetSystemManager()->GetSystem<SystemPawnFight>();
-		int tarEntityID = fightSys->FindFirstTargetByTeam(team);
+		int tarEntityID = fightSys->FindRandTargetByTag(tag);
 		pos->vx = 0; pos->vy = bulletCfg->flySpeed;
 
 // 		auto targ = new ComTarget();
@@ -163,33 +159,3 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	return ent->GetId();
 }
 
-int EntityCreator::CreateBornPoint(float x, float y, int team)
-{
-	/*Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
-	auto pos = new ComTransform();
-	pos->x = x; pos->y = y;
-	ent->AddComponent(pos);
-// 	auto tm = new ComTeam();
-// 	tm->team = team;
-// 	ent->AddComponent(tm);
-	if (team == Team_Human)
-	{
-		auto anim = new ComAnimation();
-		anim->Create("BornPointHuman");
-		ent->AddComponent(anim);
-		//ent->AddComponent(new HumanGameControlCom());
-		ECSWorld::GetSingleton()->AddTag(ent, GameDefine::Tag_HumanBornPoint);
-	}
-	else if (team == Team_Monster)
-	{
-		auto anim = new ComAnimation();
-		anim->Create("BornPointMonster");
-		ent->AddComponent(anim);
-		//ent->AddComponent(new MonsterGameControlCom());
-		ECSWorld::GetSingleton()->AddTag(ent, GameDefine::Tag_MonsterBornPoint);
-	}
-
-	ent->Refresh();
-	return ent->GetId();*/
-	return 0;
-}

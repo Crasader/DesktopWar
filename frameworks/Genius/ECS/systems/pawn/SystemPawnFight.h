@@ -35,7 +35,7 @@ namespace Genius
 	public:
 		int FindNearestTarget(Entity* e, bool sameTeam, bool includeSelf);
 		void FindTargetsInScope(int entityID, int scopeSize, bool sameTeam, bool includeSelf, std::vector<int>& eneityIDList);
-		int FindFirstTargetByTeam(int team);
+		int FindRandTargetByTag(const std::string& tag);
 
 	private:
 		void UpdateLifeBar(Entity* e);

@@ -33,9 +33,6 @@ namespace Genius
 	public:
 		ComPawnAgent*	m_pAgent;
 
-		// team stuff
-		int team;
-
 		// target stuff
 		int		targetType;
 		int		targetID;

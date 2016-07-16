@@ -45,7 +45,7 @@ void SL_Bullet::OnActive(Skill* skill)
 			startX = startX;
 		}
 
-		int team = ownerAgentCom->GetBlackboard()->team;
+		//int team = ownerAgentCom->GetBlackboard()->team;
 		int targetID = *iter;
 		auto skillCfg = skill->GetSkillCfg();
 		Entity* tarEntity = ECSWorld::GetSingleton()->GetEntity(targetID);
@@ -53,12 +53,12 @@ void SL_Bullet::OnActive(Skill* skill)
 		{
 			// 有目标就直接飞向目标
 			ComTransform* posCom = tarEntity->GetComponent<ComTransform>();
-			EntityCreator::CreateBullet(skillCfg->bulletID, targetID, startX, startY, team, posCom->x, posCom->y);
+			EntityCreator::CreateBullet(skillCfg->bulletID, targetID, startX, startY, 0, posCom->x, posCom->y);
 		}
 		else
 		{
 			// 没目标自己飞一会然后自己找目标。
-			EntityCreator::CreateBullet(skillCfg->bulletID, Entity::InvalidID, startX, startY, team, 0, 0);
+			EntityCreator::CreateBullet(skillCfg->bulletID, Entity::InvalidID, startX, startY, 0, 0, 0);
 		}
 	}
 }

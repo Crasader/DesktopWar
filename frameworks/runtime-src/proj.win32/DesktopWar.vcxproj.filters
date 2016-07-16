@@ -38,9 +38,6 @@
     <Filter Include="Genius\Logic\ESC">
       <UniqueIdentifier>{85dce1c4-6430-4af7-89b0-5d0967d1c1d4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Genius\Logic\GamePlay">
-      <UniqueIdentifier>{d28ef591-bed7-4a3d-b3c1-1a9955cd841b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Genius\Logic\Pawn">
       <UniqueIdentifier>{8c235cdc-833f-47ab-909e-477d4558da2a}</UniqueIdentifier>
     </Filter>
@@ -222,9 +219,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\EntityEvents.h">
       <Filter>Genius\Logic\ESC\User\Event</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\GamePlay.h">
-      <Filter>Genius\Logic\GamePlay</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
       <Filter>Genius\Base\Win32</Filter>
@@ -598,6 +592,9 @@
     <ClInclude Include="..\..\Genius\ECS\ecs.h">
       <Filter>Genius\Logic\ESC</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Genius\entity\EntityUtility.h">
+      <Filter>Genius\Logic\Entity</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -669,9 +666,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\AI\BehaviorTree\Precondition.cpp">
       <Filter>Genius\Logic\AI\BevTree</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\GamePlay.cpp">
-      <Filter>Genius\Logic\GamePlay</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Genius\Base\Win32</Filter>
@@ -1005,6 +999,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemTransform.cpp">
       <Filter>Genius\Logic\ESC\User\System\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\entity\EntityUtility.cpp">
+      <Filter>Genius\Logic\Entity</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

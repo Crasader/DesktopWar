@@ -9,8 +9,7 @@
 #include "../../core/SystemManager.h"
 #include "../pawn/SystemPawnFight.h"
 #include "skill/BuffManager.h"
-
-
+#include "entity/EntityUtility.h"
 #include "../../components/pawn/ComPawnAgent.h"
 #include "pawn/PawnBlackboard.h"
 
@@ -102,29 +101,44 @@ void SystemBulletDamageScope::FindTargetsInScope(Entity* pEntity, int radius, bo
 	ComTransform* myPosCom = transMapper.get(pEntity);
 	ComBulletDamageScope* myAttackCom = damageMapper.get(pEntity);
 	auto myComAgent = agentMapper.get(pEntity);
-	int myTeam = myComAgent->GetBlackboard()->team;
-
-	auto sysMgr = ECSWorld::GetSingleton()->GetSystemManager();
-	SystemPawnFight* fightSys = sysMgr->GetSystem<SystemPawnFight>();
-	Bag<Entity*>& activities = fightSys->GetActivities();
-	for (int i = 0; i < activities.getCount(); i++)
+	//int myTeam = myComAgent->GetBlackboard()->team;
+	std::string targetTag;
+	if (sameTeam)
 	{
-		Entity* eneEntity = activities.get(i);
+		bool isTagged = EntityUtility::IsTagged(GameDefine::Tag_Soldier, pEntity);
+		targetTag = isTagged ? GameDefine::Tag_Soldier : GameDefine::Tag_Monster;
+	}
+	else
+	{
+		bool isTagged = EntityUtility::IsTagged(GameDefine::Tag_Soldier, pEntity);
+		targetTag = isTagged ? GameDefine::Tag_Monster : GameDefine::Tag_Soldier;
+	}
+
+	entity_map& activities = world->GetEntitiesByTag(targetTag);
+	for (auto& it : activities)
+	{
+		Entity* eneEntity = it.second;
+	//auto sysMgr = ECSWorld::GetSingleton()->GetSystemManager();
+	//SystemPawnFight* fightSys = sysMgr->GetSystem<SystemPawnFight>();
+	/*Bag<Entity*>& activities = fightSys->GetActivities();
+	for (int i = 0; i < activities.getCount(); i++)
+	{*/
+		/*Entity* eneEntity = activities.get(i);
 		if (sameTeam && eneEntity->GetId() == pEntity->GetId())
-			continue;
+			continue;*/
 
 		ComPawnAgent* enemyAgent = eneEntity->GetComponent<ComPawnAgent>();
 		if (enemyAgent && enemyAgent->GetBlackboard()->GetAttr(AttrType::HP) <= 0)
 			continue;
 
-		int enemyTeam = enemyAgent->GetBlackboard()->team;
+		/*int enemyTeam = enemyAgent->GetBlackboard()->team;
 		if (sameTeam && myTeam != enemyTeam)
 			continue;
 
 		if ((!sameTeam)
 			&& ((myTeam == PawnTeam::Team_Human && enemyTeam != PawnTeam::Team_Monster) || (myTeam == PawnTeam::Team_Monster && enemyTeam != PawnTeam::Team_Human))
 			)
-			continue;
+			continue;*/
 
 		ComTransform* enePosCom = eneEntity->GetComponent<ComTransform>();
 		Point2D vecBetween(myPosCom->x - enePosCom->x, myPosCom->y - enePosCom->y);

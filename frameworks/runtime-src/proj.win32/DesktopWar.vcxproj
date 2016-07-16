@@ -250,6 +250,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnFight.h" />
     <ClInclude Include="..\..\Genius\ECS\WorldWrapper.h" />
     <ClInclude Include="..\..\Genius\entity\EntityCreators.h" />
+    <ClInclude Include="..\..\Genius\entity\EntityUtility.h" />
     <ClInclude Include="..\..\Genius\gfx\GfxUtils.h" />
     <ClInclude Include="..\..\Genius\gfx\RollNumberLabel.h" />
     <ClInclude Include="..\..\Genius\JSBHeaders.h" />
@@ -315,7 +316,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\ECS\EntityEvents.h" />
     <ClInclude Include="..\..\Genius\event\Event.h" />
     <ClInclude Include="..\..\Genius\event\EventManager.h" />
-    <ClInclude Include="..\..\Genius\GamePlay.h" />
     <ClInclude Include="..\..\Genius\gfx\BulletArrow.h" />
     <ClInclude Include="..\..\Genius\gfx\CocosApp.h" />
     <ClInclude Include="..\..\Genius\gfx\FloatLabel.h" />
@@ -398,6 +398,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnFight.cpp" />
     <ClCompile Include="..\..\Genius\ECS\WorldWrapper.cpp" />
     <ClCompile Include="..\..\Genius\entity\EntityCreators.cpp" />
+    <ClCompile Include="..\..\Genius\entity\EntityUtility.cpp" />
     <ClCompile Include="..\..\Genius\gfx\GfxUtils.cpp" />
     <ClCompile Include="..\..\Genius\gfx\RollNumberLabel.cpp" />
     <ClCompile Include="..\..\Genius\pawn\action\PawnAction.cpp" />
@@ -448,7 +449,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\common\TimeSystem.cpp" />
     <ClCompile Include="..\..\Genius\data\ConfigPool.cpp" />
     <ClCompile Include="..\..\Genius\event\EventManager.cpp" />
-    <ClCompile Include="..\..\Genius\GamePlay.cpp" />
     <ClCompile Include="..\..\Genius\gfx\BulletArrow.cpp" />
     <ClCompile Include="..\..\Genius\gfx\CocosApp.cpp" />
     <ClCompile Include="..\..\Genius\gfx\FloatLabel.cpp" />

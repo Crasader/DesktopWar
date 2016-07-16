@@ -223,7 +223,7 @@ void PawnWander::GoToSomewhere(BHUpdateContext& context)
 
 	int width = GameDefine::viewWidth;
 	int height = GameDefine::viewHeight;
-	bool tooLeft = pComAgent->GetBlackboard()->team == Team_Human ? false : true;
+
 	bool tooTop = posCom->y < height - posCom->y;
 	int maxDistance = 200;
 
@@ -233,7 +233,7 @@ void PawnWander::GoToSomewhere(BHUpdateContext& context)
 	switch (m_wanderType)
 	{
 	case eWanderAround:
-		destX = (float)(rand() % maxDistance) + posCom->x + (tooLeft ? 1 : -1)*maxDistance;
+		destX = (float)(rand() % maxDistance) + posCom->x;
 		destY = (float)(rand() % maxDistance - 0.5f*maxDistance) + posCom->y;// +(tooTop ? 1 : -1) * 100;
 		// bounds
 		if (destX < 20)

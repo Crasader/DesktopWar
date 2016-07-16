@@ -3453,154 +3453,27 @@ void js_register_app_ComBulletAnimEgg(JSContext *cx, JS::HandleObject global) {
     jsb_register_class<Genius::ComBulletAnimEgg>(cx, jsb_Genius_ComBulletAnimEgg_class, proto, parent_proto);
 }
 
-JSClass  *jsb_Genius_EntityCreator_class;
-JSObject *jsb_Genius_EntityCreator_prototype;
-
-bool js_app_EntityCreator_CreateBullet(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    if (argc == 7) {
-        int arg0 = 0;
-        int arg1 = 0;
-        double arg2 = 0;
-        double arg3 = 0;
-        int arg4 = 0;
-        double arg5 = 0;
-        double arg6 = 0;
-        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
-        ok &= jsval_to_int32(cx, args.get(1), (int32_t *)&arg1);
-        ok &= JS::ToNumber( cx, args.get(2), &arg2) && !std::isnan(arg2);
-        ok &= JS::ToNumber( cx, args.get(3), &arg3) && !std::isnan(arg3);
-        ok &= jsval_to_int32(cx, args.get(4), (int32_t *)&arg4);
-        ok &= JS::ToNumber( cx, args.get(5), &arg5) && !std::isnan(arg5);
-        ok &= JS::ToNumber( cx, args.get(6), &arg6) && !std::isnan(arg6);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityCreator_CreateBullet : Error processing arguments");
-
-        int ret = Genius::EntityCreator::CreateBullet(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
-        jsval jsret = JSVAL_NULL;
-        jsret = int32_to_jsval(cx, ret);
-        args.rval().set(jsret);
-        return true;
-    }
-    JS_ReportError(cx, "js_app_EntityCreator_CreateBullet : wrong number of arguments");
-    return false;
-}
-
-bool js_app_EntityCreator_CreatePawn(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    if (argc == 4) {
-        int arg0 = 0;
-        double arg1 = 0;
-        double arg2 = 0;
-        int arg3 = 0;
-        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
-        ok &= JS::ToNumber( cx, args.get(1), &arg1) && !std::isnan(arg1);
-        ok &= JS::ToNumber( cx, args.get(2), &arg2) && !std::isnan(arg2);
-        ok &= jsval_to_int32(cx, args.get(3), (int32_t *)&arg3);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityCreator_CreatePawn : Error processing arguments");
-
-        int ret = Genius::EntityCreator::CreatePawn(arg0, arg1, arg2, arg3);
-        jsval jsret = JSVAL_NULL;
-        jsret = int32_to_jsval(cx, ret);
-        args.rval().set(jsret);
-        return true;
-    }
-    JS_ReportError(cx, "js_app_EntityCreator_CreatePawn : wrong number of arguments");
-    return false;
-}
-
-bool js_app_EntityCreator_CreateBornPoint(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    if (argc == 3) {
-        double arg0 = 0;
-        double arg1 = 0;
-        int arg2 = 0;
-        ok &= JS::ToNumber( cx, args.get(0), &arg0) && !std::isnan(arg0);
-        ok &= JS::ToNumber( cx, args.get(1), &arg1) && !std::isnan(arg1);
-        ok &= jsval_to_int32(cx, args.get(2), (int32_t *)&arg2);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityCreator_CreateBornPoint : Error processing arguments");
-
-        int ret = Genius::EntityCreator::CreateBornPoint(arg0, arg1, arg2);
-        jsval jsret = JSVAL_NULL;
-        jsret = int32_to_jsval(cx, ret);
-        args.rval().set(jsret);
-        return true;
-    }
-    JS_ReportError(cx, "js_app_EntityCreator_CreateBornPoint : wrong number of arguments");
-    return false;
-}
-
-
-void js_register_app_EntityCreator(JSContext *cx, JS::HandleObject global) {
-    jsb_Genius_EntityCreator_class = (JSClass *)calloc(1, sizeof(JSClass));
-    jsb_Genius_EntityCreator_class->name = "EntityCreator";
-    jsb_Genius_EntityCreator_class->addProperty = JS_PropertyStub;
-    jsb_Genius_EntityCreator_class->delProperty = JS_DeletePropertyStub;
-    jsb_Genius_EntityCreator_class->getProperty = JS_PropertyStub;
-    jsb_Genius_EntityCreator_class->setProperty = JS_StrictPropertyStub;
-    jsb_Genius_EntityCreator_class->enumerate = JS_EnumerateStub;
-    jsb_Genius_EntityCreator_class->resolve = JS_ResolveStub;
-    jsb_Genius_EntityCreator_class->convert = JS_ConvertStub;
-    jsb_Genius_EntityCreator_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-    static JSPropertySpec properties[] = {
-        JS_PS_END
-    };
-
-    static JSFunctionSpec funcs[] = {
-        JS_FS_END
-    };
-
-    static JSFunctionSpec st_funcs[] = {
-        JS_FN("CreateBullet", js_app_EntityCreator_CreateBullet, 7, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("CreatePawn", js_app_EntityCreator_CreatePawn, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("CreateBornPoint", js_app_EntityCreator_CreateBornPoint, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FS_END
-    };
-
-    jsb_Genius_EntityCreator_prototype = JS_InitClass(
-        cx, global,
-        JS::NullPtr(),
-        jsb_Genius_EntityCreator_class,
-        dummy_constructor<Genius::EntityCreator>, 0, // no constructor
-        properties,
-        funcs,
-        NULL, // no static properties
-        st_funcs);
-
-    JS::RootedObject proto(cx, jsb_Genius_EntityCreator_prototype);
-    JS::RootedValue className(cx, std_string_to_jsval(cx, "EntityCreator"));
-    JS_SetProperty(cx, proto, "_className", className);
-    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
-    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
-    // add the proto and JSClass to the type->js info hash table
-    jsb_register_class<Genius::EntityCreator>(cx, jsb_Genius_EntityCreator_class, proto, JS::NullPtr());
-}
-
 JSClass  *jsb_Genius_EntityWrapper_class;
 JSObject *jsb_Genius_EntityWrapper_prototype;
 
-bool js_app_EntityWrapper_GetID(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_app_EntityWrapper_AddTag(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
     JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
     js_proxy_t *proxy = jsb_get_js_proxy(obj);
     Genius::EntityWrapper* cobj = (Genius::EntityWrapper *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_EntityWrapper_GetID : Invalid Native Object");
-    if (argc == 0) {
-        int ret = cobj->GetID();
-        jsval jsret = JSVAL_NULL;
-        jsret = int32_to_jsval(cx, ret);
-        args.rval().set(jsret);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_EntityWrapper_AddTag : Invalid Native Object");
+    if (argc == 1) {
+        const char* arg0 = nullptr;
+        std::string arg0_tmp; ok &= jsval_to_std_string(cx, args.get(0), &arg0_tmp); arg0 = arg0_tmp.c_str();
+        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityWrapper_AddTag : Error processing arguments");
+        cobj->AddTag(arg0);
+        args.rval().setUndefined();
         return true;
     }
 
-    JS_ReportError(cx, "js_app_EntityWrapper_GetID : wrong number of arguments: %d, was expecting %d", argc, 0);
+    JS_ReportError(cx, "js_app_EntityWrapper_AddTag : wrong number of arguments: %d, was expecting %d", argc, 1);
     return false;
 }
 bool js_app_EntityWrapper_RemoveTag(JSContext *cx, uint32_t argc, jsval *vp)
@@ -3621,26 +3494,6 @@ bool js_app_EntityWrapper_RemoveTag(JSContext *cx, uint32_t argc, jsval *vp)
     }
 
     JS_ReportError(cx, "js_app_EntityWrapper_RemoveTag : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
-bool js_app_EntityWrapper_AddTag(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::EntityWrapper* cobj = (Genius::EntityWrapper *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_EntityWrapper_AddTag : Invalid Native Object");
-    if (argc == 1) {
-        const char* arg0 = nullptr;
-        std::string arg0_tmp; ok &= jsval_to_std_string(cx, args.get(0), &arg0_tmp); arg0 = arg0_tmp.c_str();
-        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityWrapper_AddTag : Error processing arguments");
-        cobj->AddTag(arg0);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_EntityWrapper_AddTag : wrong number of arguments: %d, was expecting %d", argc, 1);
     return false;
 }
 bool js_app_EntityWrapper_AddComponent(JSContext *cx, uint32_t argc, jsval *vp)
@@ -3667,6 +3520,24 @@ bool js_app_EntityWrapper_AddComponent(JSContext *cx, uint32_t argc, jsval *vp)
     }
 
     JS_ReportError(cx, "js_app_EntityWrapper_AddComponent : wrong number of arguments: %d, was expecting %d", argc, 1);
+    return false;
+}
+bool js_app_EntityWrapper_GetID(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::EntityWrapper* cobj = (Genius::EntityWrapper *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_EntityWrapper_GetID : Invalid Native Object");
+    if (argc == 0) {
+        int ret = cobj->GetID();
+        jsval jsret = JSVAL_NULL;
+        jsret = int32_to_jsval(cx, ret);
+        args.rval().set(jsret);
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_EntityWrapper_GetID : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
 bool js_app_EntityWrapper_constructor(JSContext *cx, uint32_t argc, jsval *vp)
@@ -3734,10 +3605,10 @@ void js_register_app_EntityWrapper(JSContext *cx, JS::HandleObject global) {
     };
 
     static JSFunctionSpec funcs[] = {
-        JS_FN("GetID", js_app_EntityWrapper_GetID, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("RemoveTag", js_app_EntityWrapper_RemoveTag, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("AddTag", js_app_EntityWrapper_AddTag, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("RemoveTag", js_app_EntityWrapper_RemoveTag, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("AddComponent", js_app_EntityWrapper_AddComponent, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("GetID", js_app_EntityWrapper_GetID, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 
@@ -4152,7 +4023,6 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
 
     js_register_app_PawnBlackboard(cx, ns);
     js_register_app_Log(cx, ns);
-    js_register_app_EntityCreator(cx, ns);
     js_register_app_IComponent(cx, ns);
     js_register_app_ComBoxCollider(cx, ns);
     js_register_app_ComPawnAgent(cx, ns);

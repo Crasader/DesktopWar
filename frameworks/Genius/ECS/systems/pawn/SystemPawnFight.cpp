@@ -8,6 +8,7 @@
 #include "app/GameDefine.h"
 #include "pawn/PawnBlackboard.h"
 #include "pawn/action/ActionDefine.h"
+#include "entity/EntityUtility.h"
 
 
 using namespace Genius;
@@ -234,44 +235,34 @@ int SystemPawnFight::FindNearestTarget(Entity* pEntity, bool sameTeam, bool incl
 {
 	ComTransform* myPosCom = transMapper.get(pEntity);
 	ComPawnFight* myFightCom = pawnFightMapper.get(pEntity);
-	//ComTeam* myComTeam = pEntity->GetComponent<ComTeam>();
 	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
 	int enemyId = Entity::InvalidID;
 	float minDist = 0;
-	//Bag<Entity*>& activities = getActivities();
+	
 	std::string targetTag;
 	if (sameTeam)
 	{
-		targetTag = myTempCom->GetBlackboard()->team == Team_Human ? GameDefine::Tag_Soldier : GameDefine::Tag_Monster;
+		bool isTagged = EntityUtility::IsTagged(GameDefine::Tag_Soldier, pEntity);
+		targetTag = isTagged ? GameDefine::Tag_Soldier : GameDefine::Tag_Monster;
 	}
 	else
 	{
-		targetTag = myTempCom->GetBlackboard()->team == Team_Human ? GameDefine::Tag_Monster : GameDefine::Tag_Soldier;
+		bool isTagged = EntityUtility::IsTagged(GameDefine::Tag_Soldier, pEntity);
+		targetTag = isTagged ? GameDefine::Tag_Monster : GameDefine::Tag_Soldier;
 	}
 	entity_map& activities = world->GetEntitiesByTag(targetTag);
 	if (activities.size() == 0)
 		return Entity::InvalidID;
 
-	//for (int i = 0; i < activities->getCount(); i++)
 	for (auto& it : activities)
 	{
-		Entity* pEnemyEntity = it.second;// activities->get(i);
+		Entity* pEnemyEntity = it.second;
 		if ((! includeSelf) && pEnemyEntity->GetId() == pEntity->GetId())
 			continue;
 
 		ComPawnAgent* enemyAttCom = pEnemyEntity->GetComponent<ComPawnAgent>();
 		if (enemyAttCom && enemyAttCom->GetBlackboard()->GetAttr(AttrType::HP)<= 0)
 			continue;
-
-		//ComPawnFight* eneFightCom = pEnemyEntity->getComponent<ComPawnFight>();
-		/*ComTeam* enComTeam = pEnemyEntity->getComponent<ComTeam>();
-		if (sameTeam && myComTeam->team != enComTeam->team)
-			continue;
-
-		if ((!sameTeam)
-			&& ((myComTeam->team == Team_Human && enComTeam->team != Team_Monster) || (myComTeam->team == Team_Monster && enComTeam->team != Team_Human))
-			)
-			continue;*/
 
 		ComTransform* enePosCom = pEnemyEntity->GetComponent<ComTransform>();
 		Point2D vecBetween(myPosCom->x - enePosCom->x, myPosCom->y - enePosCom->y);
@@ -300,30 +291,45 @@ void SystemPawnFight::FindTargetsInScope(int entityID, int scopeSize, bool sameT
 	ComTransform* myPosCom = transMapper.get(pEntity);
 	ComPawnFight* myFightCom = pawnFightMapper.get(pEntity);
 	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
-	//ComTeam* myComTeam = pEntity->GetComponent<ComTeam>();
-	int myTeam = myTempCom->GetBlackboard()->team;
 
-	Bag<Entity*>& activities = GetActivities();
-	for (int i = 0; i < activities.getCount(); i++)
+	//int myTeam = myTempCom->GetBlackboard()->team;
+
+	std::string targetTag;
+	if (sameTeam)
 	{
-		Entity* pEnemyEntity = activities.get(i);
-		if ( (!(sameTeam && includeSelf)) && pEnemyEntity->GetId() == pEntity->GetId())
- 			continue;
+		bool isTagged = EntityUtility::IsTagged(GameDefine::Tag_Soldier, pEntity);
+		targetTag = isTagged ? GameDefine::Tag_Soldier : GameDefine::Tag_Monster;
+	}
+	else
+	{
+		bool isTagged = EntityUtility::IsTagged(GameDefine::Tag_Soldier, pEntity);
+		targetTag = isTagged ? GameDefine::Tag_Monster : GameDefine::Tag_Soldier;
+	}
+
+	entity_map& activities = world->GetEntitiesByTag(targetTag);
+	for (auto& it : activities)
+	{
+		Entity* pEnemyEntity = it.second;
+// 	}
+// 	Bag<Entity*>& activities = GetActivities();
+// 	for (int i = 0; i < activities.getCount(); i++)
+// 	{
+// 		Entity* pEnemyEntity = activities.get(i);
+	/*	if ( (!(sameTeam && includeSelf)) && pEnemyEntity->GetId() == pEntity->GetId())
+ 			continue;*/
 
 		ComPawnAgent* enemyAttCom = pEnemyEntity->GetComponent<ComPawnAgent>();
 		if (enemyAttCom && enemyAttCom->GetBlackboard()->GetAttr(AttrType::HP)<= 0)
 			continue;
 
-		int enemyTeam = enemyAttCom->GetBlackboard()->team;
-		//ComPawnFight* eneFightCom = eneEntity->getComponent<ComPawnFight>();
-		//auto enComTeam = pEnemyEntity->GetComponent<ComTeam>();
+	/*	int enemyTeam = enemyAttCom->GetBlackboard()->team;
 		if (sameTeam && myTeam != enemyTeam)
 			continue;
 
 		if ((!sameTeam)
 			&& ((myTeam == Team_Human && enemyTeam != Team_Monster) || (myTeam == Team_Monster && enemyTeam != Team_Human))
 			)
-			continue;
+			continue;*/
 
 		ComTransform* enePosCom = pEnemyEntity->GetComponent<ComTransform>();
 		Point2D vecBetween(myPosCom->x - enePosCom->x, myPosCom->y - enePosCom->y);
@@ -348,10 +354,18 @@ void SystemPawnFight::UpdateLifeBar(Entity* pEntity)
 	animCom->m_pLifeBar->setPercent((int)(100.0f * myAttCom->GetBlackboard()->GetAttr(AttrType::HP)/ myTempCom->m_roleCfg->baseLife));
 }
 
-int SystemPawnFight::FindFirstTargetByTeam(int team)
+int SystemPawnFight::FindRandTargetByTag(const string& tag)
 {
 	int tarEntityID = Entity::InvalidID;
-	int tarTeam = team == Team_Human ? Team_Monster : Team_Human;
+
+	entity_map& activities = world->GetEntitiesByTag(tag);
+	for (auto& it : activities)
+	{
+		tarEntityID = it.second->GetId();
+		break;
+	}
+
+	/*int tarTeam = team == Team_Human ? Team_Monster : Team_Human;
 	Bag<Entity*>& fightActivities = GetActivities();
 	for (int i = 0; i < fightActivities.getCount(); i++)
 	{
@@ -362,6 +376,6 @@ int SystemPawnFight::FindFirstTargetByTeam(int team)
 			tarEntityID = pEnemyEntity->GetId();
 			break;
 		}
-	}
+	}*/
 	return tarEntityID;
 }

@@ -64,12 +64,12 @@ namespace Genius
 		Face_Max		= 1 << 6,
 	};
 
-	enum PawnTeam
+	/*enum PawnTeam
 	{
 		Team_None,
 		Team_Human,
 		Team_Monster,
-	};
+	};*/
 
 	namespace PawnAnimName
 	{

@@ -1145,83 +1145,18 @@ create_ComBulletAnimEgg : function (
 };
 
 /**
- * @class EntityCreator
- */
-EntityCreator = {
-
-/**
- * @method CreateBullet
- * @param {int} arg0
- * @param {int} arg1
- * @param {float} arg2
- * @param {float} arg3
- * @param {int} arg4
- * @param {float} arg5
- * @param {float} arg6
- * @return {int}
- */
-CreateBullet : function (
-int, 
-int, 
-float, 
-float, 
-int, 
-float, 
-float 
-)
-{
-    return 0;
-},
-
-/**
- * @method CreatePawn
- * @param {int} arg0
- * @param {float} arg1
- * @param {float} arg2
- * @param {int} arg3
- * @return {int}
- */
-CreatePawn : function (
-int, 
-float, 
-float, 
-int 
-)
-{
-    return 0;
-},
-
-/**
- * @method CreateBornPoint
- * @param {float} arg0
- * @param {float} arg1
- * @param {int} arg2
- * @return {int}
- */
-CreateBornPoint : function (
-float, 
-float, 
-int 
-)
-{
-    return 0;
-},
-
-};
-
-/**
  * @class EntityWrapper
  */
 Entity = {
 
 /**
- * @method GetID
- * @return {int}
+ * @method AddTag
+ * @param {char} arg0
  */
-GetID : function (
+AddTag : function (
+char 
 )
 {
-    return 0;
 },
 
 /**
@@ -1229,16 +1164,6 @@ GetID : function (
  * @param {char} arg0
  */
 RemoveTag : function (
-char 
-)
-{
-},
-
-/**
- * @method AddTag
- * @param {char} arg0
- */
-AddTag : function (
 char 
 )
 {
@@ -1254,6 +1179,16 @@ char
 )
 {
     return Genius::IComponent;
+},
+
+/**
+ * @method GetID
+ * @return {int}
+ */
+GetID : function (
+)
+{
+    return 0;
 },
 
 /**
