@@ -5,6 +5,7 @@
 #include "data/auto/Role_cfg.hpp"
 #include "ECS/ecs.h"
 #include "entity/EntityCreators.h"
+#include "entity/EntityUtility.h"
 #include "pawn/PawnBlackboard.h"
 
 using namespace Genius;
@@ -45,7 +46,8 @@ void SL_Bullet::OnActive(Skill* skill)
 			startX = startX;
 		}
 
-		//int team = ownerAgentCom->GetBlackboard()->team;
+		bool isTagged = EntityUtility::IsTagged(GameDefine::Tag_Soldier, ownerEntity);
+		const string& targetTag = isTagged ? GameDefine::Tag_Soldier : GameDefine::Tag_Monster;
 		int targetID = *iter;
 		auto skillCfg = skill->GetSkillCfg();
 		Entity* tarEntity = ECSWorld::GetSingleton()->GetEntity(targetID);
@@ -53,12 +55,12 @@ void SL_Bullet::OnActive(Skill* skill)
 		{
 			// 有目标就直接飞向目标
 			ComTransform* posCom = tarEntity->GetComponent<ComTransform>();
-			EntityCreator::CreateBullet(skillCfg->bulletID, targetID, startX, startY, 0, posCom->x, posCom->y);
+			EntityCreator::CreateBullet(skillCfg->bulletID, targetID, startX, startY, targetTag, posCom->x, posCom->y);
 		}
 		else
 		{
 			// 没目标自己飞一会然后自己找目标。
-			EntityCreator::CreateBullet(skillCfg->bulletID, Entity::InvalidID, startX, startY, 0, 0, 0);
+			EntityCreator::CreateBullet(skillCfg->bulletID, Entity::InvalidID, startX, startY, targetTag, 0, 0);
 		}
 	}
 }

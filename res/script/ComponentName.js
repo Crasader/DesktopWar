@@ -6,8 +6,6 @@ var ComponentName =
     BoxCollider:"ComBoxCollider",
     ColliderHandler:"ComColliderHandler",
     Animation:"ComAnimation",
-    Team:"ComTeam",
-    Target:"ComTarget",
     Particle:"ComParticle",
     BezierMovement:"ComBezierMovement",
     DelayTrackMovement:"ComDelayTrackMovement",
@@ -20,7 +18,6 @@ var ComponentName =
     PawnNavigation:"ComPawnNavigation",
     PawnBevtree:"ComPawnBevtree",
 
-    BulletAgent:"ComBulletAgent",
     BulletAnimArrow:"ComBulletAnimArrow",
     BulletAnimBase:"ComBulletAnimBase",
     BulletAnimBomb:"ComBulletAnimBomb",

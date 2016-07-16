@@ -14,13 +14,16 @@ PawnBlackboard::PawnBlackboard(ComPawnAgent* agent)
 {
 	m_pAgent = agent;
 	auto cfg = agent->m_roleCfg;
-	SetAttr(AttrType::HP, cfg->baseLife);
-	SetAttr(AttrType::MoveSpeed, 1);
-	SetAttr(AttrType::AttackSpeed, 1);
-	SetAttr(AttrType::AttackStren, cfg->attackValue);
-	SetAttr(AttrType::DefencePhy, cfg->antiPhysicValue);
-	SetAttr(AttrType::DefenceMag, cfg->antiMagicValue);
-	SetAttr(AttrType::Dodge, cfg->dodgeValue);
+	if (cfg != nullptr)
+	{
+		SetAttr(AttrType::HP, cfg->baseLife);
+		SetAttr(AttrType::MoveSpeed, 1);
+		SetAttr(AttrType::AttackSpeed, 1);
+		SetAttr(AttrType::AttackStren, cfg->attackValue);
+		SetAttr(AttrType::DefencePhy, cfg->antiPhysicValue);
+		SetAttr(AttrType::DefenceMag, cfg->antiMagicValue);
+		SetAttr(AttrType::Dodge, cfg->dodgeValue);
+	}
 }
 
 PawnBlackboard::~PawnBlackboard()

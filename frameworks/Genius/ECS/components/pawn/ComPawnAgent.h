@@ -22,7 +22,7 @@ namespace Genius
 		COM_CREATE_FN_DECL(ComPawnAgent);
 
 	public:
-		void Create(int roleCfgID);
+		void Create(int cfgID, bool isPawn);
 		~ComPawnAgent();
 		PawnBlackboard*		GetBlackboard(){ return m_pBlackboard; }
 		void AddAction(int type);

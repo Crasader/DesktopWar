@@ -13,13 +13,26 @@ using namespace cfg;
 
 COM_CREATE_FN_IMPL(ComPawnAgent);
 
-void ComPawnAgent::Create(int roleCfgID)
+void ComPawnAgent::Create(int cfgID, bool isPawn)
 {
-	m_roleCfg = FIND_CFG(Role_cfg, roleCfgID);
+	m_roleCfg = nullptr;
+	pBulletData = nullptr;
 
-	if (nullptr == m_roleCfg)
+	if (isPawn)
 	{
-		Log::Error("ComPawnAgent::Create : wrong roleCfgID %d", roleCfgID);
+		m_roleCfg = FIND_CFG(Role_cfg, cfgID);
+		if (nullptr == m_roleCfg)
+		{
+			Log::Error("ComPawnAgent::Create : wrong roleCfgID %d", cfgID);
+		}
+	}
+	else
+	{
+		pBulletData = FIND_CFG(Bullet_cfg, cfgID);
+		if (nullptr == pBulletData)
+		{
+			Log::Error("ComPawnAgent::Create : wrong bulletCfgID %d", cfgID);
+		}
 	}
 
 	m_pBlackboard = new PawnBlackboard(this);

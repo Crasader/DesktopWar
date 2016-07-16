@@ -1540,16 +1540,18 @@ bool js_app_ComPawnAgent_Create(JSContext *cx, uint32_t argc, jsval *vp)
     js_proxy_t *proxy = jsb_get_js_proxy(obj);
     Genius::ComPawnAgent* cobj = (Genius::ComPawnAgent *)(proxy ? proxy->ptr : NULL);
     JSB_PRECONDITION2( cobj, cx, false, "js_app_ComPawnAgent_Create : Invalid Native Object");
-    if (argc == 1) {
+    if (argc == 2) {
         int arg0 = 0;
+        bool arg1;
         ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        arg1 = JS::ToBoolean(args.get(1));
         JSB_PRECONDITION2(ok, cx, false, "js_app_ComPawnAgent_Create : Error processing arguments");
-        cobj->Create(arg0);
+        cobj->Create(arg0, arg1);
         args.rval().setUndefined();
         return true;
     }
 
-    JS_ReportError(cx, "js_app_ComPawnAgent_Create : wrong number of arguments: %d, was expecting %d", argc, 1);
+    JS_ReportError(cx, "js_app_ComPawnAgent_Create : wrong number of arguments: %d, was expecting %d", argc, 2);
     return false;
 }
 bool js_app_ComPawnAgent_AddAction(JSContext *cx, uint32_t argc, jsval *vp)
@@ -1633,7 +1635,7 @@ void js_register_app_ComPawnAgent(JSContext *cx, JS::HandleObject global) {
     };
 
     static JSFunctionSpec funcs[] = {
-        JS_FN("Create", js_app_ComPawnAgent_Create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("Create", js_app_ComPawnAgent_Create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("AddAction", js_app_ComPawnAgent_AddAction, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("GetBlackboard", js_app_ComPawnAgent_GetBlackboard, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END

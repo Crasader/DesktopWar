@@ -509,9 +509,11 @@ ComPawnAgent = {
 /**
  * @method Create
  * @param {int} arg0
+ * @param {bool} arg1
  */
 Create : function (
-int 
+int, 
+bool 
 )
 {
 },

@@ -25,8 +25,9 @@ int EntityCreator::CreatePawn(int id, float x, float y, const std::string& tag)
 	}
 
 	Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
+
 	auto agent = new ComPawnAgent();
-	agent->Create(id);
+	agent->Create(id, true);
 	ent->AddComponent(agent);
 
 	auto pos = new ComTransform();
@@ -35,8 +36,8 @@ int EntityCreator::CreatePawn(int id, float x, float y, const std::string& tag)
 	ent->AddComponent(pos);
 
 	ComPawnAnim* paCom = new ComPawnAnim();
-	paCom->Create(id);
 	ent->AddComponent(paCom);
+	paCom->Create(id);
 
 	float width = paCom->GetWidth()*0.5f;
 	float height = paCom->GetHeight()*0.7f;
@@ -94,6 +95,10 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	}
 
 	Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
+
+	auto agent = new ComPawnAgent();
+	agent->Create(bulletID, false);
+	ent->AddComponent(agent);
 
 	auto pos = new ComTransform();
 	pos->x = x; pos->y = y;
