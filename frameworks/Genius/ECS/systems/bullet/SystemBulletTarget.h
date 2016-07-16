@@ -3,8 +3,8 @@
 #include "../../core/EntityProcessingSystem.h"
 #include "../../core/ComponentMapper.h"
 #include "../../components/common/ComTransform.h"
-#include "../../components/common/ComTarget.h"
-#include "../../components//bullet/ComBulletAgent.h"
+#include "../../components/pawn/ComPawnAgent.h"
+
 
 namespace Genius
 {
@@ -12,13 +12,12 @@ namespace Genius
 	{
 	private:
 		ComponentMapper<ComTransform> transMapper;
-		ComponentMapper<ComTarget> targetMapper;
-		ComponentMapper<ComBulletAgent> agentMapper;
+		ComponentMapper<ComPawnAgent> agentMapper;
 
 	public:
 		SystemBulletTarget()
 		{
-			SetComponentTypes<ComTransform, ComTarget, ComBulletAgent>();
+			SetComponentTypes<ComTransform, ComPawnAgent>();
 		}
 		virtual const char* GetName(){ return "SystemBulletTarget"; }
 		virtual void Initialize();

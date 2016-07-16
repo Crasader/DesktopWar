@@ -49,7 +49,7 @@ bool SystemBulletDamageNone::TriggerBulletBuff(IEventData const &evt)
 
 	ComBulletDamageNone* pAttackCom = damageMapper.get(pOwnerEntity);
 
-	ComBulletAgent* bulletAgent = agentMapper.get(pOwnerEntity);
+	ComPawnAgent* bulletAgent = agentMapper.get(pOwnerEntity);
 	const Bullet_cfg* bulletInfo = bulletAgent->pBulletData;
 	for (int i = 0; i < 3; ++i)
 	{

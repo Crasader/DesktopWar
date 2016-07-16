@@ -2,6 +2,12 @@
 #include "EntityWrapper.h"
 #include "ECS/ecs.h"
 #include "common/Log.h"
+#include <string>
+#include <unordered_map>
+
+using namespace std;
+using namespace Genius;
+
 
 typedef IComponent* (*CreateComFunc)(void);
 
@@ -10,7 +16,7 @@ static unordered_map<std::string, CreateComFunc> sCreateComFuncs;
 #define REG_CREATE_COM(classname)\
 	sCreateComFuncs[#classname] = classname::create_## classname;
 
-using namespace Genius;
+
 
 
 static void _lazyInitComFuncs()
@@ -21,8 +27,6 @@ static void _lazyInitComFuncs()
 	REG_CREATE_COM(ComBoxCollider);
 	REG_CREATE_COM(ComColliderHandler);
 	REG_CREATE_COM(ComAnimation);
-	//REG_CREATE_COM(ComTeam);
-	REG_CREATE_COM(ComTarget);
 	REG_CREATE_COM(ComParticle);
 	REG_CREATE_COM(ComBezierMovement);
 	REG_CREATE_COM(ComDelayTrackMoving);
@@ -34,7 +38,7 @@ static void _lazyInitComFuncs()
 	REG_CREATE_COM(ComPawnNavigation);
 	REG_CREATE_COM(ComPawnBevtree);
 
-	REG_CREATE_COM(ComBulletAgent);
+
 	REG_CREATE_COM(ComBulletAnimArrow);
 	REG_CREATE_COM(ComBulletAnimBase);
 	REG_CREATE_COM(ComBulletAnimBomb);

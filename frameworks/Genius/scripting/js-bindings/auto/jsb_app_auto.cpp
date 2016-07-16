@@ -1303,133 +1303,6 @@ void js_register_app_ComAnimation(JSContext *cx, JS::HandleObject global) {
     jsb_register_class<Genius::ComAnimation>(cx, jsb_Genius_ComAnimation_class, proto, parent_proto);
 }
 
-JSClass  *jsb_Genius_ComTarget_class;
-JSObject *jsb_Genius_ComTarget_prototype;
-
-bool js_app_ComTarget_Create(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::ComTarget* cobj = (Genius::ComTarget *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComTarget_Create : Invalid Native Object");
-    if (argc == 1) {
-        int arg0 = 0;
-        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_ComTarget_Create : Error processing arguments");
-        cobj->Create(arg0);
-        args.rval().setUndefined();
-        return true;
-    }
-    if (argc == 2) {
-        int arg0 = 0;
-        int arg1 = 0;
-        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
-        ok &= jsval_to_int32(cx, args.get(1), (int32_t *)&arg1);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_ComTarget_Create : Error processing arguments");
-        cobj->Create(arg0, arg1);
-        args.rval().setUndefined();
-        return true;
-    }
-    if (argc == 3) {
-        int arg0 = 0;
-        int arg1 = 0;
-        double arg2 = 0;
-        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
-        ok &= jsval_to_int32(cx, args.get(1), (int32_t *)&arg1);
-        ok &= JS::ToNumber( cx, args.get(2), &arg2) && !std::isnan(arg2);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_ComTarget_Create : Error processing arguments");
-        cobj->Create(arg0, arg1, arg2);
-        args.rval().setUndefined();
-        return true;
-    }
-    if (argc == 4) {
-        int arg0 = 0;
-        int arg1 = 0;
-        double arg2 = 0;
-        double arg3 = 0;
-        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
-        ok &= jsval_to_int32(cx, args.get(1), (int32_t *)&arg1);
-        ok &= JS::ToNumber( cx, args.get(2), &arg2) && !std::isnan(arg2);
-        ok &= JS::ToNumber( cx, args.get(3), &arg3) && !std::isnan(arg3);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_ComTarget_Create : Error processing arguments");
-        cobj->Create(arg0, arg1, arg2, arg3);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_ComTarget_Create : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
-bool js_app_ComTarget_create_ComTarget(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    if (argc == 0) {
-
-        Genius::IComponent* ret = Genius::ComTarget::create_ComTarget();
-        jsval jsret = JSVAL_NULL;
-        if (ret) {
-        jsret = OBJECT_TO_JSVAL(js_get_or_create_jsobject<Genius::IComponent>(cx, (Genius::IComponent*)ret));
-    } else {
-        jsret = JSVAL_NULL;
-    };
-        args.rval().set(jsret);
-        return true;
-    }
-    JS_ReportError(cx, "js_app_ComTarget_create_ComTarget : wrong number of arguments");
-    return false;
-}
-
-
-extern JSObject *jsb_Genius_IComponent_prototype;
-
-void js_register_app_ComTarget(JSContext *cx, JS::HandleObject global) {
-    jsb_Genius_ComTarget_class = (JSClass *)calloc(1, sizeof(JSClass));
-    jsb_Genius_ComTarget_class->name = "ComTarget";
-    jsb_Genius_ComTarget_class->addProperty = JS_PropertyStub;
-    jsb_Genius_ComTarget_class->delProperty = JS_DeletePropertyStub;
-    jsb_Genius_ComTarget_class->getProperty = JS_PropertyStub;
-    jsb_Genius_ComTarget_class->setProperty = JS_StrictPropertyStub;
-    jsb_Genius_ComTarget_class->enumerate = JS_EnumerateStub;
-    jsb_Genius_ComTarget_class->resolve = JS_ResolveStub;
-    jsb_Genius_ComTarget_class->convert = JS_ConvertStub;
-    jsb_Genius_ComTarget_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-    static JSPropertySpec properties[] = {
-        JS_PS_END
-    };
-
-    static JSFunctionSpec funcs[] = {
-        JS_FN("Create", js_app_ComTarget_Create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FS_END
-    };
-
-    static JSFunctionSpec st_funcs[] = {
-        JS_FN("create_ComTarget", js_app_ComTarget_create_ComTarget, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FS_END
-    };
-
-    JS::RootedObject parent_proto(cx, jsb_Genius_IComponent_prototype);
-    jsb_Genius_ComTarget_prototype = JS_InitClass(
-        cx, global,
-        parent_proto,
-        jsb_Genius_ComTarget_class,
-        dummy_constructor<Genius::ComTarget>, 0, // no constructor
-        properties,
-        funcs,
-        NULL, // no static properties
-        st_funcs);
-
-    JS::RootedObject proto(cx, jsb_Genius_ComTarget_prototype);
-    JS::RootedValue className(cx, std_string_to_jsval(cx, "ComTarget"));
-    JS_SetProperty(cx, proto, "_className", className);
-    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
-    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
-    // add the proto and JSClass to the type->js info hash table
-    jsb_register_class<Genius::ComTarget>(cx, jsb_Genius_ComTarget_class, proto, parent_proto);
-}
-
 JSClass  *jsb_Genius_ComParticle_class;
 JSObject *jsb_Genius_ComParticle_prototype;
 
@@ -2569,105 +2442,6 @@ void js_register_app_ComPawnBevtree(JSContext *cx, JS::HandleObject global) {
     JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
     // add the proto and JSClass to the type->js info hash table
     jsb_register_class<Genius::ComPawnBevtree>(cx, jsb_Genius_ComPawnBevtree_class, proto, parent_proto);
-}
-
-JSClass  *jsb_Genius_ComBulletAgent_class;
-JSObject *jsb_Genius_ComBulletAgent_prototype;
-
-bool js_app_ComBulletAgent_Create(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::ComBulletAgent* cobj = (Genius::ComBulletAgent *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComBulletAgent_Create : Invalid Native Object");
-    if (argc == 1) {
-        cfg::Bullet_cfg* arg0 = nullptr;
-        do {
-            if (args.get(0).isNull()) { arg0 = nullptr; break; }
-            if (!args.get(0).isObject()) { ok = false; break; }
-            js_proxy_t *jsProxy;
-            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
-            jsProxy = jsb_get_js_proxy(tmpObj);
-            arg0 = (cfg::Bullet_cfg*)(jsProxy ? jsProxy->ptr : NULL);
-            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
-        } while (0);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_ComBulletAgent_Create : Error processing arguments");
-        cobj->Create(arg0);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_ComBulletAgent_Create : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
-bool js_app_ComBulletAgent_create_ComBulletAgent(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    if (argc == 0) {
-
-        Genius::IComponent* ret = Genius::ComBulletAgent::create_ComBulletAgent();
-        jsval jsret = JSVAL_NULL;
-        if (ret) {
-        jsret = OBJECT_TO_JSVAL(js_get_or_create_jsobject<Genius::IComponent>(cx, (Genius::IComponent*)ret));
-    } else {
-        jsret = JSVAL_NULL;
-    };
-        args.rval().set(jsret);
-        return true;
-    }
-    JS_ReportError(cx, "js_app_ComBulletAgent_create_ComBulletAgent : wrong number of arguments");
-    return false;
-}
-
-
-extern JSObject *jsb_Genius_IComponent_prototype;
-
-void js_register_app_ComBulletAgent(JSContext *cx, JS::HandleObject global) {
-    jsb_Genius_ComBulletAgent_class = (JSClass *)calloc(1, sizeof(JSClass));
-    jsb_Genius_ComBulletAgent_class->name = "ComBulletAgent";
-    jsb_Genius_ComBulletAgent_class->addProperty = JS_PropertyStub;
-    jsb_Genius_ComBulletAgent_class->delProperty = JS_DeletePropertyStub;
-    jsb_Genius_ComBulletAgent_class->getProperty = JS_PropertyStub;
-    jsb_Genius_ComBulletAgent_class->setProperty = JS_StrictPropertyStub;
-    jsb_Genius_ComBulletAgent_class->enumerate = JS_EnumerateStub;
-    jsb_Genius_ComBulletAgent_class->resolve = JS_ResolveStub;
-    jsb_Genius_ComBulletAgent_class->convert = JS_ConvertStub;
-    jsb_Genius_ComBulletAgent_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-    static JSPropertySpec properties[] = {
-        JS_PS_END
-    };
-
-    static JSFunctionSpec funcs[] = {
-        JS_FN("Create", js_app_ComBulletAgent_Create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FS_END
-    };
-
-    static JSFunctionSpec st_funcs[] = {
-        JS_FN("create_ComBulletAgent", js_app_ComBulletAgent_create_ComBulletAgent, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FS_END
-    };
-
-    JS::RootedObject parent_proto(cx, jsb_Genius_IComponent_prototype);
-    jsb_Genius_ComBulletAgent_prototype = JS_InitClass(
-        cx, global,
-        parent_proto,
-        jsb_Genius_ComBulletAgent_class,
-        dummy_constructor<Genius::ComBulletAgent>, 0, // no constructor
-        properties,
-        funcs,
-        NULL, // no static properties
-        st_funcs);
-
-    JS::RootedObject proto(cx, jsb_Genius_ComBulletAgent_prototype);
-    JS::RootedValue className(cx, std_string_to_jsval(cx, "ComBulletAgent"));
-    JS_SetProperty(cx, proto, "_className", className);
-    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
-    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
-    // add the proto and JSClass to the type->js info hash table
-    jsb_register_class<Genius::ComBulletAgent>(cx, jsb_Genius_ComBulletAgent_class, proto, parent_proto);
 }
 
 JSClass  *jsb_Genius_ComBulletAnimBase_class;
@@ -4381,7 +4155,6 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
     js_register_app_EntityCreator(cx, ns);
     js_register_app_IComponent(cx, ns);
     js_register_app_ComBoxCollider(cx, ns);
-    js_register_app_ComTarget(cx, ns);
     js_register_app_ComPawnAgent(cx, ns);
     js_register_app_ComBulletAnimBase(cx, ns);
     js_register_app_ComBulletAnimArrow(cx, ns);
@@ -4394,7 +4167,6 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
     js_register_app_ComColliderHandler(cx, ns);
     js_register_app_ComBulletDamageNone(cx, ns);
     js_register_app_ComPawnDebugDraw(cx, ns);
-    js_register_app_ComBulletAgent(cx, ns);
     js_register_app_WorldWrapper(cx, ns);
     js_register_app_ComParticle(cx, ns);
     js_register_app_ComTransform(cx, ns);

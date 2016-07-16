@@ -112,16 +112,6 @@ bool js_app_ComAnimation_Create(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComAnimation_create_ComAnimation(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComAnimation_ComAnimation(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_Genius_ComTarget_class;
-extern JSObject *jsb_Genius_ComTarget_prototype;
-
-bool js_app_ComTarget_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_ComTarget_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_ComTarget(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_ComTarget_Create(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_ComTarget_create_ComTarget(JSContext *cx, uint32_t argc, jsval *vp);
-
 extern JSClass  *jsb_Genius_ComParticle_class;
 extern JSObject *jsb_Genius_ComParticle_prototype;
 
@@ -218,16 +208,6 @@ void js_register_app_ComPawnBevtree(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_ComPawnBevtree_Create(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnBevtree_create_ComPawnBevtree(JSContext *cx, uint32_t argc, jsval *vp);
-
-extern JSClass  *jsb_Genius_ComBulletAgent_class;
-extern JSObject *jsb_Genius_ComBulletAgent_prototype;
-
-bool js_app_ComBulletAgent_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_ComBulletAgent_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_ComBulletAgent(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_ComBulletAgent_Create(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_ComBulletAgent_create_ComBulletAgent(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComBulletAnimBase_class;
 extern JSObject *jsb_Genius_ComBulletAnimBase_prototype;

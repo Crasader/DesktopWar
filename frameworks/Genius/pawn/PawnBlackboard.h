@@ -33,13 +33,14 @@ namespace Genius
 	public:
 		ComPawnAgent*	m_pAgent;
 
+		// team stuff
 		int team;
-		/*int		m_HP;
-		int		m_moveSpeed;
-		int		m_attackSpeed;
-		int		m_attack;
-		int		m_defencePhy;
-		int		m_defenceMag;*/
+
+		// target stuff
+		int		targetType;
+		int		targetID;
+		float		targetX;
+		float		targetY;
 
 		std::queue<PawnAction*>		m_actionQueue;
 

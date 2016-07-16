@@ -15,10 +15,11 @@ namespace Genius
 	public:
 		EntityWrapper(Entity* ent);
 		~EntityWrapper();
+		int GetID();
 		IComponent* AddComponent(const char* name);
 		void AddTag(const char* tag);
 		void RemoveTag(const char* tag);
-		int GetID();
+		
 
 	private:
 		Entity* m_entity;

@@ -346,9 +346,6 @@
     <ClInclude Include="..\..\Genius\ECS\components\common\ComParticle.h">
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\components\common\ComTarget.h">
-      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnAgent.h">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClInclude>
@@ -414,9 +411,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnNavigation.h">
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAgent.h">
-      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\bullet\BulletDefines.h">
       <Filter>Genius\Logic\Bullet</Filter>
@@ -787,9 +781,6 @@
     <ClCompile Include="..\..\Genius\ECS\components\common\ComParticle.cpp">
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\components\common\ComTarget.cpp">
-      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnAgent.cpp">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClCompile>
@@ -855,9 +846,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnNavigation.cpp">
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAgent.cpp">
-      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\entity\EntityCreators.cpp">
       <Filter>Genius\Logic\Entity</Filter>

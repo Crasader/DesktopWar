@@ -26,7 +26,7 @@ void SystemBulletDebugDraw::ProcessEntity(Entity* e)
 {
 	ComBulletDebugDraw* debugCom = debugDrawMapper.get(e);
 	ComTransform* posCom = transMapper.get(e);
-	ComBulletAgent* bulletAgent = agentMapper.get(e);
+	ComPawnAgent* bulletAgent = agentMapper.get(e);
 	ComBoxCollider* ComBoxCollider = boxColliderMapper.get(e);
 	
 	if (nullptr != debugCom && nullptr != posCom && nullptr != bulletAgent && nullptr != ComBoxCollider)

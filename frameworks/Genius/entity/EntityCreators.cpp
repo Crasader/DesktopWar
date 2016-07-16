@@ -36,9 +36,9 @@ int EntityCreator::CreatePawn(int id, float x, float y, int team)
 	//auto tm = new ComTeam();
 	//tm->team = team;
 	//ent->AddComponent(tm);
-	auto targ = new ComTarget();
-	targ->Create(Target_Entity);
-	ent->AddComponent(targ);
+// 	auto targ = new ComTarget();
+// 	targ->Create(Target_Entity);
+// 	ent->AddComponent(targ);
 	ComPawnAnim* paCom = new ComPawnAnim();
 	paCom->Create(id);
 	ent->AddComponent(paCom);
@@ -94,9 +94,9 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	}
 
 	Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
-	auto bagent = new ComBulletAgent();
-	bagent->Create(bulletCfg);
-	ent->AddComponent(bagent);
+// 	auto bagent = new ComPawnAgent();
+// 	bagent->Create(bulletCfg);
+// 	ent->AddComponent(bagent);
 	auto pos = new ComTransform();
 	pos->x = x; pos->y = y;
 	ent->AddComponent(pos);
@@ -120,9 +120,9 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	else if (bulletCfg->moveType == BulletMoveType::BMT_Bezier)
 	{
 		pos->vx = 0; pos->vy = 0;
-		auto targ = new ComTarget();
-		targ->Create(Target_Location, 0, destX, destY);
-		ent->AddComponent(targ);
+// 		auto targ = new ComTarget();
+// 		targ->Create(Target_Location, 0, destX, destY);
+// 		ent->AddComponent(targ);
 		auto bez = new ComBezierMovement();
 		bez->Create(x, y, destX, destY, (abs(x - destX) + abs(y - destY)) / bulletCfg->flySpeed);
 		ent->AddComponent(bez);
@@ -143,9 +143,9 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 		int tarEntityID = fightSys->FindFirstTargetByTeam(team);
 		pos->vx = 0; pos->vy = bulletCfg->flySpeed;
 
-		auto targ = new ComTarget();
-		targ->Create(Target_Entity, tarEntityID);
-		ent->AddComponent(targ);
+// 		auto targ = new ComTarget();
+// 		targ->Create(Target_Entity, tarEntityID);
+// 		ent->AddComponent(targ);
 		auto delayTrack = new ComDelayTrackMoving();
 		delayTrack->Create(tarEntityID, bulletCfg->findTargetDelay);
 		ent->AddComponent(delayTrack);

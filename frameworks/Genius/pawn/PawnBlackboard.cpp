@@ -4,6 +4,8 @@
 #include "action/PawnActionFactory.h"
 #include "action/ActionHandler.h"
 #include "pawn/PawnDefines.h"
+#include "data/auto/Role_cfg.hpp"
+#include "data/auto/Bullet_cfg.hpp"
 #include "common/Log.h"
 
 using namespace Genius;

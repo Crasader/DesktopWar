@@ -10,7 +10,7 @@
 #include "../pawn/SystemPawnFight.h"
 #include "skill/BuffManager.h"
 
-#include "../../components/common/ComTarget.h"
+
 #include "../../components/pawn/ComPawnAgent.h"
 #include "pawn/PawnBlackboard.h"
 
@@ -53,18 +53,18 @@ void SystemBulletDamageScope::OnCollision(int id1, int id2)
 	if (nullptr == pOtherEntity)
 		return;
 
-	ComTarget* pMyComTarget = pEntity->GetComponent<ComTarget>();
-	if (nullptr == pMyComTarget)
+	auto myComAgent = pEntity->GetComponent<ComPawnAgent>();
+	if (nullptr == myComAgent)
 		return;
 
-	if (pMyComTarget->targetType == Target_Entity)
+	if (myComAgent->GetBlackboard()->targetType == Target_Entity)
 	{
-		if (pMyComTarget->targetID == id2)
+		if (myComAgent->GetBlackboard()->targetID == id2)
 		{
 			EventManager::GetSingleton()->FireEvent(BulletHitEvent(pEntity));
 		}
 	}
-	else if (pMyComTarget->targetType == Target_Location)
+	else if (myComAgent->GetBlackboard()->targetType == Target_Location)
 	{
 		;
 	}
@@ -77,7 +77,7 @@ bool SystemBulletDamageScope::TriggerBulletBuff(IEventData const &evt)
 	if (!IsMyEntity(ownerEntity))
 		return false;
 	ComBulletDamageScope* attackCom = damageMapper.get(ownerEntity);
-	ComBulletAgent* bulletAgent = agentMapper.get(ownerEntity);
+	ComPawnAgent* bulletAgent = agentMapper.get(ownerEntity);
 	if (nullptr == bulletAgent || nullptr == attackCom)
 		return false;
 
@@ -102,7 +102,7 @@ void SystemBulletDamageScope::FindTargetsInScope(Entity* pEntity, int radius, bo
 	ComTransform* myPosCom = transMapper.get(pEntity);
 	ComBulletDamageScope* myAttackCom = damageMapper.get(pEntity);
 	auto myComAgent = agentMapper.get(pEntity);
-	int myTeam = myComAgent->team;
+	int myTeam = myComAgent->GetBlackboard()->team;
 
 	auto sysMgr = ECSWorld::GetSingleton()->GetSystemManager();
 	SystemPawnFight* fightSys = sysMgr->GetSystem<SystemPawnFight>();

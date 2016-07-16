@@ -1,12 +1,19 @@
 
 #pragma once
 
-#include <string>
+
 #include "../../core/IComponent.h"
-#include "data/auto/Role_cfg.hpp"
+
+
+namespace cfg
+{
+	class Role_cfg;
+	class Bullet_cfg;
+}
 
 namespace Genius
 {
+
 	class PawnBlackboard;
 
 	class ComPawnAgent : public IComponent
@@ -15,17 +22,17 @@ namespace Genius
 		COM_CREATE_FN_DECL(ComPawnAgent);
 
 	public:
-		cfg::Role_cfg*					m_roleCfg;
-		PawnBlackboard*		m_pBlackboard;
-
 		void Create(int roleCfgID);
 		~ComPawnAgent();
-
-	public:
 		PawnBlackboard*		GetBlackboard(){ return m_pBlackboard; }
+		void AddAction(int type);
 
 	public:
-		void AddAction(int type);
+		cfg::Role_cfg*					m_roleCfg;
+		cfg::Bullet_cfg*					pBulletData;
+
+	private:
+		PawnBlackboard*		m_pBlackboard;
 
 	};
 

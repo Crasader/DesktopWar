@@ -13,7 +13,6 @@ using namespace Genius;
 void SystemBulletTarget::Initialize()
 {
 	transMapper.init(*world);
-	targetMapper.init(*world);
 	agentMapper.init(*world);
 
 	// register event.

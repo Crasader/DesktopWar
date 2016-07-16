@@ -3,6 +3,7 @@
 #include "../Buff.h"
 #include "data/auto/Buff_cfg.hpp"
 #include "data/auto/Bullet_cfg.hpp"
+#include "data/auto/Role_cfg.hpp"
 #include "common/Log.h"
 #include "ECS/ecs.h"
 #include "pawn/PawnBlackboard.h"
@@ -79,7 +80,7 @@ void BL_Damage::OnEffect(Buff* buff)
 		}
 		else if (buffCfg->calType == CalcType::Bullet)
 		{
-			ComBulletAgent* agentSender = senderEntity->GetComponent<ComBulletAgent>();
+			ComPawnAgent* agentSender = senderEntity->GetComponent<ComPawnAgent>();
 			ComPawnAgent* agentReceiver = receiverEntity->GetComponent<ComPawnAgent>();
 			if (nullptr == agentSender
 				|| nullptr == agentReceiver)

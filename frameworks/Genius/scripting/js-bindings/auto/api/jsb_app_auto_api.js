@@ -422,39 +422,6 @@ ComAnimation : function (
 };
 
 /**
- * @class ComTarget
- */
-ComTarget = {
-
-/**
- * @method Create
- * @param {int} arg0
- * @param {int} arg1
- * @param {float} arg2
- * @param {float} arg3
- */
-Create : function (
-int, 
-int, 
-float, 
-float 
-)
-{
-},
-
-/**
- * @method create_ComTarget
- * @return {Genius::IComponent}
- */
-create_ComTarget : function (
-)
-{
-    return Genius::IComponent;
-},
-
-};
-
-/**
  * @class ComParticle
  */
 ComParticle = {
@@ -851,33 +818,6 @@ str
  * @return {Genius::IComponent}
  */
 create_ComPawnBevtree : function (
-)
-{
-    return Genius::IComponent;
-},
-
-};
-
-/**
- * @class ComBulletAgent
- */
-ComBulletAgent = {
-
-/**
- * @method Create
- * @param {cfg::Bullet_cfg} arg0
- */
-Create : function (
-bullet_cfg 
-)
-{
-},
-
-/**
- * @method create_ComBulletAgent
- * @return {Genius::IComponent}
- */
-create_ComBulletAgent : function (
 )
 {
     return Genius::IComponent;

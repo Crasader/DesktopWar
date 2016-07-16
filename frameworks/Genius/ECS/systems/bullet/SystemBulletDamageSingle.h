@@ -4,7 +4,7 @@
 #include "../../core/ComponentMapper.h"
 #include "../../components/common/ComTransform.h"
 #include "../../components/bullet/ComBulletDamageSingle.h"
-#include "../../components//bullet/ComBulletAgent.h"
+#include "../../components/pawn/ComPawnAgent.h"
 
 namespace Genius
 {
@@ -13,12 +13,12 @@ namespace Genius
 	private:
 		ComponentMapper<ComTransform> transMapper;
 		ComponentMapper<ComBulletDamageSingle> damageMapper;
-		ComponentMapper<ComBulletAgent> agentMapper;
+		ComponentMapper<ComPawnAgent> agentMapper;
 
 	public:
 		SystemBulletDamageSingle()
 		{
-			SetComponentTypes<ComTransform, ComBulletDamageSingle, ComBulletAgent>();
+			SetComponentTypes<ComTransform, ComBulletDamageSingle, ComPawnAgent>();
 		}
 		virtual const char* GetName(){ return "SystemBulletDamageSingle"; }
 		virtual void Initialize();

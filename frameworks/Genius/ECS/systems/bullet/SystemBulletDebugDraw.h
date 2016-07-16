@@ -5,7 +5,7 @@
 #include "../../components/common/ComTransform.h"
 #include "../../components/common/ComBoxCollider.h"
 #include "../../components/bullet/ComBulletDebugDraw.h"
-#include "../../components//bullet/ComBulletAgent.h"
+#include "../../components/pawn/ComPawnAgent.h"
 
 namespace Genius
 {
@@ -15,12 +15,12 @@ namespace Genius
 		ComponentMapper<ComBulletDebugDraw> debugDrawMapper;
 		ComponentMapper<ComTransform> transMapper;
 		ComponentMapper<ComBoxCollider> boxColliderMapper;
-		ComponentMapper<ComBulletAgent> agentMapper;
+		ComponentMapper<ComPawnAgent> agentMapper;
 
 	public:
 		SystemBulletDebugDraw()
 		{
-			SetComponentTypes<ComBulletDebugDraw, ComTransform, ComBoxCollider, ComBulletAgent>();
+			SetComponentTypes<ComBulletDebugDraw, ComTransform, ComBoxCollider, ComPawnAgent>();
 		}
 		virtual const char* GetName(){ return "SystemBulletDebugDraw"; }
 		virtual void Initialize();

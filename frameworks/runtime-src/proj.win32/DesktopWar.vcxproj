@@ -191,7 +191,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\data\auto\Skill_cfg.hpp" />
     <ClInclude Include="..\..\Genius\data\BaseConfig.h" />
     <ClInclude Include="..\..\Genius\data\Headers.h" />
-    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAgent.h" />
     <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAnimArrow.h" />
     <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAnimBase.h" />
     <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAnimBomb.h" />
@@ -206,7 +205,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\ECS\components\common\ComColliderHandler.h" />
     <ClInclude Include="..\..\Genius\ECS\components\common\ComDelayTrackMovement.h" />
     <ClInclude Include="..\..\Genius\ECS\components\common\ComParticle.h" />
-    <ClInclude Include="..\..\Genius\ECS\components\common\ComTarget.h" />
     <ClInclude Include="..\..\Genius\ECS\components\common\ComTransform.h" />
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnAgent.h" />
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnAnim.h" />
@@ -345,7 +343,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\data\auto\Role_cfg.cpp" />
     <ClCompile Include="..\..\Genius\data\auto\Skill_cfg.cpp" />
     <ClCompile Include="..\..\Genius\data\BaseConfig.cpp" />
-    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAgent.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAnimArrow.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAnimBase.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAnimBomb.cpp" />
@@ -360,7 +357,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\ECS\components\common\ComColliderHandler.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\common\ComDelayTrackMovement.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\common\ComParticle.cpp" />
-    <ClCompile Include="..\..\Genius\ECS\components\common\ComTarget.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\common\ComTransform.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnAgent.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnAnim.cpp" />

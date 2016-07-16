@@ -70,13 +70,13 @@ void SystemBulletDamageSingle::collisionHandler(int id1, int id2)
 	auto pMyComAgent = agentMapper.get(pEntity);
 	auto pOtherComTeam = pOtherEntity->GetComponent<ComPawnAgent>();
 
-	if (pMyComAgent && pOtherComTeam && pMyComAgent->team != pOtherComTeam->GetBlackboard()->team)
+	if (pMyComAgent && pOtherComTeam && pMyComAgent->GetBlackboard()->team != pOtherComTeam->GetBlackboard()->team)
 	{
 		EventManager::GetSingleton()->FireEvent(BulletHitEvent(pEntity));
 		EventManager::GetSingleton()->FireEvent(StopMoveEvent(pEntity));
 
 		// 这里也是不合适，因为不一定碰撞之后就会触发buff。
-		ComBulletAgent* bulletAgent = agentMapper.get(pEntity);
+		ComPawnAgent* bulletAgent = agentMapper.get(pEntity);
 		if (bulletAgent)
 		{
 			const Bullet_cfg* bulletInfo = bulletAgent->pBulletData;
@@ -103,7 +103,7 @@ void SystemBulletDamageSingle::collisionHandler(int id1, int id2)
 		pPosCom->vy = 0;
 		pAttackCom->targetID = id2;
 
-		ComBulletAgent* bulletAgent = agentMapper.get(pOwnerEntity);
+		ComPawnAgent* bulletAgent = agentMapper.get(pOwnerEntity);
 		if (nullptr != bulletTempCom)
 		{
 			const BulletData* bulletInfo = bulletTempCom->pBulletData;
@@ -127,7 +127,7 @@ bool SystemBulletDamageSingle::TriggerBulletBuff(IEventData const &evt)
 	Entity* pOtherEntity = ECSWorld::GetSingleton()->GetEntity(pAttackCom->targetID);
 	if (pOtherEntity)
 	{
-		ComBulletAgent* bulletAgent = agentMapper.get(pOwnerEntity);
+		ComPawnAgent* bulletAgent = agentMapper.get(pOwnerEntity);
 		const Bullet_cfg* bulletInfo = bulletAgent->pBulletData;
 		for (int i = 0; i < 3; ++i)
 		{

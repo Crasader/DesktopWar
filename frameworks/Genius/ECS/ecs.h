@@ -13,7 +13,6 @@
 #include "components/common/ComBoxCollider.h"
 #include "components/common/ComColliderHandler.h"
 #include "components/common/ComAnimation.h"
-#include "components/common/ComTarget.h"
 #include "components/common/ComParticle.h"
 #include "components/common/ComBezierMovement.h"
 #include "components/common/ComDelayTrackMovement.h"
@@ -25,7 +24,7 @@
 #include "components/pawn/ComPawnNavigation.h"
 #include "components/pawn/ComPawnBevtree.h"
 
-#include "components/bullet/ComBulletAgent.h"
+
 #include "components/bullet/ComBulletAnimArrow.h"
 #include "components/bullet/ComBulletAnimBase.h"
 #include "components/bullet/ComBulletAnimBomb.h"

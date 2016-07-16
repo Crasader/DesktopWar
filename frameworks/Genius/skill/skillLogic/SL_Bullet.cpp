@@ -2,6 +2,7 @@
 #include "SL_Bullet.h"
 #include "../Skill.h"
 #include "data/auto/Skill_cfg.hpp"
+#include "data/auto/Role_cfg.hpp"
 #include "ECS/ecs.h"
 #include "entity/EntityCreators.h"
 #include "pawn/PawnBlackboard.h"
