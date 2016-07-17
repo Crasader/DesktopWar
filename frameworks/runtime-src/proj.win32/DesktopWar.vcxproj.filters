@@ -262,9 +262,6 @@
     <ClInclude Include="..\..\Genius\ECS\core\EntitySystem.h">
       <Filter>Genius\Logic\ESC\Core\System</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\core\GroupManager.h">
-      <Filter>Genius\Logic\ESC\Core\System</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\core\SystemBitManager.h">
       <Filter>Genius\Logic\ESC\Core\System</Filter>
     </ClInclude>
@@ -322,9 +319,6 @@
     <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletDebugDraw.h">
       <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\components\common\ComAnimation.h">
-      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\components\common\ComBezierMovement.h">
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClInclude>
@@ -368,9 +362,6 @@
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemBoxCollider.h">
-      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemSimpleAnim.h">
       <Filter>Genius\Logic\ESC\User\System\Common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletArrowAnim.h">
@@ -571,9 +562,6 @@
     <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletAnim.h">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnAnim.h">
-      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\EntityWrapper.h">
       <Filter>Genius\Logic\ESC</Filter>
     </ClInclude>
@@ -594,6 +582,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Genius\entity\EntityUtility.h">
       <Filter>Genius\Logic\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemRender.h">
+      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComRenderRoot.h">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -706,9 +700,6 @@
     <ClCompile Include="..\..\Genius\ECS\core\EntitySystem.cpp">
       <Filter>Genius\Logic\ESC\Core\System</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\core\GroupManager.cpp">
-      <Filter>Genius\Logic\ESC\Core\System</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\core\SystemBitManager.cpp">
       <Filter>Genius\Logic\ESC\Core\System</Filter>
     </ClCompile>
@@ -757,9 +748,6 @@
     <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletDebugDraw.cpp">
       <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\components\common\ComAnimation.cpp">
-      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\components\common\ComBezierMovement.cpp">
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClCompile>
@@ -803,9 +791,6 @@
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemBoxCollider.cpp">
-      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemSimpleAnim.cpp">
       <Filter>Genius\Logic\ESC\User\System\Common</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletArrowAnim.cpp">
@@ -982,9 +967,6 @@
     <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletAnim.cpp">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnAnim.cpp">
-      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\EntityWrapper.cpp">
       <Filter>Genius\Logic\ESC</Filter>
     </ClCompile>
@@ -1002,6 +984,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\entity\EntityUtility.cpp">
       <Filter>Genius\Logic\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemRender.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComRenderRoot.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

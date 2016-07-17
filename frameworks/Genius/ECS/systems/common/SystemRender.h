@@ -4,22 +4,22 @@
 #include "../../core/EntityProcessingSystem.h"
 #include "../../core/ComponentMapper.h"
 #include "../../components/common/ComTransform.h"
-#include "../../components/common/ComAnimation.h"
+#include "../../components/common/ComRenderRoot.h"
 
 namespace Genius
 {
-	class SystemSimpleAnim : public EntityProcessingSystem
+	class SystemRender : public EntityProcessingSystem
 	{
 	private:
-		ComponentMapper<ComAnimation>	animMapper;
+		ComponentMapper<ComRenderRoot>	animMapper;
 		ComponentMapper<ComTransform>		transMapper;
 
 	public:
-		SystemSimpleAnim()
+		SystemRender()
 		{
-			SetComponentTypes<ComAnimation, ComTransform>();
+			SetComponentTypes<ComRenderRoot, ComTransform>();
 		}
-		virtual const char* GetName(){ return "SystemSimpleAnim"; }
+		virtual const char* GetName(){ return "SystemRender"; }
 		virtual void Initialize();
 		virtual void ProcessEntity(Entity* e);
 	};

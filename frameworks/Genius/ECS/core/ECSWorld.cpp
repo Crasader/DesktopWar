@@ -21,7 +21,6 @@ namespace Genius
 	{
 		m_sysMgr = new SystemManager(*this);
 		m_entityMgr = new EntityManager(this);
-		m_groupMgr = new GroupManager();
 		m_pTagMgr = new TagManager();
 		m_deltaTime = 0;
 	}
@@ -31,7 +30,6 @@ namespace Genius
 		//Entity manager should be deleted first.
 		delete m_entityMgr;
 		delete m_sysMgr;
-		delete m_groupMgr;
 		delete m_pTagMgr;
 		ComponentTypeManager::deleteComponentTypes();
 		SystemBitManager::RemoveBitSets();
@@ -61,11 +59,6 @@ namespace Genius
 		return m_entityMgr;
 	}
 
-	GroupManager* ECSWorld::GetGroupManager()
-	{
-		return m_groupMgr;
-	}
-
 	TagManager* ECSWorld::GetTagManager()
 	{
 		return m_pTagMgr;
@@ -88,7 +81,6 @@ namespace Genius
 			for (int i = 0; i < m_deletedEntities.getCount(); i++)
 			{
 				Entity* e = m_deletedEntities.get(i);
-				m_groupMgr->Remove(e);
 				m_pTagMgr->Remove(e);
 				m_entityMgr->Remove(e);
 			}

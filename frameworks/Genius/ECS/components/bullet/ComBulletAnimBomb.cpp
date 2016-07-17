@@ -50,11 +50,11 @@ void ComBulletAnimBomb::AnimationMovementCallback(cocostudio::Armature *cca, coc
 		break;
 	case cocostudio::COMPLETE:
 		if (animName == explodeAnimName)
-			ECSWorld::GetSingleton()->DeleteEntity(GetOwner());
+			ECSWorld::GetSingleton()->DeleteEntity(GetEntity());
 		break;
 	case cocostudio::LOOP_COMPLETE:
 		if (animName == explodeAnimName)
-			ECSWorld::GetSingleton()->DeleteEntity(GetOwner());
+			ECSWorld::GetSingleton()->DeleteEntity(GetEntity());
 		break;
 	default:
 		break;
@@ -65,7 +65,7 @@ void ComBulletAnimBomb::AnimationFrameCallback(cocostudio::Bone* bone, const std
 {
 	if (eventName == "buff")
 	{
-		EventManager::GetSingleton()->FireEvent(BulletTriggerEvent(GetOwner()));
+		EventManager::GetSingleton()->FireEvent(BulletTriggerEvent(GetEntity()));
 	}
 	else
 	{

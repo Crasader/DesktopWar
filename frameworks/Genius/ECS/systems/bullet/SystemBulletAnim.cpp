@@ -22,7 +22,7 @@ void SystemBulletAnim::ProcessEntity(Entity* pEntity)
 	ComTransform* pPosCom = transMapper.get(pEntity);
 	ComBulletAnimBase* animCom = animMapper.get(pEntity);
 
-	animCom->m_pAvatarRoot->setPosition(pPosCom->x, pPosCom->y);
+	//animCom->m_pAvatarRoot->setPosition(pPosCom->x, pPosCom->y);
 	float rotation = 0;
 	if (pPosCom->vx == 0)
 	{

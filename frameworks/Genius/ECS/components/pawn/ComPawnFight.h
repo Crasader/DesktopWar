@@ -24,7 +24,7 @@ namespace Genius
 	public:
 		ComPawnFight();
 		~ComPawnFight();
-		virtual bool Init();
+		virtual void OnAwake();
 	};
 
 	

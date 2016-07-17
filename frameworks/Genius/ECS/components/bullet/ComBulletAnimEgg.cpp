@@ -23,10 +23,10 @@ void ComBulletAnimEgg::AnimationMovementCallback(cocostudio::Armature *cca, coco
 	case cocostudio::START:
 		break;
 	case cocostudio::COMPLETE:
-		ECSWorld::GetSingleton()->DeleteEntity(GetOwner());
+		ECSWorld::GetSingleton()->DeleteEntity(GetEntity());
 		break;
 	case cocostudio::LOOP_COMPLETE:
-		ECSWorld::GetSingleton()->DeleteEntity(GetOwner());
+		ECSWorld::GetSingleton()->DeleteEntity(GetEntity());
 		break;
 	default:
 		break;
@@ -37,7 +37,7 @@ void ComBulletAnimEgg::AnimationFrameCallback(cocostudio::Bone* bone, const std:
 {
 	if (eventName == "buff")
 	{
-		EventManager::GetSingleton()->FireEvent(BulletTriggerEvent(GetOwner()));
+		EventManager::GetSingleton()->FireEvent(BulletTriggerEvent(GetEntity()));
 	}
 	else
 	{

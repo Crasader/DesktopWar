@@ -1,5 +1,7 @@
 
 #include "ComPawnAnim.h"
+#include "ComPawnAgent.h"
+#include "ecs/components/common/ComRenderRoot.h"
 #include "pawn/PawnDefines.h"
 #include "data/auto/Role_cfg.hpp"
 #include "data/ConfigPool.h"
@@ -10,7 +12,7 @@
 #include "skill/SkillManager.h"
 #include "skill/BuffManager.h"
 #include "../../core/Entity.h"
-#include "ComPawnAgent.h"
+
 #include "pawn/PawnBlackboard.h"
 #include "pawn/anim/animFSM/AnimFSM.h"
 #include "pawn/anim/animFSM/AnimFSMSimple.h"
@@ -32,12 +34,20 @@ void ComPawnAnim::Create(int roleID)
 {
 	m_curAction = Action_Idle;
 	m_pAnimFsm = nullptr;
+
+	auto render = GetEntity()->GetComponent<ComRenderRoot>();
+	if (nullptr == render)
+	{
+		Log::Error("ComPawnAnim.create : ComRenderRoot required .");
+		return;
+	}
+
 	auto roleCfg = FIND_CFG(Role_cfg, roleID);
 	if (roleCfg)
 	{
 		//root node
 		m_pAvatarRoot = cocos2d::Node::create();
-		SceneManager::GetSingleton()->AddToMapLayer(m_pAvatarRoot);
+		render->AddChild(m_pAvatarRoot);
 		
 		// life bar
 		m_pLifeBar = UIBar::create(roleCfg->lifeBarType);
@@ -62,37 +72,34 @@ void ComPawnAnim::Create(int roleID)
 		m_pAvatarRoot->addChild(m_pDebugLabel);
 	}
 
-	GetOwner()->GetComponent<ComPawnAgent>()->GetBlackboard()->AddActionHandler(this);
+	GetEntity()->GetComponent<ComPawnAgent>()->GetBlackboard()->AddActionHandler(this);
 
 	CreateAnimFSM(AFT_Simple);
 
 	m_pAnimSet = new AnimSetSimple(this);
 
-	EventManager::GetSingleton()->FireEvent(NodeCreatedEvent(GetOwner(), m_pAvatarRoot));
+	EventManager::GetSingleton()->FireEvent(NodeCreatedEvent(GetEntity(), m_pAvatarRoot));
 }
 
 ComPawnAnim::~ComPawnAnim()
 {
-	if (m_pAvatarRoot)
-	{
-		m_pAvatarRoot->removeFromParent();
-		m_pAvatarRoot = nullptr;
-	}
+	
+}
 
+void	ComPawnAnim::OnAwake()
+{
+
+}
+
+void ComPawnAnim::OnDestroy()
+{
 	if (m_pAnimFsm != nullptr)
 		delete m_pAnimFsm;
 
 	if (m_pAnimSet != nullptr)
 		delete m_pAnimSet;
 
-	GetOwner()->GetComponent<ComPawnAgent>()->GetBlackboard()->RemoveActionHandler(this);
-}
-
-bool	ComPawnAnim::Init()
-{
-	IComponent::Init();
-
-	return true;
+	GetEntity()->GetComponent<ComPawnAgent>()->GetBlackboard()->RemoveActionHandler(this);
 }
 
 void ComPawnAnim::HandleAction(PawnAction* pAction)
@@ -137,11 +144,11 @@ void ComPawnAnim::AnimationMovementCallback(cocostudio::Armature *cca, cocostudi
 		//printf("START\n");
 		break;
 	case cocostudio::COMPLETE:
-		EventManager::GetSingleton()->FireEvent(AnimationMovementEvent(animName, (int)movType, this->GetOwner()->GetId()));
+		EventManager::GetSingleton()->FireEvent(AnimationMovementEvent(animName, (int)movType, this->GetEntity()->GetId()));
 		//printf("COMPLETE\n");
 		break;
 	case cocostudio::LOOP_COMPLETE:
-		EventManager::GetSingleton()->FireEvent(AnimationMovementEvent(animName, (int)movType, this->GetOwner()->GetId()));
+		EventManager::GetSingleton()->FireEvent(AnimationMovementEvent(animName, (int)movType, this->GetEntity()->GetId()));
 		break;
 	default:
 		break;
@@ -155,23 +162,23 @@ void ComPawnAnim::AnimationFrameCallback(cocostudio::Bone* bone, const std::stri
 
 	if (eventName == "attack")
 	{
-		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetOwner(), UseSkillEvent::NormalSkill1));
+		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetEntity(), UseSkillEvent::NormalSkill1));
 	}
 	else if (eventName == "attack2")
 	{
-		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetOwner(), UseSkillEvent::NormalSkill2));
+		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetEntity(), UseSkillEvent::NormalSkill2));
 	}
 	else if (eventName == "skill")
 	{
-		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetOwner(), UseSkillEvent::SpecialSkill1));
+		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetEntity(), UseSkillEvent::SpecialSkill1));
 	}
 	else if (eventName == "skill2")
 	{
-		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetOwner(), UseSkillEvent::SpecialSkill2));
+		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetEntity(), UseSkillEvent::SpecialSkill2));
 	}
 	else if (eventName == "skill3")
 	{
-		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetOwner(), UseSkillEvent::SpecialSkill3));
+		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetEntity(), UseSkillEvent::SpecialSkill3));
 	}
 	else
 	{

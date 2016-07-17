@@ -21,6 +21,7 @@ namespace Genius
 	public:
 		void Create(const std::string& bodyFileName);
 		virtual ~ComBulletAnimBase();
+		virtual void OnDestroy();
 	};
 };
 

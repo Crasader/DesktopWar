@@ -43,7 +43,7 @@ void AnimStateMove::Initialize()
 
 void AnimStateMove::PlayAnim()
 {
-	ComTransform* pComPawnDir = m_pComPawnAnim->GetOwner()->GetComponent<ComTransform>();
+	ComTransform* pComPawnDir = m_pComPawnAnim->GetEntity()->GetComponent<ComTransform>();
 	if (nullptr == pComPawnDir)
 		return;
 

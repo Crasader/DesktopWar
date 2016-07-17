@@ -3,6 +3,7 @@
 var ComponentName =
 {
     Transform:"ComTransform",
+    Render:"ComRenderRoot",
     BoxCollider:"ComBoxCollider",
     ColliderHandler:"ComColliderHandler",
     Animation:"ComAnimation",

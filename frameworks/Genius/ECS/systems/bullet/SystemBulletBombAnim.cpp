@@ -25,7 +25,7 @@ void SystemBulletBombAnim::ProcessEntity(Entity* pEntity)
 	
 	ComBulletAnimBomb* animCom = animMapper.get(pEntity);
 
-	animCom->m_pAvatarRoot->setPosition(pPosCom->x, pPosCom->y);
+	//animCom->m_pAvatarRoot->setPosition(pPosCom->x, pPosCom->y);
 	float rotation = 0;
 	if (animCom->m_pBodyArmature)
 		rotation = animCom->m_pBodyArmature->getRotation();

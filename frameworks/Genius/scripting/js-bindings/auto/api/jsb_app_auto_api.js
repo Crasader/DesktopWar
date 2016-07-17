@@ -268,6 +268,32 @@ LoadingManager : function (
  */
 IComponent = {
 
+/**
+ * @method OnDestroy
+ */
+OnDestroy : function (
+)
+{
+},
+
+/**
+ * @method GetEntity
+ * @return {Genius::Entity}
+ */
+GetEntity : function (
+)
+{
+    return Genius::Entity;
+},
+
+/**
+ * @method OnAwake
+ */
+OnAwake : function (
+)
+{
+},
+
 };
 
 /**
@@ -309,16 +335,6 @@ int
 {
 },
 
-/**
- * @method create_ComTransform
- * @return {Genius::IComponent}
- */
-create_ComTransform : function (
-)
-{
-    return Genius::IComponent;
-},
-
 };
 
 /**
@@ -344,16 +360,6 @@ float
 {
 },
 
-/**
- * @method create_ComBoxCollider
- * @return {Genius::IComponent}
- */
-create_ComBoxCollider : function (
-)
-{
-    return Genius::IComponent;
-},
-
 };
 
 /**
@@ -374,47 +380,52 @@ func
 },
 
 /**
- * @method create_ComColliderHandler
- * @return {Genius::IComponent}
+ * @method ComColliderHandler
+ * @constructor
  */
-create_ComColliderHandler : function (
+ComColliderHandler : function (
 )
 {
-    return Genius::IComponent;
 },
 
 };
 
 /**
- * @class ComAnimation
+ * @class ComRenderRoot
  */
-ComAnimation = {
+ComRenderRoot = {
 
 /**
- * @method Create
- * @param {String} arg0
+ * @method AddChild
+ * @param {cc.Node} arg0
  */
-Create : function (
-str 
+AddChild : function (
+node 
 )
 {
 },
 
 /**
- * @method create_ComAnimation
- * @return {Genius::IComponent}
+ * @method OnDestroy
  */
-create_ComAnimation : function (
+OnDestroy : function (
 )
 {
-    return Genius::IComponent;
 },
 
 /**
- * @method ComAnimation
+ * @method OnAwake
+ */
+OnAwake : function (
+)
+{
+},
+
+/**
+ * @method ComRenderRoot
  * @constructor
  */
-ComAnimation : function (
+ComRenderRoot : function (
 )
 {
 },
@@ -434,16 +445,6 @@ Create : function (
 str 
 )
 {
-},
-
-/**
- * @method create_ComParticle
- * @return {Genius::IComponent}
- */
-create_ComParticle : function (
-)
-{
-    return Genius::IComponent;
 },
 
 };
@@ -489,16 +490,6 @@ IsDone : function (
     return false;
 },
 
-/**
- * @method create_ComBezierMovement
- * @return {Genius::IComponent}
- */
-create_ComBezierMovement : function (
-)
-{
-    return Genius::IComponent;
-},
-
 };
 
 /**
@@ -536,16 +527,6 @@ GetBlackboard : function (
 )
 {
     return Genius::PawnBlackboard;
-},
-
-/**
- * @method create_ComPawnAgent
- * @return {Genius::IComponent}
- */
-create_ComPawnAgent : function (
-)
-{
-    return Genius::IComponent;
 },
 
 };
@@ -634,6 +615,14 @@ str
 },
 
 /**
+ * @method OnAwake
+ */
+OnAwake : function (
+)
+{
+},
+
+/**
  * @method GetWidth
  * @return {float}
  */
@@ -644,13 +633,11 @@ GetWidth : function (
 },
 
 /**
- * @method Init
- * @return {bool}
+ * @method OnDestroy
  */
-Init : function (
+OnDestroy : function (
 )
 {
-    return false;
 },
 
 /**
@@ -714,16 +701,6 @@ Clear : function (
 {
 },
 
-/**
- * @method create_ComPawnDebugDraw
- * @return {Genius::IComponent}
- */
-create_ComPawnDebugDraw : function (
-)
-{
-    return Genius::IComponent;
-},
-
 };
 
 /**
@@ -732,23 +709,11 @@ create_ComPawnDebugDraw : function (
 ComPawnFight = {
 
 /**
- * @method Init
- * @return {bool}
+ * @method OnAwake
  */
-Init : function (
+OnAwake : function (
 )
 {
-    return false;
-},
-
-/**
- * @method create_ComPawnFight
- * @return {Genius::IComponent}
- */
-create_ComPawnFight : function (
-)
-{
-    return Genius::IComponent;
 },
 
 /**
@@ -780,16 +745,6 @@ float
 },
 
 /**
- * @method create_ComPawnNavigation
- * @return {Genius::IComponent}
- */
-create_ComPawnNavigation : function (
-)
-{
-    return Genius::IComponent;
-},
-
-/**
  * @method ComPawnNavigation
  * @constructor
  */
@@ -816,13 +771,12 @@ str
 },
 
 /**
- * @method create_ComPawnBevtree
- * @return {Genius::IComponent}
+ * @method ComPawnBevtree
+ * @constructor
  */
-create_ComPawnBevtree : function (
+ComPawnBevtree : function (
 )
 {
-    return Genius::IComponent;
 },
 
 };
@@ -843,13 +797,11 @@ str
 },
 
 /**
- * @method create_ComBulletAnimBase
- * @return {Genius::IComponent}
+ * @method OnDestroy
  */
-create_ComBulletAnimBase : function (
+OnDestroy : function (
 )
 {
-    return Genius::IComponent;
 },
 
 };
@@ -905,16 +857,6 @@ int
 StayStill : function (
 )
 {
-},
-
-/**
- * @method create_ComBulletAnimArrow
- * @return {Genius::IComponent}
- */
-create_ComBulletAnimArrow : function (
-)
-{
-    return Genius::IComponent;
 },
 
 };
@@ -974,32 +916,12 @@ StartExplode : function (
 {
 },
 
-/**
- * @method create_ComBulletAnimBomb
- * @return {Genius::IComponent}
- */
-create_ComBulletAnimBomb : function (
-)
-{
-    return Genius::IComponent;
-},
-
 };
 
 /**
  * @class ComBulletDamageNone
  */
 ComBulletDamageNone = {
-
-/**
- * @method create_ComBulletDamageNone
- * @return {Genius::IComponent}
- */
-create_ComBulletDamageNone : function (
-)
-{
-    return Genius::IComponent;
-},
 
 /**
  * @method ComBulletDamageNone
@@ -1018,16 +940,6 @@ ComBulletDamageNone : function (
 ComBulletDamageScope = {
 
 /**
- * @method create_ComBulletDamageScope
- * @return {Genius::IComponent}
- */
-create_ComBulletDamageScope : function (
-)
-{
-    return Genius::IComponent;
-},
-
-/**
  * @method ComBulletDamageScope
  * @constructor
  */
@@ -1043,16 +955,6 @@ ComBulletDamageScope : function (
  */
 ComBulletDamageSingle = {
 
-/**
- * @method create_ComBulletDamageSingle
- * @return {Genius::IComponent}
- */
-create_ComBulletDamageSingle : function (
-)
-{
-    return Genius::IComponent;
-},
-
 };
 
 /**
@@ -1066,16 +968,6 @@ ComBulletDebugDraw = {
 Clear : function (
 )
 {
-},
-
-/**
- * @method create_ComBulletDebugDraw
- * @return {Genius::IComponent}
- */
-create_ComBulletDebugDraw : function (
-)
-{
-    return Genius::IComponent;
 },
 
 /**
@@ -1132,16 +1024,6 @@ int,
 int 
 )
 {
-},
-
-/**
- * @method create_ComBulletAnimEgg
- * @return {Genius::IComponent}
- */
-create_ComBulletAnimEgg : function (
-)
-{
-    return Genius::IComponent;
 },
 
 };

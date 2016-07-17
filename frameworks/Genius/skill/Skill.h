@@ -48,7 +48,7 @@ namespace Genius
 		void _DeactiveMe();
 
 	public:
-		int GetOwner(){ return m_ownerID; }
+		int GetEntity(){ return m_ownerID; }
 		void		SetSkillCfg(int tp);
 		cfg::Skill_cfg* GetSkillCfg(){ return m_skillData; }
 		std::vector<int>& GetTargetList(){ return m_targetList; }

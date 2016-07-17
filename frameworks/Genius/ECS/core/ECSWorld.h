@@ -2,7 +2,6 @@
 
 #include "ImmutableBag.h"
 #include "TagManager.h"
-#include "GroupManager.h"
 #include <map>
 
 namespace Genius
@@ -22,7 +21,6 @@ namespace Genius
 		SystemManager*		GetSystemManager();
 		EntityManager*		GetEntityManager();
 		TagManager*			GetTagManager();
-		GroupManager*		GetGroupManager();
 
 		EntitySystem* AddSystem(EntitySystem*);
 		void Initialize();
@@ -52,7 +50,6 @@ namespace Genius
 		SystemManager*		m_sysMgr;
 		EntityManager*		m_entityMgr;
 		TagManager*			m_pTagMgr;
-		GroupManager*		m_groupMgr;
 		Bag<Entity*>			m_refreshedEntities;
 		Bag<Entity*>			m_deletedEntities;
 		float							m_deltaTime;

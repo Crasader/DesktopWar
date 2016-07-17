@@ -34,11 +34,11 @@ void ComBulletAnimArrow::AnimationMovementCallback(cocostudio::Armature *cca, co
 		break;
 	case cocostudio::COMPLETE:
 		if (animName == stopAnimName)
-			ECSWorld::GetSingleton()->DeleteEntity(GetOwner());
+			ECSWorld::GetSingleton()->DeleteEntity(GetEntity());
 		break;
 	case cocostudio::LOOP_COMPLETE:
 		if (animName == stopAnimName)
-			ECSWorld::GetSingleton()->DeleteEntity(GetOwner());
+			ECSWorld::GetSingleton()->DeleteEntity(GetEntity());
 		break;
 	default:
 		break;
@@ -48,5 +48,5 @@ void ComBulletAnimArrow::AnimationMovementCallback(cocostudio::Armature *cca, co
 void ComBulletAnimArrow::AnimationFrameCallback(cocostudio::Bone* bone, const std::string& eventName, int oriIdx, int currentIdx)
 {
 	/*if (eventName == "buff")
-		EventManager::GetSingleton()->FireEvent(BulletHitEvent(this->GetOwner()));*/
+		EventManager::GetSingleton()->FireEvent(BulletHitEvent(this->GetEntity()));*/
 }

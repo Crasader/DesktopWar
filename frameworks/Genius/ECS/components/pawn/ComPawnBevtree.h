@@ -25,6 +25,8 @@ namespace Genius
 
 	public:
 
+		ComPawnBevtree();
+
 		virtual ~ComPawnBevtree();
 
 		void Create(std::string fileName);

@@ -14,7 +14,7 @@ typedef IComponent* (*CreateComFunc)(void);
 static unordered_map<std::string, CreateComFunc> sCreateComFuncs;
 
 #define REG_CREATE_COM(classname)\
-	sCreateComFuncs[#classname] = classname::create_## classname;
+	sCreateComFuncs[#classname] = classname::create_inst;
 
 
 
@@ -26,7 +26,7 @@ static void _lazyInitComFuncs()
 	REG_CREATE_COM(ComTransform);
 	REG_CREATE_COM(ComBoxCollider);
 	REG_CREATE_COM(ComColliderHandler);
-	REG_CREATE_COM(ComAnimation);
+	REG_CREATE_COM(ComRenderRoot);
 	REG_CREATE_COM(ComParticle);
 	REG_CREATE_COM(ComBezierMovement);
 	REG_CREATE_COM(ComDelayTrackMoving);

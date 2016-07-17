@@ -15,10 +15,9 @@ var Monster = {
 		var roleCfg = Config.Role[id];
 
         var agent = entCpp.AddComponent(ComponentName.PawnAgent);
-		agent.Create(id);
+		agent.Create(id,true);
 
-        //var tm = entCpp.AddComponent(ComponentName.Team);
-        //tm.SetTeam(team);
+        entCpp.AddComponent(ComponentName.Render);
 
         //var targ = entCpp.AddComponent(ComponentName.Target);
         //targ.Create(0,0,0,0);

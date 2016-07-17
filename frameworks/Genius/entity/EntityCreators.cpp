@@ -35,6 +35,9 @@ int EntityCreator::CreatePawn(int id, float x, float y, const std::string& tag)
 	pos->vx = 0; pos->vy = 0;
 	ent->AddComponent(pos);
 
+	auto render = new ComRenderRoot();
+	ent->AddComponent(render);
+
 	ComPawnAnim* paCom = new ComPawnAnim();
 	ent->AddComponent(paCom);
 	paCom->Create(id);
@@ -64,14 +67,14 @@ int EntityCreator::CreatePawn(int id, float x, float y, const std::string& tag)
 		ent->AddComponent(dd);
 	}
 
-	if (tag == GameDefine::Tag_Soldier)
+	/*if (tag == GameDefine::Tag_Soldier)
 	{
 		ECSWorld::GetSingleton()->GetGroupManager()->Set(GameDefine::Tag_Soldier, ent);
 	}
 	else if (tag == GameDefine::Tag_Soldier)
 	{
 		ECSWorld::GetSingleton()->GetGroupManager()->Set(GameDefine::Tag_Monster, ent);
-	}
+	}*/
 	
 	ent->Refresh();
 
@@ -104,6 +107,9 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	pos->x = x; pos->y = y;
 	ent->AddComponent(pos);
 
+	auto render = new ComRenderRoot();
+	ent->AddComponent(render);
+
 	auto box = new ComBoxCollider();
 	box->Create(true, 0, 0, bulletCfg->boxWidth, bulletCfg->boxHeight);
 	ent->AddComponent(box);
@@ -114,9 +120,11 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	{
 		pos->vx = 0; pos->vy = 0;
 		ent->AddComponent(new ComBulletDamageNone());
+
 		auto baegg = new ComBulletAnimEgg();
-		baegg->Create(anim_cfg->name);
 		ent->AddComponent(baegg);
+		baegg->Create(anim_cfg->name);
+		
 	}
 	else if (bulletCfg->moveType == BulletMoveType::BMT_Bezier)
 	{
@@ -125,18 +133,22 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 // 		targ->Create(Target_Location, 0, destX, destY);
 // 		ent->AddComponent(targ);
 		auto bez = new ComBezierMovement();
-		bez->Create(x, y, destX, destY, (abs(x - destX) + abs(y - destY)) / bulletCfg->flySpeed);
 		ent->AddComponent(bez);
+		bez->Create(x, y, destX, destY, (abs(x - destX) + abs(y - destY)) / bulletCfg->flySpeed);
+		
 		auto dmgs = new ComBulletDamageSingle();
-		dmgs->targetID = targetEntityID;
 		ent->AddComponent(dmgs);
+		dmgs->targetID = targetEntityID;
+		
 		auto banim = new ComBulletAnimArrow();
-		banim->Create(anim_cfg->name);
 		ent->AddComponent(banim);
+		banim->Create(anim_cfg->name);
+		
 		SystemBulletDamageSingle* atkSys = ECSWorld::GetSingleton()->GetSystemManager()->GetSystem<SystemBulletDamageSingle>();
 		auto han = new ComColliderHandler();
-		han->Create(std::bind(&SystemBulletDamageSingle::collisionHandler, atkSys, std::placeholders::_1, std::placeholders::_2), nullptr);
 		ent->AddComponent(han);
+		han->Create(std::bind(&SystemBulletDamageSingle::collisionHandler, atkSys, std::placeholders::_1, std::placeholders::_2), nullptr);
+		
 	}
 	else if(bulletCfg->moveType == BulletMoveType::BMT_Tracking)
 	{
@@ -148,16 +160,20 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 // 		targ->Create(Target_Entity, tarEntityID);
 // 		ent->AddComponent(targ);
 		auto delayTrack = new ComDelayTrackMoving();
-		delayTrack->Create(tarEntityID, bulletCfg->findTargetDelay);
 		ent->AddComponent(delayTrack);
+		delayTrack->Create(tarEntityID, bulletCfg->findTargetDelay);
+		
 		ent->AddComponent(new ComBulletDamageScope());
+
 		auto bom = new ComBulletAnimBomb();
-		bom->Create(anim_cfg->name, bulletCfg->tailAnim);
 		ent->AddComponent(bom);
+		bom->Create(anim_cfg->name, bulletCfg->tailAnim);
+		
 		SystemBulletDamageScope* atkSys = ECSWorld::GetSingleton()->GetSystemManager()->GetSystem<SystemBulletDamageScope>();
 		auto han = new ComColliderHandler();
-		han->Create(std::bind(&SystemBulletDamageScope::OnCollision, atkSys, std::placeholders::_1, std::placeholders::_2), nullptr);
 		ent->AddComponent(han);
+		han->Create(std::bind(&SystemBulletDamageScope::OnCollision, atkSys, std::placeholders::_1, std::placeholders::_2), nullptr);
+		
 	}
 	
 	ent->Refresh();

@@ -22,11 +22,11 @@ namespace Genius
 	void SystemManager::Init()
 	{
 		this->AddSystem(new SystemTransform());
-		this->AddSystem(new SystemSimpleAnim());
+		this->AddSystem(new SystemRender());
 		this->AddSystem(new SystemBoxCollider());
 		this->AddSystem(new SystemBezierMovement());
 		this->AddSystem(new SystemDelayTrackMovement());
-		this->AddSystem(new SystemPawnAnim());
+		//this->AddSystem(new SystemPawnAnim());
 		this->AddSystem(new SystemPawnBevtree());
 		this->AddSystem(new SystemPawnNavigation());
 		this->AddSystem(new SystemPawnFight());

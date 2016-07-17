@@ -26,19 +26,19 @@ isTargetInFarRange(false)
 
 ComPawnFight::~ComPawnFight()
 {
-	int id = GetOwner()->GetId();
+	int id = GetEntity()->GetId();
 	SkillManager::GetSingleton()->ClearSkill(id);
 	BuffManager::GetSingleton()->RemoveBuff(id);
 }
 
-bool ComPawnFight::Init()
+void ComPawnFight::OnAwake()
 {
-	Entity* ent = this->GetOwner();
+	Entity* ent = this->GetEntity();
 	ComPawnAgent* tempCom = ent->GetComponent<ComPawnAgent>();
 	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_roleCfg->normalSkill1);
 	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_roleCfg->normalSkill2);
 	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_roleCfg->specialSkill1);
 	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_roleCfg->specialSkill2);
 	SkillManager::GetSingleton()->LoadSkill(ent->GetId(), tempCom->m_roleCfg->specialSkill3);
-	return true;
+	
 }

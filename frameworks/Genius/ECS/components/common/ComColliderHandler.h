@@ -18,6 +18,7 @@ namespace Genius
 		std::function<void(int, int)> _exitColliderListener;
 
 	public:
+		ComColliderHandler();
 		void Create(std::function<void(int, int)> _enterFunc, std::function<void(int, int)> _exitFunc);
 
 	};

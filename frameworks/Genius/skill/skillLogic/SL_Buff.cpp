@@ -20,7 +20,7 @@ void SL_Buff::OnActive(Skill* skill)
 			int targetId = *iter;
 			if (skillCfg->buffs[i] > 0)
 			{
-				BuffManager::GetSingleton()->AddBuff(skill->GetOwner(), targetId, skillCfg->buffs[i]);
+				BuffManager::GetSingleton()->AddBuff(skill->GetEntity(), targetId, skillCfg->buffs[i]);
 			}
 		}
 	}

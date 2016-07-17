@@ -12,7 +12,7 @@
 #include "components/common/ComTransform.h"
 #include "components/common/ComBoxCollider.h"
 #include "components/common/ComColliderHandler.h"
-#include "components/common/ComAnimation.h"
+#include "components/common/ComRenderRoot.h"
 #include "components/common/ComParticle.h"
 #include "components/common/ComBezierMovement.h"
 #include "components/common/ComDelayTrackMovement.h"
@@ -39,13 +39,13 @@
 
 // systems
 #include "systems/common/SystemTransform.h"
-#include "systems/common/SystemSimpleAnim.h"
+#include "systems/common/SystemRender.h"
 #include "systems/common/SystemBoxCollider.h"
 #include "systems/common/SystemBezierMovement.h"
 #include "systems/common/SystemDelayTrackMovement.h"
 
 #include "systems/pawn/SystemPawnBevtree.h"
-#include "systems/pawn/SystemPawnAnim.h"
+//#include "systems/pawn/SystemPawnAnim.h"
 #include "systems/pawn/SystemPawnNavigation.h"
 #include "systems/pawn/SystemPawnFight.h"
 #include "systems/pawn/SystemPawnDebugDraw.h"

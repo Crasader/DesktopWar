@@ -18,7 +18,7 @@ void SL_Bullet::OnActive(Skill* skill)
 	auto targetList = skill->GetTargetList();
 	for (auto iter = targetList.begin(); iter != targetList.end(); ++iter)
 	{
-		Entity* ownerEntity = ECSWorld::GetSingleton()->GetEntity(skill->GetOwner());
+		Entity* ownerEntity = ECSWorld::GetSingleton()->GetEntity(skill->GetEntity());
 		if (nullptr == ownerEntity)
 			return;
 

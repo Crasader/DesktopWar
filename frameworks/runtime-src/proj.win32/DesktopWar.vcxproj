@@ -199,7 +199,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletDamageScope.h" />
     <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletDamageSingle.h" />
     <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletDebugDraw.h" />
-    <ClInclude Include="..\..\Genius\ECS\components\common\ComAnimation.h" />
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComRenderRoot.h" />
     <ClInclude Include="..\..\Genius\ECS\components\common\ComBezierMovement.h" />
     <ClInclude Include="..\..\Genius\ECS\components\common\ComBoxCollider.h" />
     <ClInclude Include="..\..\Genius\ECS\components\common\ComColliderHandler.h" />
@@ -222,7 +222,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\ECS\core\EntityManager.h" />
     <ClInclude Include="..\..\Genius\ECS\core\EntityProcessingSystem.h" />
     <ClInclude Include="..\..\Genius\ECS\core\EntitySystem.h" />
-    <ClInclude Include="..\..\Genius\ECS\core\GroupManager.h" />
     <ClInclude Include="..\..\Genius\ECS\core\ImmutableBag.h" />
     <ClInclude Include="..\..\Genius\ECS\core\SystemBitManager.h" />
     <ClInclude Include="..\..\Genius\ECS\core\SystemManager.h" />
@@ -242,8 +241,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemBoxCollider.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemDelayTrackMovement.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemTransform.h" />
-    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemSimpleAnim.h" />
-    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnAnim.h" />
+    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemRender.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnNavigation.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnBevtree.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.h" />
@@ -351,7 +349,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletDamageScope.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletDamageSingle.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletDebugDraw.cpp" />
-    <ClCompile Include="..\..\Genius\ECS\components\common\ComAnimation.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComRenderRoot.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\common\ComBezierMovement.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\common\ComBoxCollider.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\common\ComColliderHandler.cpp" />
@@ -372,7 +370,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\ECS\core\EntityManager.cpp" />
     <ClCompile Include="..\..\Genius\ECS\core\EntityProcessingSystem.cpp" />
     <ClCompile Include="..\..\Genius\ECS\core\EntitySystem.cpp" />
-    <ClCompile Include="..\..\Genius\ECS\core\GroupManager.cpp" />
     <ClCompile Include="..\..\Genius\ECS\core\SystemBitManager.cpp" />
     <ClCompile Include="..\..\Genius\ECS\core\SystemManager.cpp" />
     <ClCompile Include="..\..\Genius\ECS\core\TagManager.cpp" />
@@ -390,8 +387,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemBoxCollider.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemDelayTrackMovement.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemTransform.cpp" />
-    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemSimpleAnim.cpp" />
-    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnAnim.cpp" />
+    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemRender.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnNavigation.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnBevtree.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.cpp" />

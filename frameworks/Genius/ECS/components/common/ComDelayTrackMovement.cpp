@@ -21,7 +21,7 @@ void ComDelayTrackMoving::Create(int _targetID, float _delayTime)
 };
 
 
-bool ComDelayTrackMoving::Init()
+void ComDelayTrackMoving::OnAwake()
 {
 	Entity* pTarEntity = ECSWorld::GetSingleton()->GetEntity(targetEntityID);
 	if (pTarEntity)
@@ -33,5 +33,5 @@ bool ComDelayTrackMoving::Init()
 			targetCachePosY = pTarPosCom->y;
 		}
 	}
-	return IComponent::Init();
+
 }

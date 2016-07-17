@@ -24,7 +24,7 @@ namespace Genius
 	public:
 		void Create(int _targetID, float _delayTime);
 
-		virtual bool Init();
+		virtual void OnAwake();
 	};
 	
 };

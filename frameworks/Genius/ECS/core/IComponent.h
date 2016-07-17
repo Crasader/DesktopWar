@@ -1,33 +1,38 @@
 #pragma once
 
 #define COM_CREATE_FN_DECL(classname)\
-	static IComponent* create_## classname();
+	static IComponent* create_inst();
 
 #define COM_CREATE_FN_IMPL(classname)\
-	IComponent* classname::create_## classname()\
+	IComponent* classname::create_inst()\
 	{return new classname; }
 
 namespace Genius
 {
 	class Entity;
 	class EntityManager;
+
 	class IComponent
 	{
 		friend class EntityManager;
+
 	public:
 		virtual ~IComponent() = 0;
-		virtual bool	Init(){ return true; }
-		Entity*			GetOwner(){ return m_pEntity; }
-		
 
+		virtual void	OnAwake(){}
+
+		virtual void	OnDestroy(){}
+
+		Entity*			GetEntity();
+		
 	protected:
-		IComponent() :
-			m_pEntity(nullptr)
-		{};
-		void				SetOwner(Entity* ent){ m_pEntity = ent; }
+		IComponent();
+
+		void SetEntity(Entity* ent);
 
 	private:
-		Entity*		m_pEntity;
+		Entity*		entity;
+
 	};
 
 };

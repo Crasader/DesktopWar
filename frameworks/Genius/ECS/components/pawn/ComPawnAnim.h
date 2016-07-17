@@ -35,7 +35,8 @@ namespace Genius
 		void Create(int roleID);
 		virtual ~ComPawnAnim();
 
-		virtual bool Init();
+		virtual void OnAwake();
+		virtual void OnDestroy();
 		virtual void HandleAction(PawnAction* pAction);
 
 		float GetWidth();

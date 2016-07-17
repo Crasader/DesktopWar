@@ -13,7 +13,7 @@ namespace Genius
 	{
 		this->world = world;
 
-		m_nextAvailableId = 1001;
+		m_nextAvailableId = 0;
 		m_count = 0;
 		m_uniqueEntityId = 0;
 		m_totalCreated = 0;
@@ -43,7 +43,7 @@ namespace Genius
 
 		components->set(pEntity->GetId(), pCom);
 		pEntity->AddTypeBit(type.getBit());
-		pCom->SetOwner(pEntity);
+		pCom->SetEntity(pEntity);
 
 		components = nullptr;
 
@@ -169,10 +169,13 @@ namespace Genius
 
 		Bag<IComponent* > * components = m_componentsByType.get(type.GetId());
 
-		delete components->get(pEntity->GetId());
+		auto delCom = components->get(pEntity->GetId());
+		delCom->OnDestroy();
+
+		delete delCom;
 		components->set(pEntity->GetId(), nullptr);
 		pEntity->RemoveTypeBit(type.getBit());
-		components = nullptr;
+		
 	};
 
 	void EntityManager::RemoveComponentsOfEntity(Entity* pEntity)
@@ -180,18 +183,27 @@ namespace Genius
 		if (nullptr == pEntity)
 			return;
 
+		// call on destroy first
 		for (int i = 0; i < m_componentsByType.getCapacity(); i++)
 		{
 			Bag<IComponent*> * components = m_componentsByType.get(i);
-
 			if (components != nullptr && pEntity->GetId() < components->getCapacity())
 			{
+				auto com = components->get(pEntity->GetId());
+				if (nullptr != com)
+					com->OnDestroy();
+			}
+		}
 
+		// then delete
+		for (int i = 0; i < m_componentsByType.getCapacity(); i++)
+		{
+			Bag<IComponent*> * components = m_componentsByType.get(i);
+			if (components != nullptr && pEntity->GetId() < components->getCapacity())
+			{
 				delete components->get(pEntity->GetId());
 				components->set(pEntity->GetId(), nullptr);
 			}
-
-			components = nullptr;
 		}
 
 	};

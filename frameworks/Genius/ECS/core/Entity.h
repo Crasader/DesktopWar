@@ -73,7 +73,6 @@ namespace Genius
 		bool					IsActive();
 		void					Refresh();
 		void					Remove();
-		void					SetGroup(std::string group);
 		void					SetTag(std::string tag);
 	};
 

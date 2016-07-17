@@ -77,7 +77,7 @@ namespace Genius
 	IComponent* Entity::AddComponent(IComponent * c)
 	{
 		m_pEntityManager->AddComponent(this, c);
-		c->Init();
+		c->OnAwake();
 		return c;
 	}
 
@@ -100,11 +100,6 @@ namespace Genius
 	{
 		m_typeBits = 0;
 		m_systemBits = 0;
-	}
-
-	void Entity::SetGroup(string group)
-	{
-		m_pWorld->GetGroupManager()->Set(group, this);
 	}
 
 	void Entity::SetSystemBits(bitset<BITSIZE> systemBits)
