@@ -20,7 +20,7 @@ void SystemBulletArrowAnim::Initialize()
 
 void SystemBulletArrowAnim::ProcessEntity(Entity* pEntity)
 {
-	ComTransform* pPosCom = transMapper.get(pEntity);
+	/*ComTransform* pPosCom = transMapper.get(pEntity);
 	
 	ComBulletAnimArrow* animCom = animMapper.get(pEntity);
 
@@ -51,6 +51,7 @@ void SystemBulletArrowAnim::ProcessEntity(Entity* pEntity)
 	
 	if (animCom->m_pBodyArmature)
 		animCom->m_pBodyArmature->setRotation(rotation);
+		*/
 }
 
 bool SystemBulletArrowAnim::HandleEvent(IEventData const &evnt)

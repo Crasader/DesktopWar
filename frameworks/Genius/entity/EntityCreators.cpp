@@ -129,9 +129,9 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	else if (bulletCfg->moveType == BulletMoveType::BMT_Bezier)
 	{
 		pos->vx = 0; pos->vy = 0;
-// 		auto targ = new ComTarget();
-// 		targ->Create(Target_Location, 0, destX, destY);
-// 		ent->AddComponent(targ);
+
+		ent->AddComponent(new ComDirection());
+
 		auto bez = new ComBezierMovement();
 		ent->AddComponent(bez);
 		bez->Create(x, y, destX, destY, (abs(x - destX) + abs(y - destY)) / bulletCfg->flySpeed);
@@ -152,13 +152,12 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	}
 	else if(bulletCfg->moveType == BulletMoveType::BMT_Tracking)
 	{
+		ent->AddComponent(new ComDirection());
+
 		SystemPawnFight* fightSys = ECSWorld::GetSingleton()->GetSystemManager()->GetSystem<SystemPawnFight>();
 		int tarEntityID = fightSys->FindRandTargetByTag(tag);
 		pos->vx = 0; pos->vy = bulletCfg->flySpeed;
 
-// 		auto targ = new ComTarget();
-// 		targ->Create(Target_Entity, tarEntityID);
-// 		ent->AddComponent(targ);
 		auto delayTrack = new ComDelayTrackMoving();
 		ent->AddComponent(delayTrack);
 		delayTrack->Create(tarEntityID, bulletCfg->findTargetDelay);

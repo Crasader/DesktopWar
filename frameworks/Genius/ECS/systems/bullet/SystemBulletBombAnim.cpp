@@ -21,7 +21,7 @@ void SystemBulletBombAnim::Initialize()
 
 void SystemBulletBombAnim::ProcessEntity(Entity* pEntity)
 {
-	ComTransform* pPosCom = transMapper.get(pEntity);
+	/*ComTransform* pPosCom = transMapper.get(pEntity);
 	
 	ComBulletAnimBomb* animCom = animMapper.get(pEntity);
 
@@ -51,7 +51,7 @@ void SystemBulletBombAnim::ProcessEntity(Entity* pEntity)
 	}
 	
 	if (animCom->m_pBodyArmature)
-		animCom->m_pBodyArmature->setRotation(rotation);
+		animCom->m_pBodyArmature->setRotation(rotation);*/
 }
 
 bool SystemBulletBombAnim::HandleEvent(IEventData const &evnt)

@@ -40,24 +40,24 @@
 // systems
 #include "systems/common/SystemTransform.h"
 #include "systems/common/SystemRender.h"
+#include "systems/common/SystemDirection.h"
 #include "systems/common/SystemBoxCollider.h"
 #include "systems/common/SystemBezierMovement.h"
 #include "systems/common/SystemDelayTrackMovement.h"
 
 #include "systems/pawn/SystemPawnBevtree.h"
-//#include "systems/pawn/SystemPawnAnim.h"
 #include "systems/pawn/SystemPawnNavigation.h"
 #include "systems/pawn/SystemPawnFight.h"
 #include "systems/pawn/SystemPawnDebugDraw.h"
 
-#include "systems/bullet/SystemBulletAnim.h"
+//#include "systems/bullet/SystemBulletAnim.h"
 #include "systems/bullet/SystemBulletDamageSingle.h"
 #include "systems/bullet/SystemBulletDamageScope.h"
 #include "systems/bullet/SystemBulletDamageNone.h"
 #include "systems/bullet/SystemBulletDebugDraw.h"
 #include "systems/bullet/SystemBulletArrowAnim.h"
 #include "systems/bullet/SystemBulletBombAnim.h"
-#include "systems/bullet/SystemBulletEggAnim.h"
+//#include "systems/bullet/SystemBulletEggAnim.h"
 #include "systems/bullet/SystemBulletTarget.h"
 
 

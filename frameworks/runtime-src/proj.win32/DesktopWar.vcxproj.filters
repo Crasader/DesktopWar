@@ -382,9 +382,6 @@
     <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletDebugDraw.h">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletEggAnim.h">
-      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletTarget.h">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClInclude>
@@ -559,9 +556,6 @@
     <ClInclude Include="..\..\Genius\skill\buffLogic\BL_Spawn.h">
       <Filter>Genius\Logic\Skill\buffLogic</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletAnim.h">
-      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\EntityWrapper.h">
       <Filter>Genius\Logic\ESC</Filter>
     </ClInclude>
@@ -588,6 +582,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\components\common\ComRenderRoot.h">
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\common\ComDirection.h">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\common\SystemDirection.h">
+      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -811,9 +811,6 @@
     <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletDebugDraw.cpp">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletEggAnim.cpp">
-      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletTarget.cpp">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClCompile>
@@ -964,9 +961,6 @@
     <ClCompile Include="..\..\Genius\skill\buffLogic\BL_Spawn.cpp">
       <Filter>Genius\Logic\Skill\buffLogic</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletAnim.cpp">
-      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\EntityWrapper.cpp">
       <Filter>Genius\Logic\ESC</Filter>
     </ClCompile>
@@ -990,6 +984,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\components\common\ComRenderRoot.cpp">
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\common\ComDirection.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\common\SystemDirection.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Common</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

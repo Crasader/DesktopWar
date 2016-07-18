@@ -23,22 +23,24 @@ namespace Genius
 	{
 		this->AddSystem(new SystemTransform());
 		this->AddSystem(new SystemRender());
+		this->AddSystem(new SystemDirection());
 		this->AddSystem(new SystemBoxCollider());
 		this->AddSystem(new SystemBezierMovement());
 		this->AddSystem(new SystemDelayTrackMovement());
-		//this->AddSystem(new SystemPawnAnim());
+		
 		this->AddSystem(new SystemPawnBevtree());
 		this->AddSystem(new SystemPawnNavigation());
 		this->AddSystem(new SystemPawnFight());
 		this->AddSystem(new SystemPawnDebugDraw());
-		this->AddSystem(new SystemBulletAnim());
+
+		//this->AddSystem(new SystemBulletAnim());
 		this->AddSystem(new SystemBulletDamageSingle());
 		this->AddSystem(new SystemBulletDamageScope());
 		this->AddSystem(new SystemBulletDamageNone());
 		this->AddSystem(new SystemBulletDebugDraw());
 		this->AddSystem(new SystemBulletArrowAnim());
 		this->AddSystem(new SystemBulletBombAnim());
-		this->AddSystem(new SystemBulletEggAnim());
+		//this->AddSystem(new SystemBulletEggAnim());
 		this->AddSystem(new SystemBulletTarget());
 
 		for (int i = 0; i < m_bagged.getCount(); i++)
