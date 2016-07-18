@@ -34,7 +34,7 @@ void SystemBulletDebugDraw::ProcessEntity(Entity* e)
 		do
 		{
 			// attack range
-			Vec2 center(posCom->x, posCom->y);
+			Vec2 center(0, 0);// posCom->x, posCom->y);
 			float radiusNear = bulletAgent->pBulletData->buffTargetRadius;
 			debugCom->Clear();
 			debugCom->pNodeHurtRange->drawCircle(center, radiusNear, 0, 12, true, Color4F::RED);
@@ -43,7 +43,7 @@ void SystemBulletDebugDraw::ProcessEntity(Entity* e)
 		do
 		{
 			// box collider
-			Vec2 center(posCom->x + ComBoxCollider->centerX, posCom->y + ComBoxCollider->centerY);
+			Vec2 center(/*posCom->x + */ComBoxCollider->centerX, /*posCom->y + */ComBoxCollider->centerY);
 			Vec2 origin(center.x - ComBoxCollider->width*0.5f, center.y + ComBoxCollider->height*0.5f);
 			Vec2 destination(center.x + ComBoxCollider->width*0.5f, center.y - ComBoxCollider->height*0.5f);
 			debugCom->pNodeBoxCollider->drawRect(origin, destination, Color4F::GREEN);

@@ -10,6 +10,7 @@
 #include "../pawn/SystemPawnFight.h"
 #include "skill/BuffManager.h"
 #include "pawn/PawnBlackboard.h"
+#include "entity/EntityUtility.h"
 
 
 using namespace Genius;
@@ -68,9 +69,9 @@ void SystemBulletDamageSingle::collisionHandler(int id1, int id2)
 		return;
 
 	auto pMyComAgent = agentMapper.get(pEntity);
-	//auto pOtherComTeam = pOtherEntity->GetComponent<ComPawnAgent>();
+	bool isEnemy = EntityUtility::IsEnemy(pEntity, pOtherEntity);
 
-	if (pMyComAgent)// && pOtherComTeam && pMyComAgent->GetBlackboard()->team != pOtherComTeam->GetBlackboard()->team)
+	if (pMyComAgent && isEnemy)
 	{
 		EventManager::GetSingleton()->FireEvent(BulletHitEvent(pEntity));
 		EventManager::GetSingleton()->FireEvent(StopMoveEvent(pEntity));

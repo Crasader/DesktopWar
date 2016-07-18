@@ -60,7 +60,7 @@ int EntityCreator::CreatePawn(int id, float x, float y, const std::string& tag)
 
 	ent->AddComponent(new ComPawnFight());
 
-	if (cfg_EnableDebugDraw)
+	//if (cfg_EnableDebugDraw)
 	{
 		auto dd = new ComPawnDebugDraw();
 		dd->Create();
@@ -114,7 +114,7 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	box->Create(true, 0, 0, bulletCfg->boxWidth, bulletCfg->boxHeight);
 	ent->AddComponent(box);
 
-	if (cfg_EnableDebugDraw) ent->AddComponent(new ComBulletDebugDraw());
+	/*if (cfg_EnableDebugDraw) */ent->AddComponent(new ComBulletDebugDraw());
 	
 	if (bulletCfg->moveType == BulletMoveType::BMT_Line)
 	{
@@ -134,7 +134,7 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 
 		auto bez = new ComBezierMovement();
 		ent->AddComponent(bez);
-		bez->Create(x, y, destX, destY, (abs(x - destX) + abs(y - destY)) / bulletCfg->flySpeed);
+		bez->Create(x, y, destX, destY, (abs(x - destX) + abs(y - destY)) / 50.f/*bulletCfg->flySpeed*/);
 		
 		auto dmgs = new ComBulletDamageSingle();
 		ent->AddComponent(dmgs);
@@ -155,12 +155,14 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 		ent->AddComponent(new ComDirection());
 
 		SystemPawnFight* fightSys = ECSWorld::GetSingleton()->GetSystemManager()->GetSystem<SystemPawnFight>();
-		int tarEntityID = fightSys->FindRandTargetByTag(tag);
+		string targetTag = GameDefine::Tag_Soldier;
+		int tarEntityID = fightSys->FindRandTargetByTag(targetTag);
 		pos->vx = 0; pos->vy = bulletCfg->flySpeed;
 
 		auto delayTrack = new ComDelayTrackMoving();
-		ent->AddComponent(delayTrack);
 		delayTrack->Create(tarEntityID, bulletCfg->findTargetDelay);
+		ent->AddComponent(delayTrack);
+		
 		
 		ent->AddComponent(new ComBulletDamageScope());
 
@@ -170,8 +172,9 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 		
 		SystemBulletDamageScope* atkSys = ECSWorld::GetSingleton()->GetSystemManager()->GetSystem<SystemBulletDamageScope>();
 		auto han = new ComColliderHandler();
-		ent->AddComponent(han);
 		han->Create(std::bind(&SystemBulletDamageScope::OnCollision, atkSys, std::placeholders::_1, std::placeholders::_2), nullptr);
+		ent->AddComponent(han);
+		
 		
 	}
 	

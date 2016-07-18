@@ -140,10 +140,14 @@ var LaunchState = GameState.extend
     {
         //Monster.Create(2012, 700, 133, 2);
         //Monster.Create(2009, 300, 133, 2);
+        Monster.Create(2010, 200, 133, 2);
 
-        Monster.Create(2011, 300, 133, 2);
+        Monster.Create(2008, 700, 133, 2);
+
+        //Monster.Create(2011, 300, 133, 2);
         //Monster.Create(2011, 280, 120, 2);
         //Monster.Create(2011, 260, 140, 2);
+
         Soldier.Create(1007, 400, 133, 1);
         //Soldier.Create(1007, 520, 120, 1);
         //Soldier.Create(1007, 540, 140, 1);
@@ -165,7 +169,9 @@ var LaunchState = GameState.extend
     {
         loadMgr.AddRole(2012);
         loadMgr.AddRole(2011);
+        loadMgr.AddRole(2010);
         loadMgr.AddRole(2009);
+        loadMgr.AddRole(2008);
         loadMgr.AddRole(1007);
 
         loadMgr.AddAnim(3001);

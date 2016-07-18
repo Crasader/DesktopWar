@@ -22,5 +22,7 @@ public:
 
 	static bool IsTagged(const std::string& tag, Entity* entity);
 
+	static bool IsEnemy(Entity* entity1, Entity* entity2);
+
 };
 

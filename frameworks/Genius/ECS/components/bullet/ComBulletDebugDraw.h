@@ -20,7 +20,7 @@ namespace Genius
 		cocos2d::DrawNode*	pNodeHurtRange;
 
 	public:
-		ComBulletDebugDraw();
+		virtual void OnAwake();
 		~ComBulletDebugDraw();
 		void Clear();
 	};

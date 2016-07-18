@@ -233,7 +233,7 @@ void PawnWander::GoToSomewhere(BHUpdateContext& context)
 	switch (m_wanderType)
 	{
 	case eWanderAround:
-		destX = (float)(rand() % maxDistance) + posCom->x;
+		destX = (float)(rand() % maxDistance - 0.5f*maxDistance) + posCom->x;
 		destY = (float)(rand() % maxDistance - 0.5f*maxDistance) + posCom->y;// +(tooTop ? 1 : -1) * 100;
 		// bounds
 		if (destX < 20)

@@ -28,7 +28,7 @@ Config.Bullet["1"]=
 				"movable": "1",
 				"moveType": "2",
 				"targetIsEntity": "0",
-				"flySpeed": "300",
+				"flySpeed": "250",
 				"findTargetDelay": "0",
 				"maxLifeTime": "5",
 				"boxWidth": "20",

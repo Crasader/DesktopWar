@@ -8,7 +8,7 @@ using namespace Genius;
 
 COM_CREATE_FN_IMPL(ComBulletDebugDraw);
 
-ComBulletDebugDraw::ComBulletDebugDraw()
+void ComBulletDebugDraw::OnAwake()
 {
 	auto render = GetEntity()->GetComponent<ComRenderRoot>();
 	if (nullptr == render)
