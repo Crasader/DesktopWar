@@ -141,8 +141,9 @@ var LaunchState = GameState.extend
         //Monster.Create(2012, 700, 133, 2);
         //Monster.Create(2009, 300, 133, 2);
         Monster.Create(2010, 200, 133, 2);
+        Monster.Create(2010, 350, 133, 2);
 
-        Monster.Create(2008, 700, 133, 2);
+        Monster.Create(2008, 1000, 133, 2);
 
         //Monster.Create(2011, 300, 133, 2);
         //Monster.Create(2011, 280, 120, 2);

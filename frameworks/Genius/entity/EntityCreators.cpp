@@ -10,6 +10,7 @@
 #include "Log.h"
 #include "app/Config.h"
 #include "app/GameDefine.h"
+#include "pawn/PawnBlackboard.h"
 
 using namespace Genius;
 using namespace cfg;
@@ -61,20 +62,13 @@ int EntityCreator::CreatePawn(int id, float x, float y, const std::string& tag)
 	ent->AddComponent(new ComPawnFight());
 
 	//if (cfg_EnableDebugDraw)
-	{
+	//{
 		auto dd = new ComPawnDebugDraw();
-		dd->Create();
 		ent->AddComponent(dd);
-	}
+		dd->Create();
+	//}
 
-	/*if (tag == GameDefine::Tag_Soldier)
-	{
-		ECSWorld::GetSingleton()->GetGroupManager()->Set(GameDefine::Tag_Soldier, ent);
-	}
-	else if (tag == GameDefine::Tag_Soldier)
-	{
-		ECSWorld::GetSingleton()->GetGroupManager()->Set(GameDefine::Tag_Monster, ent);
-	}*/
+	ECSWorld::GetSingleton()->AddTag(ent, tag);
 	
 	ent->Refresh();
 
@@ -114,7 +108,7 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	box->Create(true, 0, 0, bulletCfg->boxWidth, bulletCfg->boxHeight);
 	ent->AddComponent(box);
 
-	/*if (cfg_EnableDebugDraw) */ent->AddComponent(new ComBulletDebugDraw());
+	if (cfg_EnableDebugDraw) ent->AddComponent(new ComBulletDebugDraw());
 	
 	if (bulletCfg->moveType == BulletMoveType::BMT_Line)
 	{
@@ -134,7 +128,7 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 
 		auto bez = new ComBezierMovement();
 		ent->AddComponent(bez);
-		bez->Create(x, y, destX, destY, (abs(x - destX) + abs(y - destY)) / 50.f/*bulletCfg->flySpeed*/);
+		bez->Create(x, y, destX, destY, (abs(x - destX) + abs(y - destY)) / bulletCfg->flySpeed);
 		
 		auto dmgs = new ComBulletDamageSingle();
 		ent->AddComponent(dmgs);
@@ -149,6 +143,10 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 		ent->AddComponent(han);
 		han->Create(std::bind(&SystemBulletDamageSingle::collisionHandler, atkSys, std::placeholders::_1, std::placeholders::_2), nullptr);
 		
+		agent->GetBlackboard()->targetType = Target_Location;
+		agent->GetBlackboard()->targetX = destX;
+		agent->GetBlackboard()->targetY = destY;
+
 	}
 	else if(bulletCfg->moveType == BulletMoveType::BMT_Tracking)
 	{
@@ -175,7 +173,8 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 		han->Create(std::bind(&SystemBulletDamageScope::OnCollision, atkSys, std::placeholders::_1, std::placeholders::_2), nullptr);
 		ent->AddComponent(han);
 		
-		
+		agent->GetBlackboard()->targetType = Target_Entity;
+		agent->GetBlackboard()->targetID = tarEntityID;
 	}
 	
 	ent->Refresh();

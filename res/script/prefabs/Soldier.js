@@ -42,6 +42,8 @@ var Soldier = {
         var fht = entCpp.AddComponent(ComponentName.PawnFight);
 
         //var dd = entCpp.AddComponent(ComponentName.PawnDebugDraw);
+        //dd.Create();
+
         entCpp.AddTag(Defines.Tag_Soldier)
 
         return inst;
