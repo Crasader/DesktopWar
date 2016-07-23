@@ -39,4 +39,6 @@ namespace Genius
 		EventListenerList			m_globals;
 	};
 };
+
+
 #endif

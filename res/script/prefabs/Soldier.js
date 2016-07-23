@@ -30,8 +30,8 @@ var Soldier = {
         var box = entCpp.AddComponent(ComponentName.BoxCollider);
         box.Create(false, 0, height*0.5, width, height);
 
-        var han = entCpp.AddComponent(ComponentName.ColliderHandler);
-        han.Create(null, null);
+        //var han = entCpp.AddComponent(ComponentName.ColliderHandler);
+        //han.Create(null, null);
 
         //var dir = entCpp.AddComponent(ComponentName.PawnDirection);
 

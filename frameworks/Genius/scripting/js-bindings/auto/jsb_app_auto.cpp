@@ -1004,6 +1004,22 @@ bool js_app_ComBoxCollider_Create(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_ComBoxCollider_Create : wrong number of arguments: %d, was expecting %d", argc, 5);
     return false;
 }
+bool js_app_ComBoxCollider_OnAwake(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::ComBoxCollider* cobj = (Genius::ComBoxCollider *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComBoxCollider_OnAwake : Invalid Native Object");
+    if (argc == 0) {
+        cobj->OnAwake();
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_ComBoxCollider_OnAwake : wrong number of arguments: %d, was expecting %d", argc, 0);
+    return false;
+}
 
 extern JSObject *jsb_Genius_IComponent_prototype;
 
@@ -1025,6 +1041,7 @@ void js_register_app_ComBoxCollider(JSContext *cx, JS::HandleObject global) {
 
     static JSFunctionSpec funcs[] = {
         JS_FN("Create", js_app_ComBoxCollider_Create, 5, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("OnAwake", js_app_ComBoxCollider_OnAwake, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 
@@ -1048,159 +1065,6 @@ void js_register_app_ComBoxCollider(JSContext *cx, JS::HandleObject global) {
     JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
     // add the proto and JSClass to the type->js info hash table
     jsb_register_class<Genius::ComBoxCollider>(cx, jsb_Genius_ComBoxCollider_class, proto, parent_proto);
-}
-
-JSClass  *jsb_Genius_ComColliderHandler_class;
-JSObject *jsb_Genius_ComColliderHandler_prototype;
-
-bool js_app_ComColliderHandler_Create(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::ComColliderHandler* cobj = (Genius::ComColliderHandler *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComColliderHandler_Create : Invalid Native Object");
-    if (argc == 2) {
-        std::function<void (int, int)> arg0;
-        std::function<void (int, int)> arg1;
-        do {
-		    if(JS_TypeOfValue(cx, args.get(0)) == JSTYPE_FUNCTION)
-		    {
-		        JS::RootedObject jstarget(cx, args.thisv().toObjectOrNull());
-		        std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, jstarget, args.get(0), args.thisv()));
-		        auto lambda = [=](int larg0, int larg1) -> void {
-		            JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
-		            jsval largv[2];
-		            largv[0] = int32_to_jsval(cx, larg0);
-		            largv[1] = int32_to_jsval(cx, larg1);
-		            JS::RootedValue rval(cx);
-		            bool succeed = func->invoke(2, &largv[0], &rval);
-		            if (!succeed && JS_IsExceptionPending(cx)) {
-		                JS_ReportPendingException(cx);
-		            }
-		        };
-		        arg0 = lambda;
-		    }
-		    else
-		    {
-		        arg0 = nullptr;
-		    }
-		} while(0)
-		;
-        do {
-		    if(JS_TypeOfValue(cx, args.get(1)) == JSTYPE_FUNCTION)
-		    {
-		        JS::RootedObject jstarget(cx, args.thisv().toObjectOrNull());
-		        std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, jstarget, args.get(1), args.thisv()));
-		        auto lambda = [=](int larg0, int larg1) -> void {
-		            JSB_AUTOCOMPARTMENT_WITH_GLOBAL_OBJCET
-		            jsval largv[2];
-		            largv[0] = int32_to_jsval(cx, larg0);
-		            largv[1] = int32_to_jsval(cx, larg1);
-		            JS::RootedValue rval(cx);
-		            bool succeed = func->invoke(2, &largv[0], &rval);
-		            if (!succeed && JS_IsExceptionPending(cx)) {
-		                JS_ReportPendingException(cx);
-		            }
-		        };
-		        arg1 = lambda;
-		    }
-		    else
-		    {
-		        arg1 = nullptr;
-		    }
-		} while(0)
-		;
-        JSB_PRECONDITION2(ok, cx, false, "js_app_ComColliderHandler_Create : Error processing arguments");
-        cobj->Create(arg0, arg1);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_ComColliderHandler_Create : wrong number of arguments: %d, was expecting %d", argc, 2);
-    return false;
-}
-bool js_app_ComColliderHandler_constructor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    Genius::ComColliderHandler* cobj = new (std::nothrow) Genius::ComColliderHandler();
-
-    js_type_class_t *typeClass = js_get_type_from_native<Genius::ComColliderHandler>(cobj);
-
-    // link the native object with the javascript object
-    JS::RootedObject jsobj(cx, jsb_create_weak_jsobject(cx, cobj, typeClass, "Genius::ComColliderHandler"));
-    args.rval().set(OBJECT_TO_JSVAL(jsobj));
-    if (JS_HasProperty(cx, jsobj, "_ctor", &ok) && ok)
-        ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(jsobj), "_ctor", args);
-    return true;
-}
-
-
-extern JSObject *jsb_Genius_IComponent_prototype;
-
-void js_Genius_ComColliderHandler_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (ComColliderHandler)", obj);
-    js_proxy_t* nproxy;
-    js_proxy_t* jsproxy;
-    JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
-    JS::RootedObject jsobj(cx, obj);
-    jsproxy = jsb_get_js_proxy(jsobj);
-    if (jsproxy) {
-        Genius::ComColliderHandler *nobj = static_cast<Genius::ComColliderHandler *>(jsproxy->ptr);
-        nproxy = jsb_get_native_proxy(jsproxy->ptr);
-
-        if (nobj) {
-            jsb_remove_proxy(nproxy, jsproxy);
-            delete nobj;
-        }
-        else
-            jsb_remove_proxy(nullptr, jsproxy);
-    }
-}
-void js_register_app_ComColliderHandler(JSContext *cx, JS::HandleObject global) {
-    jsb_Genius_ComColliderHandler_class = (JSClass *)calloc(1, sizeof(JSClass));
-    jsb_Genius_ComColliderHandler_class->name = "ComColliderHandler";
-    jsb_Genius_ComColliderHandler_class->addProperty = JS_PropertyStub;
-    jsb_Genius_ComColliderHandler_class->delProperty = JS_DeletePropertyStub;
-    jsb_Genius_ComColliderHandler_class->getProperty = JS_PropertyStub;
-    jsb_Genius_ComColliderHandler_class->setProperty = JS_StrictPropertyStub;
-    jsb_Genius_ComColliderHandler_class->enumerate = JS_EnumerateStub;
-    jsb_Genius_ComColliderHandler_class->resolve = JS_ResolveStub;
-    jsb_Genius_ComColliderHandler_class->convert = JS_ConvertStub;
-    jsb_Genius_ComColliderHandler_class->finalize = js_Genius_ComColliderHandler_finalize;
-    jsb_Genius_ComColliderHandler_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-    static JSPropertySpec properties[] = {
-        JS_PS_END
-    };
-
-    static JSFunctionSpec funcs[] = {
-        JS_FN("Create", js_app_ComColliderHandler_Create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FS_END
-    };
-
-    JSFunctionSpec *st_funcs = NULL;
-
-    JS::RootedObject parent_proto(cx, jsb_Genius_IComponent_prototype);
-    jsb_Genius_ComColliderHandler_prototype = JS_InitClass(
-        cx, global,
-        parent_proto,
-        jsb_Genius_ComColliderHandler_class,
-        js_app_ComColliderHandler_constructor, 0, // constructor
-        properties,
-        funcs,
-        NULL, // no static properties
-        st_funcs);
-
-    JS::RootedObject proto(cx, jsb_Genius_ComColliderHandler_prototype);
-    JS::RootedValue className(cx, std_string_to_jsval(cx, "ComColliderHandler"));
-    JS_SetProperty(cx, proto, "_className", className);
-    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
-    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
-    // add the proto and JSClass to the type->js info hash table
-    jsb_register_class<Genius::ComColliderHandler>(cx, jsb_Genius_ComColliderHandler_class, proto, parent_proto);
 }
 
 JSClass  *jsb_Genius_ComRenderRoot_class;
@@ -2784,59 +2648,23 @@ void js_register_app_ComBulletAnimBomb(JSContext *cx, JS::HandleObject global) {
     jsb_register_class<Genius::ComBulletAnimBomb>(cx, jsb_Genius_ComBulletAnimBomb_class, proto, parent_proto);
 }
 
-JSClass  *jsb_Genius_ComBulletDamageNone_class;
-JSObject *jsb_Genius_ComBulletDamageNone_prototype;
-
-bool js_app_ComBulletDamageNone_constructor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    Genius::ComBulletDamageNone* cobj = new (std::nothrow) Genius::ComBulletDamageNone();
-
-    js_type_class_t *typeClass = js_get_type_from_native<Genius::ComBulletDamageNone>(cobj);
-
-    // link the native object with the javascript object
-    JS::RootedObject jsobj(cx, jsb_create_weak_jsobject(cx, cobj, typeClass, "Genius::ComBulletDamageNone"));
-    args.rval().set(OBJECT_TO_JSVAL(jsobj));
-    if (JS_HasProperty(cx, jsobj, "_ctor", &ok) && ok)
-        ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(jsobj), "_ctor", args);
-    return true;
-}
+JSClass  *jsb_Genius_ComBulletDamage_class;
+JSObject *jsb_Genius_ComBulletDamage_prototype;
 
 
 extern JSObject *jsb_Genius_IComponent_prototype;
 
-void js_Genius_ComBulletDamageNone_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (ComBulletDamageNone)", obj);
-    js_proxy_t* nproxy;
-    js_proxy_t* jsproxy;
-    JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
-    JS::RootedObject jsobj(cx, obj);
-    jsproxy = jsb_get_js_proxy(jsobj);
-    if (jsproxy) {
-        Genius::ComBulletDamageNone *nobj = static_cast<Genius::ComBulletDamageNone *>(jsproxy->ptr);
-        nproxy = jsb_get_native_proxy(jsproxy->ptr);
-
-        if (nobj) {
-            jsb_remove_proxy(nproxy, jsproxy);
-            delete nobj;
-        }
-        else
-            jsb_remove_proxy(nullptr, jsproxy);
-    }
-}
-void js_register_app_ComBulletDamageNone(JSContext *cx, JS::HandleObject global) {
-    jsb_Genius_ComBulletDamageNone_class = (JSClass *)calloc(1, sizeof(JSClass));
-    jsb_Genius_ComBulletDamageNone_class->name = "ComBulletDamageNone";
-    jsb_Genius_ComBulletDamageNone_class->addProperty = JS_PropertyStub;
-    jsb_Genius_ComBulletDamageNone_class->delProperty = JS_DeletePropertyStub;
-    jsb_Genius_ComBulletDamageNone_class->getProperty = JS_PropertyStub;
-    jsb_Genius_ComBulletDamageNone_class->setProperty = JS_StrictPropertyStub;
-    jsb_Genius_ComBulletDamageNone_class->enumerate = JS_EnumerateStub;
-    jsb_Genius_ComBulletDamageNone_class->resolve = JS_ResolveStub;
-    jsb_Genius_ComBulletDamageNone_class->convert = JS_ConvertStub;
-    jsb_Genius_ComBulletDamageNone_class->finalize = js_Genius_ComBulletDamageNone_finalize;
-    jsb_Genius_ComBulletDamageNone_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+void js_register_app_ComBulletDamage(JSContext *cx, JS::HandleObject global) {
+    jsb_Genius_ComBulletDamage_class = (JSClass *)calloc(1, sizeof(JSClass));
+    jsb_Genius_ComBulletDamage_class->name = "ComBulletDamage";
+    jsb_Genius_ComBulletDamage_class->addProperty = JS_PropertyStub;
+    jsb_Genius_ComBulletDamage_class->delProperty = JS_DeletePropertyStub;
+    jsb_Genius_ComBulletDamage_class->getProperty = JS_PropertyStub;
+    jsb_Genius_ComBulletDamage_class->setProperty = JS_StrictPropertyStub;
+    jsb_Genius_ComBulletDamage_class->enumerate = JS_EnumerateStub;
+    jsb_Genius_ComBulletDamage_class->resolve = JS_ResolveStub;
+    jsb_Genius_ComBulletDamage_class->convert = JS_ConvertStub;
+    jsb_Genius_ComBulletDamage_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
     static JSPropertySpec properties[] = {
         JS_PS_END
@@ -2849,155 +2677,23 @@ void js_register_app_ComBulletDamageNone(JSContext *cx, JS::HandleObject global)
     JSFunctionSpec *st_funcs = NULL;
 
     JS::RootedObject parent_proto(cx, jsb_Genius_IComponent_prototype);
-    jsb_Genius_ComBulletDamageNone_prototype = JS_InitClass(
+    jsb_Genius_ComBulletDamage_prototype = JS_InitClass(
         cx, global,
         parent_proto,
-        jsb_Genius_ComBulletDamageNone_class,
-        js_app_ComBulletDamageNone_constructor, 0, // constructor
+        jsb_Genius_ComBulletDamage_class,
+        dummy_constructor<Genius::ComBulletDamage>, 0, // no constructor
         properties,
         funcs,
         NULL, // no static properties
         st_funcs);
 
-    JS::RootedObject proto(cx, jsb_Genius_ComBulletDamageNone_prototype);
-    JS::RootedValue className(cx, std_string_to_jsval(cx, "ComBulletDamageNone"));
+    JS::RootedObject proto(cx, jsb_Genius_ComBulletDamage_prototype);
+    JS::RootedValue className(cx, std_string_to_jsval(cx, "ComBulletDamage"));
     JS_SetProperty(cx, proto, "_className", className);
     JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
     JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
     // add the proto and JSClass to the type->js info hash table
-    jsb_register_class<Genius::ComBulletDamageNone>(cx, jsb_Genius_ComBulletDamageNone_class, proto, parent_proto);
-}
-
-JSClass  *jsb_Genius_ComBulletDamageScope_class;
-JSObject *jsb_Genius_ComBulletDamageScope_prototype;
-
-bool js_app_ComBulletDamageScope_constructor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    Genius::ComBulletDamageScope* cobj = new (std::nothrow) Genius::ComBulletDamageScope();
-
-    js_type_class_t *typeClass = js_get_type_from_native<Genius::ComBulletDamageScope>(cobj);
-
-    // link the native object with the javascript object
-    JS::RootedObject jsobj(cx, jsb_create_weak_jsobject(cx, cobj, typeClass, "Genius::ComBulletDamageScope"));
-    args.rval().set(OBJECT_TO_JSVAL(jsobj));
-    if (JS_HasProperty(cx, jsobj, "_ctor", &ok) && ok)
-        ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(jsobj), "_ctor", args);
-    return true;
-}
-
-
-extern JSObject *jsb_Genius_IComponent_prototype;
-
-void js_Genius_ComBulletDamageScope_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (ComBulletDamageScope)", obj);
-    js_proxy_t* nproxy;
-    js_proxy_t* jsproxy;
-    JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
-    JS::RootedObject jsobj(cx, obj);
-    jsproxy = jsb_get_js_proxy(jsobj);
-    if (jsproxy) {
-        Genius::ComBulletDamageScope *nobj = static_cast<Genius::ComBulletDamageScope *>(jsproxy->ptr);
-        nproxy = jsb_get_native_proxy(jsproxy->ptr);
-
-        if (nobj) {
-            jsb_remove_proxy(nproxy, jsproxy);
-            delete nobj;
-        }
-        else
-            jsb_remove_proxy(nullptr, jsproxy);
-    }
-}
-void js_register_app_ComBulletDamageScope(JSContext *cx, JS::HandleObject global) {
-    jsb_Genius_ComBulletDamageScope_class = (JSClass *)calloc(1, sizeof(JSClass));
-    jsb_Genius_ComBulletDamageScope_class->name = "ComBulletDamageScope";
-    jsb_Genius_ComBulletDamageScope_class->addProperty = JS_PropertyStub;
-    jsb_Genius_ComBulletDamageScope_class->delProperty = JS_DeletePropertyStub;
-    jsb_Genius_ComBulletDamageScope_class->getProperty = JS_PropertyStub;
-    jsb_Genius_ComBulletDamageScope_class->setProperty = JS_StrictPropertyStub;
-    jsb_Genius_ComBulletDamageScope_class->enumerate = JS_EnumerateStub;
-    jsb_Genius_ComBulletDamageScope_class->resolve = JS_ResolveStub;
-    jsb_Genius_ComBulletDamageScope_class->convert = JS_ConvertStub;
-    jsb_Genius_ComBulletDamageScope_class->finalize = js_Genius_ComBulletDamageScope_finalize;
-    jsb_Genius_ComBulletDamageScope_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-    static JSPropertySpec properties[] = {
-        JS_PS_END
-    };
-
-    static JSFunctionSpec funcs[] = {
-        JS_FS_END
-    };
-
-    JSFunctionSpec *st_funcs = NULL;
-
-    JS::RootedObject parent_proto(cx, jsb_Genius_IComponent_prototype);
-    jsb_Genius_ComBulletDamageScope_prototype = JS_InitClass(
-        cx, global,
-        parent_proto,
-        jsb_Genius_ComBulletDamageScope_class,
-        js_app_ComBulletDamageScope_constructor, 0, // constructor
-        properties,
-        funcs,
-        NULL, // no static properties
-        st_funcs);
-
-    JS::RootedObject proto(cx, jsb_Genius_ComBulletDamageScope_prototype);
-    JS::RootedValue className(cx, std_string_to_jsval(cx, "ComBulletDamageScope"));
-    JS_SetProperty(cx, proto, "_className", className);
-    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
-    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
-    // add the proto and JSClass to the type->js info hash table
-    jsb_register_class<Genius::ComBulletDamageScope>(cx, jsb_Genius_ComBulletDamageScope_class, proto, parent_proto);
-}
-
-JSClass  *jsb_Genius_ComBulletDamageSingle_class;
-JSObject *jsb_Genius_ComBulletDamageSingle_prototype;
-
-
-extern JSObject *jsb_Genius_IComponent_prototype;
-
-void js_register_app_ComBulletDamageSingle(JSContext *cx, JS::HandleObject global) {
-    jsb_Genius_ComBulletDamageSingle_class = (JSClass *)calloc(1, sizeof(JSClass));
-    jsb_Genius_ComBulletDamageSingle_class->name = "ComBulletDamageSingle";
-    jsb_Genius_ComBulletDamageSingle_class->addProperty = JS_PropertyStub;
-    jsb_Genius_ComBulletDamageSingle_class->delProperty = JS_DeletePropertyStub;
-    jsb_Genius_ComBulletDamageSingle_class->getProperty = JS_PropertyStub;
-    jsb_Genius_ComBulletDamageSingle_class->setProperty = JS_StrictPropertyStub;
-    jsb_Genius_ComBulletDamageSingle_class->enumerate = JS_EnumerateStub;
-    jsb_Genius_ComBulletDamageSingle_class->resolve = JS_ResolveStub;
-    jsb_Genius_ComBulletDamageSingle_class->convert = JS_ConvertStub;
-    jsb_Genius_ComBulletDamageSingle_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-    static JSPropertySpec properties[] = {
-        JS_PS_END
-    };
-
-    static JSFunctionSpec funcs[] = {
-        JS_FS_END
-    };
-
-    JSFunctionSpec *st_funcs = NULL;
-
-    JS::RootedObject parent_proto(cx, jsb_Genius_IComponent_prototype);
-    jsb_Genius_ComBulletDamageSingle_prototype = JS_InitClass(
-        cx, global,
-        parent_proto,
-        jsb_Genius_ComBulletDamageSingle_class,
-        dummy_constructor<Genius::ComBulletDamageSingle>, 0, // no constructor
-        properties,
-        funcs,
-        NULL, // no static properties
-        st_funcs);
-
-    JS::RootedObject proto(cx, jsb_Genius_ComBulletDamageSingle_prototype);
-    JS::RootedValue className(cx, std_string_to_jsval(cx, "ComBulletDamageSingle"));
-    JS_SetProperty(cx, proto, "_className", className);
-    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
-    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
-    // add the proto and JSClass to the type->js info hash table
-    jsb_register_class<Genius::ComBulletDamageSingle>(cx, jsb_Genius_ComBulletDamageSingle_class, proto, parent_proto);
+    jsb_register_class<Genius::ComBulletDamage>(cx, jsb_Genius_ComBulletDamage_class, proto, parent_proto);
 }
 
 JSClass  *jsb_Genius_ComBulletDebugDraw_class;
@@ -3019,44 +2715,25 @@ bool js_app_ComBulletDebugDraw_Clear(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_ComBulletDebugDraw_Clear : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
-bool js_app_ComBulletDebugDraw_constructor(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_app_ComBulletDebugDraw_OnAwake(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    Genius::ComBulletDebugDraw* cobj = new (std::nothrow) Genius::ComBulletDebugDraw();
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::ComBulletDebugDraw* cobj = (Genius::ComBulletDebugDraw *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComBulletDebugDraw_OnAwake : Invalid Native Object");
+    if (argc == 0) {
+        cobj->OnAwake();
+        args.rval().setUndefined();
+        return true;
+    }
 
-    js_type_class_t *typeClass = js_get_type_from_native<Genius::ComBulletDebugDraw>(cobj);
-
-    // link the native object with the javascript object
-    JS::RootedObject jsobj(cx, jsb_create_weak_jsobject(cx, cobj, typeClass, "Genius::ComBulletDebugDraw"));
-    args.rval().set(OBJECT_TO_JSVAL(jsobj));
-    if (JS_HasProperty(cx, jsobj, "_ctor", &ok) && ok)
-        ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(jsobj), "_ctor", args);
-    return true;
+    JS_ReportError(cx, "js_app_ComBulletDebugDraw_OnAwake : wrong number of arguments: %d, was expecting %d", argc, 0);
+    return false;
 }
-
 
 extern JSObject *jsb_Genius_IComponent_prototype;
 
-void js_Genius_ComBulletDebugDraw_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (ComBulletDebugDraw)", obj);
-    js_proxy_t* nproxy;
-    js_proxy_t* jsproxy;
-    JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
-    JS::RootedObject jsobj(cx, obj);
-    jsproxy = jsb_get_js_proxy(jsobj);
-    if (jsproxy) {
-        Genius::ComBulletDebugDraw *nobj = static_cast<Genius::ComBulletDebugDraw *>(jsproxy->ptr);
-        nproxy = jsb_get_native_proxy(jsproxy->ptr);
-
-        if (nobj) {
-            jsb_remove_proxy(nproxy, jsproxy);
-            delete nobj;
-        }
-        else
-            jsb_remove_proxy(nullptr, jsproxy);
-    }
-}
 void js_register_app_ComBulletDebugDraw(JSContext *cx, JS::HandleObject global) {
     jsb_Genius_ComBulletDebugDraw_class = (JSClass *)calloc(1, sizeof(JSClass));
     jsb_Genius_ComBulletDebugDraw_class->name = "ComBulletDebugDraw";
@@ -3067,7 +2744,6 @@ void js_register_app_ComBulletDebugDraw(JSContext *cx, JS::HandleObject global) 
     jsb_Genius_ComBulletDebugDraw_class->enumerate = JS_EnumerateStub;
     jsb_Genius_ComBulletDebugDraw_class->resolve = JS_ResolveStub;
     jsb_Genius_ComBulletDebugDraw_class->convert = JS_ConvertStub;
-    jsb_Genius_ComBulletDebugDraw_class->finalize = js_Genius_ComBulletDebugDraw_finalize;
     jsb_Genius_ComBulletDebugDraw_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
     static JSPropertySpec properties[] = {
@@ -3076,6 +2752,7 @@ void js_register_app_ComBulletDebugDraw(JSContext *cx, JS::HandleObject global) 
 
     static JSFunctionSpec funcs[] = {
         JS_FN("Clear", js_app_ComBulletDebugDraw_Clear, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("OnAwake", js_app_ComBulletDebugDraw_OnAwake, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 
@@ -3086,7 +2763,7 @@ void js_register_app_ComBulletDebugDraw(JSContext *cx, JS::HandleObject global) 
         cx, global,
         parent_proto,
         jsb_Genius_ComBulletDebugDraw_class,
-        js_app_ComBulletDebugDraw_constructor, 0, // constructor
+        dummy_constructor<Genius::ComBulletDebugDraw>, 0, // no constructor
         properties,
         funcs,
         NULL, // no static properties
@@ -3810,16 +3487,14 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
     js_register_app_IComponent(cx, ns);
     js_register_app_ComBoxCollider(cx, ns);
     js_register_app_ComPawnAgent(cx, ns);
+    js_register_app_ComBulletDamage(cx, ns);
     js_register_app_ComBulletAnimBase(cx, ns);
     js_register_app_ComBulletAnimArrow(cx, ns);
     js_register_app_EntityWrapper(cx, ns);
     js_register_app_ComPawnNavigation(cx, ns);
     js_register_app_ComPawnBevtree(cx, ns);
     js_register_app_PawnBlackboard(cx, ns);
-    js_register_app_ComBulletDamageScope(cx, ns);
     js_register_app_RollNumberLabel(cx, ns);
-    js_register_app_ComColliderHandler(cx, ns);
-    js_register_app_ComBulletDamageNone(cx, ns);
     js_register_app_ComPawnDebugDraw(cx, ns);
     js_register_app_WorldWrapper(cx, ns);
     js_register_app_ComParticle(cx, ns);
@@ -3827,7 +3502,6 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
     js_register_app_ComTransform(cx, ns);
     js_register_app_ComPawnAnim(cx, ns);
     js_register_app_ComBulletDebugDraw(cx, ns);
-    js_register_app_ComBulletDamageSingle(cx, ns);
     js_register_app_SceneManager(cx, ns);
     js_register_app_ComBulletAnimEgg(cx, ns);
     js_register_app_ComBezierMovement(cx, ns);

@@ -6,10 +6,10 @@
 
 namespace Genius
 {
-	class ComBulletDamageSingle : public IComponent
+	class ComBulletDamage : public IComponent
 	{
 	public:
-		COM_CREATE_FN_DECL(ComBulletDamageSingle);
+		COM_CREATE_FN_DECL(ComBulletDamage);
 
 	public:
 		int		targetID;

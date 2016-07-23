@@ -4,6 +4,7 @@
 #include "../../EntityEvents.h"
 #include "pawn/PawnDefines.h"
 #include "../../core/Entity.h"
+#include "../../core/ECSWorld.h"
 
 #include "2Ddef.h"
 #include "data/auto/Role_cfg.hpp"
@@ -16,75 +17,85 @@ void SystemBoxCollider::Initialize()
 {
 	transMapper.init(*world);
 	colliderMapper.init(*world);
-	handlerMapper.init(*world);
-	// register event.
-	//EventManager::GetSingleton()->AddListener(this, Event_xxx);
 }
 
 void SystemBoxCollider::ProcessEntity(Entity* pEntity)
 {
 	ComBoxCollider* colliderCom = colliderMapper.get(pEntity);
-	if (!colliderCom->positive)
+	if (colliderCom->isStatic)
 		return;
 
 	ComTransform* posCom = transMapper.get(pEntity);
-	ComColliderHandler* handlerCom = handlerMapper.get(pEntity);
 
 	// 更新所在区域
 	colliderCom->areaID = GameUtils::CalculateAreaID((int)posCom->x, (int)posCom->y);
 
 	// 检查已经发生的碰撞是否还有效。
-	for (int i = 0; i < ComBoxCollider::MaxCount; ++i)
+	auto it_find = m_colliderData.find(pEntity->GetId());
+	if (it_find == m_colliderData.end())
 	{
-		if (colliderCom->collideIDs[i] == Entity::InvalidID)
-			continue;
-		Entity* pOldCollidedEntity = ECSWorld::GetSingleton()->GetEntity(colliderCom->collideIDs[i]);
-		if (nullptr == pOldCollidedEntity)
-		{
-			colliderCom->collideIDs[i] = Entity::InvalidID;
-			continue;
-		}
-		
-		ComTransform* oldPosCom = transMapper.get(pOldCollidedEntity);
-		ComBoxCollider* oldColliderCom = colliderMapper.get(pOldCollidedEntity);
-		if (!IsCollidedBetween(posCom, colliderCom, oldPosCom, oldColliderCom))
-		{
-			// exit
-			colliderCom->collideIDs[i] = Entity::InvalidID;
-			if (handlerCom->_exitColliderListener)
-				handlerCom->_exitColliderListener(pEntity->GetId(), pOldCollidedEntity->GetId());
-		}
+		std::list<int> new_vec;
+		m_colliderData.insert(std::make_pair(pEntity->GetId(), new_vec));
 	}
 
-	Bag<Entity*>& activities = GetActivities();
-	for (int i = 0; i < activities.getCount(); i++)
+	auto collideList = m_colliderData[pEntity->GetId()];
+	for (auto it = collideList.begin(); it != collideList.end(); )
 	{
-		Entity* pOtherEntity = activities.get(i);
-		if (pEntity == pOtherEntity)
+		int oldEntityID = *it;
+		auto oldEntity = ECSWorld::GetSingleton()->GetEntity(oldEntityID);
+
+		// invaild entity
+		if (nullptr == oldEntity)
+		{
+			it = collideList.erase(it);
 			continue;
+		}
 		
-		ComTransform* otherPosCom = transMapper.get(pOtherEntity);
-		ComBoxCollider* otherColliderCom = colliderMapper.get(pOtherEntity);
+		ComTransform* oldTranCom = transMapper.get(oldEntity);
+		ComBoxCollider* oldColliderCom = colliderMapper.get(oldEntity);
+		if (!IsCollidedBetween(posCom, colliderCom, oldTranCom, oldColliderCom))
+		{
+			// exit collider
+			it = collideList.erase(it);
+			EventManager::GetSingleton()->FireEvent(ExitColliderEvent(pEntity, oldEntity));
+			continue;
+		}
+
+		++it;
+	}
+
+	// new collide test
+	auto activities = ECSWorld::GetSingleton()->GetEntitiesByTag(GameDefine::Tag_BoxCollider);
+	for (auto it = activities.begin(); it != activities.end(); it++)
+	{
+		int otherEntityID = it->first;
+		auto otherEntity = it->second;
+
+		bool alreadyCollided = false;
+		for (auto it2 = collideList.begin(); it2 != collideList.end(); it2++)
+		{
+			if (*it2 == otherEntityID)
+			{
+				alreadyCollided = true;
+				break;
+			}
+		}
+		if (alreadyCollided)
+			continue;
+
+
+		ComTransform* otherPosCom = transMapper.get(otherEntity);
+		ComBoxCollider* otherColliderCom = colliderMapper.get(otherEntity);
 		// 先判断是否在相邻区域内
 		bool isInAreas = GameUtils::IsInAreasAround(colliderCom->areaID, (int)otherPosCom->x, (int)otherPosCom->y);
 		if (isInAreas && IsCollidedBetween(posCom, colliderCom, otherPosCom, otherColliderCom))
 		{
-			bool isAlreadyCollided = IsAlreadyCollided(colliderCom, pOtherEntity);
-			if (false == isAlreadyCollided)
-			{
-				for (int j = 0; j < ComBoxCollider::MaxCount; ++j)
-				{
-					if (colliderCom->collideIDs[j] == Entity::InvalidID)
-					{
-						colliderCom->collideIDs[j] = pOtherEntity->GetId();
-						if (handlerCom->_enterColliderListener)
-							handlerCom->_enterColliderListener(pEntity->GetId(), pOtherEntity->GetId());
-						break;
-					}
-				}
-			}
+			collideList.push_back(otherEntityID);
+			EventManager::GetSingleton()->FireEvent(EnterColliderEvent(pEntity, otherEntity));
 		}
+
 	}
+
 }
 
 bool SystemBoxCollider::HandleEvent(IEventData const &event)
@@ -108,13 +119,6 @@ bool SystemBoxCollider::IsCollidedBetween(ComTransform* posCom, ComBoxCollider* 
 	return (distX < widthPlus && distY < heightPlus);
 }
 
-bool SystemBoxCollider::IsAlreadyCollided(ComBoxCollider* colliderCom, Entity* entity2)
-{
-	int id = entity2->GetId();
-	for (int j = 0; j < ComBoxCollider::MaxCount; ++j)
-	{
-		if (colliderCom->collideIDs[j] == id)
-			return true;
-	}
-	return false;
-}
+
+
+

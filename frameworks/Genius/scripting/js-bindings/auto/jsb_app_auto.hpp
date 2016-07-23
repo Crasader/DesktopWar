@@ -91,16 +91,7 @@ void js_app_ComBoxCollider_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_ComBoxCollider(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_ComBoxCollider_Create(JSContext *cx, uint32_t argc, jsval *vp);
-
-extern JSClass  *jsb_Genius_ComColliderHandler_class;
-extern JSObject *jsb_Genius_ComColliderHandler_prototype;
-
-bool js_app_ComColliderHandler_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_ComColliderHandler_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_ComColliderHandler(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_ComColliderHandler_Create(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_ComColliderHandler_ComColliderHandler(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComBoxCollider_OnAwake(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComRenderRoot_class;
 extern JSObject *jsb_Genius_ComRenderRoot_prototype;
@@ -240,30 +231,12 @@ bool js_app_ComBulletAnimBomb_Create(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComBulletAnimBomb_AnimationFrameCallback(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComBulletAnimBomb_StartExplode(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_Genius_ComBulletDamageNone_class;
-extern JSObject *jsb_Genius_ComBulletDamageNone_prototype;
+extern JSClass  *jsb_Genius_ComBulletDamage_class;
+extern JSObject *jsb_Genius_ComBulletDamage_prototype;
 
-bool js_app_ComBulletDamageNone_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_ComBulletDamageNone_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_ComBulletDamageNone(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_ComBulletDamageNone_ComBulletDamageNone(JSContext *cx, uint32_t argc, jsval *vp);
-
-extern JSClass  *jsb_Genius_ComBulletDamageScope_class;
-extern JSObject *jsb_Genius_ComBulletDamageScope_prototype;
-
-bool js_app_ComBulletDamageScope_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_ComBulletDamageScope_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_ComBulletDamageScope(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_ComBulletDamageScope_ComBulletDamageScope(JSContext *cx, uint32_t argc, jsval *vp);
-
-extern JSClass  *jsb_Genius_ComBulletDamageSingle_class;
-extern JSObject *jsb_Genius_ComBulletDamageSingle_prototype;
-
-bool js_app_ComBulletDamageSingle_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_ComBulletDamageSingle_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_ComBulletDamageSingle(JSContext *cx, JS::HandleObject global);
+bool js_app_ComBulletDamage_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_ComBulletDamage_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_ComBulletDamage(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 
 extern JSClass  *jsb_Genius_ComBulletDebugDraw_class;
@@ -274,7 +247,7 @@ void js_app_ComBulletDebugDraw_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_ComBulletDebugDraw(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_ComBulletDebugDraw_Clear(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_ComBulletDebugDraw_ComBulletDebugDraw(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComBulletDebugDraw_OnAwake(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComBulletAnimEgg_class;
 extern JSObject *jsb_Genius_ComBulletAnimEgg_prototype;

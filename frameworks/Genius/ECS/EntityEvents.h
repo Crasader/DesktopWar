@@ -27,6 +27,10 @@ namespace Genius
 		Event_velocityChanged,
 		Event_turnTo,
 
+		// collider
+		Event_EnterCollider,
+		Event_ExitCollider,
+
 		// fight
 		Event_attackNear,
 		Event_attackNear2,
@@ -138,6 +142,32 @@ namespace Genius
 		Entity*	entity;
 		float		x;
 		float		y;
+	};
+
+	class EnterColliderEvent : public IEventData
+	{
+	public:
+		EnterColliderEvent(Entity* _entity1, Entity* _entity2) :
+			IEventData(Event_EnterCollider),
+			entity1(_entity1),
+			entity2(_entity2)
+		{}
+
+		Entity*	entity1;
+		Entity*	entity2;
+	};
+
+	class ExitColliderEvent : public IEventData
+	{
+	public:
+		ExitColliderEvent(Entity* _entity1, Entity* _entity2) :
+			IEventData(Event_ExitCollider),
+			entity1(_entity1),
+			entity2(_entity2)
+		{}
+
+		Entity*	entity1;
+		Entity*	entity2;
 	};
 
 	class AttackNearEvent : public IEventData

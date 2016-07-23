@@ -1,10 +1,13 @@
 #pragma once
 
+#include <unordered_map>
+
 #include "../../core/EntityProcessingSystem.h"
 #include "../../core/ComponentMapper.h"
 #include "../../components/common/ComTransform.h"
 #include "../../components/common/ComBoxCollider.h"
-#include "../../components/common/ComColliderHandler.h"
+
+
 namespace Genius
 {
 	class SystemBoxCollider : public EntityProcessingSystem
@@ -12,12 +15,11 @@ namespace Genius
 	private:
 		ComponentMapper<ComTransform> transMapper;
 		ComponentMapper<ComBoxCollider> colliderMapper;
-		ComponentMapper<ComColliderHandler> handlerMapper;
 
 	public:
 		SystemBoxCollider()
 		{
-			SetComponentTypes<ComTransform, ComBoxCollider, ComColliderHandler>();
+			SetComponentTypes<ComTransform, ComBoxCollider>();
 		}
 		virtual const char* GetName(){ return "SystemBoxCollider"; }
 		virtual void Initialize();
@@ -28,6 +30,8 @@ namespace Genius
 
 	private:
 		bool IsCollidedBetween(ComTransform* posCom, ComBoxCollider* colliderCom, ComTransform* otherPosCom, ComBoxCollider* otherColliderCom);
-		bool IsAlreadyCollided(ComBoxCollider* colliderCom, Entity* entity2);
+
+	private:
+		std::unordered_map<int, std::list<int>> m_colliderData;
 	};
 };

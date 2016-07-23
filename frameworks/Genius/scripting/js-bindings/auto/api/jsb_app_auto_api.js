@@ -360,30 +360,10 @@ float
 {
 },
 
-};
-
 /**
- * @class ComColliderHandler
+ * @method OnAwake
  */
-ComColliderHandler = {
-
-/**
- * @method Create
- * @param {function} arg0
- * @param {function} arg1
- */
-Create : function (
-func, 
-func 
-)
-{
-},
-
-/**
- * @method ComColliderHandler
- * @constructor
- */
-ComColliderHandler : function (
+OnAwake : function (
 )
 {
 },
@@ -919,41 +899,9 @@ StartExplode : function (
 };
 
 /**
- * @class ComBulletDamageNone
+ * @class ComBulletDamage
  */
-ComBulletDamageNone = {
-
-/**
- * @method ComBulletDamageNone
- * @constructor
- */
-ComBulletDamageNone : function (
-)
-{
-},
-
-};
-
-/**
- * @class ComBulletDamageScope
- */
-ComBulletDamageScope = {
-
-/**
- * @method ComBulletDamageScope
- * @constructor
- */
-ComBulletDamageScope : function (
-)
-{
-},
-
-};
-
-/**
- * @class ComBulletDamageSingle
- */
-ComBulletDamageSingle = {
+ComBulletDamage = {
 
 };
 
@@ -971,10 +919,9 @@ Clear : function (
 },
 
 /**
- * @method ComBulletDebugDraw
- * @constructor
+ * @method OnAwake
  */
-ComBulletDebugDraw : function (
+OnAwake : function (
 )
 {
 },

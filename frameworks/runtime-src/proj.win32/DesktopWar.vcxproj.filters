@@ -307,15 +307,6 @@
     <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletAnimEgg.h">
       <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletDamageNone.h">
-      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletDamageScope.h">
-      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletDamageSingle.h">
-      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletDebugDraw.h">
       <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
     </ClInclude>
@@ -323,9 +314,6 @@
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\components\common\ComBoxCollider.h">
-      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\components\common\ComColliderHandler.h">
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\components\common\ComDelayTrackMovement.h">
@@ -368,15 +356,6 @@
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletBombAnim.h">
-      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageNone.h">
-      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageScope.h">
-      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageSingle.h">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletDebugDraw.h">
@@ -589,6 +568,12 @@
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemDirection.h">
       <Filter>Genius\Logic\ESC\User\System\Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\components\bullet\ComBulletDamage.h">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamage.h">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -736,15 +721,6 @@
     <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletAnimEgg.cpp">
       <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletDamageNone.cpp">
-      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletDamageScope.cpp">
-      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletDamageSingle.cpp">
-      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletDebugDraw.cpp">
       <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
     </ClCompile>
@@ -752,9 +728,6 @@
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\components\common\ComBoxCollider.cpp">
-      <Filter>Genius\Logic\ESC\User\Component\common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\components\common\ComColliderHandler.cpp">
       <Filter>Genius\Logic\ESC\User\Component\common</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\components\common\ComDelayTrackMovement.cpp">
@@ -797,15 +770,6 @@
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletBombAnim.cpp">
-      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageNone.cpp">
-      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageScope.cpp">
-      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamageSingle.cpp">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletDebugDraw.cpp">
@@ -990,6 +954,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemDirection.cpp">
       <Filter>Genius\Logic\ESC\User\System\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\bullet\ComBulletDamage.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamage.cpp">
+      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
