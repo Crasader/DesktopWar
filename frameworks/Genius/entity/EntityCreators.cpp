@@ -12,17 +12,23 @@
 #include "app/GameDefine.h"
 #include "pawn/PawnBlackboard.h"
 
+#include "scripting/js-bindings/manual/ScriptingCore.h"
+
 using namespace Genius;
 using namespace cfg;
 
 
-int EntityCreator::CreatePawn(int id, float x, float y, const std::string& tag)
+void EntityCreator::CreatePawn(int id, float x, float y, const std::string& tag)
 {
-	Role_cfg* roleInfo = FIND_CFG(Role_cfg, id);
+	char excString[256];
+	sprintf_s(excString, "SpawnPawn(%d,%f,%f,\"%s\")", id, x, y, tag.c_str());
+	ScriptingCore::getInstance()->evalString(excString);
+
+	/*Role_cfg* roleInfo = FIND_CFG(Role_cfg, id);
 	if (nullptr == roleInfo)
 	{
 		Log::Warning("error role type : %d", id);
-		return 0;
+		return;
 	}
 
 	Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
@@ -67,24 +73,28 @@ int EntityCreator::CreatePawn(int id, float x, float y, const std::string& tag)
 	ECSWorld::GetSingleton()->AddTag(ent, tag);
 	
 	ent->Refresh();
+	*/
 
-	return ent->GetId();
 }
 
-int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float y, const std::string& tag, float destX, float destY)
+void EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float y, const std::string& tag, float destX, float destY)
 {
-	Bullet_cfg* bulletCfg = FIND_CFG(Bullet_cfg, bulletID);
+	char excString[256];
+	sprintf_s(excString, "SpawnBullet(%d,%d,%f,%f,\"%s\",%f,%f)", bulletID, targetEntityID, x, y, tag.c_str(), destX, destY);
+	ScriptingCore::getInstance()->evalString(excString);
+
+	/*Bullet_cfg* bulletCfg = FIND_CFG(Bullet_cfg, bulletID);
 	if (nullptr == bulletCfg)
 	{
 		Log::Warning("error bullet id : %d", bulletID);
-		return 0;
+		return;
 	}
 
 	auto anim_cfg = FIND_CFG(Animation_cfg, bulletCfg->bodyAnim);
 	if (nullptr == anim_cfg)
 	{
 		Log::Warning("error bullet anim id : %d", bulletID);
-		return 0;
+		return;
 	}
 
 	Entity* ent = ECSWorld::GetSingleton()->GetEntityManager()->Create();
@@ -161,6 +171,6 @@ int EntityCreator::CreateBullet(int bulletID, int targetEntityID, float x, float
 	}
 	
 	ent->Refresh();
-	return ent->GetId();
+	*/
 }
 

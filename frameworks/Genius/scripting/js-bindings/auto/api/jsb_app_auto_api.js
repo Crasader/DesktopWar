@@ -314,6 +314,16 @@ float
 },
 
 /**
+ * @method SetDirection
+ * @param {int} arg0
+ */
+SetDirection : function (
+int 
+)
+{
+},
+
+/**
  * @method SetVelocity
  * @param {float} arg0
  * @param {float} arg1
@@ -326,11 +336,10 @@ float
 },
 
 /**
- * @method SetDirection
- * @param {int} arg0
+ * @method ComTransform
+ * @constructor
  */
-SetDirection : function (
-int 
+ComTransform : function (
 )
 {
 },
@@ -903,6 +912,16 @@ StartExplode : function (
  */
 ComBulletDamage = {
 
+/**
+ * @method SetTargetID
+ * @param {int} arg0
+ */
+SetTargetID : function (
+int 
+)
+{
+},
+
 };
 
 /**
@@ -1078,6 +1097,26 @@ pawnaction
 },
 
 /**
+ * @method SetTargetX
+ * @param {float} arg0
+ */
+SetTargetX : function (
+float 
+)
+{
+},
+
+/**
+ * @method SetTargetType
+ * @param {int} arg0
+ */
+SetTargetType : function (
+int 
+)
+{
+},
+
+/**
  * @method SetAttr
  * @param {int} arg0
  * @param {int} arg1
@@ -1139,6 +1178,26 @@ int
 )
 {
     return 0;
+},
+
+/**
+ * @method SetTargetY
+ * @param {float} arg0
+ */
+SetTargetY : function (
+float 
+)
+{
+},
+
+/**
+ * @method SetTargetID
+ * @param {int} arg0
+ */
+SetTargetID : function (
+int 
+)
+{
 },
 
 /**

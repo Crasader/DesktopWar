@@ -80,8 +80,9 @@ void js_app_ComTransform_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_ComTransform(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_ComTransform_SetPosition(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_ComTransform_SetVelocity(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComTransform_SetDirection(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComTransform_SetVelocity(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComTransform_ComTransform(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComBoxCollider_class;
 extern JSObject *jsb_Genius_ComBoxCollider_prototype;
@@ -238,6 +239,7 @@ bool js_app_ComBulletDamage_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 void js_app_ComBulletDamage_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_ComBulletDamage(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComBulletDamage_SetTargetID(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComBulletDebugDraw_class;
 extern JSObject *jsb_Genius_ComBulletDebugDraw_prototype;
@@ -291,12 +293,16 @@ void js_app_PawnBlackboard_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_PawnBlackboard(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_PawnBlackboard_AddAction(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_PawnBlackboard_SetTargetX(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_PawnBlackboard_SetTargetType(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_PawnBlackboard_SetAttr(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_PawnBlackboard_ModAttr(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_PawnBlackboard_FinishAction(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_PawnBlackboard_AddActionHandler(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_PawnBlackboard_Update(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_PawnBlackboard_GetAttr(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_PawnBlackboard_SetTargetY(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_PawnBlackboard_SetTargetID(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_PawnBlackboard_RemoveActionHandler(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_PawnBlackboard_PawnBlackboard(JSContext *cx, uint32_t argc, jsval *vp);
 

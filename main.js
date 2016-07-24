@@ -7,15 +7,16 @@
  */
 
 
-require("res/script/mainfuncs.js")
-LoadScript("res/script/Defines.js")
-LoadScript("res/script/Class.js")
-LoadScript("res/script/Configs.js")
-LoadScript("res/script/GameState.js")
-LoadScript("res/script/ComponentName.js")
-LoadScript("res/script/prefabs/Soldier.js")
-LoadScript("res/script/prefabs/Monster.js")
-LoadScript("res/script/EntityScript.js")
+require("res/script/mainfuncs.js");
+LoadScript("res/script/Defines.js");
+LoadScript("res/script/Class.js");
+LoadScript("res/script/Configs.js");
+LoadScript("res/script/GameState.js");
+LoadScript("res/script/ComponentName.js");
+LoadScript("res/script/prefabs/Soldier.js");
+LoadScript("res/script/prefabs/Monster.js");
+LoadScript("res/script/prefabs/Bullet.js");
+LoadScript("res/script/EntityScript.js");
 
 
 
@@ -35,9 +36,9 @@ var Game =
     Init:function ()
     {
         //print("Game Init")
-        this.loadingState = new LoadingState()
-        this.lanchState = new LaunchState()
-        this.warState = new WarState()
+        this.loadingState = new LoadingState();
+        this.lanchState = new LaunchState();
+        this.warState = new WarState();
         this.ChangeState(this.lanchState)
     },
 
@@ -46,17 +47,17 @@ var Game =
     {
         if(newState != this.lanchState && newState != this.warState)
         {
-            print("invalid state")
+            print("invalid state");
             return
         }
         if(newState == this.currentState)
         {
-            print("cannot enter the same state")
+            print("cannot enter the same state");
             return
         }
 
-        this.lastState = this.currentState
-        this.currentState = this.loadingState
+        this.lastState = this.currentState;
+        this.currentState = this.loadingState;
         this.loadingState.SetTwoStatus(this.lastState, newState)
     },
 
@@ -69,8 +70,8 @@ var Game =
             if (this.currentState != this.lastState)
             {
                 if (this.lastState != null)
-                    this.lastState.OnExit()
-                this.currentState.OnEnter()
+                    this.lastState.OnExit();
+                this.currentState.OnEnter();
                 this.lastState = this.currentState
             }
             this.currentState.OnUpdate(timeDelta)
@@ -80,23 +81,9 @@ var Game =
 
 
 
-}
+};
 
-Game.Init()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Game.Init();
 
 
 

@@ -138,24 +138,24 @@ var LaunchState = GameState.extend
 
     OnEnter:function ()
     {
-        /*
-        //Monster.Create(2012, 700, 133, 2);
-        //Monster.Create(2009, 300, 133, 2);
-        Monster.Create(2010, 200, 133, 2);
-        Monster.Create(2010, 350, 133, 2);
 
-        Monster.Create(2008, 1000, 133, 2);
+        //Monster.Create(2012, 700, 133);
+        //Monster.Create(2009, 300, 133);
+        Monster.Create(2010, 200, 133);
+        Monster.Create(2010, 350, 133);
 
-        //Monster.Create(2011, 300, 133, 2);
-        //Monster.Create(2011, 280, 120, 2);
-        //Monster.Create(2011, 260, 140, 2);
+        Monster.Create(2008, 1000, 133);
 
-        Soldier.Create(1007, 400, 133, 1);
-        //Soldier.Create(1007, 520, 120, 1);
-        //Soldier.Create(1007, 540, 140, 1);
-*/
-        Soldier.Create(1001, 400, 133, 1);
-        Monster.Create(2011, 300, 140, 2);
+        //Monster.Create(2011, 300, 133);
+        //Monster.Create(2011, 280, 120);
+        //Monster.Create(2011, 260, 140);
+
+        Soldier.Create(1007, 400, 133);
+        //Soldier.Create(1007, 520, 120);
+        //Soldier.Create(1007, 540, 140);
+
+        //Soldier.Create(1001, 400, 133);
+        //Monster.Create(2011, 300, 140);
         print("enter Launch");
     },
 
@@ -171,9 +171,8 @@ var LaunchState = GameState.extend
 
     ParseResourceList:function(loadMgr)
     {
-        loadMgr.AddRole(2011);
         loadMgr.AddRole(1001);
-        /*loadMgr.AddRole(2012);
+        loadMgr.AddRole(2012);
         loadMgr.AddRole(2011);
         loadMgr.AddRole(2010);
         loadMgr.AddRole(2009);
@@ -182,10 +181,10 @@ var LaunchState = GameState.extend
 
         loadMgr.AddAnim(3001);
         loadMgr.AddAnim(3002);
-        loadMgr.AddAnim(3003);*/
+        loadMgr.AddAnim(3003);
     }
 
-})
+});
 
 
 
@@ -219,7 +218,7 @@ var WarState = GameState.extend({
         //loadMgr.AddResource(LoadingManager.ResourceType.Json, "BigDevil")
     }
 
-})
+});
 
 
 

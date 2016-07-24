@@ -132,6 +132,25 @@ void PawnBlackboard::ModAttr(int type, int value)
 		m_attr[type] = 0;
 }
 
+void PawnBlackboard::SetTargetType(int tp)
+{
+	targetType = tp;
+}
+
+void PawnBlackboard::SetTargetID(int id)
+{
+	targetID = id;
+}
+
+void PawnBlackboard::SetTargetX(float x)
+{
+	targetX = x;
+}
+
+void PawnBlackboard::SetTargetY(float y)
+{
+	targetY = y;
+}
 
 
 

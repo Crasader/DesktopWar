@@ -15,7 +15,7 @@ namespace Genius
 		int		targetID;
 
 	public:
-
+		void SetTargetID(int tarId);
 	};
 };
 

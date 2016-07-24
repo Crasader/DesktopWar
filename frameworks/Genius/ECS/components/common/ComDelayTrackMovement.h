@@ -8,10 +8,10 @@
 namespace Genius
 {
 	
-	class ComDelayTrackMoving : public IComponent
+	class ComDelayTrackMovement : public IComponent
 	{
 	public:
-		COM_CREATE_FN_DECL(ComDelayTrackMoving);
+		COM_CREATE_FN_DECL(ComDelayTrackMovement);
 
 	public:
 		int		targetEntityID;
@@ -22,6 +22,7 @@ namespace Genius
 		bool		isTracking;
 
 	public:
+		ComDelayTrackMovement();
 		void Create(int _targetID, float _delayTime);
 
 		virtual void OnAwake();

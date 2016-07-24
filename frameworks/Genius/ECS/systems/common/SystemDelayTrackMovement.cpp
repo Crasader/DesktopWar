@@ -23,7 +23,7 @@ void SystemDelayTrackMovement::ProcessEntity(Entity* pEntity)
 {
 	ComTransform* pPosCom = transMapper.get(pEntity);
 	
-	ComDelayTrackMoving* pTrackCom = trackMapper.get(pEntity);
+	ComDelayTrackMovement* pTrackCom = trackMapper.get(pEntity);
 
 	if (!pTrackCom->isTracking)
 	{

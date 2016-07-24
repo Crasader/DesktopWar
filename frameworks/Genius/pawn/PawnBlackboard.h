@@ -29,6 +29,10 @@ namespace Genius
 		int GetAttr(int type);
 		void SetAttr(int type, int value);
 		void ModAttr(int type, int value);
+		void SetTargetType(int tp);
+		void SetTargetID(int id);
+		void SetTargetX(float x);
+		void SetTargetY(float y);
 
 	public:
 		ComPawnAgent*	m_pAgent;

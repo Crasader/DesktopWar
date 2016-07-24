@@ -13,12 +13,12 @@ namespace Genius
 	private:
 		ComponentMapper<ComTransform> transMapper;
 		
-		ComponentMapper<ComDelayTrackMoving> trackMapper;
+		ComponentMapper<ComDelayTrackMovement> trackMapper;
 
 	public:
 		SystemDelayTrackMovement()
 		{
-			SetComponentTypes<ComTransform, ComDelayTrackMoving>();
+			SetComponentTypes<ComTransform, ComDelayTrackMovement>();
 		}
 		virtual const char* GetName(){ return "SystemDelayTrackMovement"; }
 		virtual void Initialize();

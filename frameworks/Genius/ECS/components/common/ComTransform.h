@@ -20,6 +20,7 @@ namespace Genius
 		int lastDir;
 
 	public:
+		ComTransform();
 		void SetPosition(float _x, float _y);
 		void SetVelocity(float _x, float _y);
 		void SetDirection(int dir);

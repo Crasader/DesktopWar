@@ -25,11 +25,11 @@ static void _lazyInitComFuncs()
 		return;
 	REG_CREATE_COM(ComTransform);
 	REG_CREATE_COM(ComBoxCollider);
-	//REG_CREATE_COM(ComColliderHandler);
+	REG_CREATE_COM(ComDirection);
 	REG_CREATE_COM(ComRenderRoot);
 	REG_CREATE_COM(ComParticle);
 	REG_CREATE_COM(ComBezierMovement);
-	REG_CREATE_COM(ComDelayTrackMoving);
+	REG_CREATE_COM(ComDelayTrackMovement);
 
 	REG_CREATE_COM(ComPawnAgent);
 	REG_CREATE_COM(ComPawnAnim);
@@ -37,7 +37,6 @@ static void _lazyInitComFuncs()
 	REG_CREATE_COM(ComPawnFight);
 	REG_CREATE_COM(ComPawnNavigation);
 	REG_CREATE_COM(ComPawnBevtree);
-
 
 	REG_CREATE_COM(ComBulletAnimArrow);
 	REG_CREATE_COM(ComBulletAnimBase);

@@ -2,7 +2,7 @@
 
 var Soldier = {
 
-    Create:function(id, posx, posy, team)
+    Create:function(id, posx, posy)
     {
         //print("Soldier Create at " + posx + "," + posy);
         var inst = CreateEntity();
@@ -19,21 +19,13 @@ var Soldier = {
 
         entCpp.AddComponent(ComponentName.Render);
 
-        //var targ = entCpp.AddComponent(ComponentName.Target);
-        //targ.Create(0,0,0,0);
-
         var paCom = entCpp.AddComponent(ComponentName.PawnAnim);
         paCom.Create(id);
         var width = paCom.GetWidth()*0.5;
         var height = paCom.GetHeight()*0.7;
 
         var box = entCpp.AddComponent(ComponentName.BoxCollider);
-        box.Create(false, 0, height*0.5, width, height);
-
-        //var han = entCpp.AddComponent(ComponentName.ColliderHandler);
-        //han.Create(null, null);
-
-        //var dir = entCpp.AddComponent(ComponentName.PawnDirection);
+        box.Create(true, 0, height*0.5, width, height);
 
         var bev = entCpp.AddComponent(ComponentName.PawnBevtree);
         bev.Create(roleCfg.bevTreeFile);
@@ -44,7 +36,7 @@ var Soldier = {
         //var dd = entCpp.AddComponent(ComponentName.PawnDebugDraw);
         //dd.Create();
 
-        entCpp.AddTag(Defines.Tag_Soldier)
+        entCpp.AddTag(Tag.Soldier)
 
         return inst;
     },
