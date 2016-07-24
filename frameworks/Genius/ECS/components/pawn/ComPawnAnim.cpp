@@ -77,8 +77,6 @@ void ComPawnAnim::Create(int roleID)
 	CreateAnimFSM(AFT_Simple);
 
 	m_pAnimSet = new AnimSetSimple(this);
-
-	EventManager::GetSingleton()->FireEvent(NodeCreatedEvent(GetEntity(), m_pAvatarRoot));
 }
 
 ComPawnAnim::~ComPawnAnim()

@@ -9,7 +9,7 @@
         {
           "name": "explode",
           "parent": "",
-          "dI": -991,
+          "dI": 0,
           "x": 0.0,
           "y": 25.0,
           "z": 2,
@@ -167,7 +167,7 @@
         {
           "name": "idleleft",
           "parent": "",
-          "dI": -1,
+          "dI": 0,
           "x": 0.0,
           "y": 0.0,
           "z": 1,
@@ -180,34 +180,6 @@
           "effectbyskeleton": false,
           "bl": 0,
           "display_data": [
-            {
-              "name": "image 14979.png",
-              "displayType": 0,
-              "skin_data": [
-                {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "cX": 1.0,
-                  "cY": 1.0,
-                  "kX": 0.0,
-                  "kY": 0.0
-                }
-              ]
-            },
-            {
-              "name": "image 5525.png",
-              "displayType": 0,
-              "skin_data": [
-                {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "cX": 1.0,
-                  "cY": 1.0,
-                  "kX": 0.0,
-                  "kY": 0.0
-                }
-              ]
-            },
             {
               "name": "image 5034.png",
               "displayType": 0,
@@ -273,7 +245,7 @@
               "dl": 0.0,
               "frame_data": [
                 {
-                  "dI": 2,
+                  "dI": 0,
                   "x": 0.0,
                   "y": 0.0,
                   "z": 0,
@@ -288,7 +260,7 @@
                   "bd_dst": 771
                 },
                 {
-                  "dI": 3,
+                  "dI": 1,
                   "x": 0.0,
                   "y": 0.0,
                   "z": 0,
@@ -303,7 +275,7 @@
                   "bd_dst": 771
                 },
                 {
-                  "dI": 4,
+                  "dI": 2,
                   "x": 0.0,
                   "y": 0.0,
                   "z": 0,
@@ -323,7 +295,7 @@
         },
         {
           "name": "explode",
-          "dr": 11,
+          "dr": 10,
           "lp": false,
           "to": 0,
           "drTW": 0,

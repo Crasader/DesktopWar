@@ -1432,6 +1432,130 @@ void js_register_app_ComBezierMovement(JSContext *cx, JS::HandleObject global) {
     jsb_register_class<Genius::ComBezierMovement>(cx, jsb_Genius_ComBezierMovement_class, proto, parent_proto);
 }
 
+JSClass  *jsb_Genius_ComDelayTrackMovement_class;
+JSObject *jsb_Genius_ComDelayTrackMovement_prototype;
+
+bool js_app_ComDelayTrackMovement_Create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::ComDelayTrackMovement* cobj = (Genius::ComDelayTrackMovement *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComDelayTrackMovement_Create : Invalid Native Object");
+    if (argc == 2) {
+        int arg0 = 0;
+        double arg1 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        ok &= JS::ToNumber( cx, args.get(1), &arg1) && !std::isnan(arg1);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_ComDelayTrackMovement_Create : Error processing arguments");
+        cobj->Create(arg0, arg1);
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_ComDelayTrackMovement_Create : wrong number of arguments: %d, was expecting %d", argc, 2);
+    return false;
+}
+bool js_app_ComDelayTrackMovement_OnAwake(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::ComDelayTrackMovement* cobj = (Genius::ComDelayTrackMovement *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComDelayTrackMovement_OnAwake : Invalid Native Object");
+    if (argc == 0) {
+        cobj->OnAwake();
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_ComDelayTrackMovement_OnAwake : wrong number of arguments: %d, was expecting %d", argc, 0);
+    return false;
+}
+bool js_app_ComDelayTrackMovement_constructor(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    Genius::ComDelayTrackMovement* cobj = new (std::nothrow) Genius::ComDelayTrackMovement();
+
+    js_type_class_t *typeClass = js_get_type_from_native<Genius::ComDelayTrackMovement>(cobj);
+
+    // link the native object with the javascript object
+    JS::RootedObject jsobj(cx, jsb_create_weak_jsobject(cx, cobj, typeClass, "Genius::ComDelayTrackMovement"));
+    args.rval().set(OBJECT_TO_JSVAL(jsobj));
+    if (JS_HasProperty(cx, jsobj, "_ctor", &ok) && ok)
+        ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(jsobj), "_ctor", args);
+    return true;
+}
+
+
+extern JSObject *jsb_Genius_IComponent_prototype;
+
+void js_Genius_ComDelayTrackMovement_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (ComDelayTrackMovement)", obj);
+    js_proxy_t* nproxy;
+    js_proxy_t* jsproxy;
+    JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
+    JS::RootedObject jsobj(cx, obj);
+    jsproxy = jsb_get_js_proxy(jsobj);
+    if (jsproxy) {
+        Genius::ComDelayTrackMovement *nobj = static_cast<Genius::ComDelayTrackMovement *>(jsproxy->ptr);
+        nproxy = jsb_get_native_proxy(jsproxy->ptr);
+
+        if (nobj) {
+            jsb_remove_proxy(nproxy, jsproxy);
+            delete nobj;
+        }
+        else
+            jsb_remove_proxy(nullptr, jsproxy);
+    }
+}
+void js_register_app_ComDelayTrackMovement(JSContext *cx, JS::HandleObject global) {
+    jsb_Genius_ComDelayTrackMovement_class = (JSClass *)calloc(1, sizeof(JSClass));
+    jsb_Genius_ComDelayTrackMovement_class->name = "ComDelayTrackMovement";
+    jsb_Genius_ComDelayTrackMovement_class->addProperty = JS_PropertyStub;
+    jsb_Genius_ComDelayTrackMovement_class->delProperty = JS_DeletePropertyStub;
+    jsb_Genius_ComDelayTrackMovement_class->getProperty = JS_PropertyStub;
+    jsb_Genius_ComDelayTrackMovement_class->setProperty = JS_StrictPropertyStub;
+    jsb_Genius_ComDelayTrackMovement_class->enumerate = JS_EnumerateStub;
+    jsb_Genius_ComDelayTrackMovement_class->resolve = JS_ResolveStub;
+    jsb_Genius_ComDelayTrackMovement_class->convert = JS_ConvertStub;
+    jsb_Genius_ComDelayTrackMovement_class->finalize = js_Genius_ComDelayTrackMovement_finalize;
+    jsb_Genius_ComDelayTrackMovement_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+    static JSPropertySpec properties[] = {
+        JS_PS_END
+    };
+
+    static JSFunctionSpec funcs[] = {
+        JS_FN("Create", js_app_ComDelayTrackMovement_Create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("OnAwake", js_app_ComDelayTrackMovement_OnAwake, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+    };
+
+    JSFunctionSpec *st_funcs = NULL;
+
+    JS::RootedObject parent_proto(cx, jsb_Genius_IComponent_prototype);
+    jsb_Genius_ComDelayTrackMovement_prototype = JS_InitClass(
+        cx, global,
+        parent_proto,
+        jsb_Genius_ComDelayTrackMovement_class,
+        js_app_ComDelayTrackMovement_constructor, 0, // constructor
+        properties,
+        funcs,
+        NULL, // no static properties
+        st_funcs);
+
+    JS::RootedObject proto(cx, jsb_Genius_ComDelayTrackMovement_prototype);
+    JS::RootedValue className(cx, std_string_to_jsval(cx, "ComDelayTrackMovement"));
+    JS_SetProperty(cx, proto, "_className", className);
+    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
+    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
+    // add the proto and JSClass to the type->js info hash table
+    jsb_register_class<Genius::ComDelayTrackMovement>(cx, jsb_Genius_ComDelayTrackMovement_class, proto, parent_proto);
+}
+
 JSClass  *jsb_Genius_ComPawnAgent_class;
 JSObject *jsb_Genius_ComPawnAgent_prototype;
 
@@ -3628,10 +3752,10 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
     js_register_app_IComponent(cx, ns);
     js_register_app_ComBoxCollider(cx, ns);
     js_register_app_ComPawnAgent(cx, ns);
-    js_register_app_ComBulletDamage(cx, ns);
+    js_register_app_ComDelayTrackMovement(cx, ns);
     js_register_app_ComBulletAnimBase(cx, ns);
     js_register_app_ComBulletAnimArrow(cx, ns);
-    js_register_app_EntityWrapper(cx, ns);
+    js_register_app_ComBulletDamage(cx, ns);
     js_register_app_ComPawnNavigation(cx, ns);
     js_register_app_ComPawnBevtree(cx, ns);
     js_register_app_PawnBlackboard(cx, ns);
@@ -3641,6 +3765,7 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
     js_register_app_ComParticle(cx, ns);
     js_register_app_ComRenderRoot(cx, ns);
     js_register_app_ComTransform(cx, ns);
+    js_register_app_EntityWrapper(cx, ns);
     js_register_app_ComPawnAnim(cx, ns);
     js_register_app_ComBulletDebugDraw(cx, ns);
     js_register_app_SceneManager(cx, ns);

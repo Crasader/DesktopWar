@@ -482,6 +482,42 @@ IsDone : function (
 };
 
 /**
+ * @class ComDelayTrackMovement
+ */
+ComDelayTrackMovement = {
+
+/**
+ * @method Create
+ * @param {int} arg0
+ * @param {float} arg1
+ */
+Create : function (
+int, 
+float 
+)
+{
+},
+
+/**
+ * @method OnAwake
+ */
+OnAwake : function (
+)
+{
+},
+
+/**
+ * @method ComDelayTrackMovement
+ * @constructor
+ */
+ComDelayTrackMovement : function (
+)
+{
+},
+
+};
+
+/**
  * @class ComPawnAgent
  */
 ComPawnAgent = {

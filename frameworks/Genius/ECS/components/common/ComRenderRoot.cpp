@@ -2,6 +2,8 @@
 #include "ComRenderRoot.h"
 #include "../../core/ECSWorld.h"
 #include "gfx/SceneManager.h"
+#include "event/EventManager.h"
+#include "../../EntityEvents.h"
 
 using namespace Genius;
 using namespace cocos2d;
@@ -13,6 +15,7 @@ void ComRenderRoot::OnAwake()
 {
 	rootNode = cocos2d::Node::create();
 	SceneManager::GetSingleton()->AddToMapLayer(rootNode);
+	EventManager::GetSingleton()->FireEvent(NodeCreatedEvent(GetEntity(), rootNode));
 }
 
 void ComRenderRoot::OnDestroy()
