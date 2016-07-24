@@ -32,7 +32,6 @@ namespace Genius
 		if (nullptr == entity)
 			return;
 
-		//TODO find cleaner way to remove by value
 		for (auto& it : tagMap)
 		{
 			auto& it2 = it.second.find(entity->GetId());

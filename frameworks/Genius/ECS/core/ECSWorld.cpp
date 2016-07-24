@@ -35,15 +35,6 @@ namespace Genius
 		SystemBitManager::RemoveBitSets();
 	}
 
-	void ECSWorld::DeleteEntity(Entity* e)
-	{
-		if (!m_deletedEntities.contains(e))
-		{
-			m_deletedEntities.add(e);
-			EventManager::GetSingleton()->FireEvent(EntityDectroyEvent(e));
-		}
-	}
-
 	float ECSWorld::GetDeltaTime()
 	{
 		return this->m_deltaTime;
@@ -121,6 +112,15 @@ namespace Genius
 		return m_entityMgr->GetEntity(entityId);
 	}
 
+	void ECSWorld::DeleteEntity(Entity* e)
+	{
+		if (!m_deletedEntities.contains(e))
+		{
+			m_deletedEntities.add(e);
+			m_pTagMgr->Remove(e);
+			EventManager::GetSingleton()->FireEvent(EntityDectroyEvent(e));
+		}
+	}
 
 	void ECSWorld::RefreshEntity(Entity* e)
 	{
