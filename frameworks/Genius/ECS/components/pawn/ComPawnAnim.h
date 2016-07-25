@@ -29,7 +29,7 @@ namespace Genius
 		cocostudio::Armature*			m_pBodyArmature;
 		UIBar*									m_pLifeBar;
 		cocos2d::Label*					m_pDebugLabel;
-		int										m_curAction;
+		std::string								m_curAnimName;
 
 	public:
 		void Create(int roleID);

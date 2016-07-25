@@ -12,5 +12,6 @@
 #include "ParticleTail.h"
 #include "SystemStatusPanel.h"
 #include "GfxUtils.h"
+#include "AudioManager.h"
 
 #endif

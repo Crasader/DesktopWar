@@ -11,7 +11,7 @@
 #include "skill/BuffManager.h"
 #include "pawn/PawnBlackboard.h"
 #include "entity/EntityUtility.h"
-#include "bullet/BulletDefines.h"
+#include "entity/BulletDefines.h"
 
 
 using namespace Genius;

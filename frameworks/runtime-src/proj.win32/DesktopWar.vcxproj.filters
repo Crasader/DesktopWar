@@ -32,9 +32,6 @@
     <Filter Include="Genius\Logic\App">
       <UniqueIdentifier>{ad4dc1ef-3909-4cb9-8913-dffe5c80580b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Genius\Logic\Bullet">
-      <UniqueIdentifier>{95070cb4-5cec-4ce9-a9c9-feee4bfd4525}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Genius\Logic\ESC">
       <UniqueIdentifier>{85dce1c4-6430-4af7-89b0-5d0967d1c1d4}</UniqueIdentifier>
     </Filter>
@@ -373,9 +370,6 @@
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnNavigation.h">
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\bullet\BulletDefines.h">
-      <Filter>Genius\Logic\Bullet</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\entity\EntityCreators.h">
       <Filter>Genius\Logic\Entity</Filter>
     </ClInclude>
@@ -573,6 +567,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamage.h">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\entity\BulletDefines.h">
+      <Filter>Genius\Logic\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Genius\gfx\AudioManager.h">
+      <Filter>Genius\Base\Gfx</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -960,6 +960,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletDamage.cpp">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\gfx\AudioManager.cpp">
+      <Filter>Genius\Base\Gfx</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

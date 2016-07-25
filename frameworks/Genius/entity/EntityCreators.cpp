@@ -6,7 +6,7 @@
 #include "data/auto/Bullet_cfg.hpp"
 #include "data/auto/Animation_cfg.hpp"
 #include "data/ConfigPool.h"
-#include "bullet/BulletDefines.h"
+#include "entity/BulletDefines.h"
 #include "Log.h"
 #include "app/Config.h"
 #include "app/GameDefine.h"

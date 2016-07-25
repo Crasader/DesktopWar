@@ -48,5 +48,6 @@ void AnimStateMove::PlayAnim()
 		return;
 
 	auto name = m_pComPawnAnim->m_pAnimSet->GetMoveAnim(pComPawnDir->curDir);
-	m_pComPawnAnim->PlayAnimation(name);
+	if (m_pComPawnAnim->m_curAnimName != name)
+		m_pComPawnAnim->PlayAnimation(name);
 }

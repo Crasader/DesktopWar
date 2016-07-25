@@ -32,7 +32,7 @@ COM_CREATE_FN_IMPL(ComPawnAnim);
 /************************************************************************/
 void ComPawnAnim::Create(int roleID)
 {
-	m_curAction = Action_Idle;
+	m_curAnimName = "";
 	m_pAnimFsm = nullptr;
 
 	auto render = GetEntity()->GetComponent<ComRenderRoot>();
@@ -108,6 +108,7 @@ void ComPawnAnim::HandleAction(PawnAction* pAction)
 
 void ComPawnAnim::PlayAnimation(const std::string& name)
 {
+	m_curAnimName = name;
 	m_pBodyArmature->getAnimation()->play(name);
 }
 

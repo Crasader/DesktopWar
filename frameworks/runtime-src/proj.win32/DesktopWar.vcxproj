@@ -182,7 +182,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\app\GameUtils.h" />
     <ClInclude Include="..\..\Genius\App\LoadingManager.h" />
     <ClInclude Include="..\..\Genius\App\WarApp.h" />
-    <ClInclude Include="..\..\Genius\bullet\BulletDefines.h" />
     <ClInclude Include="..\..\Genius\common\Performance.h" />
     <ClInclude Include="..\..\Genius\data\auto\Animation_cfg.hpp" />
     <ClInclude Include="..\..\Genius\data\auto\Buff_cfg.hpp" />
@@ -242,8 +241,10 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnFight.h" />
     <ClInclude Include="..\..\Genius\ECS\WorldWrapper.h" />
+    <ClInclude Include="..\..\Genius\entity\BulletDefines.h" />
     <ClInclude Include="..\..\Genius\entity\EntityCreators.h" />
     <ClInclude Include="..\..\Genius\entity\EntityUtility.h" />
+    <ClInclude Include="..\..\Genius\gfx\AudioManager.h" />
     <ClInclude Include="..\..\Genius\gfx\GfxUtils.h" />
     <ClInclude Include="..\..\Genius\gfx\RollNumberLabel.h" />
     <ClInclude Include="..\..\Genius\JSBHeaders.h" />
@@ -385,6 +386,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\ECS\WorldWrapper.cpp" />
     <ClCompile Include="..\..\Genius\entity\EntityCreators.cpp" />
     <ClCompile Include="..\..\Genius\entity\EntityUtility.cpp" />
+    <ClCompile Include="..\..\Genius\gfx\AudioManager.cpp" />
     <ClCompile Include="..\..\Genius\gfx\GfxUtils.cpp" />
     <ClCompile Include="..\..\Genius\gfx\RollNumberLabel.cpp" />
     <ClCompile Include="..\..\Genius\pawn\action\PawnAction.cpp" />
