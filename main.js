@@ -11,6 +11,7 @@ require("res/script/mainfuncs.js");
 LoadScript("res/script/Defines.js");
 LoadScript("res/script/Class.js");
 LoadScript("res/script/Configs.js");
+LoadScript("res/script/b3core.0.1.0.js");
 LoadScript("res/script/GameState.js");
 LoadScript("res/script/ComponentName.js");
 LoadScript("res/script/prefabs/Soldier.js");
