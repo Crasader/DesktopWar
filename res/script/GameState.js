@@ -37,7 +37,7 @@ var GameState = Class.extend({
 
     }
     
-})
+});
 
 
 
@@ -123,7 +123,7 @@ var LoadingState = GameState.extend
         this.loadingManager.StartLoading();
     }
 
-})
+});
 
 
 //**************************************Launch********************************************

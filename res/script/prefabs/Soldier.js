@@ -5,9 +5,12 @@ var Soldier = {
     Create:function(id, posx, posy)
     {
         //print("Soldier Create at " + posx + "," + posy);
+
         var inst = CreateEntity();
         var entCpp = inst.GetEntity();
-        //inst.LoadComponent("bev");
+
+        inst.AddComponent(Brain);
+
         var posCom = entCpp.AddComponent(ComponentName.Transform);
         posCom.SetPosition(posx, posy);
         posCom.SetVelocity(0, 0);

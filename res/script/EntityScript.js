@@ -1,6 +1,6 @@
 
 /**
- * js层entity核心，负责管理js组件
+ * js层entityNative核心，负责管理js组件
  * Author:Locke
  * Date:2016-7-13
  */
@@ -9,7 +9,7 @@
 
 var EntityScript = Class.extend({
 
-    entity:null,
+    entityNative:null,
     components:null,
 
 
@@ -20,17 +20,20 @@ var EntityScript = Class.extend({
 
     SetEntity:function(ent)
     {
-        this.entity = ent
+        this.entityNative = ent
     },
 
     GetEntity:function()
     {
-        return this.entity;
+        return this.entityNative;
     },
 
-    LoadComponent:function(name)
+    AddComponent:function(com)
     {
-
+        if (null!=com.isComponentClass)
+        {
+            components[com.GetName()] = com;
+        }
     },
 
     GetComponent:function(name)
