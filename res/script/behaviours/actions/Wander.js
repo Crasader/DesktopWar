@@ -25,7 +25,7 @@ p.open = function(tick)
 p.tick = function(tick)
 {
     var timePassed = tick.blackboard.get('timePassed', tick.tree.id, this.id);
-    timePassed += tick.entity.curUpdateTime;
+    timePassed += tick.target.curUpdateTime;
 
     if (timePassed > 3)
     {

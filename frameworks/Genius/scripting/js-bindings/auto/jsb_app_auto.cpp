@@ -3099,26 +3099,6 @@ void js_register_app_ComBulletAnimEgg(JSContext *cx, JS::HandleObject global) {
 JSClass  *jsb_Genius_EntityWrapper_class;
 JSObject *jsb_Genius_EntityWrapper_prototype;
 
-bool js_app_EntityWrapper_AddTag(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::EntityWrapper* cobj = (Genius::EntityWrapper *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_EntityWrapper_AddTag : Invalid Native Object");
-    if (argc == 1) {
-        const char* arg0 = nullptr;
-        std::string arg0_tmp; ok &= jsval_to_std_string(cx, args.get(0), &arg0_tmp); arg0 = arg0_tmp.c_str();
-        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityWrapper_AddTag : Error processing arguments");
-        cobj->AddTag(arg0);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_EntityWrapper_AddTag : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
 bool js_app_EntityWrapper_RemoveTag(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -3181,6 +3161,42 @@ bool js_app_EntityWrapper_GetID(JSContext *cx, uint32_t argc, jsval *vp)
     }
 
     JS_ReportError(cx, "js_app_EntityWrapper_GetID : wrong number of arguments: %d, was expecting %d", argc, 0);
+    return false;
+}
+bool js_app_EntityWrapper_OnDestroy(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::EntityWrapper* cobj = (Genius::EntityWrapper *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_EntityWrapper_OnDestroy : Invalid Native Object");
+    if (argc == 0) {
+        cobj->OnDestroy();
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_EntityWrapper_OnDestroy : wrong number of arguments: %d, was expecting %d", argc, 0);
+    return false;
+}
+bool js_app_EntityWrapper_AddTag(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::EntityWrapper* cobj = (Genius::EntityWrapper *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_EntityWrapper_AddTag : Invalid Native Object");
+    if (argc == 1) {
+        const char* arg0 = nullptr;
+        std::string arg0_tmp; ok &= jsval_to_std_string(cx, args.get(0), &arg0_tmp); arg0 = arg0_tmp.c_str();
+        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityWrapper_AddTag : Error processing arguments");
+        cobj->AddTag(arg0);
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_EntityWrapper_AddTag : wrong number of arguments: %d, was expecting %d", argc, 1);
     return false;
 }
 bool js_app_EntityWrapper_constructor(JSContext *cx, uint32_t argc, jsval *vp)
@@ -3248,10 +3264,11 @@ void js_register_app_EntityWrapper(JSContext *cx, JS::HandleObject global) {
     };
 
     static JSFunctionSpec funcs[] = {
-        JS_FN("AddTag", js_app_EntityWrapper_AddTag, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("RemoveTag", js_app_EntityWrapper_RemoveTag, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("AddComponent", js_app_EntityWrapper_AddComponent, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("GetID", js_app_EntityWrapper_GetID, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("OnDestroy", js_app_EntityWrapper_OnDestroy, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("AddTag", js_app_EntityWrapper_AddTag, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 
@@ -3301,6 +3318,34 @@ bool js_app_WorldWrapper_CreateEntity(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_WorldWrapper_CreateEntity : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
+bool js_app_WorldWrapper_DestroyEntity(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::WorldWrapper* cobj = (Genius::WorldWrapper *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_WorldWrapper_DestroyEntity : Invalid Native Object");
+    if (argc == 1) {
+        Genius::EntityWrapper* arg0 = nullptr;
+        do {
+            if (args.get(0).isNull()) { arg0 = nullptr; break; }
+            if (!args.get(0).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg0 = (Genius::EntityWrapper*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+        } while (0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_WorldWrapper_DestroyEntity : Error processing arguments");
+        cobj->DestroyEntity(arg0);
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_WorldWrapper_DestroyEntity : wrong number of arguments: %d, was expecting %d", argc, 1);
+    return false;
+}
 bool js_app_WorldWrapper_GetWorld(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -3339,6 +3384,7 @@ void js_register_app_WorldWrapper(JSContext *cx, JS::HandleObject global) {
 
     static JSFunctionSpec funcs[] = {
         JS_FN("CreateEntity", js_app_WorldWrapper_CreateEntity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("DestroyEntity", js_app_WorldWrapper_DestroyEntity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 

@@ -33,7 +33,7 @@ function GetWorld()
 }
 
 
-var gEntities = {}
+var gEntities = {};
 function CreateEntity()
 {
     var entNative = GetWorld().CreateEntity();
@@ -69,6 +69,7 @@ function UpdateEntities(timeDelta)
         var ent = gEntities[id];
         ent.OnUpdate(timeDelta);
     }
+
 }
 
 

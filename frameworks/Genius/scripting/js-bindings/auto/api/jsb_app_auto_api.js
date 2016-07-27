@@ -1036,16 +1036,6 @@ int
 Entity = {
 
 /**
- * @method AddTag
- * @param {char} arg0
- */
-AddTag : function (
-char 
-)
-{
-},
-
-/**
  * @method RemoveTag
  * @param {char} arg0
  */
@@ -1078,6 +1068,24 @@ GetID : function (
 },
 
 /**
+ * @method OnDestroy
+ */
+OnDestroy : function (
+)
+{
+},
+
+/**
+ * @method AddTag
+ * @param {char} arg0
+ */
+AddTag : function (
+char 
+)
+{
+},
+
+/**
  * @method EntityWrapper
  * @constructor
  * @param {Genius::Entity} arg0
@@ -1103,6 +1111,16 @@ CreateEntity : function (
 )
 {
     return Genius::EntityWrapper;
+},
+
+/**
+ * @method DestroyEntity
+ * @param {Genius::EntityWrapper} arg0
+ */
+DestroyEntity : function (
+entitywrapper 
+)
+{
 },
 
 /**

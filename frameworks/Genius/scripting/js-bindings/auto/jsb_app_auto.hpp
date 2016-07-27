@@ -280,10 +280,11 @@ bool js_app_EntityWrapper_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_app_EntityWrapper_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_EntityWrapper(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_EntityWrapper_AddTag(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityWrapper_RemoveTag(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityWrapper_AddComponent(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityWrapper_GetID(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityWrapper_OnDestroy(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityWrapper_AddTag(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityWrapper_EntityWrapper(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_WorldWrapper_class;
@@ -294,6 +295,7 @@ void js_app_WorldWrapper_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_WorldWrapper(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_WorldWrapper_CreateEntity(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_WorldWrapper_DestroyEntity(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_WorldWrapper_GetWorld(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_PawnBlackboard_class;

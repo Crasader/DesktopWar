@@ -3,7 +3,7 @@
 //js层的组件，有自己的各种行为
 
 
-var Component = Class.extend({
+var BaseComponent = Class.extend({
 
     name:"Component",
     entity:null,
