@@ -13,12 +13,28 @@ var Brain = Component.extend({
         this.btree = _btree;
     },
 
-    OnLongUpdate:function()
+    GetBTree:function()
+    {
+        return this.btree;
+    },
+
+    OnUpdate:function(timeDelta)
     {
         if (null != this.btree)
         {
-            this.btree.tick(this.entity, blackboard);
+            var obj =
+            {
+                tree:this.btree,
+                entity:this.entity,
+                whatelse:null
+            };
+            this.btree.tick(obj, blackboard);
         }
+    },
+
+    OnLongUpdate:function(timeDelta)
+    {
+
     },
 
 });

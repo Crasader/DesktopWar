@@ -14,7 +14,7 @@ namespace Genius
 	public:
 		static WorldWrapper* GetWorld();
 		EntityWrapper* CreateEntity();
-		
+		void DestroyEntity(EntityWrapper* ent);
 
 	private:
 		std::map<int, EntityWrapper*> entityMap;

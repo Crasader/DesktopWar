@@ -33,24 +33,54 @@ function GetWorld()
 }
 
 
-var Entities = {}
+var gEntities = {}
 function CreateEntity()
 {
-    var entCpp = GetWorld().CreateEntity()
-    var ent = new EntityScript()
-    ent.SetEntity(entCpp)
-    var guid = entCpp.GetID()
-    Entities[guid] = ent
+    var entNative = GetWorld().CreateEntity();
+    var ent = new EntityScript();
+    ent.SetEntityNative(entNative);
+    var guid = entNative.GetID();
+    gEntities[guid] = ent;
 
-    return ent
+    return ent;
+}
+
+function DestroyEntity(entity)
+{
+    if (null == entity)
+        return;
+
+    GetWorld().DestroyEntity(entity.GetEntityNative())
+
+    for(var id in gEntities)
+    {
+        if(gEntities[id] == entity)
+        {
+            gEntities.splice(id, 1);
+            break;
+        }
+    }
+}
+
+function UpdateEntities(timeDelta)
+{
+    for(var id in gEntities)
+    {
+        var ent = gEntities[id];
+        ent.OnUpdate(timeDelta);
+    }
 }
 
 
-/*function SpawnPrefab(name)
+function LongUpdateEntities(timeDelta)
 {
-    var so = new Soldier()
-    so.fn()
-}*/
+    for(var id in gEntities)
+    {
+        var ent = gEntities[id];
+        ent.OnLongUpdate(timeDelta);
+    }
+}
+
 
 function abs(value)
 {

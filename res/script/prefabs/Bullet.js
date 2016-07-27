@@ -14,7 +14,7 @@ var Bullet = {
         var anim_cfg = Config.Animation[bulletCfg.bodyAnim];
 
         var inst = CreateEntity();
-        var entCpp = inst.GetEntity();
+        var entCpp = inst.GetEntityNative();
 
         var agent = entCpp.AddComponent(ComponentName.PawnAgent);
         agent.Create(bulletId,false);

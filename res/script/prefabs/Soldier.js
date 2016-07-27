@@ -7,7 +7,7 @@ var Soldier = {
         //print("Soldier Create at " + posx + "," + posy);
 
         var inst = CreateEntity();
-        var entCpp = inst.GetEntity();
+        var entCpp = inst.GetEntityNative();
 
         inst.AddComponent(Brain);
 

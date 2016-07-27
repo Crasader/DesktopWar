@@ -11,6 +11,8 @@ var EntityScript = Class.extend({
 
     entityNative:null,
     components:null,
+    curUpdateTime:0,
+    curLongUpdateTime:0,
 
 
     ctor:function ()
@@ -18,12 +20,12 @@ var EntityScript = Class.extend({
         this.components = {}
     },
 
-    SetEntity:function(ent)
+    SetEntityNative:function(ent)
     {
         this.entityNative = ent
     },
 
-    GetEntity:function()
+    GetEntityNative:function()
     {
         return this.entityNative;
     },
@@ -32,30 +34,44 @@ var EntityScript = Class.extend({
     {
         if (null!=com.isComponentClass)
         {
-            components[com.GetName()] = com;
+            this.components[com.GetName()] = com;
+            com.SetEntity(this);
+        }
+        return com;
+    },
+
+    GetComponent:function(com)
+    {
+        return this.components[com.GetName()]
+    },
+
+
+    OnUpdate:function(timedelta)
+    {
+        curUpdateTime = timedelta;
+        for(var id in this.components)
+        {
+            var com = this.components[id];
+            com.OnUpdate(timedelta)
         }
     },
 
-    GetComponent:function(name)
+    OnLongUpdate:function(timedelta)
     {
-        return components[name]
-    },
-
-    OnLongUpdate:function(dt)
-    {
-        for(var com in components)
+        curLongUpdateTime = timedelta;
+        for(var id in this.components)
         {
-            if (com.OnLongUpdate != null)
-                com.OnLongUpdate(dt)
+            var com = this.components[id];
+            com.OnLongUpdate(timedelta)
         }
     },
 
-    OnUpdate:function ()
+    OnDestroy:function()
     {
-        for(var com in components)
+        for(var id in this.components)
         {
-            if (com.OnUpdate != null)
-                com.OnUpdate(dt)
+            var com = this.components[id];
+            com.OnDestroy()
         }
     }
 

@@ -11,7 +11,6 @@ require("res/script/mainfuncs.js");
 require("res/script/Defines.js");
 require("res/script/Class.js");
 require("res/script/Configs.js");
-require("res/script/b3core.0.1.0.js");
 require("res/script/GameState.js");
 require("res/script/ComponentName.js");
 require("res/script/prefabs/Soldier.js");
@@ -81,6 +80,16 @@ var Game =
             this.currentState.OnUpdate(timeDelta)
         }
 
+        //entity
+        UpdateEntities(timeDelta);
+
+    },
+
+
+    OnLongUpdate:function(timeDelta)
+    {
+        //entity
+        LongUpdateEntities(timeDelta);
     }
 
 

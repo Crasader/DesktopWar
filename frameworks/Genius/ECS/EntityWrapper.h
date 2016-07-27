@@ -19,7 +19,8 @@ namespace Genius
 		IComponent* AddComponent(const char* name);
 		void AddTag(const char* tag);
 		void RemoveTag(const char* tag);
-		
+
+		void OnDestroy();
 
 	private:
 		Entity* m_entity;

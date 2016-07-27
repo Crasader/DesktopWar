@@ -95,4 +95,7 @@ void EntityWrapper::RemoveTag(const char* tag)
 	ECSWorld::GetSingleton()->RemoveTag(this->m_entity, tag);
 }
 
-
+void EntityWrapper::OnDestroy()
+{
+	ECSWorld::GetSingleton()->DeleteEntity(m_entity);
+}
