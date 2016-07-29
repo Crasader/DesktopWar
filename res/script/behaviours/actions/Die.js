@@ -34,7 +34,7 @@ var Die = b3.Class(b3.Action);
             //change dir
             //return b3.SUCCESS;
         }
-        print("die")
+        //print("die")
 
         return b3.RUNNING;
     };

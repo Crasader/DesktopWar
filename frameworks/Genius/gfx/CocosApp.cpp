@@ -1,6 +1,6 @@
 
 #include "CocosApp.h"
-#include "app/Config.h"
+
 #include "app/GameDefine.h"
 
 #include "audio/include/SimpleAudioEngine.h"
@@ -75,16 +75,13 @@ bool CocosApp::applicationDidFinishLaunching()
 {
 	// initialize director
 	auto director = Director::getInstance();
-	director->setDisplayStats(cfg_ShowFPS);
+	director->setDisplayStats(true);
 	director->setAnimationInterval(1.0f / 30);
 	auto glview = director->getOpenGLView();
 	if (!glview)
 	{
-		int width = GameDefine::viewWidth;// GetSystemMetrics(SM_CXSCREEN);
+		int width = GameDefine::viewWidth;
 		int height = GameDefine::viewHeight;
-		//cocos2d::Size designResolutionSize = cocos2d::Size((float)width, (float)height);
-		//glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
-		//glview->setFrameSize(designResolutionSize.width, designResolutionSize.height);
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
 		glview = cocos2d::GLViewImpl::create("DesktopWar");
 #else

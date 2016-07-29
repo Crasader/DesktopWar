@@ -25,7 +25,7 @@ var IsAlive = b3.Class(b3.Condition);
         }
         else
         {
-            print("not alive");
+            //print("not alive");
             return b3.FAILURE;
         }
     };

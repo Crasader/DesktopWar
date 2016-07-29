@@ -3,7 +3,7 @@
 #include "CocosApp.h"
 #include "app/GameDefine.h"
 #include "ECS/ecs.h"
-#include "app/Config.h"
+
 
 USING_NS_CC;
 using namespace Genius;
@@ -30,7 +30,7 @@ bool SystemStatusPanel::Init()
 	m_lineCount = 0;
 	m_currentLine = 0;
 	
-	if (cfg_EnableDrawViewRect)
+	if (true)
 	{
 		pDrawNode = DrawNode::create();
 		((CocosApp*)Application::getInstance())->GetScene()->addChild(pDrawNode);

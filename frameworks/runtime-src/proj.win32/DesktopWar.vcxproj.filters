@@ -379,9 +379,6 @@
     <ClInclude Include="..\..\Genius\App\WarApp.h">
       <Filter>Genius\Logic\App</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\app\Config.h">
-      <Filter>Genius\Logic\App</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\app\GameDefine.h">
       <Filter>Genius\Logic\App</Filter>
     </ClInclude>

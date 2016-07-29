@@ -177,7 +177,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Genius\app\Config.h" />
     <ClInclude Include="..\..\Genius\app\GameDefine.h" />
     <ClInclude Include="..\..\Genius\app\GameUtils.h" />
     <ClInclude Include="..\..\Genius\App\LoadingManager.h" />

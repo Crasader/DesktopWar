@@ -7,6 +7,8 @@
 #endif
 
 #include <windows.h>
+#include <thread>
+#include <mutex>
 
 #define WM_NOTIFY_ICON WM_USER + 1
 
@@ -17,7 +19,7 @@ public:
 	void Draw();
 	void Destroy();
 
-public:
+	void _bufferThread();
 	void ShowTrayMenu();
 
 private:
@@ -31,4 +33,8 @@ private:
 	// gl buffer
 	unsigned int*		m_pBitsFromGL;
 	unsigned int*		m_pBitsFromGLFlipY;
+
+	// 
+	bool						m_canProcessBuffer;
+	std::mutex			m_bufferMutex;
 };

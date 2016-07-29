@@ -6,9 +6,11 @@
 #define WIN32_LEAN_AND_MEAN             //  从 Windows 头文件中排除极少使用的信息
 // Windows 头文件: 
 #include <windows.h>
+#include <MMSystem.h>
 
 // C 运行时头文件
 #include <stdlib.h>
+#include <stdio.h>
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
@@ -23,7 +25,7 @@
 
 #pragma warning(disable:4251)
 
-unsigned int g_FPS = 30;
+unsigned int g_FPS = 60;
 WinWrapper g_winWrapper;
 WarApp g_warApp;
 
@@ -65,25 +67,59 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_DESKTOPWAR));
 
 	// 主消息循环: 
-	while (GetMessage(&msg, NULL, 0, 0))
+	/*while (GetMessage(&msg, NULL, 0, 0))
 	{
 		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
 		{
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
+	}*/
+
+	//
+	static DWORD lastTickCount = timeGetTime();
+	DWORD nowTickCount = 0;
+	int deltaTickCount = 0;
+	int interval = 1000 / g_FPS;
+	while (true)
+	{
+		nowTickCount = timeGetTime();
+		deltaTickCount = (int)(nowTickCount - lastTickCount);
+		if (deltaTickCount > 10)printf("%d ", deltaTickCount);
+		if (deltaTickCount > 1000)
+		{
+			deltaTickCount = interval;
+		}
+		else if (deltaTickCount < interval)
+		{
+			Sleep(interval - deltaTickCount);
+			continue;
+		}
+		lastTickCount = nowTickCount;
+
+		// game logic
+		g_warApp.Tick(deltaTickCount*0.001f);
+
+		// message
+		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		{
+			if (msg.message == WM_QUIT)
+			{
+				break;
+			}
+			else
+			{
+				TranslateMessage(&msg);
+				DispatchMessage(&msg);
+			}
+		}
+		
 	}
 
 	return (int) msg.wParam;
 }
 
 
-
-//
-//  函数:  MyRegisterClass()
-//
-//  目的:  注册窗口类。
-//
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
 	WNDCLASSEX wcex;
@@ -105,16 +141,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 	return RegisterClassEx(&wcex);
 }
 
-//
-//   函数:  InitInstance(HINSTANCE, int)
-//
-//   目的:  保存实例句柄并创建主窗口
-//
-//   注释: 
-//
-//        在此函数中，我们在全局变量中保存实例句柄并
-//        创建和显示主程序窗口。
-//
+
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 将实例句柄存储在全局变量中
@@ -140,22 +167,13 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ////////////
    g_winWrapper.Init(hWnd);
    g_warApp.Init();
-   SetTimer(hWnd, 1, 1000/g_FPS, NULL);
+   SetTimer(hWnd, 1, 33, NULL);
    ////////////
 
    return TRUE;
 }
 
-//
-//  函数:  WndProc(HWND, UINT, WPARAM, LPARAM)
-//
-//  目的:    处理主窗口的消息。
-//
-//  WM_COMMAND	- 处理应用程序菜单
-//  WM_PAINT	- 绘制主窗口
-//  WM_DESTROY	- 发送退出消息并返回
-//
-//
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	int wmId, wmEvent;
@@ -181,7 +199,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 		break;
 	case WM_TIMER:
-		g_warApp.Tick(1.0f/g_FPS);
 		g_winWrapper.Draw();
 		ValidateRect(hWnd, NULL);
 		break;

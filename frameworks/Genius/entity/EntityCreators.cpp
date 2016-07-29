@@ -8,7 +8,7 @@
 #include "data/ConfigPool.h"
 #include "entity/BulletDefines.h"
 #include "Log.h"
-#include "app/Config.h"
+
 #include "app/GameDefine.h"
 #include "pawn/PawnBlackboard.h"
 

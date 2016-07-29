@@ -9,7 +9,7 @@
 #include "pawn/action/ActionDefine.h"
 #include "tinyxml2.h"
 #include "Log.h"
-#include "app/Config.h"
+
 #include "app/GameDefine.h"
 #include "data/auto/Role_cfg.hpp"
 #include "RandUtility.h"
