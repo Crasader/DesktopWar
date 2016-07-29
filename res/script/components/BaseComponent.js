@@ -7,7 +7,7 @@ var BaseComponent = Class.extend({
 
     name:"Component",
     entity:null,
-    isComponentClass:true,
+
 
     GetName:function()
     {

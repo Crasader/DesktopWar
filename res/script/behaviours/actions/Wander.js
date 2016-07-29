@@ -1,49 +1,55 @@
 
+/**
+ * wander action
+ * by Locke
+ * lololol~
+ */
 
-/*(function(){
-
-
-
-})();*/
 
 var Wander = b3.Class(b3.Action);
 
-var p = Wander.prototype;
+(function(){
+    "use strict";
 
-p.name = 'Wander';
-
-
-p.enter = function(tick) {};
-
-
-p.open = function(tick)
-{
-    tick.blackboard.set('timePassed', 0, tick.tree.id, this.id);
-};
+    var p = Wander.prototype;
+    p.name = 'Wander';
 
 
-p.tick = function(tick)
-{
-    var timePassed = tick.blackboard.get('timePassed', tick.tree.id, this.id);
-    timePassed += tick.target.curUpdateTime;
+    p.enter = function(tick) {};
 
-    if (timePassed > 3)
+
+    p.open = function(tick)
     {
-        //change dir
-        //return b3.SUCCESS;
-    }
-
-    return b3.RUNNING;
-};
+        tick.blackboard.set('timePassed', 0, tick.tree.id, this.id);
+    };
 
 
-p.close = function(tick)
-{
+    p.tick = function(tick)
+    {
+        var timePassed = tick.blackboard.get('timePassed', tick.tree.id, this.id);
+        timePassed += tick.target.curUpdateTime;
 
-};
+        if (timePassed > 3)
+        {
+            //change dir
+            //return b3.SUCCESS;
+        }
+
+        return b3.RUNNING;
+    };
 
 
-p.exit = function(tick) {};
+    p.close = function(tick)
+    {
+
+    };
+
+
+    p.exit = function(tick) {};
+
+})();
+
+
 
 
 

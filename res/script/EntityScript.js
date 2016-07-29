@@ -32,17 +32,22 @@ var EntityScript = Class.extend({
 
     AddComponent:function(com)
     {
-        if (null!=com.isComponentClass)
+        if (com instanceof BaseComponent)
         {
             this.components[com.GetName()] = com;
             com.SetEntity(this);
+            return com;
         }
-        return com;
+        else
+        {
+            print("EntityScript.AddComponent:com is not instance of BaseCom...");
+            return null;
+        }
     },
 
-    GetComponent:function(com)
+    GetComponent:function(name)
     {
-        return this.components[com.GetName()]
+        return this.components[name]
     },
 
 

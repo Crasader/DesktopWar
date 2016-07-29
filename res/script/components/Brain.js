@@ -1,5 +1,9 @@
 
-// brain component
+/**
+ * brain component
+ * by Locke
+ * lololol~
+ */
 
 
 

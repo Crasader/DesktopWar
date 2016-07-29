@@ -1,19 +1,21 @@
 
+
 /**
- * AttackFar action
+ * die action
  * by Locke
  * lololol~
  */
 
 
-var AttackFar = b3.Class(b3.Action);
+
+var Die = b3.Class(b3.Action);
 
 (function(){
     "use strict";
 
 
-    var p = AttackFar.prototype;
-    p.name = 'AttackFar';
+    var p = Die.prototype;
+    p.name = 'Die';
 
 
     p.open = function(tick)
@@ -32,6 +34,7 @@ var AttackFar = b3.Class(b3.Action);
             //change dir
             //return b3.SUCCESS;
         }
+        print("die")
 
         return b3.RUNNING;
     };

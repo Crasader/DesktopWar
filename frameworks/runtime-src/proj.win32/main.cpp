@@ -23,6 +23,7 @@
 
 #pragma warning(disable:4251)
 
+unsigned int g_FPS = 30;
 WinWrapper g_winWrapper;
 WarApp g_warApp;
 
@@ -139,7 +140,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ////////////
    g_winWrapper.Init(hWnd);
    g_warApp.Init();
-   SetTimer(hWnd, 1, 30, NULL);
+   SetTimer(hWnd, 1, 1000/g_FPS, NULL);
    ////////////
 
    return TRUE;
@@ -180,7 +181,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 		break;
 	case WM_TIMER:
-		g_warApp.Tick(0.033f);
+		g_warApp.Tick(1.0f/g_FPS);
 		g_winWrapper.Draw();
 		ValidateRect(hWnd, NULL);
 		break;

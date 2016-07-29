@@ -7,19 +7,20 @@
  */
 
 
-require("res/script/mainfuncs.js");
-require("res/script/Defines.js");
 require("res/script/Class.js");
-require("res/script/Configs.js");
+require("res/script/Defines.js");
+require("res/script/mainfuncs.js");
 require("res/script/GameState.js");
+
 require("res/script/ComponentName.js");
 require("res/script/prefabs/Soldier.js");
 require("res/script/prefabs/Monster.js");
 require("res/script/prefabs/Bullet.js");
 require("res/script/EntityScript.js");
 
-require("res/script/behaviours.js");
-require("res/script/components.js");
+require("res/script/configs/_cfg_.js");
+require("res/script/behaviours/_bev_.js");
+require("res/script/components/_com_.js");
 
 
 
