@@ -6,7 +6,25 @@
 #include "Resource.h"
 
 
+
 const int		cfg_TaskBarHeight = 40;
+
+
+
+
+void CalculateDirtyRectList(std::list<cocos2d::Rect>& dirtyRectList)
+{
+	auto entityNodes = Genius::SceneManager::GetSingleton()->GetEntityNodeList();
+	for (auto& entityNode : entityNodes)
+	{
+		auto box = cocos2d::utils::getCascadeBoundingBox(entityNode.node);
+		dirtyRectList.push_back(box);
+	}
+	// fps...rect
+	cocos2d::Rect fpsRect(0, 0, 100, 100);
+	dirtyRectList.push_back(fpsRect);
+}
+
 
 bool WinWrapper::Init(HWND hWnd)
 {
@@ -42,12 +60,37 @@ void WinWrapper::Draw()
 	memset(m_pBitsFromGLFlipY, 0, glWidth * glHeight * sizeof(unsigned int));
 	glReadBuffer(GL_BACK);
 	glPixelStorei(GL_PACK_ALIGNMENT, 1);
-	glReadPixels(0, 0, glWidth, glHeight, GL_BGRA, GL_UNSIGNED_BYTE, m_pBitsFromGL);
-	
+
+	std::list<cocos2d::Rect> gDirtyRectList;
+	CalculateDirtyRectList(gDirtyRectList);
+
+	int x, y, w, h, index, maxY;
+	for (auto& rect : gDirtyRectList)
+	{
+		x = rect.getMinX();
+		y = rect.getMinY();
+		w = rect.getMaxX() - x + 1;
+		h = rect.getMaxY() - y + 1;
+		maxY = rect.getMaxY();
+		
+		for (int i = y; i < maxY; ++i)
+		{
+			index = (int)i*glWidth + (int)x;
+			glReadPixels(x, i, w, 1, GL_BGRA, GL_UNSIGNED_BYTE, &m_pBitsFromGL[index]);
+		}
+
+		/*for (int i = y; i < maxY; ++i)
+		{
+			memcpy(&m_pBitsFromGLFlipY[(maxY - (i - y))*w], &m_pBitsFromGL[i*w], w * sizeof(unsigned int));
+		}*/
+	}
+
+
+	/*glReadPixels(0, 0, glWidth, glHeight, GL_BGRA, GL_UNSIGNED_BYTE, m_pBitsFromGL);
 	for (int i = 0; i < glHeight; ++i)
 		memcpy(&m_pBitsFromGLFlipY[(glHeight - i - 1)*glWidth], &m_pBitsFromGL[i*glWidth], glWidth * sizeof(unsigned int));
-	
-	SetBitmapBits(m_hBitmap, glWidth * glHeight * sizeof(unsigned int), m_pBitsFromGLFlipY);
+	*/
+	SetBitmapBits(m_hBitmap, glWidth * glHeight * sizeof(unsigned int), m_pBitsFromGL);
 	
 	// Update layered window
 	BLENDFUNCTION _Blend;

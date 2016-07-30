@@ -34,3 +34,4 @@ private:
 	unsigned int*		m_pBitsFromGLFlipY;
 
 };
+

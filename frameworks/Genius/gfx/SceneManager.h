@@ -25,6 +25,8 @@ namespace Genius
 		cocos2d::Node* GetMapLayer(){ return m_pMapLayer; }
 		void ShakeScene(int strength = 6, float time = 0.2f);
 
+		const std::list<EntityNodeData>& GetEntityNodeList();
+
 		virtual bool HandleEvent(IEventData const &evt);
 
 	private:

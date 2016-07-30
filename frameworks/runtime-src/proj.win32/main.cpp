@@ -190,7 +190,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 		break;
 	case WM_TIMER:
-		ValidateRect(hWnd, NULL);
+		//ValidateRect(hWnd, NULL);
 		break;
 	case WM_PAINT:
 		break;
