@@ -19,7 +19,6 @@ public:
 	void Draw();
 	void Destroy();
 
-	void _bufferThread();
 	void ShowTrayMenu();
 
 private:
@@ -34,7 +33,4 @@ private:
 	unsigned int*		m_pBitsFromGL;
 	unsigned int*		m_pBitsFromGLFlipY;
 
-	// 
-	bool						m_canProcessBuffer;
-	std::mutex			m_bufferMutex;
 };

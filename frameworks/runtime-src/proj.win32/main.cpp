@@ -25,7 +25,7 @@
 
 #pragma warning(disable:4251)
 
-unsigned int g_FPS = 60;
+unsigned int g_FPS = 30;
 WinWrapper g_winWrapper;
 WarApp g_warApp;
 
@@ -66,55 +66,46 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_DESKTOPWAR));
 
-	// 主消息循环: 
-	/*while (GetMessage(&msg, NULL, 0, 0))
-	{
-		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
-		{
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
-		}
-	}*/
+	// LOOP
+	float interval = 1.0f / g_FPS;
+	LARGE_INTEGER loopInterval;
+	LARGE_INTEGER nFreq;
+	QueryPerformanceFrequency(&nFreq);
+	loopInterval.QuadPart = (LONGLONG)(interval * nFreq.QuadPart);
 
-	//
-	static DWORD lastTickCount = timeGetTime();
-	DWORD nowTickCount = 0;
-	int deltaTickCount = 0;
-	int interval = 1000 / g_FPS;
+	LARGE_INTEGER nLast;
+	LARGE_INTEGER nNow;
+	QueryPerformanceCounter(&nLast);
 	while (true)
 	{
-		nowTickCount = timeGetTime();
-		deltaTickCount = (int)(nowTickCount - lastTickCount);
-		if (deltaTickCount > 10)printf("%d ", deltaTickCount);
-		if (deltaTickCount > 1000)
+		QueryPerformanceCounter(&nNow);
+		if (nNow.QuadPart - nLast.QuadPart > loopInterval.QuadPart)
 		{
-			deltaTickCount = interval;
-		}
-		else if (deltaTickCount < interval)
-		{
-			Sleep(interval - deltaTickCount);
-			continue;
-		}
-		lastTickCount = nowTickCount;
+			nLast.QuadPart = nNow.QuadPart - (nNow.QuadPart % loopInterval.QuadPart);
 
-		// game logic
-		g_warApp.Tick(deltaTickCount*0.001f);
+			// game logic
+			g_warApp.Tick(interval);
+			g_winWrapper.Draw();
 
-		// message
-		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
-		{
-			if (msg.message == WM_QUIT)
+			// msg
+			if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 			{
-				break;
+				if (msg.message == WM_QUIT)
+					break;
+				else
+				{
+					TranslateMessage(&msg);
+					DispatchMessage(&msg);
+				}
 			}
-			else
-			{
-				TranslateMessage(&msg);
-				DispatchMessage(&msg);
-			}
+
 		}
-		
+		else
+		{
+			Sleep(1);
+		}
 	}
+
 
 	return (int) msg.wParam;
 }
@@ -167,7 +158,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ////////////
    g_winWrapper.Init(hWnd);
    g_warApp.Init();
-   SetTimer(hWnd, 1, 33, NULL);
+   //SetTimer(hWnd, 1, 33, NULL);
    ////////////
 
    return TRUE;
@@ -199,7 +190,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 		break;
 	case WM_TIMER:
-		g_winWrapper.Draw();
 		ValidateRect(hWnd, NULL);
 		break;
 	case WM_PAINT:
