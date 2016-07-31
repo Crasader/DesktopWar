@@ -11,8 +11,6 @@ var EntityScript = Class.extend({
 
     entityNative:null,
     components:null,
-    curUpdateTime:0,
-    curLongUpdateTime:0,
 
 
     ctor:function ()
@@ -25,11 +23,12 @@ var EntityScript = Class.extend({
         this.entityNative = ent
     },
 
-    GetEntityNative:function()
+    AddTag:function(tag)
     {
-        return this.entityNative;
+        this.entityNative.AddTag(tag);
     },
 
+    // com: 加js组件则com是组件实例，加native组件则com是组件名.
     AddComponent:function(com)
     {
         if (com instanceof BaseComponent)
@@ -40,8 +39,16 @@ var EntityScript = Class.extend({
         }
         else
         {
-            print("EntityScript.AddComponent:com is not instance of BaseCom...");
-            return null;
+            var comNative = this.entityNative.AddComponent(com);
+            if (null != comNative)
+            {
+                this.components[com] = comNative;
+            }
+            else
+            {
+                print("EntityScript.AddComponent:com is invalid");
+            }
+            return comNative;
         }
     },
 
@@ -51,23 +58,23 @@ var EntityScript = Class.extend({
     },
 
 
-    OnUpdate:function(timedelta)
+    OnUpdate:function()
     {
-        curUpdateTime = timedelta;
         for(var id in this.components)
         {
             var com = this.components[id];
-            com.OnUpdate(timedelta)
+            if (com.OnUpdate != null)
+                com.OnUpdate();
         }
     },
 
-    OnLongUpdate:function(timedelta)
+    OnLongUpdate:function()
     {
-        curLongUpdateTime = timedelta;
         for(var id in this.components)
         {
             var com = this.components[id];
-            com.OnLongUpdate(timedelta)
+            if (com.OnLongUpdate != null)
+                com.OnLongUpdate();
         }
     },
 
@@ -81,7 +88,7 @@ var EntityScript = Class.extend({
     }
 
 
-})
+});
 
 
 

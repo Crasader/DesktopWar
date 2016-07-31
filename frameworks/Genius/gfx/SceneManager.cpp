@@ -100,11 +100,6 @@ void SceneManager::UpdateSceneShake()
 	}
 }
 
-const std::list<EntityNodeData>& SceneManager::GetEntityNodeList()
-{
-	return m_entityNodes;
-}
-
 
 bool SceneManager::HandleEvent(IEventData const &evt)
 {

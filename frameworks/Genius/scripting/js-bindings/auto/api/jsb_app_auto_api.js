@@ -336,6 +336,20 @@ float
 },
 
 /**
+ * @method MoveTo
+ * @param {float} arg0
+ * @param {float} arg1
+ * @param {float} arg2
+ */
+MoveTo : function (
+float, 
+float, 
+float 
+)
+{
+},
+
+/**
  * @method ComTransform
  * @constructor
  */

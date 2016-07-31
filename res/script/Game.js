@@ -36,6 +36,8 @@ var Game =
     lanchState:null,
     warState:null,
 
+    tickTime:0.1,
+    longTickTime:0.1,
 
 
     Start:function ()
@@ -69,7 +71,8 @@ var Game =
 
     OnUpdate:function (timeDelta)
     {
-        //print("game onupdate "+timeDelta);
+        this.tickTime = timeDelta;
+
         if(this.currentState != null)
         {
             if (this.currentState != this.lastState)
@@ -83,15 +86,16 @@ var Game =
         }
 
         //entity
-        UpdateEntities(timeDelta);
+        UpdateEntities();
 
     },
 
 
     OnLongUpdate:function(timeDelta)
     {
+        this.longTickTime = timeDelta;
         //entity
-        LongUpdateEntities(timeDelta);
+        LongUpdateEntities();
     }
 
 

@@ -22,12 +22,12 @@ var Combat = BaseComponent.extend({
         return this.target;
     },
 
-    OnUpdate:function(timeDelta)
+    OnUpdate:function()
     {
 
     },
 
-    OnLongUpdate:function(timeDelta)
+    OnLongUpdate:function()
     {
 
     },

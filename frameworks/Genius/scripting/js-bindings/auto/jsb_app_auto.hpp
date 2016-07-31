@@ -82,6 +82,7 @@ void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_ComTransform_SetPosition(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComTransform_SetDirection(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComTransform_SetVelocity(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComTransform_MoveTo(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComTransform_ComTransform(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComBoxCollider_class;

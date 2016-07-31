@@ -24,7 +24,7 @@ var Brain = BaseComponent.extend({
         this.btree = _btree;
     },
 
-    OnUpdate:function(timeDelta)
+    OnUpdate:function()
     {
         if (null != this.btree)
         {
@@ -32,7 +32,7 @@ var Brain = BaseComponent.extend({
         }
     },
 
-    OnLongUpdate:function(timeDelta)
+    OnLongUpdate:function()
     {
 
     },

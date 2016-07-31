@@ -925,6 +925,30 @@ bool js_app_ComTransform_SetVelocity(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_ComTransform_SetVelocity : wrong number of arguments: %d, was expecting %d", argc, 2);
     return false;
 }
+bool js_app_ComTransform_MoveTo(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::ComTransform* cobj = (Genius::ComTransform *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComTransform_MoveTo : Invalid Native Object");
+    if (argc == 3) {
+        double arg0 = 0;
+        double arg1 = 0;
+        double arg2 = 0;
+        ok &= JS::ToNumber( cx, args.get(0), &arg0) && !std::isnan(arg0);
+        ok &= JS::ToNumber( cx, args.get(1), &arg1) && !std::isnan(arg1);
+        ok &= JS::ToNumber( cx, args.get(2), &arg2) && !std::isnan(arg2);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_ComTransform_MoveTo : Error processing arguments");
+        cobj->MoveTo(arg0, arg1, arg2);
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_ComTransform_MoveTo : wrong number of arguments: %d, was expecting %d", argc, 3);
+    return false;
+}
 bool js_app_ComTransform_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -984,6 +1008,7 @@ void js_register_app_ComTransform(JSContext *cx, JS::HandleObject global) {
         JS_FN("SetPosition", js_app_ComTransform_SetPosition, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("SetDirection", js_app_ComTransform_SetDirection, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("SetVelocity", js_app_ComTransform_SetVelocity, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("MoveTo", js_app_ComTransform_MoveTo, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 

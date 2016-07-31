@@ -34,9 +34,6 @@ var ComName =
     Locomotor:"Locomotor",
 
 
-
-    // tail
-    _last:""
 };
 
 

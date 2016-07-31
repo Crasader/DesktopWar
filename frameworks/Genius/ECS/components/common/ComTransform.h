@@ -24,7 +24,7 @@ namespace Genius
 		void SetPosition(float _x, float _y);
 		void SetVelocity(float _x, float _y);
 		void SetDirection(int dir);
-
+		void MoveTo(float x, float y, float speed);
 	};
 	
 };
