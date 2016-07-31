@@ -1,29 +1,13 @@
 
 #include "WinWrapper.h"
 #include "gfx/gfx.h"
-
+#include "glfw3native.h"
 #include "app/GameDefine.h"
 #include "Resource.h"
 
 
 
 const int		cfg_TaskBarHeight = 40;
-
-
-
-
-void CalculateDirtyRectList(std::list<cocos2d::Rect>& dirtyRectList)
-{
-	auto entityNodes = Genius::SceneManager::GetSingleton()->GetEntityNodeList();
-	for (auto& entityNode : entityNodes)
-	{
-		auto box = cocos2d::utils::getCascadeBoundingBox(entityNode.node);
-		dirtyRectList.push_back(box);
-	}
-	// fps...rect
-	cocos2d::Rect fpsRect(0, 0, 100, 100);
-	dirtyRectList.push_back(fpsRect);
-}
 
 
 bool WinWrapper::Init(HWND hWnd)
@@ -34,64 +18,40 @@ bool WinWrapper::Init(HWND hWnd)
 		InitNotify(hWnd);
 
 		GameDefine::viewWidth = GetSystemMetrics(SM_CXSCREEN);
-		GameDefine::viewHeight = /*cfg_MapHeight;*/GetSystemMetrics(SM_CYSCREEN) - cfg_TaskBarHeight;
+		GameDefine::viewHeight = GetSystemMetrics(SM_CYSCREEN) - cfg_TaskBarHeight;
 
 		int glWidth = GameDefine::viewWidth;
 		int glHeight = GameDefine::viewHeight;
+		m_pBitsFromGL = new unsigned int[glWidth * glHeight];
+		m_pBitsFromGLFlipY = new unsigned int[glWidth * glHeight];
+
 		HDC hdcDest = GetDC(m_hWnd);
 		m_hDcSrc = CreateCompatibleDC(hdcDest);
 		m_hBitmap = CreateCompatibleBitmap(hdcDest, glWidth, glHeight);
 		SelectObject(m_hDcSrc, m_hBitmap);
-
-		m_pBitsFromGL = new unsigned int[glWidth * glHeight];
-		m_pBitsFromGLFlipY = new unsigned int[glWidth * glHeight];
 
 	} while (false);
 
 	return false;
 }
 
+
 void WinWrapper::Draw()
 {
 	// Copy GL buffer.
+	// 不要幻想优化这里的效率，因为罪魁祸首gl操作无法优化！！记住！
 	int glWidth = GameDefine::viewWidth;
 	int glHeight = GameDefine::viewHeight;
 	memset(m_pBitsFromGL, 0, glWidth * glHeight * sizeof(unsigned int));
 	memset(m_pBitsFromGLFlipY, 0, glWidth * glHeight * sizeof(unsigned int));
 	glReadBuffer(GL_BACK);
 	glPixelStorei(GL_PACK_ALIGNMENT, 1);
-
-	std::list<cocos2d::Rect> gDirtyRectList;
-	CalculateDirtyRectList(gDirtyRectList);
-
-	int x, y, w, h, index, maxY;
-	for (auto& rect : gDirtyRectList)
-	{
-		x = rect.getMinX();
-		y = rect.getMinY();
-		w = rect.getMaxX() - x + 1;
-		h = rect.getMaxY() - y + 1;
-		maxY = rect.getMaxY();
-		
-		for (int i = y; i < maxY; ++i)
-		{
-			index = (int)i*glWidth + (int)x;
-			glReadPixels(x, i, w, 1, GL_BGRA, GL_UNSIGNED_BYTE, &m_pBitsFromGL[index]);
-		}
-
-		/*for (int i = y; i < maxY; ++i)
-		{
-			memcpy(&m_pBitsFromGLFlipY[(maxY - (i - y))*w], &m_pBitsFromGL[i*w], w * sizeof(unsigned int));
-		}*/
-	}
-
-
-	/*glReadPixels(0, 0, glWidth, glHeight, GL_BGRA, GL_UNSIGNED_BYTE, m_pBitsFromGL);
+	glReadPixels(0, 0, glWidth, glHeight, GL_BGRA, GL_UNSIGNED_BYTE, m_pBitsFromGL);
 	for (int i = 0; i < glHeight; ++i)
 		memcpy(&m_pBitsFromGLFlipY[(glHeight - i - 1)*glWidth], &m_pBitsFromGL[i*glWidth], glWidth * sizeof(unsigned int));
-	*/
-	SetBitmapBits(m_hBitmap, glWidth * glHeight * sizeof(unsigned int), m_pBitsFromGL);
+	SetBitmapBits(m_hBitmap, glWidth * glHeight * sizeof(unsigned int), m_pBitsFromGLFlipY);
 	
+
 	// Update layered window
 	BLENDFUNCTION _Blend;
 	_Blend.BlendOp = AC_SRC_OVER;
@@ -138,17 +98,51 @@ void WinWrapper::ShowTrayMenu()
 	GetCursorPos(&pt);
 	HMENU hMenu;
 	hMenu = CreatePopupMenu();
-	AppendMenu(hMenu, MF_STRING, IDM_EXIT, TEXT("傻么"));
+	AppendMenu(hMenu, MF_STRING, IDM_EXIT, TEXT("what's up"));
 	AppendMenu(hMenu, MF_SEPARATOR, 0, NULL);
-	AppendMenu(hMenu, MF_STRING, IDM_ABOUT, TEXT("关于"));
+	AppendMenu(hMenu, MF_STRING, IDM_ABOUT, TEXT("about"));
 	AppendMenu(hMenu, MF_SEPARATOR, 0, NULL);
-	AppendMenu(hMenu, MF_STRING, IDM_EXIT, TEXT("退出"));
+	AppendMenu(hMenu, MF_STRING, IDM_EXIT, TEXT("exit"));
 	AppendMenu(hMenu, MF_SEPARATOR, 0, NULL);
 	TrackPopupMenu(hMenu, TPM_RIGHTBUTTON, pt.x, pt.y, NULL, m_hWnd, NULL);
 }
 
 
+/*
+void CalculateDirtyRectList(std::list<cocos2d::Rect>& dirtyRectList)
+{
+auto entityNodes = Genius::SceneManager::GetSingleton()->GetEntityNodeList();
+for (auto& entityNode : entityNodes)
+{
+auto box = cocos2d::utils::getCascadeBoundingBox(entityNode.node);
+dirtyRectList.push_back(box);
+}
+// fps...rect
+cocos2d::Rect fpsRect(0, 0, 150, 70);
+dirtyRectList.push_back(fpsRect);
+}
 
+std::list<cocos2d::Rect> gDirtyRectList;
+CalculateDirtyRectList(gDirtyRectList);
+
+int x, y, w, h, index, maxY;
+for (auto& rect : gDirtyRectList)
+{
+x = rect.getMinX();
+y = rect.getMinY();
+w = rect.getMaxX() - x;
+h = rect.getMaxY() - y;
+maxY = rect.getMaxY();
+
+for (int i = y; i < maxY; ++i)
+{
+//index = (int)(maxY -(i-y))*glWidth + (int)x;
+index = (int)(glHeight - i)*glWidth + (int)x;
+glReadPixels(x, i, w, 1, GL_BGRA, GL_UNSIGNED_BYTE, &m_pBitsFromGL[index]);
+}
+}
+SetBitmapBits(m_hBitmap, glWidth * glHeight * sizeof(unsigned int), m_pBitsFromGL);
+*/
 
 
 
