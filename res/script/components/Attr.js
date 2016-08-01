@@ -14,7 +14,7 @@ var Attr = BaseComponent.extend({
 
     ctor:function ()
     {
-        this.attrs.hp = 0;
+        this.attrs[Attr.HP] = 1;
     },
 
     Get:function(name)

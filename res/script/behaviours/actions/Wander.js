@@ -14,21 +14,27 @@ var Wander = b3.Class(b3.Action);
     var p = Wander.prototype;
     p.name = 'Wander';
 
+    /// 自定义变量，因为不想使用blackboard
+    p.isRunning = false;
+    p.waitTime = 233;
+    ///
+
 
     p.enter = function(tick) {};
 
 
     p.open = function(tick)
     {
-        var bb = tick.blackboard;
+        /*var bb = tick.blackboard;
         bb.set('isRunning', false, tick.tree.id, this.id);
-        bb.set('waitTime', 0, tick.tree.id, this.id);
+        bb.set('waitTime', 0, tick.tree.id, this.id);*/
     };
 
 
     p.tick = function(tick)
     {
-        var bb = tick.blackboard;
+        print("wait " + p.waitTime);
+        /*var bb = tick.blackboard;
         var isRunning = bb.get('isRunning', tick.tree.id, this.id);
         var waitTime = bb.get('waitTime', tick.tree.id, this.id);
 
@@ -51,7 +57,7 @@ var Wander = b3.Class(b3.Action);
 
         // save mem
         bb.set('isRunning', isRunning, tick.tree.id, this.id);
-        bb.set('waitTime', waitTime, tick.tree.id, this.id);
+        bb.set('waitTime', waitTime, tick.tree.id, this.id);*/
 
         return b3.RUNNING;
     };

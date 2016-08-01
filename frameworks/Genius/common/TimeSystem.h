@@ -9,6 +9,7 @@ namespace Genius
 	{
 	public:
 		TimeSystem() :
+			m_startTime(0),
 			m_lastTickTime(0),
 			m_timeSinceStartup(0)
 		{}
@@ -18,9 +19,12 @@ namespace Genius
 		bool		Init();
 		void		Tick(float time);
 		float		GetLastTickSecond();
-		float		GetTime();
+		float		GetTimeSinceStart();
+
+		static float TimeSinceStart();
 
 	private:
+		unsigned long m_startTime;
 		float		m_lastTickTime;
 		float		m_timeSinceStartup;
 	};

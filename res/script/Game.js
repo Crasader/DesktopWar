@@ -100,7 +100,7 @@ var Game =
 
     GetTime:function()
     {
-        return TimeSystem.GetTime();
+        return TimeSystem.TimeSinceStart();
     }
 
 };
