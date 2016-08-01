@@ -20,20 +20,38 @@ var Wander = b3.Class(b3.Action);
 
     p.open = function(tick)
     {
-        tick.blackboard.set('timePassed', 0, tick.tree.id, this.id);
+        var bb = tick.blackboard;
+        bb.set('isRunning', false, tick.tree.id, this.id);
+        bb.set('waitTime', 0, tick.tree.id, this.id);
     };
 
 
     p.tick = function(tick)
     {
-        var timePassed = tick.blackboard.get('timePassed', tick.tree.id, this.id);
-        timePassed += tick.target.curUpdateTime;
+        var bb = tick.blackboard;
+        var isRunning = bb.get('isRunning', tick.tree.id, this.id);
+        var waitTime = bb.get('waitTime', tick.tree.id, this.id);
 
-        if (timePassed > 3)
+        if (isRunning)
         {
-            //change dir
-            //return b3.SUCCESS;
+            if (Game.GetTime() > waitTime)
+            {
+                isRunning = false;
+                waitTime = PickRandomDirection();
+            }
         }
+        else
+        {
+            if (Game.GetTime() > waitTime)
+            {
+                isRunning = true;
+                waitTime = PickRandomDirection();
+            }
+        }
+
+        // save mem
+        bb.set('isRunning', isRunning, tick.tree.id, this.id);
+        bb.set('waitTime', waitTime, tick.tree.id, this.id);
 
         return b3.RUNNING;
     };
@@ -46,6 +64,13 @@ var Wander = b3.Class(b3.Action);
 
 
     p.exit = function(tick) {};
+
+    //
+    function PickRandomDirection()
+    {
+        var waitTime = Game.GetTime() + 5;
+        return waitTime
+    }
 
 })();
 

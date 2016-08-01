@@ -9,15 +9,20 @@ namespace Genius
 	{
 	public:
 		TimeSystem() :
-			m_lastTickTime(0){}
-		virtual ~TimeSystem(){}
+			m_lastTickTime(0),
+			m_timeSinceStartup(0)
+		{}
+		virtual ~TimeSystem()
+		{}
 
 		bool		Init();
 		void		Tick(float time);
-		float	GetLastTickSecond();
+		float		GetLastTickSecond();
+		float		GetTime();
 
 	private:
 		float		m_lastTickTime;
+		float		m_timeSinceStartup;
 	};
 };
 #endif

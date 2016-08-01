@@ -144,3 +144,40 @@ function WhileNode(condition, action)
 
     return ParallelNode(condition, action);
 }
+
+/*
+// get/set data of blackboard.
+var b3b =
+{
+    get_global:function(tick, node, name)
+    {
+        return tick.blackboard.get(name, tick.tree.id, node.id);
+    },
+
+    set_global:function(tick, node, name)
+    {
+        tick.blackboard.set(name, tick.tree.id, node.id);
+    },
+
+    get_tree:function(tick, node, name)
+    {
+        return tick.blackboard.get(name, tick.tree.id, node.id);
+    },
+
+    set_tree:function(tick, node, name)
+    {
+        tick.blackboard.set(name, tick.tree.id, node.id);
+    },
+
+    get_node:function(tick, node, name)
+    {
+        return tick.blackboard.get(name, tick.tree.id, node.id);
+    },
+
+    set_node:function(tick, node, name)
+    {
+        tick.blackboard.set(name, tick.tree.id, node.id);
+    },
+
+};*/
+

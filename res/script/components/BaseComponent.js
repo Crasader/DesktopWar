@@ -29,7 +29,7 @@ var BaseComponent = Class.extend({
 
     },
 
-    OnUpdate:function()
+    /*OnUpdate:function()
     {
 
     },
@@ -37,7 +37,7 @@ var BaseComponent = Class.extend({
     OnLongUpdate:function()
     {
 
-    },
+    },*/
 
     OnDestroy:function()
     {

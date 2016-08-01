@@ -36,8 +36,8 @@ var Game =
     lanchState:null,
     warState:null,
 
-    tickTime:0.1,
-    longTickTime:0.1,
+    updateTime:0.1,
+    longUpdateTime:0.1,
 
 
     Start:function ()
@@ -55,12 +55,12 @@ var Game =
         if(newState != this.lanchState && newState != this.warState)
         {
             print("invalid state");
-            return
+            return;
         }
         if(newState == this.currentState)
         {
             print("cannot enter the same state");
-            return
+            return;
         }
 
         this.lastState = this.currentState;
@@ -71,7 +71,7 @@ var Game =
 
     OnUpdate:function (timeDelta)
     {
-        this.tickTime = timeDelta;
+        this.updateTime = timeDelta;
 
         if(this.currentState != null)
         {
@@ -93,12 +93,15 @@ var Game =
 
     OnLongUpdate:function(timeDelta)
     {
-        this.longTickTime = timeDelta;
+        this.longUpdateTime = timeDelta;
         //entity
         LongUpdateEntities();
+    },
+
+    GetTime:function()
+    {
+        return TimeSystem.GetTime();
     }
-
-
 
 };
 
