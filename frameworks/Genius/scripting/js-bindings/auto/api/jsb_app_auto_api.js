@@ -17,6 +17,32 @@ char
 };
 
 /**
+ * @class TimeSystem
+ */
+TimeSystem = {
+
+/**
+ * @method TimeSinceStart
+ * @return {float}
+ */
+TimeSinceStart : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method TimeSystem
+ * @constructor
+ */
+TimeSystem : function (
+)
+{
+},
+
+};
+
+/**
  * @class SceneManager
  */
 SceneManager = {

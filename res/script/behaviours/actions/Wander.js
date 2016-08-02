@@ -44,7 +44,7 @@ var Wander = bt.Action.extend({
             }
         }
 
-        return b3.RUNNING;
+        return bt.RUNNING;
     },
 
     close:function(tick)

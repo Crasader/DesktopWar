@@ -29,9 +29,9 @@ var Die = bt.Action.extend({
             //change dir
             //return b3.SUCCESS;
         }
-        print("die");
+        //print("die");
 
-        return b3.RUNNING;
+        return bt.RUNNING;
     },
 
 

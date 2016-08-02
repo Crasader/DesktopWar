@@ -51,7 +51,7 @@ var bt = {};
         // create a new class
         var cls = function(params) {
             this.initialize(params);
-        }
+        };
 
         // if base class is provided, inherit
         if (baseClass) {
@@ -430,16 +430,16 @@ bt.BaseNode = Class.extend({
     enter:function(tick) {},
 
 
-    open :function(tick) {},
+    open:function(tick) {},
 
 
-    tick :function(tick) {},
+    tick:function(tick) {},
 
 
     close:function(tick) {},
 
 
-    exit :function(tick) {},
+    exit:function(tick) {}
 
 
 });
@@ -452,7 +452,7 @@ bt.Action = bt.BaseNode.extend({
     {
         this._super();
         this.category = bt.ACTION;
-    },
+    }
 
 });
 
@@ -467,7 +467,7 @@ bt.Composite = bt.BaseNode.extend({
         this._super();
         this.category = bt.COMPOSITE;
         this.children = (settings.children || []).slice(0);
-    },
+    }
 
 });
 
@@ -481,18 +481,22 @@ bt.Decorator = bt.BaseNode.extend({
         this._super();
         this.category = bt.DECORATOR;
         this.child = settings.child || null;
-    },
+    }
 
 });
 
 
 bt.Condition = bt.BaseNode.extend({
 
-    ctor:function()
+    child:null,
+
+    ctor:function(settings)
     {
-        this._super();
         this.category = bt.CONDITION;
-    },
+        settings = settings || {};
+        this._super();
+        this.child = settings.child || null;
+    }
 
 });
 
@@ -500,9 +504,9 @@ bt.Condition = bt.BaseNode.extend({
 
 bt.Sequence = bt.Composite.extend({
 
-    ctor:function()
+    ctor:function(settings)
     {
-        this._super();
+        this._super(settings);
         this.name = 'Sequence';
     },
 
@@ -522,9 +526,9 @@ bt.Sequence = bt.Composite.extend({
 
 bt.Priority = bt.Composite.extend({
 
-    ctor:function()
+    ctor:function(settings)
     {
-        this._super();
+        this._super(settings);
         this.name = 'Priority';
     },
 
@@ -545,9 +549,9 @@ bt.Priority = bt.Composite.extend({
 
 bt.Parallel = bt.Composite.extend({
 
-    ctor:function()
+    ctor:function(settings)
     {
-        this._super();
+        this._super(settings);
         this.name = 'Parallel';
     },
 
@@ -556,17 +560,18 @@ bt.Parallel = bt.Composite.extend({
         for (var i=0; i<this.children.length; i++) {
             var status = this.children[i]._execute(tick);
 
-            if (status !== b3.SUCCESS) {
+            if (status !== bt.SUCCESS) {
                 done = false;
-            }else if (status === b3.FAILURE) {
-                return b3.FAILURE;
+            }
+            if (status === bt.FAILURE) {
+                return bt.FAILURE;
             }
         }
 
         if (done)
-            return b3.SUCCESS;
+            return bt.SUCCESS;
         else
-            return b3.RUNNING;
+            return bt.RUNNING;
     }
 
 });
@@ -575,9 +580,9 @@ bt.Parallel = bt.Composite.extend({
 
 bt.MemSequence = bt.Composite.extend({
 
-    ctor:function()
+    ctor:function(settings)
     {
-        this._super();
+        this._super(settings);
         this.name = 'MemSequence';
     },
 
@@ -607,9 +612,9 @@ bt.MemSequence = bt.Composite.extend({
 
 bt.MemPriority = bt.Composite.extend({
 
-    ctor:function()
+    ctor:function(settings)
     {
-        this._super();
+        this._super(settings);
         this.name = 'MemPriority';
     },
 
@@ -639,9 +644,9 @@ bt.MemPriority = bt.Composite.extend({
 
 bt.Inverter = bt.Decorator.extend({
 
-    ctor:function()
+    ctor:function(settings)
     {
-        this._super();
+        this._super(settings);
         this.name = 'Inverter';
     },
 
@@ -670,7 +675,7 @@ bt.Limiter = bt.Decorator.extend({
     {
         settings = settings || {};
 
-        this._super();
+        this._super(settings);
         this.name = 'Limiter';
 
         if (!settings.maxLoop) {
@@ -711,10 +716,11 @@ bt.MaxTime = bt.Decorator.extend({
 
     maxTime:0,
 
-    ctor:function()
+    ctor:function(settings)
     {
         this.name = 'MaxTime';
         settings = settings || {};
+        this._super(settings);
         if (!settings.maxTime) {
             throw "maxTime parameter in MaxTime decorator is an obligatory " +
             "parameter";
@@ -753,10 +759,11 @@ bt.Repeater = bt.Decorator.extend({
 
     maxLoop:0,
 
-    ctor:function()
+    ctor:function(settings)
     {
         this.name = 'Repeater';
         settings = settings || {};
+        this._super(settings);
         this.maxLoop = settings.maxLoop || -1;
     },
 

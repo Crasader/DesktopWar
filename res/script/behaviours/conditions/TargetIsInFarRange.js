@@ -19,11 +19,11 @@ var TargetIsInFarRange = bt.Condition.extend({
         var combat = entity.GetComponent(ComName.Combat);
         if (combat.GetTarget() != null && false)
         {
-            return b3.SUCCESS;
+            return bt.SUCCESS;
         }
         else
         {
-            return b3.FAILURE;
+            return bt.FAILURE;
         }
     }
 

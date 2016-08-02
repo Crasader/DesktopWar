@@ -98,6 +98,7 @@ var Game =
         LongUpdateEntities();
     },
 
+    // get time in seconds since game starts.
     GetTime:function()
     {
         return TimeSystem.TimeSinceStart();

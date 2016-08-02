@@ -30,7 +30,7 @@ var AttackFar = bt.Action.extend({
             //return b3.SUCCESS;
         }
 
-        return b3.RUNNING;
+        return bt.RUNNING;
     },
 
 

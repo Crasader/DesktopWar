@@ -4,6 +4,7 @@
 
 #include "common/Log.h"
 #include "common/Singleton.h"
+#include "common/TimeSystem.h"
 #include "app/LoadingManager.h"
 #include "gfx/SceneManager.h"
 #include "gfx/RollNumberLabel.h"

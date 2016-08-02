@@ -18,11 +18,13 @@ var IsAlive = bt.Condition.extend({
         var attr = entity.GetComponent(ComName.Attr);
         if (attr.Get(Attr.HP) > 0)
         {
-            return b3.SUCCESS;
+            //print("alive");
+            return bt.SUCCESS;
         }
         else
         {
-            return b3.FAILURE;
+            //print("not alive");
+            return bt.FAILURE;
         }
     }
 

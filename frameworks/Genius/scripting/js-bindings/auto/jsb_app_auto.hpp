@@ -14,6 +14,16 @@ void js_register_app_Log(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_Log_print(JSContext *cx, uint32_t argc, jsval *vp);
 
+extern JSClass  *jsb_Genius_TimeSystem_class;
+extern JSObject *jsb_Genius_TimeSystem_prototype;
+
+bool js_app_TimeSystem_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_TimeSystem_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_TimeSystem(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_TimeSystem_TimeSinceStart(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_TimeSystem_TimeSystem(JSContext *cx, uint32_t argc, jsval *vp);
+
 extern JSClass  *jsb_Genius_SceneManager_class;
 extern JSObject *jsb_Genius_SceneManager_prototype;
 
