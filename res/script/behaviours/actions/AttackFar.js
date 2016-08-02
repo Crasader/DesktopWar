@@ -6,44 +6,42 @@
  */
 
 
-var AttackFar = b3.Class(b3.Action);
+var AttackFar = bt.Action.extend({
 
-(function(){
-    "use strict";
+    timePassed:0,
 
-
-    var p = AttackFar.prototype;
-    p.name = 'AttackFar';
-
-
-    p.open = function(tick)
+    ctor:function()
     {
-        tick.blackboard.set('timePassed', 0, tick.tree.id, this.id);
-    };
+        this.timePassed = 0;
+    },
 
-
-    p.tick = function(tick)
+    open:function(tick)
     {
-        var timePassed = tick.blackboard.get('timePassed', tick.tree.id, this.id);
-        timePassed += tick.target.curUpdateTime;
+        this.timePassed = 0;
+    },
 
-        if (timePassed > 3)
+    tick:function(tick)
+    {
+        this.timePassed += Game.updateTime;
+
+        if (this.timePassed > 3)
         {
             //change dir
             //return b3.SUCCESS;
         }
 
         return b3.RUNNING;
-    };
+    },
 
 
-    p.close = function(tick)
+    close:function(tick)
     {
 
-    };
+    }
+
+});
 
 
-})();
 
 
 

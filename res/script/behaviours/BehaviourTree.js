@@ -1,5 +1,9 @@
 
-this.bt = this.bt || {};
+
+
+
+
+var bt = {};
 
 
 (function() {
@@ -64,7 +68,7 @@ this.bt = this.bt || {};
 })();
 
 
-this.bt = this.bt || {};
+
 
 (function() {
     "use strict";
@@ -134,7 +138,7 @@ this.bt = this.bt || {};
 })();
 
 
-this.bt = this.bt || {};
+
 
 (function() {
     "use strict";
@@ -191,7 +195,7 @@ this.bt = this.bt || {};
 })();
 
 
-this.bt = this.bt || {};
+
 
 (function() {
     "use strict";
@@ -534,6 +538,35 @@ bt.Priority = bt.Composite.extend({
         }
 
         return bt.FAILURE;
+    }
+
+});
+
+
+bt.Parallel = bt.Composite.extend({
+
+    ctor:function()
+    {
+        this._super();
+        this.name = 'Parallel';
+    },
+
+    tick:function(tick) {
+        var done = true;
+        for (var i=0; i<this.children.length; i++) {
+            var status = this.children[i]._execute(tick);
+
+            if (status !== b3.SUCCESS) {
+                done = false;
+            }else if (status === b3.FAILURE) {
+                return b3.FAILURE;
+            }
+        }
+
+        if (done)
+            return b3.SUCCESS;
+        else
+            return b3.RUNNING;
     }
 
 });

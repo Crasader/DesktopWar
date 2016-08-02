@@ -6,15 +6,14 @@
  */
 
 
-(function(){
-    "use strict";
+var HaveTarget = bt.Condition.extend({
 
-    var HaveTarget = b3.Class(b3.Condition);
-    var p = HaveTarget.prototype;
-    p.name = 'HaveTarget';
+    ctor:function()
+    {
+        this.name = "HaveTarget";
+    },
 
-
-    p.tick = function(tick)
+    tick:function(tick)
     {
         var entity = tick.target;
         var combat = entity.GetComponent(ComName.Combat);
@@ -26,7 +25,7 @@
         {
             return b3.FAILURE;
         }
-    };
+    }
 
+});
 
-})();

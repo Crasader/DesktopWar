@@ -16,7 +16,7 @@ var Brain = BaseComponent.extend({
     ctor:function ()
     {
         this.btree = null;
-        this.blackboard = new b3.Blackboard();
+        this.blackboard = new bt.Blackboard();
     },
 
     SetBTree:function(_btree)

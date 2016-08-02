@@ -6,16 +6,14 @@
  */
 
 
-var TargetIsInFarRange = b3.Class(b3.Condition);
+var TargetIsInFarRange = bt.Condition.extend({
 
-(function(){
-    "use strict";
+    ctor:function()
+    {
+        this.name = "TargetIsInFarRange";
+    },
 
-    var p = TargetIsInFarRange.prototype;
-    p.name = 'TargetIsInFarRange';
-
-
-    p.tick = function(tick)
+    tick:function(tick)
     {
         var entity = tick.target;
         var combat = entity.GetComponent(ComName.Combat);
@@ -27,7 +25,8 @@ var TargetIsInFarRange = b3.Class(b3.Condition);
         {
             return b3.FAILURE;
         }
-    };
+    }
+
+});
 
 
-})();

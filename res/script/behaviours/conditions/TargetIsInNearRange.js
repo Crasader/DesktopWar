@@ -6,16 +6,14 @@
  */
 
 
-var TargetIsInNearRange = b3.Class(b3.Condition);
+var TargetIsInNearRange = bt.Condition.extend({
 
-(function(){
-    "use strict";
+    ctor:function()
+    {
+        this.name = "TargetIsInNearRange";
+    },
 
-    var p = TargetIsInNearRange.prototype;
-    p.name = 'TargetIsInNearRange';
-
-
-    p.tick = function(tick)
+    tick:function(tick)
     {
         var entity = tick.target;
         var combat = entity.GetComponent(ComName.Combat);
@@ -27,7 +25,9 @@ var TargetIsInNearRange = b3.Class(b3.Condition);
         {
             return b3.FAILURE;
         }
-    };
+    }
+
+});
 
 
-})();
+

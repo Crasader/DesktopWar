@@ -5,17 +5,14 @@
  * lololol~
  */
 
+var IsAlive = bt.Condition.extend({
 
-var IsAlive = b3.Class(b3.Condition);
+    ctor:function()
+    {
+        this.name = "IsAlive";
+    },
 
-(function(){
-    "use strict";
-
-    var p = IsAlive.prototype;
-    p.name = 'IsAlive';
-
-
-    p.tick = function(tick)
+    tick:function(tick)
     {
         var entity = tick.target;
         var attr = entity.GetComponent(ComName.Attr);
@@ -27,7 +24,7 @@ var IsAlive = b3.Class(b3.Condition);
         {
             return b3.FAILURE;
         }
-    };
+    }
 
+});
 
-})();

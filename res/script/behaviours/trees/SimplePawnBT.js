@@ -3,7 +3,7 @@
 
 // manualy
 
-var SimplePawnBT = new b3.BehaviorTree();
+var SimplePawnBT = new bt.BehaviorTree();
 
 SimplePawnBT.root =
     PriorityNode(

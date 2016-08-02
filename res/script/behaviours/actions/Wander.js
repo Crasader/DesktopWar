@@ -32,7 +32,7 @@ var Wander = bt.Action.extend({
             if (Game.GetTime() > this.waitTime)
             {
                 this.isRunning = false;
-                this.waitTime = PickRandomDirection();
+                this.PickRandomDirection();
             }
         }
         else
@@ -40,7 +40,7 @@ var Wander = bt.Action.extend({
             if (Game.GetTime() > this.waitTime)
             {
                 this.isRunning = true;
-                this.waitTime = PickRandomDirection();
+                this.PickRandomDirection();
             }
         }
 
@@ -53,8 +53,7 @@ var Wander = bt.Action.extend({
 
     PickRandomDirection:function()
     {
-        var waitTime = Game.GetTime() + 5;
-        return waitTime
+        this.waitTime = Game.GetTime() + 5;
     }
 
 });
