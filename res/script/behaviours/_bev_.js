@@ -1,7 +1,7 @@
 
 
 // all bevs js
-require("res/script/behaviours/b3core.0.1.0.js");
+require("res/script/behaviours/BehaviourTree.js");
 
 //composites
 require("res/script/behaviours/B3Wrapper.js");

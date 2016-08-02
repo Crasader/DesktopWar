@@ -6,79 +6,60 @@
  */
 
 
-var Wander = b3.Class(b3.Action);
+var Wander = bt.Action.extend({
 
-(function(){
-    "use strict";
+    isRunning:false,
+    waitTime:0,
 
-    var p = Wander.prototype;
-    p.name = 'Wander';
-
-    /// 自定义变量，因为不想使用blackboard
-    p.isRunning = false;
-    p.waitTime = 233;
-    ///
-
-
-    p.enter = function(tick) {};
-
-
-    p.open = function(tick)
+    ctor:function()
     {
-        /*var bb = tick.blackboard;
-        bb.set('isRunning', false, tick.tree.id, this.id);
-        bb.set('waitTime', 0, tick.tree.id, this.id);*/
-    };
+        this._super();
+        this.name = "Wander";
+    },
 
-
-    p.tick = function(tick)
+    open:function(tick)
     {
-        print("wait " + p.waitTime);
-        /*var bb = tick.blackboard;
-        var isRunning = bb.get('isRunning', tick.tree.id, this.id);
-        var waitTime = bb.get('waitTime', tick.tree.id, this.id);
+        this.isRunning = false;
+        this.waitTime = 0;
+    },
 
-        if (isRunning)
+    tick:function(tick)
+    {
+        print("wait " + this.waitTime);
+
+        if (this.isRunning)
         {
-            if (Game.GetTime() > waitTime)
+            if (Game.GetTime() > this.waitTime)
             {
-                isRunning = false;
-                waitTime = PickRandomDirection();
+                this.isRunning = false;
+                this.waitTime = PickRandomDirection();
             }
         }
         else
         {
-            if (Game.GetTime() > waitTime)
+            if (Game.GetTime() > this.waitTime)
             {
-                isRunning = true;
-                waitTime = PickRandomDirection();
+                this.isRunning = true;
+                this.waitTime = PickRandomDirection();
             }
         }
 
-        // save mem
-        bb.set('isRunning', isRunning, tick.tree.id, this.id);
-        bb.set('waitTime', waitTime, tick.tree.id, this.id);*/
-
         return b3.RUNNING;
-    };
+    },
 
-
-    p.close = function(tick)
+    close:function(tick)
     {
+    },
 
-    };
-
-
-    p.exit = function(tick) {};
-
-    //
-    function PickRandomDirection()
+    PickRandomDirection:function()
     {
         var waitTime = Game.GetTime() + 5;
         return waitTime
     }
 
-})();
+});
+
+
 
 
 
