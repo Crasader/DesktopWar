@@ -13,16 +13,16 @@ var Brain = BaseComponent.extend({
     btree:null,
     blackboard:null,
 
-    ctor:function ()
+    ctor:function (btree)
     {
-        this.btree = null;
+        this.btree = btree;
         this.blackboard = new bt.Blackboard();
     },
 
-    SetBTree:function(_btree)
+    /*SetBTree:function(_btree)
     {
         this.btree = _btree;
-    },
+    },*/
 
     OnUpdate:function()
     {

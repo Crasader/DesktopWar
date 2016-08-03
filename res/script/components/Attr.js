@@ -14,7 +14,14 @@ var Attr = BaseComponent.extend({
 
     ctor:function ()
     {
-        this.attrs[Attr.HP] = 1;
+        this.attrs[Attr.HP] = 0;
+        this.attrs[Attr.MP] = 0;
+        this.attrs[Attr.AP] = 0;
+        this.attrs[Attr.AM] = 0;
+        this.attrs[Attr.DP] = 0;
+        this.attrs[Attr.DM] = 0;
+        this.attrs[Attr.SPD] = 0;
+        this.attrs[Attr.DODGE] = 0;
     },
 
     Get:function(name)
@@ -27,15 +34,34 @@ var Attr = BaseComponent.extend({
         this.attrs[name] = value;
     },
 
-    Have:function(name)
+    InitWithRoleCfg:function(roleCfg)
     {
-        for(var id in this.attrs)
+        this.attrs[Attr.HP] = roleCfg.baseLife;
+        this.attrs[Attr.AP] = 0;
+        this.attrs[Attr.AM] = 0;
+        if (roleCfg.attackType == AttackType.Physic)
         {
-            if(id === name)
-                return true;
+            this.attrs[Attr.AP] = roleCfg.attackValue;
+            this.attrs[Attr.AM] = 0;
         }
-        return false;
+        else if (roleCfg.attackType == AttackType.Magic)
+        {
+            this.attrs[Attr.AP] = 0;
+            this.attrs[Attr.AM] = roleCfg.attackValue;
+        }
+
+        this.attrs[Attr.DP] = roleCfg.antiPhysicValue;
+        this.attrs[Attr.DM] = roleCfg.antiMagicValue;
+
+        this.attrs[Attr.SPD] = roleCfg.moveSpeed;
+
+        this.attrs[Attr.DODGE] = roleCfg.dodgeValue;
     },
+
+    InitWithBulletCfg:function(bulletCfg)
+    {
+        this.attrs[Attr.SPD] = bulletCfg.flySpeed;
+    }
 
 });
 
@@ -43,8 +69,9 @@ var Attr = BaseComponent.extend({
 // enum
 Attr.HP = "hp";
 Attr.MP = "mp";
-Attr.PA = "PhyAtk";
-Attr.MA = "MgcAtk";
+Attr.AP = "PhyAtk";
+Attr.AM = "MgcAtk";
 Attr.DP = "DfsPhy";
 Attr.DM = "DfsMgc";
 Attr.SPD = "speed";
+Attr.DODGE = "dodge";

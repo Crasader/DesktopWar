@@ -87,7 +87,7 @@ public:
 	Point2D(float angle)
 	{
 		x = cos(angle);
-		y = tan(angle);
+		y = sin(angle);
 	}
 
 	Point2D operator+(const Point2D& point) const

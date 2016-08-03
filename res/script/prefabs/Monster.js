@@ -29,8 +29,8 @@ var Monster = {
         var box = inst.AddComponent(ComName.BoxCollider);
         box.Create(true, 0, height*0.5, width, height);
 
-        var bev = inst.AddComponent(ComName.PawnBevtree);
-        bev.Create(roleCfg.bevTreeFile);
+        //var bev = inst.AddComponent(ComName.PawnBevtree);
+        //bev.Create(roleCfg.bevTreeFile);
 
         var nav = inst.AddComponent(ComName.PawnNavigation);
         var fht = inst.AddComponent(ComName.PawnFight);
@@ -40,12 +40,11 @@ var Monster = {
 
 
         // js coms
-        var brain = inst.AddComponent(new Brain);
-        brain.SetBTree(SimplePawnBT);
-
-        var combat = inst.AddComponent(new Combat);
-
+        inst.AddComponent(new Locomotor);
+        inst.AddComponent(new Brain(SimplePawnBT));
+        inst.AddComponent(new Combat);
         var attr = inst.AddComponent(new Attr);
+        attr.InitWithRoleCfg(roleCfg);
 
 
         inst.AddTag(Tag.Monster);

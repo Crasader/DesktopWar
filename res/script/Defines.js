@@ -58,4 +58,12 @@ var TargetType =
     Location:1,		// 以某位置做目标
 };
 
+// 攻击类型
+var AttackType =
+{
+    Physic:1,
+    Magic:2
+};
+
+var DEGREE = 180;
 

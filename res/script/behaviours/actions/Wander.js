@@ -27,13 +27,14 @@ var Wander = bt.Action.extend({
     {
         //print("wait " + this.waitTime);
 
+        var entity = tick.target;
+
         if (this.isWalking)
         {
             if (Game.GetTime() > this.waitTime)
             {
                 this.isWalking = false;
                 this.waitTime = Game.GetTime() + 3;
-                var entity = tick.target;
                 var locomotor = entity.GetComponent(ComName.Locomotor);
                 locomotor.StopMove();
             }
@@ -44,7 +45,6 @@ var Wander = bt.Action.extend({
             {
                 this.isWalking = true;
                 this.waitTime = Game.GetTime() + 3;
-                var entity = tick.target;
 
                 this.PickRandomDirection(entity);
             }
@@ -61,6 +61,7 @@ var Wander = bt.Action.extend({
     {
         var locomotor = entity.GetComponent(ComName.Locomotor);
         var angle = Math.random()*360;
+        print('angel '+angle);
         locomotor.MoveTowards(angle);
     }
 

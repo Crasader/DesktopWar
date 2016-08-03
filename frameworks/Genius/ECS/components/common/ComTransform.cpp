@@ -43,6 +43,7 @@ void ComTransform::MoveTo(float _x, float _y, float speed)
 
 void ComTransform::MoveTowards(float angle, float speed)
 {
+	angle = angle / 180 * PI;
 	Point2D pt2d(angle);
 	this->vx = pt2d.x * speed;
 	this->vy = pt2d.y * speed;
