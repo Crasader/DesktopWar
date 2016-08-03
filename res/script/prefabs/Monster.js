@@ -6,13 +6,15 @@ var Monster = {
     {
         //print("Soldier Create at " + posx + "," + posy);
 
-        var inst = CreateEntity();
+        var inst = Game.CreateEntity();
 
         var posCom = inst.AddComponent(ComName.Transform);
         posCom.SetPosition(posx, posy);
         posCom.SetVelocity(0, 0);
 
 		var roleCfg = Config.Role[id];
+
+        inst.SetBlackboard("roleCfg", roleCfg);
 
         var agent = inst.AddComponent(ComName.PawnAgent);
 		agent.Create(id,true);

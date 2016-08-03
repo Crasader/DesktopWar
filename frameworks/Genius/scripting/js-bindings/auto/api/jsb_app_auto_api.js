@@ -328,11 +328,13 @@ OnAwake : function (
 ComTransform = {
 
 /**
- * @method SetPosition
+ * @method MoveTo
  * @param {float} arg0
  * @param {float} arg1
+ * @param {float} arg2
  */
-SetPosition : function (
+MoveTo : function (
+float, 
 float, 
 float 
 )
@@ -350,6 +352,58 @@ int
 },
 
 /**
+ * @method GetX
+ * @return {float}
+ */
+GetX : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method GetY
+ * @return {float}
+ */
+GetY : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method GetVY
+ * @return {float}
+ */
+GetVY : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method GetVX
+ * @return {float}
+ */
+GetVX : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method SetPosition
+ * @param {float} arg0
+ * @param {float} arg1
+ */
+SetPosition : function (
+float, 
+float 
+)
+{
+},
+
+/**
  * @method SetVelocity
  * @param {float} arg0
  * @param {float} arg1
@@ -362,13 +416,11 @@ float
 },
 
 /**
- * @method MoveTo
+ * @method MoveTowards
  * @param {float} arg0
  * @param {float} arg1
- * @param {float} arg2
  */
-MoveTo : function (
-float, 
+MoveTowards : function (
 float, 
 float 
 )

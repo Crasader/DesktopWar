@@ -8,7 +8,7 @@
 
 var Wander = bt.Action.extend({
 
-    isRunning:false,
+    isWalking:false,
     waitTime:0,
 
     ctor:function()
@@ -19,28 +19,34 @@ var Wander = bt.Action.extend({
 
     open:function(tick)
     {
-        this.isRunning = false;
-        this.waitTime = 0;
+        this.isWalking = false;
+        this.waitTime = Game.GetTime() + 3;
     },
 
     tick:function(tick)
     {
-        print("wait " + this.waitTime);
+        //print("wait " + this.waitTime);
 
-        if (this.isRunning)
+        if (this.isWalking)
         {
             if (Game.GetTime() > this.waitTime)
             {
-                this.isRunning = false;
-                this.PickRandomDirection();
+                this.isWalking = false;
+                this.waitTime = Game.GetTime() + 3;
+                var entity = tick.target;
+                var locomotor = entity.GetComponent(ComName.Locomotor);
+                locomotor.StopMove();
             }
         }
         else
         {
             if (Game.GetTime() > this.waitTime)
             {
-                this.isRunning = true;
-                this.PickRandomDirection();
+                this.isWalking = true;
+                this.waitTime = Game.GetTime() + 3;
+                var entity = tick.target;
+
+                this.PickRandomDirection(entity);
             }
         }
 
@@ -51,9 +57,11 @@ var Wander = bt.Action.extend({
     {
     },
 
-    PickRandomDirection:function()
+    PickRandomDirection:function(entity)
     {
-        this.waitTime = Game.GetTime() + 5;
+        var locomotor = entity.GetComponent(ComName.Locomotor);
+        var angle = Math.random()*360;
+        locomotor.MoveTowards(angle);
     }
 
 });

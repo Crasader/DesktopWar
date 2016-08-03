@@ -5,8 +5,9 @@
 
 var BaseComponent = Class.extend({
 
-    name:"Component",
+    name:"BaseComponent",
     entity:null,
+    isFirstUpdate:true,
 
 
     GetName:function()
@@ -17,6 +18,16 @@ var BaseComponent = Class.extend({
     SetEntity:function(_entity)
     {
         this.entity = _entity;
+    },
+
+    GetIsFirstUpdate:function()
+    {
+        return this.isFirstUpdate;
+    },
+
+    SetIsFirstUpdate:function(value)
+    {
+        this.isFirstUpdate = value;
     },
 
     OnAwake:function()

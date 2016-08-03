@@ -16,8 +16,8 @@ var TargetIsInFarRange = bt.Condition.extend({
     tick:function(tick)
     {
         var entity = tick.target;
-        var combat = entity.GetComponent(ComName.Combat);
-        if (combat.GetTarget() != null && false)
+        var combatTar = entity.GetBlackboard(BB.CombatTarget);
+        if (combatTar != null && false)
         {
             return bt.SUCCESS;
         }

@@ -8,28 +8,28 @@
 
 var Die = bt.Action.extend({
 
-    timePassed:0,
+    timeWait:0,
 
     ctor:function()
     {
-        this.timePassed = 0;
+        this._super();
+        this.name = "Die";
     },
 
     open:function(tick)
     {
-        this.timePassed = 0;
+        this.timeWait = Game.GetTime() + 2;
     },
 
     tick:function(tick)
     {
-        this.timePassed += Game.updateTime;
-
-        if (this.timePassed > 3)
+        if (Game.GetTime() > this.timeWait)
         {
-            //change dir
-            //return b3.SUCCESS;
+            print("die succeed");
+            var entity = tick.target;
+            Game.DestroyEntity(entity);
+            return b3.SUCCESS;
         }
-        //print("die");
 
         return bt.RUNNING;
     },

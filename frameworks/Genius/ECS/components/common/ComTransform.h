@@ -24,7 +24,12 @@ namespace Genius
 		void SetPosition(float _x, float _y);
 		void SetVelocity(float _x, float _y);
 		void SetDirection(int dir);
+		float GetX(){ return x; }
+		float GetY(){ return y; }
+		float GetVX(){ return vx; }
+		float GetVY(){ return vy; }
 		void MoveTo(float x, float y, float speed);
+		void MoveTowards(float angle, float speed);
 	};
 	
 };

@@ -33,7 +33,7 @@ function GetWorld()
 }
 
 
-var gEntities = {};
+/*var gEntities = {};
 function CreateEntity()
 {
     var entNative = GetWorld().CreateEntity();
@@ -80,18 +80,7 @@ function LongUpdateEntities(timeDelta)
         var ent = gEntities[id];
         ent.OnLongUpdate(timeDelta);
     }
-}
-
-
-function abs(value)
-{
-    var newValue = value;
-    if (value < 0)
-    {
-        newValue = -value;
-    }
-    return newValue;
-}
+}*/
 
 
 function SpawnPawn(roleID, x, y, tag)

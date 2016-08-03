@@ -5,12 +5,18 @@
  * Date:2016-7-13
  */
 
+// Blackboard中的Key
+var BB = {};
+BB.FollowTarget = "FollowTarget";
+BB.CombatTarget = "CombatTarget";
 
 
+// Entity
 var EntityScript = Class.extend({
 
     entityNative:null,
     components:null,
+    blackboard:{},
 
 
     ctor:function ()
@@ -21,6 +27,21 @@ var EntityScript = Class.extend({
     SetEntityNative:function(ent)
     {
         this.entityNative = ent
+    },
+
+    GetEntityNative:function()
+    {
+        return this.entityNative;
+    },
+
+    GetBlackboard:function(name)
+    {
+        return this.blackboard[name];
+    },
+
+    SetBlackboard:function(name, value)
+    {
+        this.blackboard[name] = value;
     },
 
     AddTag:function(tag)
@@ -35,6 +56,8 @@ var EntityScript = Class.extend({
         {
             this.components[com.GetName()] = com;
             com.SetEntity(this);
+            if (com.OnAwake != null)
+                com.OnAwake();
             return com;
         }
         else
@@ -63,8 +86,16 @@ var EntityScript = Class.extend({
         for(var id in this.components)
         {
             var com = this.components[id];
-            if (com.OnUpdate != null)
-                com.OnUpdate();
+            if (com instanceof BaseComponent)
+            {
+                if (com.GetIsFirstUpdate())
+                {
+                    com.SetIsFirstUpdate(false);
+                    com.OnStart();
+                }
+                if (com.OnUpdate != null)
+                    com.OnUpdate();
+            }
         }
     },
 

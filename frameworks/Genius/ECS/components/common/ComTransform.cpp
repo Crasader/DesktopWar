@@ -40,3 +40,12 @@ void ComTransform::MoveTo(float _x, float _y, float speed)
 	this->vx = delta.x * speed;
 	this->vy = delta.y * speed;
 }
+
+void ComTransform::MoveTowards(float angle, float speed)
+{
+	Point2D pt2d(angle);
+	this->vx = pt2d.x * speed;
+	this->vy = pt2d.y * speed;
+}
+
+

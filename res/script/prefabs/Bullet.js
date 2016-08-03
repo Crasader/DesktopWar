@@ -13,45 +13,46 @@ var Bullet = {
 
         var anim_cfg = Config.Animation[bulletCfg.bodyAnim];
 
-        var inst = CreateEntity();
-        var entCpp = inst.GetEntityNative();
+        var inst = Game.CreateEntity();
 
-        var agent = entCpp.AddComponent(ComName.PawnAgent);
+        inst.SetBlackboard('bulletCfg', bulletCfg);
+
+        var agent = inst.AddComponent(ComName.PawnAgent);
         agent.Create(bulletId,false);
 
-        var posCom = entCpp.AddComponent(ComName.Transform);
+        var posCom = inst.AddComponent(ComName.Transform);
         posCom.SetPosition(posx, posy);
         posCom.SetVelocity(0, 0);
 
-        var box = entCpp.AddComponent(ComName.BoxCollider);
+        var box = inst.AddComponent(ComName.BoxCollider);
         box.Create(false, 0, 0, bulletCfg.boxWidth, bulletCfg.boxHeight);
 
-        entCpp.AddComponent(ComName.Render);
+        inst.AddComponent(ComName.Render);
 
-        var damage = entCpp.AddComponent(ComName.BulletDamage);
+        var damage = inst.AddComponent(ComName.BulletDamage);
 
-        //var dd = entCpp.AddComponent(ComName.BulletDebugDraw);
+        //var dd = inst.AddComponent(ComName.BulletDebugDraw);
 
 
         if (bulletCfg.moveType == BulletMoveType.Line)
         {
             posCom.SetVelocity(0, 0);
 
-            var baegg = entCpp.AddComponent(ComName.BulletAnimEgg);
+            var baegg = inst.AddComponent(ComName.BulletAnimEgg);
             baegg.Create(anim_cfg.name);
         }
         else if (bulletCfg.moveType == BulletMoveType.Bezier)
         {
             posCom.SetVelocity(0, 0);
 
-            entCpp.AddComponent(ComName.Direction);
+            inst.AddComponent(ComName.Direction);
 
-            var bez = entCpp.AddComponent(ComName.BezierMovement);
+            var bez = inst.AddComponent(ComName.BezierMovement);
             bez.Create(posx, posy, destX, destY, (abs(posx - destX) + abs(posy - destY)) / bulletCfg.flySpeed);
 
             damage.SetTargetID(targetId);
 
-            var banim = entCpp.AddComponent(ComName.BulletAnimArrow);
+            var banim = inst.AddComponent(ComName.BulletAnimArrow);
             banim.Create(anim_cfg.name);
 
             agent.GetBlackboard().SetTargetType(TargetType.Location);
@@ -61,21 +62,21 @@ var Bullet = {
         }
         else if(bulletCfg.moveType == BulletMoveType.Tracking)
         {
-            entCpp.AddComponent(ComName.Direction);
+            inst.AddComponent(ComName.Direction);
 
             posCom.SetVelocity(0, bulletCfg.flySpeed);
 
-            var delayTrack = entCpp.AddComponent(ComName.DelayTrackMovement);
+            var delayTrack = inst.AddComponent(ComName.DelayTrackMovement);
             delayTrack.Create(targetId, bulletCfg.findTargetDelay);
 
-            var bom = entCpp.AddComponent(ComName.BulletAnimBomb);
+            var bom = inst.AddComponent(ComName.BulletAnimBomb);
             bom.Create(anim_cfg.name, bulletCfg.tailAnim);
 
             agent.GetBlackboard().SetTargetType(TargetType.Entity);
             agent.GetBlackboard().SetTargetID(targetId);
         }
 
-        entCpp.AddTag(tag);
+        inst.AddTag(tag);
 
         return inst;
     },

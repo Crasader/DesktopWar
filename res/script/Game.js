@@ -39,8 +39,10 @@ var Game =
     updateTime:0.1,
     longUpdateTime:0.1,
 
+    entityList:{},
 
-    Start:function ()
+
+    Start:function()
     {
         //print("Game Init")
         this.loadingState = new LoadingState();
@@ -69,7 +71,7 @@ var Game =
     },
 
 
-    OnUpdate:function (timeDelta)
+    OnUpdate:function(timeDelta)
     {
         this.updateTime = timeDelta;
 
@@ -86,7 +88,7 @@ var Game =
         }
 
         //entity
-        UpdateEntities();
+        this.UpdateEntities();
 
     },
 
@@ -95,14 +97,79 @@ var Game =
     {
         this.longUpdateTime = timeDelta;
         //entity
-        LongUpdateEntities();
+        this.LongUpdateEntities();
     },
 
     // get time in seconds since game starts.
     GetTime:function()
     {
         return TimeSystem.TimeSinceStart();
-    }
+    },
+
+    GetUpdateTime:function()
+    {
+        return this.updateTime;
+    },
+
+    GetLongUpdateTime:function()
+    {
+        return this.longUpdateTime;
+    },
+
+
+    CreateEntity:function()
+    {
+        var entNative = GetWorld().CreateEntity();
+        var ent = new EntityScript();
+        ent.SetEntityNative(entNative);
+        var guid = entNative.GetID();
+        this.entityList[guid] = ent;
+
+        return ent;
+    },
+
+
+    DestroyEntity:function(entity)
+    {
+        if (null == entity)
+        {
+            print("Game.DestroyEntity : entity is null.");
+            return;
+        }
+
+        GetWorld().DestroyEntity(entity.GetEntityNative())
+
+        for(var id in this.entityList)
+        {
+            if(this.entityList[id] == entity)
+            {
+                this.entityList.splice(id, 1);
+                break;
+            }
+        }
+        print("Game.DestroyEntity done.");
+    },
+
+
+    UpdateEntities:function(timeDelta)
+    {
+        for(var id in this.entityList)
+        {
+            var ent = this.entityList[id];
+            ent.OnUpdate(timeDelta);
+        }
+
+    },
+
+
+    LongUpdateEntities:function(timeDelta)
+    {
+        for(var id in this.entityList)
+        {
+            var ent = this.entityList[id];
+            ent.OnLongUpdate(timeDelta);
+        }
+    },
 
 };
 

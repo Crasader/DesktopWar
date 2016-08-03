@@ -84,6 +84,12 @@ public:
 		y = _y;
 	}
 
+	Point2D(float angle)
+	{
+		x = cos(angle);
+		y = tan(angle);
+	}
+
 	Point2D operator+(const Point2D& point) const
 	{
 		return Point2D(x + point.x, y + point.y);
