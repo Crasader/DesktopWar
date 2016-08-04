@@ -45,6 +45,8 @@ var Soldier = {
         var attr = inst.AddComponent(new Attr);
         attr.InitWithRoleCfg(roleCfg);
 
+        inst.SetStateGraph(CreateCommonGraph(inst));
+
         // tag
         inst.AddTag(Tag.Soldier);
 

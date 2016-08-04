@@ -17,6 +17,7 @@ var EntityScript = Class.extend({
     entityNative:null,
     components:null,
     blackboard:{},
+    stateGraph:null,
 
 
     ctor:function ()
@@ -42,6 +43,16 @@ var EntityScript = Class.extend({
     SetBlackboard:function(name, value)
     {
         this.blackboard[name] = value;
+    },
+
+    SetStateGraph:function(sg)
+    {
+        this.stateGraph = sg;
+    },
+
+    GetStateGraph:function()
+    {
+        return this.stateGraph;
     },
 
     AddTag:function(tag)
