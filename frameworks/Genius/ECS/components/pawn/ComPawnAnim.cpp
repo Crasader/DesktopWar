@@ -130,7 +130,7 @@ float ComPawnAnim::GetHeight()
 	return m_pBodyArmature ? m_pBodyArmature->getContentSize().height : 20;
 }
 
-bool ComPawnAnim::HaveThisAnimation(std::string name)
+bool ComPawnAnim::ContainAnim(std::string name)
 {
 	return m_pBodyArmature->getAnimation()->getAnimationData()->getMovement(name) != nullptr;
 }
@@ -227,3 +227,5 @@ void ComPawnAnim::CreateAnimFSM(int fsmType)
 
 	m_pAnimFsm->Initialize();
 }
+
+

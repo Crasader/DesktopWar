@@ -3,14 +3,14 @@
 var State = Class.extend({
 
     name: 'no name',
-    onenter: null,
-    onexit: null,
+    onEnter: null,
+    onExit: null,
     events: null,
 
     ctor: function (args) {
         this.name = args.name;
-        this.onenter = args.onEnter;
-        this.onexit = args.OnExit;
+        this.onEnter = args.onenter;
+        this.onExit = args.Onexit;
     },
 
     OnEnter: function (entity) {
@@ -36,7 +36,7 @@ var State = Class.extend({
 var StateGraph = Class.extend({
 
     entity:null,
-    stateList:null,
+    stateList:{},
     currentState:null,
     lastState:null,
     eventHandlers:{},
@@ -74,7 +74,7 @@ var StateGraph = Class.extend({
         this.lastState = null;
         this.currentState = this.stateList[defaultState];
         if (this.currentState != null) {
-            this.currentState.onEnter();
+            this.currentState.onEnter(this.entity);
         }
         else {
             print("default state is invalid " + defaultState);
@@ -93,7 +93,7 @@ var StateGraph = Class.extend({
         if (this.lastState != null) {
             this.lastState.onExit(this.entity);
         }
-        this.currentState.onEnter();
+        this.currentState.onEnter(this.entity);
     },
 
     //event

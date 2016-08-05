@@ -1004,6 +1004,24 @@ bool js_app_ComTransform_SetDirection(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_ComTransform_SetDirection : wrong number of arguments: %d, was expecting %d", argc, 1);
     return false;
 }
+bool js_app_ComTransform_GetDir(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::ComTransform* cobj = (Genius::ComTransform *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComTransform_GetDir : Invalid Native Object");
+    if (argc == 0) {
+        int ret = cobj->GetDir();
+        jsval jsret = JSVAL_NULL;
+        jsret = int32_to_jsval(cx, ret);
+        args.rval().set(jsret);
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_ComTransform_GetDir : wrong number of arguments: %d, was expecting %d", argc, 0);
+    return false;
+}
 bool js_app_ComTransform_GetX(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -1200,6 +1218,7 @@ void js_register_app_ComTransform(JSContext *cx, JS::HandleObject global) {
     static JSFunctionSpec funcs[] = {
         JS_FN("MoveTo", js_app_ComTransform_MoveTo, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("SetDirection", js_app_ComTransform_SetDirection, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("GetDir", js_app_ComTransform_GetDir, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("GetX", js_app_ComTransform_GetX, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("GetY", js_app_ComTransform_GetY, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("GetVY", js_app_ComTransform_GetVY, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -1951,28 +1970,6 @@ bool js_app_ComPawnAnim_PlayFloatNumber(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_ComPawnAnim_PlayFloatNumber : wrong number of arguments: %d, was expecting %d", argc, 2);
     return false;
 }
-bool js_app_ComPawnAnim_HaveThisAnimation(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::ComPawnAnim* cobj = (Genius::ComPawnAnim *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComPawnAnim_HaveThisAnimation : Invalid Native Object");
-    if (argc == 1) {
-        std::string arg0;
-        ok &= jsval_to_std_string(cx, args.get(0), &arg0);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_ComPawnAnim_HaveThisAnimation : Error processing arguments");
-        bool ret = cobj->HaveThisAnimation(arg0);
-        jsval jsret = JSVAL_NULL;
-        jsret = BOOLEAN_TO_JSVAL(ret);
-        args.rval().set(jsret);
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_ComPawnAnim_HaveThisAnimation : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
 bool js_app_ComPawnAnim_HandleAction(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -2151,6 +2148,28 @@ bool js_app_ComPawnAnim_SetPosition(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_ComPawnAnim_SetPosition : wrong number of arguments: %d, was expecting %d", argc, 2);
     return false;
 }
+bool js_app_ComPawnAnim_ContainAnim(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::ComPawnAnim* cobj = (Genius::ComPawnAnim *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComPawnAnim_ContainAnim : Invalid Native Object");
+    if (argc == 1) {
+        std::string arg0;
+        ok &= jsval_to_std_string(cx, args.get(0), &arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_ComPawnAnim_ContainAnim : Error processing arguments");
+        bool ret = cobj->ContainAnim(arg0);
+        jsval jsret = JSVAL_NULL;
+        jsret = BOOLEAN_TO_JSVAL(ret);
+        args.rval().set(jsret);
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_ComPawnAnim_ContainAnim : wrong number of arguments: %d, was expecting %d", argc, 1);
+    return false;
+}
 bool js_app_ComPawnAnim_AnimationFrameCallback(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -2205,7 +2224,6 @@ void js_register_app_ComPawnAnim(JSContext *cx, JS::HandleObject global) {
     static JSFunctionSpec funcs[] = {
         JS_FN("AnimationMovementCallback", js_app_ComPawnAnim_AnimationMovementCallback, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("PlayFloatNumber", js_app_ComPawnAnim_PlayFloatNumber, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("HaveThisAnimation", js_app_ComPawnAnim_HaveThisAnimation, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("HandleAction", js_app_ComPawnAnim_HandleAction, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Create", js_app_ComPawnAnim_Create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("GetHeight", js_app_ComPawnAnim_GetHeight, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -2215,6 +2233,7 @@ void js_register_app_ComPawnAnim(JSContext *cx, JS::HandleObject global) {
         JS_FN("OnDestroy", js_app_ComPawnAnim_OnDestroy, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("SetDebugLabel", js_app_ComPawnAnim_SetDebugLabel, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("SetPosition", js_app_ComPawnAnim_SetPosition, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("ContainAnim", js_app_ComPawnAnim_ContainAnim, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("AnimationFrameCallback", js_app_ComPawnAnim_AnimationFrameCallback, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };

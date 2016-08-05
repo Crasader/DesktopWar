@@ -352,6 +352,16 @@ int
 },
 
 /**
+ * @method GetDir
+ * @return {int}
+ */
+GetDir : function (
+)
+{
+    return 0;
+},
+
+/**
  * @method GetX
  * @return {float}
  */
@@ -680,18 +690,6 @@ int
 },
 
 /**
- * @method HaveThisAnimation
- * @param {String} arg0
- * @return {bool}
- */
-HaveThisAnimation : function (
-str 
-)
-{
-    return false;
-},
-
-/**
  * @method HandleAction
  * @param {Genius::PawnAction} arg0
  */
@@ -777,6 +775,18 @@ float,
 float 
 )
 {
+},
+
+/**
+ * @method ContainAnim
+ * @param {String} arg0
+ * @return {bool}
+ */
+ContainAnim : function (
+str 
+)
+{
+    return false;
 },
 
 /**

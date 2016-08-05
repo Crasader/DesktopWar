@@ -33,7 +33,7 @@ commonStatus.AddIdle = function(status)
         name: 'idle',
 
         onenter: function (entity) {
-            entity.GetComponent(ComName.Animation).PlayAnimation('idle');
+            entity.PlayAnimation(AnimName.Idle);
         },
 
         onexit: function (entity) {
@@ -53,7 +53,7 @@ commonStatus.AddDie = function(status)
         name: 'die',
 
         onenter: function (entity) {
-            entity.GetComponent(ComName.Animation).PlayAnimation('die');
+            entity.PlayAnimation(AnimName.Die);
         },
 
         onexit: function (entity) {
@@ -73,7 +73,7 @@ commonStatus.AddMove = function(status)
         name: 'move',
 
         onenter: function (entity) {
-            entity.GetComponent(ComName.Animation).PlayAnimation('move');
+            entity.PlayAnimation(AnimName.Move);
         },
 
         onexit: function (entity) {
@@ -93,7 +93,7 @@ commonStatus.AddAttackNear = function(status)
         name: 'attackNear',
 
         onenter: function (entity) {
-            entity.GetComponent(ComName.Animation).PlayAnimation('attackNear');
+            entity.PlayAnimation(AnimName.Atk1);
         },
 
         onexit: function (entity) {
@@ -113,7 +113,7 @@ commonStatus.AddAttackFar = function(status)
         name: 'attackFar',
 
         onenter: function (entity) {
-            entity.GetComponent(ComName.Animation).PlayAnimation('attackFar');
+            entity.PlayAnimation(AnimName.Atk2);
         },
 
         onexit: function (entity) {
@@ -133,7 +133,7 @@ commonStatus.AddSkill1 = function(status)
         name: 'skill1',
 
         onenter: function (entity) {
-            entity.GetComponent(ComName.Animation).PlayAnimation('skill1');
+            entity.PlayAnimation(AnimName.Skill1);
         },
 
         onexit: function (entity) {
@@ -153,7 +153,7 @@ commonStatus.AddSkill2 = function(status)
         name: 'skill2',
 
         onenter: function (entity) {
-            entity.GetComponent(ComName.Animation).PlayAnimation('skill2');
+            entity.PlayAnimation(AnimName.Skill2);
         },
 
         onexit: function (entity) {

@@ -89,7 +89,7 @@ var EntityScript = Class.extend({
 
     GetComponent:function(name)
     {
-        return this.components[name]
+        return this.components[name];
     },
 
 
@@ -166,6 +166,11 @@ var EntityScript = Class.extend({
         }
     },
 
+    PlayAnimation:function(prfixName)
+    {
+        var fullName = GetPawnAnimName(this,prfixName);
+        this.GetComponent(ComName.Animation).PlayAnimation(fullName);
+    }
 
 });
 

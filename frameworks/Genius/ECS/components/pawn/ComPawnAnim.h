@@ -43,7 +43,7 @@ namespace Genius
 		float GetHeight();
 		void PlayAnimation(const std::string& name);
 		void SetPosition(float x, float y);
-		bool HaveThisAnimation(std::string name);
+		bool ContainAnim(std::string name);
 		void PlayFloatNumber(int number, int y);
 
 		void SetDebugLabel(std::string text);
@@ -54,7 +54,7 @@ namespace Genius
 
 	private:
 		void CreateAnimFSM(int fsmType);
-
+		
 	};
 
 	

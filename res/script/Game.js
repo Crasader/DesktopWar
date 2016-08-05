@@ -107,16 +107,6 @@ var Game =
         return TimeSystem.TimeSinceStart();
     },
 
-    GetUpdateTime:function()
-    {
-        return this.updateTime;
-    },
-
-    GetLongUpdateTime:function()
-    {
-        return this.longUpdateTime;
-    },
-
 
     CreateEntity:function()
     {

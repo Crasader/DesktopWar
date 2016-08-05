@@ -28,6 +28,7 @@ namespace Genius
 		float GetY(){ return y; }
 		float GetVX(){ return vx; }
 		float GetVY(){ return vy; }
+		int GetDir(){ return curDir; }
 		void MoveTo(float x, float y, float speed);
 		void MoveTowards(float angle, float speed);
 	};
