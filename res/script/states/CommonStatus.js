@@ -42,7 +42,7 @@ commonStatus.AddIdle = function(status)
 
         events: {}
     };
-    status[st.name] = st;
+    status[st.name] = new State(st);
 };
 
 
@@ -62,7 +62,7 @@ commonStatus.AddDie = function(status)
 
         events: {}
     };
-    status[st.name] = st;
+    status[st.name] = new State(st);
 };
 
 
@@ -82,7 +82,7 @@ commonStatus.AddMove = function(status)
 
         events: {}
     };
-    status[st.name] = st;
+    status[st.name] = new State(st);
 };
 
 
@@ -102,7 +102,7 @@ commonStatus.AddAttackNear = function(status)
 
         events: {}
     };
-    status[st.name] = st;
+    status[st.name] = new State(st);
 };
 
 
@@ -122,7 +122,7 @@ commonStatus.AddAttackFar = function(status)
 
         events: {}
     };
-    status[st.name] = st;
+    status[st.name] = new State(st);
 };
 
 
@@ -142,7 +142,7 @@ commonStatus.AddSkill1 = function(status)
 
         events: {}
     };
-    status[st.name] = st;
+    status[st.name] = new State(st);
 };
 
 
@@ -162,7 +162,22 @@ commonStatus.AddSkill2 = function(status)
 
         events: {}
     };
-    status[st.name] = st;
+    status[st.name] = new State(st);
+};
+
+
+
+commonStatus.OnLocomote = function()
+{
+    return EventHandler('locomote',
+    function(entity){
+        var locomotor = entity.GetComponent(ComName.Locomotor);
+        if(locomotor){
+            var anim = entity.GetComponent(ComName.Animation);
+            anim.PlayAnimation('idle');
+        }
+    }
+    );
 };
 
 
@@ -180,7 +195,12 @@ function CreateCommonGraph(entity)
     commonStatus.AddSkill1(status);
     commonStatus.AddSkill2(status);
 
-    return new StateGraph(entity, status, 'idle');
+    var events = [
+        new EventHandler('locomote', function(){}),
+    ];
+
+
+    return new StateGraph(entity, status, events, 'idle');
 }
 
 

@@ -18,6 +18,7 @@ var EntityScript = Class.extend({
     components:null,
     blackboard:{},
     stateGraph:null,
+    eventHandlers:{},
 
 
     ctor:function ()
@@ -127,7 +128,43 @@ var EntityScript = Class.extend({
             var com = this.components[id];
             com.OnDestroy()
         }
-    }
+    },
+
+    //event
+    ListenForEvent:function(event, handler)
+    {
+        if(typeof(event)!='string')
+        {
+            print('EntityScript.ListenForEvent: event is not a string.');
+            return;
+        }
+        if(typeof(handler)!='function')
+        {
+            print('EntityScript.ListenForEvent: handler is not a function.');
+            return;
+        }
+        if(this.eventHandlers[event] == null)
+            this.eventHandlers[event] = Array();
+        this.eventHandlers[event].push(handler);
+    },
+
+    PushEvent:function(event)
+    {
+        var handlers = this.eventHandlers[event];
+        if (handlers != null)
+        {
+            for(var id in handlers)
+            {
+                handlers[id](this);
+            }
+        }
+
+        // sg
+        if (this.stateGraph != null)
+        {
+            this.stateGraph.PushEvent(event);
+        }
+    },
 
 
 });

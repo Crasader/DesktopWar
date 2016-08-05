@@ -21,6 +21,7 @@ require("res/script/EntityScript.js");
 require("res/script/configs/_cfg_.js");
 require("res/script/behaviours/_bev_.js");
 require("res/script/components/_com_.js");
+require("res/script/states/_state_.js");
 
 
 
@@ -137,6 +138,9 @@ var Game =
             return;
         }
 
+        entity.OnDestroy();
+        // to do : other handlers
+
         GetWorld().DestroyEntity(entity.GetEntityNative())
 
         for(var id in this.entityList)
@@ -170,6 +174,10 @@ var Game =
             ent.OnLongUpdate(timeDelta);
         }
     },
+
+    
+
+
 
 };
 
