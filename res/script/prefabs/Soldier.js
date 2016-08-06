@@ -15,6 +15,7 @@ var Soldier = {
 		var roleCfg = Config.Role[id];
 
         inst.SetBlackboard("roleCfg", roleCfg);
+        inst.SetBlackboard(BB.HomePosition, {x:posx,y:posy});
 
         var agent = inst.AddComponent(ComName.PawnAgent);
 		agent.Create(id,true);

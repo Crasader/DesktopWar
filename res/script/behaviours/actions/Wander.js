@@ -44,8 +44,6 @@ var Wander = bt.Action.extend({
             if (Game.GetTime() > this.waitTime)
             {
                 this.isWalking = true;
-                this.waitTime = Game.GetTime() + 3;
-
                 this.PickRandomDirection(entity);
             }
         }
@@ -60,8 +58,17 @@ var Wander = bt.Action.extend({
     PickRandomDirection:function(entity)
     {
         var locomotor = entity.GetComponent(ComName.Locomotor);
-        var angle = Math.random()*360;
-        locomotor.MoveTowards(angle);
+        var tranform = entity.GetComponent(ComName.Transform);
+        var homePos = entity.GetBlackboard(BB.HomePosition);
+        if(Math.abs(homePos.x - tranform.GetX()) > 200 || Math.abs(homePos.y - tranform.GetY()) > 200){
+            this.waitTime = Game.GetTime() + 6;
+            locomotor.MoveToPoint(homePos.x, homePos.y);
+        }else{
+            this.waitTime = Game.GetTime() + 3;
+            var angle = Math.random()*360;
+            locomotor.MoveTowards(angle);
+        }
+
     }
 
 });

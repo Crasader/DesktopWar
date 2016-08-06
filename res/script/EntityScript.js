@@ -5,10 +5,6 @@
  * Date:2016-7-13
  */
 
-// Blackboard中的Key
-var BB = {};
-BB.FollowTarget = "FollowTarget";
-BB.CombatTarget = "CombatTarget";
 
 
 // Entity
