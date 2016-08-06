@@ -40,7 +40,8 @@ function SpawnBullet(bulletID, targetEntityID, x, y, tag, destX, destY)
 function GetPawnAnimName(entity, prefixAnimName) {
     var animName = PawnAnimName.Idle_L;
     var dir = entity.GetComponent(ComName.Transform).GetDir();
-    var animCom = entity.GetComponent(ComName.Animation);
+    print('dir is '+dir);
+    var animCom = entity.GetComponent(ComName.PawnAnim);
     if (prefixAnimName === AnimName.Idle) {
         if (dir & FaceDir.Left)
             animName = PawnAnimName.Idle_L;
@@ -108,6 +109,7 @@ function GetPawnAnimName(entity, prefixAnimName) {
 function PlayPawnAnim(entity, prefixName){
     if(entity instanceof EntityScript) {
         var fullName = GetPawnAnimName(entity, prefixName);
-        entity.GetComponent(ComName.Animation).PlayAnimation(fullName);
+        entity.GetComponent(ComName.PawnAnim).PlayAnimation(fullName);
+        print("play "+fullName);
     }
 }

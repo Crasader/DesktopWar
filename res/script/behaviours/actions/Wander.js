@@ -61,7 +61,6 @@ var Wander = bt.Action.extend({
     {
         var locomotor = entity.GetComponent(ComName.Locomotor);
         var angle = Math.random()*360;
-        print('angel '+angle);
         locomotor.MoveTowards(angle);
     }
 

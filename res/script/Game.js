@@ -92,8 +92,6 @@ var Game =
 
     OnLongUpdate:function(timeDelta) {
         this.longUpdateTime = timeDelta;
-        //entity
-        this.LongUpdateEntities();
     },
 
     // get time in seconds since game starts.
@@ -146,14 +144,6 @@ var Game =
             ent.OnUpdate(timeDelta);
         }
 
-    },
-
-
-    LongUpdateEntities:function(timeDelta) {
-        for (var id in this.updatingEntities) {
-            var ent = this.updatingEntities[id];
-            ent.OnLongUpdate(timeDelta);
-        }
     },
 
     AddUpdatingEntity:function(entity){

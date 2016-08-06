@@ -10,7 +10,7 @@ var State = Class.extend({
     ctor: function (args) {
         this.name = args.name;
         this.onEnter = args.onenter;
-        this.onExit = args.Onexit;
+        this.onExit = args.onexit;
     },
 
     OnEnter: function (entity) {
@@ -64,7 +64,7 @@ var StateGraph = Class.extend({
         for (var id in events) {
             var evt = events[id];
             if (evt instanceof EventHandler) {
-                this.eventHandlers[evt.getName()] = evt.getFn();
+                this.ListenForEvent(evt.getName(),evt.getFn());
             }
             else {
                 print('not a EventHandler');
@@ -123,19 +123,20 @@ var StateGraph = Class.extend({
 });
 
 
-var EventHandler = function(name, fn)
-{
-    this.name = name;
-    this.fn = fn;
-    this.getName = function()
-    {
-        return name;
-    }
-    this.getFn = function()
-    {
-        return fn;
-    }
-};
+var EventHandler = Class.extend({
+    name:'',
+    fn:null,
+    ctor:function(_name, _fn){
+        this.name = _name;
+        this.fn = _fn;
+    },
+    getName:function(){
+        return this.name;
+    },
+    getFn:function() {
+        return this.fn;
+    },
+});
 
 
 

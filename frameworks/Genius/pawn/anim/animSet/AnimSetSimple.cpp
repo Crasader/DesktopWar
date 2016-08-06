@@ -1,6 +1,7 @@
 
 #include "AnimSetSimple.h"
 #include "pawn/PawnDefines.h"
+#include "ECS/ecs.h"
 
 using namespace Genius;
 

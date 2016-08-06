@@ -175,12 +175,15 @@ commonStatus.AddSkill2 = function(status)
 
 commonStatus.OnLocomote = function()
 {
-    return EventHandler('locomote',
+    return new EventHandler('locomote',
     function(entity) {
         var locomotor = entity.GetComponent(ComName.Locomotor);
         var isMoving = locomotor.IsMoving();
         if (isMoving){
             entity.GetStateGraph().gotoState('move');
+        }
+        else{
+            entity.GetStateGraph().gotoState('idle');
         }
     }
     );
@@ -202,7 +205,7 @@ function CreateCommonGraph(entity)
     commonStatus.AddSkill2(status);
 
     var events = [
-        new EventHandler('locomote', function(){}),
+        commonStatus.OnLocomote(),
     ];
     
     return new StateGraph(entity, status, events, 'idle');

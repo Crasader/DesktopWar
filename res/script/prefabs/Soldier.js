@@ -51,6 +51,8 @@ var Soldier = {
         // tag
         inst.AddTag(Tag.Soldier);
 
+        inst.OnAwake();
+
         return inst;
     },
 

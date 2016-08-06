@@ -25,8 +25,11 @@ void ComTransform::SetVelocity(float _x, float _y)
 }
 void ComTransform::SetDirection(int dir)
 {
-	lastDir = curDir;
-	curDir = dir;
+	if (dir != curDir)
+	{
+		lastDir = curDir;
+		curDir = dir;
+	}
 }
 
 void ComTransform::MoveTo(float _x, float _y, float speed)
@@ -39,6 +42,8 @@ void ComTransform::MoveTo(float _x, float _y, float speed)
 		speed = 1;
 	this->vx = delta.x * speed;
 	this->vy = delta.y * speed;
+	int dir = CalculateDirection(_x-x, _y-y);
+	SetDirection(dir);
 }
 
 void ComTransform::MoveTowards(float angle, float speed)
@@ -47,6 +52,48 @@ void ComTransform::MoveTowards(float angle, float speed)
 	Point2D pt2d(angle);
 	this->vx = pt2d.x * speed;
 	this->vy = pt2d.y * speed;
+	int dir = CalculateDirection(pt2d.x, pt2d.y);
+	SetDirection(dir);
 }
 
-
+int ComTransform::CalculateDirection(float x, float y)
+{
+	float absTan = 2.0f;
+	int dir = this->curDir;
+	if (x == 0.0f)
+	{
+		if (y == 0.0f)
+		{
+			dir = dir;
+		}
+		else if (y > 0.0f)
+		{
+			dir = Face_Up;
+		}
+		else // < 0
+		{
+			dir = Face_Down;
+		}
+	}
+	else if (x > 0.0f)
+	{
+		float tan = y / x;
+		if (tan > absTan)
+			dir = Face_Up | Face_Right;
+		else if (tan > -absTan && tan <= absTan)
+			dir = Face_Right;
+		else
+			dir = Face_Down | Face_Right;
+	}
+	else// vec.x < 0.0f
+	{
+		float tan = y / x;
+		if (tan > absTan)
+			dir = Face_Down | Face_Left;
+		else if (tan > -absTan && tan <= absTan)
+			dir = Face_Left;
+		else
+			dir = Face_Up | Face_Left;
+	}
+	return dir;
+}

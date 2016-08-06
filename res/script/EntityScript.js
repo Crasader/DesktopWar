@@ -83,8 +83,7 @@ var EntityScript = Class.extend({
         return this.components[name];
     },
 
-
-    OnUpdate:function() {
+    OnAwake:function(){
         for (var id in this.components) {
             var com = this.components[id];
             if (com instanceof BaseComponent) {
@@ -92,24 +91,26 @@ var EntityScript = Class.extend({
                     com.SetIsFirstUpdate(false);
                     com.OnStart();
                 }
+            }
+        }
+    },
+
+
+    OnUpdate:function() {
+        for (var id in this.updatingComponents) {
+            var com = this.updatingComponents[id];
+            if (com instanceof BaseComponent) {
                 if (com.OnUpdate != null)
                     com.OnUpdate();
             }
         }
     },
 
-    OnLongUpdate:function() {
-        for (var id in this.components) {
-            var com = this.components[id];
-            if (com.OnLongUpdate != null)
-                com.OnLongUpdate();
-        }
-    },
-
     OnDestroy:function() {
         for (var id in this.components) {
             var com = this.components[id];
-            com.OnDestroy()
+            com.OnDestroy();
+            com = undefined;
         }
     },
 
