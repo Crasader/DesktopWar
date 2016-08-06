@@ -154,7 +154,7 @@ var LaunchState = GameState.extend
 
         //Soldier.Create(1007, 400, 133);
         //Soldier.Create(1007, 520, 120);
-        //Soldier.Create(1007, 540, 140);
+        Soldier.Create(1007, 540, 140);
 
         Soldier.Create(1001, 400, 133);
 
@@ -174,12 +174,13 @@ var LaunchState = GameState.extend
     ParseResourceList:function(loadMgr)
     {
         loadMgr.AddRole(1001);
-        loadMgr.AddRole(2012);
+        loadMgr.AddRole(1007);
+        /*loadMgr.AddRole(2012);
         loadMgr.AddRole(2011);
         loadMgr.AddRole(2010);
         loadMgr.AddRole(2009);
         loadMgr.AddRole(2008);
-        loadMgr.AddRole(1007);
+        */
 
         loadMgr.AddAnim(3001);
         loadMgr.AddAnim(3002);

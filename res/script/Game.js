@@ -11,6 +11,7 @@ require("res/script/Class.js");
 require("res/script/Defines.js");
 require("res/script/mainfuncs.js");
 require("res/script/GameState.js");
+require("res/script/BrainMgr.js");
 
 require("res/script/ComponentName.js");
 require("res/script/prefabs/Soldier.js");
@@ -40,11 +41,11 @@ var Game =
     updateTime:0.1,
     longUpdateTime:0.1,
 
-    entityList:{},
+    entityList:[],
+    updatingEntities:[],
 
 
-    Start:function()
-    {
+    Start:function() {
         //print("Game Init")
         this.loadingState = new LoadingState();
         this.lanchState = new LaunchState();
@@ -53,15 +54,12 @@ var Game =
     },
 
 
-    ChangeState:function(newState)
-    {
-        if(newState != this.lanchState && newState != this.warState)
-        {
+    ChangeState:function(newState) {
+        if (newState != this.lanchState && newState != this.warState) {
             print("invalid state");
             return;
         }
-        if(newState == this.currentState)
-        {
+        if (newState == this.currentState) {
             print("cannot enter the same state");
             return;
         }
@@ -72,14 +70,11 @@ var Game =
     },
 
 
-    OnUpdate:function(timeDelta)
-    {
+    OnUpdate:function(timeDelta) {
         this.updateTime = timeDelta;
 
-        if(this.currentState != null)
-        {
-            if (this.currentState != this.lastState)
-            {
+        if (this.currentState != null) {
+            if (this.currentState != this.lastState) {
                 if (this.lastState != null)
                     this.lastState.OnExit();
                 this.currentState.OnEnter();
@@ -88,28 +83,26 @@ var Game =
             this.currentState.OnUpdate(timeDelta)
         }
 
+        BrainMgr.OnUpdate();
+
         //entity
         this.UpdateEntities();
-
     },
 
 
-    OnLongUpdate:function(timeDelta)
-    {
+    OnLongUpdate:function(timeDelta) {
         this.longUpdateTime = timeDelta;
         //entity
         this.LongUpdateEntities();
     },
 
     // get time in seconds since game starts.
-    GetTime:function()
-    {
+    GetTime:function() {
         return TimeSystem.TimeSinceStart();
     },
 
 
-    CreateEntity:function()
-    {
+    CreateEntity:function() {
         var entNative = GetWorld().CreateEntity();
         var ent = new EntityScript();
         ent.SetEntityNative(entNative);
@@ -120,10 +113,8 @@ var Game =
     },
 
 
-    DestroyEntity:function(entity)
-    {
-        if (null == entity)
-        {
+    DestroyEntity:function(entity) {
+        if (null == entity) {
             print("Game.DestroyEntity : entity is null.");
             return;
         }
@@ -133,11 +124,15 @@ var Game =
 
         GetWorld().DestroyEntity(entity.GetEntityNative())
 
-        for(var id in this.entityList)
-        {
-            if(this.entityList[id] == entity)
-            {
+        for (var id in this.entityList) {
+            if (this.entityList[id] == entity) {
                 this.entityList.splice(id, 1);
+                break;
+            }
+        }
+        for (var id in this.updatingEntities) {
+            if (this.updatingEntities[id] == entity) {
+                this.updatingEntities.splice(id, 1);
                 break;
             }
         }
@@ -145,27 +140,37 @@ var Game =
     },
 
 
-    UpdateEntities:function(timeDelta)
-    {
-        for(var id in this.entityList)
-        {
-            var ent = this.entityList[id];
+    UpdateEntities:function(timeDelta) {
+        for (var id in this.updatingEntities) {
+            var ent = this.updatingEntities[id];
             ent.OnUpdate(timeDelta);
         }
 
     },
 
 
-    LongUpdateEntities:function(timeDelta)
-    {
-        for(var id in this.entityList)
-        {
-            var ent = this.entityList[id];
+    LongUpdateEntities:function(timeDelta) {
+        for (var id in this.updatingEntities) {
+            var ent = this.updatingEntities[id];
             ent.OnLongUpdate(timeDelta);
         }
     },
 
-    
+    AddUpdatingEntity:function(entity){
+        if(!entity instanceof EntityScript){
+            print('Game.AddUpdatingEntity: entity is not EntityScript.')
+            return;
+        }
+        this.updatingEntities[entity.GetID()] = entity;
+    },
+
+    RemoveUpdatingEntity:function(entity){
+        if(!entity instanceof EntityScript){
+            print('Game.RemoveUpdatingEntity: entity is not EntityScript.')
+            return;
+        }
+        this.updatingEntities.splice(entity.GetID(), 1);
+    }
 
 
 

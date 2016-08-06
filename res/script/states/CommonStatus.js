@@ -33,7 +33,8 @@ commonStatus.AddIdle = function(status)
         name: 'idle',
 
         onenter: function (entity) {
-            entity.PlayAnimation(AnimName.Idle);
+            entity.GetComponent(ComName.Locomotor).StopMove();
+            PlayPawnAnim(entity, AnimName.Idle);
         },
 
         onexit: function (entity) {
@@ -53,7 +54,8 @@ commonStatus.AddDie = function(status)
         name: 'die',
 
         onenter: function (entity) {
-            entity.PlayAnimation(AnimName.Die);
+            entity.GetComponent(ComName.Locomotor).StopMove();
+            PlayPawnAnim(entity, AnimName.Die);
         },
 
         onexit: function (entity) {
@@ -73,7 +75,7 @@ commonStatus.AddMove = function(status)
         name: 'move',
 
         onenter: function (entity) {
-            entity.PlayAnimation(AnimName.Move);
+            PlayPawnAnim(entity, AnimName.Move);
         },
 
         onexit: function (entity) {
@@ -93,7 +95,8 @@ commonStatus.AddAttackNear = function(status)
         name: 'attackNear',
 
         onenter: function (entity) {
-            entity.PlayAnimation(AnimName.Atk1);
+            entity.GetComponent(ComName.Locomotor).StopMove();
+            PlayPawnAnim(entity, AnimName.Atk1);
         },
 
         onexit: function (entity) {
@@ -113,7 +116,8 @@ commonStatus.AddAttackFar = function(status)
         name: 'attackFar',
 
         onenter: function (entity) {
-            entity.PlayAnimation(AnimName.Atk2);
+            entity.GetComponent(ComName.Locomotor).StopMove();
+            PlayPawnAnim(entity, AnimName.Atk2);
         },
 
         onexit: function (entity) {
@@ -133,7 +137,8 @@ commonStatus.AddSkill1 = function(status)
         name: 'skill1',
 
         onenter: function (entity) {
-            entity.PlayAnimation(AnimName.Skill1);
+            entity.GetComponent(ComName.Locomotor).StopMove();
+            PlayPawnAnim(entity, AnimName.Skill1);
         },
 
         onexit: function (entity) {
@@ -153,7 +158,8 @@ commonStatus.AddSkill2 = function(status)
         name: 'skill2',
 
         onenter: function (entity) {
-            entity.PlayAnimation(AnimName.Skill2);
+            entity.GetComponent(ComName.Locomotor).StopMove();
+            PlayPawnAnim(entity, AnimName.Skill2);
         },
 
         onexit: function (entity) {
@@ -170,11 +176,11 @@ commonStatus.AddSkill2 = function(status)
 commonStatus.OnLocomote = function()
 {
     return EventHandler('locomote',
-    function(entity){
+    function(entity) {
         var locomotor = entity.GetComponent(ComName.Locomotor);
-        if(locomotor){
-            var anim = entity.GetComponent(ComName.Animation);
-            anim.PlayAnimation('idle');
+        var isMoving = locomotor.IsMoving();
+        if (isMoving){
+            entity.GetStateGraph().gotoState('move');
         }
     }
     );
@@ -198,8 +204,7 @@ function CreateCommonGraph(entity)
     var events = [
         new EventHandler('locomote', function(){}),
     ];
-
-
+    
     return new StateGraph(entity, status, events, 'idle');
 }
 

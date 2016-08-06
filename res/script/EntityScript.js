@@ -19,89 +19,76 @@ var EntityScript = Class.extend({
     blackboard:{},
     stateGraph:null,
     eventHandlers:{},
+    updatingComponents:{},
 
 
-    ctor:function ()
-    {
+    ctor:function () {
         this.components = {}
     },
 
-    SetEntityNative:function(ent)
-    {
+    GetID:function(){
+        return this.entityNative.GetID();
+    },
+
+    SetEntityNative:function(ent) {
         this.entityNative = ent
     },
 
-    GetEntityNative:function()
-    {
+    GetEntityNative:function() {
         return this.entityNative;
     },
 
-    GetBlackboard:function(name)
-    {
+    GetBlackboard:function(name) {
         return this.blackboard[name];
     },
 
-    SetBlackboard:function(name, value)
-    {
+    SetBlackboard:function(name, value) {
         this.blackboard[name] = value;
     },
 
-    SetStateGraph:function(sg)
-    {
+    SetStateGraph:function(sg) {
         this.stateGraph = sg;
     },
 
-    GetStateGraph:function()
-    {
+    GetStateGraph:function() {
         return this.stateGraph;
     },
 
-    AddTag:function(tag)
-    {
+    AddTag:function(tag) {
         this.entityNative.AddTag(tag);
     },
 
     // com: 加js组件则com是组件实例，加native组件则com是组件名.
-    AddComponent:function(com)
-    {
-        if (com instanceof BaseComponent)
-        {
+    AddComponent:function(com) {
+        if (com instanceof BaseComponent) {
             this.components[com.GetName()] = com;
             com.SetEntity(this);
             if (com.OnAwake != null)
                 com.OnAwake();
             return com;
         }
-        else
-        {
+        else {
             var comNative = this.entityNative.AddComponent(com);
-            if (null != comNative)
-            {
+            if (null != comNative) {
                 this.components[com] = comNative;
             }
-            else
-            {
+            else {
                 print("EntityScript.AddComponent:com is invalid");
             }
             return comNative;
         }
     },
 
-    GetComponent:function(name)
-    {
+    GetComponent:function(name) {
         return this.components[name];
     },
 
 
-    OnUpdate:function()
-    {
-        for(var id in this.components)
-        {
+    OnUpdate:function() {
+        for (var id in this.components) {
             var com = this.components[id];
-            if (com instanceof BaseComponent)
-            {
-                if (com.GetIsFirstUpdate())
-                {
+            if (com instanceof BaseComponent) {
+                if (com.GetIsFirstUpdate()) {
                     com.SetIsFirstUpdate(false);
                     com.OnStart();
                 }
@@ -111,65 +98,68 @@ var EntityScript = Class.extend({
         }
     },
 
-    OnLongUpdate:function()
-    {
-        for(var id in this.components)
-        {
+    OnLongUpdate:function() {
+        for (var id in this.components) {
             var com = this.components[id];
             if (com.OnLongUpdate != null)
                 com.OnLongUpdate();
         }
     },
 
-    OnDestroy:function()
-    {
-        for(var id in this.components)
-        {
+    OnDestroy:function() {
+        for (var id in this.components) {
             var com = this.components[id];
             com.OnDestroy()
         }
     },
 
     //event
-    ListenForEvent:function(event, handler)
-    {
-        if(typeof(event)!='string')
-        {
+    ListenForEvent:function(event, handler) {
+        if (typeof(event) != 'string') {
             print('EntityScript.ListenForEvent: event is not a string.');
             return;
         }
-        if(typeof(handler)!='function')
-        {
+        if (typeof(handler) != 'function') {
             print('EntityScript.ListenForEvent: handler is not a function.');
             return;
         }
-        if(this.eventHandlers[event] == null)
+        if (this.eventHandlers[event] == null)
             this.eventHandlers[event] = Array();
         this.eventHandlers[event].push(handler);
     },
 
-    PushEvent:function(event)
-    {
+    PushEvent:function(event) {
         var handlers = this.eventHandlers[event];
-        if (handlers != null)
-        {
-            for(var id in handlers)
-            {
+        if (handlers != null) {
+            for (var id in handlers) {
                 handlers[id](this);
             }
         }
 
         // sg
-        if (this.stateGraph != null)
-        {
+        if (this.stateGraph != null) {
             this.stateGraph.PushEvent(event);
         }
     },
 
-    PlayAnimation:function(prfixName)
-    {
-        var fullName = GetPawnAnimName(this,prfixName);
-        this.GetComponent(ComName.Animation).PlayAnimation(fullName);
+    StartUpdateComponent:function(com) {
+        if(!com instanceof BaseComponent){
+            print('com isnot BaseComponent');
+            return;
+        }
+        this.updatingComponents[com.GetName()] = com;
+        Game.AddUpdatingEntity(this);
+    },
+
+    StopUpdateComponent:function(com) {
+        if(!com instanceof BaseComponent){
+            print('com is not BaseComponent');
+            return;
+        }
+        this.updatingComponents[com.GetName()] = undefined;
+        if(this.updatingComponents.length==0){
+            Game.RemoveUpdatingEntity(this);
+        }
     }
 
 });

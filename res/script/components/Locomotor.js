@@ -11,15 +11,16 @@ var Locomotor = BaseComponent.extend({
 
     name:"Locomotor",
     attrCom:null,
+    isMoving:false,
 
     ctor:function ()
     {
 
     },
 
-    SetBTree:function(_btree)
+    IsMoving:function()
     {
-        this.btree = _btree;
+        return this.isMoving===true;
     },
 
     OnStart:function()
@@ -48,19 +49,27 @@ var Locomotor = BaseComponent.extend({
 
     MoveToPoint:function(x,y)
     {
+        this.isMoving = true;
         var speed = this.attrCom.Get(Attr.SPD);
         this.entity.GetComponent(ComName.Transform).MoveTo(x,y,speed);
+        this.entity.StartUpdateComponent(this);
+        this.entity.PushEvent('locomote');
     },
 
     MoveTowards:function(angle)
     {
+        this.isMoving = true;
         var speed = this.attrCom.Get(Attr.SPD);
         this.entity.GetComponent(ComName.Transform).MoveTowards(angle,speed);
+        this.entity.StartUpdateComponent(this);
+        this.entity.PushEvent('locomote');
     },
 
     StopMove:function()
     {
+        this.isMoving = false;
         this.entity.GetComponent(ComName.Transform).SetVelocity(0,0);
+        this.entity.StopUpdateComponent(this);
     }
 
 });

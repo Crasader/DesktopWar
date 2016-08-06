@@ -40,7 +40,8 @@ var Soldier = {
 
         // js coms
         inst.AddComponent(new Locomotor);
-        inst.AddComponent(new Brain(SimplePawnBT));
+        var brain = inst.AddComponent(new Brain(SimplePawnBT));
+        BrainMgr.AddBrain(inst, brain);
         inst.AddComponent(new Combat);
         var attr = inst.AddComponent(new Attr);
         attr.InitWithRoleCfg(roleCfg);
