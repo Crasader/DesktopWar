@@ -2,32 +2,11 @@
 
 var commonStatus = {};
 
-commonStatus.sampleState =
-{
-    name:'sampleState',
+///////////////////////////////common state/////////////////////////
 
-    onenter:function(entity)
-    {
+(function(){
+    "use strict";
 
-    },
-
-    onexit:function(entity)
-    {
-
-    },
-
-    events:
-    {
-
-    }
-};
-
-
-
-
-
-commonStatus.AddIdle = function(status)
-{
     var st =
     {
         name: 'idle',
@@ -43,12 +22,14 @@ commonStatus.AddIdle = function(status)
 
         events: {}
     };
-    status[st.name] = new State(st);
-};
 
+    commonStatus.idle = new State(st);
 
-commonStatus.AddDie = function(status)
-{
+})();
+
+(function(){
+    "use strict";
+
     var st =
     {
         name: 'die',
@@ -64,12 +45,14 @@ commonStatus.AddDie = function(status)
 
         events: {}
     };
-    status[st.name] = new State(st);
-};
 
+    commonStatus.die = new State(st);
 
-commonStatus.AddMove = function(status)
-{
+})();
+
+(function(){
+    "use strict";
+
     var st =
     {
         name: 'move',
@@ -84,12 +67,14 @@ commonStatus.AddMove = function(status)
 
         events: {}
     };
-    status[st.name] = new State(st);
-};
 
+    commonStatus.move = new State(st);
 
-commonStatus.AddAttackNear = function(status)
-{
+})();
+
+(function(){
+    "use strict";
+
     var st =
     {
         name: 'attackNear',
@@ -105,12 +90,14 @@ commonStatus.AddAttackNear = function(status)
 
         events: {}
     };
-    status[st.name] = new State(st);
-};
 
+    commonStatus.attackNear = new State(st);
 
-commonStatus.AddAttackFar = function(status)
-{
+})();
+
+(function(){
+    "use strict";
+
     var st =
     {
         name: 'attackFar',
@@ -126,12 +113,14 @@ commonStatus.AddAttackFar = function(status)
 
         events: {}
     };
-    status[st.name] = new State(st);
-};
 
+    commonStatus.attackFar = new State(st);
 
-commonStatus.AddSkill1 = function(status)
-{
+})();
+
+(function(){
+    "use strict";
+
     var st =
     {
         name: 'skill1',
@@ -147,12 +136,14 @@ commonStatus.AddSkill1 = function(status)
 
         events: {}
     };
-    status[st.name] = new State(st);
-};
 
+    commonStatus.skill1 = new State(st);
 
-commonStatus.AddSkill2 = function(status)
-{
+})();
+
+(function(){
+    "use strict";
+
     var st =
     {
         name: 'skill2',
@@ -168,10 +159,47 @@ commonStatus.AddSkill2 = function(status)
 
         events: {}
     };
-    status[st.name] = new State(st);
+
+    commonStatus.skill2 = new State(st);
+
+})();
+
+
+commonStatus.AddIdle = function(status) {
+    status[commonStatus.idle.getName()] = commonStatus.idle;
 };
 
 
+commonStatus.AddDie = function(status) {
+    status[commonStatus.die.getName()] = commonStatus.die;
+};
+
+
+commonStatus.AddMove = function(status) {
+    status[commonStatus.move.getName()] = commonStatus.move;
+};
+
+
+commonStatus.AddAttackNear = function(status) {
+    status[commonStatus.attackNear.getName()] = commonStatus.attackNear;
+};
+
+
+commonStatus.AddAttackFar = function(status) {
+    status[commonStatus.attackFar.getName()] = commonStatus.attackFar;
+};
+
+
+commonStatus.AddSkill1 = function(status) {
+    status[commonStatus.skill1.getName()] = commonStatus.skill1;
+};
+
+
+commonStatus.AddSkill2 = function(status) {
+    status[commonStatus.skill2.getName()] = commonStatus.skill2;
+};
+
+///////////////////////////////event handlers/////////////////////////
 
 commonStatus.OnLocomote = function()
 {
@@ -190,8 +218,7 @@ commonStatus.OnLocomote = function()
 };
 
 
-
-
+///////////////////////////////graph/////////////////////////
 
 function CreateCommonGraph(entity)
 {

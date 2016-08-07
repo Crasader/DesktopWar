@@ -44,7 +44,7 @@ var bt = {};
 
         var uuid = s.join("");
         return uuid;
-    }
+    };
 
 
     bt.Class = function(baseClass) {
@@ -63,7 +63,7 @@ var bt = {};
         cls.prototype.initialize = cls.prototype.initialize || function() {};
 
         return cls;
-    }
+    };
 
 })();
 
@@ -81,7 +81,7 @@ var bt = {};
     p.initialize = function() {
         this._baseMemory = {};
         this._treeMemory = {};
-    }
+    };
 
 
     p._getTreeMemory = function(treeScope) {
@@ -158,7 +158,7 @@ var bt = {};
         // updated during the tick signal
         this._openNodes  = [];
         this._nodeCount  = 0;
-    }
+    };
 
 
     p._enterNode = function(node) {
@@ -166,28 +166,28 @@ var bt = {};
         this._openNodes.push(node);
 
         // TODO: call debug here
-    }
+    };
 
 
     p._openNode = function(node) {
         // TODO: call debug here
-    }
+    };
 
 
     p._tickNode = function(node) {
         // TODO: call debug here
-    }
+    };
 
 
     p._closeNode = function(node) {
         // TODO: call debug here
         this._openNodes.pop();
-    }
+    };
 
 
     p._exitNode = function(node) {
         // TODO: call debug here
-    }
+    };
 
 
     bt.Tick = Tick;
@@ -213,7 +213,7 @@ var bt = {};
         this.properties  = {};
         this.root        = null;
         this.debug       = null;
-    }
+    };
 
 
     p.load = function(data, names) {

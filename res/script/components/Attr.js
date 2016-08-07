@@ -10,10 +10,11 @@
 var Attr = BaseComponent.extend({
 
     name:"Attr",
-    attrs:{},
+    attrs:null,
 
     ctor:function ()
     {
+        this.attrs = {};
         this.attrs[Attr.HP] = 0;
         this.attrs[Attr.MP] = 0;
         this.attrs[Attr.AP] = 0;

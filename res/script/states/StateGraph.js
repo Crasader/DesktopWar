@@ -36,10 +36,10 @@ var State = Class.extend({
 var StateGraph = Class.extend({
 
     entity:null,
-    stateList:{},
+    stateList:null,
     currentState:null,
     lastState:null,
-    eventHandlers:{},
+    eventHandlers:null,
 
 
     ctor:function(entity, states, events, defaultState) {
@@ -47,6 +47,9 @@ var StateGraph = Class.extend({
         if (!entity instanceof EntityScript) {
             print('StateMachine : entitiy is not EntityScript.');
         }
+
+        this.stateList = {};
+        this.eventHandlers = {};
 
         for (var id in states) {
             var state = states[id];

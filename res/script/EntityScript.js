@@ -12,14 +12,17 @@ var EntityScript = Class.extend({
 
     entityNative:null,
     components:null,
-    blackboard:{},
+    blackboard:null,
     stateGraph:null,
-    eventHandlers:{},
-    updatingComponents:{},
+    eventHandlers:null,
+    updatingComponents:null,
 
 
     ctor:function () {
-        this.components = {}
+        this.blackboard = {};
+        this.components = {};
+        this.eventHandlers = {};
+        this.updatingComponents = {};
     },
 
     GetID:function(){

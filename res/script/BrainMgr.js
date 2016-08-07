@@ -6,8 +6,13 @@ var BrainMgr = null;
 
     var BrainManager = Class.extend({
 
-        brianList:Array,
-        updatingBrains:Array,
+        brianList:null,
+        updatingBrains:null,
+
+        ctor:function(){
+            this.brianList = {};
+            this.updatingBrains = {};
+        },
 
         AddBrain:function(entity,brain){
             if(!entity instanceof EntityScript){
@@ -32,8 +37,8 @@ var BrainMgr = null;
                 print('BrainMgr.RemoveBrain: brain is not Brain.');
                 return;
             }
-            this.brianList.splice(entity.GetID());
-            this.updatingBrains[entity.GetID()] = brain;
+            this.brianList[entity.GetID()] = undefined;
+            this.updatingBrains[entity.GetID()] = undefined;
         },
 
         OnUpdate:function(){

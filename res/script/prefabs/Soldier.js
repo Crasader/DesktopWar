@@ -4,6 +4,8 @@ var Soldier = {
 
     Create:function(id, posx, posy)
     {
+        "use strict";
+
         //print("Soldier Create at " + posx + "," + posy);
 
         var inst = Game.CreateEntity();
@@ -39,13 +41,17 @@ var Soldier = {
         //var dd = inst.AddComponent(ComName.PawnDebugDraw);
         //dd.Create();
 
+
+
         // js coms
         inst.AddComponent(new Locomotor);
+        var SimplePawnBT = CreateSimplePawnBTree();
         var brain = inst.AddComponent(new Brain(SimplePawnBT));
         BrainMgr.AddBrain(inst, brain);
         inst.AddComponent(new Combat);
         var attr = inst.AddComponent(new Attr);
         attr.InitWithRoleCfg(roleCfg);
+
 
         inst.SetStateGraph(CreateCommonGraph(inst));
 
