@@ -80,18 +80,6 @@
     <Filter Include="Genius\Logic\Entity">
       <UniqueIdentifier>{e7d0cde6-cc3a-4d0a-a1ba-143a973802f5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Genius\Logic\Pawn\Anim">
-      <UniqueIdentifier>{56818f6b-2930-47f9-8b17-0e54f115e109}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Genius\Logic\Pawn\Anim\AnimFSM">
-      <UniqueIdentifier>{3eae6c33-2d1e-44d3-9499-46220a2ae3b9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Genius\Logic\Pawn\Anim\AnimState">
-      <UniqueIdentifier>{dd631534-adfa-429e-9900-26ed33010005}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Genius\Logic\Pawn\Anim\AnimSet">
-      <UniqueIdentifier>{f45cb523-9547-4d78-8ec4-8a58cacb5c95}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Genius\Logic\ESC\User\Component\common">
       <UniqueIdentifier>{23fb624f-8964-474f-8f5c-23244a9f4fd4}</UniqueIdentifier>
     </Filter>
@@ -103,9 +91,6 @@
     </Filter>
     <Filter Include="Genius\Logic\Pawn\Action">
       <UniqueIdentifier>{c60cf0d0-68a7-4b1a-b844-b26c2794519c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Genius\Logic\Pawn\BevTree">
-      <UniqueIdentifier>{837e58ec-1634-40ab-84dc-9e7e9b4f037f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Genius\Logic\Pawn\Action\base">
       <UniqueIdentifier>{d32ef041-86a0-40a1-94d2-73000950c662}</UniqueIdentifier>
@@ -199,9 +184,6 @@
     <ClInclude Include="..\..\Genius\AI\BehaviorTree\Behavior.h">
       <Filter>Genius\Logic\AI\BevTree</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\AI\BehaviorTree\BehaviorLoader.h">
-      <Filter>Genius\Logic\AI\BevTree</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\AI\BehaviorTree\BehaviorTree.h">
       <Filter>Genius\Logic\AI\BevTree</Filter>
     </ClInclude>
@@ -237,18 +219,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Genius\gfx\RollNumberLabel.h">
       <Filter>Genius\Base\Gfx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\anim\animSet\AnimSet.h">
-      <Filter>Genius\Logic\Pawn\Anim\AnimSet</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimState.h">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\anim\animFSM\AnimFSM.h">
-      <Filter>Genius\Logic\Pawn\Anim\AnimFSM</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\anim\animSet\AnimSetSimple.h">
-      <Filter>Genius\Logic\Pawn\Anim\AnimSet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\core\ECSWorld.h">
       <Filter>Genius\Logic\ESC\Core\System</Filter>
@@ -325,9 +295,6 @@
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnAnim.h">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnBevtree.h">
-      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnDebugDraw.h">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClInclude>
@@ -336,9 +303,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnNavigation.h">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnBevtree.h">
-      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.h">
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
@@ -385,86 +349,14 @@
     <ClInclude Include="..\..\Genius\app\GameUtils.h">
       <Filter>Genius\Logic\App</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\anim\animFSM\AnimFSMSimple.h">
-      <Filter>Genius\Logic\Pawn\Anim\AnimFSM</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateIdle.h">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\pawn\action\PawnAction.h">
       <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\action\PawnActionIdle.h">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\action\PawnActionAttackFar.h">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\action\PawnActionAttackNear.h">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\action\PawnActionDie.h">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\action\PawnActionMove.h">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\action\PawnActionSkill1.h">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\action\PawnActionSkill2.h">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\action\PawnActionSkill3.h">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\action\PawnActionFactory.h">
-      <Filter>Genius\Logic\Pawn\Action\base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\bevtree\BehaviorCreators.h">
-      <Filter>Genius\Logic\Pawn\BevTree</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\bevtree\BehaviorsAndPreconditions.h">
-      <Filter>Genius\Logic\Pawn\BevTree</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\bevtree\PawnBehaviors.h">
-      <Filter>Genius\Logic\Pawn\BevTree</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\bevtree\PawnBHTree.h">
-      <Filter>Genius\Logic\Pawn\BevTree</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\bevtree\PawnPrecondition.h">
-      <Filter>Genius\Logic\Pawn\BevTree</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\pawn\action\ActionDefine.h">
       <Filter>Genius\Logic\Pawn\Action\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\pawn\action\ActionHandler.h">
       <Filter>Genius\Logic\Pawn\Action\base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateAttackNear.h">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateDie.h">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateMove.h">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateAttackFar.h">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateSkill1.h">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateSkill2.h">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\anim\animState\AnimStateSkill3.h">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\action\PawnActionChangeDir.h">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\scripting\js-bindings\auto\jsb_app_auto.hpp">
       <Filter>Genius\JSB\auto</Filter>
@@ -634,9 +526,6 @@
     <ClCompile Include="..\..\Genius\AI\BehaviorTree\Behavior.cpp">
       <Filter>Genius\Logic\AI\BevTree</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\AI\BehaviorTree\BehaviorLoader.cpp">
-      <Filter>Genius\Logic\AI\BevTree</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\AI\BehaviorTree\BehaviorTree.cpp">
       <Filter>Genius\Logic\AI\BevTree</Filter>
     </ClCompile>
@@ -660,18 +549,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\gfx\RollNumberLabel.cpp">
       <Filter>Genius\Base\Gfx</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\anim\animSet\AnimSet.cpp">
-      <Filter>Genius\Logic\Pawn\Anim\AnimSet</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimState.cpp">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\anim\animFSM\AnimFSM.cpp">
-      <Filter>Genius\Logic\Pawn\Anim\AnimFSM</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\anim\animSet\AnimSetSimple.cpp">
-      <Filter>Genius\Logic\Pawn\Anim\AnimSet</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\core\ECSWorld.cpp">
       <Filter>Genius\Logic\ESC\Core\System</Filter>
@@ -739,9 +616,6 @@
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnAnim.cpp">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnBevtree.cpp">
-      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnDebugDraw.cpp">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClCompile>
@@ -750,9 +624,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnNavigation.cpp">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnBevtree.cpp">
-      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.cpp">
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
@@ -796,76 +667,7 @@
     <ClCompile Include="..\..\Genius\app\GameDefine.cpp">
       <Filter>Genius\Logic\App</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\anim\animFSM\AnimFSMSimple.cpp">
-      <Filter>Genius\Logic\Pawn\Anim\AnimFSM</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateIdle.cpp">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\pawn\action\PawnAction.cpp">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\action\PawnActionIdle.cpp">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\action\PawnActionAttackFar.cpp">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\action\PawnActionAttackNear.cpp">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\action\PawnActionDie.cpp">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\action\PawnActionMove.cpp">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\action\PawnActionSkill1.cpp">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\action\PawnActionSkill2.cpp">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\action\PawnActionSkill3.cpp">
-      <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\action\PawnActionFactory.cpp">
-      <Filter>Genius\Logic\Pawn\Action\base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\bevtree\BehaviorCreators.cpp">
-      <Filter>Genius\Logic\Pawn\BevTree</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\bevtree\PawnBehaviors.cpp">
-      <Filter>Genius\Logic\Pawn\BevTree</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\bevtree\PawnBHTree.cpp">
-      <Filter>Genius\Logic\Pawn\BevTree</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\bevtree\PawnPrecondition.cpp">
-      <Filter>Genius\Logic\Pawn\BevTree</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateAttackNear.cpp">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateDie.cpp">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateMove.cpp">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateAttackFar.cpp">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateSkill1.cpp">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateSkill2.cpp">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\anim\animState\AnimStateSkill3.cpp">
-      <Filter>Genius\Logic\Pawn\Anim\AnimState</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\pawn\action\PawnActionChangeDir.cpp">
       <Filter>Genius\Logic\Pawn\Action</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\scripting\js-bindings\auto\jsb_app_auto.cpp">

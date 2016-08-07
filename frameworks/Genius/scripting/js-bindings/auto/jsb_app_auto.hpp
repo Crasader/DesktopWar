@@ -216,16 +216,6 @@ void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_ComPawnNavigation_MoveTo(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnNavigation_ComPawnNavigation(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_Genius_ComPawnBevtree_class;
-extern JSObject *jsb_Genius_ComPawnBevtree_prototype;
-
-bool js_app_ComPawnBevtree_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_ComPawnBevtree_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_ComPawnBevtree(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_ComPawnBevtree_Create(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_ComPawnBevtree_ComPawnBevtree(JSContext *cx, uint32_t argc, jsval *vp);
-
 extern JSClass  *jsb_Genius_ComBulletAnimBase_class;
 extern JSObject *jsb_Genius_ComBulletAnimBase_prototype;
 

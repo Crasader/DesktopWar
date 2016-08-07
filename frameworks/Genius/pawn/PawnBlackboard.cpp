@@ -1,7 +1,6 @@
 
 #include "PawnBlackboard.h"
 #include "ECS/components/pawn/ComPawnAgent.h"
-#include "action/PawnActionFactory.h"
 #include "action/ActionHandler.h"
 #include "pawn/PawnDefines.h"
 #include "data/auto/Role_cfg.hpp"
@@ -58,7 +57,7 @@ void PawnBlackboard::FinishAction(PawnAction* pAction)
 	if (nullptr == pAction)
 		return;
 
-	PawnActionFactory::GetSingleton()->RecycleAction(pAction);
+	//PawnActionFactory::GetSingleton()->RecycleAction(pAction);
 }
 
 void PawnBlackboard::AddActionHandler(ActionHandler* pHandler)

@@ -12,11 +12,7 @@
 #include "skill/SkillManager.h"
 #include "skill/BuffManager.h"
 #include "../../core/Entity.h"
-
 #include "pawn/PawnBlackboard.h"
-#include "pawn/anim/animFSM/AnimFSM.h"
-#include "pawn/anim/animFSM/AnimFSMSimple.h"
-#include "pawn/anim/animSet/AnimSetSimple.h"
 #include "Log.h"
 
 
@@ -33,7 +29,6 @@ COM_CREATE_FN_IMPL(ComPawnAnim);
 void ComPawnAnim::Create(int roleID)
 {
 	m_curAnimName = "";
-	m_pAnimFsm = nullptr;
 
 	auto render = GetEntity()->GetComponent<ComRenderRoot>();
 	if (nullptr == render)
@@ -74,9 +69,6 @@ void ComPawnAnim::Create(int roleID)
 
 	GetEntity()->GetComponent<ComPawnAgent>()->GetBlackboard()->AddActionHandler(this);
 
-	CreateAnimFSM(AFT_Simple);
-
-	m_pAnimSet = new AnimSetSimple(this);
 }
 
 ComPawnAnim::~ComPawnAnim()
@@ -91,19 +83,13 @@ void	ComPawnAnim::OnAwake()
 
 void ComPawnAnim::OnDestroy()
 {
-	if (m_pAnimFsm != nullptr)
-		delete m_pAnimFsm;
-
-	if (m_pAnimSet != nullptr)
-		delete m_pAnimSet;
 
 	GetEntity()->GetComponent<ComPawnAgent>()->GetBlackboard()->RemoveActionHandler(this);
 }
 
 void ComPawnAnim::HandleAction(PawnAction* pAction)
 {
-	if (m_pAnimFsm != nullptr)
-		m_pAnimFsm->DoAction(pAction);
+	
 }
 
 void ComPawnAnim::PlayAnimation(const std::string& name)
@@ -210,22 +196,5 @@ void ComPawnAnim::SetDebugLabel(std::string text)
 	m_pDebugLabel->setString(text);
 }
 
-void ComPawnAnim::CreateAnimFSM(int fsmType)
-{
-	if (m_pAnimFsm != nullptr)
-		return;
-
-	switch (fsmType)
-	{
-	case AFT_Simple:
-		m_pAnimFsm = new AnimFSMSimple(this);
-		break;
-	default:
-		m_pAnimFsm = new AnimFSMSimple(this);
-		break;
-	}
-
-	m_pAnimFsm->Initialize();
-}
 
 

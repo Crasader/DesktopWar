@@ -21,7 +21,6 @@
 #include "components/pawn/ComPawnDebugDraw.h"
 #include "components/pawn/ComPawnFight.h"
 #include "components/pawn/ComPawnNavigation.h"
-#include "components/pawn/ComPawnBevtree.h"
 
 
 #include "components/bullet/ComBulletAnimArrow.h"
@@ -42,7 +41,6 @@
 #include "systems/common/SystemBezierMovement.h"
 #include "systems/common/SystemDelayTrackMovement.h"
 
-#include "systems/pawn/SystemPawnBevtree.h"
 #include "systems/pawn/SystemPawnNavigation.h"
 #include "systems/pawn/SystemPawnFight.h"
 #include "systems/pawn/SystemPawnDebugDraw.h"

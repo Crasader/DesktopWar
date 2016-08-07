@@ -9,13 +9,6 @@
 
 namespace Genius
 {
-	enum eAnimFsmType
-	{
-		AFT_Simple = 1,
-	};
-
-	class AnimSet;
-	class AnimFSM;
 
 	class ComPawnAnim : public IComponent, public ActionHandler, public cocos2d::Ref
 	{
@@ -23,8 +16,6 @@ namespace Genius
 		COM_CREATE_FN_DECL(ComPawnAnim);
 
 	public:
-		AnimSet*								m_pAnimSet;
-		AnimFSM*							m_pAnimFsm;
 		cocos2d::Node*					m_pAvatarRoot;
 		cocostudio::Armature*			m_pBodyArmature;
 		UIBar*									m_pLifeBar;
@@ -52,9 +43,7 @@ namespace Genius
 		void AnimationMovementCallback(cocostudio::Armature *cca, cocostudio::MovementEventType met, const std::string& cr);
 		void AnimationFrameCallback(cocostudio::Bone* bone, const std::string& eventName, int oriIdx, int currentIdx);
 
-	private:
-		void CreateAnimFSM(int fsmType);
-		
+
 	};
 
 	

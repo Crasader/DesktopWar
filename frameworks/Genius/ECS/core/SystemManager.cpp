@@ -28,7 +28,6 @@ namespace Genius
 		this->AddSystem(new SystemBezierMovement());
 		this->AddSystem(new SystemDelayTrackMovement());
 		
-		this->AddSystem(new SystemPawnBevtree());
 		this->AddSystem(new SystemPawnNavigation());
 		this->AddSystem(new SystemPawnFight());
 		this->AddSystem(new SystemPawnDebugDraw());

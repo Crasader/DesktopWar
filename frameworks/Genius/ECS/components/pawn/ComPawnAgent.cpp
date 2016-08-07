@@ -4,7 +4,6 @@
 #include "data/auto/Role_cfg.hpp"
 #include "data/auto/Bullet_cfg.hpp"
 #include "pawn/PawnBlackboard.h"
-#include "pawn/action/PawnActionFactory.h"
 #include "common/Log.h"
 
 
@@ -48,7 +47,7 @@ void ComPawnAgent::AddAction(int type)
 {
 	if (m_pBlackboard != nullptr)
 	{
-		PawnAction* pAction = PawnActionFactory::GetSingleton()->CreatePawnAction(type);
+		PawnAction* pAction = nullptr;
 
 		m_pBlackboard->AddAction(pAction);
 	}

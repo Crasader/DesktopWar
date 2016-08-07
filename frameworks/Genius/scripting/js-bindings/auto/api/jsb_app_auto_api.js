@@ -883,32 +883,6 @@ ComPawnNavigation : function (
 };
 
 /**
- * @class ComPawnBevtree
- */
-ComPawnBevtree = {
-
-/**
- * @method Create
- * @param {String} arg0
- */
-Create : function (
-str 
-)
-{
-},
-
-/**
- * @method ComPawnBevtree
- * @constructor
- */
-ComPawnBevtree : function (
-)
-{
-},
-
-};
-
-/**
  * @class ComBulletAnimBase
  */
 ComBulletAnimBase = {

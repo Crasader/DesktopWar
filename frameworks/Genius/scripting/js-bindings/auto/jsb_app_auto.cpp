@@ -2549,111 +2549,6 @@ void js_register_app_ComPawnNavigation(JSContext *cx, JS::HandleObject global) {
     jsb_register_class<Genius::ComPawnNavigation>(cx, jsb_Genius_ComPawnNavigation_class, proto, parent_proto);
 }
 
-JSClass  *jsb_Genius_ComPawnBevtree_class;
-JSObject *jsb_Genius_ComPawnBevtree_prototype;
-
-bool js_app_ComPawnBevtree_Create(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::ComPawnBevtree* cobj = (Genius::ComPawnBevtree *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComPawnBevtree_Create : Invalid Native Object");
-    if (argc == 1) {
-        std::string arg0;
-        ok &= jsval_to_std_string(cx, args.get(0), &arg0);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_ComPawnBevtree_Create : Error processing arguments");
-        cobj->Create(arg0);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_ComPawnBevtree_Create : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
-bool js_app_ComPawnBevtree_constructor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    Genius::ComPawnBevtree* cobj = new (std::nothrow) Genius::ComPawnBevtree();
-
-    js_type_class_t *typeClass = js_get_type_from_native<Genius::ComPawnBevtree>(cobj);
-
-    // link the native object with the javascript object
-    JS::RootedObject jsobj(cx, jsb_create_weak_jsobject(cx, cobj, typeClass, "Genius::ComPawnBevtree"));
-    args.rval().set(OBJECT_TO_JSVAL(jsobj));
-    if (JS_HasProperty(cx, jsobj, "_ctor", &ok) && ok)
-        ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(jsobj), "_ctor", args);
-    return true;
-}
-
-
-extern JSObject *jsb_Genius_IComponent_prototype;
-
-void js_Genius_ComPawnBevtree_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (ComPawnBevtree)", obj);
-    js_proxy_t* nproxy;
-    js_proxy_t* jsproxy;
-    JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
-    JS::RootedObject jsobj(cx, obj);
-    jsproxy = jsb_get_js_proxy(jsobj);
-    if (jsproxy) {
-        Genius::ComPawnBevtree *nobj = static_cast<Genius::ComPawnBevtree *>(jsproxy->ptr);
-        nproxy = jsb_get_native_proxy(jsproxy->ptr);
-
-        if (nobj) {
-            jsb_remove_proxy(nproxy, jsproxy);
-            delete nobj;
-        }
-        else
-            jsb_remove_proxy(nullptr, jsproxy);
-    }
-}
-void js_register_app_ComPawnBevtree(JSContext *cx, JS::HandleObject global) {
-    jsb_Genius_ComPawnBevtree_class = (JSClass *)calloc(1, sizeof(JSClass));
-    jsb_Genius_ComPawnBevtree_class->name = "ComPawnBevtree";
-    jsb_Genius_ComPawnBevtree_class->addProperty = JS_PropertyStub;
-    jsb_Genius_ComPawnBevtree_class->delProperty = JS_DeletePropertyStub;
-    jsb_Genius_ComPawnBevtree_class->getProperty = JS_PropertyStub;
-    jsb_Genius_ComPawnBevtree_class->setProperty = JS_StrictPropertyStub;
-    jsb_Genius_ComPawnBevtree_class->enumerate = JS_EnumerateStub;
-    jsb_Genius_ComPawnBevtree_class->resolve = JS_ResolveStub;
-    jsb_Genius_ComPawnBevtree_class->convert = JS_ConvertStub;
-    jsb_Genius_ComPawnBevtree_class->finalize = js_Genius_ComPawnBevtree_finalize;
-    jsb_Genius_ComPawnBevtree_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-    static JSPropertySpec properties[] = {
-        JS_PS_END
-    };
-
-    static JSFunctionSpec funcs[] = {
-        JS_FN("Create", js_app_ComPawnBevtree_Create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FS_END
-    };
-
-    JSFunctionSpec *st_funcs = NULL;
-
-    JS::RootedObject parent_proto(cx, jsb_Genius_IComponent_prototype);
-    jsb_Genius_ComPawnBevtree_prototype = JS_InitClass(
-        cx, global,
-        parent_proto,
-        jsb_Genius_ComPawnBevtree_class,
-        js_app_ComPawnBevtree_constructor, 0, // constructor
-        properties,
-        funcs,
-        NULL, // no static properties
-        st_funcs);
-
-    JS::RootedObject proto(cx, jsb_Genius_ComPawnBevtree_prototype);
-    JS::RootedValue className(cx, std_string_to_jsval(cx, "ComPawnBevtree"));
-    JS_SetProperty(cx, proto, "_className", className);
-    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
-    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
-    // add the proto and JSClass to the type->js info hash table
-    jsb_register_class<Genius::ComPawnBevtree>(cx, jsb_Genius_ComPawnBevtree_class, proto, parent_proto);
-}
-
 JSClass  *jsb_Genius_ComBulletAnimBase_class;
 JSObject *jsb_Genius_ComBulletAnimBase_prototype;
 
@@ -4046,7 +3941,6 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
     js_register_app_ComBulletAnimArrow(cx, ns);
     js_register_app_ComBulletDamage(cx, ns);
     js_register_app_ComPawnNavigation(cx, ns);
-    js_register_app_ComPawnBevtree(cx, ns);
     js_register_app_PawnBlackboard(cx, ns);
     js_register_app_RollNumberLabel(cx, ns);
     js_register_app_ComPawnDebugDraw(cx, ns);
