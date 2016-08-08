@@ -60,7 +60,7 @@ var LoadingState = GameState.extend
 
     OnEnter:function ()
     {
-        print("enter Loading");
+        //print("enter Loading");
         if (this.uiRoot == null)
         {
             this.uiRoot = new cc.Node();
@@ -104,7 +104,7 @@ var LoadingState = GameState.extend
 
     OnExit:function ()
     {
-        print("exit Loading");
+        //print("exit Loading");
         if(this.uiRoot != null)
         {
             this.uiRoot.removeFromParent();
@@ -156,9 +156,9 @@ var LaunchState = GameState.extend
         //Soldier.Create(1007, 520, 120);
         Soldier.Create(1007, 540, 600);
 
-        Soldier.Create(1001, 400, 550);
+        Monster.Create(1001, 400, 550);
 
-        print("enter Launch");
+        //print("enter Launch");
     },
 
     OnUpdate:function ()
@@ -168,7 +168,7 @@ var LaunchState = GameState.extend
 
     OnExit:function ()
     {
-        print("exit Launch");
+        //print("exit Launch");
     },
 
     ParseResourceList:function(loadMgr)

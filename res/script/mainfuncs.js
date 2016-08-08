@@ -14,6 +14,18 @@ function ForceGC()
     forceGC()
 }
 
+function Random(a,b)
+{
+    if(typeof(a)==='Number' && typeof(b)==='Number'){
+        return a + Math.random()*(b-a);
+    }
+    else
+    {
+        print('Random:params must be type of Number.')
+    }
+
+}
+
 function GetWorld()
 {
     return World.GetWorld()
@@ -112,3 +124,18 @@ function PlayPawnAnim(entity, prefixName){
         //print("play "+fullName);
     }
 }
+
+
+function IsEntityInRange(entity1, entity2, dist){
+    var box1 = entity1.GetComponent(ComName.BoxCollider);
+    var box2 = entity2.GetComponent(ComName.BoxCollider);
+    var tran1 = entity1.GetComponent(ComName.Transform);
+    var tran2 = entity1.GetComponent(ComName.Transform);
+    var distx = Math.abs(tran1.GetX() - tran2.GetX());
+    var disty = Math.abs(tran1.GetY() - tran2.GetY());
+    var width = box1.GetWidth()*0.5 + box2.GetWidth()*0.5;
+    var height = width*0.5;
+    return distx - width < dist && disty - height < dist;
+}
+
+

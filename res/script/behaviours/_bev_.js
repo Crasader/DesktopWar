@@ -15,10 +15,8 @@ require("res/script/behaviours/actions/AttackFar.js");
 require("res/script/behaviours/actions/AttackNear.js");
 
 //comditions
-require("res/script/behaviours/conditions/HaveTarget.js");
-require("res/script/behaviours/conditions/IsAlive.js");
-require("res/script/behaviours/conditions/TargetIsInFarRange.js");
-require("res/script/behaviours/conditions/TargetIsInNearRange.js");
+require("res/script/behaviours/conditions/CommonCondition.js");
+
 
 
 

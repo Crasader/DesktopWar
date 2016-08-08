@@ -30,7 +30,7 @@ bool SystemStatusPanel::Init()
 	m_lineCount = 0;
 	m_currentLine = 0;
 	
-	if (true)
+	if (false)
 	{
 		pDrawNode = DrawNode::create();
 		((CocosApp*)Application::getInstance())->GetScene()->addChild(pDrawNode);

@@ -34,7 +34,7 @@ var Wander = bt.Action.extend({
             if (Game.GetTime() > this.waitTime)
             {
                 this.isWalking = false;
-                this.waitTime = Game.GetTime() + 3;
+                this.waitTime = Game.GetTime() + Random(3, 5);
                 var locomotor = entity.GetComponent(ComName.Locomotor);
                 locomotor.StopMove();
             }
@@ -61,10 +61,10 @@ var Wander = bt.Action.extend({
         var tranform = entity.GetComponent(ComName.Transform);
         var homePos = entity.GetBlackboard(BB.HomePosition);
         if(Math.abs(homePos.x - tranform.GetX()) > 200 || Math.abs(homePos.y - tranform.GetY()) > 200){
-            this.waitTime = Game.GetTime() + 6;
+            this.waitTime = Game.GetTime() + Random(6, 10);
             locomotor.MoveToPoint(homePos.x, homePos.y);
         }else{
-            this.waitTime = Game.GetTime() + 3;
+            this.waitTime = Game.GetTime() + Random(3, 5);
             var angle = Math.random()*360;
             locomotor.MoveTowards(angle);
         }

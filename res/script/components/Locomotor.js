@@ -44,6 +44,13 @@ var Locomotor = BaseComponent.extend({
         this.entity.PushEvent('locomote');
     },
 
+    MoveToEntity:function(entity){
+        var targetTran = entity.GetComponent(ComName.Transform);
+        var x = targetTran.GetX();
+        var y = targetTran.GetY();
+        this.MoveToPoint(x, y);
+    },
+
     MoveTowards:function(angle) {
         this.isMoving = true;
         var speed = this.attrCom.Get(Attr.SPD);
