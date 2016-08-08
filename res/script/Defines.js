@@ -81,7 +81,7 @@ var SG =
     Idle:'idle',
     Die:'die',
     Move:'move',
-    AttackNear:'attacNear',
+    AttackNear:'attackNear',
     AttackFar:'attackFar',
     Atk3:'attack3',
     Skill1:'skill',

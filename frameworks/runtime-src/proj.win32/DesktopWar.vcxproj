@@ -235,7 +235,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemTransform.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemRender.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnNavigation.h" />
-    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.h" />
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnFight.h" />
     <ClInclude Include="..\..\Genius\ECS\WorldWrapper.h" />
     <ClInclude Include="..\..\Genius\entity\BulletDefines.h" />
@@ -321,7 +320,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\ECS\components\common\ComTransform.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnAgent.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnAnim.cpp" />
-    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnDebugDraw.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnFight.cpp" />
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnNavigation.cpp" />
     <ClCompile Include="..\..\Genius\ECS\core\IComponent.cpp" />
@@ -348,7 +346,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemTransform.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemRender.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnNavigation.cpp" />
-    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnFight.cpp" />
     <ClCompile Include="..\..\Genius\ECS\WorldWrapper.cpp" />
     <ClCompile Include="..\..\Genius\entity\EntityCreators.cpp" />

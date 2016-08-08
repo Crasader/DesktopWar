@@ -33,7 +33,7 @@ var AttackNear = bt.Action.extend({
         var entity = tick.target;
         if (Game.GetTime() > this.timeWait) {
             entity.GetStateGraph().gotoState(SG.Idle);
-            return b3.SUCCESS;
+            return bt.SUCCESS;
         }
 
         var combatTar = entity.GetBlackboard(BB.CombatTarget);

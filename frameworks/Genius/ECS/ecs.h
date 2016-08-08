@@ -43,14 +43,11 @@
 
 #include "systems/pawn/SystemPawnNavigation.h"
 #include "systems/pawn/SystemPawnFight.h"
-#include "systems/pawn/SystemPawnDebugDraw.h"
 
-//#include "systems/bullet/SystemBulletAnim.h"
 #include "systems/bullet/SystemBulletDamage.h"
 #include "systems/bullet/SystemBulletDebugDraw.h"
 #include "systems/bullet/SystemBulletArrowAnim.h"
 #include "systems/bullet/SystemBulletBombAnim.h"
-//#include "systems/bullet/SystemBulletEggAnim.h"
 #include "systems/bullet/SystemBulletTarget.h"
 
 

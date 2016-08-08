@@ -30,7 +30,6 @@ namespace Genius
 		
 		this->AddSystem(new SystemPawnNavigation());
 		this->AddSystem(new SystemPawnFight());
-		this->AddSystem(new SystemPawnDebugDraw());
 
 		this->AddSystem(new SystemBulletDamage());
 		this->AddSystem(new SystemBulletDebugDraw());

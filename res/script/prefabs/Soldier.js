@@ -45,8 +45,8 @@ var Soldier = {
         var nav = inst.AddComponent(ComName.PawnNavigation);
         var fht = inst.AddComponent(ComName.PawnFight);
 
-        //var dd = inst.AddComponent(ComName.PawnDebugDraw);
-        //dd.Create();
+        var dd = inst.AddComponent(ComName.PawnDebugDraw);
+        dd.Create();
 
 
 

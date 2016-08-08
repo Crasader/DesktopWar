@@ -304,9 +304,6 @@
     <ClInclude Include="..\..\Genius\ECS\components\pawn\ComPawnNavigation.h">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.h">
-      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\pawn\SystemPawnFight.h">
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
     </ClInclude>
@@ -619,17 +616,11 @@
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnAnim.cpp">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnDebugDraw.cpp">
-      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnFight.cpp">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnNavigation.cpp">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnDebugDraw.cpp">
-      <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\pawn\SystemPawnFight.cpp">
       <Filter>Genius\Logic\ESC\User\System\Pawn</Filter>
