@@ -31,7 +31,9 @@ var Follow = bt.Action.extend({
             return bt.ERROR;
         }
 
-        if (EntityUtility.AreEntitiesCloseEnough(entity.GetEntityNative(), followTar.GetEntityNative(), 20)) {
+        if (EntityUtility.AreEntitiesCloseEnough(entity.GetEntityNative(), followTar.GetEntityNative(), 10)) {
+            var locomotor = entity.GetComponent(ComName.Locomotor);
+            locomotor.StopMove();
             return bt.SUCCESS;
         }
 

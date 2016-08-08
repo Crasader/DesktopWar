@@ -68,9 +68,9 @@ var TargetIsInNearRange = bt.Condition.extend({
     {
         var entity = tick.target;
         var combatTar = entity.GetBlackboard(BB.CombatTarget);
-        if (combatTar != null && EntityUtility.IsInMyViewSight(entity.GetEntityNative(),combatTar.GetEntityNative()))
+        if (combatTar != null && EntityUtility.IsInMyNearRange(entity.GetEntityNative(),combatTar.GetEntityNative()))
         {
-            print('TargetIsInNearRange');
+            //print('TargetIsInNearRange');
             return bt.SUCCESS;
         }
         else
@@ -93,9 +93,9 @@ var TargetIsInFarRange = bt.Condition.extend({
     {
         var entity = tick.target;
         var combatTar = entity.GetBlackboard(BB.CombatTarget);
-        if (combatTar != null && EntityUtility.IsInMyViewSight(entity.GetEntityNative(),combatTar.GetEntityNative()))
+        if (combatTar != null && EntityUtility.IsInMyFarRange(entity.GetEntityNative(),combatTar.GetEntityNative()))
         {
-            print('TargetIsInFarRange');
+            //print('TargetIsInFarRange');
             return bt.SUCCESS;
         }
         else
@@ -120,7 +120,7 @@ var TargetIsInViewSight = bt.Condition.extend({
         var combatTar = entity.GetBlackboard(BB.CombatTarget);
         if (combatTar != null && EntityUtility.IsInMyViewSight(entity.GetEntityNative(),combatTar.GetEntityNative()))
         {
-            print('TargetIsInViewSight');
+            //print('TargetIsInViewSight');
             return bt.SUCCESS;
         }
         else

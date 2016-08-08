@@ -8,7 +8,7 @@ using namespace Genius;
 COM_CREATE_FN_IMPL(ComTransform);
 
 ComTransform::ComTransform() :
-x(0), y(0), vx(0), vy(0)
+x(0), y(0), vx(0), vy(0), haveDestPoint(false)
 {
 
 }
@@ -34,6 +34,10 @@ void ComTransform::SetDirection(int dir)
 
 void ComTransform::MoveTo(float _x, float _y, float speed)
 {
+	haveDestPoint = true;
+	destx = _x;
+	desty = _y;
+
 	float dx = _x - this->x;
 	float dy = _y - this->y;
 	Point2D delta(dx, dy);
@@ -42,17 +46,27 @@ void ComTransform::MoveTo(float _x, float _y, float speed)
 		speed = 1;
 	this->vx = delta.x * speed;
 	this->vy = delta.y * speed;
-	int dir = CalculateDirection(_x-x, _y-y);
+	int dir = CalculateDirection(dx, dy);
 	SetDirection(dir);
 }
 
 void ComTransform::MoveTowards(float angle, float speed)
 {
+	haveDestPoint = false;
+	destx = 0;
+	desty = 0;
+
 	angle = angle / 180 * PI;
 	Point2D pt2d(angle);
 	this->vx = pt2d.x * speed;
 	this->vy = pt2d.y * speed;
 	int dir = CalculateDirection(pt2d.x, pt2d.y);
+	SetDirection(dir);
+}
+
+void ComTransform::FaceTo(float _x, float _y)
+{
+	int dir = CalculateDirection(_x - this->x, _y - this->y);
 	SetDirection(dir);
 }
 

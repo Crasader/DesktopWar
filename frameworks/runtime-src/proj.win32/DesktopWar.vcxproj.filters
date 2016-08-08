@@ -463,6 +463,9 @@
     <ClInclude Include="..\..\Genius\gfx\AudioManager.h">
       <Filter>Genius\Base\Gfx</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Genius\scripting\JSInvoker.h">
+      <Filter>Genius\JSB</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -762,6 +765,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\gfx\AudioManager.cpp">
       <Filter>Genius\Base\Gfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\scripting\JSInvoker.cpp">
+      <Filter>Genius\JSB</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -105,6 +105,7 @@ function GetPawnAnimName(entity, prefixAnimName) {
 function PlayPawnAnim(entity, prefixName){
     if(entity instanceof EntityScript) {
         var fullName = GetPawnAnimName(entity, prefixName);
+        entity.GetStateGraph().SetAnimPrefixName(prefixName);
         entity.GetComponent(ComName.PawnAnim).PlayAnimation(fullName);
         //print("play "+fullName);
     }

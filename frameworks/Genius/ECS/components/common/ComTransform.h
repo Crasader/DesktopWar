@@ -29,6 +29,10 @@ namespace Genius
 		int curDir;
 		int lastDir;
 
+		bool haveDestPoint;
+		float destx;
+		float desty;
+
 	public:
 		ComTransform();
 		void SetPosition(float _x, float _y);
@@ -41,6 +45,7 @@ namespace Genius
 		int GetDir(){ return curDir; }
 		void MoveTo(float x, float y, float speed);
 		void MoveTowards(float angle, float speed);
+		void FaceTo(float x, float y);
 
 	private:
 		int CalculateDirection(float x, float y);

@@ -1,6 +1,13 @@
-//士兵预制，配置了组件，资源，状态等
+
+
+
 
 var Soldier = {
+
+    OnAttacked:function(entity,attacker){
+        entity.SetBlackboard(BB.CombatTarget,attacker);
+    },
+
 
     Create:function(id, posx, posy)
     {
@@ -45,7 +52,7 @@ var Soldier = {
 
         // js coms
         inst.AddComponent(new Locomotor);
-        var SimplePawnBT = CreateSimplePawnBTree();
+        var SimplePawnBT = CreateFootManBTree();
         var brain = inst.AddComponent(new Brain(SimplePawnBT));
         BrainMgr.AddBrain(inst, brain);
         inst.AddComponent(new Combat);
@@ -55,11 +62,13 @@ var Soldier = {
 
         inst.SetStateGraph(CreateCommonGraph(inst));
 
+        // events
+        inst.ListenForEvent('attacked',this.OnAttacked);
+
         // tag
         inst.AddTag(Tag.Soldier);
-
+        // end
         inst.OnAwake();
-
         return inst;
     },
 

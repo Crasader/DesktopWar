@@ -3,6 +3,7 @@
 
 
 #include "common/Log.h"
+#include "scripting/JSInvoker.h"
 #include "common/Singleton.h"
 #include "common/TimeSystem.h"
 #include "app/LoadingManager.h"

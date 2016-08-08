@@ -66,6 +66,13 @@ var Locomotor = BaseComponent.extend({
             this.entity.StopUpdateComponent(this);
             this.entity.PushEvent('locomote');
         }
+    },
+
+    FaceToEntity:function(target){
+        var targetTran = target.GetComponent(ComName.Transform);
+        var x = targetTran.GetX();
+        var y = targetTran.GetY();
+        this.entity.PushEvent('faceto',{targetX:x,targetY:y});
     }
 
 });

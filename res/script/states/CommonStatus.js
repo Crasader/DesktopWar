@@ -88,7 +88,9 @@ var commonStatus = {};
 
         },
 
-        events: {}
+        events: {
+            //帧事件、动画结束事件
+        }
     };
 
     commonStatus.attackNear = new State(st);
@@ -111,7 +113,9 @@ var commonStatus = {};
 
         },
 
-        events: {}
+        events: {
+            //帧事件、动画结束事件
+        }
     };
 
     commonStatus.attackFar = new State(st);
@@ -134,7 +138,9 @@ var commonStatus = {};
 
         },
 
-        events: {}
+        events: {
+            //帧事件、动画结束事件
+        }
     };
 
     commonStatus.skill1 = new State(st);
@@ -157,7 +163,9 @@ var commonStatus = {};
 
         },
 
-        events: {}
+        events: {
+            //帧事件、动画结束事件
+        }
     };
 
     commonStatus.skill2 = new State(st);
@@ -208,12 +216,24 @@ commonStatus.OnLocomote = function()
         var locomotor = entity.GetComponent(ComName.Locomotor);
         var isMoving = locomotor.IsMoving();
         if (isMoving){
-            entity.GetStateGraph().gotoState('move');
+            entity.GetStateGraph().gotoState(SG.Move);
         }
         else{
-            entity.GetStateGraph().gotoState('idle');
+            entity.GetStateGraph().gotoState(SG.Idle);
         }
     }
+    );
+};
+
+
+commonStatus.OnFaceTo = function()
+{
+    return new EventHandler('faceto',
+        function(entity, data) {
+            //face to tar
+            var transform = entity.GetComponent(ComName.Transform);
+            transform.FaceTo(data.targetX, data.targetY);
+        }
     );
 };
 
@@ -233,6 +253,7 @@ function CreateCommonGraph(entity)
 
     var events = [
         commonStatus.OnLocomote(),
+        commonStatus.OnFaceTo()
     ];
     
     return new StateGraph(entity, status, events, 'idle');

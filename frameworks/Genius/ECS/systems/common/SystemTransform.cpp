@@ -31,6 +31,13 @@ void SystemTransform::ProcessEntity(Entity* e)
 	auto tranCom = transMapper.get(e);
 	tranCom->x += tranCom->vx * world->GetDeltaTime();
 	tranCom->y += tranCom->vy * world->GetDeltaTime();
+	if (tranCom->haveDestPoint)
+	{
+		if (abs(tranCom->x - tranCom->destx) < 5 && abs(tranCom->y - tranCom->desty) < 5)
+		{
+			tranCom->SetVelocity(0, 0);
+		}
+	}
 }
 
 bool SystemTransform::HandleEvent(IEventData const &event)

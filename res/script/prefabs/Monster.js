@@ -42,7 +42,7 @@ var Monster = {
 
         // js coms
         inst.AddComponent(new Locomotor);
-        var SimplePawnBT = CreateSimplePawnBTree();
+        var SimplePawnBT = CreateFootManBTree();
         var brain = inst.AddComponent(new Brain(SimplePawnBT));
         BrainMgr.AddBrain(inst, brain);
         inst.AddComponent(new Combat);

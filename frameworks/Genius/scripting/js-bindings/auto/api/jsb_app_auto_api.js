@@ -17,6 +17,33 @@ char
 };
 
 /**
+ * @class JSInvoker
+ */
+JSInvoker = {
+
+/**
+ * @method Invoke_Update
+ * @param {float} arg0
+ */
+Invoke_Update : function (
+float 
+)
+{
+},
+
+/**
+ * @method Invoke_LongUpdate
+ * @param {float} arg0
+ */
+Invoke_LongUpdate : function (
+float 
+)
+{
+},
+
+};
+
+/**
  * @class TimeSystem
  */
 TimeSystem = {
@@ -399,6 +426,18 @@ GetVX : function (
 )
 {
     return 0;
+},
+
+/**
+ * @method FaceTo
+ * @param {float} arg0
+ * @param {float} arg1
+ */
+FaceTo : function (
+float, 
+float 
+)
+{
 },
 
 /**

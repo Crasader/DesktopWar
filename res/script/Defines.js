@@ -74,6 +74,21 @@ var FaceDir =
     Down:1 << 4
 };
 
+
+// 状态名
+var SG =
+{
+    Idle:'idle',
+    Die:'die',
+    Move:'move',
+    AttackNear:'attacNear',
+    AttackFar:'attackFar',
+    Atk3:'attack3',
+    Skill1:'skill',
+    Skill2:'skill2',
+    Skill3:'skill3'
+};
+
 // 约定动画名
 var AnimName =
 {

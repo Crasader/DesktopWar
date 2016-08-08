@@ -251,6 +251,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\pawn\PawnBlackboard.h" />
     <ClInclude Include="..\..\Genius\pawn\PawnDefines.h" />
     <ClInclude Include="..\..\Genius\scripting\js-bindings\auto\jsb_app_auto.hpp" />
+    <ClInclude Include="..\..\Genius\scripting\JSInvoker.h" />
     <ClInclude Include="..\..\Genius\skill\buffLogic\BL_Damage.h" />
     <ClInclude Include="..\..\Genius\skill\buffLogic\BL_Spawn.h" />
     <ClInclude Include="..\..\Genius\skill\buffLogic\BuffLogic.h" />
@@ -358,6 +359,7 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\pawn\action\PawnAction.cpp" />
     <ClCompile Include="..\..\Genius\pawn\PawnBlackboard.cpp" />
     <ClCompile Include="..\..\Genius\scripting\js-bindings\auto\jsb_app_auto.cpp" />
+    <ClCompile Include="..\..\Genius\scripting\JSInvoker.cpp" />
     <ClCompile Include="..\..\Genius\skill\buffLogic\BL_Damage.cpp" />
     <ClCompile Include="..\..\Genius\skill\buffLogic\BL_Spawn.cpp" />
     <ClCompile Include="..\..\Genius\skill\buffLogic\BuffLogic.cpp" />

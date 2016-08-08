@@ -92,6 +92,9 @@ var EntityScript = Class.extend({
                 }
             }
         }
+
+        //start sg
+        this.stateGraph.Start();
     },
 
 
@@ -128,17 +131,17 @@ var EntityScript = Class.extend({
         this.eventHandlers[event].push(handler);
     },
 
-    PushEvent:function(event) {
+    PushEvent:function(event,data) {
         var handlers = this.eventHandlers[event];
         if (handlers != null) {
             for (var id in handlers) {
-                handlers[id](this);
+                handlers[id](this,data);
             }
         }
 
         // sg
         if (this.stateGraph != null) {
-            this.stateGraph.PushEvent(event);
+            this.stateGraph.PushEvent(event,data);
         }
     },
 

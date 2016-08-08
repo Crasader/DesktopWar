@@ -83,6 +83,87 @@ void js_register_app_Log(JSContext *cx, JS::HandleObject global) {
     jsb_register_class<Log>(cx, jsb_Log_class, proto, JS::NullPtr());
 }
 
+JSClass  *jsb_JSInvoker_class;
+JSObject *jsb_JSInvoker_prototype;
+
+bool js_app_JSInvoker_Invoke_Update(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 1) {
+        double arg0 = 0;
+        ok &= JS::ToNumber( cx, args.get(0), &arg0) && !std::isnan(arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_JSInvoker_Invoke_Update : Error processing arguments");
+        JSInvoker::Invoke_Update(arg0);
+        args.rval().setUndefined();
+        return true;
+    }
+    JS_ReportError(cx, "js_app_JSInvoker_Invoke_Update : wrong number of arguments");
+    return false;
+}
+
+bool js_app_JSInvoker_Invoke_LongUpdate(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 1) {
+        double arg0 = 0;
+        ok &= JS::ToNumber( cx, args.get(0), &arg0) && !std::isnan(arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_JSInvoker_Invoke_LongUpdate : Error processing arguments");
+        JSInvoker::Invoke_LongUpdate(arg0);
+        args.rval().setUndefined();
+        return true;
+    }
+    JS_ReportError(cx, "js_app_JSInvoker_Invoke_LongUpdate : wrong number of arguments");
+    return false;
+}
+
+
+void js_register_app_JSInvoker(JSContext *cx, JS::HandleObject global) {
+    jsb_JSInvoker_class = (JSClass *)calloc(1, sizeof(JSClass));
+    jsb_JSInvoker_class->name = "JSInvoker";
+    jsb_JSInvoker_class->addProperty = JS_PropertyStub;
+    jsb_JSInvoker_class->delProperty = JS_DeletePropertyStub;
+    jsb_JSInvoker_class->getProperty = JS_PropertyStub;
+    jsb_JSInvoker_class->setProperty = JS_StrictPropertyStub;
+    jsb_JSInvoker_class->enumerate = JS_EnumerateStub;
+    jsb_JSInvoker_class->resolve = JS_ResolveStub;
+    jsb_JSInvoker_class->convert = JS_ConvertStub;
+    jsb_JSInvoker_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+    static JSPropertySpec properties[] = {
+        JS_PS_END
+    };
+
+    static JSFunctionSpec funcs[] = {
+        JS_FS_END
+    };
+
+    static JSFunctionSpec st_funcs[] = {
+        JS_FN("Invoke_Update", js_app_JSInvoker_Invoke_Update, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("Invoke_LongUpdate", js_app_JSInvoker_Invoke_LongUpdate, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+    };
+
+    jsb_JSInvoker_prototype = JS_InitClass(
+        cx, global,
+        JS::NullPtr(),
+        jsb_JSInvoker_class,
+        dummy_constructor<JSInvoker>, 0, // no constructor
+        properties,
+        funcs,
+        NULL, // no static properties
+        st_funcs);
+
+    JS::RootedObject proto(cx, jsb_JSInvoker_prototype);
+    JS::RootedValue className(cx, std_string_to_jsval(cx, "JSInvoker"));
+    JS_SetProperty(cx, proto, "_className", className);
+    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
+    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
+    // add the proto and JSClass to the type->js info hash table
+    jsb_register_class<JSInvoker>(cx, jsb_JSInvoker_class, proto, JS::NullPtr());
+}
+
 JSClass  *jsb_Genius_TimeSystem_class;
 JSObject *jsb_Genius_TimeSystem_prototype;
 
@@ -1094,6 +1175,28 @@ bool js_app_ComTransform_GetVX(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_ComTransform_GetVX : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
+bool js_app_ComTransform_FaceTo(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::ComTransform* cobj = (Genius::ComTransform *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComTransform_FaceTo : Invalid Native Object");
+    if (argc == 2) {
+        double arg0 = 0;
+        double arg1 = 0;
+        ok &= JS::ToNumber( cx, args.get(0), &arg0) && !std::isnan(arg0);
+        ok &= JS::ToNumber( cx, args.get(1), &arg1) && !std::isnan(arg1);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_ComTransform_FaceTo : Error processing arguments");
+        cobj->FaceTo(arg0, arg1);
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_ComTransform_FaceTo : wrong number of arguments: %d, was expecting %d", argc, 2);
+    return false;
+}
 bool js_app_ComTransform_SetPosition(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -1223,6 +1326,7 @@ void js_register_app_ComTransform(JSContext *cx, JS::HandleObject global) {
         JS_FN("GetY", js_app_ComTransform_GetY, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("GetVY", js_app_ComTransform_GetVY, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("GetVX", js_app_ComTransform_GetVX, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("FaceTo", js_app_ComTransform_FaceTo, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("SetPosition", js_app_ComTransform_SetPosition, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("SetVelocity", js_app_ComTransform_SetVelocity, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("MoveTowards", js_app_ComTransform_MoveTowards, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -4274,6 +4378,7 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
     js_register_app_WorldWrapper(cx, ns);
     js_register_app_ComParticle(cx, ns);
     js_register_app_ComRenderRoot(cx, ns);
+    js_register_app_JSInvoker(cx, ns);
     js_register_app_ComTransform(cx, ns);
     js_register_app_EntityWrapper(cx, ns);
     js_register_app_ComPawnAnim(cx, ns);

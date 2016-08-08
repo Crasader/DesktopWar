@@ -40,10 +40,13 @@ var StateGraph = Class.extend({
     currentState:null,
     lastState:null,
     eventHandlers:null,
+    defaultState:'',
+    lastAnimPrefixName:'',
 
 
     ctor:function(entity, states, events, defaultState) {
         this.entity = entity;
+        this.defaultState = defaultState;
         if (!entity instanceof EntityScript) {
             print('StateMachine : entitiy is not EntityScript.');
         }
@@ -74,15 +77,17 @@ var StateGraph = Class.extend({
             }
         }
 
+    },
+
+    Start:function(){
         this.lastState = null;
-        this.currentState = this.stateList[defaultState];
+        this.currentState = this.stateList[this.defaultState];
         if (this.currentState != null) {
             this.currentState.onEnter(this.entity);
         }
         else {
-            print("default state is invalid " + defaultState);
+            print("default state is invalid " + this.defaultState);
         }
-
     },
 
     gotoState:function(stateName) {
@@ -114,14 +119,22 @@ var StateGraph = Class.extend({
         this.eventHandlers[event].push(handler);
     },
 
-    PushEvent:function(event) {
+    PushEvent:function(event,data) {
         var handlers = this.eventHandlers[event];
         if (handlers != null) {
             for (var id in handlers) {
-                handlers[id](this.entity);
+                handlers[id](this.entity,data);
             }
         }
-    }
+    },
+
+    SetAnimPrefixName:function(name) {
+        this.lastAnimPrefixName = name;
+    },
+
+    GetAnimPrefixName:function() {
+        return this.lastAnimPrefixName;
+    },
 
 });
 

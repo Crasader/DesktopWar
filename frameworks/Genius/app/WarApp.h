@@ -16,7 +16,6 @@ public:
 	void			_logicThread();
 
 private:
-	void			_Update_Fast(float time);
 	void			_Update_Normal(float time);
 	void			_Update_Slow(float time);
 

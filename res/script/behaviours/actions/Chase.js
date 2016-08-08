@@ -38,6 +38,8 @@ var Chase = bt.Action.extend({
         }
 
         if (EntityUtility.AreEntitiesCloseEnough(entity.GetEntityNative(), followTar.GetEntityNative(), 20)) {
+            var locomotor = entity.GetComponent(ComName.Locomotor);
+            locomotor.StopMove();
             return bt.SUCCESS;
         }
 
