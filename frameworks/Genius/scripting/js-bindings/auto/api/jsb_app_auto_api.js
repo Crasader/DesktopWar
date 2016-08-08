@@ -454,6 +454,16 @@ ComTransform : function (
 ComBoxCollider = {
 
 /**
+ * @method GetWidth
+ * @return {float}
+ */
+GetWidth : function (
+)
+{
+    return 0;
+},
+
+/**
  * @method Create
  * @param {bool} arg0
  * @param {float} arg1
@@ -469,6 +479,16 @@ float,
 float 
 )
 {
+},
+
+/**
+ * @method GetHeight
+ * @return {float}
+ */
+GetHeight : function (
+)
+{
+    return 0;
 },
 
 /**
@@ -1102,6 +1122,111 @@ int,
 int 
 )
 {
+},
+
+};
+
+/**
+ * @class EntityUtility
+ */
+EntityUtility = {
+
+/**
+ * @method IsEnemy
+ * @param {Genius::Entity} arg0
+ * @param {Genius::Entity} arg1
+ * @return {bool}
+ */
+IsEnemy : function (
+entity, 
+entity 
+)
+{
+    return false;
+},
+
+/**
+ * @method IsInMyViewSight
+ * @param {Genius::EntityWrapper} arg0
+ * @param {Genius::EntityWrapper} arg1
+ * @return {bool}
+ */
+IsInMyViewSight : function (
+entitywrapper, 
+entitywrapper 
+)
+{
+    return false;
+},
+
+/**
+ * @method IsInMyFarRange
+ * @param {Genius::EntityWrapper} arg0
+ * @param {Genius::EntityWrapper} arg1
+ * @return {bool}
+ */
+IsInMyFarRange : function (
+entitywrapper, 
+entitywrapper 
+)
+{
+    return false;
+},
+
+/**
+ * @method GetEnemyTag
+ * @param {String} arg0
+ * @return {String}
+ */
+GetEnemyTag : function (
+str 
+)
+{
+    return ;
+},
+
+/**
+ * @method IsInMyNearRange
+ * @param {Genius::EntityWrapper} arg0
+ * @param {Genius::EntityWrapper} arg1
+ * @return {bool}
+ */
+IsInMyNearRange : function (
+entitywrapper, 
+entitywrapper 
+)
+{
+    return false;
+},
+
+/**
+ * @method AreEntitiesCloseEnough
+ * @param {Genius::EntityWrapper} arg0
+ * @param {Genius::EntityWrapper} arg1
+ * @param {float} arg2
+ * @return {bool}
+ */
+AreEntitiesCloseEnough : function (
+entitywrapper, 
+entitywrapper, 
+float 
+)
+{
+    return false;
+},
+
+/**
+ * @method IsTagged
+ * @param {String} arg0
+ * @param {Genius::Entity} arg1
+ * @return {bool}
+ */
+IsTagged : function (
+str, 
+entity 
+)
+{
+    return false;
 },
 
 };

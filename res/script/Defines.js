@@ -118,6 +118,7 @@ var PawnAnimName =
 
 // EntityScript Blackboard中的Key
 var BB = {
+    RoleCfg:"RoleCfg",
     FollowTarget:"FollowTarget",
     CombatTarget:"CombatTarget",
     HomePosition:"HomePosition"

@@ -11,6 +11,7 @@
 #include "ECS/ecs.h"
 #include "entity/EntityCreators.h"
 #include "data/auto/Role_cfg.hpp"
+#include "entity/EntityUtility.h"
 
 //ecs
 #include "ECS/EntityWrapper.h"

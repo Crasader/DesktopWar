@@ -92,6 +92,8 @@ var Game =
 
     OnLongUpdate:function(timeDelta) {
         this.longUpdateTime = timeDelta;
+
+        BrainMgr.OnLongUpdate();
     },
 
     // get time in seconds since game starts.
@@ -117,8 +119,10 @@ var Game =
             return;
         }
 
-        entity.OnDestroy();
         // to do : other handlers
+        BrainMgr.RemoveBrain(entity);
+
+        entity.OnDestroy();
 
         GetWorld().DestroyEntity(entity.GetEntityNative())
 

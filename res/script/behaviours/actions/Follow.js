@@ -31,14 +31,14 @@ var Follow = bt.Action.extend({
             return bt.ERROR;
         }
 
-        if (IsEntityInRange(entity, followTar, 20)) {
+        if (EntityUtility.AreEntitiesCloseEnough(entity.GetEntityNative(), followTar.GetEntityNative(), 20)) {
             return bt.SUCCESS;
         }
 
         if (Game.GetTime() > this.timeWait) {
             print("check to follow");
             this.timeWait = Game.GetTime() + this.delayTime;
-            
+
             var locomotor = entity.GetComponent(ComName.Locomotor);
             locomotor.MoveToEntity(followTar);
 

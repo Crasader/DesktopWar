@@ -43,8 +43,8 @@ var HaveTarget = bt.Condition.extend({
     tick:function(tick)
     {
         var entity = tick.target;
-        var combat = entity.GetComponent(ComName.Combat);
-        if (combat != null && combat.GetTarget() != null)
+        var combatTar = entity.GetBlackboard(BB.CombatTarget);
+        if (combatTar != null && false)
         {
             return bt.SUCCESS;
         }
@@ -68,8 +68,9 @@ var TargetIsInNearRange = bt.Condition.extend({
     {
         var entity = tick.target;
         var combatTar = entity.GetBlackboard(BB.CombatTarget);
-        if (combatTar != null && false)
+        if (combatTar != null && EntityUtility.IsInMyViewSight(entity.GetEntityNative(),combatTar.GetEntityNative()))
         {
+            print('TargetIsInNearRange');
             return bt.SUCCESS;
         }
         else
@@ -92,8 +93,9 @@ var TargetIsInFarRange = bt.Condition.extend({
     {
         var entity = tick.target;
         var combatTar = entity.GetBlackboard(BB.CombatTarget);
-        if (combatTar != null && false)
+        if (combatTar != null && EntityUtility.IsInMyViewSight(entity.GetEntityNative(),combatTar.GetEntityNative()))
         {
+            print('TargetIsInFarRange');
             return bt.SUCCESS;
         }
         else
@@ -116,8 +118,9 @@ var TargetIsInViewSight = bt.Condition.extend({
     {
         var entity = tick.target;
         var combatTar = entity.GetBlackboard(BB.CombatTarget);
-        if (combatTar != null && false)
+        if (combatTar != null && EntityUtility.IsInMyViewSight(entity.GetEntityNative(),combatTar.GetEntityNative()))
         {
+            print('TargetIsInViewSight');
             return bt.SUCCESS;
         }
         else

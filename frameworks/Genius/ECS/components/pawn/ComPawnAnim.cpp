@@ -56,7 +56,7 @@ void ComPawnAnim::Create(int roleID)
 			m_pAvatarRoot->addChild(m_pBodyArmature);
 			m_pBodyArmature->getAnimation()->setFrameEventCallFunc(CC_CALLBACK_3(ComPawnAnim::AnimationFrameCallback, this, std::placeholders::_4));
 			m_pBodyArmature->getAnimation()->setMovementEventCallFunc(CC_CALLBACK_3(ComPawnAnim::AnimationMovementCallback, this));
-			PlayAnimation(PawnAnimName::IdleLeft);
+			PlayAnimation("idle_left");
 		}
 		//debug label
 		m_pDebugLabel = Label::createWithBMFont("res/font/arial16.fnt", "- -", TextHAlignment::LEFT);

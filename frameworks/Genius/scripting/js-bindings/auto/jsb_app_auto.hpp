@@ -108,7 +108,9 @@ bool js_app_ComBoxCollider_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_app_ComBoxCollider_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_ComBoxCollider(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_ComBoxCollider_GetWidth(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComBoxCollider_Create(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComBoxCollider_GetHeight(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComBoxCollider_OnAwake(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComRenderRoot_class;
@@ -279,6 +281,21 @@ void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_ComBulletAnimEgg_AnimationMovementCallback(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComBulletAnimEgg_Create(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComBulletAnimEgg_AnimationFrameCallback(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_EntityUtility_class;
+extern JSObject *jsb_EntityUtility_prototype;
+
+bool js_app_EntityUtility_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_EntityUtility_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_EntityUtility(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_EntityUtility_IsEnemy(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityUtility_IsInMyViewSight(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityUtility_IsInMyFarRange(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityUtility_GetEnemyTag(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityUtility_IsInMyNearRange(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityUtility_AreEntitiesCloseEnough(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityUtility_IsTagged(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_EntityWrapper_class;
 extern JSObject *jsb_Genius_EntityWrapper_prototype;

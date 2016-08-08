@@ -13,29 +13,41 @@ var Brain = BaseComponent.extend({
     btree:null,
     blackboard:null,
 
-    ctor:function (btree)
-    {
+    ctor:function (btree) {
         this.btree = btree;
         this.blackboard = new bt.Blackboard();
     },
 
-    /*SetBTree:function(_btree)
-    {
-        this.btree = _btree;
-    },*/
+    OnAwake:function(){
 
-    OnUpdate:function()
-    {
-        if (null != this.btree)
-        {
+    },
+
+    OnUpdate:function() {
+
+        this.DoUpdate();
+
+        if (null != this.btree) {
             this.btree.tick(this.entity, this.blackboard);
         }
     },
 
-    OnLongUpdate:function()
-    {
-
+    OnLongUpdate:function() {
+        print('brain long update.');
     },
+
+    DoUpdate:function(){
+        // find target for test.
+        var tar = this.entity.GetBlackboard(BB.CombatTarget);
+        if(tar==null){
+            for(var id in Game.entityList){
+                var ent = Game.entityList[id];
+                if(ent === this.entity)
+                    continue;
+                print('brain find a target.');
+                this.entity.SetBlackboard(BB.CombatTarget, ent);
+            }
+        }
+    }
 
 });
 

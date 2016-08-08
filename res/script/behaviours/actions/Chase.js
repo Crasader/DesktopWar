@@ -31,18 +31,18 @@ var Chase = bt.Action.extend({
 
     tick:function(tick) {
         var entity = tick.target;
-        var followTar = entity.GetBlackboard(BB.FollowTarget);
+        var followTar = entity.GetBlackboard(BB.CombatTarget);
         if (null == followTar) {
             print("Chase : no target !");
             return bt.ERROR;
         }
 
-        if (IsEntityInRange(entity, followTar, 20)) {
+        if (EntityUtility.AreEntitiesCloseEnough(entity.GetEntityNative(), followTar.GetEntityNative(), 20)) {
             return bt.SUCCESS;
         }
 
         if (Game.GetTime() > this.timeWait) {
-            print("check to follow");
+            print("check to chase");
             this.timeWait = Game.GetTime() + this.delayTime;
 
             var locomotor = entity.GetComponent(ComName.Locomotor);

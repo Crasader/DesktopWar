@@ -28,13 +28,9 @@ var BrainMgr = null;
             this.updatingBrains[entity.GetID()] = brain;
         },
 
-        RemoveBrain:function(entity,brain){
+        RemoveBrain:function(entity){
             if(!entity instanceof EntityScript){
                 print('BrainMgr.RemoveBrain: entity is not EntityScript.');
-                return;
-            }
-            if(!brain instanceof Brain){
-                print('BrainMgr.RemoveBrain: brain is not Brain.');
                 return;
             }
             this.brianList[entity.GetID()] = undefined;
@@ -46,6 +42,12 @@ var BrainMgr = null;
                 this.updatingBrains[id].OnUpdate();
             }
         },
+
+        OnLongUpdate:function(){
+            //for(var id in this.brianList){
+            //    this.brianList[id].OnLongUpdate();
+            //}
+        }
 
     });
 

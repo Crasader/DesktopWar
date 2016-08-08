@@ -21,14 +21,13 @@ namespace Genius
 		float width;
 		float height;
 
-		//const static int MaxCount = 16;
-		//int	collideIDs[MaxCount];
 		int	areaID;		// 分区进行彭转检测，减少计算
 
 	public:
 		virtual void OnAwake();
 		void Create(bool _positive, float _centerX, float _centerY, float _width, float _height);
-
+		float GetWidth(){ return width; }
+		float GetHeight(){ return height; }
 	};
 
 };

@@ -1254,6 +1254,24 @@ void js_register_app_ComTransform(JSContext *cx, JS::HandleObject global) {
 JSClass  *jsb_Genius_ComBoxCollider_class;
 JSObject *jsb_Genius_ComBoxCollider_prototype;
 
+bool js_app_ComBoxCollider_GetWidth(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::ComBoxCollider* cobj = (Genius::ComBoxCollider *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComBoxCollider_GetWidth : Invalid Native Object");
+    if (argc == 0) {
+        double ret = cobj->GetWidth();
+        jsval jsret = JSVAL_NULL;
+        jsret = DOUBLE_TO_JSVAL(ret);
+        args.rval().set(jsret);
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_ComBoxCollider_GetWidth : wrong number of arguments: %d, was expecting %d", argc, 0);
+    return false;
+}
 bool js_app_ComBoxCollider_Create(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -1280,6 +1298,24 @@ bool js_app_ComBoxCollider_Create(JSContext *cx, uint32_t argc, jsval *vp)
     }
 
     JS_ReportError(cx, "js_app_ComBoxCollider_Create : wrong number of arguments: %d, was expecting %d", argc, 5);
+    return false;
+}
+bool js_app_ComBoxCollider_GetHeight(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::ComBoxCollider* cobj = (Genius::ComBoxCollider *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComBoxCollider_GetHeight : Invalid Native Object");
+    if (argc == 0) {
+        double ret = cobj->GetHeight();
+        jsval jsret = JSVAL_NULL;
+        jsret = DOUBLE_TO_JSVAL(ret);
+        args.rval().set(jsret);
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_ComBoxCollider_GetHeight : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
 bool js_app_ComBoxCollider_OnAwake(JSContext *cx, uint32_t argc, jsval *vp)
@@ -1318,7 +1354,9 @@ void js_register_app_ComBoxCollider(JSContext *cx, JS::HandleObject global) {
     };
 
     static JSFunctionSpec funcs[] = {
+        JS_FN("GetWidth", js_app_ComBoxCollider_GetWidth, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Create", js_app_ComBoxCollider_Create, 5, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("GetHeight", js_app_ComBoxCollider_GetHeight, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("OnAwake", js_app_ComBoxCollider_OnAwake, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
@@ -3233,6 +3271,295 @@ void js_register_app_ComBulletAnimEgg(JSContext *cx, JS::HandleObject global) {
     jsb_register_class<Genius::ComBulletAnimEgg>(cx, jsb_Genius_ComBulletAnimEgg_class, proto, parent_proto);
 }
 
+JSClass  *jsb_EntityUtility_class;
+JSObject *jsb_EntityUtility_prototype;
+
+bool js_app_EntityUtility_IsEnemy(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 2) {
+        Genius::Entity* arg0 = nullptr;
+        Genius::Entity* arg1 = nullptr;
+        do {
+            if (args.get(0).isNull()) { arg0 = nullptr; break; }
+            if (!args.get(0).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg0 = (Genius::Entity*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+        } while (0);
+        do {
+            if (args.get(1).isNull()) { arg1 = nullptr; break; }
+            if (!args.get(1).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(1).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg1 = (Genius::Entity*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg1, cx, false, "Invalid Native Object");
+        } while (0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityUtility_IsEnemy : Error processing arguments");
+
+        bool ret = EntityUtility::IsEnemy(arg0, arg1);
+        jsval jsret = JSVAL_NULL;
+        jsret = BOOLEAN_TO_JSVAL(ret);
+        args.rval().set(jsret);
+        return true;
+    }
+    JS_ReportError(cx, "js_app_EntityUtility_IsEnemy : wrong number of arguments");
+    return false;
+}
+
+bool js_app_EntityUtility_IsInMyViewSight(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 2) {
+        Genius::EntityWrapper* arg0 = nullptr;
+        Genius::EntityWrapper* arg1 = nullptr;
+        do {
+            if (args.get(0).isNull()) { arg0 = nullptr; break; }
+            if (!args.get(0).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg0 = (Genius::EntityWrapper*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+        } while (0);
+        do {
+            if (args.get(1).isNull()) { arg1 = nullptr; break; }
+            if (!args.get(1).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(1).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg1 = (Genius::EntityWrapper*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg1, cx, false, "Invalid Native Object");
+        } while (0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityUtility_IsInMyViewSight : Error processing arguments");
+
+        bool ret = EntityUtility::IsInMyViewSight(arg0, arg1);
+        jsval jsret = JSVAL_NULL;
+        jsret = BOOLEAN_TO_JSVAL(ret);
+        args.rval().set(jsret);
+        return true;
+    }
+    JS_ReportError(cx, "js_app_EntityUtility_IsInMyViewSight : wrong number of arguments");
+    return false;
+}
+
+bool js_app_EntityUtility_IsInMyFarRange(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 2) {
+        Genius::EntityWrapper* arg0 = nullptr;
+        Genius::EntityWrapper* arg1 = nullptr;
+        do {
+            if (args.get(0).isNull()) { arg0 = nullptr; break; }
+            if (!args.get(0).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg0 = (Genius::EntityWrapper*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+        } while (0);
+        do {
+            if (args.get(1).isNull()) { arg1 = nullptr; break; }
+            if (!args.get(1).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(1).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg1 = (Genius::EntityWrapper*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg1, cx, false, "Invalid Native Object");
+        } while (0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityUtility_IsInMyFarRange : Error processing arguments");
+
+        bool ret = EntityUtility::IsInMyFarRange(arg0, arg1);
+        jsval jsret = JSVAL_NULL;
+        jsret = BOOLEAN_TO_JSVAL(ret);
+        args.rval().set(jsret);
+        return true;
+    }
+    JS_ReportError(cx, "js_app_EntityUtility_IsInMyFarRange : wrong number of arguments");
+    return false;
+}
+
+bool js_app_EntityUtility_GetEnemyTag(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 1) {
+        std::string arg0;
+        ok &= jsval_to_std_string(cx, args.get(0), &arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityUtility_GetEnemyTag : Error processing arguments");
+
+        const std::string& ret = EntityUtility::GetEnemyTag(arg0);
+        jsval jsret = JSVAL_NULL;
+        jsret = std_string_to_jsval(cx, ret);
+        args.rval().set(jsret);
+        return true;
+    }
+    JS_ReportError(cx, "js_app_EntityUtility_GetEnemyTag : wrong number of arguments");
+    return false;
+}
+
+bool js_app_EntityUtility_IsInMyNearRange(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 2) {
+        Genius::EntityWrapper* arg0 = nullptr;
+        Genius::EntityWrapper* arg1 = nullptr;
+        do {
+            if (args.get(0).isNull()) { arg0 = nullptr; break; }
+            if (!args.get(0).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg0 = (Genius::EntityWrapper*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+        } while (0);
+        do {
+            if (args.get(1).isNull()) { arg1 = nullptr; break; }
+            if (!args.get(1).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(1).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg1 = (Genius::EntityWrapper*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg1, cx, false, "Invalid Native Object");
+        } while (0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityUtility_IsInMyNearRange : Error processing arguments");
+
+        bool ret = EntityUtility::IsInMyNearRange(arg0, arg1);
+        jsval jsret = JSVAL_NULL;
+        jsret = BOOLEAN_TO_JSVAL(ret);
+        args.rval().set(jsret);
+        return true;
+    }
+    JS_ReportError(cx, "js_app_EntityUtility_IsInMyNearRange : wrong number of arguments");
+    return false;
+}
+
+bool js_app_EntityUtility_AreEntitiesCloseEnough(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 3) {
+        Genius::EntityWrapper* arg0 = nullptr;
+        Genius::EntityWrapper* arg1 = nullptr;
+        double arg2 = 0;
+        do {
+            if (args.get(0).isNull()) { arg0 = nullptr; break; }
+            if (!args.get(0).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg0 = (Genius::EntityWrapper*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+        } while (0);
+        do {
+            if (args.get(1).isNull()) { arg1 = nullptr; break; }
+            if (!args.get(1).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(1).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg1 = (Genius::EntityWrapper*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg1, cx, false, "Invalid Native Object");
+        } while (0);
+        ok &= JS::ToNumber( cx, args.get(2), &arg2) && !std::isnan(arg2);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityUtility_AreEntitiesCloseEnough : Error processing arguments");
+
+        bool ret = EntityUtility::AreEntitiesCloseEnough(arg0, arg1, arg2);
+        jsval jsret = JSVAL_NULL;
+        jsret = BOOLEAN_TO_JSVAL(ret);
+        args.rval().set(jsret);
+        return true;
+    }
+    JS_ReportError(cx, "js_app_EntityUtility_AreEntitiesCloseEnough : wrong number of arguments");
+    return false;
+}
+
+bool js_app_EntityUtility_IsTagged(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 2) {
+        std::string arg0;
+        Genius::Entity* arg1 = nullptr;
+        ok &= jsval_to_std_string(cx, args.get(0), &arg0);
+        do {
+            if (args.get(1).isNull()) { arg1 = nullptr; break; }
+            if (!args.get(1).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(1).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg1 = (Genius::Entity*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg1, cx, false, "Invalid Native Object");
+        } while (0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityUtility_IsTagged : Error processing arguments");
+
+        bool ret = EntityUtility::IsTagged(arg0, arg1);
+        jsval jsret = JSVAL_NULL;
+        jsret = BOOLEAN_TO_JSVAL(ret);
+        args.rval().set(jsret);
+        return true;
+    }
+    JS_ReportError(cx, "js_app_EntityUtility_IsTagged : wrong number of arguments");
+    return false;
+}
+
+
+void js_register_app_EntityUtility(JSContext *cx, JS::HandleObject global) {
+    jsb_EntityUtility_class = (JSClass *)calloc(1, sizeof(JSClass));
+    jsb_EntityUtility_class->name = "EntityUtility";
+    jsb_EntityUtility_class->addProperty = JS_PropertyStub;
+    jsb_EntityUtility_class->delProperty = JS_DeletePropertyStub;
+    jsb_EntityUtility_class->getProperty = JS_PropertyStub;
+    jsb_EntityUtility_class->setProperty = JS_StrictPropertyStub;
+    jsb_EntityUtility_class->enumerate = JS_EnumerateStub;
+    jsb_EntityUtility_class->resolve = JS_ResolveStub;
+    jsb_EntityUtility_class->convert = JS_ConvertStub;
+    jsb_EntityUtility_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+    static JSPropertySpec properties[] = {
+        JS_PS_END
+    };
+
+    static JSFunctionSpec funcs[] = {
+        JS_FS_END
+    };
+
+    static JSFunctionSpec st_funcs[] = {
+        JS_FN("IsEnemy", js_app_EntityUtility_IsEnemy, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("IsInMyViewSight", js_app_EntityUtility_IsInMyViewSight, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("IsInMyFarRange", js_app_EntityUtility_IsInMyFarRange, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("GetEnemyTag", js_app_EntityUtility_GetEnemyTag, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("IsInMyNearRange", js_app_EntityUtility_IsInMyNearRange, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("AreEntitiesCloseEnough", js_app_EntityUtility_AreEntitiesCloseEnough, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("IsTagged", js_app_EntityUtility_IsTagged, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+    };
+
+    jsb_EntityUtility_prototype = JS_InitClass(
+        cx, global,
+        JS::NullPtr(),
+        jsb_EntityUtility_class,
+        dummy_constructor<EntityUtility>, 0, // no constructor
+        properties,
+        funcs,
+        NULL, // no static properties
+        st_funcs);
+
+    JS::RootedObject proto(cx, jsb_EntityUtility_prototype);
+    JS::RootedValue className(cx, std_string_to_jsval(cx, "EntityUtility"));
+    JS_SetProperty(cx, proto, "_className", className);
+    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
+    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
+    // add the proto and JSClass to the type->js info hash table
+    jsb_register_class<EntityUtility>(cx, jsb_EntityUtility_class, proto, JS::NullPtr());
+}
+
 JSClass  *jsb_Genius_EntityWrapper_class;
 JSObject *jsb_Genius_EntityWrapper_prototype;
 
@@ -3950,6 +4277,7 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
     js_register_app_ComTransform(cx, ns);
     js_register_app_EntityWrapper(cx, ns);
     js_register_app_ComPawnAnim(cx, ns);
+    js_register_app_EntityUtility(cx, ns);
     js_register_app_ComBulletDebugDraw(cx, ns);
     js_register_app_SceneManager(cx, ns);
     js_register_app_ComBulletAnimEgg(cx, ns);

@@ -53,32 +53,7 @@ namespace Genius
 		Action_Max,
 	};
 
-	namespace PawnAnimName
-	{
-		const std::string IdleLeft = "idle_left";
-		const std::string IdleRight = "idle_right";
-		const std::string DieLeft = "die_left";
-		const std::string DieRight = "die_right";
-
-		const std::string MoveLeft = "move_left";
-		const std::string MoveRight = "move_right";
-		const std::string MoveUp = "move_up";
-		const std::string MoveDown = "move_down";
-
-		const std::string Attack1Left = "attack_left";
-		const std::string Attack1Right = "attack_right";
-		const std::string Attack2Left = "attack2_left";
-		const std::string Attack2Right = "attack2_right";
-		const std::string Attack3Left = "attack3_left";
-		const std::string Attack3Right = "attack3_right";
-		const std::string Skill1Left = "skill_left";
-		const std::string Skill1Right = "skill_right";
-		const std::string Skill2Left = "skill2_left";
-		const std::string Skill2Right = "skill2_right";
-		const std::string Skill3Left = "skill3_left";
-		const std::string Skill3Right = "skill3_right";
-
-	}
+	
 
 	enum TargetType
 	{

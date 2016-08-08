@@ -61,6 +61,10 @@ int EntityWrapper::GetID()
 	return m_entity->GetId();
 }
 
+Entity* EntityWrapper::GetEntity()
+{
+	return this->m_entity;
+}
 
 Genius::IComponent* EntityWrapper::AddComponent(const char* name)
 {

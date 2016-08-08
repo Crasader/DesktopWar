@@ -16,6 +16,7 @@ namespace Genius
 		EntityWrapper(Entity* ent);
 		~EntityWrapper();
 		int GetID();
+		Entity* GetEntity();
 		IComponent* AddComponent(const char* name);
 		void AddTag(const char* tag);
 		void RemoveTag(const char* tag);
