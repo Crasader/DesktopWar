@@ -13,7 +13,7 @@ using namespace Genius;
 
 COM_CREATE_FN_IMPL(ComPawnDebugDraw);
 
-void ComPawnDebugDraw::Create()
+void ComPawnDebugDraw::OnAwake()
 {
 	auto render = GetEntity()->GetComponent<ComRenderRoot>();
 	if (nullptr == render)
@@ -30,37 +30,41 @@ void ComPawnDebugDraw::Create()
 	pRoot->addChild(pNodeNearRange);
 	pRoot->addChild(pNodeFarRange);
 	render->AddChild(pRoot);
-	//
-	ComPawnAgent* tempCom = this->GetEntity()->GetComponent<ComPawnAgent>();
-	do
-	{
-		// attack range
-		Vec2 center(0, 0);// posCom->x, posCom->y);
-		float radiusView = tempCom->m_roleCfg->viewRange;
-		float radiusNear = tempCom->m_roleCfg->fightRangeNear;
-		float radiusFar = tempCom->m_roleCfg->fightRangeFar;
-		this->Clear();
-		this->pNodeNearRange->drawRect(Vec2(-radiusView*0.5f, -radiusView*0.25f), Vec2(radiusView*0.5f, radiusView*0.25f), Color4F::RED);
-		this->pNodeNearRange->drawRect(Vec2(-radiusNear*0.5f, -radiusNear*0.25f), Vec2(radiusNear*0.5f, radiusNear*0.25f), Color4F::RED);
-		this->pNodeNearRange->drawRect(Vec2(-radiusFar*0.5f, -radiusFar*0.25f), Vec2(radiusFar*0.5f, radiusFar*0.25f), Color4F::RED);
-		//debugCom->pNodeNearRange->drawCircle(center, radiusNear, 0, 12, true, Color4F::RED);
-		//debugCom->pNodeFarRange->drawCircle(center, radiusFar, 0, 12, true, Color4F::RED);
-	} while (false);
-
-	/*do
-	{
-		// box collider
-		ComBoxCollider* ComBoxCollider = GetEntity()->GetComponent<ComBoxCollider>();
-		Vec2 center(ComBoxCollider->centerX, ComBoxCollider->centerY);
-		Vec2 origin(center.x - ComBoxCollider->width*0.5f, center.y + ComBoxCollider->height*0.5f);
-		Vec2 destination(center.x + ComBoxCollider->width*0.5f, center.y - ComBoxCollider->height*0.5f);
-		this->pNodeBoxCollider->drawRect(origin, destination, Color4F::GREEN);
-	} while (false);*/
+	
+	Refresh();
 }
 
 ComPawnDebugDraw::~ComPawnDebugDraw()
 {
 	
+}
+
+void ComPawnDebugDraw::Refresh()
+{
+	Clear();
+	//
+	auto agent = this->GetEntity()->GetComponent<ComPawnAgent>();
+	if (agent != nullptr)
+	{
+		// attack range
+		float radiusView = agent->m_roleCfg->viewRange;
+		float radiusNear = agent->m_roleCfg->fightRangeNear;
+		float radiusFar = agent->m_roleCfg->fightRangeFar;
+		this->pNodeNearRange->drawRect(Vec2(-radiusView*0.5f, -radiusView*0.25f), Vec2(radiusView*0.5f, radiusView*0.25f), Color4F::RED);
+		this->pNodeNearRange->drawRect(Vec2(-radiusNear*0.5f, -radiusNear*0.25f), Vec2(radiusNear*0.5f, radiusNear*0.25f), Color4F::RED);
+		this->pNodeNearRange->drawRect(Vec2(-radiusFar*0.5f, -radiusFar*0.25f), Vec2(radiusFar*0.5f, radiusFar*0.25f), Color4F::RED);
+	}
+
+	// box collider
+	auto collider = GetEntity()->GetComponent<ComBoxCollider>();
+	if (collider != nullptr)
+	{
+		Vec2 center(collider->centerX, collider->centerY);
+		Vec2 origin(center.x - collider->width*0.5f, center.y + collider->height*0.5f);
+		Vec2 destination(center.x + collider->width*0.5f, center.y - collider->height*0.5f);
+		this->pNodeBoxCollider->drawRect(origin, destination, Color4F::GREEN);
+	}
+
 }
 
 void ComPawnDebugDraw::Clear()

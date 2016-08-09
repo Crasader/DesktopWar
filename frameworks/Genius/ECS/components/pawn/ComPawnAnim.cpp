@@ -13,6 +13,7 @@
 #include "skill/BuffManager.h"
 #include "../../core/Entity.h"
 #include "pawn/PawnBlackboard.h"
+#include "scripting/JSInvoker.h"
 #include "Log.h"
 
 
@@ -123,6 +124,8 @@ bool ComPawnAnim::ContainAnim(std::string name)
 
 void ComPawnAnim::AnimationMovementCallback(cocostudio::Armature *cca, cocostudio::MovementEventType movType, const std::string& animName)
 {
+	JSInvoker::Invoke_ArmatureMovementEvent(this->GetEntity()->GetId(), (int)movType, animName.c_str());
+
 	switch (movType)
 	{
 	case cocostudio::START:
@@ -144,6 +147,8 @@ void ComPawnAnim::AnimationFrameCallback(cocostudio::Bone* bone, const std::stri
 {
 	if (eventName == "")
 		return;
+
+	JSInvoker::Invoke_ArmatureFrameEvent(this->GetEntity()->GetId(), eventName.c_str());
 
 	if (eventName == "attack")
 	{

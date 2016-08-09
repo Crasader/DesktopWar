@@ -316,9 +316,6 @@
     <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletBombAnim.h">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletDebugDraw.h">
-      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletTarget.h">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClInclude>
@@ -634,9 +631,6 @@
     <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletBombAnim.cpp">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletDebugDraw.cpp">
-      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletTarget.cpp">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClCompile>
@@ -759,6 +753,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\scripting\JSInvoker.cpp">
       <Filter>Genius\JSB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnDebugDraw.cpp">
+      <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -22,6 +22,8 @@ void js_app_JSInvoker_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_JSInvoker(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_JSInvoker_Invoke_Update(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_JSInvoker_Invoke_ArmatureMovementEvent(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_JSInvoker_Invoke_ArmatureFrameEvent(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_JSInvoker_Invoke_LongUpdate(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_TimeSystem_class;
@@ -90,7 +92,6 @@ void js_register_app_IComponent(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_IComponent_OnDestroy(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_IComponent_GetEntity(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_IComponent_OnAwake(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComTransform_class;
 extern JSObject *jsb_Genius_ComTransform_prototype;
@@ -122,7 +123,6 @@ void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_ComBoxCollider_GetWidth(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComBoxCollider_Create(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComBoxCollider_GetHeight(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_ComBoxCollider_OnAwake(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComRenderRoot_class;
 extern JSObject *jsb_Genius_ComRenderRoot_prototype;
@@ -133,7 +133,6 @@ void js_register_app_ComRenderRoot(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_ComRenderRoot_AddChild(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComRenderRoot_OnDestroy(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_ComRenderRoot_OnAwake(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComRenderRoot_ComRenderRoot(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComParticle_class;
@@ -164,7 +163,6 @@ void js_app_ComDelayTrackMovement_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_ComDelayTrackMovement(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_ComDelayTrackMovement_Create(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_ComDelayTrackMovement_OnAwake(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComDelayTrackMovement_ComDelayTrackMovement(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComPawnAgent_class;
@@ -191,7 +189,6 @@ bool js_app_ComPawnAnim_HandleAction(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnAnim_Create(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnAnim_GetHeight(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnAnim_PlayAnimation(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_ComPawnAnim_OnAwake(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnAnim_GetWidth(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnAnim_OnDestroy(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnAnim_SetDebugLabel(JSContext *cx, uint32_t argc, jsval *vp);
@@ -206,8 +203,8 @@ bool js_app_ComPawnDebugDraw_constructor(JSContext *cx, uint32_t argc, jsval *vp
 void js_app_ComPawnDebugDraw_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_ComPawnDebugDraw(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_ComPawnDebugDraw_Create(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnDebugDraw_Clear(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnDebugDraw_Refresh(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComPawnFight_class;
 extern JSObject *jsb_Genius_ComPawnFight_prototype;
@@ -216,7 +213,6 @@ bool js_app_ComPawnFight_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_app_ComPawnFight_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_ComPawnFight(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_ComPawnFight_OnAwake(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnFight_ComPawnFight(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComPawnNavigation_class;
@@ -280,7 +276,7 @@ void js_app_ComBulletDebugDraw_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_ComBulletDebugDraw(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_ComBulletDebugDraw_Clear(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_ComBulletDebugDraw_OnAwake(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComBulletDebugDraw_Refresh(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComBulletAnimEgg_class;
 extern JSObject *jsb_Genius_ComBulletAnimEgg_prototype;

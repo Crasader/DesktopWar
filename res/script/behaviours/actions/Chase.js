@@ -38,14 +38,13 @@ var Chase = bt.Action.extend({
             return bt.ERROR;
         }
 
-        if (EntityUtility.AreEntitiesCloseEnough(entity.GetEntityNative(), followTar.GetEntityNative(), 20)) {
+        if (EntityUtility.AreEntitiesCloseEnough(entity.GetEntityNative(), followTar.GetEntityNative(), 1)) {
             locomotor = entity.GetComponent(ComName.Locomotor);
             locomotor.StopMove();
-            //return bt.SUCCESS;
+            return bt.SUCCESS;
         }
 
         if (Game.GetTime() > this.timeWait) {
-            print("check to chase");
 
             locomotor = entity.GetComponent(ComName.Locomotor);
             locomotor.MoveToEntity(followTar);

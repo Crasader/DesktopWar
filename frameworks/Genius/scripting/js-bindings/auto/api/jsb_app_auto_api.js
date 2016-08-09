@@ -32,6 +32,32 @@ float
 },
 
 /**
+ * @method Invoke_ArmatureMovementEvent
+ * @param {int} arg0
+ * @param {int} arg1
+ * @param {char} arg2
+ */
+Invoke_ArmatureMovementEvent : function (
+int, 
+int, 
+char 
+)
+{
+},
+
+/**
+ * @method Invoke_ArmatureFrameEvent
+ * @param {int} arg0
+ * @param {char} arg1
+ */
+Invoke_ArmatureFrameEvent : function (
+int, 
+char 
+)
+{
+},
+
+/**
  * @method Invoke_LongUpdate
  * @param {float} arg0
  */
@@ -339,14 +365,6 @@ GetEntity : function (
     return Genius::Entity;
 },
 
-/**
- * @method OnAwake
- */
-OnAwake : function (
-)
-{
-},
-
 };
 
 /**
@@ -530,14 +548,6 @@ GetHeight : function (
     return 0;
 },
 
-/**
- * @method OnAwake
- */
-OnAwake : function (
-)
-{
-},
-
 };
 
 /**
@@ -559,14 +569,6 @@ node
  * @method OnDestroy
  */
 OnDestroy : function (
-)
-{
-},
-
-/**
- * @method OnAwake
- */
-OnAwake : function (
 )
 {
 },
@@ -655,14 +657,6 @@ ComDelayTrackMovement = {
 Create : function (
 int, 
 float 
-)
-{
-},
-
-/**
- * @method OnAwake
- */
-OnAwake : function (
 )
 {
 },
@@ -789,14 +783,6 @@ str
 },
 
 /**
- * @method OnAwake
- */
-OnAwake : function (
-)
-{
-},
-
-/**
  * @method GetWidth
  * @return {float}
  */
@@ -872,17 +858,17 @@ int
 ComPawnDebugDraw = {
 
 /**
- * @method Create
+ * @method Clear
  */
-Create : function (
+Clear : function (
 )
 {
 },
 
 /**
- * @method Clear
+ * @method Refresh
  */
-Clear : function (
+Refresh : function (
 )
 {
 },
@@ -893,14 +879,6 @@ Clear : function (
  * @class ComPawnFight
  */
 ComPawnFight = {
-
-/**
- * @method OnAwake
- */
-OnAwake : function (
-)
-{
-},
 
 /**
  * @method ComPawnFight
@@ -1109,9 +1087,9 @@ Clear : function (
 },
 
 /**
- * @method OnAwake
+ * @method Refresh
  */
-OnAwake : function (
+Refresh : function (
 )
 {
 },

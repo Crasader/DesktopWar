@@ -96,6 +96,14 @@ var Game =
         BrainMgr.OnLongUpdate();
     },
 
+    OnArmatureFrameEvent:function(entityID, eventName){
+        //
+    },
+
+    OnArmatureMovementEvent:function(entityID, movement, animName){
+        //
+    },
+
     // get time in seconds since game starts.
     GetTime:function() {
         return TimeSystem.TimeSinceStart();

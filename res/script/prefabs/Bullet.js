@@ -31,8 +31,6 @@ var Bullet = {
 
         var damage = inst.AddComponent(ComName.BulletDamage);
 
-        //var dd = inst.AddComponent(ComName.BulletDebugDraw);
-
 
         if (bulletCfg.moveType == BulletMoveType.Line)
         {
@@ -76,11 +74,17 @@ var Bullet = {
             agent.GetBlackboard().SetTargetID(targetId);
         }
 
+        if(Setting.DebugDraw){
+            inst.AddComponent(ComName.BulletDebugDraw);
+        }
+
+        // js coms
+
         inst.AddTag(tag);
-
+        // end
+        inst.OnAwake();
         return inst;
-    },
+    }
 
-    lastfn:function(){}
 
 };

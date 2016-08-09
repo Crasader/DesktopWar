@@ -99,6 +99,42 @@ function GetPawnAnimName(entity, prefixAnimName) {
                 animName = PawnAnimName.Move_R;
         }
     }
+    else if (prefixAnimName === AnimName.Atk1) {
+        if (dir & FaceDir.Left)
+            animName = PawnAnimName.Attack1_L;
+        else
+            animName = PawnAnimName.Attack1_R;
+    }
+    else if (prefixAnimName === AnimName.Atk2) {
+        if (dir & FaceDir.Left)
+            animName = PawnAnimName.Attack2_L;
+        else
+            animName = PawnAnimName.Attack2_R;
+    }
+    else if (prefixAnimName === AnimName.Atk3) {
+        if (dir & FaceDir.Left)
+            animName = PawnAnimName.Attack3_L;
+        else
+            animName = PawnAnimName.Attack3_R;
+    }
+    else if (prefixAnimName === AnimName.Skill1) {
+        if (dir & FaceDir.Left)
+            animName = PawnAnimName.Skill1_L;
+        else
+            animName = PawnAnimName.Skill1_R;
+    }
+    else if (prefixAnimName === AnimName.Skill2) {
+        if (dir & FaceDir.Left)
+            animName = PawnAnimName.Skill2_L;
+        else
+            animName = PawnAnimName.Skill2_R;
+    }
+    else if (prefixAnimName === AnimName.Skill3) {
+        if (dir & FaceDir.Left)
+            animName = PawnAnimName.Skill3_L;
+        else
+            animName = PawnAnimName.Skill3_R;
+    }
     return animName;
 }
 
@@ -107,7 +143,7 @@ function PlayPawnAnim(entity, prefixName){
         var fullName = GetPawnAnimName(entity, prefixName);
         entity.GetStateGraph().SetAnimPrefixName(prefixName);
         entity.GetComponent(ComName.PawnAnim).PlayAnimation(fullName);
-        //print("play "+fullName);
+        print("play "+fullName);
     }
 }
 

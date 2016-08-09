@@ -32,7 +32,6 @@ namespace Genius
 		this->AddSystem(new SystemPawnFight());
 
 		this->AddSystem(new SystemBulletDamage());
-		this->AddSystem(new SystemBulletDebugDraw());
 		this->AddSystem(new SystemBulletArrowAnim());
 		this->AddSystem(new SystemBulletBombAnim());
 		this->AddSystem(new SystemBulletTarget());

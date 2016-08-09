@@ -22,6 +22,7 @@ namespace Genius
 	public:
 		virtual void OnAwake();
 		~ComBulletDebugDraw();
+		void Refresh();
 		void Clear();
 	};
 };

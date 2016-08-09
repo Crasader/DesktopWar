@@ -1,37 +1,45 @@
 
 
+// global toggles and settings
+var Setting =
+{
+    DebugDraw:false,
+};
+
+/////////////////////////////////
+
 // names of all components
 var ComName =
 {
     // native coms
-    Transform:"ComTransform",
-    Render:"ComRenderRoot",
-    BoxCollider:"ComBoxCollider",
-    Direction:"ComDirection",
-    Animation:"ComAnimation",
-    Particle:"ComParticle",
-    BezierMovement:"ComBezierMovement",
-    DelayTrackMovement:"ComDelayTrackMovement",
+    Transform: "ComTransform",
+    Render: "ComRenderRoot",
+    BoxCollider: "ComBoxCollider",
+    Direction: "ComDirection",
+    Animation: "ComAnimation",
+    Particle: "ComParticle",
+    BezierMovement: "ComBezierMovement",
+    DelayTrackMovement: "ComDelayTrackMovement",
 
-    PawnAgent:"ComPawnAgent",
-    PawnAnim:"ComPawnAnim",
-    PawnDebugDraw:"ComPawnDebugDraw",
-    PawnFight:"ComPawnFight",
-    PawnNavigation:"ComPawnNavigation",
-    PawnBevtree:"ComPawnBevtree",
+    PawnAgent: "ComPawnAgent",
+    PawnAnim: "ComPawnAnim",
+    PawnDebugDraw: "ComPawnDebugDraw",
+    PawnFight: "ComPawnFight",
+    PawnNavigation: "ComPawnNavigation",
+    PawnBevtree: "ComPawnBevtree",
 
-    BulletAnimArrow:"ComBulletAnimArrow",
-    BulletAnimBase:"ComBulletAnimBase",
-    BulletAnimBomb:"ComBulletAnimBomb",
-    BulletDamage:"ComBulletDamage",
-    BulletDebugDraw:"ComBulletDebugDraw",
-    BulletAnimEgg:"ComBulletAnimEgg",
+    BulletAnimArrow: "ComBulletAnimArrow",
+    BulletAnimBase: "ComBulletAnimBase",
+    BulletAnimBomb: "ComBulletAnimBomb",
+    BulletDamage: "ComBulletDamage",
+    BulletDebugDraw: "ComBulletDebugDraw",
+    BulletAnimEgg: "ComBulletAnimEgg",
 
     // js coms
-    Attr:"Attr",
-    Brain:"Brain",
-    Combat:"Combat",
-    Locomotor:"Locomotor",
+    Attr: "Attr",
+    Brain: "Brain",
+    Combat: "Combat",
+    Locomotor: "Locomotor",
 
 
 };
@@ -128,6 +136,14 @@ var PawnAnimName =
     Skill3_L:"skill3_left",
     Skill3_R:"skill3_right"
 
+};
+
+// event names
+var Event =
+{
+    Locomote:"Locomote",
+    Attack:"Attack",
+    Attacked:"Attacked",
 };
 
 

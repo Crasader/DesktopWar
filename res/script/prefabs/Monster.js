@@ -30,14 +30,12 @@ var Monster = {
         var box = inst.AddComponent(ComName.BoxCollider);
         box.Create(true, 0, height*0.5, width, height);
 
-        //var bev = inst.AddComponent(ComName.PawnBevtree);
-        //bev.Create(roleCfg.bevTreeFile);
-
         var nav = inst.AddComponent(ComName.PawnNavigation);
         var fht = inst.AddComponent(ComName.PawnFight);
 
-        //var dd = inst.AddComponent(ComName.PawnDebugDraw);
-        //dd.Create();
+        if(Setting.DebugDraw){
+            inst.AddComponent(ComName.PawnDebugDraw);
+        }
 
 
         // js coms
@@ -58,8 +56,8 @@ var Monster = {
         inst.OnAwake();
 
         return inst;
-    },
+    }
 
-    lastfn:function(){}
+
 
 }

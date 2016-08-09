@@ -102,6 +102,44 @@ bool js_app_JSInvoker_Invoke_Update(JSContext *cx, uint32_t argc, jsval *vp)
     return false;
 }
 
+bool js_app_JSInvoker_Invoke_ArmatureMovementEvent(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 3) {
+        int arg0 = 0;
+        int arg1 = 0;
+        const char* arg2 = nullptr;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        ok &= jsval_to_int32(cx, args.get(1), (int32_t *)&arg1);
+        std::string arg2_tmp; ok &= jsval_to_std_string(cx, args.get(2), &arg2_tmp); arg2 = arg2_tmp.c_str();
+        JSB_PRECONDITION2(ok, cx, false, "js_app_JSInvoker_Invoke_ArmatureMovementEvent : Error processing arguments");
+        JSInvoker::Invoke_ArmatureMovementEvent(arg0, arg1, arg2);
+        args.rval().setUndefined();
+        return true;
+    }
+    JS_ReportError(cx, "js_app_JSInvoker_Invoke_ArmatureMovementEvent : wrong number of arguments");
+    return false;
+}
+
+bool js_app_JSInvoker_Invoke_ArmatureFrameEvent(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 2) {
+        int arg0 = 0;
+        const char* arg1 = nullptr;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        std::string arg1_tmp; ok &= jsval_to_std_string(cx, args.get(1), &arg1_tmp); arg1 = arg1_tmp.c_str();
+        JSB_PRECONDITION2(ok, cx, false, "js_app_JSInvoker_Invoke_ArmatureFrameEvent : Error processing arguments");
+        JSInvoker::Invoke_ArmatureFrameEvent(arg0, arg1);
+        args.rval().setUndefined();
+        return true;
+    }
+    JS_ReportError(cx, "js_app_JSInvoker_Invoke_ArmatureFrameEvent : wrong number of arguments");
+    return false;
+}
+
 bool js_app_JSInvoker_Invoke_LongUpdate(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -141,6 +179,8 @@ void js_register_app_JSInvoker(JSContext *cx, JS::HandleObject global) {
 
     static JSFunctionSpec st_funcs[] = {
         JS_FN("Invoke_Update", js_app_JSInvoker_Invoke_Update, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("Invoke_ArmatureMovementEvent", js_app_JSInvoker_Invoke_ArmatureMovementEvent, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("Invoke_ArmatureFrameEvent", js_app_JSInvoker_Invoke_ArmatureFrameEvent, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Invoke_LongUpdate", js_app_JSInvoker_Invoke_LongUpdate, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
@@ -977,22 +1017,6 @@ bool js_app_IComponent_GetEntity(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_IComponent_GetEntity : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
-bool js_app_IComponent_OnAwake(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::IComponent* cobj = (Genius::IComponent *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_IComponent_OnAwake : Invalid Native Object");
-    if (argc == 0) {
-        cobj->OnAwake();
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_IComponent_OnAwake : wrong number of arguments: %d, was expecting %d", argc, 0);
-    return false;
-}
 
 void js_register_app_IComponent(JSContext *cx, JS::HandleObject global) {
     jsb_Genius_IComponent_class = (JSClass *)calloc(1, sizeof(JSClass));
@@ -1013,7 +1037,6 @@ void js_register_app_IComponent(JSContext *cx, JS::HandleObject global) {
     static JSFunctionSpec funcs[] = {
         JS_FN("OnDestroy", js_app_IComponent_OnDestroy, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("GetEntity", js_app_IComponent_GetEntity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("OnAwake", js_app_IComponent_OnAwake, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 
@@ -1422,22 +1445,6 @@ bool js_app_ComBoxCollider_GetHeight(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_ComBoxCollider_GetHeight : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
-bool js_app_ComBoxCollider_OnAwake(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::ComBoxCollider* cobj = (Genius::ComBoxCollider *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComBoxCollider_OnAwake : Invalid Native Object");
-    if (argc == 0) {
-        cobj->OnAwake();
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_ComBoxCollider_OnAwake : wrong number of arguments: %d, was expecting %d", argc, 0);
-    return false;
-}
 
 extern JSObject *jsb_Genius_IComponent_prototype;
 
@@ -1461,7 +1468,6 @@ void js_register_app_ComBoxCollider(JSContext *cx, JS::HandleObject global) {
         JS_FN("GetWidth", js_app_ComBoxCollider_GetWidth, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Create", js_app_ComBoxCollider_Create, 5, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("GetHeight", js_app_ComBoxCollider_GetHeight, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("OnAwake", js_app_ComBoxCollider_OnAwake, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 
@@ -1534,22 +1540,6 @@ bool js_app_ComRenderRoot_OnDestroy(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_ComRenderRoot_OnDestroy : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
-bool js_app_ComRenderRoot_OnAwake(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::ComRenderRoot* cobj = (Genius::ComRenderRoot *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComRenderRoot_OnAwake : Invalid Native Object");
-    if (argc == 0) {
-        cobj->OnAwake();
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_ComRenderRoot_OnAwake : wrong number of arguments: %d, was expecting %d", argc, 0);
-    return false;
-}
 bool js_app_ComRenderRoot_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -1608,7 +1598,6 @@ void js_register_app_ComRenderRoot(JSContext *cx, JS::HandleObject global) {
     static JSFunctionSpec funcs[] = {
         JS_FN("AddChild", js_app_ComRenderRoot_AddChild, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("OnDestroy", js_app_ComRenderRoot_OnDestroy, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("OnAwake", js_app_ComRenderRoot_OnAwake, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 
@@ -1841,22 +1830,6 @@ bool js_app_ComDelayTrackMovement_Create(JSContext *cx, uint32_t argc, jsval *vp
     JS_ReportError(cx, "js_app_ComDelayTrackMovement_Create : wrong number of arguments: %d, was expecting %d", argc, 2);
     return false;
 }
-bool js_app_ComDelayTrackMovement_OnAwake(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::ComDelayTrackMovement* cobj = (Genius::ComDelayTrackMovement *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComDelayTrackMovement_OnAwake : Invalid Native Object");
-    if (argc == 0) {
-        cobj->OnAwake();
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_ComDelayTrackMovement_OnAwake : wrong number of arguments: %d, was expecting %d", argc, 0);
-    return false;
-}
 bool js_app_ComDelayTrackMovement_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -1914,7 +1887,6 @@ void js_register_app_ComDelayTrackMovement(JSContext *cx, JS::HandleObject globa
 
     static JSFunctionSpec funcs[] = {
         JS_FN("Create", js_app_ComDelayTrackMovement_Create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("OnAwake", js_app_ComDelayTrackMovement_OnAwake, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 
@@ -2198,22 +2170,6 @@ bool js_app_ComPawnAnim_PlayAnimation(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_ComPawnAnim_PlayAnimation : wrong number of arguments: %d, was expecting %d", argc, 1);
     return false;
 }
-bool js_app_ComPawnAnim_OnAwake(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::ComPawnAnim* cobj = (Genius::ComPawnAnim *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComPawnAnim_OnAwake : Invalid Native Object");
-    if (argc == 0) {
-        cobj->OnAwake();
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_ComPawnAnim_OnAwake : wrong number of arguments: %d, was expecting %d", argc, 0);
-    return false;
-}
 bool js_app_ComPawnAnim_GetWidth(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -2370,7 +2326,6 @@ void js_register_app_ComPawnAnim(JSContext *cx, JS::HandleObject global) {
         JS_FN("Create", js_app_ComPawnAnim_Create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("GetHeight", js_app_ComPawnAnim_GetHeight, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("PlayAnimation", js_app_ComPawnAnim_PlayAnimation, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("OnAwake", js_app_ComPawnAnim_OnAwake, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("GetWidth", js_app_ComPawnAnim_GetWidth, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("OnDestroy", js_app_ComPawnAnim_OnDestroy, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("SetDebugLabel", js_app_ComPawnAnim_SetDebugLabel, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -2404,22 +2359,6 @@ void js_register_app_ComPawnAnim(JSContext *cx, JS::HandleObject global) {
 JSClass  *jsb_Genius_ComPawnDebugDraw_class;
 JSObject *jsb_Genius_ComPawnDebugDraw_prototype;
 
-bool js_app_ComPawnDebugDraw_Create(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::ComPawnDebugDraw* cobj = (Genius::ComPawnDebugDraw *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComPawnDebugDraw_Create : Invalid Native Object");
-    if (argc == 0) {
-        cobj->Create();
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_ComPawnDebugDraw_Create : wrong number of arguments: %d, was expecting %d", argc, 0);
-    return false;
-}
 bool js_app_ComPawnDebugDraw_Clear(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -2434,6 +2373,22 @@ bool js_app_ComPawnDebugDraw_Clear(JSContext *cx, uint32_t argc, jsval *vp)
     }
 
     JS_ReportError(cx, "js_app_ComPawnDebugDraw_Clear : wrong number of arguments: %d, was expecting %d", argc, 0);
+    return false;
+}
+bool js_app_ComPawnDebugDraw_Refresh(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::ComPawnDebugDraw* cobj = (Genius::ComPawnDebugDraw *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComPawnDebugDraw_Refresh : Invalid Native Object");
+    if (argc == 0) {
+        cobj->Refresh();
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_ComPawnDebugDraw_Refresh : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
 
@@ -2456,8 +2411,8 @@ void js_register_app_ComPawnDebugDraw(JSContext *cx, JS::HandleObject global) {
     };
 
     static JSFunctionSpec funcs[] = {
-        JS_FN("Create", js_app_ComPawnDebugDraw_Create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Clear", js_app_ComPawnDebugDraw_Clear, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("Refresh", js_app_ComPawnDebugDraw_Refresh, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 
@@ -2486,22 +2441,6 @@ void js_register_app_ComPawnDebugDraw(JSContext *cx, JS::HandleObject global) {
 JSClass  *jsb_Genius_ComPawnFight_class;
 JSObject *jsb_Genius_ComPawnFight_prototype;
 
-bool js_app_ComPawnFight_OnAwake(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::ComPawnFight* cobj = (Genius::ComPawnFight *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComPawnFight_OnAwake : Invalid Native Object");
-    if (argc == 0) {
-        cobj->OnAwake();
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_ComPawnFight_OnAwake : wrong number of arguments: %d, was expecting %d", argc, 0);
-    return false;
-}
 bool js_app_ComPawnFight_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -2558,7 +2497,6 @@ void js_register_app_ComPawnFight(JSContext *cx, JS::HandleObject global) {
     };
 
     static JSFunctionSpec funcs[] = {
-        JS_FN("OnAwake", js_app_ComPawnFight_OnAwake, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 
@@ -3175,20 +3113,20 @@ bool js_app_ComBulletDebugDraw_Clear(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_ComBulletDebugDraw_Clear : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
-bool js_app_ComBulletDebugDraw_OnAwake(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_app_ComBulletDebugDraw_Refresh(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
     JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
     js_proxy_t *proxy = jsb_get_js_proxy(obj);
     Genius::ComBulletDebugDraw* cobj = (Genius::ComBulletDebugDraw *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComBulletDebugDraw_OnAwake : Invalid Native Object");
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComBulletDebugDraw_Refresh : Invalid Native Object");
     if (argc == 0) {
-        cobj->OnAwake();
+        cobj->Refresh();
         args.rval().setUndefined();
         return true;
     }
 
-    JS_ReportError(cx, "js_app_ComBulletDebugDraw_OnAwake : wrong number of arguments: %d, was expecting %d", argc, 0);
+    JS_ReportError(cx, "js_app_ComBulletDebugDraw_Refresh : wrong number of arguments: %d, was expecting %d", argc, 0);
     return false;
 }
 
@@ -3212,7 +3150,7 @@ void js_register_app_ComBulletDebugDraw(JSContext *cx, JS::HandleObject global) 
 
     static JSFunctionSpec funcs[] = {
         JS_FN("Clear", js_app_ComBulletDebugDraw_Clear, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("OnAwake", js_app_ComBulletDebugDraw_OnAwake, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("Refresh", js_app_ComBulletDebugDraw_Refresh, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 

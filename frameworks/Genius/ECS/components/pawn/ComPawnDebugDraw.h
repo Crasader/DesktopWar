@@ -22,8 +22,9 @@ namespace Genius
 		cocos2d::DrawNode*	pNodeFarRange;
 
 	public:
-		void Create();
+		virtual void OnAwake();
 		~ComPawnDebugDraw();
+		void Refresh();
 		void Clear();
 	};
 
