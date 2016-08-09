@@ -26,7 +26,7 @@ commonStatus.OnFrameAttack1 = function()
 
     var st =
     {
-        name: 'idle',
+        name: gn.SG.Idle,
 
         onenter: function (entity) {
             entity.GetComponent(gn.ComName.Locomotor).StopMove();
@@ -49,7 +49,7 @@ commonStatus.OnFrameAttack1 = function()
 
     var st =
     {
-        name: 'die',
+        name: gn.SG.Die,
 
         onenter: function (entity) {
             entity.GetComponent(gn.ComName.Locomotor).StopMove();
@@ -72,7 +72,7 @@ commonStatus.OnFrameAttack1 = function()
 
     var st =
     {
-        name: 'move',
+        name: gn.SG.Move,
 
         onenter: function (entity) {
             PlayPawnAnim(entity, gn.AnimName.Move);
@@ -94,7 +94,7 @@ commonStatus.OnFrameAttack1 = function()
 
     var st =
     {
-        name: 'attackNear',
+        name: gn.SG.AttackNear,
 
         onenter: function (entity) {
             entity.GetComponent(gn.ComName.Locomotor).StopMove();
@@ -120,7 +120,7 @@ commonStatus.OnFrameAttack1 = function()
 
     var st =
     {
-        name: 'attackFar',
+        name: gn.SG.AttackFar,
 
         onenter: function (entity) {
             entity.GetComponent(gn.ComName.Locomotor).StopMove();
@@ -145,7 +145,7 @@ commonStatus.OnFrameAttack1 = function()
 
     var st =
     {
-        name: 'skill1',
+        name: gn.SG.Skill1,
 
         onenter: function (entity) {
             entity.GetComponent(gn.ComName.Locomotor).StopMove();
@@ -170,7 +170,7 @@ commonStatus.OnFrameAttack1 = function()
 
     var st =
     {
-        name: 'skill2',
+        name: gn.SG.Skill2,
 
         onenter: function (entity) {
             entity.GetComponent(gn.ComName.Locomotor).StopMove();
@@ -276,7 +276,7 @@ function CreateCommonGraph(entity)
         commonStatus.OnFaceTo()
     ];
     
-    return new StateGraph(entity, status, events, 'idle');
+    return new StateGraph(entity, status, events, gn.SG.Idle);
 }
 
 
