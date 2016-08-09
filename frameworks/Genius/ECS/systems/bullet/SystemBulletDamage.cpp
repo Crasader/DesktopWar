@@ -102,7 +102,7 @@ void SystemBulletDamage::collisionHandler(const IEventData& evt)
 	}
 	else if (myAgent->pBulletData->moveType == BulletMoveType::BMT_Line)
 	{
-		if (myAgent->GetBlackboard()->targetType == Target_Entity)
+		/*if (myAgent->GetBlackboard()->targetType == Target_Entity)
 		{
 			if (myAgent->GetBlackboard()->targetID == pOtherEntity->GetId())
 			{
@@ -112,7 +112,7 @@ void SystemBulletDamage::collisionHandler(const IEventData& evt)
 		else if (myAgent->GetBlackboard()->targetType == Target_Location)
 		{
 			;
-		}
+		}*/
 	}
 
 
@@ -199,8 +199,8 @@ void SystemBulletDamage::FindTargetsInScope(Entity* pEntity, int radius, bool sa
 		Entity* eneEntity = it.second;
 
 		ComPawnAgent* enemyAgent = eneEntity->GetComponent<ComPawnAgent>();
-		if (enemyAgent && enemyAgent->GetBlackboard()->GetAttr(AttrType::HP) <= 0)
-			continue;
+		//if (enemyAgent && enemyAgent->GetBlackboard()->GetAttr(AttrType::HP) <= 0)
+		//	continue;
 
 		ComTransform* enePosCom = eneEntity->GetComponent<ComTransform>();
 		Point2D vecBetween(myPosCom->x - enePosCom->x, myPosCom->y - enePosCom->y);

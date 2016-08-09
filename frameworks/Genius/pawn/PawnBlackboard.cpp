@@ -15,13 +15,13 @@ PawnBlackboard::PawnBlackboard(ComPawnAgent* agent)
 	auto cfg = agent->m_roleCfg;
 	if (cfg != nullptr)
 	{
-		SetAttr(AttrType::HP, cfg->baseLife);
+		/*SetAttr(AttrType::HP, cfg->baseLife);
 		SetAttr(AttrType::MoveSpeed, 1);
 		SetAttr(AttrType::AttackSpeed, 1);
 		SetAttr(AttrType::AttackStren, cfg->attackValue);
 		SetAttr(AttrType::DefencePhy, cfg->antiPhysicValue);
 		SetAttr(AttrType::DefenceMag, cfg->antiMagicValue);
-		SetAttr(AttrType::Dodge, cfg->dodgeValue);
+		SetAttr(AttrType::Dodge, cfg->dodgeValue);*/
 	}
 }
 
@@ -94,22 +94,22 @@ void PawnBlackboard::RemoveActionHandler(ActionHandler* pHandler)
 
 int PawnBlackboard::GetAttr(int type)
 {
-	if (type <= AttrType::ATNone && type >= AttrType::Count)
+	/*if (type <= AttrType::ATNone && type >= AttrType::Count)
 	{
 		Log::Error("PawnBlackboard.GetAttr : wrong type %d", type);
 		return 0;
-	}
+	}*/
 
 	return m_attr[type];
 }
 
 void PawnBlackboard::SetAttr(int type, int value)
 {
-	if (type <= AttrType::ATNone && type >= AttrType::Count)
+	/*if (type <= AttrType::ATNone && type >= AttrType::Count)
 	{
 		Log::Error("PawnBlackboard.SetAttr : wrong type %d", type);
 		return;
-	}
+	}*/
 
 	m_attr[type] = value;
 
@@ -119,11 +119,11 @@ void PawnBlackboard::SetAttr(int type, int value)
 
 void PawnBlackboard::ModAttr(int type, int value)
 {
-	if (type <= AttrType::ATNone && type >= AttrType::Count)
+	/*if (type <= AttrType::ATNone && type >= AttrType::Count)
 	{
 		Log::Error("PawnBlackboard.SetAttr : wrong type %d", type);
 		return;
-	}
+	}*/
 
 	m_attr[type] = m_attr[type] + value;
 

@@ -35,7 +35,7 @@ void SystemPawnFight::ProcessEntity(Entity* pEntity)
 {
 	UpdateLifeBar(pEntity);
 
-	ComPawnFight* myFightCom = pawnFightMapper.get(pEntity);
+	/*ComPawnFight* myFightCom = pawnFightMapper.get(pEntity);
 	ComPawnAgent* myAttCom = pawnAgentMapper.get(pEntity);
 
 	if (myAttCom->GetBlackboard()->GetAttr(AttrType::HP)<= 0)
@@ -68,7 +68,7 @@ void SystemPawnFight::ProcessEntity(Entity* pEntity)
 			myFightCom->isTargetInNearRange = false;
 			myFightCom->enemyID = enemyId;
 		}
-	}
+	}*/
 
 }
 
@@ -100,10 +100,10 @@ void SystemPawnFight::HandleHurt(IEventData const &evt)
 
 bool SystemPawnFight::IsOldTargetVaild(Entity* pEntity)
 {
-	if (nullptr == pEntity)
+	//if (nullptr == pEntity)
 		return false;
 
-	ComTransform* myPosCom = transMapper.get(pEntity);
+	/*ComTransform* myPosCom = transMapper.get(pEntity);
 	ComBoxCollider* myBoxCom = colliderMapper.get(pEntity);
 	ComPawnFight* myFightCom = pawnFightMapper.get(pEntity);
 	ComPawnAgent* myTempCom = pawnAgentMapper.get(pEntity);
@@ -141,7 +141,7 @@ bool SystemPawnFight::IsOldTargetVaild(Entity* pEntity)
 		myFightCom->isTargetInFarRange = len < myTempCom->m_roleCfg->fightRangeFar + eneBoxCom->width*0.5f;
 		myFightCom->isTargetInNearRange = len < myTempCom->m_roleCfg->fightRangeNear + eneBoxCom->width*0.5f;
 		return true;
-	}
+	}*/
 }
 
 int SystemPawnFight::FindNearestTarget(Entity* pEntity, bool sameTeam, bool includeSelf)
@@ -174,8 +174,8 @@ int SystemPawnFight::FindNearestTarget(Entity* pEntity, bool sameTeam, bool incl
 			continue;
 
 		ComPawnAgent* enemyAttCom = pEnemyEntity->GetComponent<ComPawnAgent>();
-		if (enemyAttCom && enemyAttCom->GetBlackboard()->GetAttr(AttrType::HP)<= 0)
-			continue;
+		/*if (enemyAttCom && enemyAttCom->GetBlackboard()->GetAttr(AttrType::HP)<= 0)
+			continue;*/
 
 		ComTransform* enePosCom = pEnemyEntity->GetComponent<ComTransform>();
 		Point2D vecBetween(myPosCom->x - enePosCom->x, myPosCom->y - enePosCom->y);
@@ -232,8 +232,8 @@ void SystemPawnFight::FindTargetsInScope(int entityID, int scopeSize, bool sameT
  			continue;*/
 
 		ComPawnAgent* enemyAttCom = pEnemyEntity->GetComponent<ComPawnAgent>();
-		if (enemyAttCom && enemyAttCom->GetBlackboard()->GetAttr(AttrType::HP)<= 0)
-			continue;
+		//if (enemyAttCom && enemyAttCom->GetBlackboard()->GetAttr(AttrType::HP)<= 0)
+		//	continue;
 
 	/*	int enemyTeam = enemyAttCom->GetBlackboard()->team;
 		if (sameTeam && myTeam != enemyTeam)
@@ -264,7 +264,7 @@ void SystemPawnFight::UpdateLifeBar(Entity* pEntity)
 	ComPawnAgent* myAttCom = pawnAgentMapper.get(pEntity);
 	ComPawnAnim* animCom = pawnAnimMapper.get(pEntity);
 
-	animCom->m_pLifeBar->setPercent((int)(100.0f * myAttCom->GetBlackboard()->GetAttr(AttrType::HP)/ myTempCom->m_roleCfg->baseLife));
+	//animCom->m_pLifeBar->setPercent((int)(100.0f * myAttCom->GetBlackboard()->GetAttr(AttrType::HP)/ myTempCom->m_roleCfg->baseLife));
 }
 
 int SystemPawnFight::FindRandTargetByTag(const string& tag)

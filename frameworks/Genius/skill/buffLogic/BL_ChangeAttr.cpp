@@ -63,7 +63,7 @@ void BL_ChangeAttr::OnEffect(Buff* buff)
 
 		JSInvoker::Invoke_ModifyEntityAttr(receiverID, buffCfg->calType, buffCfg->attrType, buffCfg->value);
 
-		EventManager::GetSingleton()->FireEvent(HurtEvent(receiverEntity, value));
+		//EventManager::GetSingleton()->FireEvent(HurtEvent(receiverEntity, value));
 
 	} while (false);
 }

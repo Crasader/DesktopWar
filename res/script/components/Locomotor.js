@@ -38,7 +38,7 @@ var Locomotor = BaseComponent.extend({
 
     MoveToPoint:function(x,y) {
         this.isMoving = true;
-        var speed = this.attrCom.Get(Attr.SPD);
+        var speed = this.attrCom.Get(gn.Attr.SPD);
         this.entity.GetComponent(gn.ComName.Transform).MoveTo(x, y, speed);
         this.entity.StartUpdateComponent(this);
         this.entity.PushEvent(gn.Event.Locomote);
@@ -53,7 +53,7 @@ var Locomotor = BaseComponent.extend({
 
     MoveTowards:function(angle) {
         this.isMoving = true;
-        var speed = this.attrCom.Get(Attr.SPD);
+        var speed = this.attrCom.Get(gn.Attr.SPD);
         this.entity.GetComponent(gn.ComName.Transform).MoveTowards(angle, speed);
         this.entity.StartUpdateComponent(this);
         this.entity.PushEvent(gn.Event.Locomote);

@@ -183,7 +183,7 @@ function HandleArmatureMovementEvent(entity, movement, animName){
 
 function ModifyEntityAttr(entity, calType, attrType, value, atkType){
     //
-    var attrCom = entity.GetComponent(ComName.Attr);
+    var attrCom = entity.GetComponent(gn.ComName.Attr);
     if(calType == gn.CalcType.Fixed){
         attrCom.Mod(attrType, value);
     }
