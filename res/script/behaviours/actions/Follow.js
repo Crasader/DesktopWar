@@ -25,14 +25,14 @@ var Follow = bt.Action.extend({
 
     tick:function(tick) {
         var entity = tick.target;
-        var followTar = entity.GetBlackboard(BB.FollowTarget);
+        var followTar = entity.GetBlackboard(gn.BB.FollowTarget);
         if (null == followTar) {
             print("Follow : no target !");
             return bt.ERROR;
         }
 
         if (EntityUtility.AreEntitiesCloseEnough(entity.GetEntityNative(), followTar.GetEntityNative(), 10)) {
-            var locomotor = entity.GetComponent(ComName.Locomotor);
+            var locomotor = entity.GetComponent(gn.ComName.Locomotor);
             locomotor.StopMove();
             return bt.SUCCESS;
         }
@@ -41,7 +41,7 @@ var Follow = bt.Action.extend({
             print("check to follow");
             this.timeWait = Game.GetTime() + this.delayTime;
 
-            var locomotor = entity.GetComponent(ComName.Locomotor);
+            var locomotor = entity.GetComponent(gn.ComName.Locomotor);
             locomotor.MoveToEntity(followTar);
 
             this.timeWait = Game.GetTime() + this.checkTime;

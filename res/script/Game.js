@@ -6,6 +6,9 @@
  * Date:2016-7-2
  */
 
+// name space : genius
+var gn = gn || {};
+
 
 require("res/script/Class.js");
 require("res/script/Defines.js");
@@ -25,7 +28,8 @@ require("res/script/components/_com_.js");
 require("res/script/states/_state_.js");
 
 
-
+gn.SkillMgr = null;
+gn.BuffMgr = null;
 
 
 
@@ -46,7 +50,12 @@ var Game =
 
 
     Start:function() {
+
         //print("Game Init")
+
+        gn.SkillMgr = SkillManager.GetMe();
+        gn.BuffMgr = BuffManager.GetMe();
+
         this.loadingState = new LoadingState();
         this.lanchState = new LaunchState();
         this.warState = new WarState();
@@ -97,11 +106,21 @@ var Game =
     },
 
     OnArmatureFrameEvent:function(entityID, eventName){
-        //
+        var entity = this.entityList[entityID];
+        if(entity == null){
+            print('OnFrameEvent: cannot find entity.');
+        }else {
+            HandleArmatureFrameEvent(entity,eventName);
+        }
     },
 
     OnArmatureMovementEvent:function(entityID, movement, animName){
-        //
+        var entity = this.entityList[entityID];
+        if(entity == null){
+            print('OnMovementEvent: cannot find entity.');
+        }else {
+            HandleArmatureMovementEvent(entity,movement,animName);
+        }
     },
 
     // get time in seconds since game starts.

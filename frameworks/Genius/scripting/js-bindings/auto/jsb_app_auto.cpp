@@ -3602,6 +3602,388 @@ void js_register_app_EntityUtility(JSContext *cx, JS::HandleObject global) {
     jsb_register_class<EntityUtility>(cx, jsb_EntityUtility_class, proto, JS::NullPtr());
 }
 
+JSClass  *jsb_Genius_SkillManager_class;
+JSObject *jsb_Genius_SkillManager_prototype;
+
+bool js_app_SkillManager_ClearSkill(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::SkillManager* cobj = (Genius::SkillManager *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_SkillManager_ClearSkill : Invalid Native Object");
+    if (argc == 1) {
+        int arg0 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_SkillManager_ClearSkill : Error processing arguments");
+        cobj->ClearSkill(arg0);
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_SkillManager_ClearSkill : wrong number of arguments: %d, was expecting %d", argc, 1);
+    return false;
+}
+bool js_app_SkillManager_UseSkill(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::SkillManager* cobj = (Genius::SkillManager *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_SkillManager_UseSkill : Invalid Native Object");
+    if (argc == 3) {
+        int arg0 = 0;
+        int arg1 = 0;
+        int arg2 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        ok &= jsval_to_int32(cx, args.get(1), (int32_t *)&arg1);
+        ok &= jsval_to_int32(cx, args.get(2), (int32_t *)&arg2);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_SkillManager_UseSkill : Error processing arguments");
+        bool ret = cobj->UseSkill(arg0, arg1, arg2);
+        jsval jsret = JSVAL_NULL;
+        jsret = BOOLEAN_TO_JSVAL(ret);
+        args.rval().set(jsret);
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_SkillManager_UseSkill : wrong number of arguments: %d, was expecting %d", argc, 3);
+    return false;
+}
+bool js_app_SkillManager_ClearAllSkill(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::SkillManager* cobj = (Genius::SkillManager *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_SkillManager_ClearAllSkill : Invalid Native Object");
+    if (argc == 0) {
+        cobj->ClearAllSkill();
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_SkillManager_ClearAllSkill : wrong number of arguments: %d, was expecting %d", argc, 0);
+    return false;
+}
+bool js_app_SkillManager_CanUseSkill(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::SkillManager* cobj = (Genius::SkillManager *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_SkillManager_CanUseSkill : Invalid Native Object");
+    if (argc == 3) {
+        int arg0 = 0;
+        int arg1 = 0;
+        int arg2 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        ok &= jsval_to_int32(cx, args.get(1), (int32_t *)&arg1);
+        ok &= jsval_to_int32(cx, args.get(2), (int32_t *)&arg2);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_SkillManager_CanUseSkill : Error processing arguments");
+        bool ret = cobj->CanUseSkill(arg0, arg1, arg2);
+        jsval jsret = JSVAL_NULL;
+        jsret = BOOLEAN_TO_JSVAL(ret);
+        args.rval().set(jsret);
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_SkillManager_CanUseSkill : wrong number of arguments: %d, was expecting %d", argc, 3);
+    return false;
+}
+bool js_app_SkillManager_GetMe(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    if (argc == 0) {
+
+        Genius::SkillManager* ret = Genius::SkillManager::GetMe();
+        jsval jsret = JSVAL_NULL;
+        if (ret) {
+        jsret = OBJECT_TO_JSVAL(js_get_or_create_jsobject<Genius::SkillManager>(cx, (Genius::SkillManager*)ret));
+    } else {
+        jsret = JSVAL_NULL;
+    };
+        args.rval().set(jsret);
+        return true;
+    }
+    JS_ReportError(cx, "js_app_SkillManager_GetMe : wrong number of arguments");
+    return false;
+}
+
+bool js_app_SkillManager_constructor(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    Genius::SkillManager* cobj = new (std::nothrow) Genius::SkillManager();
+
+    js_type_class_t *typeClass = js_get_type_from_native<Genius::SkillManager>(cobj);
+
+    // link the native object with the javascript object
+    JS::RootedObject jsobj(cx, jsb_create_weak_jsobject(cx, cobj, typeClass, "Genius::SkillManager"));
+    args.rval().set(OBJECT_TO_JSVAL(jsobj));
+    if (JS_HasProperty(cx, jsobj, "_ctor", &ok) && ok)
+        ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(jsobj), "_ctor", args);
+    return true;
+}
+
+
+void js_Genius_SkillManager_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (SkillManager)", obj);
+    js_proxy_t* nproxy;
+    js_proxy_t* jsproxy;
+    JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
+    JS::RootedObject jsobj(cx, obj);
+    jsproxy = jsb_get_js_proxy(jsobj);
+    if (jsproxy) {
+        Genius::SkillManager *nobj = static_cast<Genius::SkillManager *>(jsproxy->ptr);
+        nproxy = jsb_get_native_proxy(jsproxy->ptr);
+
+        if (nobj) {
+            jsb_remove_proxy(nproxy, jsproxy);
+            delete nobj;
+        }
+        else
+            jsb_remove_proxy(nullptr, jsproxy);
+    }
+}
+void js_register_app_SkillManager(JSContext *cx, JS::HandleObject global) {
+    jsb_Genius_SkillManager_class = (JSClass *)calloc(1, sizeof(JSClass));
+    jsb_Genius_SkillManager_class->name = "SkillManager";
+    jsb_Genius_SkillManager_class->addProperty = JS_PropertyStub;
+    jsb_Genius_SkillManager_class->delProperty = JS_DeletePropertyStub;
+    jsb_Genius_SkillManager_class->getProperty = JS_PropertyStub;
+    jsb_Genius_SkillManager_class->setProperty = JS_StrictPropertyStub;
+    jsb_Genius_SkillManager_class->enumerate = JS_EnumerateStub;
+    jsb_Genius_SkillManager_class->resolve = JS_ResolveStub;
+    jsb_Genius_SkillManager_class->convert = JS_ConvertStub;
+    jsb_Genius_SkillManager_class->finalize = js_Genius_SkillManager_finalize;
+    jsb_Genius_SkillManager_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+    static JSPropertySpec properties[] = {
+        JS_PS_END
+    };
+
+    static JSFunctionSpec funcs[] = {
+        JS_FN("ClearSkill", js_app_SkillManager_ClearSkill, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("UseSkill", js_app_SkillManager_UseSkill, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("ClearAllSkill", js_app_SkillManager_ClearAllSkill, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("CanUseSkill", js_app_SkillManager_CanUseSkill, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+    };
+
+    static JSFunctionSpec st_funcs[] = {
+        JS_FN("GetMe", js_app_SkillManager_GetMe, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+    };
+
+    jsb_Genius_SkillManager_prototype = JS_InitClass(
+        cx, global,
+        JS::NullPtr(),
+        jsb_Genius_SkillManager_class,
+        js_app_SkillManager_constructor, 0, // constructor
+        properties,
+        funcs,
+        NULL, // no static properties
+        st_funcs);
+
+    JS::RootedObject proto(cx, jsb_Genius_SkillManager_prototype);
+    JS::RootedValue className(cx, std_string_to_jsval(cx, "SkillManager"));
+    JS_SetProperty(cx, proto, "_className", className);
+    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
+    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
+    // add the proto and JSClass to the type->js info hash table
+    jsb_register_class<Genius::SkillManager>(cx, jsb_Genius_SkillManager_class, proto, JS::NullPtr());
+}
+
+JSClass  *jsb_Genius_BuffManager_class;
+JSObject *jsb_Genius_BuffManager_prototype;
+
+bool js_app_BuffManager_GetBuffCount(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::BuffManager* cobj = (Genius::BuffManager *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_BuffManager_GetBuffCount : Invalid Native Object");
+    if (argc == 0) {
+        int ret = cobj->GetBuffCount();
+        jsval jsret = JSVAL_NULL;
+        jsret = int32_to_jsval(cx, ret);
+        args.rval().set(jsret);
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_BuffManager_GetBuffCount : wrong number of arguments: %d, was expecting %d", argc, 0);
+    return false;
+}
+bool js_app_BuffManager_RemoveBuff(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::BuffManager* cobj = (Genius::BuffManager *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_BuffManager_RemoveBuff : Invalid Native Object");
+    if (argc == 1) {
+        int arg0 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_BuffManager_RemoveBuff : Error processing arguments");
+        cobj->RemoveBuff(arg0);
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_BuffManager_RemoveBuff : wrong number of arguments: %d, was expecting %d", argc, 1);
+    return false;
+}
+bool js_app_BuffManager_RemoveAllBuff(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::BuffManager* cobj = (Genius::BuffManager *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_BuffManager_RemoveAllBuff : Invalid Native Object");
+    if (argc == 0) {
+        cobj->RemoveAllBuff();
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_BuffManager_RemoveAllBuff : wrong number of arguments: %d, was expecting %d", argc, 0);
+    return false;
+}
+bool js_app_BuffManager_AddBuff(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::BuffManager* cobj = (Genius::BuffManager *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_BuffManager_AddBuff : Invalid Native Object");
+    if (argc == 3) {
+        int arg0 = 0;
+        int arg1 = 0;
+        int arg2 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        ok &= jsval_to_int32(cx, args.get(1), (int32_t *)&arg1);
+        ok &= jsval_to_int32(cx, args.get(2), (int32_t *)&arg2);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_BuffManager_AddBuff : Error processing arguments");
+        bool ret = cobj->AddBuff(arg0, arg1, arg2);
+        jsval jsret = JSVAL_NULL;
+        jsret = BOOLEAN_TO_JSVAL(ret);
+        args.rval().set(jsret);
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_BuffManager_AddBuff : wrong number of arguments: %d, was expecting %d", argc, 3);
+    return false;
+}
+bool js_app_BuffManager_GetMe(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    if (argc == 0) {
+
+        Genius::BuffManager* ret = Genius::BuffManager::GetMe();
+        jsval jsret = JSVAL_NULL;
+        if (ret) {
+        jsret = OBJECT_TO_JSVAL(js_get_or_create_jsobject<Genius::BuffManager>(cx, (Genius::BuffManager*)ret));
+    } else {
+        jsret = JSVAL_NULL;
+    };
+        args.rval().set(jsret);
+        return true;
+    }
+    JS_ReportError(cx, "js_app_BuffManager_GetMe : wrong number of arguments");
+    return false;
+}
+
+bool js_app_BuffManager_constructor(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    Genius::BuffManager* cobj = new (std::nothrow) Genius::BuffManager();
+
+    js_type_class_t *typeClass = js_get_type_from_native<Genius::BuffManager>(cobj);
+
+    // link the native object with the javascript object
+    JS::RootedObject jsobj(cx, jsb_create_weak_jsobject(cx, cobj, typeClass, "Genius::BuffManager"));
+    args.rval().set(OBJECT_TO_JSVAL(jsobj));
+    if (JS_HasProperty(cx, jsobj, "_ctor", &ok) && ok)
+        ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(jsobj), "_ctor", args);
+    return true;
+}
+
+
+void js_Genius_BuffManager_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (BuffManager)", obj);
+    js_proxy_t* nproxy;
+    js_proxy_t* jsproxy;
+    JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
+    JS::RootedObject jsobj(cx, obj);
+    jsproxy = jsb_get_js_proxy(jsobj);
+    if (jsproxy) {
+        Genius::BuffManager *nobj = static_cast<Genius::BuffManager *>(jsproxy->ptr);
+        nproxy = jsb_get_native_proxy(jsproxy->ptr);
+
+        if (nobj) {
+            jsb_remove_proxy(nproxy, jsproxy);
+            delete nobj;
+        }
+        else
+            jsb_remove_proxy(nullptr, jsproxy);
+    }
+}
+void js_register_app_BuffManager(JSContext *cx, JS::HandleObject global) {
+    jsb_Genius_BuffManager_class = (JSClass *)calloc(1, sizeof(JSClass));
+    jsb_Genius_BuffManager_class->name = "BuffManager";
+    jsb_Genius_BuffManager_class->addProperty = JS_PropertyStub;
+    jsb_Genius_BuffManager_class->delProperty = JS_DeletePropertyStub;
+    jsb_Genius_BuffManager_class->getProperty = JS_PropertyStub;
+    jsb_Genius_BuffManager_class->setProperty = JS_StrictPropertyStub;
+    jsb_Genius_BuffManager_class->enumerate = JS_EnumerateStub;
+    jsb_Genius_BuffManager_class->resolve = JS_ResolveStub;
+    jsb_Genius_BuffManager_class->convert = JS_ConvertStub;
+    jsb_Genius_BuffManager_class->finalize = js_Genius_BuffManager_finalize;
+    jsb_Genius_BuffManager_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+    static JSPropertySpec properties[] = {
+        JS_PS_END
+    };
+
+    static JSFunctionSpec funcs[] = {
+        JS_FN("GetBuffCount", js_app_BuffManager_GetBuffCount, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("RemoveBuff", js_app_BuffManager_RemoveBuff, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("RemoveAllBuff", js_app_BuffManager_RemoveAllBuff, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("AddBuff", js_app_BuffManager_AddBuff, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+    };
+
+    static JSFunctionSpec st_funcs[] = {
+        JS_FN("GetMe", js_app_BuffManager_GetMe, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+    };
+
+    jsb_Genius_BuffManager_prototype = JS_InitClass(
+        cx, global,
+        JS::NullPtr(),
+        jsb_Genius_BuffManager_class,
+        js_app_BuffManager_constructor, 0, // constructor
+        properties,
+        funcs,
+        NULL, // no static properties
+        st_funcs);
+
+    JS::RootedObject proto(cx, jsb_Genius_BuffManager_prototype);
+    JS::RootedValue className(cx, std_string_to_jsval(cx, "BuffManager"));
+    JS_SetProperty(cx, proto, "_className", className);
+    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
+    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
+    // add the proto and JSClass to the type->js info hash table
+    jsb_register_class<Genius::BuffManager>(cx, jsb_Genius_BuffManager_class, proto, JS::NullPtr());
+}
+
 JSClass  *jsb_Genius_EntityWrapper_class;
 JSObject *jsb_Genius_EntityWrapper_prototype;
 
@@ -4302,6 +4684,7 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
 
     js_register_app_TimeSystem(cx, ns);
     js_register_app_Log(cx, ns);
+    js_register_app_WorldWrapper(cx, ns);
     js_register_app_IComponent(cx, ns);
     js_register_app_ComBoxCollider(cx, ns);
     js_register_app_ComPawnAgent(cx, ns);
@@ -4313,7 +4696,7 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
     js_register_app_PawnBlackboard(cx, ns);
     js_register_app_RollNumberLabel(cx, ns);
     js_register_app_ComPawnDebugDraw(cx, ns);
-    js_register_app_WorldWrapper(cx, ns);
+    js_register_app_SkillManager(cx, ns);
     js_register_app_ComParticle(cx, ns);
     js_register_app_ComRenderRoot(cx, ns);
     js_register_app_JSInvoker(cx, ns);
@@ -4322,6 +4705,7 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
     js_register_app_ComPawnAnim(cx, ns);
     js_register_app_EntityUtility(cx, ns);
     js_register_app_ComBulletDebugDraw(cx, ns);
+    js_register_app_BuffManager(cx, ns);
     js_register_app_SceneManager(cx, ns);
     js_register_app_ComBulletAnimEgg(cx, ns);
     js_register_app_ComBezierMovement(cx, ns);

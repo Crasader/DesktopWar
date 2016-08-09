@@ -1,7 +1,8 @@
 
+var gn = gn || {};
 
 // global toggles and settings
-var Setting =
+gn.Setting =
 {
     DebugDraw:false,
 };
@@ -9,7 +10,7 @@ var Setting =
 /////////////////////////////////
 
 // names of all components
-var ComName =
+gn.ComName =
 {
     // native coms
     Transform: "ComTransform",
@@ -45,14 +46,14 @@ var ComName =
 };
 
 
-var Tag =
+gn.Tag =
 {
     Soldier:"Soldier",
     Monster:"Monster",
 };
 
 
-var BulletMoveType =
+gn.BulletMoveType =
 {
     Unknown : 0,
     Line : 1,
@@ -60,21 +61,21 @@ var BulletMoveType =
     Tracking : 3
 };
 
-var TargetType =
+gn.TargetType =
 {
     Entity:0,			// 以某entity做目标
     Location:1,		// 以某位置做目标
 };
 
 // 攻击类型
-var AttackType =
+gn.AttackType =
 {
     Physic:1,
     Magic:2
 };
 
 // 角色朝向
-var FaceDir =
+gn.FaceDir =
 {
     Left:1 << 1,
     Right:1 << 2,
@@ -84,7 +85,7 @@ var FaceDir =
 
 
 // 状态名
-var SG =
+gn.SG =
 {
     Idle:'idle',
     Die:'die',
@@ -98,7 +99,7 @@ var SG =
 };
 
 // 约定动画名
-var AnimName =
+gn.AnimName =
 {
     Idle:'idle',
     Die:'die',
@@ -111,7 +112,7 @@ var AnimName =
     Skill3:'skill3'
 };
 
-var PawnAnimName =
+gn.PawnAnimName =
 {
     Idle_L:"idle_left",
     Idle_R:"idle_right",
@@ -139,16 +140,31 @@ var PawnAnimName =
 };
 
 // event names
-var Event =
+gn.Event =
 {
     Locomote:"Locomote",
+    FaceTo:"FaceTo",
     Attack:"Attack",
     Attacked:"Attacked",
+
+    //armature frame event
+    FrameAttack1:"attack",
+    FrameAttack2:"attack",
+    FrameAttack3:"attack",
+    FrameSkill1:"skill",
+    FrameSkill2:"skill2",
+    FrameSkill3:"skill3",
+
+    //armature movement event
+    AnimStart:"AnimStart",
+    AnimComplete:"AnimComplete",
+    AnimLoopComplete:"AnimLoopComplete",
+
 };
 
 
 // EntityScript Blackboard中的Key
-var BB = {
+gn.BB = {
     RoleCfg:"RoleCfg",
     FollowTarget:"FollowTarget",
     CombatTarget:"CombatTarget",

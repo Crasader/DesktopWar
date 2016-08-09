@@ -1249,6 +1249,152 @@ entity
 };
 
 /**
+ * @class SkillManager
+ */
+SkillManager = {
+
+/**
+ * @method ClearSkill
+ * @param {int} arg0
+ */
+ClearSkill : function (
+int 
+)
+{
+},
+
+/**
+ * @method UseSkill
+ * @param {int} arg0
+ * @param {int} arg1
+ * @param {int} arg2
+ * @return {bool}
+ */
+UseSkill : function (
+int, 
+int, 
+int 
+)
+{
+    return false;
+},
+
+/**
+ * @method ClearAllSkill
+ */
+ClearAllSkill : function (
+)
+{
+},
+
+/**
+ * @method CanUseSkill
+ * @param {int} arg0
+ * @param {int} arg1
+ * @param {int} arg2
+ * @return {bool}
+ */
+CanUseSkill : function (
+int, 
+int, 
+int 
+)
+{
+    return false;
+},
+
+/**
+ * @method GetMe
+ * @return {Genius::SkillManager}
+ */
+GetMe : function (
+)
+{
+    return Genius::SkillManager;
+},
+
+/**
+ * @method SkillManager
+ * @constructor
+ */
+SkillManager : function (
+)
+{
+},
+
+};
+
+/**
+ * @class BuffManager
+ */
+BuffManager = {
+
+/**
+ * @method GetBuffCount
+ * @return {int}
+ */
+GetBuffCount : function (
+)
+{
+    return 0;
+},
+
+/**
+ * @method RemoveBuff
+ * @param {int} arg0
+ */
+RemoveBuff : function (
+int 
+)
+{
+},
+
+/**
+ * @method RemoveAllBuff
+ */
+RemoveAllBuff : function (
+)
+{
+},
+
+/**
+ * @method AddBuff
+ * @param {int} arg0
+ * @param {int} arg1
+ * @param {int} arg2
+ * @return {bool}
+ */
+AddBuff : function (
+int, 
+int, 
+int 
+)
+{
+    return false;
+},
+
+/**
+ * @method GetMe
+ * @return {Genius::BuffManager}
+ */
+GetMe : function (
+)
+{
+    return Genius::BuffManager;
+},
+
+/**
+ * @method BuffManager
+ * @constructor
+ */
+BuffManager : function (
+)
+{
+},
+
+};
+
+/**
  * @class EntityWrapper
  */
 Entity = {

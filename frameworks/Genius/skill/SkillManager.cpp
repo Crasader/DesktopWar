@@ -6,6 +6,11 @@
 using namespace Genius;
 using namespace cfg;
 
+SkillManager* SkillManager::GetMe()
+{
+	return SkillManager::GetSingleton();
+}
+
 
 SkillManager::SkillManager() :
 m_timeCounter(0)

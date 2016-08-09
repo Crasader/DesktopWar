@@ -40,12 +40,12 @@ var Attr = BaseComponent.extend({
         this.attrs[Attr.HP] = roleCfg.baseLife;
         this.attrs[Attr.AP] = 0;
         this.attrs[Attr.AM] = 0;
-        if (roleCfg.attackType == AttackType.Physic)
+        if (roleCfg.attackType == gn.AttackType.Physic)
         {
             this.attrs[Attr.AP] = roleCfg.attackValue;
             this.attrs[Attr.AM] = 0;
         }
-        else if (roleCfg.attackType == AttackType.Magic)
+        else if (roleCfg.attackType == gn.AttackType.Magic)
         {
             this.attrs[Attr.AP] = 0;
             this.attrs[Attr.AM] = roleCfg.attackValue;

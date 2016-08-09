@@ -304,6 +304,34 @@ bool js_app_EntityUtility_IsInMyNearRange(JSContext *cx, uint32_t argc, jsval *v
 bool js_app_EntityUtility_AreEntitiesCloseEnough(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityUtility_IsTagged(JSContext *cx, uint32_t argc, jsval *vp);
 
+extern JSClass  *jsb_Genius_SkillManager_class;
+extern JSObject *jsb_Genius_SkillManager_prototype;
+
+bool js_app_SkillManager_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_SkillManager_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_SkillManager(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_SkillManager_ClearSkill(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_SkillManager_UseSkill(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_SkillManager_ClearAllSkill(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_SkillManager_CanUseSkill(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_SkillManager_GetMe(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_SkillManager_SkillManager(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_Genius_BuffManager_class;
+extern JSObject *jsb_Genius_BuffManager_prototype;
+
+bool js_app_BuffManager_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_app_BuffManager_finalize(JSContext *cx, JSObject *obj);
+void js_register_app_BuffManager(JSContext *cx, JS::HandleObject global);
+void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_BuffManager_GetBuffCount(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_BuffManager_RemoveBuff(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_BuffManager_RemoveAllBuff(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_BuffManager_AddBuff(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_BuffManager_GetMe(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_BuffManager_BuffManager(JSContext *cx, uint32_t argc, jsval *vp);
+
 extern JSClass  *jsb_Genius_EntityWrapper_class;
 extern JSObject *jsb_Genius_EntityWrapper_prototype;
 

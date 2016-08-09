@@ -2,6 +2,23 @@
 
 var commonStatus = {};
 
+///////////////////////////////anim event handlers/////////////////////////
+
+commonStatus.OnFrameAttack1 = function()
+{
+    return new EventHandler(gn.Event.FrameAttack1,
+        function(entity) {
+            //var combat = entity.GetComponent(ComName.Combat);
+            var target = entity.GetBlackboard(BB.CombatTarget);
+            var cfg = entity.GetBlackboard(BB.RoleCfg);
+            var can = gn.SkillMgr.CanUseSkill(entity.GetID(), target.GetID(), cfg.normalSkill1);
+            if (can)
+                gn.SkillMgr.UseSkill(entity.GetID(), target.GetID(), cfg.normalSkill1);
+        }
+    );
+};
+
+
 ///////////////////////////////common state/////////////////////////
 
 (function(){
@@ -12,15 +29,15 @@ var commonStatus = {};
         name: 'idle',
 
         onenter: function (entity) {
-            entity.GetComponent(ComName.Locomotor).StopMove();
-            PlayPawnAnim(entity, AnimName.Idle);
+            entity.GetComponent(gn.ComName.Locomotor).StopMove();
+            PlayPawnAnim(entity, gn.AnimName.Idle);
         },
 
         onexit: function (entity) {
 
         },
 
-        events: {}
+        events: []
     };
 
     commonStatus.idle = new State(st);
@@ -35,15 +52,15 @@ var commonStatus = {};
         name: 'die',
 
         onenter: function (entity) {
-            entity.GetComponent(ComName.Locomotor).StopMove();
-            PlayPawnAnim(entity, AnimName.Die);
+            entity.GetComponent(gn.ComName.Locomotor).StopMove();
+            PlayPawnAnim(entity, gn.AnimName.Die);
         },
 
         onexit: function (entity) {
 
         },
 
-        events: {}
+        events: []
     };
 
     commonStatus.die = new State(st);
@@ -58,14 +75,14 @@ var commonStatus = {};
         name: 'move',
 
         onenter: function (entity) {
-            PlayPawnAnim(entity, AnimName.Move);
+            PlayPawnAnim(entity, gn.AnimName.Move);
         },
 
         onexit: function (entity) {
 
         },
 
-        events: {}
+        events: []
     };
 
     commonStatus.move = new State(st);
@@ -80,17 +97,18 @@ var commonStatus = {};
         name: 'attackNear',
 
         onenter: function (entity) {
-            entity.GetComponent(ComName.Locomotor).StopMove();
-            PlayPawnAnim(entity, AnimName.Atk1);
+            entity.GetComponent(gn.ComName.Locomotor).StopMove();
+            PlayPawnAnim(entity, gn.AnimName.Atk1);
         },
 
         onexit: function (entity) {
 
         },
 
-        events: {
-            //帧事件、动画结束事件
-        }
+        events: [
+            commonStatus.OnFrameAttack1(),
+            new EventHandler(gn.Event.AnimComplete, function(entity) {print('atk near loop over');}),
+        ]
     };
 
     commonStatus.attackNear = new State(st);
@@ -105,8 +123,8 @@ var commonStatus = {};
         name: 'attackFar',
 
         onenter: function (entity) {
-            entity.GetComponent(ComName.Locomotor).StopMove();
-            PlayPawnAnim(entity, AnimName.Atk2);
+            entity.GetComponent(gn.ComName.Locomotor).StopMove();
+            PlayPawnAnim(entity, gn.AnimName.Atk2);
         },
 
         onexit: function (entity) {
@@ -130,17 +148,17 @@ var commonStatus = {};
         name: 'skill1',
 
         onenter: function (entity) {
-            entity.GetComponent(ComName.Locomotor).StopMove();
-            PlayPawnAnim(entity, AnimName.Skill1);
+            entity.GetComponent(gn.ComName.Locomotor).StopMove();
+            PlayPawnAnim(entity, gn.AnimName.Skill1);
         },
 
         onexit: function (entity) {
 
         },
 
-        events: {
-            //帧事件、动画结束事件
-        }
+        events: [
+            new EventHandler(gn.Event.AnimComplete, function(entity) {entity.GetStateGraph().gotoState(gn.SG.Idle)}),
+        ]
     };
 
     commonStatus.skill1 = new State(st);
@@ -155,17 +173,17 @@ var commonStatus = {};
         name: 'skill2',
 
         onenter: function (entity) {
-            entity.GetComponent(ComName.Locomotor).StopMove();
-            PlayPawnAnim(entity, AnimName.Skill2);
+            entity.GetComponent(gn.ComName.Locomotor).StopMove();
+            PlayPawnAnim(entity, gn.AnimName.Skill2);
         },
 
         onexit: function (entity) {
 
         },
 
-        events: {
-            //帧事件、动画结束事件
-        }
+        events: [
+            new EventHandler(gn.Event.AnimComplete, function(entity) {entity.GetStateGraph().gotoState(gn.SG.Idle)}),
+        ]
     };
 
     commonStatus.skill2 = new State(st);
@@ -207,19 +225,21 @@ commonStatus.AddSkill2 = function(status) {
     status[commonStatus.skill2.getName()] = commonStatus.skill2;
 };
 
-///////////////////////////////event handlers/////////////////////////
+
+
+///////////////////////////////graph event handlers/////////////////////////
 
 commonStatus.OnLocomote = function()
 {
-    return new EventHandler('locomote',
+    return new EventHandler(gn.Event.Locomote,
     function(entity) {
-        var locomotor = entity.GetComponent(ComName.Locomotor);
+        var locomotor = entity.GetComponent(gn.ComName.Locomotor);
         var isMoving = locomotor.IsMoving();
         if (isMoving){
-            entity.GetStateGraph().gotoState(SG.Move);
+            entity.GetStateGraph().gotoState(gn.SG.Move);
         }
         else{
-            entity.GetStateGraph().gotoState(SG.Idle);
+            entity.GetStateGraph().gotoState(gn.SG.Idle);
         }
     }
     );
@@ -228,10 +248,10 @@ commonStatus.OnLocomote = function()
 
 commonStatus.OnFaceTo = function()
 {
-    return new EventHandler('faceto',
+    return new EventHandler(gn.Event.FaceTo,
         function(entity, data) {
             //face to tar
-            var transform = entity.GetComponent(ComName.Transform);
+            var transform = entity.GetComponent(gn.ComName.Transform);
             transform.FaceTo(data.targetX, data.targetY);
         }
     );

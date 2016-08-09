@@ -5,12 +5,22 @@ var State = Class.extend({
     name: 'no name',
     onEnter: null,
     onExit: null,
-    events: null,
+    eventHandlers: null,
 
     ctor: function (args) {
         this.name = args.name;
         this.onEnter = args.onenter;
         this.onExit = args.onexit;
+        this.eventHandlers = {};
+        for(var id in args.events){
+            var evt = args.events[id];
+            if (evt instanceof EventHandler) {
+                this.ListenForEvent(evt.getName(),evt.getFn());
+            }
+            else {
+                print('not a EventHandler');
+            }
+        }
     },
 
     OnEnter: function (entity) {
@@ -27,6 +37,29 @@ var State = Class.extend({
 
     getName: function () {
         return this.name;
+    },
+
+    ListenForEvent:function(event, handler) {
+        if (typeof(event) != 'string') {
+            print('State.ListenForEvent: event is not a string.@'+this.getName());
+            return;
+        }
+        if (typeof(handler) != 'function') {
+            print('State.ListenForEvent: handler is not a function.@'+this.getName());
+            return;
+        }
+        if(this.eventHandlers[event] != null){
+            print('State.ListenForEvent: override event @event:'+event+'@State:'+this.getName());
+        }
+
+        this.eventHandlers[event] = handler;
+    },
+
+    HandleEvent:function(event,entity){
+        if(this.eventHandlers[event] != null){
+            this.eventHandlers[event](entity);
+            print('state handle event '+event);
+        }
     }
 
 });
@@ -126,6 +159,10 @@ var StateGraph = Class.extend({
                 handlers[id](this.entity,data);
             }
         }
+        if(this.currentState != null){
+            this.currentState.HandleEvent(event,this.entity);
+        }
+
     },
 
     SetAnimPrefixName:function(name) {

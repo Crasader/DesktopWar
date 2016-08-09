@@ -8,33 +8,33 @@ var Monster = {
 
         var inst = Game.CreateEntity();
 
-        var posCom = inst.AddComponent(ComName.Transform);
+        var posCom = inst.AddComponent(gn.ComName.Transform);
         posCom.SetPosition(posx, posy);
         posCom.SetVelocity(0, 0);
 
 		var roleCfg = Config.Role[id];
 
-        inst.SetBlackboard(BB.RoleCfg, roleCfg);
-        inst.SetBlackboard(BB.HomePosition, {x:posx,y:posy});
+        inst.SetBlackboard(gn.BB.RoleCfg, roleCfg);
+        inst.SetBlackboard(gn.BB.HomePosition, {x:posx,y:posy});
 
-        var agent = inst.AddComponent(ComName.PawnAgent);
+        var agent = inst.AddComponent(gn.ComName.PawnAgent);
 		agent.Create(id,true);
 
-        inst.AddComponent(ComName.Render);
+        inst.AddComponent(gn.ComName.Render);
 
-        var paCom = inst.AddComponent(ComName.PawnAnim);
+        var paCom = inst.AddComponent(gn.ComName.PawnAnim);
         paCom.Create(id);
         var width = paCom.GetWidth()*0.5;
         var height = paCom.GetHeight()*0.7;
 
-        var box = inst.AddComponent(ComName.BoxCollider);
+        var box = inst.AddComponent(gn.ComName.BoxCollider);
         box.Create(true, 0, height*0.5, width, height);
 
-        var nav = inst.AddComponent(ComName.PawnNavigation);
-        var fht = inst.AddComponent(ComName.PawnFight);
+        var nav = inst.AddComponent(gn.ComName.PawnNavigation);
+        var fht = inst.AddComponent(gn.ComName.PawnFight);
 
-        if(Setting.DebugDraw){
-            inst.AddComponent(ComName.PawnDebugDraw);
+        if(gn.Setting.DebugDraw){
+            inst.AddComponent(gn.ComName.PawnDebugDraw);
         }
 
 
@@ -51,7 +51,7 @@ var Monster = {
         inst.SetStateGraph(CreateCommonGraph(inst));
 
 
-        inst.AddTag(Tag.Monster);
+        inst.AddTag(gn.Tag.Monster);
 
         inst.OnAwake();
 

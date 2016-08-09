@@ -11,6 +11,7 @@ namespace Genius
 	{
 	public:
 		SkillManager();
+		static SkillManager* GetMe();
 
 	public:
 		void		Update(float elapse);

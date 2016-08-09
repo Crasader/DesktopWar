@@ -13,6 +13,8 @@
 #include "entity/EntityCreators.h"
 #include "data/auto/Role_cfg.hpp"
 #include "entity/EntityUtility.h"
+#include "skill/SkillManager.h"
+#include "skill/BuffManager.h"
 
 //ecs
 #include "ECS/EntityWrapper.h"

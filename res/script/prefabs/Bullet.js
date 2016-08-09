@@ -17,65 +17,65 @@ var Bullet = {
 
         inst.SetBlackboard('bulletCfg', bulletCfg);
 
-        var agent = inst.AddComponent(ComName.PawnAgent);
+        var agent = inst.AddComponent(gn.ComName.PawnAgent);
         agent.Create(bulletId,false);
 
-        var posCom = inst.AddComponent(ComName.Transform);
+        var posCom = inst.AddComponent(gn.ComName.Transform);
         posCom.SetPosition(posx, posy);
         posCom.SetVelocity(0, 0);
 
-        var box = inst.AddComponent(ComName.BoxCollider);
+        var box = inst.AddComponent(gn.ComName.BoxCollider);
         box.Create(false, 0, 0, bulletCfg.boxWidth, bulletCfg.boxHeight);
 
-        inst.AddComponent(ComName.Render);
+        inst.AddComponent(gn.ComName.Render);
 
-        var damage = inst.AddComponent(ComName.BulletDamage);
+        var damage = inst.AddComponent(gn.ComName.BulletDamage);
 
 
-        if (bulletCfg.moveType == BulletMoveType.Line)
+        if (bulletCfg.moveType == gn.BulletMoveType.Line)
         {
             posCom.SetVelocity(0, 0);
 
-            var baegg = inst.AddComponent(ComName.BulletAnimEgg);
+            var baegg = inst.AddComponent(gn.ComName.BulletAnimEgg);
             baegg.Create(anim_cfg.name);
         }
-        else if (bulletCfg.moveType == BulletMoveType.Bezier)
+        else if (bulletCfg.moveType == gn.BulletMoveType.Bezier)
         {
             posCom.SetVelocity(0, 0);
 
-            inst.AddComponent(ComName.Direction);
+            inst.AddComponent(gn.ComName.Direction);
 
-            var bez = inst.AddComponent(ComName.BezierMovement);
+            var bez = inst.AddComponent(gn.ComName.BezierMovement);
             bez.Create(posx, posy, destX, destY, (abs(posx - destX) + abs(posy - destY)) / bulletCfg.flySpeed);
 
             damage.SetTargetID(targetId);
 
-            var banim = inst.AddComponent(ComName.BulletAnimArrow);
+            var banim = inst.AddComponent(gn.ComName.BulletAnimArrow);
             banim.Create(anim_cfg.name);
 
-            agent.GetBlackboard().SetTargetType(TargetType.Location);
+            agent.GetBlackboard().SetTargetType(gn.TargetType.Location);
             agent.GetBlackboard().SetTargetX(destX);
             agent.GetBlackboard().SetTargetY(destY);
 
         }
-        else if(bulletCfg.moveType == BulletMoveType.Tracking)
+        else if(bulletCfg.moveType == gn.BulletMoveType.Tracking)
         {
-            inst.AddComponent(ComName.Direction);
+            inst.AddComponent(gn.ComName.Direction);
 
             posCom.SetVelocity(0, bulletCfg.flySpeed);
 
-            var delayTrack = inst.AddComponent(ComName.DelayTrackMovement);
+            var delayTrack = inst.AddComponent(gn.ComName.DelayTrackMovement);
             delayTrack.Create(targetId, bulletCfg.findTargetDelay);
 
-            var bom = inst.AddComponent(ComName.BulletAnimBomb);
+            var bom = inst.AddComponent(gn.ComName.BulletAnimBomb);
             bom.Create(anim_cfg.name, bulletCfg.tailAnim);
 
-            agent.GetBlackboard().SetTargetType(TargetType.Entity);
+            agent.GetBlackboard().SetTargetType(gn.TargetType.Entity);
             agent.GetBlackboard().SetTargetID(targetId);
         }
 
-        if(Setting.DebugDraw){
-            inst.AddComponent(ComName.BulletDebugDraw);
+        if(gn.Setting.DebugDraw){
+            inst.AddComponent(gn.ComName.BulletDebugDraw);
         }
 
         // js coms

@@ -4,6 +4,12 @@
 using namespace Genius;
 
 
+BuffManager* BuffManager::GetMe()
+{
+	return BuffManager::GetSingleton();
+}
+
+
 BuffManager::BuffManager():
 m_timeCounter(0)
 {

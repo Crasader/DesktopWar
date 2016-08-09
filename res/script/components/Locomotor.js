@@ -22,7 +22,7 @@ var Locomotor = BaseComponent.extend({
     },
 
     OnStart:function() {
-        this.attrCom = this.entity.GetComponent(ComName.Attr);
+        this.attrCom = this.entity.GetComponent(gn.ComName.Attr);
         if (null == this.attrCom) {
             print('Locomotor.OnStart: require com attr');
         }
@@ -33,19 +33,19 @@ var Locomotor = BaseComponent.extend({
     },
 
     SetPosition:function(x,y) {
-        this.entity.GetComponent(ComName.Transform).SetPosition(x, y);
+        this.entity.GetComponent(gn.ComName.Transform).SetPosition(x, y);
     },
 
     MoveToPoint:function(x,y) {
         this.isMoving = true;
         var speed = this.attrCom.Get(Attr.SPD);
-        this.entity.GetComponent(ComName.Transform).MoveTo(x, y, speed);
+        this.entity.GetComponent(gn.ComName.Transform).MoveTo(x, y, speed);
         this.entity.StartUpdateComponent(this);
-        this.entity.PushEvent('locomote');
+        this.entity.PushEvent(gn.Event.Locomote);
     },
 
     MoveToEntity:function(entity){
-        var targetTran = entity.GetComponent(ComName.Transform);
+        var targetTran = entity.GetComponent(gn.ComName.Transform);
         var x = targetTran.GetX();
         var y = targetTran.GetY();
         this.MoveToPoint(x, y);
@@ -54,25 +54,25 @@ var Locomotor = BaseComponent.extend({
     MoveTowards:function(angle) {
         this.isMoving = true;
         var speed = this.attrCom.Get(Attr.SPD);
-        this.entity.GetComponent(ComName.Transform).MoveTowards(angle, speed);
+        this.entity.GetComponent(gn.ComName.Transform).MoveTowards(angle, speed);
         this.entity.StartUpdateComponent(this);
-        this.entity.PushEvent('locomote');
+        this.entity.PushEvent(gn.Event.Locomote);
     },
 
     StopMove:function() {
         if (this.isMoving) {
             this.isMoving = false;
-            this.entity.GetComponent(ComName.Transform).SetVelocity(0, 0);
+            this.entity.GetComponent(gn.ComName.Transform).SetVelocity(0, 0);
             this.entity.StopUpdateComponent(this);
-            this.entity.PushEvent('locomote');
+            this.entity.PushEvent(gn.Event.Locomote);
         }
     },
 
     FaceToEntity:function(target){
-        var targetTran = target.GetComponent(ComName.Transform);
+        var targetTran = target.GetComponent(gn.ComName.Transform);
         var x = targetTran.GetX();
         var y = targetTran.GetY();
-        this.entity.PushEvent('faceto',{targetX:x,targetY:y});
+        this.entity.PushEvent(gn.Event.FaceTo,{targetX:x,targetY:y});
     }
 
 });

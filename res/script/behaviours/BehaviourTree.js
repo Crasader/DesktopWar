@@ -3,7 +3,7 @@
 
 
 
-var bt = {};
+var bt = bt || {};
 
 
 (function() {

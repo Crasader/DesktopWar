@@ -11,6 +11,7 @@ namespace Genius
 	{
 	public:
 		BuffManager();
+		static BuffManager* GetMe();
 
 		void Update(float elapse);
 		bool AddBuff(int senderID, int targetID, int buffID);
