@@ -77,15 +77,6 @@ bool SystemPawnFight::HandleEvent(IEventData const &evt)
 	EventType eType = evt.GetType();
 	switch (eType)
 	{
-	case Event_attackNear:
-		HandleAttackTarget(evt);
-		break;
-	case Event_attackNear2:
-		HandleAttackTarget2(evt);
-		break;
-	case Event_skill1:
-		HandleUseSkill(evt);
-		break;
 	case Event_Hurt:
 		HandleHurt(evt);
 		break;
@@ -94,84 +85,6 @@ bool SystemPawnFight::HandleEvent(IEventData const &evt)
 	}
 
 	return true;
-}
-
-void SystemPawnFight::HandleAttackTarget(IEventData const &evt)
-{
-	const AttackNearEvent & castedEvent = static_cast<const AttackNearEvent &>(evt);
-	auto fightCom = pawnFightMapper.get(castedEvent.entity);
-	if (fightCom)
-	{
-		Entity* enemy = ECSWorld::GetSingleton()->GetEntity(fightCom->enemyID);
-		if (nullptr == enemy)
-			return;
-		auto posCom = enemy->GetComponent<ComTransform>();
-		if (posCom)
-		{
-			EventManager::GetSingleton()->FireEvent(TurnToEvent(castedEvent.entity, posCom->x, posCom->y));
-			//EventManager::GetSingleton()->FireEvent(ActionEvent(castedEvent.entity, Action_Attack_Near));
-			ComPawnAgent* agentCom = castedEvent.entity->GetComponent<ComPawnAgent>();
-			agentCom->AddAction(PAT_AttackNear);
-		}
-	}
-}
-
-void SystemPawnFight::HandleAttackTarget2(IEventData const &evt)
-{
-	const AttackNearEvent & castedEvent = static_cast<const AttackNearEvent &>(evt);
-	auto fightCom = pawnFightMapper.get(castedEvent.entity);
-	if (fightCom)
-	{
-		Entity* enemy = ECSWorld::GetSingleton()->GetEntity(fightCom->enemyID);
-		if (nullptr == enemy)
-			return;
-		auto posCom = enemy->GetComponent<ComTransform>();
-		if (posCom)
-		{
-			EventManager::GetSingleton()->FireEvent(TurnToEvent(castedEvent.entity, posCom->x, posCom->y));
-			//EventManager::GetSingleton()->FireEvent(ActionEvent(castedEvent.entity, Action_Attack_Near2));
-			ComPawnAgent* agentCom = castedEvent.entity->GetComponent<ComPawnAgent>();
-			agentCom->AddAction(PAT_AttackNear);
-		}
-	}
-}
-
-void SystemPawnFight::HandleUseSkill(IEventData const &evt)
-{
-	const UseSkillEvent & castedEvent = static_cast<const UseSkillEvent &>(evt);
-	auto fightCom = pawnFightMapper.get(castedEvent.entity);
-	ComPawnAgent* templateCom = pawnAgentMapper.get(castedEvent.entity);
-	bool ret = false;
-	switch (castedEvent.skillType)
-	{
-	case UseSkillEvent::NormalSkill1:
-		ret = SkillManager::GetSingleton()->CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_roleCfg->normalSkill1);
-		if (ret)
-			SkillManager::GetSingleton()->UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_roleCfg->normalSkill1);
-		break;
-	case UseSkillEvent::NormalSkill2:
-		ret = SkillManager::GetSingleton()->CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_roleCfg->normalSkill2);
-		if (ret)
-			SkillManager::GetSingleton()->UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_roleCfg->normalSkill1);
-		break;
-	case UseSkillEvent::SpecialSkill1:
-		ret = SkillManager::GetSingleton()->CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_roleCfg->specialSkill1);
-		if (ret)
-			SkillManager::GetSingleton()->UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_roleCfg->specialSkill1);
-		break;
-	case UseSkillEvent::SpecialSkill2:
-		ret = SkillManager::GetSingleton()->CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_roleCfg->specialSkill2);
-		if (ret)
-			SkillManager::GetSingleton()->UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_roleCfg->specialSkill2);
-		break;
-	case UseSkillEvent::SpecialSkill3:
-		ret = SkillManager::GetSingleton()->CanUseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_roleCfg->specialSkill3);
-		if (ret)
-			SkillManager::GetSingleton()->UseSkill(castedEvent.entity->GetId(), fightCom->enemyID, templateCom->m_roleCfg->specialSkill3);
-		break;
-	default:
-		return;
-	}
 }
 
 void SystemPawnFight::HandleHurt(IEventData const &evt)

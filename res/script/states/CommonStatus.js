@@ -9,8 +9,8 @@ commonStatus.OnFrameAttack1 = function()
     return new EventHandler(gn.Event.FrameAttack1,
         function(entity) {
             //var combat = entity.GetComponent(ComName.Combat);
-            var target = entity.GetBlackboard(BB.CombatTarget);
-            var cfg = entity.GetBlackboard(BB.RoleCfg);
+            var target = entity.GetBlackboard(gn.BB.CombatTarget);
+            var cfg = entity.GetBlackboard(gn.BB.RoleCfg);
             var can = gn.SkillMgr.CanUseSkill(entity.GetID(), target.GetID(), cfg.normalSkill1);
             if (can)
                 gn.SkillMgr.UseSkill(entity.GetID(), target.GetID(), cfg.normalSkill1);

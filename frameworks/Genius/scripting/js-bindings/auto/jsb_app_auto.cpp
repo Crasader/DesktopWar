@@ -102,6 +102,44 @@ bool js_app_JSInvoker_Invoke_Update(JSContext *cx, uint32_t argc, jsval *vp)
     return false;
 }
 
+bool js_app_JSInvoker_Invoke_ModifyEntityAttr(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 4) {
+        int arg0 = 0;
+        int arg1 = 0;
+        int arg2 = 0;
+        int arg3 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        ok &= jsval_to_int32(cx, args.get(1), (int32_t *)&arg1);
+        ok &= jsval_to_int32(cx, args.get(2), (int32_t *)&arg2);
+        ok &= jsval_to_int32(cx, args.get(3), (int32_t *)&arg3);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_JSInvoker_Invoke_ModifyEntityAttr : Error processing arguments");
+        JSInvoker::Invoke_ModifyEntityAttr(arg0, arg1, arg2, arg3);
+        args.rval().setUndefined();
+        return true;
+    }
+    if (argc == 5) {
+        int arg0 = 0;
+        int arg1 = 0;
+        int arg2 = 0;
+        int arg3 = 0;
+        int arg4 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        ok &= jsval_to_int32(cx, args.get(1), (int32_t *)&arg1);
+        ok &= jsval_to_int32(cx, args.get(2), (int32_t *)&arg2);
+        ok &= jsval_to_int32(cx, args.get(3), (int32_t *)&arg3);
+        ok &= jsval_to_int32(cx, args.get(4), (int32_t *)&arg4);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_JSInvoker_Invoke_ModifyEntityAttr : Error processing arguments");
+        JSInvoker::Invoke_ModifyEntityAttr(arg0, arg1, arg2, arg3, arg4);
+        args.rval().setUndefined();
+        return true;
+    }
+    JS_ReportError(cx, "js_app_JSInvoker_Invoke_ModifyEntityAttr : wrong number of arguments");
+    return false;
+}
+
 bool js_app_JSInvoker_Invoke_ArmatureMovementEvent(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -179,6 +217,7 @@ void js_register_app_JSInvoker(JSContext *cx, JS::HandleObject global) {
 
     static JSFunctionSpec st_funcs[] = {
         JS_FN("Invoke_Update", js_app_JSInvoker_Invoke_Update, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("Invoke_ModifyEntityAttr", js_app_JSInvoker_Invoke_ModifyEntityAttr, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Invoke_ArmatureMovementEvent", js_app_JSInvoker_Invoke_ArmatureMovementEvent, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Invoke_ArmatureFrameEvent", js_app_JSInvoker_Invoke_ArmatureFrameEvent, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Invoke_LongUpdate", js_app_JSInvoker_Invoke_LongUpdate, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),

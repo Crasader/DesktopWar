@@ -35,105 +35,105 @@ function SpawnBullet(bulletID, targetEntityID, x, y, tag, destX, destY) {
 
 
 function GetPawnAnimName(entity, prefixAnimName) {
-    var animName = PawnAnimName.Idle_L;
+    var animName = gn.PawnAnimName.Idle_L;
     var dir = entity.GetComponent(gn.ComName.Transform).GetDir();
     var animCom = entity.GetComponent(gn.ComName.PawnAnim);
     if (prefixAnimName === gn.AnimName.Idle) {
         if (dir & gn.FaceDir.Left)
-            animName = PawnAnimName.Idle_L;
+            animName = gn.PawnAnimName.Idle_L;
         else
-            animName = PawnAnimName.Idle_R;
+            animName = gn.PawnAnimName.Idle_R;
     }
     else if (prefixAnimName === gn.AnimName.Die) {
         if (dir & gn.FaceDir.Left)
-            animName = PawnAnimName.Die_L;
+            animName = gn.PawnAnimName.Die_L;
         else
-            animName = PawnAnimName.Die_R;
+            animName = gn.PawnAnimName.Die_R;
     }
     else if (prefixAnimName === gn.AnimName.Move) {
         var needAdjust = false;
 
         if (dir == gn.FaceDir.Left) {
-            animName = PawnAnimName.Move_L;
+            animName = gn.PawnAnimName.Move_L;
         }
         else if (dir == gn.FaceDir.Right) {
-            animName = PawnAnimName.Move_R;
+            animName = gn.PawnAnimName.Move_R;
         }
         else if (dir == gn.FaceDir.Up) {
-            if (animCom.ContainAnim(PawnAnimName.Move_Up))
-                animName = PawnAnimName.Move_Up;
+            if (animCom.ContainAnim(gn.PawnAnimName.Move_Up))
+                animName = gn.PawnAnimName.Move_Up;
             else
                 needAdjust = true;
         }
         else if (dir == gn.FaceDir.Down) {
-            if (animCom.ContainAnim(PawnAnimName.Move_Down))
-                animName = PawnAnimName.Move_Down;
+            if (animCom.ContainAnim(gn.PawnAnimName.Move_Down))
+                animName = gn.PawnAnimName.Move_Down;
             else
                 needAdjust = true;
         }
         else if (dir & gn.FaceDir.Up) {
-            if (animCom.ContainAnim(PawnAnimName.Move_Up))
-                animName = PawnAnimName.Move_Up;
+            if (animCom.ContainAnim(gn.PawnAnimName.Move_Up))
+                animName = gn.PawnAnimName.Move_Up;
             else {
                 if (dir & gn.FaceDir.Left)
-                    animName = PawnAnimName.Move_L;
+                    animName = gn.PawnAnimName.Move_L;
                 else
-                    animName = PawnAnimName.Move_R;
+                    animName = gn.PawnAnimName.Move_R;
             }
         }
         else if (dir & gn.FaceDir.Down) {
-            if (animCom.ContainAnim(PawnAnimName.Move_Down))
-                animName = PawnAnimName.Move_Down;
+            if (animCom.ContainAnim(gn.PawnAnimName.Move_Down))
+                animName = gn.PawnAnimName.Move_Down;
             else {
                 if (dir & gn.FaceDir.Right)
-                    animName = PawnAnimName.Move_R;
+                    animName = gn.PawnAnimName.Move_R;
                 else
-                    animName = PawnAnimName.Move_L;
+                    animName = gn.PawnAnimName.Move_L;
             }
         }
         // default...
         if (needAdjust) {
             if (dir & gn.FaceDir.Left)
-                animName = PawnAnimName.Move_L;
+                animName = gn.PawnAnimName.Move_L;
             else
-                animName = PawnAnimName.Move_R;
+                animName = gn.PawnAnimName.Move_R;
         }
     }
     else if (prefixAnimName === gn.AnimName.Atk1) {
         if (dir & gn.FaceDir.Left)
-            animName = PawnAnimName.Attack1_L;
+            animName = gn.PawnAnimName.Attack1_L;
         else
-            animName = PawnAnimName.Attack1_R;
+            animName = gn.PawnAnimName.Attack1_R;
     }
     else if (prefixAnimName === gn.AnimName.Atk2) {
         if (dir & gn.FaceDir.Left)
-            animName = PawnAnimName.Attack2_L;
+            animName = gn.PawnAnimName.Attack2_L;
         else
-            animName = PawnAnimName.Attack2_R;
+            animName = gn.PawnAnimName.Attack2_R;
     }
     else if (prefixAnimName === gn.AnimName.Atk3) {
         if (dir & gn.FaceDir.Left)
-            animName = PawnAnimName.Attack3_L;
+            animName = gn.PawnAnimName.Attack3_L;
         else
-            animName = PawnAnimName.Attack3_R;
+            animName = gn.PawnAnimName.Attack3_R;
     }
     else if (prefixAnimName === gn.AnimName.Skill1) {
         if (dir & gn.FaceDir.Left)
-            animName = PawnAnimName.Skill1_L;
+            animName = gn.PawnAnimName.Skill1_L;
         else
-            animName = PawnAnimName.Skill1_R;
+            animName = gn.PawnAnimName.Skill1_R;
     }
     else if (prefixAnimName === gn.AnimName.Skill2) {
         if (dir & gn.FaceDir.Left)
-            animName = PawnAnimName.Skill2_L;
+            animName = gn.PawnAnimName.Skill2_L;
         else
-            animName = PawnAnimName.Skill2_R;
+            animName = gn.PawnAnimName.Skill2_R;
     }
     else if (prefixAnimName === gn.AnimName.Skill3) {
         if (dir & gn.FaceDir.Left)
-            animName = PawnAnimName.Skill3_L;
+            animName = gn.PawnAnimName.Skill3_L;
         else
-            animName = PawnAnimName.Skill3_R;
+            animName = gn.PawnAnimName.Skill3_R;
     }
     return animName;
 }
@@ -151,29 +151,60 @@ function PlayPawnAnim(entity, prefixName){
 
 function HandleArmatureFrameEvent(entity, event){
     if(event === 'attack'){
-
+        entity.PushEvent(gn.Event.FrameAttack1);
     }else if(event === 'attack2'){
-
+        entity.PushEvent(gn.Event.FrameAttack2);
     }else if(event === 'attack3'){
-
+        entity.PushEvent(gn.Event.FrameAttack3);
     }else if(event === 'skill1'){
-
+        entity.PushEvent(gn.Event.FrameSkill1);
     }else if(event === 'skill1'){
-
+        entity.PushEvent(gn.Event.FrameSkill2);
     }else if(event === 'skill2'){
-
+        entity.PushEvent(gn.Event.FrameSkill3);
     }else if(event === 'skill3'){
 
     }
 }
 
 function HandleArmatureMovementEvent(entity, movement, animName){
-    if(movement === 0){
+    var START = 0;
+    var COMPLETE = 1;
+    var LOOP_COMPLETE = 2;
+    if(movement === START){
 
-    }else if(movement === 0){
+    }else if(movement === COMPLETE){
 
-    }else if(movement === 0){
+    }else if(movement === LOOP_COMPLETE){
 
+    }
+}
+
+
+function ModifyEntityAttr(entity, calType, attrType, value, atkType){
+    //
+    var attrCom = entity.GetComponent(ComName.Attr);
+    if(calType == gn.CalcType.Fixed){
+        attrCom.Mod(attrType, value);
+    }
+    else if(calType == gn.CalcType.Percent){
+        var cur = attrCom.Get(attrType);
+        var newValue = cur * value * 0.01;
+        attrCom.Mod(attrType, newValue);
+    }
+    else if(calType == gn.CalcType.NPC || calType == gn.CalcType.Bullet){
+        var role_cfg = entity.GetBlackboard(gn.BB.RoleCfg);
+        var realDecLife = 0;
+        if(atkType == gn.HurtType.Physics)
+            realDecLife = value * (1.0 - role_cfg.antiPhysicValue*0.01);
+        else if(atkType == gn.HurtType.Magic)
+            realDecLife = value * (1.0 - role_cfg.antiMagicValue*0.01);
+        if(realDecLife<=0)
+            realDecLife=1;
+        attrCom.Mod(gn.Attr.HP, realDecLife);
+    }
+    else{
+        print('ModifyEntityAttr:invaild param.');
     }
 }
 

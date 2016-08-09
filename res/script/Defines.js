@@ -27,7 +27,6 @@ gn.ComName =
     PawnDebugDraw: "ComPawnDebugDraw",
     PawnFight: "ComPawnFight",
     PawnNavigation: "ComPawnNavigation",
-    PawnBevtree: "ComPawnBevtree",
 
     BulletAnimArrow: "ComBulletAnimArrow",
     BulletAnimBase: "ComBulletAnimBase",
@@ -43,6 +42,19 @@ gn.ComName =
     Locomotor: "Locomotor",
 
 
+};
+
+
+gn.Attr =
+{
+    HP:1,
+    MP:2,
+    AP:3,
+    AM:4,
+    DP:5,
+    DM:6,
+    SPD:7,
+    DODGE:8,
 };
 
 
@@ -72,6 +84,22 @@ gn.AttackType =
 {
     Physic:1,
     Magic:2
+};
+
+// 伤害类别
+gn.HurtType =
+{
+    Physics:1,
+    Magic:2,
+};
+
+//属性计算方式(固定值、百分比、npc自适应、bullet自适应)
+gn.CalcType =
+{
+    Fixed:1,
+    Percent:2,
+    NPC:3,
+    Bullet:4,
 };
 
 // 角色朝向

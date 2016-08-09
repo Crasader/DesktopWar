@@ -40,9 +40,6 @@ namespace Genius
 		Event_skill3,
 		Event_Hurt,
 
-		// animation
-		Event_animMovement,
-
 		// bullet
 		Event_BulletTrigger,
 		Event_BulletHit,
@@ -170,61 +167,6 @@ namespace Genius
 		Entity*	entity2;
 	};
 
-	class AttackNearEvent : public IEventData
-	{
-	public:
-		AttackNearEvent(Entity* _entity) :
-			IEventData(Event_attackNear),
-			entity(_entity)
-		{}
-
-		Entity*	entity;
-	};
-
-	class AttackNear2Event : public IEventData
-	{
-	public:
-		AttackNear2Event(Entity* _entity) :
-			IEventData(Event_attackNear2),
-			entity(_entity)
-		{}
-
-		Entity*	entity;
-	};
-
-	class AttackFarEvent : public IEventData
-	{
-	public:
-		AttackFarEvent(Entity* _entity) :
-			IEventData(Event_attackFar),
-			entity(_entity)
-		{}
-
-		Entity*	entity;
-	};
-
-	class UseSkillEvent : public IEventData
-	{
-	public:
-		enum
-		{
-			NormalSkill1,
-			NormalSkill2,
-			SpecialSkill1,
-			SpecialSkill2,
-			SpecialSkill3,
-		};
-	public:
-		UseSkillEvent(Entity* _entity, int _type) :
-			IEventData(Event_skill1),
-			entity(_entity),
-			skillType(_type)
-		{}
-
-		Entity*	entity;
-		int		skillType;
-	};
-
 	class HurtEvent : public IEventData
 	{
 	public:
@@ -236,21 +178,6 @@ namespace Genius
 
 		Entity*	entity;
 		int			number;
-	};
-
-	class AnimationMovementEvent : public IEventData
-	{
-	public:
-		AnimationMovementEvent(const std::string& _name, int _moveType, int _entityID) :
-			IEventData(Event_animMovement),
-			animName(_name),
-			moveType(_moveType),
-			entityID(_entityID)
-		{}
-
-		int			moveType;
-		std::string	animName;
-		int			entityID;
 	};
 
 	class BulletTriggerEvent : public IEventData

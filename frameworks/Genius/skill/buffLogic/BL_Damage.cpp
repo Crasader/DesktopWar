@@ -10,6 +10,7 @@
 #include "event/EventManager.h"
 #include "ECS/EntityEvents.h"
 #include "pawn/PawnDefines.h"
+#include "scripting/JSInvoker.h"
 
 
 
@@ -46,7 +47,9 @@ void BL_Damage::OnEffect(Buff* buff)
 			break;
 		}
 
-		if (buffCfg->calType == CalcType::NPC)
+		ComPawnAgent* agentSender = senderEntity->GetComponent<ComPawnAgent>();
+
+		/*if (buffCfg->calType == CalcType::NPC)
 		{
 			ComPawnAgent* agentSender = senderEntity->GetComponent<ComPawnAgent>();
 			ComPawnAgent* agentReceiver = receiverEntity->GetComponent<ComPawnAgent>();
@@ -73,11 +76,21 @@ void BL_Damage::OnEffect(Buff* buff)
 
 			if (realDecLife <= 0)
 				realDecLife = 1;
+*/
+		int attackValue = 0;
+		if (agentSender->m_roleCfg)
+			attackValue = agentSender->m_roleCfg->attackValue;
+		else if (agentSender->pBulletData)
+			attackValue = agentSender->pBulletData->attackValue;
 
-			agentReceiver->GetBlackboard()->ModAttr(AttrType::HP, -realDecLife);
+		int atkType = 0;
+		if (agentSender->m_roleCfg)
+			atkType = agentSender->m_roleCfg->attackType;
+		else if (agentSender->pBulletData)
+			atkType = agentSender->pBulletData->attackType;
 
-			EventManager::GetSingleton()->FireEvent(HurtEvent(receiverEntity, -realDecLife));
-		}
+		JSInvoker::Invoke_ModifyEntityAttr(receiverID, buffCfg->calType, 1, attackValue, atkType);
+		/*}
 		else if (buffCfg->calType == CalcType::Bullet)
 		{
 			ComPawnAgent* agentSender = senderEntity->GetComponent<ComPawnAgent>();
@@ -106,7 +119,7 @@ void BL_Damage::OnEffect(Buff* buff)
 			agentReceiver->GetBlackboard()->ModAttr(AttrType::HP, -realDecLife);
 
 			EventManager::GetSingleton()->FireEvent(HurtEvent(receiverEntity, -realDecLife));
-		}
+		}*/
 
 
 		

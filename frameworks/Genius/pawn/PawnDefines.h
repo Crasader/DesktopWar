@@ -6,7 +6,7 @@
 namespace Genius
 {
 	// 属性类别
-	enum AttrType
+	/*enum AttrType
 	{
 		ATNone = 0,
 		HP = 1,
@@ -18,10 +18,10 @@ namespace Genius
 		Dodge = 7,
 
 		Count,
-	};
+	};*/
 
 	// 伤害类别
-	enum HurtType
+	/*enum HurtType
 	{
 		HTNone = 0,
 		Phy = 1,
@@ -36,9 +36,9 @@ namespace Genius
 		Percent = 2,
 		NPC = 3,
 		Bullet = 4,
-	};
+	};*/
 
-	enum ActionType
+	/*enum ActionType
 	{
 		Action_Min,
 		Action_Idle,
@@ -51,15 +51,15 @@ namespace Genius
 		Action_Skill3,
 		Action_Die,
 		Action_Max,
-	};
+	};*/
 
 	
 
-	enum TargetType
+	/*enum TargetType
 	{
 		Target_Entity,			// 以某entity做目标
 		Target_Location,		// 以某位置做目标
-	};
+	};*/
 	
 };
 

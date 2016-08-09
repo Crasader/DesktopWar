@@ -18,7 +18,7 @@ var IsAlive = bt.Condition.extend({
     {
         var entity = tick.target;
         var attr = entity.GetComponent(gn.ComName.Attr);
-        if (attr.Get(Attr.HP) > 0)
+        if (attr.Get(gn.Attr.HP) > 0)
         {
             //print("alive");
             return bt.SUCCESS;

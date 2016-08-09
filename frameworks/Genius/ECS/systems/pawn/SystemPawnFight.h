@@ -40,9 +40,6 @@ namespace Genius
 	private:
 		void UpdateLifeBar(Entity* e);
 		bool IsOldTargetVaild(Entity* e);
-		void HandleAttackTarget(IEventData const &evt);
-		void HandleAttackTarget2(IEventData const &evt);
-		void HandleUseSkill(IEventData const &evt);
 		void HandleHurt(IEventData const &evt);
 	};
 };

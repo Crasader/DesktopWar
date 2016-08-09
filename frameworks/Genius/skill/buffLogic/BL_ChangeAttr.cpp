@@ -7,6 +7,7 @@
 #include "pawn/PawnBlackboard.h"
 #include "event/EventManager.h"
 #include "ECS/EntityEvents.h"
+#include "scripting/JSInvoker.h"
 
 
 using namespace Genius;
@@ -44,7 +45,7 @@ void BL_ChangeAttr::OnEffect(Buff* buff)
 			break;
 
 		auto buffCfg = buff->GetCfg();
-		int value = 0;
+		/*int value = 0;
 		switch (buffCfg->calType)
 		{
 		case CalcType::Fixed:
@@ -52,13 +53,15 @@ void BL_ChangeAttr::OnEffect(Buff* buff)
 			value = buffCfg->value;
 			break;
 		case CalcType::Percent:
-			{
-				int old = agentReceiver->GetBlackboard()->GetAttr(buffCfg->attrType);
-				value = old * buffCfg->value * 0.01f;
-				agentReceiver->GetBlackboard()->ModAttr(buffCfg->attrType, value);
-			}
-			break;
+		{
+								  int old = agentReceiver->GetBlackboard()->GetAttr(buffCfg->attrType);
+								  value = old * buffCfg->value * 0.01f;
+								  agentReceiver->GetBlackboard()->ModAttr(buffCfg->attrType, value);
 		}
+			break;
+		}*/
+
+		JSInvoker::Invoke_ModifyEntityAttr(receiverID, buffCfg->calType, buffCfg->attrType, buffCfg->value);
 
 		EventManager::GetSingleton()->FireEvent(HurtEvent(receiverEntity, value));
 

@@ -108,7 +108,7 @@ var Game =
     OnArmatureFrameEvent:function(entityID, eventName){
         var entity = this.entityList[entityID];
         if(entity == null){
-            print('OnFrameEvent: cannot find entity.');
+            print('Game.OnFrameEvent: cannot find entity.id:'+entityID);
         }else {
             HandleArmatureFrameEvent(entity,eventName);
         }
@@ -117,9 +117,18 @@ var Game =
     OnArmatureMovementEvent:function(entityID, movement, animName){
         var entity = this.entityList[entityID];
         if(entity == null){
-            print('OnMovementEvent: cannot find entity.');
+            print('Game.OnMovementEvent: cannot find entity.id:'+entityID);
         }else {
             HandleArmatureMovementEvent(entity,movement,animName);
+        }
+    },
+
+    OnModifyEntityAttr:function(entityID, calType, value, atkType){
+        var entity = this.entityList[entityID];
+        if(entity == null){
+            print('Game.OnModifyEntityAttr: cannot find entity.id:'+entityID);
+        }else {
+            ModifyEntityAttr(entity,calType,value,atkType);
         }
     },
 

@@ -125,22 +125,6 @@ bool ComPawnAnim::ContainAnim(std::string name)
 void ComPawnAnim::AnimationMovementCallback(cocostudio::Armature *cca, cocostudio::MovementEventType movType, const std::string& animName)
 {
 	JSInvoker::Invoke_ArmatureMovementEvent(this->GetEntity()->GetId(), (int)movType, animName.c_str());
-
-	switch (movType)
-	{
-	case cocostudio::START:
-		//printf("START\n");
-		break;
-	case cocostudio::COMPLETE:
-		EventManager::GetSingleton()->FireEvent(AnimationMovementEvent(animName, (int)movType, this->GetEntity()->GetId()));
-		//printf("COMPLETE\n");
-		break;
-	case cocostudio::LOOP_COMPLETE:
-		EventManager::GetSingleton()->FireEvent(AnimationMovementEvent(animName, (int)movType, this->GetEntity()->GetId()));
-		break;
-	default:
-		break;
-	}
 }
 
 void ComPawnAnim::AnimationFrameCallback(cocostudio::Bone* bone, const std::string& eventName, int oriIdx, int currentIdx)
@@ -149,31 +133,7 @@ void ComPawnAnim::AnimationFrameCallback(cocostudio::Bone* bone, const std::stri
 		return;
 
 	JSInvoker::Invoke_ArmatureFrameEvent(this->GetEntity()->GetId(), eventName.c_str());
-
-	if (eventName == "attack")
-	{
-		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetEntity(), UseSkillEvent::NormalSkill1));
-	}
-	else if (eventName == "attack2")
-	{
-		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetEntity(), UseSkillEvent::NormalSkill2));
-	}
-	else if (eventName == "skill")
-	{
-		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetEntity(), UseSkillEvent::SpecialSkill1));
-	}
-	else if (eventName == "skill2")
-	{
-		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetEntity(), UseSkillEvent::SpecialSkill2));
-	}
-	else if (eventName == "skill3")
-	{
-		EventManager::GetSingleton()->FireEvent(UseSkillEvent(this->GetEntity(), UseSkillEvent::SpecialSkill3));
-	}
-	else
-	{
-		Log::Warning("unknown frame event : %s", eventName.c_str());
-	}
+	
 }
 
 void ComPawnAnim::PlayFloatNumber(int number, int y)

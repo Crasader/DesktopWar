@@ -32,6 +32,24 @@ float
 },
 
 /**
+ * @method Invoke_ModifyEntityAttr
+ * @param {int} arg0
+ * @param {int} arg1
+ * @param {int} arg2
+ * @param {int} arg3
+ * @param {int} arg4
+ */
+Invoke_ModifyEntityAttr : function (
+int, 
+int, 
+int, 
+int, 
+int 
+)
+{
+},
+
+/**
  * @method Invoke_ArmatureMovementEvent
  * @param {int} arg0
  * @param {int} arg1

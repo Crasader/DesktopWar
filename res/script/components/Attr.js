@@ -14,15 +14,15 @@ var Attr = BaseComponent.extend({
 
     ctor:function ()
     {
-        this.attrs = {};
-        this.attrs[Attr.HP] = 0;
-        this.attrs[Attr.MP] = 0;
-        this.attrs[Attr.AP] = 0;
-        this.attrs[Attr.AM] = 0;
-        this.attrs[Attr.DP] = 0;
-        this.attrs[Attr.DM] = 0;
-        this.attrs[Attr.SPD] = 0;
-        this.attrs[Attr.DODGE] = 0;
+        this.attrs = [];
+        this.attrs[gn.Attr.HP] = 0;
+        this.attrs[gn.Attr.MP] = 0;
+        this.attrs[gn.Attr.AP] = 0;
+        this.attrs[gn.Attr.AM] = 0;
+        this.attrs[gn.Attr.DP] = 0;
+        this.attrs[gn.Attr.DM] = 0;
+        this.attrs[gn.Attr.SPD] = 0;
+        this.attrs[gn.Attr.DODGE] = 0;
     },
 
     Get:function(name)
@@ -35,44 +35,40 @@ var Attr = BaseComponent.extend({
         this.attrs[name] = value;
     },
 
+    Mod:function(name, vaule)
+    {
+        var newValue = this.Get(name) + vaule;
+        this.Set(name, newValue);
+    },
+
     InitWithRoleCfg:function(roleCfg)
     {
-        this.attrs[Attr.HP] = roleCfg.baseLife;
-        this.attrs[Attr.AP] = 0;
-        this.attrs[Attr.AM] = 0;
+        this.attrs[gn.Attr.HP] = roleCfg.baseLife;
+        this.attrs[gn.Attr.AP] = 0;
+        this.attrs[gn.Attr.AM] = 0;
         if (roleCfg.attackType == gn.AttackType.Physic)
         {
-            this.attrs[Attr.AP] = roleCfg.attackValue;
-            this.attrs[Attr.AM] = 0;
+            this.attrs[gn.Attr.AP] = roleCfg.attackValue;
+            this.attrs[gn.Attr.AM] = 0;
         }
         else if (roleCfg.attackType == gn.AttackType.Magic)
         {
-            this.attrs[Attr.AP] = 0;
-            this.attrs[Attr.AM] = roleCfg.attackValue;
+            this.attrs[gn.Attr.AP] = 0;
+            this.attrs[gn.Attr.AM] = roleCfg.attackValue;
         }
 
-        this.attrs[Attr.DP] = roleCfg.antiPhysicValue;
-        this.attrs[Attr.DM] = roleCfg.antiMagicValue;
+        this.attrs[gn.Attr.DP] = roleCfg.antiPhysicValue;
+        this.attrs[gn.Attr.DM] = roleCfg.antiMagicValue;
 
-        this.attrs[Attr.SPD] = roleCfg.moveSpeed;
+        this.attrs[gn.Attr.SPD] = roleCfg.moveSpeed;
 
-        this.attrs[Attr.DODGE] = roleCfg.dodgeValue;
+        this.attrs[gn.Attr.DODGE] = roleCfg.dodgeValue;
     },
 
     InitWithBulletCfg:function(bulletCfg)
     {
-        this.attrs[Attr.SPD] = bulletCfg.flySpeed;
+        this.attrs[gn.Attr.SPD] = bulletCfg.flySpeed;
     }
 
 });
 
-
-// enum
-Attr.HP = "hp";
-Attr.MP = "mp";
-Attr.AP = "PhyAtk";
-Attr.AM = "MgcAtk";
-Attr.DP = "DfsPhy";
-Attr.DM = "DfsMgc";
-Attr.SPD = "speed";
-Attr.DODGE = "dodge";

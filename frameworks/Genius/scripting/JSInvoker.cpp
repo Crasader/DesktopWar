@@ -32,3 +32,10 @@ void JSInvoker::Invoke_ArmatureMovementEvent(int entityID, int movement, const c
 	sprintf_s(jsCallString, "Game.OnArmatureMovementEvent(%d, %d, '%s');", entityID, movement, animName);
 	ScriptingCore::getInstance()->evalString(jsCallString);
 }
+
+void JSInvoker::Invoke_ModifyEntityAttr(int entityID, int calType, int attrType, int value, int atkType)
+{
+	char jsCallString[64];
+	sprintf_s(jsCallString, "Game.OnModifyEntityAttr(%d, %d, %d, %d, %d);", entityID, calType, attrType, value, atkType);
+	ScriptingCore::getInstance()->evalString(jsCallString);
+}
