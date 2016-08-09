@@ -12,8 +12,9 @@ commonStatus.OnFrameAttack1 = function()
             var target = entity.GetBlackboard(gn.BB.CombatTarget);
             var cfg = entity.GetBlackboard(gn.BB.RoleCfg);
             var can = gn.SkillMgr.CanUseSkill(entity.GetID(), target.GetID(), cfg.normalSkill1);
-            if (can)
+            if (can) {
                 gn.SkillMgr.UseSkill(entity.GetID(), target.GetID(), cfg.normalSkill1);
+            }
         }
     );
 };
@@ -82,7 +83,9 @@ commonStatus.OnFrameAttack1 = function()
 
         },
 
-        events: []
+        events: [
+            new EventHandler(gn.Event.AnimComplete, function(entity) {print('die anim over');})
+        ]
     };
 
     commonStatus.move = new State(st);
@@ -107,7 +110,7 @@ commonStatus.OnFrameAttack1 = function()
 
         events: [
             commonStatus.OnFrameAttack1(),
-            new EventHandler(gn.Event.AnimComplete, function(entity) {print('atk near loop over');}),
+            new EventHandler(gn.Event.AnimLoopComplete, function(entity) {print('atk near anim over');})
         ]
     };
 

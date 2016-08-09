@@ -2263,6 +2263,26 @@ bool js_app_ComPawnAnim_SetDebugLabel(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_ComPawnAnim_SetDebugLabel : wrong number of arguments: %d, was expecting %d", argc, 1);
     return false;
 }
+bool js_app_ComPawnAnim_UpdateLifeBar(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::ComPawnAnim* cobj = (Genius::ComPawnAnim *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComPawnAnim_UpdateLifeBar : Invalid Native Object");
+    if (argc == 1) {
+        int arg0 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_ComPawnAnim_UpdateLifeBar : Error processing arguments");
+        cobj->UpdateLifeBar(arg0);
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_ComPawnAnim_UpdateLifeBar : wrong number of arguments: %d, was expecting %d", argc, 1);
+    return false;
+}
 bool js_app_ComPawnAnim_SetPosition(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -2368,6 +2388,7 @@ void js_register_app_ComPawnAnim(JSContext *cx, JS::HandleObject global) {
         JS_FN("GetWidth", js_app_ComPawnAnim_GetWidth, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("OnDestroy", js_app_ComPawnAnim_OnDestroy, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("SetDebugLabel", js_app_ComPawnAnim_SetDebugLabel, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("UpdateLifeBar", js_app_ComPawnAnim_UpdateLifeBar, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("SetPosition", js_app_ComPawnAnim_SetPosition, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("ContainAnim", js_app_ComPawnAnim_ContainAnim, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("AnimationFrameCallback", js_app_ComPawnAnim_AnimationFrameCallback, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),

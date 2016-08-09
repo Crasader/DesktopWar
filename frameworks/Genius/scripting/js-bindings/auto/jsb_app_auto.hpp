@@ -193,6 +193,7 @@ bool js_app_ComPawnAnim_PlayAnimation(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnAnim_GetWidth(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnAnim_OnDestroy(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnAnim_SetDebugLabel(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_ComPawnAnim_UpdateLifeBar(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnAnim_SetPosition(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnAnim_ContainAnim(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnAnim_AnimationFrameCallback(JSContext *cx, uint32_t argc, jsval *vp);

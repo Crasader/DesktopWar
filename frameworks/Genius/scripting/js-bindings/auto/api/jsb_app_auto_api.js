@@ -829,6 +829,16 @@ str
 },
 
 /**
+ * @method UpdateLifeBar
+ * @param {int} arg0
+ */
+UpdateLifeBar : function (
+int 
+)
+{
+},
+
+/**
  * @method SetPosition
  * @param {float} arg0
  * @param {float} arg1

@@ -28,7 +28,7 @@ var Die = bt.Action.extend({
             print("die succeed");
             var entity = tick.target;
             Game.DestroyEntity(entity);
-            return b3.SUCCESS;
+            return bt.SUCCESS;
         }
 
         return bt.RUNNING;

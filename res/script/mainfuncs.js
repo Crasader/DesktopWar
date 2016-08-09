@@ -143,7 +143,7 @@ function PlayPawnAnim(entity, prefixName){
         var fullName = GetPawnAnimName(entity, prefixName);
         entity.GetStateGraph().SetAnimPrefixName(prefixName);
         entity.GetComponent(gn.ComName.PawnAnim).PlayAnimation(fullName);
-        print("play "+fullName);
+        //print("play "+fullName);
     }
 }
 
@@ -172,11 +172,16 @@ function HandleArmatureMovementEvent(entity, movement, animName){
     var COMPLETE = 1;
     var LOOP_COMPLETE = 2;
     if(movement === START){
-
-    }else if(movement === COMPLETE){
-
-    }else if(movement === LOOP_COMPLETE){
-
+        entity.PushEvent(gn.Event.AnimStart);
+        //print('anim start');
+    }
+    else if(movement === COMPLETE){
+        entity.PushEvent(gn.Event.AnimComplete);
+        //print('anim complete');
+    }
+    else if(movement === LOOP_COMPLETE){
+        entity.PushEvent(gn.Event.AnimLoopComplete);
+        //print('anim loop complete');
     }
 }
 
@@ -184,27 +189,37 @@ function HandleArmatureMovementEvent(entity, movement, animName){
 function ModifyEntityAttr(entity, calType, attrType, value, atkType){
     //
     var attrCom = entity.GetComponent(gn.ComName.Attr);
+    var animCom = entity.GetComponent(gn.ComName.PawnAnim);
+    var role_cfg = entity.GetBlackboard(gn.BB.RoleCfg);
+    var realValue = 0;
     if(calType == gn.CalcType.Fixed){
-        attrCom.Mod(attrType, value);
+        realValue = attrCom.Mod(attrType, value);
     }
     else if(calType == gn.CalcType.Percent){
         var cur = attrCom.Get(attrType);
         var newValue = cur * value * 0.01;
-        attrCom.Mod(attrType, newValue);
+        realValue = attrCom.Mod(attrType, newValue);
     }
     else if(calType == gn.CalcType.NPC || calType == gn.CalcType.Bullet){
-        var role_cfg = entity.GetBlackboard(gn.BB.RoleCfg);
         var realDecLife = 0;
+        print('atk type '+atkType);
         if(atkType == gn.HurtType.Physics)
-            realDecLife = value * (1.0 - role_cfg.antiPhysicValue*0.01);
+            realDecLife = value * (1.0 - Number(role_cfg.antiPhysicValue)*0.01);
         else if(atkType == gn.HurtType.Magic)
-            realDecLife = value * (1.0 - role_cfg.antiMagicValue*0.01);
+            realDecLife = value * (1.0 - Number(role_cfg.antiMagicValue)*0.01);
         if(realDecLife<=0)
             realDecLife=1;
-        attrCom.Mod(gn.Attr.HP, realDecLife);
+        realValue = attrCom.Mod(gn.Attr.HP, -realDecLife);
+        attrType = gn.Attr.HP;
     }
     else{
         print('ModifyEntityAttr:invaild param.');
+    }
+
+    if(attrType == gn.Attr.HP && Math.abs(realValue) > 0.1){
+        animCom.PlayFloatNumber(realValue, Number(role_cfg.lifeBarHeight)+10);
+        animCom.UpdateLifeBar(100.0 * attrCom.Get(gn.Attr.HP)/Number(role_cfg.baseLife));
+        //print('hp '+attrCom.Get(gn.Attr.HP));
     }
 }
 

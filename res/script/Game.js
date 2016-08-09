@@ -123,12 +123,12 @@ var Game =
         }
     },
 
-    OnModifyEntityAttr:function(entityID, calType, value, atkType){
+    OnModifyEntityAttr:function(entityID, calType, attrType, value, atkType){
         var entity = this.entityList[entityID];
         if(entity == null){
             print('Game.OnModifyEntityAttr: cannot find entity.id:'+entityID);
         }else {
-            ModifyEntityAttr(entity,calType,value,atkType);
+            ModifyEntityAttr(entity,calType,attrType,value,atkType);
         }
     },
 
@@ -160,7 +160,7 @@ var Game =
 
         entity.OnDestroy();
 
-        GetWorld().DestroyEntity(entity.GetEntityNative())
+        GetWorld().DestroyEntity(entity.GetEntityNative());
 
         for (var id in this.entityList) {
             if (this.entityList[id] == entity) {

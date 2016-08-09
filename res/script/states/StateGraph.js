@@ -58,7 +58,6 @@ var State = Class.extend({
     HandleEvent:function(event,entity){
         if(this.eventHandlers[event] != null){
             this.eventHandlers[event](entity);
-            print('state handle event '+event);
         }
     }
 
@@ -147,17 +146,13 @@ var StateGraph = Class.extend({
             print('EntityScript.ListenForEvent: handler is not a function.');
             return;
         }
-        if (this.eventHandlers[event] == null)
-            this.eventHandlers[event] = Array();
-        this.eventHandlers[event].push(handler);
+        this.eventHandlers[event] = handler;
     },
 
     PushEvent:function(event,data) {
         var handlers = this.eventHandlers[event];
         if (handlers != null) {
-            for (var id in handlers) {
-                handlers[id](this.entity,data);
-            }
+            handlers(this.entity,data);
         }
         if(this.currentState != null){
             this.currentState.HandleEvent(event,this.entity);

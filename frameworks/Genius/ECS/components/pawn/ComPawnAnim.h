@@ -36,6 +36,7 @@ namespace Genius
 		void SetPosition(float x, float y);
 		bool ContainAnim(std::string name);
 		void PlayFloatNumber(int number, int y);
+		void UpdateLifeBar(int percent);
 
 		void SetDebugLabel(std::string text);
 

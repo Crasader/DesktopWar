@@ -156,6 +156,11 @@ void ComPawnAnim::PlayFloatNumber(int number, int y)
 	label->setPositionY(y);
 }
 
+void ComPawnAnim::UpdateLifeBar(int percent)
+{
+	m_pLifeBar->setPercent(percent);
+}
+
 void ComPawnAnim::SetDebugLabel(std::string text)
 {
 	m_pDebugLabel->setString(text);
