@@ -44,7 +44,7 @@ var HaveTarget = bt.Condition.extend({
     {
         var entity = tick.target;
         var combatTar = entity.GetBlackboard(gn.BB.CombatTarget);
-        if (combatTar != null && false)
+        if (combatTar != null)
         {
             return bt.SUCCESS;
         }

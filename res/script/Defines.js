@@ -170,6 +170,7 @@ gn.Event =
 {
     Locomote:"Locomote",
     FaceTo:"FaceTo",
+    Die:"Die",
     Attack:"Attack",
     Attacked:"Attacked",
 

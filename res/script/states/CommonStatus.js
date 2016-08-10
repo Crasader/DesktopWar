@@ -10,10 +10,12 @@ commonStatus.OnFrameAttack1 = function()
         function(entity) {
             //var combat = entity.GetComponent(ComName.Combat);
             var target = entity.GetBlackboard(gn.BB.CombatTarget);
-            var cfg = entity.GetBlackboard(gn.BB.RoleCfg);
-            var can = gn.SkillMgr.CanUseSkill(entity.GetID(), target.GetID(), cfg.normalSkill1);
-            if (can) {
-                gn.SkillMgr.UseSkill(entity.GetID(), target.GetID(), cfg.normalSkill1);
+            if(target != null){
+                var cfg = entity.GetBlackboard(gn.BB.RoleCfg);
+                var can = gn.SkillMgr.CanUseSkill(entity.GetID(), target.GetID(), cfg.normalSkill1);
+                if (can) {
+                    gn.SkillMgr.UseSkill(entity.GetID(), target.GetID(), cfg.normalSkill1);
+                }
             }
         }
     );
@@ -61,7 +63,9 @@ commonStatus.OnFrameAttack1 = function()
 
         },
 
-        events: []
+        events: [
+            new EventHandler(gn.Event.AnimComplete, function(entity) {Game.DestroyEntity(entity);})
+        ]
     };
 
     commonStatus.die = new State(st);
@@ -110,7 +114,18 @@ commonStatus.OnFrameAttack1 = function()
 
         events: [
             commonStatus.OnFrameAttack1(),
-            new EventHandler(gn.Event.AnimLoopComplete, function(entity) {/*print('atk near anim over');*/})
+            new EventHandler(gn.Event.AnimLoopComplete, function(entity) {
+                var tar = entity.GetBlackboard(gn.BB.CombatTarget);
+                if(tar!=null){
+                    var attr = tar.GetComponent(gn.ComName.Attr);
+                    if(attr.Get(gn.Attr.HP)<=0){
+                        entity.GetStateGraph().gotoState(gn.SG.Idle);
+                    }
+                }else{
+                    entity.GetStateGraph().gotoState(gn.SG.Idle);
+                }
+
+            })
         ]
     };
 
@@ -197,33 +212,21 @@ commonStatus.OnFrameAttack1 = function()
 commonStatus.AddIdle = function(status) {
     status[commonStatus.idle.getName()] = commonStatus.idle;
 };
-
-
 commonStatus.AddDie = function(status) {
     status[commonStatus.die.getName()] = commonStatus.die;
 };
-
-
 commonStatus.AddMove = function(status) {
     status[commonStatus.move.getName()] = commonStatus.move;
 };
-
-
 commonStatus.AddAttackNear = function(status) {
     status[commonStatus.attackNear.getName()] = commonStatus.attackNear;
 };
-
-
 commonStatus.AddAttackFar = function(status) {
     status[commonStatus.attackFar.getName()] = commonStatus.attackFar;
 };
-
-
 commonStatus.AddSkill1 = function(status) {
     status[commonStatus.skill1.getName()] = commonStatus.skill1;
 };
-
-
 commonStatus.AddSkill2 = function(status) {
     status[commonStatus.skill2.getName()] = commonStatus.skill2;
 };
@@ -261,6 +264,17 @@ commonStatus.OnFaceTo = function()
 };
 
 
+commonStatus.OnDie = function()
+{
+    return new EventHandler(gn.Event.Die,
+        function(entity) {
+            print('sg:on die');
+            entity.GetStateGraph().gotoState(gn.SG.Die);
+        }
+    );
+};
+
+
 ///////////////////////////////graph/////////////////////////
 
 function CreateCommonGraph(entity)
@@ -276,7 +290,8 @@ function CreateCommonGraph(entity)
 
     var events = [
         commonStatus.OnLocomote(),
-        commonStatus.OnFaceTo()
+        commonStatus.OnFaceTo(),
+        commonStatus.OnDie()
     ];
     
     return new StateGraph(entity, status, events, gn.SG.Idle);

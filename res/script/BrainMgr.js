@@ -33,8 +33,8 @@ var BrainMgr = null;
                 print('BrainMgr.RemoveBrain: entity is not EntityScript.');
                 return;
             }
-            this.brianList[entity.GetID()] = undefined;
-            this.updatingBrains[entity.GetID()] = undefined;
+            delete this.brianList[entity.GetID()];
+            delete this.updatingBrains[entity.GetID()];
         },
 
         OnUpdate:function(){

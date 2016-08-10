@@ -18,18 +18,20 @@ var Die = bt.Action.extend({
 
     open:function(tick)
     {
+        print("open die");
         this.timeWait = Game.GetTime() + 2;
+        var entity = tick.target;
+        entity.PushEvent(gn.Event.Die);
     },
 
     tick:function(tick)
     {
-        if (Game.GetTime() > this.timeWait)
-        {
-            print("die succeed");
-            var entity = tick.target;
-            Game.DestroyEntity(entity);
-            return bt.SUCCESS;
-        }
+        //if (Game.GetTime() > this.timeWait)
+        //{
+
+
+            //return bt.SUCCESS;
+        //}
 
         return bt.RUNNING;
     },

@@ -43,8 +43,18 @@ var Brain = BaseComponent.extend({
                 var ent = Game.entityList[id];
                 if(ent === this.entity)
                     continue;
+                var attr = ent.GetComponent(gn.ComName.Attr);
+                if(attr.Get(gn.Attr.HP)<=0)
+                    continue;
                 print('brain find a target.');
                 this.entity.SetBlackboard(gn.BB.CombatTarget, ent);
+            }
+        }
+        else{
+            var attr = tar.GetComponent(gn.ComName.Attr);
+            if(attr.Get(gn.Attr.HP)<=0){
+                tar = null;
+                this.entity.SetBlackboard(gn.BB.CombatTarget,null);
             }
         }
     }

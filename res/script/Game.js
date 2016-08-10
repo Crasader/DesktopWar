@@ -45,8 +45,9 @@ var Game =
     updateTime:0.1,
     longUpdateTime:0.1,
 
-    entityList:[],
-    updatingEntities:[],
+    entityList:{},
+    updatingEntities:{},
+    deleteEntityList:{},
 
 
     Start:function() {
@@ -142,9 +143,8 @@ var Game =
         var entNative = GetWorld().CreateEntity();
         var ent = new EntityScript();
         ent.SetEntityNative(entNative);
-        var guid = entNative.GetID();
+        var guid = ent.GetID();
         this.entityList[guid] = ent;
-
         return ent;
     },
 
@@ -155,6 +155,15 @@ var Game =
             return;
         }
 
+        delete this.entityList[entity.GetID()];
+        delete this.updatingEntities[entity.GetID()];
+
+        this.deleteEntityList[entity.GetID()] = entity;
+
+    },
+
+    _DoDestroyEntity:function(entity){
+
         // to do : other handlers
         BrainMgr.RemoveBrain(entity);
 
@@ -162,23 +171,17 @@ var Game =
 
         GetWorld().DestroyEntity(entity.GetEntityNative());
 
-        for (var id in this.entityList) {
-            if (this.entityList[id] == entity) {
-                this.entityList.splice(id, 1);
-                break;
-            }
-        }
-        for (var id in this.updatingEntities) {
-            if (this.updatingEntities[id] == entity) {
-                this.updatingEntities.splice(id, 1);
-                break;
-            }
-        }
-        print("Game.DestroyEntity done.");
+        print("Game._DoDestroyEntity one");
     },
 
 
     UpdateEntities:function(timeDelta) {
+
+        for(var id in this.deleteEntityList){
+            this._DoDestroyEntity(this.deleteEntityList[id]);
+            delete this.deleteEntityList[id];
+        }
+
         for (var id in this.updatingEntities) {
             var ent = this.updatingEntities[id];
             ent.OnUpdate(timeDelta);
@@ -199,7 +202,7 @@ var Game =
             print('Game.RemoveUpdatingEntity: entity is not EntityScript.')
             return;
         }
-        this.updatingEntities.splice(entity.GetID(), 1);
+        delete this.updatingEntities[entity.GetID()];
     }
 
 
