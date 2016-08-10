@@ -8,7 +8,6 @@ commonStatus.OnFrameAttack1 = function()
 {
     return new EventHandler(gn.Event.FrameAttack1,
         function(entity) {
-            print('OnFrameAttack1');
             //var combat = entity.GetComponent(ComName.Combat);
             var target = entity.GetBlackboard(gn.BB.CombatTarget);
             var cfg = entity.GetBlackboard(gn.BB.RoleCfg);

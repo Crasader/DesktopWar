@@ -202,7 +202,6 @@ function ModifyEntityAttr(entity, calType, attrType, value, atkType){
     }
     else if(calType == gn.CalcType.NPC || calType == gn.CalcType.Bullet){
         var realDecLife = 0;
-        print('atk type '+atkType);
         if(atkType == gn.HurtType.Physics)
             realDecLife = value * (1.0 - role_cfg.antiPhysicValue*0.01);
         else if(atkType == gn.HurtType.Magic)
