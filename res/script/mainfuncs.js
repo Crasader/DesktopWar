@@ -204,9 +204,9 @@ function ModifyEntityAttr(entity, calType, attrType, value, atkType){
         var realDecLife = 0;
         print('atk type '+atkType);
         if(atkType == gn.HurtType.Physics)
-            realDecLife = value * (1.0 - Number(role_cfg.antiPhysicValue)*0.01);
+            realDecLife = value * (1.0 - role_cfg.antiPhysicValue*0.01);
         else if(atkType == gn.HurtType.Magic)
-            realDecLife = value * (1.0 - Number(role_cfg.antiMagicValue)*0.01);
+            realDecLife = value * (1.0 - role_cfg.antiMagicValue*0.01);
         if(realDecLife<=0)
             realDecLife=1;
         realValue = attrCom.Mod(gn.Attr.HP, -realDecLife);
@@ -217,8 +217,8 @@ function ModifyEntityAttr(entity, calType, attrType, value, atkType){
     }
 
     if(attrType == gn.Attr.HP && Math.abs(realValue) > 0.1){
-        animCom.PlayFloatNumber(realValue, Number(role_cfg.lifeBarHeight)+10);
-        animCom.UpdateLifeBar(100.0 * attrCom.Get(gn.Attr.HP)/Number(role_cfg.baseLife));
+        animCom.PlayFloatNumber(realValue, role_cfg.lifeBarHeight+10);
+        animCom.UpdateLifeBar(100.0 * attrCom.Get(gn.Attr.HP)/role_cfg.baseLife);
         //print('hp '+attrCom.Get(gn.Attr.HP));
     }
 }
