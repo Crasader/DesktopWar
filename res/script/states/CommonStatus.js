@@ -8,6 +8,7 @@ commonStatus.OnFrameAttack1 = function()
 {
     return new EventHandler(gn.Event.FrameAttack1,
         function(entity) {
+            print('OnFrameAttack1');
             //var combat = entity.GetComponent(ComName.Combat);
             var target = entity.GetBlackboard(gn.BB.CombatTarget);
             var cfg = entity.GetBlackboard(gn.BB.RoleCfg);
@@ -110,7 +111,7 @@ commonStatus.OnFrameAttack1 = function()
 
         events: [
             commonStatus.OnFrameAttack1(),
-            new EventHandler(gn.Event.AnimLoopComplete, function(entity) {print('atk near anim over');})
+            new EventHandler(gn.Event.AnimLoopComplete, function(entity) {/*print('atk near anim over');*/})
         ]
     };
 
@@ -135,7 +136,7 @@ commonStatus.OnFrameAttack1 = function()
         },
 
         events: {
-            //帧事件、动画结束事件
+            //
         }
     };
 

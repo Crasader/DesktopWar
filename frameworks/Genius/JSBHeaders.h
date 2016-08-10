@@ -19,7 +19,6 @@
 //ecs
 #include "ECS/EntityWrapper.h"
 #include "ECS/WorldWrapper.h"
-#include "pawn/PawnBlackboard.h"
 
 
 #endif

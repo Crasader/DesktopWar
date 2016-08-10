@@ -3,6 +3,7 @@
 
 
 #include <string>
+#include <vector>
 #include "app/GameDefine.h"
 
 namespace Genius
@@ -32,6 +33,10 @@ public:
 	static bool IsInMyNearRange(EntityWrapper* entity1, EntityWrapper* entity2);
 
 	static bool IsInMyFarRange(EntityWrapper* entity1, EntityWrapper* entity2);
+
+	static int FindNearestTarget(Entity* e, bool sameTeam, bool includeSelf);
+	static void FindTargetsInScope(int entityID, int scopeSize, bool sameTeam, bool includeSelf, std::vector<int>& eneityIDList);
+	static int FindRandTargetByTag(const std::string& tag);
 
 };
 

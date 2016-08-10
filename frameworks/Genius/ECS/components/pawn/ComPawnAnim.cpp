@@ -12,7 +12,7 @@
 #include "skill/SkillManager.h"
 #include "skill/BuffManager.h"
 #include "../../core/Entity.h"
-#include "pawn/PawnBlackboard.h"
+
 #include "scripting/JSInvoker.h"
 #include "Log.h"
 
@@ -68,8 +68,6 @@ void ComPawnAnim::Create(int roleID)
 		m_pAvatarRoot->addChild(m_pDebugLabel);
 	}
 
-	GetEntity()->GetComponent<ComPawnAgent>()->GetBlackboard()->AddActionHandler(this);
-
 }
 
 ComPawnAnim::~ComPawnAnim()
@@ -84,13 +82,6 @@ void	ComPawnAnim::OnAwake()
 
 void ComPawnAnim::OnDestroy()
 {
-
-	GetEntity()->GetComponent<ComPawnAgent>()->GetBlackboard()->RemoveActionHandler(this);
-}
-
-void ComPawnAnim::HandleAction(PawnAction* pAction)
-{
-	
 }
 
 void ComPawnAnim::PlayAnimation(const std::string& name)

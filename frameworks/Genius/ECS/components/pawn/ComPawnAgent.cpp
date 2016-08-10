@@ -3,7 +3,6 @@
 #include "data/ConfigPool.h"
 #include "data/auto/Role_cfg.hpp"
 #include "data/auto/Bullet_cfg.hpp"
-#include "pawn/PawnBlackboard.h"
 #include "common/Log.h"
 
 
@@ -34,21 +33,12 @@ void ComPawnAgent::Create(int cfgID, bool isPawn)
 		}
 	}
 
-	m_pBlackboard = new PawnBlackboard(this);
 }
 
 ComPawnAgent::~ComPawnAgent()
 {
-	if (m_pBlackboard)
-		delete m_pBlackboard;
 }
 
 void ComPawnAgent::AddAction(int type)
 {
-	if (m_pBlackboard != nullptr)
-	{
-		PawnAction* pAction = nullptr;
-
-		m_pBlackboard->AddAction(pAction);
-	}
 }

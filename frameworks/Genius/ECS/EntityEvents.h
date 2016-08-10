@@ -20,8 +20,6 @@ namespace Genius
 
 		// transform
 		Event_setPosition,
-		Event_navigateTo,
-		Event_navigateToEntity,
 		Event_moveTo,
 		Event_pawnStopMove,
 		Event_velocityChanged,
@@ -30,15 +28,6 @@ namespace Genius
 		// collider
 		Event_EnterCollider,
 		Event_ExitCollider,
-
-		// fight
-		Event_attackNear,
-		Event_attackNear2,
-		Event_attackFar,
-		Event_skill1,
-		Event_skill2,
-		Event_skill3,
-		Event_Hurt,
 
 		// bullet
 		Event_BulletTrigger,
@@ -98,19 +87,6 @@ namespace Genius
 		float		y;
 	};
 
-	class MoveToEntityEvent : public IEventData
-	{
-	public:
-		MoveToEntityEvent(Entity* _entity, int _id) :
-			IEventData(Event_navigateToEntity),
-			entity(_entity),
-			id(_id)
-		{}
-
-		Entity*	entity;
-		int			id;
-	};
-
 	class VelocityChangedEvent : public IEventData
 	{
 	public:
@@ -165,19 +141,6 @@ namespace Genius
 
 		Entity*	entity1;
 		Entity*	entity2;
-	};
-
-	class HurtEvent : public IEventData
-	{
-	public:
-		HurtEvent(Entity* _entity, int num) :
-			IEventData(Event_Hurt),
-			entity(_entity),
-			number(num)
-		{}
-
-		Entity*	entity;
-		int			number;
 	};
 
 	class BulletTriggerEvent : public IEventData

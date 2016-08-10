@@ -27,9 +27,6 @@ namespace Genius
 		this->AddSystem(new SystemBoxCollider());
 		this->AddSystem(new SystemBezierMovement());
 		this->AddSystem(new SystemDelayTrackMovement());
-		
-		this->AddSystem(new SystemPawnNavigation());
-		this->AddSystem(new SystemPawnFight());
 
 		this->AddSystem(new SystemBulletDamage());
 		this->AddSystem(new SystemBulletArrowAnim());

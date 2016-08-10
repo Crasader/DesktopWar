@@ -7,9 +7,8 @@
 #include "data/auto/Bullet_cfg.hpp"
 #include "../../core/ECSWorld.h"
 #include "../../core/SystemManager.h"
-#include "../pawn/SystemPawnFight.h"
 #include "skill/BuffManager.h"
-#include "pawn/PawnBlackboard.h"
+
 #include "entity/EntityUtility.h"
 #include "entity/BulletDefines.h"
 

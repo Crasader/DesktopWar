@@ -24,15 +24,13 @@ namespace Genius
 	public:
 		void Create(int cfgID, bool isPawn);
 		~ComPawnAgent();
-		PawnBlackboard*		GetBlackboard(){ return m_pBlackboard; }
 		void AddAction(int type);
 
 	public:
 		cfg::Role_cfg*					m_roleCfg;
 		cfg::Bullet_cfg*					pBulletData;
 
-	private:
-		PawnBlackboard*		m_pBlackboard;
+
 
 	};
 

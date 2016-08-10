@@ -717,16 +717,6 @@ int
 {
 },
 
-/**
- * @method GetBlackboard
- * @return {Genius::PawnBlackboard}
- */
-GetBlackboard : function (
-)
-{
-    return Genius::PawnBlackboard;
-},
-
 };
 
 /**
@@ -756,16 +746,6 @@ str
 PlayFloatNumber : function (
 int, 
 int 
-)
-{
-},
-
-/**
- * @method HandleAction
- * @param {Genius::PawnAction} arg0
- */
-HandleAction : function (
-pawnaction 
 )
 {
 },
@@ -897,50 +877,6 @@ Clear : function (
  * @method Refresh
  */
 Refresh : function (
-)
-{
-},
-
-};
-
-/**
- * @class ComPawnFight
- */
-ComPawnFight = {
-
-/**
- * @method ComPawnFight
- * @constructor
- */
-ComPawnFight : function (
-)
-{
-},
-
-};
-
-/**
- * @class ComPawnNavigation
- */
-ComPawnNavigation = {
-
-/**
- * @method MoveTo
- * @param {float} arg0
- * @param {float} arg1
- */
-MoveTo : function (
-float, 
-float 
-)
-{
-},
-
-/**
- * @method ComPawnNavigation
- * @constructor
- */
-ComPawnNavigation : function (
 )
 {
 },
@@ -1219,6 +1155,24 @@ entitywrapper
 },
 
 /**
+ * @method FindTargetsInScope
+ * @param {int} arg0
+ * @param {int} arg1
+ * @param {bool} arg2
+ * @param {bool} arg3
+ * @param {Array} arg4
+ */
+FindTargetsInScope : function (
+int, 
+int, 
+bool, 
+bool, 
+array 
+)
+{
+},
+
+/**
  * @method GetEnemyTag
  * @param {String} arg0
  * @return {String}
@@ -1228,6 +1182,18 @@ str
 )
 {
     return ;
+},
+
+/**
+ * @method FindRandTargetByTag
+ * @param {String} arg0
+ * @return {int}
+ */
+FindRandTargetByTag : function (
+str 
+)
+{
+    return 0;
 },
 
 /**
@@ -1274,6 +1240,22 @@ entity
     return false;
 },
 
+/**
+ * @method FindNearestTarget
+ * @param {Genius::Entity} arg0
+ * @param {bool} arg1
+ * @param {bool} arg2
+ * @return {int}
+ */
+FindNearestTarget : function (
+entity, 
+bool, 
+bool 
+)
+{
+    return 0;
+},
+
 };
 
 /**
@@ -1292,6 +1274,20 @@ int
 },
 
 /**
+ * @method LoadSkill
+ * @param {int} arg0
+ * @param {int} arg1
+ * @return {bool}
+ */
+LoadSkill : function (
+int, 
+int 
+)
+{
+    return false;
+},
+
+/**
  * @method UseSkill
  * @param {int} arg0
  * @param {int} arg1
@@ -1301,6 +1297,18 @@ int
 UseSkill : function (
 int, 
 int, 
+int 
+)
+{
+    return false;
+},
+
+/**
+ * @method SaveSkill
+ * @param {int} arg0
+ * @return {bool}
+ */
+SaveSkill : function (
 int 
 )
 {
@@ -1523,148 +1531,6 @@ GetWorld : function (
 )
 {
     return Genius::WorldWrapper;
-},
-
-};
-
-/**
- * @class PawnBlackboard
- */
-PawnBlackboard = {
-
-/**
- * @method AddAction
- * @param {Genius::PawnAction} arg0
- */
-AddAction : function (
-pawnaction 
-)
-{
-},
-
-/**
- * @method SetTargetX
- * @param {float} arg0
- */
-SetTargetX : function (
-float 
-)
-{
-},
-
-/**
- * @method SetTargetType
- * @param {int} arg0
- */
-SetTargetType : function (
-int 
-)
-{
-},
-
-/**
- * @method SetAttr
- * @param {int} arg0
- * @param {int} arg1
- */
-SetAttr : function (
-int, 
-int 
-)
-{
-},
-
-/**
- * @method ModAttr
- * @param {int} arg0
- * @param {int} arg1
- */
-ModAttr : function (
-int, 
-int 
-)
-{
-},
-
-/**
- * @method FinishAction
- * @param {Genius::PawnAction} arg0
- */
-FinishAction : function (
-pawnaction 
-)
-{
-},
-
-/**
- * @method AddActionHandler
- * @param {Genius::ActionHandler} arg0
- */
-AddActionHandler : function (
-actionhandler 
-)
-{
-},
-
-/**
- * @method Update
- */
-Update : function (
-)
-{
-},
-
-/**
- * @method GetAttr
- * @param {int} arg0
- * @return {int}
- */
-GetAttr : function (
-int 
-)
-{
-    return 0;
-},
-
-/**
- * @method SetTargetY
- * @param {float} arg0
- */
-SetTargetY : function (
-float 
-)
-{
-},
-
-/**
- * @method SetTargetID
- * @param {int} arg0
- */
-SetTargetID : function (
-int 
-)
-{
-},
-
-/**
- * @method RemoveActionHandler
- * @param {Genius::ActionHandler} arg0
- */
-RemoveActionHandler : function (
-actionhandler 
-)
-{
-},
-
-/**
- * @method PawnBlackboard
- * @constructor
- * @param {Genius::ComPawnAgent} arg0
- */
-PawnBlackboard : function (
-compawnagent 
-)
-{
 },
 
 };

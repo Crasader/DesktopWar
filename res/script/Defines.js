@@ -25,8 +25,6 @@ gn.ComName =
     PawnAgent: "ComPawnAgent",
     PawnAnim: "ComPawnAnim",
     PawnDebugDraw: "ComPawnDebugDraw",
-    PawnFight: "ComPawnFight",
-    PawnNavigation: "ComPawnNavigation",
 
     BulletAnimArrow: "ComBulletAnimArrow",
     BulletAnimBase: "ComBulletAnimBase",

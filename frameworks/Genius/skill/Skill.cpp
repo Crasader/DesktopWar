@@ -8,6 +8,7 @@
 #include "data/ConfigPool.h"
 #include "BuffManager.h"
 #include "skillLogic/SkillLogic.h"
+#include "entity/EntityUtility.h"
 
 
 using namespace Genius;
@@ -71,16 +72,13 @@ void Skill::_TargetOne(int owner, int target)
 
 void Skill::_TargetScope(int owner, int target)
 {
-	auto sysMgr = ECSWorld::GetSingleton()->GetSystemManager();
-	SystemPawnFight* fightSys = sysMgr->GetSystem<SystemPawnFight>();
-
 	switch (m_skillData->targetTeam)
 	{
 	case TTT_Enemy:
-		fightSys->FindTargetsInScope(owner, m_skillData->radius, false, false, m_targetList);
+		EntityUtility::FindTargetsInScope(owner, m_skillData->radius, false, false, m_targetList);
 		break;
 	case TTT_Self:
-		fightSys->FindTargetsInScope(owner, m_skillData->radius, true, true, m_targetList);
+		EntityUtility::FindTargetsInScope(owner, m_skillData->radius, true, true, m_targetList);
 		break;
 	default:
 		return;

@@ -175,7 +175,6 @@ void js_register_app_ComPawnAgent(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_ComPawnAgent_Create(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnAgent_AddAction(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_ComPawnAgent_GetBlackboard(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComPawnAnim_class;
 extern JSObject *jsb_Genius_ComPawnAnim_prototype;
@@ -186,7 +185,6 @@ void js_register_app_ComPawnAnim(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_ComPawnAnim_AnimationMovementCallback(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnAnim_PlayFloatNumber(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_ComPawnAnim_HandleAction(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnAnim_Create(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnAnim_GetHeight(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnAnim_PlayAnimation(JSContext *cx, uint32_t argc, jsval *vp);
@@ -207,25 +205,6 @@ void js_register_app_ComPawnDebugDraw(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_ComPawnDebugDraw_Clear(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComPawnDebugDraw_Refresh(JSContext *cx, uint32_t argc, jsval *vp);
-
-extern JSClass  *jsb_Genius_ComPawnFight_class;
-extern JSObject *jsb_Genius_ComPawnFight_prototype;
-
-bool js_app_ComPawnFight_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_ComPawnFight_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_ComPawnFight(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_ComPawnFight_ComPawnFight(JSContext *cx, uint32_t argc, jsval *vp);
-
-extern JSClass  *jsb_Genius_ComPawnNavigation_class;
-extern JSObject *jsb_Genius_ComPawnNavigation_prototype;
-
-bool js_app_ComPawnNavigation_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_ComPawnNavigation_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_ComPawnNavigation(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_ComPawnNavigation_MoveTo(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_ComPawnNavigation_ComPawnNavigation(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComBulletAnimBase_class;
 extern JSObject *jsb_Genius_ComBulletAnimBase_prototype;
@@ -301,10 +280,13 @@ void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_EntityUtility_IsEnemy(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityUtility_IsInMyViewSight(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityUtility_IsInMyFarRange(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityUtility_FindTargetsInScope(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityUtility_GetEnemyTag(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityUtility_FindRandTargetByTag(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityUtility_IsInMyNearRange(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityUtility_AreEntitiesCloseEnough(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_EntityUtility_IsTagged(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_EntityUtility_FindNearestTarget(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_SkillManager_class;
 extern JSObject *jsb_Genius_SkillManager_prototype;
@@ -314,7 +296,9 @@ void js_app_SkillManager_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_SkillManager(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_SkillManager_ClearSkill(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_SkillManager_LoadSkill(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_SkillManager_UseSkill(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_SkillManager_SaveSkill(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_SkillManager_ClearAllSkill(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_SkillManager_CanUseSkill(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_SkillManager_GetMe(JSContext *cx, uint32_t argc, jsval *vp);
@@ -358,26 +342,5 @@ void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_WorldWrapper_CreateEntity(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_WorldWrapper_DestroyEntity(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_WorldWrapper_GetWorld(JSContext *cx, uint32_t argc, jsval *vp);
-
-extern JSClass  *jsb_Genius_PawnBlackboard_class;
-extern JSObject *jsb_Genius_PawnBlackboard_prototype;
-
-bool js_app_PawnBlackboard_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_app_PawnBlackboard_finalize(JSContext *cx, JSObject *obj);
-void js_register_app_PawnBlackboard(JSContext *cx, JS::HandleObject global);
-void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_PawnBlackboard_AddAction(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_PawnBlackboard_SetTargetX(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_PawnBlackboard_SetTargetType(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_PawnBlackboard_SetAttr(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_PawnBlackboard_ModAttr(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_PawnBlackboard_FinishAction(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_PawnBlackboard_AddActionHandler(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_PawnBlackboard_Update(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_PawnBlackboard_GetAttr(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_PawnBlackboard_SetTargetY(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_PawnBlackboard_SetTargetID(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_PawnBlackboard_RemoveActionHandler(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_PawnBlackboard_PawnBlackboard(JSContext *cx, uint32_t argc, jsval *vp);
 
 #endif // __app_h__

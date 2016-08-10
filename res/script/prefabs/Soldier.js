@@ -39,8 +39,6 @@ var Soldier = {
         var box = inst.AddComponent(gn.ComName.BoxCollider);
         box.Create(true, 0, height*0.5, width, height);
 
-        var nav = inst.AddComponent(gn.ComName.PawnNavigation);
-        var fht = inst.AddComponent(gn.ComName.PawnFight);
 
         if(gn.Setting.DebugDraw){
             inst.AddComponent(gn.ComName.PawnDebugDraw);

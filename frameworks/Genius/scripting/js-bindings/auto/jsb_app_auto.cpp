@@ -1996,28 +1996,6 @@ bool js_app_ComPawnAgent_AddAction(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_ComPawnAgent_AddAction : wrong number of arguments: %d, was expecting %d", argc, 1);
     return false;
 }
-bool js_app_ComPawnAgent_GetBlackboard(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::ComPawnAgent* cobj = (Genius::ComPawnAgent *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComPawnAgent_GetBlackboard : Invalid Native Object");
-    if (argc == 0) {
-        Genius::PawnBlackboard* ret = cobj->GetBlackboard();
-        jsval jsret = JSVAL_NULL;
-        if (ret) {
-            jsret = OBJECT_TO_JSVAL(js_get_or_create_jsobject<Genius::PawnBlackboard>(cx, (Genius::PawnBlackboard*)ret));
-        } else {
-            jsret = JSVAL_NULL;
-        };
-        args.rval().set(jsret);
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_ComPawnAgent_GetBlackboard : wrong number of arguments: %d, was expecting %d", argc, 0);
-    return false;
-}
 
 extern JSObject *jsb_Genius_IComponent_prototype;
 
@@ -2040,7 +2018,6 @@ void js_register_app_ComPawnAgent(JSContext *cx, JS::HandleObject global) {
     static JSFunctionSpec funcs[] = {
         JS_FN("Create", js_app_ComPawnAgent_Create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("AddAction", js_app_ComPawnAgent_AddAction, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("GetBlackboard", js_app_ComPawnAgent_GetBlackboard, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 
@@ -2121,34 +2098,6 @@ bool js_app_ComPawnAnim_PlayFloatNumber(JSContext *cx, uint32_t argc, jsval *vp)
     }
 
     JS_ReportError(cx, "js_app_ComPawnAnim_PlayFloatNumber : wrong number of arguments: %d, was expecting %d", argc, 2);
-    return false;
-}
-bool js_app_ComPawnAnim_HandleAction(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::ComPawnAnim* cobj = (Genius::ComPawnAnim *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComPawnAnim_HandleAction : Invalid Native Object");
-    if (argc == 1) {
-        Genius::PawnAction* arg0 = nullptr;
-        do {
-            if (args.get(0).isNull()) { arg0 = nullptr; break; }
-            if (!args.get(0).isObject()) { ok = false; break; }
-            js_proxy_t *jsProxy;
-            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
-            jsProxy = jsb_get_js_proxy(tmpObj);
-            arg0 = (Genius::PawnAction*)(jsProxy ? jsProxy->ptr : NULL);
-            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
-        } while (0);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_ComPawnAnim_HandleAction : Error processing arguments");
-        cobj->HandleAction(arg0);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_ComPawnAnim_HandleAction : wrong number of arguments: %d, was expecting %d", argc, 1);
     return false;
 }
 bool js_app_ComPawnAnim_Create(JSContext *cx, uint32_t argc, jsval *vp)
@@ -2381,7 +2330,6 @@ void js_register_app_ComPawnAnim(JSContext *cx, JS::HandleObject global) {
     static JSFunctionSpec funcs[] = {
         JS_FN("AnimationMovementCallback", js_app_ComPawnAnim_AnimationMovementCallback, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("PlayFloatNumber", js_app_ComPawnAnim_PlayFloatNumber, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("HandleAction", js_app_ComPawnAnim_HandleAction, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Create", js_app_ComPawnAnim_Create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("GetHeight", js_app_ComPawnAnim_GetHeight, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("PlayAnimation", js_app_ComPawnAnim_PlayAnimation, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -2496,197 +2444,6 @@ void js_register_app_ComPawnDebugDraw(JSContext *cx, JS::HandleObject global) {
     JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
     // add the proto and JSClass to the type->js info hash table
     jsb_register_class<Genius::ComPawnDebugDraw>(cx, jsb_Genius_ComPawnDebugDraw_class, proto, parent_proto);
-}
-
-JSClass  *jsb_Genius_ComPawnFight_class;
-JSObject *jsb_Genius_ComPawnFight_prototype;
-
-bool js_app_ComPawnFight_constructor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    Genius::ComPawnFight* cobj = new (std::nothrow) Genius::ComPawnFight();
-
-    js_type_class_t *typeClass = js_get_type_from_native<Genius::ComPawnFight>(cobj);
-
-    // link the native object with the javascript object
-    JS::RootedObject jsobj(cx, jsb_create_weak_jsobject(cx, cobj, typeClass, "Genius::ComPawnFight"));
-    args.rval().set(OBJECT_TO_JSVAL(jsobj));
-    if (JS_HasProperty(cx, jsobj, "_ctor", &ok) && ok)
-        ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(jsobj), "_ctor", args);
-    return true;
-}
-
-
-extern JSObject *jsb_Genius_IComponent_prototype;
-
-void js_Genius_ComPawnFight_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (ComPawnFight)", obj);
-    js_proxy_t* nproxy;
-    js_proxy_t* jsproxy;
-    JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
-    JS::RootedObject jsobj(cx, obj);
-    jsproxy = jsb_get_js_proxy(jsobj);
-    if (jsproxy) {
-        Genius::ComPawnFight *nobj = static_cast<Genius::ComPawnFight *>(jsproxy->ptr);
-        nproxy = jsb_get_native_proxy(jsproxy->ptr);
-
-        if (nobj) {
-            jsb_remove_proxy(nproxy, jsproxy);
-            delete nobj;
-        }
-        else
-            jsb_remove_proxy(nullptr, jsproxy);
-    }
-}
-void js_register_app_ComPawnFight(JSContext *cx, JS::HandleObject global) {
-    jsb_Genius_ComPawnFight_class = (JSClass *)calloc(1, sizeof(JSClass));
-    jsb_Genius_ComPawnFight_class->name = "ComPawnFight";
-    jsb_Genius_ComPawnFight_class->addProperty = JS_PropertyStub;
-    jsb_Genius_ComPawnFight_class->delProperty = JS_DeletePropertyStub;
-    jsb_Genius_ComPawnFight_class->getProperty = JS_PropertyStub;
-    jsb_Genius_ComPawnFight_class->setProperty = JS_StrictPropertyStub;
-    jsb_Genius_ComPawnFight_class->enumerate = JS_EnumerateStub;
-    jsb_Genius_ComPawnFight_class->resolve = JS_ResolveStub;
-    jsb_Genius_ComPawnFight_class->convert = JS_ConvertStub;
-    jsb_Genius_ComPawnFight_class->finalize = js_Genius_ComPawnFight_finalize;
-    jsb_Genius_ComPawnFight_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-    static JSPropertySpec properties[] = {
-        JS_PS_END
-    };
-
-    static JSFunctionSpec funcs[] = {
-        JS_FS_END
-    };
-
-    JSFunctionSpec *st_funcs = NULL;
-
-    JS::RootedObject parent_proto(cx, jsb_Genius_IComponent_prototype);
-    jsb_Genius_ComPawnFight_prototype = JS_InitClass(
-        cx, global,
-        parent_proto,
-        jsb_Genius_ComPawnFight_class,
-        js_app_ComPawnFight_constructor, 0, // constructor
-        properties,
-        funcs,
-        NULL, // no static properties
-        st_funcs);
-
-    JS::RootedObject proto(cx, jsb_Genius_ComPawnFight_prototype);
-    JS::RootedValue className(cx, std_string_to_jsval(cx, "ComPawnFight"));
-    JS_SetProperty(cx, proto, "_className", className);
-    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
-    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
-    // add the proto and JSClass to the type->js info hash table
-    jsb_register_class<Genius::ComPawnFight>(cx, jsb_Genius_ComPawnFight_class, proto, parent_proto);
-}
-
-JSClass  *jsb_Genius_ComPawnNavigation_class;
-JSObject *jsb_Genius_ComPawnNavigation_prototype;
-
-bool js_app_ComPawnNavigation_MoveTo(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::ComPawnNavigation* cobj = (Genius::ComPawnNavigation *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComPawnNavigation_MoveTo : Invalid Native Object");
-    if (argc == 2) {
-        double arg0 = 0;
-        double arg1 = 0;
-        ok &= JS::ToNumber( cx, args.get(0), &arg0) && !std::isnan(arg0);
-        ok &= JS::ToNumber( cx, args.get(1), &arg1) && !std::isnan(arg1);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_ComPawnNavigation_MoveTo : Error processing arguments");
-        cobj->MoveTo(arg0, arg1);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_ComPawnNavigation_MoveTo : wrong number of arguments: %d, was expecting %d", argc, 2);
-    return false;
-}
-bool js_app_ComPawnNavigation_constructor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    Genius::ComPawnNavigation* cobj = new (std::nothrow) Genius::ComPawnNavigation();
-
-    js_type_class_t *typeClass = js_get_type_from_native<Genius::ComPawnNavigation>(cobj);
-
-    // link the native object with the javascript object
-    JS::RootedObject jsobj(cx, jsb_create_weak_jsobject(cx, cobj, typeClass, "Genius::ComPawnNavigation"));
-    args.rval().set(OBJECT_TO_JSVAL(jsobj));
-    if (JS_HasProperty(cx, jsobj, "_ctor", &ok) && ok)
-        ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(jsobj), "_ctor", args);
-    return true;
-}
-
-
-extern JSObject *jsb_Genius_IComponent_prototype;
-
-void js_Genius_ComPawnNavigation_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (ComPawnNavigation)", obj);
-    js_proxy_t* nproxy;
-    js_proxy_t* jsproxy;
-    JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
-    JS::RootedObject jsobj(cx, obj);
-    jsproxy = jsb_get_js_proxy(jsobj);
-    if (jsproxy) {
-        Genius::ComPawnNavigation *nobj = static_cast<Genius::ComPawnNavigation *>(jsproxy->ptr);
-        nproxy = jsb_get_native_proxy(jsproxy->ptr);
-
-        if (nobj) {
-            jsb_remove_proxy(nproxy, jsproxy);
-            delete nobj;
-        }
-        else
-            jsb_remove_proxy(nullptr, jsproxy);
-    }
-}
-void js_register_app_ComPawnNavigation(JSContext *cx, JS::HandleObject global) {
-    jsb_Genius_ComPawnNavigation_class = (JSClass *)calloc(1, sizeof(JSClass));
-    jsb_Genius_ComPawnNavigation_class->name = "ComPawnNavigation";
-    jsb_Genius_ComPawnNavigation_class->addProperty = JS_PropertyStub;
-    jsb_Genius_ComPawnNavigation_class->delProperty = JS_DeletePropertyStub;
-    jsb_Genius_ComPawnNavigation_class->getProperty = JS_PropertyStub;
-    jsb_Genius_ComPawnNavigation_class->setProperty = JS_StrictPropertyStub;
-    jsb_Genius_ComPawnNavigation_class->enumerate = JS_EnumerateStub;
-    jsb_Genius_ComPawnNavigation_class->resolve = JS_ResolveStub;
-    jsb_Genius_ComPawnNavigation_class->convert = JS_ConvertStub;
-    jsb_Genius_ComPawnNavigation_class->finalize = js_Genius_ComPawnNavigation_finalize;
-    jsb_Genius_ComPawnNavigation_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-    static JSPropertySpec properties[] = {
-        JS_PS_END
-    };
-
-    static JSFunctionSpec funcs[] = {
-        JS_FN("MoveTo", js_app_ComPawnNavigation_MoveTo, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FS_END
-    };
-
-    JSFunctionSpec *st_funcs = NULL;
-
-    JS::RootedObject parent_proto(cx, jsb_Genius_IComponent_prototype);
-    jsb_Genius_ComPawnNavigation_prototype = JS_InitClass(
-        cx, global,
-        parent_proto,
-        jsb_Genius_ComPawnNavigation_class,
-        js_app_ComPawnNavigation_constructor, 0, // constructor
-        properties,
-        funcs,
-        NULL, // no static properties
-        st_funcs);
-
-    JS::RootedObject proto(cx, jsb_Genius_ComPawnNavigation_prototype);
-    JS::RootedValue className(cx, std_string_to_jsval(cx, "ComPawnNavigation"));
-    JS_SetProperty(cx, proto, "_className", className);
-    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
-    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
-    // add the proto and JSClass to the type->js info hash table
-    jsb_register_class<Genius::ComPawnNavigation>(cx, jsb_Genius_ComPawnNavigation_class, proto, parent_proto);
 }
 
 JSClass  *jsb_Genius_ComBulletAnimBase_class;
@@ -3487,6 +3244,30 @@ bool js_app_EntityUtility_IsInMyFarRange(JSContext *cx, uint32_t argc, jsval *vp
     return false;
 }
 
+bool js_app_EntityUtility_FindTargetsInScope(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 5) {
+        int arg0 = 0;
+        int arg1 = 0;
+        bool arg2;
+        bool arg3;
+        std::vector<int> arg4;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        ok &= jsval_to_int32(cx, args.get(1), (int32_t *)&arg1);
+        arg2 = JS::ToBoolean(args.get(2));
+        arg3 = JS::ToBoolean(args.get(3));
+        ok &= jsval_to_std_vector_int(cx, args.get(4), &arg4);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityUtility_FindTargetsInScope : Error processing arguments");
+        EntityUtility::FindTargetsInScope(arg0, arg1, arg2, arg3, arg4);
+        args.rval().setUndefined();
+        return true;
+    }
+    JS_ReportError(cx, "js_app_EntityUtility_FindTargetsInScope : wrong number of arguments");
+    return false;
+}
+
 bool js_app_EntityUtility_GetEnemyTag(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -3503,6 +3284,25 @@ bool js_app_EntityUtility_GetEnemyTag(JSContext *cx, uint32_t argc, jsval *vp)
         return true;
     }
     JS_ReportError(cx, "js_app_EntityUtility_GetEnemyTag : wrong number of arguments");
+    return false;
+}
+
+bool js_app_EntityUtility_FindRandTargetByTag(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 1) {
+        std::string arg0;
+        ok &= jsval_to_std_string(cx, args.get(0), &arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityUtility_FindRandTargetByTag : Error processing arguments");
+
+        int ret = EntityUtility::FindRandTargetByTag(arg0);
+        jsval jsret = JSVAL_NULL;
+        jsret = int32_to_jsval(cx, ret);
+        args.rval().set(jsret);
+        return true;
+    }
+    JS_ReportError(cx, "js_app_EntityUtility_FindRandTargetByTag : wrong number of arguments");
     return false;
 }
 
@@ -3611,6 +3411,37 @@ bool js_app_EntityUtility_IsTagged(JSContext *cx, uint32_t argc, jsval *vp)
     return false;
 }
 
+bool js_app_EntityUtility_FindNearestTarget(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 3) {
+        Genius::Entity* arg0 = nullptr;
+        bool arg1;
+        bool arg2;
+        do {
+            if (args.get(0).isNull()) { arg0 = nullptr; break; }
+            if (!args.get(0).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg0 = (Genius::Entity*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+        } while (0);
+        arg1 = JS::ToBoolean(args.get(1));
+        arg2 = JS::ToBoolean(args.get(2));
+        JSB_PRECONDITION2(ok, cx, false, "js_app_EntityUtility_FindNearestTarget : Error processing arguments");
+
+        int ret = EntityUtility::FindNearestTarget(arg0, arg1, arg2);
+        jsval jsret = JSVAL_NULL;
+        jsret = int32_to_jsval(cx, ret);
+        args.rval().set(jsret);
+        return true;
+    }
+    JS_ReportError(cx, "js_app_EntityUtility_FindNearestTarget : wrong number of arguments");
+    return false;
+}
+
 
 void js_register_app_EntityUtility(JSContext *cx, JS::HandleObject global) {
     jsb_EntityUtility_class = (JSClass *)calloc(1, sizeof(JSClass));
@@ -3636,10 +3467,13 @@ void js_register_app_EntityUtility(JSContext *cx, JS::HandleObject global) {
         JS_FN("IsEnemy", js_app_EntityUtility_IsEnemy, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("IsInMyViewSight", js_app_EntityUtility_IsInMyViewSight, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("IsInMyFarRange", js_app_EntityUtility_IsInMyFarRange, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("FindTargetsInScope", js_app_EntityUtility_FindTargetsInScope, 5, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("GetEnemyTag", js_app_EntityUtility_GetEnemyTag, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("FindRandTargetByTag", js_app_EntityUtility_FindRandTargetByTag, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("IsInMyNearRange", js_app_EntityUtility_IsInMyNearRange, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("AreEntitiesCloseEnough", js_app_EntityUtility_AreEntitiesCloseEnough, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("IsTagged", js_app_EntityUtility_IsTagged, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("FindNearestTarget", js_app_EntityUtility_FindNearestTarget, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 
@@ -3685,6 +3519,30 @@ bool js_app_SkillManager_ClearSkill(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_SkillManager_ClearSkill : wrong number of arguments: %d, was expecting %d", argc, 1);
     return false;
 }
+bool js_app_SkillManager_LoadSkill(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::SkillManager* cobj = (Genius::SkillManager *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_SkillManager_LoadSkill : Invalid Native Object");
+    if (argc == 2) {
+        int arg0 = 0;
+        int arg1 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        ok &= jsval_to_int32(cx, args.get(1), (int32_t *)&arg1);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_SkillManager_LoadSkill : Error processing arguments");
+        bool ret = cobj->LoadSkill(arg0, arg1);
+        jsval jsret = JSVAL_NULL;
+        jsret = BOOLEAN_TO_JSVAL(ret);
+        args.rval().set(jsret);
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_SkillManager_LoadSkill : wrong number of arguments: %d, was expecting %d", argc, 2);
+    return false;
+}
 bool js_app_SkillManager_UseSkill(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -3709,6 +3567,28 @@ bool js_app_SkillManager_UseSkill(JSContext *cx, uint32_t argc, jsval *vp)
     }
 
     JS_ReportError(cx, "js_app_SkillManager_UseSkill : wrong number of arguments: %d, was expecting %d", argc, 3);
+    return false;
+}
+bool js_app_SkillManager_SaveSkill(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::SkillManager* cobj = (Genius::SkillManager *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_SkillManager_SaveSkill : Invalid Native Object");
+    if (argc == 1) {
+        int arg0 = 0;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_SkillManager_SaveSkill : Error processing arguments");
+        bool ret = cobj->SaveSkill(arg0);
+        jsval jsret = JSVAL_NULL;
+        jsret = BOOLEAN_TO_JSVAL(ret);
+        args.rval().set(jsret);
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_SkillManager_SaveSkill : wrong number of arguments: %d, was expecting %d", argc, 1);
     return false;
 }
 bool js_app_SkillManager_ClearAllSkill(JSContext *cx, uint32_t argc, jsval *vp)
@@ -3827,7 +3707,9 @@ void js_register_app_SkillManager(JSContext *cx, JS::HandleObject global) {
 
     static JSFunctionSpec funcs[] = {
         JS_FN("ClearSkill", js_app_SkillManager_ClearSkill, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("LoadSkill", js_app_SkillManager_LoadSkill, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("UseSkill", js_app_SkillManager_UseSkill, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("SaveSkill", js_app_SkillManager_SaveSkill, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("ClearAllSkill", js_app_SkillManager_ClearAllSkill, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("CanUseSkill", js_app_SkillManager_CanUseSkill, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
@@ -4360,384 +4242,6 @@ void js_register_app_WorldWrapper(JSContext *cx, JS::HandleObject global) {
     jsb_register_class<Genius::WorldWrapper>(cx, jsb_Genius_WorldWrapper_class, proto, JS::NullPtr());
 }
 
-JSClass  *jsb_Genius_PawnBlackboard_class;
-JSObject *jsb_Genius_PawnBlackboard_prototype;
-
-bool js_app_PawnBlackboard_AddAction(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::PawnBlackboard* cobj = (Genius::PawnBlackboard *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_PawnBlackboard_AddAction : Invalid Native Object");
-    if (argc == 1) {
-        Genius::PawnAction* arg0 = nullptr;
-        do {
-            if (args.get(0).isNull()) { arg0 = nullptr; break; }
-            if (!args.get(0).isObject()) { ok = false; break; }
-            js_proxy_t *jsProxy;
-            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
-            jsProxy = jsb_get_js_proxy(tmpObj);
-            arg0 = (Genius::PawnAction*)(jsProxy ? jsProxy->ptr : NULL);
-            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
-        } while (0);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_PawnBlackboard_AddAction : Error processing arguments");
-        cobj->AddAction(arg0);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_PawnBlackboard_AddAction : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
-bool js_app_PawnBlackboard_SetTargetX(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::PawnBlackboard* cobj = (Genius::PawnBlackboard *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_PawnBlackboard_SetTargetX : Invalid Native Object");
-    if (argc == 1) {
-        double arg0 = 0;
-        ok &= JS::ToNumber( cx, args.get(0), &arg0) && !std::isnan(arg0);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_PawnBlackboard_SetTargetX : Error processing arguments");
-        cobj->SetTargetX(arg0);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_PawnBlackboard_SetTargetX : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
-bool js_app_PawnBlackboard_SetTargetType(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::PawnBlackboard* cobj = (Genius::PawnBlackboard *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_PawnBlackboard_SetTargetType : Invalid Native Object");
-    if (argc == 1) {
-        int arg0 = 0;
-        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_PawnBlackboard_SetTargetType : Error processing arguments");
-        cobj->SetTargetType(arg0);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_PawnBlackboard_SetTargetType : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
-bool js_app_PawnBlackboard_SetAttr(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::PawnBlackboard* cobj = (Genius::PawnBlackboard *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_PawnBlackboard_SetAttr : Invalid Native Object");
-    if (argc == 2) {
-        int arg0 = 0;
-        int arg1 = 0;
-        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
-        ok &= jsval_to_int32(cx, args.get(1), (int32_t *)&arg1);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_PawnBlackboard_SetAttr : Error processing arguments");
-        cobj->SetAttr(arg0, arg1);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_PawnBlackboard_SetAttr : wrong number of arguments: %d, was expecting %d", argc, 2);
-    return false;
-}
-bool js_app_PawnBlackboard_ModAttr(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::PawnBlackboard* cobj = (Genius::PawnBlackboard *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_PawnBlackboard_ModAttr : Invalid Native Object");
-    if (argc == 2) {
-        int arg0 = 0;
-        int arg1 = 0;
-        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
-        ok &= jsval_to_int32(cx, args.get(1), (int32_t *)&arg1);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_PawnBlackboard_ModAttr : Error processing arguments");
-        cobj->ModAttr(arg0, arg1);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_PawnBlackboard_ModAttr : wrong number of arguments: %d, was expecting %d", argc, 2);
-    return false;
-}
-bool js_app_PawnBlackboard_FinishAction(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::PawnBlackboard* cobj = (Genius::PawnBlackboard *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_PawnBlackboard_FinishAction : Invalid Native Object");
-    if (argc == 1) {
-        Genius::PawnAction* arg0 = nullptr;
-        do {
-            if (args.get(0).isNull()) { arg0 = nullptr; break; }
-            if (!args.get(0).isObject()) { ok = false; break; }
-            js_proxy_t *jsProxy;
-            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
-            jsProxy = jsb_get_js_proxy(tmpObj);
-            arg0 = (Genius::PawnAction*)(jsProxy ? jsProxy->ptr : NULL);
-            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
-        } while (0);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_PawnBlackboard_FinishAction : Error processing arguments");
-        cobj->FinishAction(arg0);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_PawnBlackboard_FinishAction : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
-bool js_app_PawnBlackboard_AddActionHandler(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::PawnBlackboard* cobj = (Genius::PawnBlackboard *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_PawnBlackboard_AddActionHandler : Invalid Native Object");
-    if (argc == 1) {
-        Genius::ActionHandler* arg0 = nullptr;
-        do {
-            if (args.get(0).isNull()) { arg0 = nullptr; break; }
-            if (!args.get(0).isObject()) { ok = false; break; }
-            js_proxy_t *jsProxy;
-            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
-            jsProxy = jsb_get_js_proxy(tmpObj);
-            arg0 = (Genius::ActionHandler*)(jsProxy ? jsProxy->ptr : NULL);
-            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
-        } while (0);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_PawnBlackboard_AddActionHandler : Error processing arguments");
-        cobj->AddActionHandler(arg0);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_PawnBlackboard_AddActionHandler : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
-bool js_app_PawnBlackboard_Update(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::PawnBlackboard* cobj = (Genius::PawnBlackboard *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_PawnBlackboard_Update : Invalid Native Object");
-    if (argc == 0) {
-        cobj->Update();
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_PawnBlackboard_Update : wrong number of arguments: %d, was expecting %d", argc, 0);
-    return false;
-}
-bool js_app_PawnBlackboard_GetAttr(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::PawnBlackboard* cobj = (Genius::PawnBlackboard *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_PawnBlackboard_GetAttr : Invalid Native Object");
-    if (argc == 1) {
-        int arg0 = 0;
-        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_PawnBlackboard_GetAttr : Error processing arguments");
-        int ret = cobj->GetAttr(arg0);
-        jsval jsret = JSVAL_NULL;
-        jsret = int32_to_jsval(cx, ret);
-        args.rval().set(jsret);
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_PawnBlackboard_GetAttr : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
-bool js_app_PawnBlackboard_SetTargetY(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::PawnBlackboard* cobj = (Genius::PawnBlackboard *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_PawnBlackboard_SetTargetY : Invalid Native Object");
-    if (argc == 1) {
-        double arg0 = 0;
-        ok &= JS::ToNumber( cx, args.get(0), &arg0) && !std::isnan(arg0);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_PawnBlackboard_SetTargetY : Error processing arguments");
-        cobj->SetTargetY(arg0);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_PawnBlackboard_SetTargetY : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
-bool js_app_PawnBlackboard_SetTargetID(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::PawnBlackboard* cobj = (Genius::PawnBlackboard *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_PawnBlackboard_SetTargetID : Invalid Native Object");
-    if (argc == 1) {
-        int arg0 = 0;
-        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_PawnBlackboard_SetTargetID : Error processing arguments");
-        cobj->SetTargetID(arg0);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_PawnBlackboard_SetTargetID : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
-bool js_app_PawnBlackboard_RemoveActionHandler(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::PawnBlackboard* cobj = (Genius::PawnBlackboard *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_PawnBlackboard_RemoveActionHandler : Invalid Native Object");
-    if (argc == 1) {
-        Genius::ActionHandler* arg0 = nullptr;
-        do {
-            if (args.get(0).isNull()) { arg0 = nullptr; break; }
-            if (!args.get(0).isObject()) { ok = false; break; }
-            js_proxy_t *jsProxy;
-            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
-            jsProxy = jsb_get_js_proxy(tmpObj);
-            arg0 = (Genius::ActionHandler*)(jsProxy ? jsProxy->ptr : NULL);
-            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
-        } while (0);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_PawnBlackboard_RemoveActionHandler : Error processing arguments");
-        cobj->RemoveActionHandler(arg0);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_PawnBlackboard_RemoveActionHandler : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
-bool js_app_PawnBlackboard_constructor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    Genius::ComPawnAgent* arg0 = nullptr;
-    do {
-            if (args.get(0).isNull()) { arg0 = nullptr; break; }
-            if (!args.get(0).isObject()) { ok = false; break; }
-            js_proxy_t *jsProxy;
-            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
-            jsProxy = jsb_get_js_proxy(tmpObj);
-            arg0 = (Genius::ComPawnAgent*)(jsProxy ? jsProxy->ptr : NULL);
-            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
-        } while (0);
-    JSB_PRECONDITION2(ok, cx, false, "js_app_PawnBlackboard_constructor : Error processing arguments");
-    Genius::PawnBlackboard* cobj = new (std::nothrow) Genius::PawnBlackboard(arg0);
-
-    js_type_class_t *typeClass = js_get_type_from_native<Genius::PawnBlackboard>(cobj);
-
-    // link the native object with the javascript object
-    JS::RootedObject jsobj(cx, jsb_create_weak_jsobject(cx, cobj, typeClass, "Genius::PawnBlackboard"));
-    args.rval().set(OBJECT_TO_JSVAL(jsobj));
-    if (JS_HasProperty(cx, jsobj, "_ctor", &ok) && ok)
-        ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(jsobj), "_ctor", args);
-    return true;
-}
-
-
-void js_Genius_PawnBlackboard_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (PawnBlackboard)", obj);
-    js_proxy_t* nproxy;
-    js_proxy_t* jsproxy;
-    JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
-    JS::RootedObject jsobj(cx, obj);
-    jsproxy = jsb_get_js_proxy(jsobj);
-    if (jsproxy) {
-        Genius::PawnBlackboard *nobj = static_cast<Genius::PawnBlackboard *>(jsproxy->ptr);
-        nproxy = jsb_get_native_proxy(jsproxy->ptr);
-
-        if (nobj) {
-            jsb_remove_proxy(nproxy, jsproxy);
-            delete nobj;
-        }
-        else
-            jsb_remove_proxy(nullptr, jsproxy);
-    }
-}
-void js_register_app_PawnBlackboard(JSContext *cx, JS::HandleObject global) {
-    jsb_Genius_PawnBlackboard_class = (JSClass *)calloc(1, sizeof(JSClass));
-    jsb_Genius_PawnBlackboard_class->name = "PawnBlackboard";
-    jsb_Genius_PawnBlackboard_class->addProperty = JS_PropertyStub;
-    jsb_Genius_PawnBlackboard_class->delProperty = JS_DeletePropertyStub;
-    jsb_Genius_PawnBlackboard_class->getProperty = JS_PropertyStub;
-    jsb_Genius_PawnBlackboard_class->setProperty = JS_StrictPropertyStub;
-    jsb_Genius_PawnBlackboard_class->enumerate = JS_EnumerateStub;
-    jsb_Genius_PawnBlackboard_class->resolve = JS_ResolveStub;
-    jsb_Genius_PawnBlackboard_class->convert = JS_ConvertStub;
-    jsb_Genius_PawnBlackboard_class->finalize = js_Genius_PawnBlackboard_finalize;
-    jsb_Genius_PawnBlackboard_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-    static JSPropertySpec properties[] = {
-        JS_PS_END
-    };
-
-    static JSFunctionSpec funcs[] = {
-        JS_FN("AddAction", js_app_PawnBlackboard_AddAction, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("SetTargetX", js_app_PawnBlackboard_SetTargetX, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("SetTargetType", js_app_PawnBlackboard_SetTargetType, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("SetAttr", js_app_PawnBlackboard_SetAttr, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ModAttr", js_app_PawnBlackboard_ModAttr, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("FinishAction", js_app_PawnBlackboard_FinishAction, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("AddActionHandler", js_app_PawnBlackboard_AddActionHandler, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("Update", js_app_PawnBlackboard_Update, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("GetAttr", js_app_PawnBlackboard_GetAttr, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("SetTargetY", js_app_PawnBlackboard_SetTargetY, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("SetTargetID", js_app_PawnBlackboard_SetTargetID, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("RemoveActionHandler", js_app_PawnBlackboard_RemoveActionHandler, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FS_END
-    };
-
-    JSFunctionSpec *st_funcs = NULL;
-
-    jsb_Genius_PawnBlackboard_prototype = JS_InitClass(
-        cx, global,
-        JS::NullPtr(),
-        jsb_Genius_PawnBlackboard_class,
-        js_app_PawnBlackboard_constructor, 0, // constructor
-        properties,
-        funcs,
-        NULL, // no static properties
-        st_funcs);
-
-    JS::RootedObject proto(cx, jsb_Genius_PawnBlackboard_prototype);
-    JS::RootedValue className(cx, std_string_to_jsval(cx, "PawnBlackboard"));
-    JS_SetProperty(cx, proto, "_className", className);
-    JS_SetProperty(cx, proto, "__nativeObj", JS::TrueHandleValue);
-    JS_SetProperty(cx, proto, "__is_ref", JS::FalseHandleValue);
-    // add the proto and JSClass to the type->js info hash table
-    jsb_register_class<Genius::PawnBlackboard>(cx, jsb_Genius_PawnBlackboard_class, proto, JS::NullPtr());
-}
-
 void register_all_app(JSContext* cx, JS::HandleObject obj) {
     // Get the global ns
     JS::RootedObject ns(cx, ScriptingCore::getInstance()->getGlobalObject());
@@ -4748,20 +4252,18 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
     js_register_app_IComponent(cx, ns);
     js_register_app_ComBoxCollider(cx, ns);
     js_register_app_ComPawnAgent(cx, ns);
-    js_register_app_ComDelayTrackMovement(cx, ns);
+    js_register_app_ComBulletDamage(cx, ns);
     js_register_app_ComBulletAnimBase(cx, ns);
     js_register_app_ComBulletAnimArrow(cx, ns);
-    js_register_app_ComBulletDamage(cx, ns);
-    js_register_app_ComPawnNavigation(cx, ns);
-    js_register_app_PawnBlackboard(cx, ns);
+    js_register_app_EntityWrapper(cx, ns);
     js_register_app_RollNumberLabel(cx, ns);
+    js_register_app_ComDelayTrackMovement(cx, ns);
     js_register_app_ComPawnDebugDraw(cx, ns);
     js_register_app_SkillManager(cx, ns);
     js_register_app_ComParticle(cx, ns);
     js_register_app_ComRenderRoot(cx, ns);
     js_register_app_JSInvoker(cx, ns);
     js_register_app_ComTransform(cx, ns);
-    js_register_app_EntityWrapper(cx, ns);
     js_register_app_ComPawnAnim(cx, ns);
     js_register_app_EntityUtility(cx, ns);
     js_register_app_ComBulletDebugDraw(cx, ns);
@@ -4770,7 +4272,6 @@ void register_all_app(JSContext* cx, JS::HandleObject obj) {
     js_register_app_ComBulletAnimEgg(cx, ns);
     js_register_app_ComBezierMovement(cx, ns);
     js_register_app_ComBulletAnimBomb(cx, ns);
-    js_register_app_ComPawnFight(cx, ns);
     js_register_app_LoadingManager(cx, ns);
 }
 

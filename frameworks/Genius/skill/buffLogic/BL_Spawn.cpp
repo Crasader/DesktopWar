@@ -4,7 +4,7 @@
 #include "data/auto/Buff_cfg.hpp"
 #include "common/Log.h"
 #include "ECS/ecs.h"
-#include "pawn/PawnBlackboard.h"
+
 #include "event/EventManager.h"
 #include "ECS/EntityEvents.h"
 #include "entity/EntityCreators.h"

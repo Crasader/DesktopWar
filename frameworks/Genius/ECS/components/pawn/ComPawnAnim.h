@@ -10,7 +10,7 @@
 namespace Genius
 {
 
-	class ComPawnAnim : public IComponent, public ActionHandler, public cocos2d::Ref
+	class ComPawnAnim : public IComponent, public cocos2d::Ref
 	{
 	public:
 		COM_CREATE_FN_DECL(ComPawnAnim);
@@ -28,7 +28,6 @@ namespace Genius
 
 		virtual void OnAwake();
 		virtual void OnDestroy();
-		virtual void HandleAction(PawnAction* pAction);
 
 		float GetWidth();
 		float GetHeight();

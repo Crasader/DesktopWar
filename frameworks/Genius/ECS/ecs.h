@@ -19,8 +19,6 @@
 #include "components/pawn/ComPawnAgent.h"
 #include "components/pawn/ComPawnAnim.h"
 #include "components/pawn/ComPawnDebugDraw.h"
-#include "components/pawn/ComPawnFight.h"
-#include "components/pawn/ComPawnNavigation.h"
 
 
 #include "components/bullet/ComBulletAnimArrow.h"
@@ -31,8 +29,6 @@
 #include "components/bullet/ComBulletAnimEgg.h"
 
 
-
-
 // systems
 #include "systems/common/SystemTransform.h"
 #include "systems/common/SystemRender.h"
@@ -41,8 +37,8 @@
 #include "systems/common/SystemBezierMovement.h"
 #include "systems/common/SystemDelayTrackMovement.h"
 
-#include "systems/pawn/SystemPawnNavigation.h"
-#include "systems/pawn/SystemPawnFight.h"
+
+
 
 #include "systems/bullet/SystemBulletDamage.h"
 #include "systems/bullet/SystemBulletArrowAnim.h"

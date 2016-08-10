@@ -10,7 +10,6 @@
 #include "Log.h"
 
 #include "app/GameDefine.h"
-#include "pawn/PawnBlackboard.h"
 
 #include "scripting/js-bindings/manual/ScriptingCore.h"
 

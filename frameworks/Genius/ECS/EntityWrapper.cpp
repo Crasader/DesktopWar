@@ -34,8 +34,6 @@ static void _lazyInitComFuncs()
 	REG_CREATE_COM(ComPawnAgent);
 	REG_CREATE_COM(ComPawnAnim);
 	REG_CREATE_COM(ComPawnDebugDraw);
-	REG_CREATE_COM(ComPawnFight);
-	REG_CREATE_COM(ComPawnNavigation);
 
 	REG_CREATE_COM(ComBulletAnimArrow);
 	REG_CREATE_COM(ComBulletAnimBase);
