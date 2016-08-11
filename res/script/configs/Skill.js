@@ -13,7 +13,7 @@ Config.Skill['1']={
 	costNum:0,
 	coolTime:0,
 	bulletID:0,
-	buffs:[1001]
+	buffs:[1001,0,0]
 };
 
 Config.Skill['2']={
@@ -27,7 +27,7 @@ Config.Skill['2']={
 	costNum:0,
 	coolTime:0,
 	bulletID:0,
-	buffs:[1002]
+	buffs:[1002,0,0]
 };
 
 Config.Skill['3']={
@@ -41,7 +41,7 @@ Config.Skill['3']={
 	costNum:0,
 	coolTime:0,
 	bulletID:2,
-	buffs:[0]
+	buffs:[0,0,0]
 };
 
 Config.Skill['4']={
@@ -55,7 +55,7 @@ Config.Skill['4']={
 	costNum:0,
 	coolTime:0,
 	bulletID:1,
-	buffs:[0]
+	buffs:[0,0,0]
 };
 
 Config.Skill['5']={
@@ -69,7 +69,7 @@ Config.Skill['5']={
 	costNum:0,
 	coolTime:0,
 	bulletID:3,
-	buffs:[0]
+	buffs:[0,0,0]
 };
 
 Config.Skill['6']={
@@ -83,7 +83,7 @@ Config.Skill['6']={
 	costNum:0,
 	coolTime:0,
 	bulletID:0,
-	buffs:[1002]
+	buffs:[1002,0,0]
 };
 
 Config.Skill['7']={
@@ -97,7 +97,7 @@ Config.Skill['7']={
 	costNum:0,
 	coolTime:0,
 	bulletID:0,
-	buffs:[0]
+	buffs:[0,0,0]
 };
 
 Config.Skill['8']={
@@ -111,6 +111,6 @@ Config.Skill['8']={
 	costNum:0,
 	coolTime:0,
 	bulletID:0,
-	buffs:[1001]
+	buffs:[1001,0,0]
 };
 

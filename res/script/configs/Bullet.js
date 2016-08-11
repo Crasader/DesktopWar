@@ -19,7 +19,7 @@ Config.Bullet['1']={
 	buffTargetRadius:10,
 	attackValue:11,
 	attackType:1,
-	buffs:[2001]
+	buffs:[2001,0,0]
 };
 
 Config.Bullet['2']={
@@ -39,7 +39,7 @@ Config.Bullet['2']={
 	buffTargetRadius:30,
 	attackValue:200,
 	attackType:1,
-	buffs:[2001]
+	buffs:[2001,0,0]
 };
 
 Config.Bullet['3']={
@@ -59,6 +59,6 @@ Config.Bullet['3']={
 	buffTargetRadius:0,
 	attackValue:0,
 	attackType:1,
-	buffs:[3001]
+	buffs:[3001,0,0]
 };
 
