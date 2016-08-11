@@ -46,7 +46,7 @@ var Bullet = {
             inst.AddComponent(gn.ComName.Direction);
 
             var bez = inst.AddComponent(gn.ComName.BezierMovement);
-            bez.Create(posx, posy, destX, destY, (abs(posx - destX) + abs(posy - destY)) / bulletCfg.flySpeed);
+            bez.Create(posx, posy, destX, destY, (Math.abs(posx - destX) + Math.abs(posy - destY)) / bulletCfg.flySpeed);
 
             damage.SetTargetID(targetId);
 

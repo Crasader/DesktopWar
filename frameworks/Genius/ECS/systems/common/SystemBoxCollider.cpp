@@ -2,7 +2,7 @@
 #include "SystemBoxCollider.h"
 #include "event/EventManager.h"
 #include "../../EntityEvents.h"
-#include "pawn/PawnDefines.h"
+
 #include "../../core/Entity.h"
 #include "../../core/ECSWorld.h"
 

@@ -3,7 +3,7 @@
 
 #include "../event/Event.h"
 #include <string>
-#include "../pawn/PawnDefines.h"
+
 
 namespace Genius
 {
@@ -16,14 +16,6 @@ namespace Genius
 		// render
 		Event_nodeCreated,
 		Event_entityDestroy,
-		Event_turnBack,
-
-		// transform
-		Event_setPosition,
-		Event_moveTo,
-		Event_pawnStopMove,
-		Event_velocityChanged,
-		Event_turnTo,
 
 		// collider
 		Event_EnterCollider,
@@ -32,7 +24,6 @@ namespace Genius
 		// bullet
 		Event_BulletTrigger,
 		Event_BulletHit,
-		Event_BulletLifeOver,
 		Event_ReachDestination,
 		Event_StopMove,
 	};
@@ -61,52 +52,11 @@ namespace Genius
 		Entity*				entity;
 	};
 
-	class TurnBackEvent : public IEventData
-	{
-	public:
-		TurnBackEvent(Entity* _entity) :
-			IEventData(Event_turnBack),
-			entity(_entity)
-		{}
-
-		Entity*		entity;
-	};
-
 	class TransformEvent : public IEventData
 	{
 	public:
 		TransformEvent(EventType _type, Entity* _entity, float _x = 0, float _y = 0) :
 			IEventData(_type),
-			entity(_entity),
-			x(_x),
-			y(_y)
-		{}
-
-		Entity*	entity;
-		float		x;
-		float		y;
-	};
-
-	class VelocityChangedEvent : public IEventData
-	{
-	public:
-		VelocityChangedEvent(Entity* _entity, float _x, float _y) :
-			IEventData(Event_velocityChanged),
-			entity(_entity),
-			x(_x),
-			y(_y)
-		{}
-
-		Entity*	entity;
-		float		x;
-		float		y;
-	};
-
-	class TurnToEvent : public IEventData
-	{
-	public:
-		TurnToEvent(Entity* _entity, float _x, float _y) :
-			IEventData(Event_turnTo),
 			entity(_entity),
 			x(_x),
 			y(_y)
@@ -163,17 +113,6 @@ namespace Genius
 		{}
 
 		Entity*	bulletEntity;
-	};
-
-	class BulletLifeOverEvent : public IEventData
-	{
-	public:
-		BulletLifeOverEvent(Entity* _entity) :
-			IEventData(Event_BulletLifeOver),
-			entity(_entity)
-		{}
-
-		Entity*	entity;
 	};
 
 	class ReachDestinationEvent : public IEventData

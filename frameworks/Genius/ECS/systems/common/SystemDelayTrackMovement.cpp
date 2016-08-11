@@ -2,7 +2,6 @@
 #include "SystemDelayTrackMovement.h"
 #include "../../../event/EventManager.h"
 #include "../../EntityEvents.h"
-#include "../../../pawn/PawnDefines.h"
 #include "../../core/Entity.h"
 
 #include "2Ddef.h"

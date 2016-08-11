@@ -2,7 +2,7 @@
 #include "ComPawnAnim.h"
 #include "ComPawnAgent.h"
 #include "ecs/components/common/ComRenderRoot.h"
-#include "pawn/PawnDefines.h"
+
 #include "data/auto/Role_cfg.hpp"
 #include "data/ConfigPool.h"
 #include "gfx/gfx.h"

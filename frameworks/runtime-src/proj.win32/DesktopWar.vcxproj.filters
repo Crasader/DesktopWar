@@ -178,9 +178,6 @@
     <ClInclude Include="..\..\Genius\skill\SkillSet.h">
       <Filter>Genius\Logic\Skill</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\PawnDefines.h">
-      <Filter>Genius\Logic\Pawn</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\AI\BehaviorTree\Behavior.h">
       <Filter>Genius\Logic\AI\BevTree</Filter>
     </ClInclude>
@@ -207,9 +204,6 @@
     </ClInclude>
     <ClInclude Include="WinWrapper.h">
       <Filter>Genius\Base\Win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\PawnDefines.h">
-      <Filter>Genius\Logic\Pawn</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\common\Performance.h">
       <Filter>Genius\Base\Common</Filter>
@@ -302,9 +296,6 @@
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletBombAnim.h">
-      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\ECS\systems\bullet\SystemBulletTarget.h">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemBezierMovement.h">
@@ -602,9 +593,6 @@
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletBombAnim.cpp">
-      <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\ECS\systems\bullet\SystemBulletTarget.cpp">
       <Filter>Genius\Logic\ESC\User\System\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemBezierMovement.cpp">

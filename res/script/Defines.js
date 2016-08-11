@@ -169,6 +169,8 @@ gn.PawnAnimName =
 gn.Event =
 {
     Locomote:"Locomote",
+    Arrived:"Arrived",
+    Hit:"Hit",
     FaceTo:"FaceTo",
     Die:"Die",
     Attack:"Attack",
@@ -193,6 +195,7 @@ gn.Event =
 // EntityScript Blackboard中的Key
 gn.BB = {
     RoleCfg:"RoleCfg",
+    BulletCfg:"BulletCfg",
     FollowTarget:"FollowTarget",
     CombatTarget:"CombatTarget",
     HomePosition:"HomePosition"

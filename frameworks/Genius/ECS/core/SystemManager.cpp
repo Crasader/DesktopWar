@@ -31,7 +31,6 @@ namespace Genius
 		this->AddSystem(new SystemBulletDamage());
 		this->AddSystem(new SystemBulletArrowAnim());
 		this->AddSystem(new SystemBulletBombAnim());
-		this->AddSystem(new SystemBulletTarget());
 
 		for (int i = 0; i < m_bagged.getCount(); i++)
 		{

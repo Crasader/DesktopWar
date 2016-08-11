@@ -15,7 +15,6 @@ void SystemBulletBombAnim::Initialize()
 
 	// register event.
 	EventManager::GetSingleton()->AddListener(this, Event_BulletHit);
-	EventManager::GetSingleton()->AddListener(this, Event_BulletLifeOver);
 	EventManager::GetSingleton()->AddListener(this, Event_ReachDestination);
 }
 
@@ -61,8 +60,6 @@ bool SystemBulletBombAnim::HandleEvent(IEventData const &evnt)
 	{
 	case Event_BulletHit:
 		OnBulletHit(evnt);
-		break;
-	case Event_BulletLifeOver:
 		break;
 	case Event_ReachDestination:
 		OnReachDest(evnt);

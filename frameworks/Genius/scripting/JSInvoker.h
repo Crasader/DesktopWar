@@ -16,4 +16,6 @@ public:
 
 	static void Invoke_ModifyEntityAttr(int entityID, int calType, int attrType, int value, int atkType=-1);
 
+	static void Invoke_PushEvent(int entityID, const char* eventName);
+
 };

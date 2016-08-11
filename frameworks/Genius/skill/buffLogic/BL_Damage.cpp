@@ -9,7 +9,7 @@
 
 #include "event/EventManager.h"
 #include "ECS/EntityEvents.h"
-#include "pawn/PawnDefines.h"
+
 #include "scripting/JSInvoker.h"
 
 

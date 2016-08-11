@@ -133,6 +133,10 @@ var Game =
         }
     },
 
+    OnPushEvent:function(entityID, event){
+        //
+    },
+
     // get time in seconds since game starts.
     GetTime:function() {
         return TimeSystem.TimeSinceStart();
