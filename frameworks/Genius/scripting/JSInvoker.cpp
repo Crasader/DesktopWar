@@ -43,6 +43,6 @@ void JSInvoker::Invoke_ModifyEntityAttr(int entityID, int calType, int attrType,
 void JSInvoker::Invoke_PushEvent(int entityID, const char* eventName)
 {
 	char jsCallString[32];
-	sprintf_s(jsCallString, "Game.OnPushEvent(%d, %s);", entityID, eventName);
+	sprintf_s(jsCallString, "Game.OnPushEvent(%d, '%s');", entityID, eventName);
 	ScriptingCore::getInstance()->evalString(jsCallString);
 }

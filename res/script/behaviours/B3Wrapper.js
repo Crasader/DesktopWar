@@ -112,6 +112,10 @@ function WhileNode(condition, action)
     return ParallelNode(condition, action);
 }
 
+function WaitNode(seconds){
+    return new Wait({milliseconds:seconds*1000});
+}
+
 
 
 

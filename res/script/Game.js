@@ -17,9 +17,7 @@ require("res/script/GameState.js");
 require("res/script/BrainMgr.js");
 
 require("res/script/ComponentName.js");
-require("res/script/prefabs/Soldier.js");
-require("res/script/prefabs/Monster.js");
-require("res/script/prefabs/Bullet.js");
+
 require("res/script/EntityScript.js");
 
 require("res/script/configs/_cfg_.js");
@@ -134,7 +132,12 @@ var Game =
     },
 
     OnPushEvent:function(entityID, event){
-        //
+        var entity = this.entityList[entityID];
+        if(entity == null){
+            print('Game.OnPushEvent: cannot find entity.id:'+entityID);
+        }else {
+            entity.PushEvent(event);
+        }
     },
 
     // get time in seconds since game starts.

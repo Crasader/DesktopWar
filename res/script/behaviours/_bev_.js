@@ -13,6 +13,7 @@ require("res/script/behaviours/actions/Chase.js");
 require("res/script/behaviours/actions/Follow.js");
 require("res/script/behaviours/actions/AttackFar.js");
 require("res/script/behaviours/actions/AttackNear.js");
+require("res/script/behaviours/actions/Skill1.js");
 
 //comditions
 require("res/script/behaviours/conditions/CommonCondition.js");

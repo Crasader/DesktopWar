@@ -26,7 +26,6 @@ var AttackNear = bt.Action.extend({
 
         entity.GetStateGraph().gotoState(gn.SG.AttackNear);
 
-        print('open attack near');
     },
 
     tick:function(tick) {

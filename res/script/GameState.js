@@ -140,7 +140,7 @@ var LaunchState = GameState.extend
     {
 
         //Monster.Create(2012, 700, 133);
-        //Monster.Create(2009, 1300, 133);
+        NoxiousCreeeper.Create(2009, 1300, 133);//mother spider
         //Monster.Create(2010, 200, 133);
         //Monster.Create(2010, 350, 133);
 
@@ -154,9 +154,9 @@ var LaunchState = GameState.extend
 
         //Soldier.Create(1007, 400, 133);
         //Soldier.Create(1007, 520, 120);
-        Soldier.Create(1007, 540, 600);
+        //Soldier.Create(1007, 540, 600);
 
-        Soldier.Create(1001, 400, 550);
+        //Soldier.Create(1001, 400, 550);
 
         //print("enter Launch");
     },
@@ -175,12 +175,12 @@ var LaunchState = GameState.extend
     {
         loadMgr.AddRole(1001);
         loadMgr.AddRole(1007);
-        /*loadMgr.AddRole(2012);
+        loadMgr.AddRole(2012);
         loadMgr.AddRole(2011);
         loadMgr.AddRole(2010);
         loadMgr.AddRole(2009);
         loadMgr.AddRole(2008);
-        */
+
 
         loadMgr.AddAnim(3001);
         loadMgr.AddAnim(3002);

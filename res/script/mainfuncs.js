@@ -30,7 +30,24 @@ function SpawnPawn(roleID, x, y, tag) {
 }
 
 function SpawnBullet(bulletID, targetEntityID, x, y, tag, destX, destY) {
-    Bullet.Create(bulletID, targetEntityID, x, y, tag, destX, destY);
+    var bulletCfg = Config.Bullet[bulletID];
+    if (null == bulletCfg)
+    {
+        print("SpawnBullet:wrong bullet id " + bulletID);
+    }
+    if (bulletCfg.moveType == gn.BulletMoveType.Line)
+    {
+        BulletEgg.Create(bulletID, x, y, tag);
+    }
+    else if (bulletCfg.moveType == gn.BulletMoveType.Bezier)
+    {
+        BulletArrow.Create(bulletID, targetEntityID, x, y, tag, destX, destY);
+    }
+    else if (bulletCfg.moveType == gn.BulletMoveType.Tracking)
+    {
+        BulletTrack.Create(bulletID, targetEntityID, x, y, tag, destX, destY);
+    }
+
 }
 
 

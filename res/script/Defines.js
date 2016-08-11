@@ -9,6 +9,8 @@ gn.Setting =
 
 /////////////////////////////////
 
+gn.InvalidEntityID = -1;
+
 // names of all components
 gn.ComName =
 {
@@ -175,6 +177,9 @@ gn.Event =
     Die:"Die",
     Attack:"Attack",
     Attacked:"Attacked",
+
+    //bullet
+    BulletTriggered:"buff",
 
     //armature frame event
     FrameAttack1:"attack",

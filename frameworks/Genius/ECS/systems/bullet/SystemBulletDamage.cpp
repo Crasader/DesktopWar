@@ -29,21 +29,6 @@ void SystemBulletDamage::Initialize()
 
 void SystemBulletDamage::ProcessEntity(Entity* pEntity)
 {
-	/*ComTransform* posCom = transMapper.get(pEntity);
-	
-	ComBulletDamageSingle* pAttackCom = attackMapper.get(pEntity);
-	ComBulletAnimBase* pAnimCom = bulletAnimMapper.get(pEntity);
-	ComBulletTemplate* pTemplateCom = bulletTemplateMapper.get(pEntity);
-
-	// 没命中，但是到最大时间了，爆炸。
-	pAttackCom->lifeTime += world->GetDeltaTime();
-	if (pAttackCom->lifeTime > pTemplateCom->pBulletData->maxLifeTime)
-	{
-		pAnimCom->ShowBody(false);
-		pAnimCom->StartExplode();
-		pPosCom->vx = 0;
-		pPosCom->vy = 0;
-	}*/
 }
 
 bool SystemBulletDamage::HandleEvent(const IEventData &evnt)
@@ -78,8 +63,9 @@ void SystemBulletDamage::collisionHandler(const IEventData& evt)
 	bool isEnemy = EntityUtility::IsEnemy(pEntity, pOtherEntity);
 	if (myAgent->pBulletData->moveType == BulletMoveType::BMT_Line)
 	{
+		// 召唤类子弹，不关心碰撞。
 	}
-	else if (myAgent->pBulletData->moveType == BulletMoveType::BMT_Line)
+	else if (myAgent->pBulletData->moveType == BulletMoveType::BMT_Bezier)
 	{
 		if (myAgent && isEnemy)
 		{
@@ -99,7 +85,7 @@ void SystemBulletDamage::collisionHandler(const IEventData& evt)
 			}
 		}
 	}
-	else if (myAgent->pBulletData->moveType == BulletMoveType::BMT_Line)
+	else if (myAgent->pBulletData->moveType == BulletMoveType::BMT_Tracking)
 	{
 		/*if (myAgent->GetBlackboard()->targetType == Target_Entity)
 		{
@@ -132,12 +118,12 @@ bool SystemBulletDamage::TriggerBulletBuff(IEventData const &evt)
 	auto agentCom = agentMapper.get(pOwnerEntity);
 	if (agentCom->pBulletData->moveType == BulletMoveType::BMT_Line)
 	{
-		const Bullet_cfg* bulletInfo = agentCom->pBulletData;
+		/*const Bullet_cfg* bulletInfo = agentCom->pBulletData;
 		for (int i = 0; i < 3; ++i)
 		{
 			if (bulletInfo->buffs[i] != 0)
 				BuffManager::GetSingleton()->AddBuff(pOwnerEntity->GetId(), Entity::InvalidID, bulletInfo->buffs[i]);
-		}
+		}*/
 	}
 	else if (agentCom->pBulletData->moveType == BulletMoveType::BMT_Bezier)
 	{

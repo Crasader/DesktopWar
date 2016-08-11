@@ -4,6 +4,8 @@
 #include "event/EventManager.h"
 #include "Log.h"
 #include "../../EntityEvents.h"
+#include "ECS/core/Entity.h"
+#include "scripting/JSInvoker.h"
 
 using namespace Genius;
 
@@ -18,7 +20,8 @@ void ComBulletAnimEgg::Create(const std::string& bodyFileName)
 
 void ComBulletAnimEgg::AnimationMovementCallback(cocostudio::Armature *cca, cocostudio::MovementEventType movType, const std::string& animName)
 {
-	switch (movType)
+	JSInvoker::Invoke_ArmatureMovementEvent(GetEntity()->GetId(), movType, animName.c_str());
+	/*switch (movType)
 	{
 	case cocostudio::START:
 		break;
@@ -30,17 +33,22 @@ void ComBulletAnimEgg::AnimationMovementCallback(cocostudio::Armature *cca, coco
 		break;
 	default:
 		break;
-	}
+	}*/
 }
 
 void ComBulletAnimEgg::AnimationFrameCallback(cocostudio::Bone* bone, const std::string& eventName, int oriIdx, int currentIdx)
 {
-	if (eventName == "buff")
+	if (eventName == "")
+	{
+		return;
+	}
+	JSInvoker::Invoke_ArmatureFrameEvent(GetEntity()->GetId(), eventName.c_str());
+	/*if (eventName == "buff")
 	{
 		EventManager::GetSingleton()->FireEvent(BulletTriggerEvent(GetEntity()));
 	}
 	else
 	{
 		Log::Warning("unknown frame event.");
-	}
+	}*/
 }

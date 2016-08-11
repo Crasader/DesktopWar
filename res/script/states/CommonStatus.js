@@ -235,21 +235,28 @@ commonStatus.AddSkill2 = function(status) {
 
 ///////////////////////////////graph event handlers/////////////////////////
 
-commonStatus.OnLocomote = function()
-{
+commonStatus.OnLocomote = function() {
     return new EventHandler(gn.Event.Locomote,
-    function(entity) {
-        var locomotor = entity.GetComponent(gn.ComName.Locomotor);
-        var isMoving = locomotor.IsMoving();
-        if (isMoving){
-            entity.GetStateGraph().gotoState(gn.SG.Move);
+        function (entity) {
+            var locomotor = entity.GetComponent(gn.ComName.Locomotor);
+            var isMoving = locomotor.IsMoving();
+            if (isMoving) {
+                entity.GetStateGraph().gotoState(gn.SG.Move);
+            }
+            else {
+                entity.GetStateGraph().gotoState(gn.SG.Idle);
+            }
         }
-        else{
-            entity.GetStateGraph().gotoState(gn.SG.Idle);
-        }
-    }
     );
 };
+
+commonStatus.OnArrived = function(entity){
+    return new EventHandler(gn.Event.Arrived,
+        function(entity) {
+            entity.GetStateGraph().gotoState(gn.SG.Idle);
+        }
+    );
+},
 
 
 commonStatus.OnFaceTo = function()
@@ -290,6 +297,7 @@ function CreateCommonGraph(entity)
 
     var events = [
         commonStatus.OnLocomote(),
+        commonStatus.OnArrived(),
         commonStatus.OnFaceTo(),
         commonStatus.OnDie()
     ];

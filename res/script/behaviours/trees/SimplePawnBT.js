@@ -30,6 +30,34 @@ function CreateArcherBTree(){
 }
 
 
+//蜘蛛之母
+// 近战》追击》巡逻+产卵
+function CreateBTree_NoxiousCreeeper(){
+
+    var tree = new bt.BehaviorTree();
+    tree.root =
+        PriorityNode(
+            WhileNode(InverterNode(new IsAlive), new Die),
+            WhileNode(new TargetIsInNearRange, new AttackNear),
+            WhileNode(new TargetIsInViewSight, new Chase),
+            WhileNode(new IsAlive, SequenceNode(WaitNode(5), new Wander, new Skill1))
+        );
+    return tree;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -2,7 +2,7 @@
 
 
 
-var Soldier = {
+var NoxiousCreeeper = {
 
     OnAttacked:function(entity,attacker){
         entity.SetBlackboard(gn.BB.CombatTarget,attacker);
@@ -55,13 +55,13 @@ var Soldier = {
         attr.InitWithRoleCfg(roleCfg);
 
 
-        inst.SetStateGraph(CreateCommonGraph(inst));
+        inst.SetStateGraph(CreateBTree_NoxiousCreeeper(inst));
 
         // events
         inst.ListenForEvent(gn.Event.Attacked,this.OnAttacked);
 
         // tag
-        inst.AddTag(gn.Tag.Soldier);
+        inst.AddTag(gn.Tag.Monster);
         // end
         inst.OnAwake();
         return inst;
