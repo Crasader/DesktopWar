@@ -47,7 +47,7 @@ var NoxiousCreeeper = {
 
         // js coms
         inst.AddComponent(new Locomotor);
-        var SimplePawnBT = CreateFootManBTree();
+        var SimplePawnBT = CreateBTree_NoxiousCreeeper();
         var brain = inst.AddComponent(new Brain(SimplePawnBT));
         BrainMgr.AddBrain(inst, brain);
         inst.AddComponent(new Combat);
@@ -55,7 +55,7 @@ var NoxiousCreeeper = {
         attr.InitWithRoleCfg(roleCfg);
 
 
-        inst.SetStateGraph(CreateBTree_NoxiousCreeeper(inst));
+        inst.SetStateGraph(CreateCommonGraph(inst));
 
         // events
         inst.ListenForEvent(gn.Event.Attacked,this.OnAttacked);

@@ -40,7 +40,7 @@ function CreateBTree_NoxiousCreeeper(){
             WhileNode(InverterNode(new IsAlive), new Die),
             WhileNode(new TargetIsInNearRange, new AttackNear),
             WhileNode(new TargetIsInViewSight, new Chase),
-            WhileNode(new IsAlive, SequenceNode(WaitNode(5), new Wander, new Skill1))
+            WhileNode(new IsAlive, /*MemSequenceNode(SequenceNode(WaitNode(5), new Wander), */new Skill1)//)
         );
     return tree;
 }

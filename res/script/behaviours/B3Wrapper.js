@@ -113,7 +113,7 @@ function WhileNode(condition, action)
 }
 
 function WaitNode(seconds){
-    return new Wait({milliseconds:seconds*1000});
+    return new bt.Wait({milliseconds:seconds*1000});
 }
 
 

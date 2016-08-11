@@ -94,7 +94,10 @@ var EntityScript = Class.extend({
         }
 
         //start sg
-        this.stateGraph.Start();
+        if(this.stateGraph!=null){
+            this.stateGraph.Start();
+        }
+
     },
 
 

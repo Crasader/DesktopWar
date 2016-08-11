@@ -37,6 +37,7 @@ var Brain = BaseComponent.extend({
 
     DoUpdate:function(){
         // find target for test.
+        return;
         var tar = this.entity.GetBlackboard(gn.BB.CombatTarget);
         if(tar==null){
             for(var id in Game.entityList){
@@ -44,7 +45,7 @@ var Brain = BaseComponent.extend({
                 if(ent === this.entity)
                     continue;
                 var attr = ent.GetComponent(gn.ComName.Attr);
-                if(attr.Get(gn.Attr.HP)<=0)
+                if(attr!=undefined && attr.Get(gn.Attr.HP)<=0)
                     continue;
                 print('brain find a target.');
                 this.entity.SetBlackboard(gn.BB.CombatTarget, ent);

@@ -9,7 +9,7 @@ var BulletEgg = {
         for (var i = 0; i < 3; ++i)
         {
             if (bulletInfo.buffs[i] != 0)
-                BuffMgr.AddBuff(entity.GetID(), gn.InvalidEntityID, bulletInfo.buffs[i]);
+                gn.BuffMgr.AddBuff(entity.GetID(), gn.InvalidEntityID, bulletInfo.buffs[i]);
         }
     },
 

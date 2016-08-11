@@ -51,6 +51,8 @@ bool EntityUtility::AreEntitiesCloseEnough(EntityWrapper* entityw1, EntityWrappe
 	auto box2 = entity2->GetComponent<ComBoxCollider>();
 	auto tran1 = entity1->GetComponent<ComTransform>();
 	auto tran2 = entity2->GetComponent<ComTransform>();
+	if (!(box1&&box2))
+		return false;
 	auto distx = abs(tran1->GetX() - tran2->GetX());
 	auto disty = abs(tran1->GetY() - tran2->GetY());
 	auto width = box1->GetWidth()*0.5f + box2->GetWidth()*0.5f;

@@ -17,9 +17,9 @@ require("res/script/GameState.js");
 require("res/script/BrainMgr.js");
 
 require("res/script/ComponentName.js");
-
 require("res/script/EntityScript.js");
 
+require("res/script/prefabs/_prefabs_.js");
 require("res/script/configs/_cfg_.js");
 require("res/script/behaviours/_bev_.js");
 require("res/script/components/_com_.js");

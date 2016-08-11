@@ -8,7 +8,6 @@ commonStatus.OnFrameAttack1 = function()
 {
     return new EventHandler(gn.Event.FrameAttack1,
         function(entity) {
-            //var combat = entity.GetComponent(ComName.Combat);
             var target = entity.GetBlackboard(gn.BB.CombatTarget);
             if(target != null){
                 var cfg = entity.GetBlackboard(gn.BB.RoleCfg);
@@ -16,6 +15,32 @@ commonStatus.OnFrameAttack1 = function()
                 if (can) {
                     gn.SkillMgr.UseSkill(entity.GetID(), target.GetID(), cfg.normalSkill1);
                 }
+            }
+        }
+    );
+};
+
+commonStatus.OnFrameSkill1 = function()
+{
+    return new EventHandler(gn.Event.FrameSkill1,
+        function(entity) {
+            var cfg = entity.GetBlackboard(gn.BB.RoleCfg);
+            var can = gn.SkillMgr.CanUseSkill(entity.GetID(), gn.InvalidEntityID, cfg.specialSkill1);
+            if (can) {
+                gn.SkillMgr.UseSkill(entity.GetID(), gn.InvalidEntityID, cfg.specialSkill1);
+            }
+        }
+    );
+};
+
+commonStatus.OnFrameSkill2 = function()
+{
+    return new EventHandler(gn.Event.FrameSkill2,
+        function(entity) {
+            var cfg = entity.GetBlackboard(gn.BB.RoleCfg);
+            var can = gn.SkillMgr.CanUseSkill(entity.GetID(), gn.InvalidEntityID, cfg.specialSkill2);
+            if (can) {
+                gn.SkillMgr.UseSkill(entity.GetID(), gn.InvalidEntityID, cfg.specialSkill2);
             }
         }
     );
@@ -175,6 +200,8 @@ commonStatus.OnFrameAttack1 = function()
         },
 
         events: [
+            commonStatus.OnFrameSkill1(),
+            commonStatus.OnFrameSkill2(),
             new EventHandler(gn.Event.AnimComplete, function(entity) {entity.GetStateGraph().gotoState(gn.SG.Idle)}),
         ]
     };
