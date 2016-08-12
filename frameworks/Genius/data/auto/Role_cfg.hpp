@@ -16,7 +16,6 @@ namespace cfg
 		string nameID;
 		string nameCN;
 		int animSetId;
-		string bevTreeFile;
 		int moveSpeed;
 		int viewRange;
 		int fightRangeNear;
@@ -28,18 +27,12 @@ namespace cfg
 		int antiMagicValue;
 		int dodgeValue;
 		int normalSkill1;
-		int maxAttack1Times;
 		int normalSkill2;
 		int specialSkill1;
 		int specialSkill2;
 		int specialSkill3;
 		int lifeBarType;
 		int lifeBarHeight;
-		int IdleDuration;
-		int IdleTurnFaceTime;
-		int WanderDuration;
-		int WanderChangeDirTime;
-		int DeadBodyTime;
 		int bulletX;
 		int bulletY;
 	};

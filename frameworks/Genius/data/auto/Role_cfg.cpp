@@ -23,11 +23,6 @@ IMPL_CONFIG_CREATE(Role_cfg);
 				animSetId = reader.GetIntValue(row, col);
 			col++;
 
-			bevTreeFile = "";
-			if(reader.GetStringValue(row, col).length() > 0)
-				bevTreeFile = reader.GetStringValue(row, col);
-			col++;
-
 			moveSpeed = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
 				moveSpeed = reader.GetIntValue(row, col);
@@ -83,11 +78,6 @@ IMPL_CONFIG_CREATE(Role_cfg);
 				normalSkill1 = reader.GetIntValue(row, col);
 			col++;
 
-			maxAttack1Times = 0;
-			if(reader.GetStringValue(row, col).length() > 0)
-				maxAttack1Times = reader.GetIntValue(row, col);
-			col++;
-
 			normalSkill2 = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
 				normalSkill2 = reader.GetIntValue(row, col);
@@ -116,31 +106,6 @@ IMPL_CONFIG_CREATE(Role_cfg);
 			lifeBarHeight = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
 				lifeBarHeight = reader.GetIntValue(row, col);
-			col++;
-
-			IdleDuration = 0;
-			if(reader.GetStringValue(row, col).length() > 0)
-				IdleDuration = reader.GetIntValue(row, col);
-			col++;
-
-			IdleTurnFaceTime = 0;
-			if(reader.GetStringValue(row, col).length() > 0)
-				IdleTurnFaceTime = reader.GetIntValue(row, col);
-			col++;
-
-			WanderDuration = 0;
-			if(reader.GetStringValue(row, col).length() > 0)
-				WanderDuration = reader.GetIntValue(row, col);
-			col++;
-
-			WanderChangeDirTime = 0;
-			if(reader.GetStringValue(row, col).length() > 0)
-				WanderChangeDirTime = reader.GetIntValue(row, col);
-			col++;
-
-			DeadBodyTime = 0;
-			if(reader.GetStringValue(row, col).length() > 0)
-				DeadBodyTime = reader.GetIntValue(row, col);
 			col++;
 
 			bulletX = 0;
