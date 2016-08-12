@@ -4,7 +4,7 @@ var gn = gn || {};
 // global toggles and settings
 gn.Setting =
 {
-    DebugDraw:false,
+    DebugDraw:true,
 };
 
 /////////////////////////////////
@@ -62,6 +62,7 @@ gn.Tag =
 {
     Soldier:"Soldier",
     Monster:"Monster",
+    Collider:"Collider"
 };
 
 

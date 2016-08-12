@@ -1,11 +1,11 @@
-//怪物预制，配置了组件，资源，状态等
 
-var Monster = {
+
+//暗影射手
+
+var ShadowArcher = {
 
     Create:function(id, posx, posy)
     {
-        //print("Soldier Create at " + posx + "," + posy);
-
         var inst = Game.CreateEntity();
 
         var posCom = inst.AddComponent(gn.ComName.Transform);
@@ -37,7 +37,7 @@ var Monster = {
 
         // js coms
         inst.AddComponent(new Locomotor);
-        var btree = CreateFootManBTree();
+        var btree = CreateArcherBTree();
         var brain = inst.AddComponent(new Brain(btree));
         BrainMgr.AddBrain(inst, brain);
         inst.AddComponent(new Combat);

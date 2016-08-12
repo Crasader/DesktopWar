@@ -47,8 +47,8 @@ var NoxiousCreeeper = {
 
         // js coms
         inst.AddComponent(new Locomotor);
-        var SimplePawnBT = CreateBTree_NoxiousCreeeper();
-        var brain = inst.AddComponent(new Brain(SimplePawnBT));
+        var btree = CreateBTree_NoxiousCreeeper();
+        var brain = inst.AddComponent(new Brain(btree));
         BrainMgr.AddBrain(inst, brain);
         inst.AddComponent(new Combat);
         var attr = inst.AddComponent(new Attr);

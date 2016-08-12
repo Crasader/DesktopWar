@@ -17,12 +17,12 @@ IMPL_BUFFLOGIC_CREATOR(BL_ChangeAttr);
 
 void BL_ChangeAttr::OnActive(Buff* buff)
 {
-	Log::Error("to do.");
+	//Log::Error("to do.");
 }
 
 void BL_ChangeAttr::OnDeactive(Buff* buff)
 {
-	Log::Error("to do.");
+	//Log::Error("to do.");
 }
 
 void BL_ChangeAttr::OnEffect(Buff* buff)

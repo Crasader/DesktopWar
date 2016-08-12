@@ -26,7 +26,7 @@ var BrainMgr = null;
             this.brianList[entity.GetID()] = brain;
             // temp
             this.updatingBrains[entity.GetID()] = brain;
-            print('add brain');
+            //print('add brain');
         },
 
         RemoveBrain:function(entity){

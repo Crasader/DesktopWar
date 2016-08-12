@@ -20,6 +20,7 @@ namespace Genius
 		cocos2d::DrawNode*	pNodeBoxCollider;
 		cocos2d::DrawNode*	pNodeNearRange;
 		cocos2d::DrawNode*	pNodeFarRange;
+		cocos2d::DrawNode*	pNodeViewRange;
 
 	public:
 		virtual void OnAwake();

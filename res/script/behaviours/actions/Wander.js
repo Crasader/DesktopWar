@@ -11,6 +11,7 @@ var Wander = bt.Action.extend({
     isWalking:false,
     waitTime:0,
 
+
     ctor:function()
     {
         this._super();
@@ -37,6 +38,7 @@ var Wander = bt.Action.extend({
                 this.waitTime = Game.GetTime() + Random(3, 5);
                 var locomotor = entity.GetComponent(gn.ComName.Locomotor);
                 locomotor.StopMove();
+                return bt.SUCCESS;
             }
         }
         else

@@ -92,9 +92,6 @@
     <Filter Include="Genius\Logic\Pawn\Action">
       <UniqueIdentifier>{c60cf0d0-68a7-4b1a-b844-b26c2794519c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Genius\Logic\Pawn\Action\base">
-      <UniqueIdentifier>{d32ef041-86a0-40a1-94d2-73000950c662}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Genius\JSB">
       <UniqueIdentifier>{2b078783-efab-4cb3-991d-d5bd8b0a83d8}</UniqueIdentifier>
     </Filter>
@@ -321,12 +318,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Genius\pawn\action\PawnAction.h">
       <Filter>Genius\Logic\Pawn\Action</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\action\ActionDefine.h">
-      <Filter>Genius\Logic\Pawn\Action\base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Genius\pawn\action\ActionHandler.h">
-      <Filter>Genius\Logic\Pawn\Action\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Genius\scripting\js-bindings\auto\jsb_app_auto.hpp">
       <Filter>Genius\JSB\auto</Filter>

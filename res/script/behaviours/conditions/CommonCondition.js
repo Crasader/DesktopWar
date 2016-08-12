@@ -95,7 +95,7 @@ var TargetIsInFarRange = bt.Condition.extend({
         var combatTar = entity.GetBlackboard(gn.BB.CombatTarget);
         if (combatTar != null && EntityUtility.IsInMyFarRange(entity.GetEntityNative(),combatTar.GetEntityNative()))
         {
-            //print('TargetIsInFarRange');
+            print('TargetIsInFarRange');
             return bt.SUCCESS;
         }
         else

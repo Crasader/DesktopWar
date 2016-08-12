@@ -5,7 +5,7 @@
 #include "../../core/IComponent.h"
 #include "common/2Ddef.h"
 #include "gfx/gfx.h"
-#include "pawn/action/ActionHandler.h"
+
 
 namespace Genius
 {

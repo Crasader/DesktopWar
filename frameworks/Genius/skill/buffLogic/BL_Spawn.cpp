@@ -18,12 +18,12 @@ IMPL_BUFFLOGIC_CREATOR(BL_Spawn);
 
 void BL_Spawn::OnActive(Buff* buff)
 {
-	Log::Error("to do.");
+	//Log::Error("to do.");
 }
 
 void BL_Spawn::OnDeactive(Buff* buff)
 {
-	Log::Error("to do.");
+	//Log::Error("to do.");
 }
 
 void BL_Spawn::OnEffect(Buff* buff)

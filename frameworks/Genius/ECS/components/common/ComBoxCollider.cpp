@@ -10,7 +10,7 @@ COM_CREATE_FN_IMPL(ComBoxCollider);
 
 void ComBoxCollider::OnAwake()
 {
-	ECSWorld::GetSingleton()->AddTag(this->GetEntity(), GameDefine::Tag_BoxCollider);
+	ECSWorld::GetSingleton()->AddTag(this->GetEntity(), GameDefine::Tag_Collider);
 }
 
 void ComBoxCollider::Create(bool _static, float _centerX, float _centerY, float _width, float _height)

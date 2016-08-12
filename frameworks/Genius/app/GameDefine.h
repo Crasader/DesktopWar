@@ -18,12 +18,9 @@ namespace GameDefine
 	const int mapRootZOrder = 1;
 	const int uiRootZOrder = 2;
 
-	// Tag
-	//const std::string Tag_HumanBornPoint = "HumanBP";
-	//const std::string Tag_MonsterBornPoint = "MonsterBP";
 
 	// Tags
-	const std::string Tag_BoxCollider = "BoxCollider";
+	const std::string Tag_Collider = "Collider";
 	const std::string Tag_Soldier = "Soldier";
 	const std::string Tag_Monster = "Monster";
 	

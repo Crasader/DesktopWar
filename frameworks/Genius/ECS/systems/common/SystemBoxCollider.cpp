@@ -65,7 +65,7 @@ void SystemBoxCollider::ProcessEntity(Entity* pEntity)
 	}
 
 	// new collide test
-	auto activities = ECSWorld::GetSingleton()->GetEntitiesByTag(GameDefine::Tag_BoxCollider);
+	auto activities = ECSWorld::GetSingleton()->GetEntitiesByTag(GameDefine::Tag_Collider);
 	for (auto it = activities.begin(); it != activities.end(); it++)
 	{
 		int otherEntityID = it->first;

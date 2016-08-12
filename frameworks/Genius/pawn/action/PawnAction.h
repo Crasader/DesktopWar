@@ -47,4 +47,12 @@ namespace Genius
 
 	};
 
+	class ActionHandler
+	{
+	public:
+		virtual ~ActionHandler(){}
+		virtual void HandleAction(PawnAction* pAction) = 0;
+
+	};
+
 }
