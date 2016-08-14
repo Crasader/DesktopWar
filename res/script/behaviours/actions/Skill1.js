@@ -24,7 +24,7 @@ var Skill1 = bt.Action.extend({
 
         entity.GetStateGraph().gotoState(gn.SG.Skill1);
 
-        print('open skill1');
+        //print('open skill1');
     },
 
     tick:function(tick) {

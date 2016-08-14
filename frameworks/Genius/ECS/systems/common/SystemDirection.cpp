@@ -23,7 +23,7 @@ void SystemDirection::ProcessEntity(Entity* pEntity)
 	float rotation = 0;
 	if (tranCom->vx == 0)
 	{
-		rotation = 90;
+		rotation = -90;
 	}
 	else if (tranCom->vx > 0)
 	{

@@ -2,7 +2,7 @@
 
 
 
-var Soldier = {
+var Juggernaut = {
 
     OnAttacked:function(entity,attacker){
         entity.SetBlackboard(gn.BB.CombatTarget,attacker);
@@ -25,7 +25,7 @@ var Soldier = {
 
         // js coms
         var sg = CreateCommonGraph(inst);
-        var btree = CreateCommonSoliderNearBTree();
+        var btree = CreateBTree_Juggernaut();
         PawnCommon.AddCommonJSComponents(inst,roleCfg,sg,btree);
 
 
@@ -34,7 +34,7 @@ var Soldier = {
 
 
         // tag
-        inst.AddTag(gn.Tag.Soldier);
+        inst.AddTag(gn.Tag.Monster);
 
 
         // end

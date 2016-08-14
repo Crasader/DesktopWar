@@ -8,6 +8,7 @@ require("res/script/behaviours/B3Wrapper.js");
 
 //actions
 require("res/script/behaviours/actions/Wander.js");
+require("res/script/behaviours/actions/TurnAround.js");
 require("res/script/behaviours/actions/Die.js");
 require("res/script/behaviours/actions/Chase.js");
 require("res/script/behaviours/actions/Follow.js");

@@ -178,7 +178,7 @@ var Game =
 
         GetWorld().DestroyEntity(entity.GetEntityNative());
 
-        print("Game._DoDestroyEntity one");
+        //print("Game._DoDestroyEntity one");
     },
 
 

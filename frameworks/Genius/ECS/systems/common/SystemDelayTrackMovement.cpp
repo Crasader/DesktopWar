@@ -61,7 +61,7 @@ void SystemDelayTrackMovement::ProcessEntity(Entity* pEntity)
 		pPosCom->vx += deltaVec.x;
 		pPosCom->vy += deltaVec.y;
 
-		// 临时这样计算8
+		// 暂时这样计算8，理想的方式是圆滑的轨迹
 		pPosCom->vx = toTarVec.x * velLen;
 		pPosCom->vy = toTarVec.y * velLen;
 	}
