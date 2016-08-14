@@ -23,10 +23,8 @@ void SL_Bullet::OnActive(Skill* skill)
 			return;
 
 		ComTransform* ownerPosCom = ownerEntity->GetComponent<ComTransform>();
-		//ComTeam* ownerComTeam = ownerEntity->GetComponent<ComTeam>();
 		ComPawnAgent* ownerAgentCom = ownerEntity->GetComponent<ComPawnAgent>();
-		ComTransform* ownerDirCom = ownerEntity->GetComponent<ComTransform>();
-		if (nullptr == ownerAgentCom || nullptr == ownerDirCom)
+		if (nullptr == ownerAgentCom)
 			return;
 
 		float startX = ownerPosCom->x;
@@ -40,10 +38,6 @@ void SL_Bullet::OnActive(Skill* skill)
 		{
 			startX = ownerPosCom->x + ownerAgentCom->m_roleCfg->bulletX;
 			startY = ownerPosCom->y + ownerAgentCom->m_roleCfg->bulletY;
-		}
-		else
-		{
-			startX = startX;
 		}
 
 		bool isTagged = EntityUtility::IsTagged(GameDefine::Tag_Soldier, ownerEntity);

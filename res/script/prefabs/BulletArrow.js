@@ -52,9 +52,9 @@ var BulletArrow = {
         var banim = inst.AddComponent(gn.ComName.BulletAnimArrow);
         banim.Create(anim_cfg.name);
 
-        agent.GetBlackboard().SetTargetType(gn.TargetType.Location);
-        agent.GetBlackboard().SetTargetX(destX);
-        agent.GetBlackboard().SetTargetY(destY);
+        //agent.GetBlackboard().SetTargetType(gn.TargetType.Location);
+        //agent.GetBlackboard().SetTargetX(destX);
+        //agent.GetBlackboard().SetTargetY(destY);
 
 
 

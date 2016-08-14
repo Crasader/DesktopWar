@@ -18,34 +18,12 @@ namespace Genius
 		Pile_JustDoIt,
 	};
 
-	/*struct Effect
-	{
-		Effect()
-		{
-			effected = false;
-		}
-		bool effected;
-		BuffAction action;
-	};*/
-
 	enum EffectCycleType
 	{
 		EffectCycle_Interval,
 		EffectCycle_Point,
 	};
 
-	/*struct EffectCycle
-	{
-		EffectCycle()
-		{
-			m_cycleType = 0;
-			m_interval = 0;
-		}
-		int m_cycleType;
-		int m_interval;
-		BuffAction action;
-	};
-	*/
 	enum EbuffRet
 	{
 		EBuffRet_Invalid = -1,
@@ -55,7 +33,6 @@ namespace Genius
 		EBuffRet_Kill = 1 << 2,
 	};
 
-	
 	
 	class Buff
 	{
@@ -108,11 +85,7 @@ namespace Genius
 		int				m_curPileCount;
 		int				m_skillID;
 		bool				m_alive;
-		int				m_cycleCount;
-		/*std::vector<Effect>			m_beginActions;
-		std::vector<EffectCycle>	m_cycleActions;
-		std::vector <Effect>			m_effectActions;
-		std::vector <Effect>			m_endActions;*/
+
 	};
 
 }

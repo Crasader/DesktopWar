@@ -4,7 +4,7 @@ var gn = gn || {};
 // global toggles and settings
 gn.Setting =
 {
-    DebugDraw:true,
+    DebugDraw:false,
 };
 
 /////////////////////////////////
