@@ -100,6 +100,11 @@ public:
 		return Point2D(x - point.x, y - point.y);
 	}
 
+	Point2D operator*(float number) const
+	{
+		return Point2D(x*number, y*number);
+	}
+
 	bool Equals(const Point2D& point)
 	{
 		return (x == point.x) && (y == point.y);

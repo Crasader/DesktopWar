@@ -1866,28 +1866,6 @@ void js_register_app_ComBezierMovement(JSContext *cx, JS::HandleObject global) {
 JSClass  *jsb_Genius_ComDelayTrackMovement_class;
 JSObject *jsb_Genius_ComDelayTrackMovement_prototype;
 
-bool js_app_ComDelayTrackMovement_Create(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::ComDelayTrackMovement* cobj = (Genius::ComDelayTrackMovement *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComDelayTrackMovement_Create : Invalid Native Object");
-    if (argc == 2) {
-        int arg0 = 0;
-        double arg1 = 0;
-        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
-        ok &= JS::ToNumber( cx, args.get(1), &arg1) && !std::isnan(arg1);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_ComDelayTrackMovement_Create : Error processing arguments");
-        cobj->Create(arg0, arg1);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_ComDelayTrackMovement_Create : wrong number of arguments: %d, was expecting %d", argc, 2);
-    return false;
-}
 bool js_app_ComDelayTrackMovement_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -1944,7 +1922,6 @@ void js_register_app_ComDelayTrackMovement(JSContext *cx, JS::HandleObject globa
     };
 
     static JSFunctionSpec funcs[] = {
-        JS_FN("Create", js_app_ComDelayTrackMovement_Create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 

@@ -144,7 +144,7 @@ var LaunchState = GameState.extend
         //ShadowArcher.Create(2010, 200, 133);
         //Monster.Create(2010, 350, 133);
 
-        //Juggernaut.Create(2008, 1000, 133);        //铁人
+        Juggernaut.Create(2008, 1000, 133);        //铁人
         //Juggernaut.Create(2008, 1050, 153);
         //Juggernaut.Create(2008, 1150, 133);
 

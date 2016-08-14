@@ -37,7 +37,7 @@ void SystemDirection::ProcessEntity(Entity* pEntity)
 		if (tranCom->vy * tranCom->vx >= 0)
 			rotation = 180 - 180 * atan(tranCom->vy / tranCom->vx) / PI;
 		else if (tranCom->vy * tranCom->vx < 0)
-			rotation = 180 - 180 * atan(tranCom->vy / tranCom->x) / PI;
+			rotation = 180 - 180 * atan(tranCom->vy / tranCom->vx) / PI;
 	}
 	
 	if (renderCom->rootNode)

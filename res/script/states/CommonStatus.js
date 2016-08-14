@@ -123,7 +123,7 @@ commonStatus.OnFrameSkill2 = function()
         },
 
         events: [
-            new EventHandler(gn.Event.AnimComplete, function(entity) {print('die anim over');})
+
         ]
     };
 

@@ -168,6 +168,10 @@ var StateGraph = Class.extend({
         return this.lastAnimPrefixName;
     },
 
+    GetCurrentState:function(){
+        return this.currentState;
+    }
+
 });
 
 

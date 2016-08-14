@@ -17,7 +17,6 @@ namespace cfg
 		int moveType;
 		int targetIsEntity;
 		int flySpeed;
-		int findTargetDelay;
 		int maxLifeTime;
 		int boxWidth;
 		int boxHeight;

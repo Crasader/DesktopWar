@@ -680,18 +680,6 @@ IsDone : function (
 ComDelayTrackMovement = {
 
 /**
- * @method Create
- * @param {int} arg0
- * @param {float} arg1
- */
-Create : function (
-int, 
-float 
-)
-{
-},
-
-/**
  * @method ComDelayTrackMovement
  * @constructor
  */

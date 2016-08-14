@@ -39,8 +39,7 @@ var BulletTrack = {
 
         posCom.SetVelocity(0, bulletCfg.flySpeed);
 
-        var delayTrack = inst.AddComponent(gn.ComName.DelayTrackMovement);
-        delayTrack.Create(targetId, bulletCfg.findTargetDelay);
+        inst.AddComponent(gn.ComName.DelayTrackMovement);
 
         var bom = inst.AddComponent(gn.ComName.BulletAnimBomb);
         bom.Create(anim_cfg.name, bulletCfg.tailAnim);

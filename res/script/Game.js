@@ -166,7 +166,7 @@ var Game =
         delete this.updatingEntities[entity.GetID()];
 
         this.deleteEntityList[entity.GetID()] = entity;
-
+        print("Game.DestroyEntity");
     },
 
     _DoDestroyEntity:function(entity){
@@ -178,7 +178,7 @@ var Game =
 
         GetWorld().DestroyEntity(entity.GetEntityNative());
 
-        //print("Game._DoDestroyEntity one");
+        print("Game._DoDestroyEntity one");
     },
 
 

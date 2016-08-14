@@ -164,7 +164,6 @@ bool js_app_ComDelayTrackMovement_constructor(JSContext *cx, uint32_t argc, jsva
 void js_app_ComDelayTrackMovement_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_ComDelayTrackMovement(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_ComDelayTrackMovement_Create(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_ComDelayTrackMovement_ComDelayTrackMovement(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComPawnAgent_class;

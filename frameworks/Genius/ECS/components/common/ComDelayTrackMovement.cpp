@@ -18,31 +18,14 @@ targetEntityID(Entity::InvalidID)
 	targetCachePosX = 0;
 	targetCachePosY = 0;
 	isTracking = false;
+
 }
-
-void ComDelayTrackMovement::Create(int _targetID, float _delayTime)
-{
-	/*_targetID = Entity::InvalidID;
-	targetEntityID = _targetID;
-	lifeTime = 0;*/
-	delayTime = _delayTime;
-	targetCachePosX = 1500;
-	targetCachePosY = 100;
-	isTracking = true;
-};
-
 
 void ComDelayTrackMovement::OnAwake()
 {
-	/*Entity* pTarEntity = ECSWorld::GetSingleton()->GetEntity(targetEntityID);
-	if (pTarEntity)
-	{
-		ComTransform* pTarPosCom = pTarEntity->GetComponent<ComTransform>();
-		if (pTarPosCom)
-		{
-			targetCachePosX = pTarPosCom->x;
-			targetCachePosY = pTarPosCom->y;
-		}
-	}*/
-
+	delayTime = 1.5f;
+	targetCachePosX = 1500;
+	targetCachePosY = 100;
+	isTracking = true;
+	currentState = Wait;
 }

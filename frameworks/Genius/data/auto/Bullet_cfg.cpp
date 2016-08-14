@@ -28,11 +28,6 @@ IMPL_CONFIG_CREATE(Bullet_cfg);
 				flySpeed = reader.GetIntValue(row, col);
 			col++;
 
-			findTargetDelay = 0;
-			if(reader.GetStringValue(row, col).length() > 0)
-				findTargetDelay = reader.GetIntValue(row, col);
-			col++;
-
 			maxLifeTime = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
 				maxLifeTime = reader.GetIntValue(row, col);

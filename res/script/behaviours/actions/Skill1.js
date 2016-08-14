@@ -8,7 +8,7 @@
 
 var Skill1 = bt.Action.extend({
 
-    timeWait:0,
+    //timeWait:0,
 
     ctor:function() {
         this.name = "Skill1";
@@ -16,7 +16,7 @@ var Skill1 = bt.Action.extend({
     },
 
     open:function(tick) {
-        this.timeWait = Game.GetTime() + 5;
+        //this.timeWait = Game.GetTime() + 1;
 
         var entity = tick.target;
         var locomotor = entity.GetComponent(gn.ComName.Locomotor);
@@ -29,8 +29,8 @@ var Skill1 = bt.Action.extend({
 
     tick:function(tick) {
         var entity = tick.target;
-        if (Game.GetTime() > this.timeWait) {
-            entity.GetStateGraph().gotoState(gn.SG.Idle);
+        if (entity.GetStateGraph().GetCurrentState().getName()!=gn.SG.Skill1) {
+            //entity.GetStateGraph().gotoState(gn.SG.Idle);
             return bt.SUCCESS;
         }
 
