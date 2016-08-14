@@ -2,6 +2,7 @@
 
 var PawnCommon = {
 
+    // 添加士兵/怪物通用native组件
     AddCommonNativeComponents:function(inst,id,posx,posy){
         var posCom = inst.AddComponent(gn.ComName.Transform);
         posCom.SetPosition(posx, posy);
@@ -26,6 +27,7 @@ var PawnCommon = {
         }
     },
 
+    // 添加士兵/怪物通用js组件
     AddCommonJSComponents:function(inst,roleCfg,sg,btree){
         var attr = inst.AddComponent(new Attr);
         attr.InitWithRoleCfg(roleCfg);
@@ -34,6 +36,7 @@ var PawnCommon = {
         var brain = inst.AddComponent(new Brain(btree));
         BrainMgr.AddBrain(inst, brain);
         inst.AddComponent(new Combat);
-    }
+    },
+
 
 };

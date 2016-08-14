@@ -457,8 +457,8 @@ Config.Role['2009']={
 	specialSkill3:0,
 	lifeBarType:2,
 	lifeBarHeight:35,
-	bulletX:0,
-	bulletY:0
+	bulletX:-25,
+	bulletY:5
 };
 
 Config.Role['2010']={

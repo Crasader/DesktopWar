@@ -19,28 +19,29 @@ var BulletEgg = {
 
     Create:function(bulletId, posx, posy, tag)
     {
-        var bulletCfg = Config.Bullet[bulletId];
-        var anim_cfg = Config.Animation[bulletCfg.bodyAnim];
+        "use strict";
 
         var inst = Game.CreateEntity();
 
+        var bulletCfg = Config.Bullet[bulletId];
+        var anim_cfg = Config.Animation[bulletCfg.bodyAnim];
         inst.SetBlackboard(gn.BB.BulletCfg, bulletCfg);
 
+
+        // native coms
         var agent = inst.AddComponent(gn.ComName.PawnAgent);
         agent.Create(bulletId,false);
-
         var posCom = inst.AddComponent(gn.ComName.Transform);
         posCom.SetPosition(posx, posy);
         posCom.SetVelocity(0, 0);
-
         inst.AddComponent(gn.ComName.Render);
-
-        var baegg = inst.AddComponent(gn.ComName.BulletAnimEgg);
-        baegg.Create(anim_cfg.name);
-
         if(gn.Setting.DebugDraw){
             inst.AddComponent(gn.ComName.BulletDebugDraw);
         }
+        var baegg = inst.AddComponent(gn.ComName.BulletAnimEgg);
+        baegg.Create(anim_cfg.name);
+
+
 
         // js coms
 
@@ -51,8 +52,11 @@ var BulletEgg = {
         inst.ListenForEvent(gn.Event.AnimLoopComplete,this.OnAnimComplete);
 
 
-        // end
+        // tag
         inst.AddTag(tag);
+
+
+        // end
         inst.OnAwake();
         return inst;
     }

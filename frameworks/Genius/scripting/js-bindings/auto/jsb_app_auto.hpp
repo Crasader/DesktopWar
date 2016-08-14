@@ -21,11 +21,12 @@ bool js_app_JSInvoker_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_app_JSInvoker_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_JSInvoker(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
+bool js_app_JSInvoker_Invoke_PushEvent(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_JSInvoker_Invoke_Update(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_JSInvoker_Invoke_ModifyEntityAttr(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_app_JSInvoker_Invoke_ArmatureMovementEvent(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_JSInvoker_Invoke_ArmatureFrameEvent(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_JSInvoker_Invoke_LongUpdate(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_JSInvoker_Invoke_ModifyEntityAttr(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_JSInvoker_Invoke_ArmatureMovementEvent(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_TimeSystem_class;
 extern JSObject *jsb_Genius_TimeSystem_prototype;
@@ -247,7 +248,6 @@ bool js_app_ComBulletDamage_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 void js_app_ComBulletDamage_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_ComBulletDamage(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
-bool js_app_ComBulletDamage_SetTargetID(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Genius_ComBulletDebugDraw_class;
 extern JSObject *jsb_Genius_ComBulletDebugDraw_prototype;

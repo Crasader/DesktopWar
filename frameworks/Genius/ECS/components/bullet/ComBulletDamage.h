@@ -10,12 +10,6 @@ namespace Genius
 	{
 	public:
 		COM_CREATE_FN_DECL(ComBulletDamage);
-
-	public:
-		int		targetID;
-
-	public:
-		void SetTargetID(int tarId);
 	};
 };
 

@@ -116,30 +116,7 @@ bool SystemBulletDamage::TriggerBulletBuff(IEventData const &evt)
 
 	ComBulletDamage* pAttackCom = damageMapper.get(pOwnerEntity);
 	auto agentCom = agentMapper.get(pOwnerEntity);
-	if (agentCom->pBulletData->moveType == BulletMoveType::BMT_Line)
-	{
-		/*const Bullet_cfg* bulletInfo = agentCom->pBulletData;
-		for (int i = 0; i < 3; ++i)
-		{
-			if (bulletInfo->buffs[i] != 0)
-				BuffManager::GetSingleton()->AddBuff(pOwnerEntity->GetId(), Entity::InvalidID, bulletInfo->buffs[i]);
-		}*/
-	}
-	else if (agentCom->pBulletData->moveType == BulletMoveType::BMT_Bezier)
-	{
-		Entity* pOtherEntity = ECSWorld::GetSingleton()->GetEntity(pAttackCom->targetID);
-		if (pOtherEntity)
-		{
-			ComPawnAgent* bulletAgent = agentMapper.get(pOwnerEntity);
-			const Bullet_cfg* bulletInfo = bulletAgent->pBulletData;
-			for (int i = 0; i < 3; ++i)
-			{
-				if (bulletInfo->buffs[i] != 0)
-					BuffManager::GetSingleton()->AddBuff(pOwnerEntity->GetId(), pAttackCom->targetID, bulletInfo->buffs[i]);
-			}
-		}
-	}
-	else if (agentCom->pBulletData->moveType == BulletMoveType::BMT_Tracking)
+	if (agentCom->pBulletData->moveType == BulletMoveType::BMT_Tracking)
 	{
 		const Bullet_cfg* bulletInfo = agentCom->pBulletData;
 		std::vector<Entity*> targets;

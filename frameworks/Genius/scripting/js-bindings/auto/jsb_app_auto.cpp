@@ -86,6 +86,24 @@ void js_register_app_Log(JSContext *cx, JS::HandleObject global) {
 JSClass  *jsb_JSInvoker_class;
 JSObject *jsb_JSInvoker_prototype;
 
+bool js_app_JSInvoker_Invoke_PushEvent(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 2) {
+        int arg0 = 0;
+        const char* arg1 = nullptr;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        std::string arg1_tmp; ok &= jsval_to_std_string(cx, args.get(1), &arg1_tmp); arg1 = arg1_tmp.c_str();
+        JSB_PRECONDITION2(ok, cx, false, "js_app_JSInvoker_Invoke_PushEvent : Error processing arguments");
+        JSInvoker::Invoke_PushEvent(arg0, arg1);
+        args.rval().setUndefined();
+        return true;
+    }
+    JS_ReportError(cx, "js_app_JSInvoker_Invoke_PushEvent : wrong number of arguments");
+    return false;
+}
+
 bool js_app_JSInvoker_Invoke_Update(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -99,6 +117,40 @@ bool js_app_JSInvoker_Invoke_Update(JSContext *cx, uint32_t argc, jsval *vp)
         return true;
     }
     JS_ReportError(cx, "js_app_JSInvoker_Invoke_Update : wrong number of arguments");
+    return false;
+}
+
+bool js_app_JSInvoker_Invoke_ArmatureFrameEvent(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 2) {
+        int arg0 = 0;
+        const char* arg1 = nullptr;
+        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+        std::string arg1_tmp; ok &= jsval_to_std_string(cx, args.get(1), &arg1_tmp); arg1 = arg1_tmp.c_str();
+        JSB_PRECONDITION2(ok, cx, false, "js_app_JSInvoker_Invoke_ArmatureFrameEvent : Error processing arguments");
+        JSInvoker::Invoke_ArmatureFrameEvent(arg0, arg1);
+        args.rval().setUndefined();
+        return true;
+    }
+    JS_ReportError(cx, "js_app_JSInvoker_Invoke_ArmatureFrameEvent : wrong number of arguments");
+    return false;
+}
+
+bool js_app_JSInvoker_Invoke_LongUpdate(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    if (argc == 1) {
+        double arg0 = 0;
+        ok &= JS::ToNumber( cx, args.get(0), &arg0) && !std::isnan(arg0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_JSInvoker_Invoke_LongUpdate : Error processing arguments");
+        JSInvoker::Invoke_LongUpdate(arg0);
+        args.rval().setUndefined();
+        return true;
+    }
+    JS_ReportError(cx, "js_app_JSInvoker_Invoke_LongUpdate : wrong number of arguments");
     return false;
 }
 
@@ -160,40 +212,6 @@ bool js_app_JSInvoker_Invoke_ArmatureMovementEvent(JSContext *cx, uint32_t argc,
     return false;
 }
 
-bool js_app_JSInvoker_Invoke_ArmatureFrameEvent(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    if (argc == 2) {
-        int arg0 = 0;
-        const char* arg1 = nullptr;
-        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
-        std::string arg1_tmp; ok &= jsval_to_std_string(cx, args.get(1), &arg1_tmp); arg1 = arg1_tmp.c_str();
-        JSB_PRECONDITION2(ok, cx, false, "js_app_JSInvoker_Invoke_ArmatureFrameEvent : Error processing arguments");
-        JSInvoker::Invoke_ArmatureFrameEvent(arg0, arg1);
-        args.rval().setUndefined();
-        return true;
-    }
-    JS_ReportError(cx, "js_app_JSInvoker_Invoke_ArmatureFrameEvent : wrong number of arguments");
-    return false;
-}
-
-bool js_app_JSInvoker_Invoke_LongUpdate(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    if (argc == 1) {
-        double arg0 = 0;
-        ok &= JS::ToNumber( cx, args.get(0), &arg0) && !std::isnan(arg0);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_JSInvoker_Invoke_LongUpdate : Error processing arguments");
-        JSInvoker::Invoke_LongUpdate(arg0);
-        args.rval().setUndefined();
-        return true;
-    }
-    JS_ReportError(cx, "js_app_JSInvoker_Invoke_LongUpdate : wrong number of arguments");
-    return false;
-}
-
 
 void js_register_app_JSInvoker(JSContext *cx, JS::HandleObject global) {
     jsb_JSInvoker_class = (JSClass *)calloc(1, sizeof(JSClass));
@@ -216,11 +234,12 @@ void js_register_app_JSInvoker(JSContext *cx, JS::HandleObject global) {
     };
 
     static JSFunctionSpec st_funcs[] = {
+        JS_FN("Invoke_PushEvent", js_app_JSInvoker_Invoke_PushEvent, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Invoke_Update", js_app_JSInvoker_Invoke_Update, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("Invoke_ModifyEntityAttr", js_app_JSInvoker_Invoke_ModifyEntityAttr, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("Invoke_ArmatureMovementEvent", js_app_JSInvoker_Invoke_ArmatureMovementEvent, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Invoke_ArmatureFrameEvent", js_app_JSInvoker_Invoke_ArmatureFrameEvent, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Invoke_LongUpdate", js_app_JSInvoker_Invoke_LongUpdate, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("Invoke_ModifyEntityAttr", js_app_JSInvoker_Invoke_ModifyEntityAttr, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("Invoke_ArmatureMovementEvent", js_app_JSInvoker_Invoke_ArmatureMovementEvent, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 
@@ -2845,26 +2864,6 @@ void js_register_app_ComBulletAnimBomb(JSContext *cx, JS::HandleObject global) {
 JSClass  *jsb_Genius_ComBulletDamage_class;
 JSObject *jsb_Genius_ComBulletDamage_prototype;
 
-bool js_app_ComBulletDamage_SetTargetID(JSContext *cx, uint32_t argc, jsval *vp)
-{
-    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
-    bool ok = true;
-    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
-    js_proxy_t *proxy = jsb_get_js_proxy(obj);
-    Genius::ComBulletDamage* cobj = (Genius::ComBulletDamage *)(proxy ? proxy->ptr : NULL);
-    JSB_PRECONDITION2( cobj, cx, false, "js_app_ComBulletDamage_SetTargetID : Invalid Native Object");
-    if (argc == 1) {
-        int arg0 = 0;
-        ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
-        JSB_PRECONDITION2(ok, cx, false, "js_app_ComBulletDamage_SetTargetID : Error processing arguments");
-        cobj->SetTargetID(arg0);
-        args.rval().setUndefined();
-        return true;
-    }
-
-    JS_ReportError(cx, "js_app_ComBulletDamage_SetTargetID : wrong number of arguments: %d, was expecting %d", argc, 1);
-    return false;
-}
 
 extern JSObject *jsb_Genius_IComponent_prototype;
 
@@ -2885,7 +2884,6 @@ void js_register_app_ComBulletDamage(JSContext *cx, JS::HandleObject global) {
     };
 
     static JSFunctionSpec funcs[] = {
-        JS_FN("SetTargetID", js_app_ComBulletDamage_SetTargetID, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
     };
 

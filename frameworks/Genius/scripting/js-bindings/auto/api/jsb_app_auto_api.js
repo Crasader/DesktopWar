@@ -22,10 +22,44 @@ char
 JSInvoker = {
 
 /**
+ * @method Invoke_PushEvent
+ * @param {int} arg0
+ * @param {char} arg1
+ */
+Invoke_PushEvent : function (
+int, 
+char 
+)
+{
+},
+
+/**
  * @method Invoke_Update
  * @param {float} arg0
  */
 Invoke_Update : function (
+float 
+)
+{
+},
+
+/**
+ * @method Invoke_ArmatureFrameEvent
+ * @param {int} arg0
+ * @param {char} arg1
+ */
+Invoke_ArmatureFrameEvent : function (
+int, 
+char 
+)
+{
+},
+
+/**
+ * @method Invoke_LongUpdate
+ * @param {float} arg0
+ */
+Invoke_LongUpdate : function (
 float 
 )
 {
@@ -59,28 +93,6 @@ Invoke_ArmatureMovementEvent : function (
 int, 
 int, 
 char 
-)
-{
-},
-
-/**
- * @method Invoke_ArmatureFrameEvent
- * @param {int} arg0
- * @param {char} arg1
- */
-Invoke_ArmatureFrameEvent : function (
-int, 
-char 
-)
-{
-},
-
-/**
- * @method Invoke_LongUpdate
- * @param {float} arg0
- */
-Invoke_LongUpdate : function (
-float 
 )
 {
 },
@@ -1024,16 +1036,6 @@ StartExplode : function (
  * @class ComBulletDamage
  */
 ComBulletDamage = {
-
-/**
- * @method SetTargetID
- * @param {int} arg0
- */
-SetTargetID : function (
-int 
-)
-{
-},
 
 };
 

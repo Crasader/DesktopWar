@@ -167,23 +167,6 @@ function PlayPawnAnim(entity, prefixName){
 
 
 function HandleArmatureFrameEvent(entity, event){
-    /*if(event === 'attack'){
-        entity.PushEvent(gn.Event.FrameAttack1);
-    }else if(event === 'attack2'){
-        entity.PushEvent(gn.Event.FrameAttack2);
-    }else if(event === 'attack3'){
-        entity.PushEvent(gn.Event.FrameAttack3);
-    }else if(event === 'skill'){
-        entity.PushEvent(gn.Event.FrameSkill1);
-    }else if(event === 'skill2'){
-        entity.PushEvent(gn.Event.FrameSkill2);
-    }else if(event === 'skill3'){
-        entity.PushEvent(gn.Event.FrameSkill3);
-    }else if(event === 'buff'){
-        entity.PushEvent(gn.Event.BulletTriggered);
-    }else{
-        print('unknown event '+event);
-    }*/
     entity.PushEvent(event);
 }
 
