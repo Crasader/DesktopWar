@@ -21,8 +21,8 @@ void ComBulletDebugDraw::OnAwake()
 	}
 
 	pRoot = Node::create();
-	pNodeBoxCollider = DrawNode::create();
-	pNodeHurtRange = DrawNode::create();
+	pNodeBoxCollider = DrawNode::create(1);
+	pNodeHurtRange = DrawNode::create(1);
 	pRoot->addChild(pNodeBoxCollider);
 	pRoot->addChild(pNodeHurtRange);
 	render->AddChild(pRoot);
@@ -46,7 +46,7 @@ void ComBulletDebugDraw::Refresh()
 		// attack range
 		Vec2 center1(0, 0);
 		float radiusNear = agent->pBulletData->buffTargetRadius;
-		this->pNodeHurtRange->drawCircle(center1, radiusNear, 0, 12, true, Color4F::RED);
+		this->pNodeHurtRange->drawCircle(center1, radiusNear, 0, 4, true, Color4F::RED);
 
 		// box collider
 		Vec2 center2(collider->centerX, collider->centerY);

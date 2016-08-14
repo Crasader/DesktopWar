@@ -23,10 +23,10 @@ void ComPawnDebugDraw::OnAwake()
 	}
 
 	pRoot = Node::create();
-	pNodeBoxCollider = DrawNode::create();
-	pNodeNearRange = DrawNode::create();
-	pNodeFarRange = DrawNode::create();
-	pNodeViewRange = DrawNode::create();
+	pNodeBoxCollider = DrawNode::create(1);
+	pNodeNearRange = DrawNode::create(1);
+	pNodeFarRange = DrawNode::create(1);
+	pNodeViewRange = DrawNode::create(1);
 	pRoot->addChild(pNodeBoxCollider);
 	pRoot->addChild(pNodeNearRange);
 	pRoot->addChild(pNodeFarRange);
