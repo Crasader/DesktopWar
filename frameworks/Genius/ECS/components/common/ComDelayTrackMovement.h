@@ -14,10 +14,15 @@ namespace Genius
 		COM_CREATE_FN_DECL(ComDelayTrackMovement);
 
 	public:
-		const static int Wait = 1;
-		const static int FindTarget = 2;
-		const static int AdjustDirection = 3;
-		const static int Explode = 4;
+		enum
+		{
+			Error,
+			Wait,
+			FindTarget,
+			AdjustDirection,
+			SpeedUp,
+			Explode,
+		};
 
 	public:
 		int		targetEntityID;
@@ -25,7 +30,7 @@ namespace Genius
 		float		delayTime;
 		float		targetCachePosX;
 		float		targetCachePosY;
-		bool		isTracking;
+		bool		shouldTurnLeft;
 		int		currentState;
 
 	public:

@@ -25,120 +25,149 @@ void SystemDelayTrackMovement::ProcessEntity(Entity* pEntity)
 
 	pTrackCom->lifeTime += world->GetDeltaTime();
 
-	if (pTrackCom->currentState == ComDelayTrackMovement::Wait)
+	switch (pTrackCom->currentState)
 	{
-		pTrackCom->delayTime -= world->GetDeltaTime();
-		if (abs(tran->vx) > 10 || tran->vy <= 0)
-		{
-			// keep moving up
-			Point2D currentVel(tran->vx, tran->vy);
-			Point2D desiredVel(0, currentVel.Length());
-			Point2D adjustedVel = currentVel + (desiredVel - currentVel)*0.03f;
-			adjustedVel.Normalize();
-			tran->vx = adjustedVel.x;
-			tran->vy = adjustedVel.y;
-		}
-		else if (pTrackCom->delayTime < 0)
-		{
-			pTrackCom->currentState = ComDelayTrackMovement::FindTarget;
-		}
+	case ComDelayTrackMovement::Wait:
+		_doWait(pEntity);
+		break;
+	case ComDelayTrackMovement::FindTarget:
+		_doFindTarget(pEntity);
+		break;
+	case ComDelayTrackMovement::AdjustDirection:
+		_doAdjustDirection(pEntity);
+		break;
+	case ComDelayTrackMovement::SpeedUp:
+		_doSpeedUp(pEntity);
+		break;
+	case ComDelayTrackMovement::Explode:
+		_doExplode(pEntity);
+		break;
 	}
-	else if (pTrackCom->currentState == ComDelayTrackMovement::FindTarget)
-	{
-		pTrackCom->targetEntityID = EntityUtility::FindRandTargetByTag(GameDefine::Tag_Soldier);
-		if (pTrackCom->targetEntityID == Entity::InvalidID)
-		{
-			pTrackCom->currentState = ComDelayTrackMovement::Wait;
-		}
-		else
-		{
-			pTrackCom->currentState = ComDelayTrackMovement::AdjustDirection;
-		}
-	}
-	else if (pTrackCom->currentState == ComDelayTrackMovement::AdjustDirection)
-	{
-		Entity* pTarEntity = world->GetEntity(pTrackCom->targetEntityID);
-		if (nullptr != pTarEntity)
-		{
-			auto tarTran = pTarEntity->GetComponent<ComTransform>();
-			// keep moving towards target
-			Point2D currentVel(tran->vx, tran->vy);
-			float length = currentVel.Length();
-			Point2D desiredVel(tarTran->x - tran->x, tarTran->y - tran->y);
-			desiredVel.Normalize();
-			desiredVel = desiredVel*length;
-			Point2D adjustedVel = currentVel + (desiredVel - currentVel)*0.05f;
-			adjustedVel.Normalize();
-			adjustedVel = adjustedVel*length;
-			tran->vx = adjustedVel.x;
-			tran->vy = adjustedVel.y;
-
-			pTrackCom->targetCachePosX = tarTran->x;
-			pTrackCom->targetCachePosY = tarTran->y;
-
-			// collider
-			Point2D toTarVec(pTrackCom->targetCachePosX - tran->x, pTrackCom->targetCachePosY - tran->y);
-			if (abs(toTarVec.x)< 20 && abs(toTarVec.y)< 20)
-			{
-				pTrackCom->currentState = ComDelayTrackMovement::Explode;
-				EventManager::GetSingleton()->FireEvent(ReachDestinationEvent(pEntity));
-			}
-		}
-		else
-		{
-			pTrackCom->currentState = ComDelayTrackMovement::Wait;
-		}
-
-	}
-	else if (pTrackCom->currentState == ComDelayTrackMovement::Explode)
-	{
-		tran->vx = 0;
-		tran->vy = 0;
-	}
-
+	
+	// time out, then explode
 	if (pTrackCom->currentState != ComDelayTrackMovement::Explode && pTrackCom->lifeTime > 10)
 	{
 		pTrackCom->currentState = ComDelayTrackMovement::Explode;
 		EventManager::GetSingleton()->FireEvent(ReachDestinationEvent(pEntity));
 	}
 	
-	
+}
 
-	/*if (pTrackCom->isTracking && pTrackCom->lifeTime >= pTrackCom->delayTime)
+void SystemDelayTrackMovement::_doWait(Entity* pEntity)
+{
+	ComTransform* tran = transMapper.get(pEntity);
+	ComDelayTrackMovement* pTrackCom = trackMapper.get(pEntity);
+	pTrackCom->delayTime -= world->GetDeltaTime();
+
+	if (abs(tran->vx) > 10 || tran->vy <= 0)
 	{
-		Point2D toTarVec(0, 0);
+		// keep moving up
+		Point2D currentVel(tran->vx, tran->vy);
+		float length = currentVel.Length();
+		Point2D desiredVel(0, length);
+		Point2D adjustedVel = currentVel + (desiredVel - currentVel)*0.03f;
+		adjustedVel.Normalize();
+		adjustedVel = adjustedVel*length;
+		tran->vx = adjustedVel.x;
+		tran->vy = adjustedVel.y;
+	}
+	else if (pTrackCom->delayTime < 0)
+	{
+		pTrackCom->currentState = ComDelayTrackMovement::FindTarget;
+	}
+}
+
+void SystemDelayTrackMovement::_doFindTarget(Entity* pEntity)
+{
+	ComDelayTrackMovement* pTrackCom = trackMapper.get(pEntity);
+
+	pTrackCom->targetEntityID = EntityUtility::FindRandTargetByTag(GameDefine::Tag_Soldier);
+	if (pTrackCom->targetEntityID == Entity::InvalidID)
+	{
+		pTrackCom->currentState = ComDelayTrackMovement::Wait;
+	}
+	else
+	{
+		ComTransform* tran = transMapper.get(pEntity);
 		Entity* pTarEntity = world->GetEntity(pTrackCom->targetEntityID);
-		if (nullptr != pTarEntity)
+		auto tarTran = pTarEntity->GetComponent<ComTransform>();
+		pTrackCom->shouldTurnLeft = tarTran->x > tran->x;
+		pTrackCom->currentState = ComDelayTrackMovement::AdjustDirection;
+	}
+}
+
+void SystemDelayTrackMovement::_doAdjustDirection(Entity* pEntity)
+{
+	ComTransform* tran = transMapper.get(pEntity);
+	ComDelayTrackMovement* pTrackCom = trackMapper.get(pEntity);
+
+	Entity* pTarEntity = world->GetEntity(pTrackCom->targetEntityID);
+	if (nullptr != pTarEntity)
+	{
+		auto tarTran = pTarEntity->GetComponent<ComTransform>();
+
+		Point2D currentVel(tran->vx, tran->vy);
+		float length = currentVel.Length();
+		Point2D forceVec;
+		if (pTrackCom->shouldTurnLeft)
+			forceVec = Point2D(-tran->vy, tran->vx);
+		else
+			forceVec = Point2D(tran->vy, -tran->vx);
+
+		Point2D desiredVel(tarTran->x - tran->x, tarTran->y - tran->y);
+		desiredVel.Normalize();
+		desiredVel = desiredVel*length;
+		float angle = currentVel.AngleBetween(desiredVel);
+		if (angle > 5)
 		{
-			// 锁定了entity就飞向它
-			ComTransform* pTarPosCom = pTarEntity->GetComponent<ComTransform>();
-			toTarVec.x = pTarPosCom->x - tran->x;
-			toTarVec.y = pTarPosCom->y - tran->y;
+			Point2D adjustedVel = currentVel + forceVec*0.08f;
+			adjustedVel.Normalize();
+			adjustedVel = adjustedVel*length;
+			tran->vx = adjustedVel.x;
+			tran->vy = adjustedVel.y;
 		}
 		else
 		{
-			int targetID = EntityUtility::FindRandTargetByTag(EntityUtility::GetEnemyTag());
-			// Entity已经消失，飞向一开始记录的位置
-			toTarVec.x = pTrackCom->targetCachePosX - tran->x;
-			toTarVec.y = pTrackCom->targetCachePosY - tran->y;
-			if (toTarVec.Length() < Point2D(tran->vx, tran->vy).Length())
-			{
-				EventManager::GetSingleton()->FireEvent(ReachDestinationEvent(pEntity));
-				pTrackCom->isTracking = false;
-			}
+			tran->vx = desiredVel.x;
+			tran->vy = desiredVel.y;
+			pTrackCom->targetCachePosX = tarTran->x;
+			pTrackCom->targetCachePosY = tarTran->y;
+			pTrackCom->currentState = ComDelayTrackMovement::SpeedUp;
 		}
-		toTarVec.Normalize();
-		Point2D curVelVec(tran->vx, tran->vy);
-		float velLen = curVelVec.Length();
-		curVelVec.Normalize();
-		Point2D deltaVec(toTarVec.x - curVelVec.x, toTarVec.y - curVelVec.y);
-		tran->vx += deltaVec.x;
-		tran->vy += deltaVec.y;
+		
+	}
+	else
+	{
+		pTrackCom->currentState = ComDelayTrackMovement::Wait;
+	}
+}
 
-		// 暂时这样计算8，理想的方式是圆滑的轨迹
-		tran->vx = toTarVec.x * velLen;
-		tran->vy = toTarVec.y * velLen;
-	}*/
+void SystemDelayTrackMovement::_doSpeedUp(Entity* pEntity)
+{
+	ComTransform* tran = transMapper.get(pEntity);
+	ComDelayTrackMovement* pTrackCom = trackMapper.get(pEntity);
+
+	Entity* pTarEntity = world->GetEntity(pTrackCom->targetEntityID);
+	if (nullptr != pTarEntity)
+	{
+		Point2D toTarVec(pTrackCom->targetCachePosX - tran->x, pTrackCom->targetCachePosY - tran->y);
+		if (abs(toTarVec.x) < 20 && abs(toTarVec.y) < 20)
+		{
+			pTrackCom->currentState = ComDelayTrackMovement::Explode;
+			EventManager::GetSingleton()->FireEvent(ReachDestinationEvent(pEntity));
+		}
+	}
+	else
+	{
+		pTrackCom->currentState = ComDelayTrackMovement::Wait;
+	}
+}
+
+void SystemDelayTrackMovement::_doExplode(Entity* pEntity)
+{
+	ComTransform* tran = transMapper.get(pEntity);
+	tran->vx = 0;
+	tran->vy = 0;
 }
 
 bool SystemDelayTrackMovement::HandleEvent(IEventData const &event)

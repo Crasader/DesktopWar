@@ -17,15 +17,15 @@ targetEntityID(Entity::InvalidID)
 	delayTime = 0;
 	targetCachePosX = 0;
 	targetCachePosY = 0;
-	isTracking = false;
+	shouldTurnLeft = false;
 
 }
 
 void ComDelayTrackMovement::OnAwake()
 {
-	delayTime = 1.5f;
+	delayTime = 2.0f;
 	targetCachePosX = 1500;
 	targetCachePosY = 100;
-	isTracking = true;
+	shouldTurnLeft = true;
 	currentState = Wait;
 }

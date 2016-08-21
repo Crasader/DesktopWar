@@ -110,14 +110,14 @@ public:
 		return (x == point.x) && (y == point.y);
 	}
 
-	float	Dot(const Point2D *v) const 
+	float	Dot(const Point2D& v) const 
 	{
-		return x*v->x + y*v->y; 
+		return x*v.x + y*v.y; 
 	}
 
 	float	Length() const 
 	{ 
-		return sqrtf(Dot(this)); 
+		return sqrtf(Dot(*this)); 
 	}
 
 	void Normalize()
@@ -129,6 +129,11 @@ public:
 			x *= lenRcp;
 			y *= lenRcp;
 		}
+	}
+
+	float AngleBetween(const Point2D& point)
+	{
+		return 180*acos(this->Dot(point) / (this->Length()*point.Length()));
 	}
 
 public:
