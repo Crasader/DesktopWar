@@ -60,12 +60,12 @@ void ComPawnAnim::Create(int roleID)
 			PlayAnimation("idle_left");
 		}
 		//debug label
-		m_pDebugLabel = Label::createWithBMFont("res/font/arial16.fnt", "- -", TextHAlignment::LEFT);
+		/*m_pDebugLabel = Label::createWithBMFont("res/font/arial16.fnt", "- -", TextHAlignment::LEFT);
 		m_pDebugLabel->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
 		m_pDebugLabel->setScale(0.8f);
 		m_pDebugLabel->setColor(Color3B(0, 255, 0));
 		m_pDebugLabel->setPosition(0, -10);
-		m_pAvatarRoot->addChild(m_pDebugLabel);
+		m_pAvatarRoot->addChild(m_pDebugLabel);*/
 	}
 
 }
@@ -154,7 +154,7 @@ void ComPawnAnim::UpdateLifeBar(int percent)
 
 void ComPawnAnim::SetDebugLabel(std::string text)
 {
-	m_pDebugLabel->setString(text);
+	//m_pDebugLabel->setString(text);
 }
 
 

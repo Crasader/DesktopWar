@@ -37,7 +37,7 @@ var Brain = BaseComponent.extend({
 
     DoUpdate:function(){
         // find target for test.
-        var tar = this.entity.GetBlackboard(gn.BB.CombatTarget);
+        /*var tar = this.entity.GetBlackboard(gn.BB.CombatTarget);
         if(tar==null){
             for(var id in Game.entityList){
                 var ent = Game.entityList[id];
@@ -56,7 +56,7 @@ var Brain = BaseComponent.extend({
                 tar = null;
                 this.entity.SetBlackboard(gn.BB.CombatTarget,null);
             }
-        }
+        }*/
     }
 
 });

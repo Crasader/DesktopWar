@@ -45,7 +45,7 @@ void SystemDelayTrackMovement::ProcessEntity(Entity* pEntity)
 	}
 	
 	// time out, then explode
-	if (pTrackCom->currentState != ComDelayTrackMovement::Explode && pTrackCom->lifeTime > 10)
+	if (pTrackCom->currentState != ComDelayTrackMovement::Explode && pTrackCom->lifeTime > 20)
 	{
 		pTrackCom->currentState = ComDelayTrackMovement::Explode;
 		EventManager::GetSingleton()->FireEvent(ReachDestinationEvent(pEntity));
