@@ -139,12 +139,12 @@ var LaunchState = GameState.extend
     OnEnter:function ()
     {
 
-        //Monster.Create(2012, 700, 133);
+        Monster.Create(2012, 700, 133);
         //NoxiousCreeeper.Create(2009, 1300, 133);//mother spider
         //ShadowArcher.Create(2010, 200, 133);
         //Monster.Create(2010, 350, 133);
 
-       // Juggernaut.Create(2008, 400, 150);        //铁人
+        Juggernaut.Create(2008, 400, 150);        //铁人
         //Juggernaut.Create(2008, 1050, 153);
         //Juggernaut.Create(2008, 1150, 133);
 
@@ -154,9 +154,12 @@ var LaunchState = GameState.extend
 
         //Soldier.Create(1007, 400, 133);
         //Soldier.Create(1007, 520, 120);
-        Soldier.Create(1007, 1030, 450);
-        Soldier.Create(1007, 1040, 450);
-        Soldier.Create(1007, 1050, 450);
+        Soldier.Create(1001, 1000, 450);
+        Soldier.Create(1004, 1020, 450);
+        Soldier.Create(1005, 1040, 450);
+        Soldier.Create(1006, 1060, 450);
+        Soldier.Create(1007, 1080, 450);
+        Soldier.Create(1008, 1100, 450);
 
 
         //Soldier.Create(1001, 400, 550);
@@ -177,12 +180,19 @@ var LaunchState = GameState.extend
     ParseResourceList:function(loadMgr)
     {
         loadMgr.AddRole(1001);
+        loadMgr.AddRole(1002);
+        loadMgr.AddRole(1003);
+        loadMgr.AddRole(1004);
+        loadMgr.AddRole(1005);
+        loadMgr.AddRole(1006);
         loadMgr.AddRole(1007);
-        loadMgr.AddRole(2012);
-        loadMgr.AddRole(2011);
+        loadMgr.AddRole(1008);
+
         loadMgr.AddRole(2010);
         loadMgr.AddRole(2009);
         loadMgr.AddRole(2008);
+        loadMgr.AddRole(2012);
+        loadMgr.AddRole(2011);
 
 
         loadMgr.AddAnim(3001);
