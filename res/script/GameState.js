@@ -139,27 +139,28 @@ var LaunchState = GameState.extend
     OnEnter:function ()
     {
 
-        Monster.Create(2012, 700, 133);
-        //NoxiousCreeeper.Create(2009, 1300, 133);//mother spider
-        //ShadowArcher.Create(2010, 200, 133);
-        //Monster.Create(2010, 350, 133);
+        //Monster.Create(2012, 700, 133, gn.Tag.Monster);
+        //NoxiousCreeeper.Create(2009, 1300, 133, gn.Tag.Monster);//mother spider
+        //ShadowArcher.Create(2010, 200, 133, gn.Tag.Monster);
+        //Monster.Create(2010, 350, 133, gn.Tag.Monster);
 
-        Juggernaut.Create(2008, 400, 150);        //铁人
-        //Juggernaut.Create(2008, 1050, 153);
-        //Juggernaut.Create(2008, 1150, 133);
+        //Juggernaut.Create(2008, 400, 150, gn.Tag.Monster);        //铁人
+        //Juggernaut.Create(2008, 1050, 153, gn.Tag.Monster);
+        //Juggernaut.Create(2008, 1150, 133, gn.Tag.Monster);
 
-        //Monster.Create(2011, 300, 133);
-        //Monster.Create(2011, 280, 120);
-        //Monster.Create(2011, 260, 140);
+        //Monster.Create(2011, 300, 133, gn.Tag.Monster);
+        //Monster.Create(2011, 280, 120, gn.Tag.Monster);
+        //Monster.Create(2011, 260, 140, gn.Tag.Monster);
 
-        //Soldier.Create(1007, 400, 133);
-        //Soldier.Create(1007, 520, 120);
-        Soldier.Create(1001, 1000, 450);
-        Soldier.Create(1004, 1020, 450);
-        Soldier.Create(1005, 1040, 450);
-        Soldier.Create(1006, 1060, 450);
-        Soldier.Create(1007, 1080, 450);
-        Soldier.Create(1008, 1100, 450);
+        HolyKnight.Create(1007, 520, 120, gn.Tag.Soldier);
+        Monster.Create(2004, 570, 120, gn.Tag.Monster);
+
+        /*Soldier.Create(1001, 1000, 450, gn.Tag.Soldier);
+        Soldier.Create(1004, 1020, 450, gn.Tag.Soldier);
+        Soldier.Create(1005, 1040, 450, gn.Tag.Soldier);
+        Soldier.Create(1006, 1060, 450, gn.Tag.Soldier);
+        Soldier.Create(1007, 1080, 450, gn.Tag.Soldier);
+        Soldier.Create(1008, 1100, 450, gn.Tag.Soldier);*/
 
 
         //Soldier.Create(1001, 400, 550);
@@ -188,6 +189,15 @@ var LaunchState = GameState.extend
         loadMgr.AddRole(1007);
         loadMgr.AddRole(1008);
 
+        loadMgr.AddRole(2001);
+        loadMgr.AddRole(2002);
+        loadMgr.AddRole(2003);
+        loadMgr.AddRole(2004);
+        loadMgr.AddRole(2005);
+        loadMgr.AddRole(2006);
+        loadMgr.AddRole(2007);
+        loadMgr.AddRole(2008);
+        loadMgr.AddRole(2009);
         loadMgr.AddRole(2010);
         loadMgr.AddRole(2009);
         loadMgr.AddRole(2008);

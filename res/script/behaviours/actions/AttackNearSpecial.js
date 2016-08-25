@@ -25,7 +25,7 @@ var AttackNearSpecial = bt.Action.extend({
         locomotor.StopMove();
         var followTar = entity.GetBlackboard(gn.BB.CombatTarget);
         locomotor.FaceToEntity(followTar);
-
+print("atk special");
         entity.GetStateGraph().gotoState(gn.SG.AttackNearSpecial);
 
     },
@@ -34,6 +34,7 @@ var AttackNearSpecial = bt.Action.extend({
         var entity = tick.target;
 
         if(this.animComplete){
+            entity.GetStateGraph().gotoState(gn.SG.Idle);
             return bt.SUCCESS;
         }
 

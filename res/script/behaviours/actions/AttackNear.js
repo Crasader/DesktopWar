@@ -34,6 +34,7 @@ var AttackNear = bt.Action.extend({
         var entity = tick.target;
 
         if(this.animComplete){
+            entity.GetStateGraph().gotoState(gn.SG.Idle);
             return bt.SUCCESS;
         }
 

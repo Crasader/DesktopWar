@@ -174,6 +174,8 @@ function HandleArmatureMovementEvent(entity, movement, animName){
     var START = 0;
     var COMPLETE = 1;
     var LOOP_COMPLETE = 2;
+    var idx = animName.lastIndexOf('_');
+    animName = animName.substr(0,idx);//remove '_left' or '_right'
     if(movement === START){
         entity.PushEvent(gn.Event.AnimStart,animName);
     }

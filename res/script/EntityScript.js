@@ -14,7 +14,6 @@ var EntityScript = Class.extend({
     components:null,
     blackboard:null,
     stateGraph:null,
-    brain:null,
     eventHandlers:null,
     updatingComponents:null,
 
@@ -52,10 +51,6 @@ var EntityScript = Class.extend({
 
     GetStateGraph:function() {
         return this.stateGraph;
-    },
-
-    SetBrain:function(brain){
-        this.brain = brain;
     },
 
     AddTag:function(tag) {
@@ -148,8 +143,9 @@ var EntityScript = Class.extend({
         }
 
         // brain
-        if(this.brain != null){
-            this.brain.PushEvent(event,data);
+        var brain = this.GetComponent(gn.ComName.Brain);
+        if(brain != null){
+            brain.PushEvent(event,data);
         }
 
         // sg
