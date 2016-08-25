@@ -4,7 +4,7 @@
 require("res/script/behaviours/BehaviourTree.js");
 
 //composites
-require("res/script/behaviours/B3Wrapper.js");
+require("res/script/behaviours/BTWrapper.js");
 
 //actions
 require("res/script/behaviours/actions/Wander.js");

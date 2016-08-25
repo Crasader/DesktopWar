@@ -57,6 +57,12 @@ var Brain = BaseComponent.extend({
                 this.entity.SetBlackboard(gn.BB.CombatTarget,null);
             }
         }*/
+    },
+
+    PushEvent:function(event,data) {
+        if(this.btree != null){
+            this.btree.PushEvent(event,data);
+        }
     }
 
 });

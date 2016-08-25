@@ -36,7 +36,7 @@ function CreateBTree_HolyKnight(){
     tree.root =
         PriorityNode(
             WhileNode(InverterNode(new IsAlive), new Die),
-            WhileNode(new TargetIsInNearRange, new AttackNear),
+            WhileNode(new TargetIsInNearRange, MemSequenceNode(LimiterNode(3,new AttackNear), new AttackNearSpecial)),
             WhileNode(new TargetIsInViewSight, new Chase),
             WhileNode(new IsAlive, MemSequenceNode(new Wander, new TurnAround))
         );

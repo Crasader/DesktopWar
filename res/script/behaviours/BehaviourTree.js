@@ -293,7 +293,7 @@ var bt = bt || {};
             spec.parameters = node.parameters;
 
             if (node.category === bt.COMPOSITE && node.children) {
-                var children = []
+                var children = [];
                 for (var i=node.children.length-1; i>=0; i--) {
                     children.push(node.children[i].id);
                     stack.push(node.children[i]);
@@ -350,6 +350,16 @@ var bt = bt || {};
         blackboard.set('nodeCount', tick._nodeCount, this.id);
 
         return state;
+    };
+
+    p.PushEvent = function(blackboard, event, data){
+        var OpenNodes = blackboard.get('openNodes', this.id);
+        for (var i=0; i<OpenNodes.length; i++) {
+            var node = OpenNodes[i];
+            if (node.getCategory() === bt.ACTION) {
+                node.PushEvent(event, data);
+            }
+        }
     };
 
 
@@ -439,7 +449,15 @@ bt.BaseNode = Class.extend({
     close:function(tick) {},
 
 
-    exit:function(tick) {}
+    exit:function(tick) {},
+
+    // event
+    PushEvent:function(){},
+
+    // access attributes
+    getCategory:function(){
+        return this.category;
+    }
 
 
 });

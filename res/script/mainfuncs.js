@@ -175,13 +175,13 @@ function HandleArmatureMovementEvent(entity, movement, animName){
     var COMPLETE = 1;
     var LOOP_COMPLETE = 2;
     if(movement === START){
-        entity.PushEvent(gn.Event.AnimStart);
+        entity.PushEvent(gn.Event.AnimStart,animName);
     }
     else if(movement === COMPLETE){
-        entity.PushEvent(gn.Event.AnimComplete);
+        entity.PushEvent(gn.Event.AnimComplete,animName);
     }
     else if(movement === LOOP_COMPLETE){
-        entity.PushEvent(gn.Event.AnimLoopComplete);
+        entity.PushEvent(gn.Event.AnimLoopComplete,animName);
     }
 }
 
