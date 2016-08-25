@@ -1,7 +1,7 @@
 
 
 //普通近战单位
-function CreateFootManBTree(){
+function CreateBTree_FootMan(){
 
     var tree = new bt.BehaviorTree();
     tree.root =
@@ -15,7 +15,7 @@ function CreateFootManBTree(){
 }
 
 //普通士兵近战单位，会警戒
-function CreateCommonSoliderNearBTree(){
+function CreateBTree_CommonSolider(){
 
     var tree = new bt.BehaviorTree();
     tree.root =
@@ -28,8 +28,24 @@ function CreateCommonSoliderNearBTree(){
     return tree;
 }
 
+
+//圣骑士 暴击 加血
+function CreateBTree_HolyKnight(){
+
+    var tree = new bt.BehaviorTree();
+    tree.root =
+        PriorityNode(
+            WhileNode(InverterNode(new IsAlive), new Die),
+            WhileNode(new TargetIsInNearRange, new AttackNear),
+            WhileNode(new TargetIsInViewSight, new Chase),
+            WhileNode(new IsAlive, MemSequenceNode(new Wander, new TurnAround))
+        );
+    return tree;
+}
+
+
 //普通远近战单位，例如暗影射手
-function CreateArcherBTree(){
+function CreateBTree_Archer(){
 
     var tree = new bt.BehaviorTree();
     tree.root =

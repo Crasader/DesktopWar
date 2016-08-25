@@ -301,9 +301,6 @@
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemDelayTrackMovement.h">
       <Filter>Genius\Logic\ESC\User\System\Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Genius\entity\EntityCreators.h">
-      <Filter>Genius\Logic\Entity</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Genius\App\LoadingManager.h">
       <Filter>Genius\Logic\App</Filter>
     </ClInclude>
@@ -591,9 +588,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemDelayTrackMovement.cpp">
       <Filter>Genius\Logic\ESC\User\System\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Genius\entity\EntityCreators.cpp">
-      <Filter>Genius\Logic\Entity</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Genius\App\LoadingManager.cpp">
       <Filter>Genius\Logic\App</Filter>

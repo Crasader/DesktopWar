@@ -5,6 +5,11 @@
 #include "ECS/ecs.h"
 #include "ECS/EntityWrapper.h"
 #include "data/auto/Role_cfg.hpp"
+#include "data/auto/Bullet_cfg.hpp"
+#include "data/ConfigPool.h"
+#include "scripting/js-bindings/manual/ScriptingCore.h"
+
+using namespace cfg;
 
 
 const std::string& EntityUtility::GetEnemyTag(const std::string& myTag)
@@ -182,4 +187,24 @@ int EntityUtility::FindRandTargetByTag(const string& tag)
 	}
 
 	return tarEntityID;
+}
+
+void EntityUtility::CreatePawn(int id, float x, float y, const std::string& tag)
+{
+	auto cfg = FIND_CFG(Role_cfg, id);
+	if (nullptr == cfg)
+	{
+		Log::Error("EntityUtility::CreatePawn: Invalid id %d", id);
+		return;
+	}
+	char excString[256];
+	sprintf_s(excString, "%s.Create(%d,%f,%f,\"%s\")", cfg->scriptName.c_str(), id, x, y, tag.c_str());
+	ScriptingCore::getInstance()->evalString(excString);
+}
+
+void EntityUtility::CreateBullet(int bulletID, int targetEntityID, float x, float y, const std::string& tag, float destX, float destY)
+{
+	char excString[256];
+	sprintf_s(excString, "SpawnBullet(%d,%d,%f,%f,\"%s\",%f,%f)", bulletID, targetEntityID, x, y, tag.c_str(), destX, destY);
+	ScriptingCore::getInstance()->evalString(excString);
 }

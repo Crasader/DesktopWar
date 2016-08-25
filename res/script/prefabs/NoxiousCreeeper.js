@@ -9,7 +9,7 @@ var NoxiousCreeeper = {
     },
 
 
-    Create:function(id, posx, posy)
+    Create:function(id, posx, posy, tag)
     {
         "use strict";
 
@@ -34,8 +34,8 @@ var NoxiousCreeeper = {
 
 
         // tag
-        inst.AddTag(gn.Tag.Monster);
-
+        //inst.AddTag(gn.Tag.Monster);
+        inst.AddTag(tag);
 
         // end
         inst.OnAwake();

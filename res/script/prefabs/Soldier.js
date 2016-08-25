@@ -9,7 +9,7 @@ var Soldier = {
     },
 
 
-    Create:function(id, posx, posy)
+    Create:function(id, posx, posy, tag)
     {
         "use strict";
 
@@ -25,7 +25,7 @@ var Soldier = {
 
         // js coms
         var sg = CreateCommonGraph(inst);
-        var btree = CreateCommonSoliderNearBTree();
+        var btree = CreateBTree_CommonSolider();
         PawnCommon.AddCommonJSComponents(inst,roleCfg,sg,btree);
 
 
@@ -34,8 +34,8 @@ var Soldier = {
 
 
         // tag
-        inst.AddTag(gn.Tag.Soldier);
-
+        //inst.AddTag(gn.Tag.Soldier);
+        inst.AddTag(tag);
 
         // end
         inst.OnAwake();

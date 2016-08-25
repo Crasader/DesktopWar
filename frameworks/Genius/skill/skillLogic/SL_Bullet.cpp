@@ -4,7 +4,6 @@
 #include "data/auto/Skill_cfg.hpp"
 #include "data/auto/Role_cfg.hpp"
 #include "ECS/ecs.h"
-#include "entity/EntityCreators.h"
 #include "entity/EntityUtility.h"
 
 
@@ -49,12 +48,12 @@ void SL_Bullet::OnActive(Skill* skill)
 		{
 			// 有目标就直接飞向目标
 			ComTransform* posCom = tarEntity->GetComponent<ComTransform>();
-			EntityCreator::CreateBullet(skillCfg->bulletID, targetID, startX, startY, targetTag, posCom->x, posCom->y);
+			EntityUtility::CreateBullet(skillCfg->bulletID, targetID, startX, startY, targetTag, posCom->x, posCom->y);
 		}
 		else
 		{
 			// 没目标自己飞一会然后自己找目标。
-			EntityCreator::CreateBullet(skillCfg->bulletID, Entity::InvalidID, startX, startY, targetTag, 0, 0);
+			EntityUtility::CreateBullet(skillCfg->bulletID, Entity::InvalidID, startX, startY, targetTag, 0, 0);
 		}
 	}
 }

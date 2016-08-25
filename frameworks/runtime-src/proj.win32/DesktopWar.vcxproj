@@ -232,7 +232,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\ECS\systems\common\SystemRender.h" />
     <ClInclude Include="..\..\Genius\ECS\WorldWrapper.h" />
     <ClInclude Include="..\..\Genius\entity\BulletDefines.h" />
-    <ClInclude Include="..\..\Genius\entity\EntityCreators.h" />
     <ClInclude Include="..\..\Genius\entity\EntityUtility.h" />
     <ClInclude Include="..\..\Genius\gfx\AudioManager.h" />
     <ClInclude Include="..\..\Genius\gfx\GfxUtils.h" />
@@ -332,7 +331,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemTransform.cpp" />
     <ClCompile Include="..\..\Genius\ECS\systems\common\SystemRender.cpp" />
     <ClCompile Include="..\..\Genius\ECS\WorldWrapper.cpp" />
-    <ClCompile Include="..\..\Genius\entity\EntityCreators.cpp" />
     <ClCompile Include="..\..\Genius\entity\EntityUtility.cpp" />
     <ClCompile Include="..\..\Genius\gfx\AudioManager.cpp" />
     <ClCompile Include="..\..\Genius\gfx\GfxUtils.cpp" />

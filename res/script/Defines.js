@@ -120,7 +120,7 @@ gn.SG =
     Die:'die',
     Move:'move',
     AttackNear:'attackNear',
-    AttackFar:'attackFar',
+    AttackNearSpecial:'AttackNearSpecial',
     Atk3:'attack3',
     Skill1:'skill',
     Skill2:'skill2',

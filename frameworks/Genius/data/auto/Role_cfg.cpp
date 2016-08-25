@@ -18,6 +18,11 @@ IMPL_CONFIG_CREATE(Role_cfg);
 				nameCN = reader.GetStringValue(row, col);
 			col++;
 
+			scriptName = "";
+			if(reader.GetStringValue(row, col).length() > 0)
+				scriptName = reader.GetStringValue(row, col);
+			col++;
+
 			animSetId = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
 				animSetId = reader.GetIntValue(row, col);

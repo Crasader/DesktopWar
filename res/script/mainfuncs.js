@@ -20,14 +20,14 @@ function GetWorld() {
     return World.GetWorld()
 }
 
-function SpawnPawn(roleID, x, y, tag) {
+/*function SpawnPawn(roleID, x, y, tag) {
     if (tag == gn.Tag.Monster) {
         Monster.Create(roleID, x, y);
     }
     else if (tag == gn.Tag.Soldier) {
         Soldier.Create(roleID, x, y);
     }
-}
+}*/
 
 function SpawnBullet(bulletID, targetEntityID, x, y, tag, destX, destY) {
     var bulletCfg = Config.Bullet[bulletID];

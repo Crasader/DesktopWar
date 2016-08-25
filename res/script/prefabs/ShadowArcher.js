@@ -4,7 +4,7 @@
 
 var ShadowArcher = {
 
-    Create:function(id, posx, posy)
+    Create:function(id, posx, posy, tag)
     {
         "use strict";
 
@@ -20,13 +20,13 @@ var ShadowArcher = {
 
         // js coms
         var sg = CreateCommonGraph(inst);
-        var btree = CreateArcherBTree();
+        var btree = CreateBTree_Archer();
         PawnCommon.AddCommonJSComponents(inst,roleCfg,sg,btree);
 
 
         // tag
-        inst.AddTag(gn.Tag.Monster);
-
+        //inst.AddTag(gn.Tag.Monster);
+        inst.AddTag(tag);
 
         // end
         inst.OnAwake();

@@ -173,7 +173,7 @@ commonStatus.OnFrameSkill2 = function()
 
     var st =
     {
-        name: gn.SG.AttackFar,
+        name: gn.SG.AttackNearSpecial,
 
         onenter: function (entity) {
             entity.GetComponent(gn.ComName.Locomotor).StopMove();
@@ -189,7 +189,7 @@ commonStatus.OnFrameSkill2 = function()
         }
     };
 
-    commonStatus.attackFar = new State(st);
+    commonStatus.attackNearSpecial = new State(st);
 
 })();
 
@@ -258,8 +258,8 @@ commonStatus.AddMove = function(status) {
 commonStatus.AddAttackNear = function(status) {
     status[commonStatus.attackNear.getName()] = commonStatus.attackNear;
 };
-commonStatus.AddAttackFar = function(status) {
-    status[commonStatus.attackFar.getName()] = commonStatus.attackFar;
+commonStatus.AddAttackNearSpecial = function(status) {
+    status[commonStatus.attackNearSpecial.getName()] = commonStatus.attackNearSpecial;
 };
 commonStatus.AddSkill1 = function(status) {
     status[commonStatus.skill1.getName()] = commonStatus.skill1;
@@ -328,7 +328,7 @@ function CreateCommonGraph(entity)
     commonStatus.AddDie(status);
     commonStatus.AddMove(status);
     commonStatus.AddAttackNear(status);
-    commonStatus.AddAttackFar(status);
+    commonStatus.AddAttackNearSpecial(status);
     commonStatus.AddSkill1(status);
     commonStatus.AddSkill2(status);
 

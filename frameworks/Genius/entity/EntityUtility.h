@@ -38,5 +38,8 @@ public:
 	static void FindTargetsInScope(int entityID, int scopeSize, bool sameTeam, bool includeSelf, std::vector<int>& eneityIDList);
 	static int FindRandTargetByTag(const std::string& tag);
 
+	static void CreatePawn(int id, float x, float y, const std::string& tag);
+	static void CreateBullet(int bulletID, int targetEntityID, float x, float y, const std::string& tag, float destX, float destY);
+
 };
 

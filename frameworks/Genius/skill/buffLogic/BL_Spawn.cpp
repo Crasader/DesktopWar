@@ -7,7 +7,6 @@
 
 #include "event/EventManager.h"
 #include "ECS/EntityEvents.h"
-#include "entity/EntityCreators.h"
 #include "entity/EntityUtility.h"
 
 
@@ -52,7 +51,7 @@ void BL_Spawn::OnEffect(Buff* buff)
 		bool isTagged = EntityUtility::IsTagged(GameDefine::Tag_Soldier, senderEntity);
 		const string& targetTag = isTagged ? GameDefine::Tag_Soldier : GameDefine::Tag_Monster;
 
-		EntityCreator::CreatePawn(buff->GetCfg()->calType, posCom->x, posCom->y, targetTag);
+		EntityUtility::CreatePawn(buff->GetCfg()->calType, posCom->x, posCom->y, targetTag);
 
 	}while (false);
 

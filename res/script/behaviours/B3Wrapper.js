@@ -117,5 +117,10 @@ function WaitNode(seconds){
 }
 
 
+function LimiterNode(loop, node){
+    return new bt.Limiter({maxLoop:loop,child:node});
+}
+
+
 
 
