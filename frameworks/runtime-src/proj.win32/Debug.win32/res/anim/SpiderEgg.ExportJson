@@ -1920,9 +1920,9 @@
     }
   ],
   "config_file_path": [
-    "SpiderEgg0.plist"
+    "npc0.plist"
   ],
   "config_png_path": [
-    "SpiderEgg0.png"
+    "npc0.png"
   ]
 }

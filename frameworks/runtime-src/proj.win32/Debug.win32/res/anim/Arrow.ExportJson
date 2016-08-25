@@ -160,9 +160,9 @@
     }
   ],
   "config_file_path": [
-    "Arrow0.plist"
+    "npc0.plist"
   ],
   "config_png_path": [
-    "Arrow0.png"
+    "npc0.png"
   ]
 }
