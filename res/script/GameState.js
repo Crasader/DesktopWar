@@ -140,11 +140,11 @@ var LaunchState = GameState.extend
     {
 
         //Monster.Create(2012, 700, 133, gn.Tag.Monster);
-        //NoxiousCreeeper.Create(2009, 1300, 133, gn.Tag.Monster);//mother spider
+        NoxiousCreeeper.Create(2009, 1300, 133, gn.Tag.Monster);//mother spider
         //ShadowArcher.Create(2010, 200, 133, gn.Tag.Monster);
         //Monster.Create(2010, 350, 133, gn.Tag.Monster);
 
-        //Juggernaut.Create(2008, 400, 150, gn.Tag.Monster);        //铁人
+        Juggernaut.Create(2008, 400, 150, gn.Tag.Monster);        //铁人
         //Juggernaut.Create(2008, 1050, 153, gn.Tag.Monster);
         //Juggernaut.Create(2008, 1150, 133, gn.Tag.Monster);
 
@@ -152,15 +152,15 @@ var LaunchState = GameState.extend
         //Monster.Create(2011, 280, 120, gn.Tag.Monster);
         //Monster.Create(2011, 260, 140, gn.Tag.Monster);
 
-        HolyKnight.Create(1007, 520, 120, gn.Tag.Soldier);
-        Monster.Create(2004, 570, 120, gn.Tag.Monster);
+        //HolyKnight.Create(1007, 520, 120, gn.Tag.Soldier);
+        //Monster.Create(2004, 570, 120, gn.Tag.Monster);
 
-        /*Soldier.Create(1001, 1000, 450, gn.Tag.Soldier);
+        Soldier.Create(1001, 1000, 450, gn.Tag.Soldier);
         Soldier.Create(1004, 1020, 450, gn.Tag.Soldier);
         Soldier.Create(1005, 1040, 450, gn.Tag.Soldier);
         Soldier.Create(1006, 1060, 450, gn.Tag.Soldier);
         Soldier.Create(1007, 1080, 450, gn.Tag.Soldier);
-        Soldier.Create(1008, 1100, 450, gn.Tag.Soldier);*/
+        Soldier.Create(1008, 1100, 450, gn.Tag.Soldier);
 
 
         //Soldier.Create(1001, 400, 550);

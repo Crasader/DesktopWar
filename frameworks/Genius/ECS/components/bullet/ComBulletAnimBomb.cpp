@@ -24,7 +24,7 @@ void ComBulletAnimBomb::Create(const std::string& bodyFileName, const std::strin
 	{
 		auto particle = ParticleTail::createWithTotalParticles(30);
 		m_pBodyArmature->addChild(particle);
-		particle->setTexture(Director::getInstance()->getTextureCache()->addImage(tailFileName));
+		particle->setDisplayFrame(cocos2d::SpriteFrameCache::getInstance()->getSpriteFrameByName(tailFileName));
 		particle->setPositionX(-15);
 	}
 }

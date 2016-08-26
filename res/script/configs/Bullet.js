@@ -32,7 +32,7 @@ Config.Bullet['2']={
 	boxWidth:20,
 	boxHeight:20,
 	bodyAnim:3002,
-	tailAnim:'res/img/smoke.png',
+	tailAnim:'smoke.png',
 	buffTargetStyle:2,
 	buffTargetRadius:30,
 	attackValue:200,
