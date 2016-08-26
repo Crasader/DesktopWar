@@ -3,14 +3,14 @@
 #include "UIBar.h"
 
 
-const char* shortHpBarFore = "res/img/short.png";
-const char* shortHpBarBack = "res/img/shortBG.png";
-const char* mediumHpBarFore = "res/img/medium.png";
-const char* mediumHpBarBack = "res/img/mediumBG.png";
-const char* longHpBarFore = "res/img/big.png";
-const char* longHpBarBack = "res/img/bigBG.png";
-const char* bossHpBarFore = "res/img/large.png";
-const char* bossHpBarBack = "res/img/largeBG.png";
+const char* shortHpBarFore = "short.png";
+const char* shortHpBarBack = "shortBG.png";
+const char* mediumHpBarFore = "medium.png";
+const char* mediumHpBarBack = "mediumBG.png";
+const char* longHpBarFore = "big.png";
+const char* longHpBarBack = "bigBG.png";
+const char* bossHpBarFore = "large.png";
+const char* bossHpBarBack = "largeBG.png";
 
 
 UIBar* UIBar::create(int sizeType)
@@ -49,29 +49,21 @@ UIBar::UIBar(const char* foregroundImage, const char* backgroundImage)
 	m_pLoadingBar = nullptr;
 	m_pBackground = nullptr;
 
-	if(foregroundImage)
-		m_pLoadingBar = cocos2d::ui::LoadingBar::create();
+	cocos2d::SpriteFrame* frame = cocos2d::SpriteFrameCache::getInstance()->getSpriteFrameByName(foregroundImage);
+	m_pLoadingBar = cocos2d::ui::LoadingBar::create(frame);
+	m_pLoadingBar->setPercent(100);
+	m_pLoadingBar->setPosition(cocos2d::Point(0, 0));
+	this->addChild(m_pLoadingBar, 3);
 
-	if(m_pLoadingBar)
-	{
-		m_pLoadingBar->loadTexture(foregroundImage);
-		m_pLoadingBar->setPercent(100);
-		m_pLoadingBar->setPosition(cocos2d::Point(0, 0));
-		this->addChild(m_pLoadingBar, 3);
-	}
+	cocos2d::SpriteFrame* frameBG = cocos2d::SpriteFrameCache::getInstance()->getSpriteFrameByName(backgroundImage);
+	m_pBackground = cocos2d::Sprite::createWithSpriteFrame(frameBG);
+	m_pBackground->setPosition(cocos2d::Point(0, 0));
+	m_pBackground->setOpacity(255);// 设置透明度
+	this->addChild(m_pBackground, 2);
 
-	if(backgroundImage)
-		m_pBackground = cocos2d::Sprite::create(backgroundImage);
-
-	if(m_pBackground)
-	{
-		m_pBackground->setPosition(cocos2d::Point(0, 0));
-		m_pBackground->setOpacity(255);// 设置透明度
-		this->addChild(m_pBackground, 2);
-
-		this->setContentSize(m_pBackground->getContentSize());
-		m_size = m_pBackground->getContentSize();
-	}
+	this->setContentSize(m_pBackground->getContentSize());
+	m_size = m_pBackground->getContentSize();
+	
 }
 
 UIBar::~UIBar()

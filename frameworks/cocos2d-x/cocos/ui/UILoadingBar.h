@@ -101,6 +101,8 @@ public:
     static LoadingBar* create(const std::string& textureName,
                               TextureResType texType,
                               float percentage = 0);
+
+	static LoadingBar* create(cocos2d::SpriteFrame* frame);
     
     /**
      * Change the progress direction of LoadingBar.

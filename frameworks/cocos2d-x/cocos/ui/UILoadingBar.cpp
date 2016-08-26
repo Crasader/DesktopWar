@@ -89,6 +89,20 @@ LoadingBar* LoadingBar::create(const std::string &textureName,
     return nullptr;
 }
 
+LoadingBar* LoadingBar::create(cocos2d::SpriteFrame* frame)
+{
+	LoadingBar* widget = new (std::nothrow) LoadingBar;
+	if (widget && widget->init())
+	{
+		widget->autorelease();
+		widget->loadTexture(frame);
+		widget->setPercent(0);
+		return widget;
+	}
+	CC_SAFE_DELETE(widget);
+	return nullptr;
+}
+
 void LoadingBar::initRenderer()
 {
     _barRenderer = Scale9Sprite::create();
