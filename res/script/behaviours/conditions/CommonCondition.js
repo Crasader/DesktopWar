@@ -33,6 +33,36 @@ var IsAlive = bt.Condition.extend({
 });
 
 
+var LowerHp = bt.Condition.extend({
+
+    name:'LowerHp',
+    percent:50,
+
+    ctor:function(percent)
+    {
+        this.percent = percent;
+    },
+
+    tick:function(tick)
+    {
+        var entity = tick.target;
+        var attr = entity.GetComponent(gn.ComName.Attr);
+        var curHp = attr.Get(gn.Attr.HP);
+        var maxHp = attr.Get(gn.Attr.MaxHP);
+        if (curHp/maxHp < this.percent/100)
+        {
+            //print("low hp");
+            return bt.SUCCESS;
+        }
+        else
+        {
+            return bt.FAILURE;
+        }
+    }
+
+});
+
+
 var HaveTarget = bt.Condition.extend({
 
     ctor:function()

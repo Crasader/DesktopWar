@@ -1,19 +1,23 @@
 
 /**
- * AttackNearSpecial action
+ * DoState action
  * by Locke
  * lololol~
  */
 
 
-var AttackNearSpecial = bt.Action.extend({
+var DoState = bt.Action.extend({
 
     timeWait:0,
     animComplete:false,
+    targetState:null,
+    animationName:'',
 
-    ctor:function() {
-        this.name = "AttackNearSpecial";
+    ctor:function(state,animName) {
+        this.name = "DoState";
         this.animComplete = false;
+        this.targetState = state;
+        this.animationName = animName;
     },
 
     open:function(tick) {
@@ -25,8 +29,8 @@ var AttackNearSpecial = bt.Action.extend({
         locomotor.StopMove();
         var followTar = entity.GetBlackboard(gn.BB.CombatTarget);
         locomotor.FaceToEntity(followTar);
-print("atk special");
-        entity.GetStateGraph().gotoState(gn.SG.AttackNearSpecial);
+
+        entity.GetStateGraph().gotoState(this.targetState);
 
     },
 
@@ -43,11 +47,6 @@ print("atk special");
             return bt.SUCCESS;
         }
 
-        var combatTar = entity.GetBlackboard(gn.BB.CombatTarget);
-        if(null == combatTar){
-            return bt.FAILURE;
-        }
-
         return bt.RUNNING;
     },
 
@@ -57,13 +56,13 @@ print("atk special");
     },
 
     PushEvent:function(event, data){
-        var animName = data;
-        if(event === gn.Event.AnimLoopComplete){
-            if(animName === gn.AnimName.Atk2){
+        if(event === gn.Event.AnimLoopComplete || event === gn.Event.AnimComplete){
+            if(data === this.animationName){
                 this.animComplete = true;
             }
         }
     }
+
 
 });
 

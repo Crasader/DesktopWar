@@ -12,10 +12,7 @@ require("res/script/behaviours/actions/TurnAround.js");
 require("res/script/behaviours/actions/Die.js");
 require("res/script/behaviours/actions/Chase.js");
 require("res/script/behaviours/actions/Follow.js");
-require("res/script/behaviours/actions/AttackFar.js");
-require("res/script/behaviours/actions/AttackNear.js");
-require("res/script/behaviours/actions/AttackNearSpecial.js");
-require("res/script/behaviours/actions/Skill1.js");
+require("res/script/behaviours/actions/DoState.js");
 
 //comditions
 require("res/script/behaviours/conditions/CommonCondition.js");

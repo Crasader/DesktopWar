@@ -49,6 +49,7 @@ var Attr = BaseComponent.extend({
     InitWithRoleCfg:function(roleCfg)
     {
         this.attrs[gn.Attr.HP] = roleCfg.baseLife;
+        this.attrs[gn.Attr.MaxHP] = roleCfg.baseLife;
         this.attrs[gn.Attr.AP] = 0;
         this.attrs[gn.Attr.AM] = 0;
         if (roleCfg.attackType == gn.AttackType.Physic)

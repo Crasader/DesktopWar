@@ -176,7 +176,7 @@ void ArmatureAnimation::play(const std::string& animationName, int durationTo,  
     _movementData = _animationData->getMovement(animationName);
     if (nullptr == _movementData)
     {
-        CCLOG("_movementData can not be null");
+		CCLOG("_movementData can not be null. animationName : %s", animationName.c_str());
         return;
     }
 //    CCASSERT(_movementData, "_movementData can not be null");

@@ -55,6 +55,7 @@ gn.Attr =
     DM:6,
     SPD:7,
     DODGE:8,
+    MaxHP:9
 };
 
 
@@ -122,7 +123,7 @@ gn.SG =
     AttackNear:'attackNear',
     AttackNearSpecial:'AttackNearSpecial',
     Atk3:'attack3',
-    Skill1:'skill',
+    Skill1:'skill1',
     Skill2:'skill2',
     Skill3:'skill3'
 };
@@ -136,7 +137,7 @@ gn.AnimName =
     Atk1:'attack',
     Atk2:'attack2',
     Atk3:'attack3',
-    Skill1:'skill',
+    Skill1:'skill1',
     Skill2:'skill2',
     Skill3:'skill3'
 };
@@ -159,8 +160,8 @@ gn.PawnAnimName =
     Attack2_R:"attack2_right",
     Attack3_L:"attack3_left",
     Attack3_R:"attack3_right",
-    Skill1_L:"skill_left",
-    Skill1_R:"skill_right",
+    Skill1_L:"skill1_left",
+    Skill1_R:"skill1_right",
     Skill2_L:"skill2_left",
     Skill2_R:"skill2_right",
     Skill3_L:"skill3_left",

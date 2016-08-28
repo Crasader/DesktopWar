@@ -814,6 +814,55 @@ bt.Repeater = bt.Decorator.extend({
 });
 
 
+bt.Counter = bt.Decorator.extend({
+
+    ctor:function(settings)
+    {
+        settings = settings || {};
+
+        this._super(settings);
+        this.name = 'Counter';
+
+        if (!settings.maxLoop) {
+            throw "maxLoop parameter in Counter decorator is an obligatory " +
+            "parameter";
+        }
+
+        this.maxLoop = settings.maxLoop;
+    },
+
+    open:function(tick) {
+        tick.blackboard.set('i', 0, tick.tree.id, this.id);
+    },
+
+    tick:function(tick) {
+        if (!this.child) {
+            return bt.ERROR;
+        }
+
+        var i = tick.blackboard.get('i', tick.tree.id, this.id);
+
+        if (i < this.maxLoop) {
+            var status = this.child._execute(tick);
+
+            if (status == bt.SUCCESS) {
+                tick.blackboard.set('i', i + 1, tick.tree.id, this.id);
+                if(i + 1 >= this.maxLoop)
+                    return bt.SUCCESS;
+            }
+
+            if(status == bt.FAILURE)
+                return bt.FAILURE;
+            else
+                return bt.RUNNING;
+        }
+
+        return bt.FAILURE;
+    }
+
+});
+
+
 
 bt.Wait = bt.Action.extend({
 

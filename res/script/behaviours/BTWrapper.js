@@ -121,6 +121,8 @@ function LimiterNode(loop, node){
     return new bt.Limiter({maxLoop:loop,child:node});
 }
 
-
+function CounterNode(count, node){
+    return new bt.Counter({maxLoop:count,child:node});
+}
 
 
