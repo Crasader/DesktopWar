@@ -187,7 +187,7 @@ gn.Event =
     FrameAttack1:"attack",
     FrameAttack2:"attack2",
     FrameAttack3:"attack3",
-    FrameSkill1:"skill",
+    FrameSkill1:"skill1",
     FrameSkill2:"skill2",
     FrameSkill3:"skill3",
 

@@ -69,10 +69,13 @@ var Locomotor = BaseComponent.extend({
     },
 
     FaceToEntity:function(target){
-        var targetTran = target.GetComponent(gn.ComName.Transform);
-        var x = targetTran.GetX();
-        var y = targetTran.GetY();
-        this.entity.PushEvent(gn.Event.FaceTo,{targetX:x,targetY:y});
+        if(target instanceof EntityScript){
+            var targetTran = target.GetComponent(gn.ComName.Transform);
+            var x = targetTran.GetX();
+            var y = targetTran.GetY();
+            this.entity.PushEvent(gn.Event.FaceTo,{targetX:x,targetY:y});
+        }
+
     }
 
 });

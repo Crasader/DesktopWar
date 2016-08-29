@@ -154,8 +154,8 @@ var LaunchState = GameState.extend
 
         //HolyKnight.Create(1007, 520, 120, gn.Tag.Soldier);
         //Monster.Create(2004, 570, 120, gn.Tag.Monster);
-        Sheep.Create(1004, 1090, 450, gn.Tag.Monster);
-        Sheep.Create(1004, 1100, 450, gn.Tag.Monster);
+        //Sheep.Create(1004, 1090, 450, gn.Tag.Monster);
+        //Sheep.Create(1004, 1100, 450, gn.Tag.Monster);
         HolyKnight.Create(1007, 1000, 450, gn.Tag.Soldier);
         /*Soldier.Create(1004, 1020, 450, gn.Tag.Soldier);
         Soldier.Create(1005, 1040, 450, gn.Tag.Soldier);

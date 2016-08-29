@@ -51,8 +51,10 @@ function CreateBTree_HolyKnight(){
     tree.root =
         PriorityNode(
             WhileNode(InverterNode(new IsAlive), new Die),
-            WhileNode(new LowerHp(50), new DoState(gn.SG.Skill1,gn.AnimName.Skill1)),
-            WhileNode(new TargetIsInNearRange, MemSequenceNode(CounterNode(3,new DoState(gn.SG.AttackNear,gn.AnimName.Atk1)), new DoState(gn.SG.AttackNearSpecial,gn.AnimName.Atk2))),
+            WhileNode(new LowerHp(150), new DoState(gn.SG.Skill1,gn.AnimName.Skill1)),// 治疗之光
+            WhileNode(new TargetIsInNearRange, MemSequenceNode(
+                CounterNode(3,new DoState(gn.SG.AttackNear,gn.AnimName.Atk1)), 
+                new DoState(gn.SG.AttackNearSpecial,gn.AnimName.Atk2))),
             WhileNode(new TargetIsInViewSight, new Chase),
             WhileNode(new IsAlive, MemSequenceNode(new Wander, new TurnAround))
         );
@@ -68,7 +70,7 @@ function CreateBTree_Archer(){
         PriorityNode(
             WhileNode(InverterNode(new IsAlive), new Die),
             WhileNode(new TargetIsInNearRange, new DoState(gn.SG.AttackNear,gn.AnimName.Atk1)),
-            WhileNode(new TargetIsInFarRange, new Skill1),
+            WhileNode(new TargetIsInFarRange, new DoState(gn.SG.Skill1,gn.AnimName.Skill1)),
             WhileNode(new TargetIsInViewSight, new Chase),
             WhileNode(new IsAlive, new Wander)
         );
@@ -86,7 +88,7 @@ function CreateBTree_NoxiousCreeeper(){
             WhileNode(InverterNode(new IsAlive), new Die),
             WhileNode(new TargetIsInNearRange, new DoState(gn.SG.AttackNear,gn.AnimName.Atk1)),
             WhileNode(new TargetIsInViewSight, new Chase),
-            WhileNode(new IsAlive, MemSequenceNode(new Wander, WaitNode(2), new Skill1))
+            WhileNode(new IsAlive, MemSequenceNode(new Wander, WaitNode(2), new DoState(gn.SG.Skill1,gn.AnimName.Skill1)))
         );
     return tree;
 }
@@ -101,7 +103,7 @@ function CreateBTree_Juggernaut(){
         PriorityNode(
             WhileNode(InverterNode(new IsAlive), new Die),
             WhileNode(new TargetIsInNearRange, new DoState(gn.SG.AttackNear,gn.AnimName.Atk1)),
-            WhileNode(new IsAlive, MemSequenceNode(new Wander, WaitNode(3), new Skill1))
+            WhileNode(new IsAlive, MemSequenceNode(new Wander, WaitNode(3), new DoState(gn.SG.Skill1,gn.AnimName.Skill1)))
         );
     return tree;
 }
