@@ -156,7 +156,7 @@ var LaunchState = GameState.extend
         //Monster.Create(2004, 570, 120, gn.Tag.Monster);
         //Sheep.Create(1004, 1090, 450, gn.Tag.Monster);
         //Sheep.Create(1004, 1100, 450, gn.Tag.Monster);
-        HolyKnight.Create(1007, 1000, 450, gn.Tag.Soldier);
+        //HolyKnight.Create(1007, 1000, 450, gn.Tag.Soldier);
         /*Soldier.Create(1004, 1020, 450, gn.Tag.Soldier);
         Soldier.Create(1005, 1040, 450, gn.Tag.Soldier);
         Soldier.Create(1006, 1060, 450, gn.Tag.Soldier);
@@ -187,30 +187,6 @@ var LaunchState = GameState.extend
         for(i = 2001; i <= 2012; ++i){
             loadMgr.AddRole(i);
         }
-        /*loadMgr.AddRole(1001);
-        loadMgr.AddRole(1002);
-        loadMgr.AddRole(1003);
-        loadMgr.AddRole(1004);
-        loadMgr.AddRole(1005);
-        loadMgr.AddRole(1006);
-        loadMgr.AddRole(1007);
-        loadMgr.AddRole(1008);
-
-        loadMgr.AddRole(2001);
-        loadMgr.AddRole(2002);
-        loadMgr.AddRole(2003);
-        loadMgr.AddRole(2004);
-        loadMgr.AddRole(2005);
-        loadMgr.AddRole(2006);
-        loadMgr.AddRole(2007);
-        loadMgr.AddRole(2008);
-        loadMgr.AddRole(2009);
-        loadMgr.AddRole(2010);
-        loadMgr.AddRole(2009);
-        loadMgr.AddRole(2008);
-        loadMgr.AddRole(2012);
-        loadMgr.AddRole(2011);*/
-
 
         loadMgr.AddAnim(3001);
         loadMgr.AddAnim(3002);

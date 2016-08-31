@@ -9,6 +9,8 @@
 
 const int		cfg_TaskBarHeight = 40;
 
+#define IDM_CONSOLE 10001
+
 
 bool WinWrapper::Init(HWND hWnd)
 {
@@ -98,7 +100,7 @@ void WinWrapper::ShowTrayMenu()
 	GetCursorPos(&pt);
 	HMENU hMenu;
 	hMenu = CreatePopupMenu();
-	AppendMenu(hMenu, MF_STRING, IDM_EXIT, TEXT("what's up"));
+	AppendMenu(hMenu, MF_STRING, IDM_CONSOLE, TEXT("console"));
 	AppendMenu(hMenu, MF_SEPARATOR, 0, NULL);
 	AppendMenu(hMenu, MF_STRING, IDM_ABOUT, TEXT("about"));
 	AppendMenu(hMenu, MF_SEPARATOR, 0, NULL);
@@ -107,42 +109,25 @@ void WinWrapper::ShowTrayMenu()
 	TrackPopupMenu(hMenu, TPM_RIGHTBUTTON, pt.x, pt.y, NULL, m_hWnd, NULL);
 }
 
-
-/*
-void CalculateDirtyRectList(std::list<cocos2d::Rect>& dirtyRectList)
+bool WinWrapper::ProcessCommand(int wmId, int wmEvent)
 {
-auto entityNodes = Genius::SceneManager::GetSingleton()->GetEntityNodeList();
-for (auto& entityNode : entityNodes)
-{
-auto box = cocos2d::utils::getCascadeBoundingBox(entityNode.node);
-dirtyRectList.push_back(box);
-}
-// fps...rect
-cocos2d::Rect fpsRect(0, 0, 150, 70);
-dirtyRectList.push_back(fpsRect);
+	switch (wmId)
+	{
+	case IDM_CONSOLE:
+		OpenConsole();
+		break;
+	default:
+		return false;
+		break;
+	}
+	return true;
 }
 
-std::list<cocos2d::Rect> gDirtyRectList;
-CalculateDirtyRectList(gDirtyRectList);
-
-int x, y, w, h, index, maxY;
-for (auto& rect : gDirtyRectList)
+void WinWrapper::OpenConsole()
 {
-x = rect.getMinX();
-y = rect.getMinY();
-w = rect.getMaxX() - x;
-h = rect.getMaxY() - y;
-maxY = rect.getMaxY();
+	printf("open console...");
+}
 
-for (int i = y; i < maxY; ++i)
-{
-//index = (int)(maxY -(i-y))*glWidth + (int)x;
-index = (int)(glHeight - i)*glWidth + (int)x;
-glReadPixels(x, i, w, 1, GL_BGRA, GL_UNSIGNED_BYTE, &m_pBitsFromGL[index]);
-}
-}
-SetBitmapBits(m_hBitmap, glWidth * glHeight * sizeof(unsigned int), m_pBitsFromGL);
-*/
 
 
 

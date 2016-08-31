@@ -20,6 +20,8 @@ public:
 	void Destroy();
 
 	void ShowTrayMenu();
+	bool ProcessCommand(int wmId, int wmEvent);
+	void OpenConsole();
 
 private:
 	void InitNotify(HWND hWnd);

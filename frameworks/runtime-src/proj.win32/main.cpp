@@ -35,6 +35,7 @@ TCHAR szWindowClass[MAX_LOADSTRING];			// 主窗口类名
 
 // 此代码模块中包含的函数的前向声明: 
 ATOM				MyRegisterClass(HINSTANCE hInstance);
+ATOM				MyRegisterClass2(HINSTANCE hInstance);
 BOOL				InitInstance(HINSTANCE, int);
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK	About(HWND, UINT, WPARAM, LPARAM);
@@ -56,6 +57,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	LoadString(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
 	LoadString(hInstance, IDC_DESKTOPWAR, szWindowClass, MAX_LOADSTRING);
 	MyRegisterClass(hInstance);
+	MyRegisterClass2(hInstance);
 
 	// 执行应用程序初始化: 
 	if (!InitInstance (hInstance, nCmdShow))
@@ -131,6 +133,27 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 	return RegisterClassEx(&wcex);
 }
 
+ATOM MyRegisterClass2(HINSTANCE hInstance)
+{
+	WNDCLASSEX wcex;
+
+	wcex.cbSize = sizeof(WNDCLASSEX);
+
+	wcex.style = CS_HREDRAW | CS_VREDRAW;
+	wcex.lpfnWndProc = WndProc;
+	wcex.cbClsExtra = 0;
+	wcex.cbWndExtra = 0;
+	wcex.hInstance = hInstance;
+	wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_DESKTOPWAR));
+	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+	wcex.lpszMenuName = L"";
+	wcex.lpszClassName = L"Console";
+	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+
+	return RegisterClassEx(&wcex);
+}
+
 
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
@@ -140,11 +163,11 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    DWORD dwStyle = WS_POPUP | WS_VISIBLE/* | WS_SYSMENU*/;
    //DWORD dwStyle = WS_OVERLAPPEDWINDOW;
 
-   int screenWidth = 128;// GetSystemMetrics(SM_CXSCREEN);
-   int screenHeight = 128;// GetSystemMetrics(SM_CYSCREEN);
+   int screenWidth = GetSystemMetrics(SM_CXSCREEN);
+   int screenHeight = GetSystemMetrics(SM_CYSCREEN);
 
    HWND hWnd = CreateWindowEx(dwExStyle, szWindowClass, szTitle, dwStyle,
-	   0, 0, screenWidth, screenHeight-40, NULL, NULL, hInstance, NULL);
+	   0, 0, 128, 128, NULL, NULL, hInstance, NULL);
 
    if (!hWnd)
    {
@@ -153,6 +176,13 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
+
+   HWND hWnd2 = CreateWindowEx(0,
+	   L"Console", L"Master", WS_OVERLAPPEDWINDOW,
+	   100, 100, 640, 480, NULL, NULL, hInstance, NULL);
+
+   ShowWindow(hWnd2, nCmdShow);
+   UpdateWindow(hWnd2);
 
    ////////////
    g_winWrapper.Init(hWnd);
@@ -176,16 +206,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		wmId    = LOWORD(wParam);
 		wmEvent = HIWORD(wParam);
 		// 分析菜单选择: 
-		switch (wmId)
+		if (!g_winWrapper.ProcessCommand(wmId, wmEvent))
 		{
-		case IDM_ABOUT:
-			DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-			break;
-		case IDM_EXIT:
-			DestroyWindow(hWnd);
-			break;
-		default:
-			return DefWindowProc(hWnd, message, wParam, lParam);
+			switch (wmId)
+			{
+			case IDM_ABOUT:
+				DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+				break;
+			case IDM_EXIT:
+				DestroyWindow(hWnd);
+				break;
+			default:
+				return DefWindowProc(hWnd, message, wParam, lParam);
+			}
 		}
 		break;
 	case WM_TIMER:
@@ -201,11 +234,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_NOTIFY_ICON:
 		switch (lParam)
 		{
-		case WM_LBUTTONDOWN:
-			g_winWrapper.ShowTrayMenu();
-			break;
 		case WM_RBUTTONDOWN:
 			g_winWrapper.ShowTrayMenu();
+			break;
+		case WM_LBUTTONDBLCLK:
+			g_winWrapper.OpenConsole();
 			break;
 		}
 		break;
