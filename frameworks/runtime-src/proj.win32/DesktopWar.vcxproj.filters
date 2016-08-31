@@ -424,6 +424,7 @@
     <ClInclude Include="..\..\Genius\scripting\JSInvoker.h">
       <Filter>Genius\JSB</Filter>
     </ClInclude>
+    <ClInclude Include="ConsolePanel.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
@@ -700,5 +701,6 @@
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnDebugDraw.cpp">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClCompile>
+    <ClCompile Include="ConsolePanel.cpp" />
   </ItemGroup>
 </Project>

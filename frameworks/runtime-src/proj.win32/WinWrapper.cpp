@@ -1,5 +1,6 @@
 
 #include "WinWrapper.h"
+#include "ConsolePanel.h"
 #include "gfx/gfx.h"
 #include "glfw3native.h"
 #include "app/GameDefine.h"
@@ -114,7 +115,7 @@ bool WinWrapper::ProcessCommand(int wmId, int wmEvent)
 	switch (wmId)
 	{
 	case IDM_CONSOLE:
-		OpenConsole();
+		OpenConsole(true);
 		break;
 	default:
 		return false;
@@ -123,10 +124,12 @@ bool WinWrapper::ProcessCommand(int wmId, int wmEvent)
 	return true;
 }
 
-void WinWrapper::OpenConsole()
+void WinWrapper::OpenConsole(bool open)
 {
-	printf("open console...");
+	ConsolePanel::GetInstance()->SetVisible(open);
 }
+
+
 
 
 

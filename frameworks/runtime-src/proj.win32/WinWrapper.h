@@ -21,7 +21,7 @@ public:
 
 	void ShowTrayMenu();
 	bool ProcessCommand(int wmId, int wmEvent);
-	void OpenConsole();
+	void OpenConsole(bool open);
 
 private:
 	void InitNotify(HWND hWnd);

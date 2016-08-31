@@ -21,11 +21,20 @@ SceneManager*  SceneManager::GetSingleton()
 bool SceneManager::Init()
 {
 	m_root = Node::create();
-	m_pMapLayer = LayerColor::create();
-	m_root->addChild(m_pMapLayer, GameDefine::mapRootZOrder);
 	m_root->setCascadeOpacityEnabled(true);
-	m_pMapLayer->setCascadeOpacityEnabled(true);
 	((CocosApp*)Application::getInstance())->GetScene()->addChild(m_root);
+
+	m_pMapLayer = LayerColor::create();
+	m_pMapLayer->setCascadeOpacityEnabled(true);
+	m_root->addChild(m_pMapLayer, GameDefine::mapRootZOrder);
+
+	m_pUILayer = LayerColor::create();
+	m_pUILayer->setCascadeOpacityEnabled(true);
+	m_root->addChild(m_pUILayer, GameDefine::mapRootZOrder);
+
+	auto s1 = Sprite::create("1.png");
+	s1->setPosition(1000, 800);
+	m_pUILayer->addChild(s1, 100);
 
 	EventManager::GetSingleton()->AddListener(this, Event_nodeCreated);
 	EventManager::GetSingleton()->AddListener(this, Event_entityDestroy);
@@ -36,7 +45,7 @@ void SceneManager::Update()
 {
 	RefreshPawnsZOrder();
 
-	SystemStatusPanel::GetSingleton()->Update();
+	//SystemStatusPanel::GetSingleton()->Update();
 
 	UpdateSceneShake();
 }
