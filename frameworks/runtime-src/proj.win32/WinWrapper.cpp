@@ -6,11 +6,13 @@
 #include "app/GameDefine.h"
 #include "Resource.h"
 
-
+USING_NS_CC;
 
 const int		cfg_TaskBarHeight = 40;
 
 #define IDM_CONSOLE 10001
+
+
 
 
 bool WinWrapper::Init(HWND hWnd)
@@ -129,82 +131,56 @@ void WinWrapper::OpenConsole(bool open)
 	ConsolePanel::GetInstance()->SetVisible(open);
 }
 
+static float ToGLX(float x)
+{
+	return x + 4;//偏差
+}
 
-static POINT g_pntMouse = { 0, 0 };
-
-// 保存指针移动时, 组合键的标识,   
-// 组合键有  
-//  
-// MK_CONTROL(Ctrl键)   
-// MK_SHIFT(Shift键),  
-// MK_LBUTTON(鼠标左键),  
-// MB_RBUTTON(鼠标右键)  
-static int g_nMark = 0;
-
-// 保存在操作鼠标按键时, 鼠标指针的位置  
-static POINT g_pntL = { 0, 0 };
-
-// 保存操作鼠标按键时, 组合键的标识  
-// 组合键有  
-//  
-// MK_CONTROL(Ctrl键)  
-// MK_SHIFT(Shift键)  
-static int g_nMarkL = 0;
+static float ToGLY(float y)
+{
+	return GameDefine::viewHeight - y + 3;//偏差
+}
 
 
 void WinWrapper::OnMouseMove(HWND hWnd, int x, int y, int nMark)
 {
-	g_pntMouse.x = x;
-	g_pntMouse.y = y;
-	g_nMark = nMark;
+	x = ToGLX(x);
+	y = ToGLY(y);
 	//printf("move %d,%d",x,y);
+	auto glview = (GLViewImpl*)Director::getInstance()->getOpenGLView();
+	if (glview)
+		glview->onGLFWMouseMoveCallBack(glview->getWindow(), x, y);
 }
 
 
 void WinWrapper::OnMouseLButtonDown(HWND hWnd, int x, int y, int nMark)
 {
-	g_pntL.x = x;
-	g_pntL.y = y;
-	g_nMarkL = nMark;
-	printf("ld %d,%d", x, y);
+	x = ToGLX(x);
+	y = ToGLY(y);
+	//printf("ld %d,%d", x, y);
+	auto glview = (GLViewImpl*)Director::getInstance()->getOpenGLView();
+	if (glview)
+		glview->onGLFWMouseCallBack(glview->getWindow(), GLFW_MOUSE_BUTTON_LEFT, GLFW_PRESS, 0);
 }
 
 
 void WinWrapper::OnMouseLButtonUp(HWND hWnd, int x, int y, int nMark)
 {
-	g_pntL.x = x;
-	g_pntL.y = y;
-	g_nMarkL = nMark;
-	printf("lu %d,%d", x, y);
+	x = ToGLX(x);
+	y = ToGLY(y);
+	//printf("lu %d,%d", x, y);
+	auto glview = (GLViewImpl*)Director::getInstance()->getOpenGLView();
+	if (glview)
+		glview->onGLFWMouseCallBack(glview->getWindow(), GLFW_MOUSE_BUTTON_LEFT, GLFW_RELEASE, 0);
 }
 
 
 void WinWrapper::OnMouseLButtonDoubleClick(HWND hWnd, int x, int y, int nMark)
 {
-	g_pntL.x = x;
-	g_pntL.y = y;
-	g_nMarkL = nMark;
-	printf("db %d,%d", x, y);
+	x = ToGLX(x);
+	y = ToGLY(y);
+	//printf("db %d,%d", x, y);
 }
-/*
-static void onGLFWMouseCallBack(GLFWwindow* window, int button, int action, int modify)
-{
-if (_view)
-_view->onGLFWMouseCallBack(window, button, action, modify);
-}
-
-static void onGLFWMouseMoveCallBack(GLFWwindow* window, double x, double y)
-{
-if (_view)
-_view->onGLFWMouseMoveCallBack(window, x, y);
-}
-
-static void onGLFWMouseScrollCallback(GLFWwindow* window, double x, double y)
-{
-if (_view)
-_view->onGLFWMouseScrollCallback(window, x, y);
-}
-*/
 
 
 

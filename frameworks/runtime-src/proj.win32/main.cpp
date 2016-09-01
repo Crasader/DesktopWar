@@ -110,22 +110,17 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-   hInst = hInstance; // 将实例句柄存储在全局变量中
+   hInst = hInstance;
 
    DWORD dwExStyle = WS_EX_TOOLWINDOW | WS_EX_TOPMOST | WS_EX_LAYERED /*| WS_EX_TRANSPARENT*/;
-   DWORD dwStyle = WS_POPUP | WS_VISIBLE/* | WS_SYSMENU*/;
-   //DWORD dwStyle = WS_OVERLAPPEDWINDOW;
+   DWORD dwStyle = WS_POPUP | WS_VISIBLE | WS_DLGFRAME;
 
-   int screenWidth = GetSystemMetrics(SM_CXSCREEN);
-   int screenHeight = GetSystemMetrics(SM_CYSCREEN);
+   //int screenWidth = GetSystemMetrics(SM_CXSCREEN);
+   //int screenHeight = GetSystemMetrics(SM_CYSCREEN);
 
-   HWND hWnd = CreateWindowEx(dwExStyle, szWindowClass, szTitle, dwStyle,
-	   0, 0, 128, 128, NULL, NULL, hInstance, NULL);
-
+   HWND hWnd = CreateWindowEx(dwExStyle, szWindowClass, szTitle, dwStyle, 0, 0, 128, 128, NULL, NULL, hInstance, NULL);
    if (!hWnd)
-   {
       return FALSE;
-   }
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
@@ -243,7 +238,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 	wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_DESKTOPWAR));
 	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
-	wcex.lpszMenuName = MAKEINTRESOURCE(IDC_DESKTOPWAR);
+	wcex.lpszMenuName = L"";// MAKEINTRESOURCE(IDC_DESKTOPWAR);
 	wcex.lpszClassName = szWindowClass;
 	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 

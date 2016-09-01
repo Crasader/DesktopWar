@@ -32,9 +32,9 @@ bool SceneManager::Init()
 	m_pUILayer->setCascadeOpacityEnabled(true);
 	m_root->addChild(m_pUILayer, GameDefine::mapRootZOrder);
 
-	auto s1 = Sprite::create("1.png");
-	s1->setPosition(1000, 800);
-	m_pUILayer->addChild(s1, 100);
+	auto s1 = Sprite::create("1.jpg");
+	s1->setPosition(400, 268);
+	m_root->addChild(s1);
 
 	EventManager::GetSingleton()->AddListener(this, Event_nodeCreated);
 	EventManager::GetSingleton()->AddListener(this, Event_entityDestroy);

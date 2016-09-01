@@ -39,6 +39,5 @@ private:
 	// gl buffer
 	unsigned int*		m_pBitsFromGL;
 	unsigned int*		m_pBitsFromGLFlipY;
-
 };
 
