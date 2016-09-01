@@ -139,6 +139,9 @@ var LaunchState = GameState.extend
     OnEnter:function ()
     {
 
+        //var root = ccs.uiReader.widgetFromJsonFile(res.game01Controller_json);
+        //.addChild(root,1);
+
         //Monster.Create(2012, 700, 133, gn.Tag.Monster);
         //NoxiousCreeeper.Create(2009, 1300, 133, gn.Tag.Monster);//mother spider
         //ShadowArcher.Create(2010, 200, 133, gn.Tag.Monster);

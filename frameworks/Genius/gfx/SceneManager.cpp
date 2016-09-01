@@ -32,9 +32,14 @@ bool SceneManager::Init()
 	m_pUILayer->setCascadeOpacityEnabled(true);
 	m_root->addChild(m_pUILayer, GameDefine::mapRootZOrder);
 
-	auto s1 = Sprite::create("1.jpg");
-	s1->setPosition(400, 268);
-	m_root->addChild(s1);
+	//auto s1 = Sprite::create("1.jpg");
+	//s1->setPosition(400, 268);
+	//m_root->addChild(s1);
+
+	//ui::Layer* ul = ui::Layer::create();
+	ui::Layout* widget = dynamic_cast<ui::Layout*>(cocostudio::GUIReader::shareReader()->widgetFromJsonFile("res/DemoShop/DemoShop.ExportJson"));
+	//Ul->addWidget(widget);
+	m_root->addChild(widget);
 
 	EventManager::GetSingleton()->AddListener(this, Event_nodeCreated);
 	EventManager::GetSingleton()->AddListener(this, Event_entityDestroy);

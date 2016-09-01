@@ -138,7 +138,7 @@ static float ToGLX(float x)
 
 static float ToGLY(float y)
 {
-	return GameDefine::viewHeight - y + 3;//Æ«²î
+	return y + 3;//Æ«²î
 }
 
 
