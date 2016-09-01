@@ -130,9 +130,81 @@ void WinWrapper::OpenConsole(bool open)
 }
 
 
+static POINT g_pntMouse = { 0, 0 };
+
+// 保存指针移动时, 组合键的标识,   
+// 组合键有  
+//  
+// MK_CONTROL(Ctrl键)   
+// MK_SHIFT(Shift键),  
+// MK_LBUTTON(鼠标左键),  
+// MB_RBUTTON(鼠标右键)  
+static int g_nMark = 0;
+
+// 保存在操作鼠标按键时, 鼠标指针的位置  
+static POINT g_pntL = { 0, 0 };
+
+// 保存操作鼠标按键时, 组合键的标识  
+// 组合键有  
+//  
+// MK_CONTROL(Ctrl键)  
+// MK_SHIFT(Shift键)  
+static int g_nMarkL = 0;
 
 
+void WinWrapper::OnMouseMove(HWND hWnd, int x, int y, int nMark)
+{
+	g_pntMouse.x = x;
+	g_pntMouse.y = y;
+	g_nMark = nMark;
+	//printf("move %d,%d",x,y);
+}
 
+
+void WinWrapper::OnMouseLButtonDown(HWND hWnd, int x, int y, int nMark)
+{
+	g_pntL.x = x;
+	g_pntL.y = y;
+	g_nMarkL = nMark;
+	printf("ld %d,%d", x, y);
+}
+
+
+void WinWrapper::OnMouseLButtonUp(HWND hWnd, int x, int y, int nMark)
+{
+	g_pntL.x = x;
+	g_pntL.y = y;
+	g_nMarkL = nMark;
+	printf("lu %d,%d", x, y);
+}
+
+
+void WinWrapper::OnMouseLButtonDoubleClick(HWND hWnd, int x, int y, int nMark)
+{
+	g_pntL.x = x;
+	g_pntL.y = y;
+	g_nMarkL = nMark;
+	printf("db %d,%d", x, y);
+}
+/*
+static void onGLFWMouseCallBack(GLFWwindow* window, int button, int action, int modify)
+{
+if (_view)
+_view->onGLFWMouseCallBack(window, button, action, modify);
+}
+
+static void onGLFWMouseMoveCallBack(GLFWwindow* window, double x, double y)
+{
+if (_view)
+_view->onGLFWMouseMoveCallBack(window, x, y);
+}
+
+static void onGLFWMouseScrollCallback(GLFWwindow* window, double x, double y)
+{
+if (_view)
+_view->onGLFWMouseScrollCallback(window, x, y);
+}
+*/
 
 
 

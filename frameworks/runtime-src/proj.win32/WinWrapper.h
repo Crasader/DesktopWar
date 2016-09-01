@@ -23,6 +23,11 @@ public:
 	bool ProcessCommand(int wmId, int wmEvent);
 	void OpenConsole(bool open);
 
+	void OnMouseMove(HWND hWnd, int x, int y, int nMark);
+	void OnMouseLButtonDown(HWND hWnd, int x, int y, int nMark);
+	void OnMouseLButtonUp(HWND hWnd, int x, int y, int nMark);
+	void OnMouseLButtonDoubleClick(HWND hWnd, int x, int y, int nMark);
+
 private:
 	void InitNotify(HWND hWnd);
 	void DrawGLBuffer();

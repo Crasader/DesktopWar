@@ -167,6 +167,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			}
 		}
 		break;
+	case WM_MOUSEMOVE:
+		// wParam为鼠标事件发生时的组合键状态  
+		g_winWrapper.OnMouseMove(hWnd, LOWORD(lParam), HIWORD(lParam), (int)wParam);
+		break;
+	case WM_LBUTTONDOWN:
+		g_winWrapper.OnMouseLButtonDown(hWnd, LOWORD(lParam), HIWORD(lParam), (int)wParam);
+		break;
+	case WM_LBUTTONUP:
+		g_winWrapper.OnMouseLButtonUp(hWnd, LOWORD(lParam), HIWORD(lParam), (int)wParam);
+		break;
+	case WM_LBUTTONDBLCLK:
+		g_winWrapper.OnMouseLButtonDoubleClick(hWnd, LOWORD(lParam), HIWORD(lParam), (int)wParam);
+		break;
 	case WM_TIMER:
 		//ValidateRect(hWnd, NULL);
 		break;
