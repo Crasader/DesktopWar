@@ -28,7 +28,7 @@ require("res/script/states/_state_.js");
 
 gn.SkillMgr = null;
 gn.BuffMgr = null;
-
+gn.SceneMgr = null;
 
 
 
@@ -54,6 +54,7 @@ var Game =
 
         gn.SkillMgr = SkillManager.GetMe();
         gn.BuffMgr = BuffManager.GetMe();
+        gn.SceneMgr = SceneManager.GetSingleton();
 
         this.loadingState = new LoadingState();
         this.lanchState = new LaunchState();

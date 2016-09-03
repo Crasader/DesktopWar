@@ -7,13 +7,13 @@
 //#include "scripting/js-bindings/auto/jsb_cocos2dx_3d_auto.hpp"
 //#include "scripting/js-bindings/auto/jsb_cocos2dx_3d_extension_auto.hpp"
 #include "scripting/js-bindings/auto/jsb_cocos2dx_auto.hpp"
-/*#include "scripting/js-bindings/auto/jsb_cocos2dx_builder_auto.hpp"
+#include "scripting/js-bindings/auto/jsb_cocos2dx_builder_auto.hpp"
 #include "scripting/js-bindings/auto/jsb_cocos2dx_extension_auto.hpp"
-#include "scripting/js-bindings/auto/jsb_cocos2dx_navmesh_auto.hpp"
+/*#include "scripting/js-bindings/auto/jsb_cocos2dx_navmesh_auto.hpp"
 #include "scripting/js-bindings/auto/jsb_cocos2dx_physics3d_auto.hpp"
 #include "scripting/js-bindings/auto/jsb_cocos2dx_spine_auto.hpp"*/
 #include "scripting/js-bindings/auto/jsb_cocos2dx_studio_auto.hpp"
-//#include "scripting/js-bindings/auto/jsb_cocos2dx_ui_auto.hpp"
+#include "scripting/js-bindings/auto/jsb_cocos2dx_ui_auto.hpp"
 #include "scripting/js-bindings/auto/jsb_app_auto.hpp"
 #include "scripting/js-bindings/manual/ScriptingCore.h"
 #include "scripting/js-bindings/manual/cocos2d_specifics.hpp"
@@ -29,8 +29,8 @@
 #include "scripting/js-bindings/manual/network/jsb_socketio.h"
 #include "scripting/js-bindings/manual/network/jsb_websocket.h"
 #include "scripting/js-bindings/manual/physics3d/jsb_cocos2dx_physics3d_manual.h"
-#include "scripting/js-bindings/manual/spine/jsb_cocos2dx_spine_manual.h"
-#include "scripting/js-bindings/manual/ui/jsb_cocos2dx_ui_manual.h"*/
+#include "scripting/js-bindings/manual/spine/jsb_cocos2dx_spine_manual.h"*/
+#include "scripting/js-bindings/manual/ui/jsb_cocos2dx_ui_manual.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 #include "scripting/js-bindings/auto/jsb_cocos2dx_experimental_video_auto.hpp"
@@ -170,22 +170,22 @@ static void register_js()
 	sc->addRegisterCallback(jsb_register_system);
 
 	// extension can be commented out to reduce the package
-	/*sc->addRegisterCallback(register_all_cocos2dx_extension);
+	sc->addRegisterCallback(register_all_cocos2dx_extension);
 	sc->addRegisterCallback(register_all_cocos2dx_extension_manual);
 
 	// chipmunk can be commented out to reduce the package
-	sc->addRegisterCallback(jsb_register_chipmunk);
+	/*sc->addRegisterCallback(jsb_register_chipmunk);
 	// opengl can be commented out to reduce the package
 	sc->addRegisterCallback(JSB_register_opengl);
 
 	// builder can be commented out to reduce the package
 	sc->addRegisterCallback(register_all_cocos2dx_builder);
-	sc->addRegisterCallback(register_CCBuilderReader);
+	sc->addRegisterCallback(register_CCBuilderReader);*/
 
 	// ui can be commented out to reduce the package, attension studio need ui module
 	sc->addRegisterCallback(register_all_cocos2dx_ui);
 	sc->addRegisterCallback(register_all_cocos2dx_ui_manual);
-	*/
+	
 	// studio can be commented out to reduce the package,
 	sc->addRegisterCallback(register_all_cocos2dx_studio);
 	sc->addRegisterCallback(register_all_cocos2dx_studio_manual);
@@ -193,7 +193,7 @@ static void register_js()
 	// spine can be commented out to reduce the package
 	sc->addRegisterCallback(register_all_cocos2dx_spine);
 	sc->addRegisterCallback(register_all_cocos2dx_spine_manual);
-
+	/*
 	// XmlHttpRequest can be commented out to reduce the package
 	sc->addRegisterCallback(MinXmlHttpRequest::_js_register);
 	// websocket can be commented out to reduce the package

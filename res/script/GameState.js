@@ -139,8 +139,13 @@ var LaunchState = GameState.extend
     OnEnter:function ()
     {
 
-        //var root = ccs.uiReader.widgetFromJsonFile(res.game01Controller_json);
-        //.addChild(root,1);
+        var root = ccs.load("res/DemoShop/DemoShop.ExportJson").node;
+        gn.SceneMgr.AddToUILayer(root);
+        var armour=ccui.helper.seekWidgetByName(root, "armour_Panel");
+        var btn_darts=ccui.helper.seekWidgetByName(armour, "buy_Button");
+        btn_darts.addTouchEventListener(this.touchEvent,this);
+
+
 
         //Monster.Create(2012, 700, 133, gn.Tag.Monster);
         //NoxiousCreeeper.Create(2009, 1300, 133, gn.Tag.Monster);//mother spider
@@ -170,6 +175,29 @@ var LaunchState = GameState.extend
         //Soldier.Create(1001, 400, 550);
 
         //print("enter Launch");
+    },
+
+    touchEvent: function (sender, type) {
+        switch (type) {
+            case ccui.Widget.TOUCH_BEGAN:
+                print("Touch Down");
+                break;
+
+            case ccui.Widget.TOUCH_MOVED:
+                print("Touch Move");
+                break;
+
+            case ccui.Widget.TOUCH_ENDED:
+                print("Touch Up");
+                break;
+
+            case ccui.Widget.TOUCH_CANCELED:
+                print("Touch Cancelled");
+                break;
+
+            default:
+                break;
+        }
     },
 
     OnUpdate:function ()

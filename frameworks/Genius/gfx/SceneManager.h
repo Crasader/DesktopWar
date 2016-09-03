@@ -22,6 +22,7 @@ namespace Genius
 		bool Init();
 		void Update();
 		void AddToMapLayer(cocos2d::Node* node, float x = 0, float y = 0, int zOrder = 0);
+		void AddToUILayer(cocos2d::Node* node, float x = 0, float y = 0, int zOrder = 0);
 		cocos2d::Node* GetMapLayer(){ return m_pMapLayer; }
 		cocos2d::Node* GetUILayer(){ return m_pUILayer; }
 		void ShakeScene(int strength = 6, float time = 0.2f);
@@ -35,7 +36,7 @@ namespace Genius
 	private:
 		cocos2d::Node*	m_root;
 		cocos2d::LayerColor*	m_pMapLayer;
-		cocos2d::LayerColor*	m_pUILayer;
+		cocos2d::Node*	m_pUILayer;
 		bool						m_bShakeScene;
 		int						m_shakeSceneBeginTime;
 		int						m_shakeStrength;

@@ -28,18 +28,14 @@ bool SceneManager::Init()
 	m_pMapLayer->setCascadeOpacityEnabled(true);
 	m_root->addChild(m_pMapLayer, GameDefine::mapRootZOrder);
 
-	m_pUILayer = LayerColor::create();
-	m_pUILayer->setCascadeOpacityEnabled(true);
-	m_root->addChild(m_pUILayer, GameDefine::mapRootZOrder);
+	m_pUILayer = Node::create();
+	m_root->addChild(m_pUILayer, GameDefine::uiRootZOrder);
 
-	//auto s1 = Sprite::create("1.jpg");
-	//s1->setPosition(400, 268);
-	//m_root->addChild(s1);
+	//auto s = Sprite::create("1.png");
+	//m_pUILayer->addChild(s, GameDefine::uiRootZOrder);
 
-	//ui::Layer* ul = ui::Layer::create();
-	ui::Layout* widget = dynamic_cast<ui::Layout*>(cocostudio::GUIReader::shareReader()->widgetFromJsonFile("res/DemoShop/DemoShop.ExportJson"));
-	//Ul->addWidget(widget);
-	m_root->addChild(widget);
+	//ui::Layout* widget = dynamic_cast<ui::Layout*>(cocostudio::GUIReader::getInstance()->widgetFromJsonFile("res/DemoShop/DemoShop.ExportJson"));
+	//m_pUILayer->addChild(widget);
 
 	EventManager::GetSingleton()->AddListener(this, Event_nodeCreated);
 	EventManager::GetSingleton()->AddListener(this, Event_entityDestroy);
@@ -58,6 +54,13 @@ void SceneManager::Update()
 void SceneManager::AddToMapLayer(cocos2d::Node* node, float x/* = 0*/, float y/* = 0*/, int zOrder/* = 0*/)
 {
 	m_pMapLayer->addChild(node);
+	node->setLocalZOrder(zOrder);
+	node->setPosition(x, y);
+}
+
+void SceneManager::AddToUILayer(cocos2d::Node* node, float x/* = 0*/, float y/* = 0*/, int zOrder/* = 0*/)
+{
+	m_pUILayer->addChild(node);
 	node->setLocalZOrder(zOrder);
 	node->setPosition(x, y);
 }

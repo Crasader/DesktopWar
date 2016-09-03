@@ -131,6 +131,22 @@ TimeSystem : function (
 SceneManager = {
 
 /**
+ * @method AddToUILayer
+ * @param {cc.Node} arg0
+ * @param {float} arg1
+ * @param {float} arg2
+ * @param {int} arg3
+ */
+AddToUILayer : function (
+node, 
+float, 
+float, 
+int 
+)
+{
+},
+
+/**
  * @method ShakeScene
  */
 ShakeScene : function (
@@ -170,6 +186,16 @@ float,
 int 
 )
 {
+},
+
+/**
+ * @method GetUILayer
+ * @return {cc.Node}
+ */
+GetUILayer : function (
+)
+{
+    return cc.Node;
 },
 
 /**
@@ -1103,6 +1129,22 @@ int
 EntityUtility = {
 
 /**
+ * @method CreatePawn
+ * @param {int} arg0
+ * @param {float} arg1
+ * @param {float} arg2
+ * @param {String} arg3
+ */
+CreatePawn : function (
+int, 
+float, 
+float, 
+str 
+)
+{
+},
+
+/**
  * @method IsEnemy
  * @param {Genius::Entity} arg0
  * @param {Genius::Entity} arg1
@@ -1142,6 +1184,28 @@ entitywrapper
 )
 {
     return false;
+},
+
+/**
+ * @method CreateBullet
+ * @param {int} arg0
+ * @param {int} arg1
+ * @param {float} arg2
+ * @param {float} arg3
+ * @param {String} arg4
+ * @param {float} arg5
+ * @param {float} arg6
+ */
+CreateBullet : function (
+int, 
+int, 
+float, 
+float, 
+str, 
+float, 
+float 
+)
+{
 },
 
 /**
