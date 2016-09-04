@@ -20,7 +20,6 @@
 
 //#include<vld.h>
 #include "WinWrapper.h"
-#include "ConsolePanel.h"
 #include "app/WarApp.h"
 
 #pragma warning(disable:4251)
@@ -128,7 +127,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ////////////
    g_winWrapper.Init(hWnd);
    g_warApp.Init();
-   ConsolePanel::GetInstance()->Init(hInstance);
    ////////////
 
    return TRUE;

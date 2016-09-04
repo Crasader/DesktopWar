@@ -54,7 +54,7 @@ var LoadingState = GameState.extend
 
     ctor:function ()
     {
-        this._super()
+        this._super();
         this.loadingManager = new LoadingManager()
     },
 
@@ -139,60 +139,27 @@ var LaunchState = GameState.extend
     OnEnter:function ()
     {
 
-        var root = ccs.load("res/DemoShop/DemoShop.ExportJson").node;
+        var root = ccs.load("res/ui/login/LoginPanel.json").node;
         gn.SceneMgr.AddToUILayer(root);
-        var armour=ccui.helper.seekWidgetByName(root, "armour_Panel");
-        var btn_darts=ccui.helper.seekWidgetByName(armour, "buy_Button");
-        btn_darts.addTouchEventListener(this.touchEvent,this);
-
-
-
-        //Monster.Create(2012, 700, 133, gn.Tag.Monster);
-        //NoxiousCreeeper.Create(2009, 1300, 133, gn.Tag.Monster);//mother spider
-        //ShadowArcher.Create(2010, 200, 133, gn.Tag.Monster);
-        //Monster.Create(2010, 350, 133, gn.Tag.Monster);
-
-        //Juggernaut.Create(2008, 400, 150, gn.Tag.Monster);        //铁人
-        //Juggernaut.Create(2008, 1050, 153, gn.Tag.Monster);
-        //Juggernaut.Create(2008, 1150, 133, gn.Tag.Monster);
-
-        //Monster.Create(2011, 300, 133, gn.Tag.Monster);
-        //Monster.Create(2011, 280, 120, gn.Tag.Monster);
-        //Monster.Create(2011, 260, 140, gn.Tag.Monster);
-
-        //HolyKnight.Create(1007, 520, 120, gn.Tag.Soldier);
-        //Monster.Create(2004, 570, 120, gn.Tag.Monster);
-        //Sheep.Create(1004, 1090, 450, gn.Tag.Monster);
-        //Sheep.Create(1004, 1100, 450, gn.Tag.Monster);
-        //HolyKnight.Create(1007, 1000, 450, gn.Tag.Soldier);
-        /*Soldier.Create(1004, 1020, 450, gn.Tag.Soldier);
-        Soldier.Create(1005, 1040, 450, gn.Tag.Soldier);
-        Soldier.Create(1006, 1060, 450, gn.Tag.Soldier);
-        Soldier.Create(1007, 1080, 450, gn.Tag.Soldier);
-        Soldier.Create(1008, 1100, 450, gn.Tag.Soldier);*/
-
-
-        //Soldier.Create(1001, 400, 550);
+        var startBtn = ccui.helper.seekWidgetByName(root, "StartBtn");
+        startBtn.addTouchEventListener(this.OnStartTouch,this);
 
         //print("enter Launch");
     },
 
-    touchEvent: function (sender, type) {
+    OnStartTouch:function(sender, type) {
         switch (type) {
             case ccui.Widget.TOUCH_BEGAN:
-                print("Touch Down");
                 break;
 
             case ccui.Widget.TOUCH_MOVED:
-                print("Touch Move");
                 break;
 
             case ccui.Widget.TOUCH_ENDED:
-                print("Touch Up");
+                Game.ChangeState(Game.warState);
                 break;
 
             case ccui.Widget.TOUCH_CANCELED:
-                print("Touch Cancelled");
                 break;
 
             default:
@@ -207,21 +174,12 @@ var LaunchState = GameState.extend
 
     OnExit:function ()
     {
-        //print("exit Launch");
+        print("exit Launch");
     },
 
     ParseResourceList:function(loadMgr)
     {
-        for(var i = 1001; i <= 1008; ++i){
-            loadMgr.AddRole(i);
-        }
-        for(i = 2001; i <= 2012; ++i){
-            loadMgr.AddRole(i);
-        }
 
-        loadMgr.AddAnim(3001);
-        loadMgr.AddAnim(3002);
-        loadMgr.AddAnim(3003);
     }
 
 });
@@ -239,7 +197,33 @@ var WarState = GameState.extend({
 
     OnEnter:function ()
     {
-        print("enter War");
+        print("enter war");
+        //Monster.Create(2012, 700, 133, gn.Tag.Monster);
+        NoxiousCreeeper.Create(2009, 1300, 133, gn.Tag.Monster);//mother spider
+        //ShadowArcher.Create(2010, 200, 133, gn.Tag.Monster);
+        //Monster.Create(2010, 350, 133, gn.Tag.Monster);
+
+        //Juggernaut.Create(2008, 400, 150, gn.Tag.Monster);        //铁人
+        //Juggernaut.Create(2008, 1050, 153, gn.Tag.Monster);
+        //Juggernaut.Create(2008, 1150, 133, gn.Tag.Monster);
+
+        //Monster.Create(2011, 300, 133, gn.Tag.Monster);
+        //Monster.Create(2011, 280, 120, gn.Tag.Monster);
+        //Monster.Create(2011, 260, 140, gn.Tag.Monster);
+
+        //HolyKnight.Create(1007, 520, 120, gn.Tag.Soldier);
+        //Monster.Create(2004, 570, 120, gn.Tag.Monster);
+        //Sheep.Create(1004, 1090, 450, gn.Tag.Monster);
+        //Sheep.Create(1004, 1100, 450, gn.Tag.Monster);
+        //HolyKnight.Create(1007, 1000, 450, gn.Tag.Soldier);
+        /*Soldier.Create(1004, 1020, 450, gn.Tag.Soldier);
+         Soldier.Create(1005, 1040, 450, gn.Tag.Soldier);
+         Soldier.Create(1006, 1060, 450, gn.Tag.Soldier);
+         Soldier.Create(1007, 1080, 450, gn.Tag.Soldier);
+         Soldier.Create(1008, 1100, 450, gn.Tag.Soldier);*/
+
+
+        //Soldier.Create(1001, 400, 550);
     },
 
     OnUpdate:function ()
@@ -249,13 +233,21 @@ var WarState = GameState.extend({
 
     OnExit:function ()
     {
-        print("exit War");
+        //print("exit War");
     },
 
     ParseResourceList:function(loadMgr)
     {
-        //loadMgr.AddResource(LoadingManager.ResourceType.Json, "HolyKnight")
-        //loadMgr.AddResource(LoadingManager.ResourceType.Json, "BigDevil")
+        for(var i = 1001; i <= 1008; ++i){
+            loadMgr.AddRole(i);
+        }
+        for(i = 2001; i <= 2012; ++i){
+            loadMgr.AddRole(i);
+        }
+
+        loadMgr.AddAnim(3001);
+        loadMgr.AddAnim(3002);
+        loadMgr.AddAnim(3003);
     }
 
 });

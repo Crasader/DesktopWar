@@ -1,6 +1,5 @@
 
 #include "WinWrapper.h"
-#include "ConsolePanel.h"
 #include "gfx/gfx.h"
 #include "glfw3native.h"
 #include "app/GameDefine.h"
@@ -88,7 +87,7 @@ void WinWrapper::Destroy()
 void WinWrapper::InitNotify(HWND hWnd)
 {
 	NOTIFYICONDATA nID = {};
-	nID.hIcon = (HICON)LoadImage(NULL, TEXT("res/notify.ico"), IMAGE_ICON, 0, 0, LR_LOADFROMFILE);
+	nID.hIcon = (HICON)LoadImage(NULL, TEXT("notify.ico"), IMAGE_ICON, 0, 0, LR_LOADFROMFILE);
 	wcscpy(nID.szTip, L"Welcome to Desktop War !");
 	nID.hWnd = m_hWnd;
 	nID.uID = 1;
@@ -128,7 +127,7 @@ bool WinWrapper::ProcessCommand(int wmId, int wmEvent)
 
 void WinWrapper::OpenConsole(bool open)
 {
-	ConsolePanel::GetInstance()->SetVisible(open);
+	
 }
 
 static float ToGLX(float x)

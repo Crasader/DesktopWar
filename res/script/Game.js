@@ -59,7 +59,9 @@ var Game =
         this.loadingState = new LoadingState();
         this.lanchState = new LaunchState();
         this.warState = new WarState();
-        this.ChangeState(this.lanchState)
+        //this.ChangeState(this.lanchState)
+        this.lastState = null;
+        this.currentState = this.lanchState;
     },
 
 

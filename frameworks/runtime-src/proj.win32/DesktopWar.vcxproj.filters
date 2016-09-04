@@ -424,23 +424,11 @@
     <ClInclude Include="..\..\Genius\scripting\JSInvoker.h">
       <Filter>Genius\JSB</Filter>
     </ClInclude>
-    <ClInclude Include="ConsolePanel.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc">
       <Filter>Resource</Filter>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="res\game.ico">
-      <Filter>Resource</Filter>
-    </Image>
-    <Image Include="small.ico">
-      <Filter>Resource</Filter>
-    </Image>
-    <Image Include="res\Genius.ico">
-      <Filter>Resource</Filter>
-    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Genius\common\TabFile.cpp">
@@ -701,6 +689,5 @@
     <ClCompile Include="..\..\Genius\ECS\components\pawn\ComPawnDebugDraw.cpp">
       <Filter>Genius\Logic\ESC\User\Component\pawn</Filter>
     </ClCompile>
-    <ClCompile Include="ConsolePanel.cpp" />
   </ItemGroup>
 </Project>

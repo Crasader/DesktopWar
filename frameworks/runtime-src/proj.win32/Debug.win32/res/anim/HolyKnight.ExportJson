@@ -41,7 +41,7 @@
         {
           "name": "attack2left",
           "parent": "",
-          "dI": 0,
+          "dI": -1,
           "x": 2.0,
           "y": 9.0,
           "z": 16,
@@ -143,7 +143,7 @@
         {
           "name": "attack2right",
           "parent": "",
-          "dI": 0,
+          "dI": -1,
           "x": -2.0,
           "y": 9.0,
           "z": 15,
@@ -245,7 +245,7 @@
         {
           "name": "skill2left",
           "parent": "",
-          "dI": 0,
+          "dI": -1,
           "x": 1.0,
           "y": 9.0,
           "z": 14,
@@ -571,7 +571,7 @@
         {
           "name": "skill2right",
           "parent": "",
-          "dI": 20,
+          "dI": -1,
           "x": -1.0,
           "y": 9.0,
           "z": 13,
@@ -897,7 +897,7 @@
         {
           "name": "skill1left",
           "parent": "",
-          "dI": 0,
+          "dI": -1,
           "x": 2.0,
           "y": 9.0,
           "z": 12,
@@ -1293,7 +1293,7 @@
         {
           "name": "skill1right",
           "parent": "",
-          "dI": 0,
+          "dI": 26,
           "x": -1.0,
           "y": 9.0,
           "z": 11,
@@ -1689,7 +1689,7 @@
         {
           "name": "idleleft",
           "parent": "",
-          "dI": 0,
+          "dI": -1,
           "x": 2.0,
           "y": 9.0,
           "z": 10,
@@ -1721,7 +1721,7 @@
         {
           "name": "idleright",
           "parent": "",
-          "dI": 0,
+          "dI": -1,
           "x": -3.0,
           "y": 9.0,
           "z": 9,
@@ -1753,7 +1753,7 @@
         {
           "name": "dieright",
           "parent": "",
-          "dI": 0,
+          "dI": -1,
           "x": 0.0,
           "y": 9.0,
           "z": 8,
@@ -1869,7 +1869,7 @@
         {
           "name": "dieleft",
           "parent": "",
-          "dI": 0,
+          "dI": -1,
           "x": 0.0,
           "y": 9.0,
           "z": 7,
@@ -1985,7 +1985,7 @@
         {
           "name": "attackright",
           "parent": "",
-          "dI": 0,
+          "dI": -1,
           "x": -2.0,
           "y": 9.0,
           "z": 6,
@@ -2073,7 +2073,7 @@
         {
           "name": "attackleft",
           "parent": "",
-          "dI": 0,
+          "dI": -1,
           "x": 2.0,
           "y": 9.0,
           "z": 5,
@@ -2193,7 +2193,7 @@
         {
           "name": "moveleft",
           "parent": "",
-          "dI": 0,
+          "dI": -1,
           "x": 2.0,
           "y": 9.0,
           "z": 2,
@@ -2281,7 +2281,7 @@
         {
           "name": "moveright",
           "parent": "",
-          "dI": 0,
+          "dI": -1,
           "x": -2.0,
           "y": 9.0,
           "z": 1,
@@ -3112,8 +3112,8 @@
           ]
         },
         {
-          "name": "skill1_right",
-          "dr": 27,
+          "name": "skill_right",
+          "dr": 28,
           "lp": false,
           "to": 0,
           "drTW": 0,
@@ -3550,8 +3550,8 @@
           ]
         },
         {
-          "name": "skill1_left",
-          "dr": 27,
+          "name": "skill_left",
+          "dr": 28,
           "lp": false,
           "to": 0,
           "drTW": 0,
@@ -4999,7 +4999,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2728",
@@ -5007,7 +5007,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2720",
@@ -5015,7 +5015,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2722",
@@ -5023,7 +5023,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2724",
@@ -5031,7 +5031,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2726",
@@ -5039,7 +5039,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2842",
@@ -5047,7 +5047,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2844",
@@ -5055,7 +5055,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2846",
@@ -5063,7 +5063,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2848",
@@ -5071,7 +5071,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2850",
@@ -5079,7 +5079,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2852",
@@ -5087,7 +5087,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2854",
@@ -5095,7 +5095,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2736",
@@ -5103,7 +5103,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2730",
@@ -5111,7 +5111,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2732",
@@ -5119,7 +5119,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2734",
@@ -5127,7 +5127,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2738",
@@ -5135,7 +5135,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2740",
@@ -5143,7 +5143,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2742",
@@ -5151,7 +5151,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2744",
@@ -5159,7 +5159,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2746",
@@ -5167,7 +5167,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2790",
@@ -5175,7 +5175,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2792",
@@ -5183,7 +5183,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2794",
@@ -5191,7 +5191,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2796",
@@ -5199,7 +5199,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2798",
@@ -5207,7 +5207,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2800",
@@ -5215,7 +5215,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2802",
@@ -5223,7 +5223,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2804",
@@ -5231,7 +5231,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2806",
@@ -5239,7 +5239,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2808",
@@ -5247,7 +5247,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2810",
@@ -5255,7 +5255,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2812",
@@ -5263,7 +5263,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2814",
@@ -5271,7 +5271,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2816",
@@ -5279,7 +5279,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2818",
@@ -5287,7 +5287,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2820",
@@ -5295,7 +5295,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2822",
@@ -5303,7 +5303,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2824",
@@ -5311,7 +5311,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2826",
@@ -5319,7 +5319,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2828",
@@ -5327,7 +5327,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2830",
@@ -5335,7 +5335,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2832",
@@ -5343,7 +5343,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2834",
@@ -5351,7 +5351,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2836",
@@ -5359,7 +5359,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2838",
@@ -5367,7 +5367,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2840",
@@ -5375,7 +5375,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2748",
@@ -5383,7 +5383,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2750",
@@ -5391,7 +5391,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2752",
@@ -5399,7 +5399,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2754",
@@ -5407,7 +5407,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2756",
@@ -5415,7 +5415,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2758",
@@ -5423,7 +5423,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2760",
@@ -5431,7 +5431,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2762",
@@ -5439,7 +5439,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2764",
@@ -5447,7 +5447,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2766",
@@ -5455,7 +5455,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2768",
@@ -5463,7 +5463,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2770",
@@ -5471,7 +5471,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2772",
@@ -5479,7 +5479,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2774",
@@ -5487,7 +5487,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2776",
@@ -5495,7 +5495,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2778",
@@ -5503,7 +5503,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2780",
@@ -5511,7 +5511,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2782",
@@ -5519,7 +5519,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2784",
@@ -5527,7 +5527,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2786",
@@ -5535,7 +5535,7 @@
       "height": 0.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     },
     {
       "name": "image 2788",
@@ -5543,7 +5543,7 @@
       "height": 40.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "npc0.plist"
+      "plistFile": ""
     }
   ],
   "config_file_path": [

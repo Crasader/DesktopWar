@@ -247,7 +247,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClInclude Include="..\..\Genius\skill\skillLogic\SkillLogic.h" />
     <ClInclude Include="..\..\Genius\skill\skillLogic\SL_Buff.h" />
     <ClInclude Include="..\..\Genius\skill\skillLogic\SL_Bullet.h" />
-    <ClInclude Include="ConsolePanel.h" />
     <ClInclude Include="WinWrapper.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
@@ -346,7 +345,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
     <ClCompile Include="..\..\Genius\skill\skillLogic\SkillLogic.cpp" />
     <ClCompile Include="..\..\Genius\skill\skillLogic\SL_Buff.cpp" />
     <ClCompile Include="..\..\Genius\skill\skillLogic\SL_Bullet.cpp" />
-    <ClCompile Include="ConsolePanel.cpp" />
     <ClCompile Include="WinWrapper.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="..\..\Genius\AI\BehaviorTree\Behavior.cpp" />
@@ -373,11 +371,6 @@ copy "$(ProjectDir)..\..\..\project.json" "$(OutDir)\" /Y</Command>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DesktopWar.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="res\game.ico" />
-    <Image Include="res\Genius.ico" />
-    <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\cocos2d-x\cocos\scripting\js-bindings\proj.win32\libjscocos2d.vcxproj">
