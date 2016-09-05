@@ -1,0 +1,293 @@
+{
+  "ID": "6da0a12b-492b-428e-9707-6dade1680fef",
+  "Version": "3.10.0.0",
+  "Name": "Console",
+  "Content": {
+    "Content": {
+      "Animation": {
+        "Duration": 0,
+        "Speed": 1.0,
+        "Timelines": [],
+        "ctype": "TimelineActionData"
+      },
+      "AnimationList": [],
+      "ObjectData": {
+        "Tag": 13,
+        "Children": [
+          {
+            "FileData": {
+              "Type": "PlistSubImage",
+              "Path": "ui/b2.png",
+              "Plist": "ui.plist"
+            },
+            "Scale9Enable": true,
+            "Scale9OriginX": 71,
+            "Scale9OriginY": 84,
+            "Scale9Width": 207,
+            "Scale9Height": 257,
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 482.0607,
+              "Y": 311.3141
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.5021,
+              "Y": 0.4864
+            },
+            "PreSize": {
+              "X": 0.9375,
+              "Y": 0.9375
+            },
+            "LeftMargin": 32.0607,
+            "RightMargin": 27.9393,
+            "TopMargin": 28.6859,
+            "BottomMargin": 11.3141,
+            "Tag": 14,
+            "Children": [
+              {
+                "FileData": {
+                  "Type": "PlistSubImage",
+                  "Path": "ui/dark.png",
+                  "Plist": "ui.plist"
+                },
+                "Scale9Enable": true,
+                "Scale9OriginX": 6,
+                "Scale9OriginY": 6,
+                "Scale9Width": 9,
+                "Scale9Height": 9,
+                "AnchorPoint": {
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 45.0,
+                  "Y": 305.0509
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.05,
+                  "Y": 0.5084
+                },
+                "PreSize": {
+                  "X": 0.5556,
+                  "Y": 0.8333
+                },
+                "LeftMargin": 45.0,
+                "RightMargin": 355.0,
+                "TopMargin": 44.9491,
+                "BottomMargin": 55.0509,
+                "Tag": 15,
+                "ActionTag": 914406495,
+                "Size": {
+                  "X": 500.0,
+                  "Y": 500.0
+                },
+                "Name": "bg1",
+                "ctype": "ImageViewObjectData"
+              },
+              {
+                "FileData": {
+                  "Type": "PlistSubImage",
+                  "Path": "ui/dark.png",
+                  "Plist": "ui.plist"
+                },
+                "Scale9Enable": true,
+                "Scale9OriginX": 6,
+                "Scale9OriginY": 6,
+                "Scale9Width": 9,
+                "Scale9Height": 9,
+                "AnchorPoint": {
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 651.6,
+                  "Y": 470.3
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.724,
+                  "Y": 0.7838
+                },
+                "PreSize": {
+                  "X": 0.1667,
+                  "Y": 0.25
+                },
+                "LeftMargin": 651.6,
+                "RightMargin": 98.4,
+                "TopMargin": 54.7,
+                "BottomMargin": 395.3,
+                "Tag": 16,
+                "ActionTag": 1564375063,
+                "Size": {
+                  "X": 150.0,
+                  "Y": 150.0
+                },
+                "Name": "bg2",
+                "ctype": "ImageViewObjectData"
+              }
+            ],
+            "ActionTag": 1136858939,
+            "Size": {
+              "X": 900.0,
+              "Y": 600.0
+            },
+            "Name": "BG",
+            "ctype": "ImageViewObjectData"
+          },
+          {
+            "ScrollDirectionType": 0,
+            "ClipAble": false,
+            "BackColorAlpha": 102,
+            "SingleColor": {
+              "R": 150,
+              "G": 150,
+              "B": 100
+            },
+            "FirstColor": {
+              "R": 150,
+              "G": 150,
+              "B": 100
+            },
+            "EndColor": {},
+            "ColorVector": {
+              "ScaleY": 1.0
+            },
+            "TouchEnable": true,
+            "AnchorPoint": {},
+            "Position": {
+              "X": 86.5106,
+              "Y": 73.9265
+            },
+            "Scale": {
+              "ScaleX": 2.4148,
+              "ScaleY": 2.4266
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0901,
+              "Y": 0.1155
+            },
+            "PreSize": {
+              "X": 0.2083,
+              "Y": 0.3125
+            },
+            "LeftMargin": 86.5106,
+            "RightMargin": 673.4894,
+            "TopMargin": 366.0735,
+            "BottomMargin": 73.9265,
+            "Tag": 18,
+            "ActionTag": 583054462,
+            "Size": {
+              "X": 200.0,
+              "Y": 200.0
+            },
+            "Name": "PageView",
+            "ctype": "PageViewObjectData"
+          },
+          {
+            "FontSize": 36,
+            "ButtonText": "close",
+            "TextColor": {},
+            "DisabledFileData": {
+              "Type": "PlistSubImage",
+              "Path": "ui/btn3.png",
+              "Plist": "ui.plist"
+            },
+            "PressedFileData": {
+              "Type": "PlistSubImage",
+              "Path": "ui/btn2.png",
+              "Plist": "ui.plist"
+            },
+            "NormalFileData": {
+              "Type": "PlistSubImage",
+              "Path": "ui/btn1.png",
+              "Plist": "ui.plist"
+            },
+            "Scale9Enable": true,
+            "Scale9OriginX": 15,
+            "Scale9OriginY": 11,
+            "Scale9Width": 60,
+            "Scale9Height": 23,
+            "OutlineColor": {
+              "G": 0,
+              "B": 0
+            },
+            "ShadowColor": {
+              "R": 110,
+              "G": 110,
+              "B": 110
+            },
+            "ShadowOffsetX": 2.0,
+            "ShadowOffsetY": -2.0,
+            "TouchEnable": true,
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 799.7919,
+              "Y": 90.4303
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.8331,
+              "Y": 0.1413
+            },
+            "PreSize": {
+              "X": 0.125,
+              "Y": 0.0938
+            },
+            "LeftMargin": 739.7919,
+            "RightMargin": 100.2081,
+            "TopMargin": 519.5697,
+            "BottomMargin": 60.4303,
+            "Tag": 19,
+            "ActionTag": -1065602775,
+            "Size": {
+              "X": 120.0,
+              "Y": 60.0
+            },
+            "Name": "Button_1",
+            "ctype": "ButtonObjectData"
+          }
+        ],
+        "Size": {
+          "X": 960.0,
+          "Y": 640.0
+        },
+        "Name": "Layer",
+        "ctype": "LayerObjectData"
+      },
+      "UsedResources": [
+        "../ui.plist",
+        "../ui.png"
+      ],
+      "ctype": "GameFileData"
+    }
+  },
+  "Type": "Layer"
+}

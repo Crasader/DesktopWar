@@ -11,9 +11,9 @@ gn.ui = {
         file:'res/ui/LoginPanel.json',
         inst:new LoginPanel()
     },
-    Console:{
-        file:'res/ui/ConsolePanel.json',
-        inst:null
+    console:{
+        file:'res/ui/Console.json',
+        inst:new ConsolePanel()
     }
 };
 

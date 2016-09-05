@@ -144,6 +144,7 @@ var WarState = GameState.extend({
 
     OnEnter:function ()
     {
+        PanelMgr.Show(gn.ui.console);
         //Monster.Create(2012, 700, 133, gn.Tag.Monster);
         NoxiousCreeeper.Create(2009, 1300, 133, gn.Tag.Monster);//mother spider
         //ShadowArcher.Create(2010, 200, 133, gn.Tag.Monster);
@@ -180,6 +181,7 @@ var WarState = GameState.extend({
     OnExit:function ()
     {
         //print("exit War");
+        PanelMgr.Destroy(gn.ui.console);
     },
 
     ParseResourceList:function(loadMgr)
