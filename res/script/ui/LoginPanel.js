@@ -1,54 +1,14 @@
 
-var BasePanel = Class.extend({
-
-    root:null,
-    initilised:false,
-
-    Init:function() {
-        if(!this.initilised){
-            this.initilised = true;
-            this.OnInit();
-        }
-    },
-
-    Show:function() {
-        if (this.root != null) {
-            this.root.setVisible(true);
-        }
-        this.OnShow();
-    },
-
-    Hide:function() {
-        if (this.root != null) {
-            this.root.setVisible(false);
-        }
-        this.OnHide();
-    },
-
-    Destroy:function() {
-        if (this.root != null) {
-            this.root.removeFromParentAndCleanup(true);
-        }
-        this.initilised = false;
-        this.OnDestroy();
-    },
-    OnInit:function(){},
-    OnShow:function(){},
-    OnHide:function(){},
-    OnDestroy:function(){}
-
-});
 
 
 var LoginPanel = BasePanel.extend({
 
     OnInit:function() {
-        var root = ccs.load("res/ui/login/LoginPanel.json").node;
-        gn.SceneMgr.AddToUILayer(root);
+        var root = this.LoadJson(gn.ui.login.file);
 
         var startBtn = ccui.helper.seekWidgetByName(root, "StartBtn");
         startBtn.addTouchEventListener(this.OnStartButtonTouch, this);
-        var cancelBtn = ccui.helper.seekWidgetByName(root, "BackBtn");
+        var cancelBtn = ccui.helper.seekWidgetByName(root, "CloseBtn");
         cancelBtn.addTouchEventListener(this.OnCancelButtonTouch, this);
 
     },
@@ -85,58 +45,12 @@ var LoginPanel = BasePanel.extend({
     OnCancelButtonTouch:function(sender, type) {
         switch (type) {
             case ccui.Widget.TOUCH_ENDED:
-                Game.ChangeState(Game.warState);
+                //print('back');
                 break;
         }
     },
 
 
 });
-
-
-
-var PanelMgr = {
-
-    panelDic:{
-        'login':new LoginPanel(),
-    },
-
-    Show:function(name){
-        var panel = this.panelDic[name];
-        if(panel instanceof BasePanel){
-            panel.Init();
-            panel.Show();
-        }else{
-            print('cannot find '+name);
-        }
-    },
-
-    Hide:function(name){
-        var panel = this.panelDic[name];
-        if(panel instanceof BasePanel){
-            panel.Init();
-            panel.Hide();
-        }else{
-            print('cannot find '+name);
-        }
-    },
-
-    Destroy:function(name){
-        var panel = this.panelDic[name];
-        if(panel instanceof BasePanel){
-            panel.Init();
-            panel.Destroy();
-        }else{
-            print('cannot find '+name);
-        }
-    },
-
-};
-
-
-
-
-
-
 
 

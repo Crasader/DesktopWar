@@ -11,17 +11,11 @@
 //**************************************GameState********************************************
 
 var GameState = Class.extend({
-    
     ctor:function () {},
-    
     OnEnter:function () {},
-    
     OnUpdate:function () {},
-    
     OnExit:function () {},
-
     ParseResourceList:function(loadMgr) {}
-    
 });
 
 
@@ -91,6 +85,7 @@ var LoadingState = GameState.extend
     OnExit:function () {
         if (this.uiRoot != null) {
             this.uiRoot.removeFromParent();
+            this.uiRoot = null;
         }
     },
 
@@ -116,7 +111,7 @@ var LaunchState = GameState.extend
 
     OnEnter:function ()
     {
-        PanelMgr.Show('login');
+        PanelMgr.Show(gn.ui.login);
     },
 
     OnUpdate:function ()
@@ -126,7 +121,7 @@ var LaunchState = GameState.extend
 
     OnExit:function ()
     {
-        print("exit Launch");
+        PanelMgr.Destroy(gn.ui.login);
     },
 
     ParseResourceList:function(loadMgr)
@@ -149,7 +144,6 @@ var WarState = GameState.extend({
 
     OnEnter:function ()
     {
-        print("enter war");
         //Monster.Create(2012, 700, 133, gn.Tag.Monster);
         NoxiousCreeeper.Create(2009, 1300, 133, gn.Tag.Monster);//mother spider
         //ShadowArcher.Create(2010, 200, 133, gn.Tag.Monster);

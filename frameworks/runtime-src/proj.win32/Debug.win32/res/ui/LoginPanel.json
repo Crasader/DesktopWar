@@ -31,7 +31,7 @@
               "ScaleY": 0.5
             },
             "Position": {
-              "X": 238.1903,
+              "X": 237.5681,
               "Y": 160.1019
             },
             "Scale": {
@@ -41,15 +41,15 @@
             "CColor": {},
             "IconVisible": false,
             "PrePosition": {
-              "X": 0.4962,
+              "X": 0.4949,
               "Y": 0.5003
             },
             "PreSize": {
               "X": 0.6208,
               "Y": 0.9375
             },
-            "LeftMargin": 89.1903,
-            "RightMargin": 92.8097,
+            "LeftMargin": 88.5681,
+            "RightMargin": 93.4319,
             "TopMargin": 9.8981,
             "BottomMargin": 10.1019,
             "Tag": 5,
@@ -84,17 +84,17 @@
                 },
                 "PreSize": {
                   "X": 0.5302,
-                  "Y": 0.07
+                  "Y": 0.1
                 },
                 "LeftMargin": 92.92,
                 "RightMargin": 47.08,
-                "TopMargin": 80.67,
-                "BottomMargin": 198.33,
+                "TopMargin": 76.17,
+                "BottomMargin": 193.83,
                 "Tag": 16,
                 "ActionTag": -148153289,
                 "Size": {
                   "X": 158.0,
-                  "Y": 21.0
+                  "Y": 30.0
                 },
                 "Name": "bg1",
                 "ctype": "ImageViewObjectData"
@@ -129,17 +129,17 @@
                 },
                 "PreSize": {
                   "X": 0.5302,
-                  "Y": 0.07
+                  "Y": 0.1
                 },
                 "LeftMargin": 92.92,
                 "RightMargin": 47.08,
-                "TopMargin": 117.67,
-                "BottomMargin": 161.33,
+                "TopMargin": 113.17,
+                "BottomMargin": 156.83,
                 "Tag": 19,
                 "ActionTag": -2059792340,
                 "Size": {
                   "X": 158.0,
-                  "Y": 21.0
+                  "Y": 30.0
                 },
                 "Name": "bg2",
                 "ctype": "ImageViewObjectData"
@@ -155,7 +155,7 @@
           },
           {
             "FontSize": 14,
-            "ButtonText": "Close",
+            "ButtonText": "",
             "TextColor": {
               "R": 65,
               "G": 65,
@@ -229,7 +229,7 @@
           },
           {
             "FontSize": 14,
-            "ButtonText": "Close",
+            "ButtonText": "",
             "TextColor": {
               "R": 65,
               "G": 65,
@@ -305,7 +305,7 @@
             "LabelText": "Name",
             "LabelBMFontFile_CNB": {
               "Type": "Normal",
-              "Path": "fonts/Heiti14.fnt",
+              "Path": "fonts/Heiti20.fnt",
               "Plist": ""
             },
             "AnchorPoint": {
@@ -314,7 +314,7 @@
             },
             "Position": {
               "X": 145.49,
-              "Y": 217.56
+              "Y": 216.56
             },
             "Scale": {
               "ScaleX": 1.0,
@@ -327,21 +327,21 @@
             "IconVisible": false,
             "PrePosition": {
               "X": 0.3031,
-              "Y": 0.6799
+              "Y": 0.6768
             },
             "PreSize": {
-              "X": 0.0958,
-              "Y": 0.0437
+              "X": 0.1333,
+              "Y": 0.0625
             },
-            "LeftMargin": 122.49,
-            "RightMargin": 311.51,
-            "TopMargin": 95.44,
-            "BottomMargin": 210.56,
+            "LeftMargin": 113.49,
+            "RightMargin": 302.51,
+            "TopMargin": 93.44,
+            "BottomMargin": 206.56,
             "Tag": 14,
             "ActionTag": -924982288,
             "Size": {
-              "X": 46.0,
-              "Y": 14.0
+              "X": 64.0,
+              "Y": 20.0
             },
             "Name": "Name",
             "ctype": "TextBMFontObjectData"
@@ -350,7 +350,7 @@
             "LabelText": "Paswd",
             "LabelBMFontFile_CNB": {
               "Type": "Normal",
-              "Path": "fonts/Heiti14.fnt",
+              "Path": "fonts/Heiti20.fnt",
               "Plist": ""
             },
             "AnchorPoint": {
@@ -359,7 +359,7 @@
             },
             "Position": {
               "X": 145.49,
-              "Y": 182.56
+              "Y": 179.56
             },
             "Scale": {
               "ScaleX": 1.0,
@@ -372,21 +372,21 @@
             "IconVisible": false,
             "PrePosition": {
               "X": 0.3031,
-              "Y": 0.5705
+              "Y": 0.5611
             },
             "PreSize": {
-              "X": 0.1,
-              "Y": 0.0437
+              "X": 0.1417,
+              "Y": 0.0625
             },
-            "LeftMargin": 121.49,
-            "RightMargin": 310.51,
+            "LeftMargin": 111.49,
+            "RightMargin": 300.51,
             "TopMargin": 130.44,
-            "BottomMargin": 175.56,
+            "BottomMargin": 169.56,
             "Tag": 18,
             "ActionTag": -1561233468,
             "Size": {
-              "X": 48.0,
-              "Y": 14.0
+              "X": 68.0,
+              "Y": 20.0
             },
             "Name": "PW",
             "ctype": "TextBMFontObjectData"
@@ -395,7 +395,7 @@
             "FontSize": 18,
             "IsCustomSize": true,
             "LabelText": "",
-            "PlaceHolderText": "type in name",
+            "PlaceHolderText": "",
             "MaxLengthText": 10,
             "TouchEnable": true,
             "AnchorPoint": {
@@ -403,17 +403,20 @@
             },
             "Position": {
               "X": 184.82,
-              "Y": 217.56
+              "Y": 216.56
             },
             "Scale": {
               "ScaleX": 1.0,
               "ScaleY": 1.0
             },
-            "CColor": {},
+            "CColor": {
+              "R": 0,
+              "B": 0
+            },
             "IconVisible": false,
             "PrePosition": {
               "X": 0.385,
-              "Y": 0.6799
+              "Y": 0.6768
             },
             "PreSize": {
               "X": 0.3125,
@@ -421,8 +424,8 @@
             },
             "LeftMargin": 184.82,
             "RightMargin": 145.18,
-            "TopMargin": 92.44,
-            "BottomMargin": 207.56,
+            "TopMargin": 93.44,
+            "BottomMargin": 206.56,
             "Tag": 15,
             "ActionTag": -23012485,
             "Size": {
@@ -436,7 +439,7 @@
             "FontSize": 18,
             "IsCustomSize": true,
             "LabelText": "",
-            "PlaceHolderText": "type in pswd",
+            "PlaceHolderText": "",
             "MaxLengthText": 10,
             "PasswordEnable": true,
             "TouchEnable": true,
@@ -445,17 +448,20 @@
             },
             "Position": {
               "X": 184.82,
-              "Y": 180.56
+              "Y": 178.56
             },
             "Scale": {
               "ScaleX": 1.0,
               "ScaleY": 1.0
             },
-            "CColor": {},
+            "CColor": {
+              "R": 0,
+              "B": 0
+            },
             "IconVisible": false,
             "PrePosition": {
               "X": 0.385,
-              "Y": 0.5642
+              "Y": 0.558
             },
             "PreSize": {
               "X": 0.3125,
@@ -463,8 +469,8 @@
             },
             "LeftMargin": 184.82,
             "RightMargin": 145.18,
-            "TopMargin": 129.44,
-            "BottomMargin": 170.56,
+            "TopMargin": 131.44,
+            "BottomMargin": 168.56,
             "Tag": 17,
             "ActionTag": -1595847333,
             "Size": {
@@ -483,8 +489,8 @@
         "ctype": "LayerObjectData"
       },
       "UsedResources": [
-        "fonts/Heiti14.fnt",
-        "fonts/Heiti14.png",
+        "fonts/Heiti20.fnt",
+        "fonts/Heiti20.png",
         "ui.plist",
         "ui.png"
       ],

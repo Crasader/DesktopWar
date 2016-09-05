@@ -24,6 +24,7 @@ require("res/script/configs/_cfg_.js");
 require("res/script/behaviours/_bev_.js");
 require("res/script/components/_com_.js");
 require("res/script/states/_state_.js");
+require("res/script/ui/_ui_.js");
 
 
 gn.SkillMgr = null;
@@ -91,7 +92,8 @@ var Game =
                 this.currentState.OnEnter();
                 this.lastState = this.currentState
             }
-            this.currentState.OnUpdate(timeDelta)
+            else
+                this.currentState.OnUpdate(timeDelta)
         }
 
         BrainMgr.OnUpdate();
