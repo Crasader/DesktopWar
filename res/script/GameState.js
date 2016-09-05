@@ -12,30 +12,15 @@
 
 var GameState = Class.extend({
     
-    ctor:function ()
-    {
-        
-    },
+    ctor:function () {},
     
-    OnEnter:function ()
-    {
-        
-    },
+    OnEnter:function () {},
     
-    OnUpdate:function ()
-    {
-        
-    },
+    OnUpdate:function () {},
     
-    OnExit:function ()
-    {
-        
-    },
+    OnExit:function () {},
 
-    ParseResourceList:function(loadMgr)
-    {
-
-    }
+    ParseResourceList:function(loadMgr) {}
     
 });
 
@@ -50,19 +35,16 @@ var LoadingState = GameState.extend
     loadingManager:null,
     uiRoot:null,
     percentLabel:null,
+    needPreparedForLoading:false,
 
 
-    ctor:function ()
-    {
+    ctor:function () {
         this._super();
         this.loadingManager = new LoadingManager()
     },
 
-    OnEnter:function ()
-    {
-        //print("enter Loading");
-        if (this.uiRoot == null)
-        {
+    OnEnter:function () {
+        if (this.uiRoot == null) {
             this.uiRoot = new cc.Node();
 
             SceneManager.GetSingleton().AddToMapLayer(this.uiRoot, 0, 0, 0);
@@ -73,13 +55,12 @@ var LoadingState = GameState.extend
             this.percentLabel = RollNumberLabel.create();
             this.uiRoot.addChild(this.percentLabel);
             this.percentLabel.setStartNumber(0);
-            this.percentLabel.setColor(0,255,0);
+            this.percentLabel.setColor(0, 255, 0);
             this.percentLabel.setScale(1.5);
-            this.percentLabel.setPosition(x, y-20);
+            this.percentLabel.setPosition(x, y - 20);
 
             var animInfo = Config.Animation["4001"];
-            if (animInfo != null)
-            {
+            if (animInfo != null) {
                 ccs.ArmatureDataManager.getInstance().addArmatureFileInfo(animInfo.filePath);
                 var pArmature = ccs.Armature.create(animInfo.name);
                 pArmature.setPosition(x, y);
@@ -89,38 +70,35 @@ var LoadingState = GameState.extend
         }
     },
 
-    OnUpdate:function ()
-    {
-        //print("update Loading")
+    OnUpdate:function () {
+        if (this.needPreparedForLoading) {
+            this.loadingManager.GenerateUnLoadList();
+            this.loadingManager.ClearLoadingList();
+            this.nextState.ParseResourceList(this.loadingManager);
+            this.loadingManager.StartLoading();
+            this.needPreparedForLoading = false;
+        }
+
         this.loadingManager.UpdateLoading();
         var percent = this.loadingManager.GetLoadingPercent();
         this.percentLabel.rollTo(percent);
-        if (this.loadingManager.IsLoadingDone() && this.percentLabel.isRollDone())
-        {
+        if (this.loadingManager.IsLoadingDone() && this.percentLabel.isRollDone()) {
             Game.currentState = this.nextState;
         }
 
     },
 
-    OnExit:function ()
-    {
-        //print("exit Loading");
-        if(this.uiRoot != null)
-        {
+    OnExit:function () {
+        if (this.uiRoot != null) {
             this.uiRoot.removeFromParent();
         }
     },
 
 
-    SetTwoStatus:function(prev,next)
-    {
+    SetTwoStatus:function(prev,next) {
         this.prevState = prev;
         this.nextState = next;
-
-        this.loadingManager.GenerateUnLoadList();
-        this.loadingManager.ClearLoadingList();
-        this.nextState.ParseResourceList(this.loadingManager);
-        this.loadingManager.StartLoading();
+        this.needPreparedForLoading = true;
     }
 
 });
@@ -138,33 +116,7 @@ var LaunchState = GameState.extend
 
     OnEnter:function ()
     {
-
-        var root = ccs.load("res/ui/login/LoginPanel.json").node;
-        gn.SceneMgr.AddToUILayer(root);
-        var startBtn = ccui.helper.seekWidgetByName(root, "StartBtn");
-        startBtn.addTouchEventListener(this.OnStartTouch,this);
-
-        //print("enter Launch");
-    },
-
-    OnStartTouch:function(sender, type) {
-        switch (type) {
-            case ccui.Widget.TOUCH_BEGAN:
-                break;
-
-            case ccui.Widget.TOUCH_MOVED:
-                break;
-
-            case ccui.Widget.TOUCH_ENDED:
-                Game.ChangeState(Game.warState);
-                break;
-
-            case ccui.Widget.TOUCH_CANCELED:
-                break;
-
-            default:
-                break;
-        }
+        PanelMgr.Show('login');
     },
 
     OnUpdate:function ()
