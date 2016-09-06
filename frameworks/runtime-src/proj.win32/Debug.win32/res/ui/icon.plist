@@ -1,0 +1,3206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+			<key>icon/image 10000.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{770,374},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10002.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{806,396},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10004.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{842,424},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10006.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{878,428},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10008.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{914,428},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10010.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{950,460},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10012.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{986,460},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10014.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{464,361},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10016.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{422,388},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10018.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{382,419},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10020.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{302,431},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10022.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{262,465},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10024.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{222,482},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10026.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{338,431},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10028.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{62,486},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10030.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{98,486},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10032.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{134,486},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10034.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{170,486},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10036.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{500,361},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10038.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{536,361},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10040.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{572,361},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10042.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{608,361},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10044.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{644,361},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10046.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{680,393},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10048.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{716,408},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10050.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{752,409},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10052.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{788,431},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10054.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{824,459},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10056.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{860,463},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 10135.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{967,0},{52,59}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{52,60}</string>
+			</dict>
+			<key>icon/image 10142.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{861,118},{49,44}}</string>
+				<key>offset</key>
+				<string>{-1,5}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{52,60}</string>
+			</dict>
+			<key>icon/image 10145.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{967,59},{52,59}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{52,60}</string>
+			</dict>
+			<key>icon/image 10147.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{547,60},{52,59}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{52,60}</string>
+			</dict>
+			<key>icon/image 10149.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{599,60},{52,59}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{52,60}</string>
+			</dict>
+			<key>icon/image 10151.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{651,60},{52,59}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{52,60}</string>
+			</dict>
+			<key>icon/image 10153.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{703,60},{52,59}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{52,60}</string>
+			</dict>
+			<key>icon/image 10155.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{755,60},{52,59}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{52,60}</string>
+			</dict>
+			<key>icon/image 10157.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{807,60},{52,58}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{52,60}</string>
+			</dict>
+			<key>icon/image 10159.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{859,60},{52,58}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{52,60}</string>
+			</dict>
+			<key>icon/image 3492.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{278,271},{48,34}}</string>
+				<key>offset</key>
+				<string>{0,-2}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{49,37}</string>
+			</dict>
+			<key>icon/image 3493.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{407,264},{46,35}}</string>
+				<key>offset</key>
+				<string>{0,-1}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{49,37}</string>
+			</dict>
+			<key>icon/image 3494.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{726,374},{44,34}}</string>
+				<key>offset</key>
+				<string>{-1,-1}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{49,37}</string>
+			</dict>
+			<key>icon/image 3495.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{407,228},{47,36}}</string>
+				<key>offset</key>
+				<string>{1,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{49,37}</string>
+			</dict>
+			<key>icon/image 3699.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,0},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3700.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,64},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3701.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,128},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3702.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,192},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3703.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,256},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3704.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,320},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3705.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,384},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3706.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,448},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3707.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,512},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3711.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{186,0},{61,64}}</string>
+				<key>offset</key>
+				<string>{-1,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3763.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,576},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3764.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,640},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3765.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,704},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3766.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,768},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3767.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,832},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3768.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,896},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3769.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,960},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3770.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{62,0},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 3771.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{124,0},{62,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,66}</string>
+			</dict>
+			<key>icon/image 4379.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{454,228},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4381.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{453,268},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4383.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{224,282},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4385.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{326,271},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4387.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{366,271},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4389.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{406,299},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4391.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{264,305},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4393.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{304,311},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4395.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{344,311},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4397.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{62,286},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4399.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{102,286},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4401.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{142,286},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4403.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{182,286},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4405.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{222,322},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4407.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{262,345},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4409.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{62,326},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4411.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{102,326},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4413.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{142,326},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4415.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{182,326},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4417.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{222,362},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4419.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{62,366},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4421.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{102,366},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4423.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{142,366},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4425.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{182,366},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4427.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{493,281},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4429.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{446,308},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4431.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{384,339},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4433.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{302,351},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4435.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{262,385},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4437.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{222,402},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4439.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{342,351},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4441.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{62,406},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4443.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{102,406},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4445.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{142,406},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4447.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{182,406},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4449.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{533,281},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4451.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{573,281},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4453.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{613,281},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4455.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{653,281},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4457.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{693,313},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4459.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{733,334},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4461.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{773,334},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4463.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{813,356},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4465.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{853,384},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4467.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{893,388},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4469.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{933,388},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4471.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{973,420},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4473.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{486,321},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4475.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{424,348},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4477.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{382,379},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4479.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{302,391},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4481.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{262,425},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4483.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{222,442},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4485.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{342,391},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4487.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{62,446},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4489.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{102,446},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4491.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{142,446},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4493.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{182,446},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4495.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{526,321},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4497.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{566,321},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4499.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{606,321},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4501.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{646,321},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4503.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{686,353},{40,40}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,40}</string>
+			</dict>
+			<key>icon/image 4730.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{861,162},{43,43}}</string>
+				<key>offset</key>
+				<string>{0,5}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{114,92}</string>
+			</dict>
+			<key>icon/image 4732.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{763,119},{43,43}}</string>
+				<key>offset</key>
+				<string>{0,5}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{114,92}</string>
+			</dict>
+			<key>icon/image 4734.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{763,162},{43,43}}</string>
+				<key>offset</key>
+				<string>{0,5}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{114,92}</string>
+			</dict>
+			<key>icon/image 4736.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{860,205},{43,43}}</string>
+				<key>offset</key>
+				<string>{0,5}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{114,92}</string>
+			</dict>
+			<key>icon/image 4738.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{980,334},{43,43}}</string>
+				<key>offset</key>
+				<string>{0,5}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{114,92}</string>
+			</dict>
+			<key>icon/image 4740.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{980,377},{43,43}}</string>
+				<key>offset</key>
+				<string>{0,5}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{114,92}</string>
+			</dict>
+			<key>icon/image 4742.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{278,228},{43,43}}</string>
+				<key>offset</key>
+				<string>{0,5}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{114,92}</string>
+			</dict>
+			<key>icon/image 4744.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{321,228},{43,43}}</string>
+				<key>offset</key>
+				<string>{0,5}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{114,92}</string>
+			</dict>
+			<key>icon/image 4746.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{364,228},{43,43}}</string>
+				<key>offset</key>
+				<string>{0,5}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{114,92}</string>
+			</dict>
+			<key>icon/image 9832.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{896,463},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9834.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{932,495},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9836.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{968,495},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9838.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{458,396},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9840.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{418,423},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9842.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{374,454},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9844.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{298,466},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9846.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{258,500},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9848.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{334,466},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9850.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{206,517},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9852.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{62,521},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9854.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{98,521},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9856.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{134,521},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9858.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{170,521},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9860.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{494,396},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9862.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{530,396},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9864.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{566,396},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9866.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{602,396},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9868.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{638,396},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9870.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{674,428},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9872.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{710,443},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9874.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{746,444},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9876.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{782,466},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9878.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{818,494},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9880.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{854,498},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9882.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{890,498},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9884.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{926,530},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9886.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{962,530},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9888.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{454,431},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9890.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{410,458},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9892.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{370,489},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9894.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{294,501},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9896.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{330,501},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9898.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{242,535},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9900.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{206,552},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9902.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{62,556},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9904.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{98,556},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9906.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{134,556},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9908.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{170,556},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9910.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{490,431},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9912.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{526,431},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9914.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{562,431},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9916.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{598,431},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9918.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{634,431},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9920.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{670,463},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9922.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{706,478},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9924.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{742,479},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9926.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{778,501},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9928.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{814,529},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9930.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{850,533},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9932.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{886,533},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9934.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{922,565},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9936.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{958,565},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9938.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{446,466},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9940.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{406,493},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9942.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{366,524},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9944.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{278,536},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9946.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{242,570},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9948.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{206,587},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9950.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{314,536},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9952.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{62,591},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9954.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{98,591},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9956.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{134,591},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9958.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{170,591},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9960.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{482,466},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9962.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{518,466},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9964.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{554,466},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9966.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{590,466},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9968.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{626,466},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9970.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{662,498},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9972.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{698,513},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9974.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{734,514},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9976.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{770,536},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9978.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{806,564},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9980.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{842,568},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9982.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{878,568},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9984.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{914,600},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9986.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{950,600},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9988.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{986,600},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9990.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{442,501},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9992.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{402,528},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9994.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{350,559},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9996.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{278,571},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 9998.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{242,605},{36,35}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{36,35}</string>
+			</dict>
+			<key>icon/image 4211.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{247,0},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4213.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{307,0},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4215.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{367,0},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4217.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{427,0},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4219.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{487,0},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4221.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{547,0},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4223.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{607,0},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4225.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{667,0},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4227.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{727,0},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4229.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{787,0},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4231.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{847,0},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4233.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{907,0},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4235.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{247,60},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4237.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{62,64},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4239.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{122,64},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4241.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{182,64},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4243.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{307,60},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4245.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{367,60},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4247.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{427,60},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4249.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{487,60},{60,60}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{60,60}</string>
+			</dict>
+			<key>icon/image 4255.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{911,60},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4257.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{911,114},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4259.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{965,118},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4261.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{807,118},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4263.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{904,168},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4265.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{958,172},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4267.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{547,119},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4269.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{601,119},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4271.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{655,119},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4273.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{709,119},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4275.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{806,172},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4277.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{903,222},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4279.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{957,226},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4281.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{242,120},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4283.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{62,124},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4285.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{116,124},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4287.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{170,124},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4289.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{296,120},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4291.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{350,120},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4293.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{404,120},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4295.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{458,120},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4297.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{512,173},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4299.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{566,173},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4301.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{620,173},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4303.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{674,173},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4305.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{728,205},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4307.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{782,226},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4309.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{836,248},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4311.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{890,276},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4313.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{944,280},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4315.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{224,174},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4317.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{62,178},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4319.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{116,178},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4321.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{170,178},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4323.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{278,174},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4325.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{332,174},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4327.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{386,174},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4329.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{440,174},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4331.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{494,227},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4333.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{548,227},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4335.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{602,227},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4337.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{656,227},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4339.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{710,259},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4341.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{764,280},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4343.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{818,302},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4345.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{872,330},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4347.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{926,334},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4349.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{224,228},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4351.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{62,232},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4353.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{116,232},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>icon/image 4355.PNG</key>
+			<dict>
+				<key>frame</key>
+				<string>{{170,232},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+		</dict>
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>2</integer>
+			<key>textureFileName</key>
+			<string>icon.png</string>
+			<key>realTextureFileName</key>
+			<string>icon.png</string>
+			<key>size</key>
+			<string>{1024,1024}</string>
+		</dict>
+		<key>texture</key>
+		<dict>
+			<key>width</key>
+			<integer>1024</integer>
+			<key>height</key>
+			<integer>1024</integer>
+		</dict>
+	</dict>
+</plist>

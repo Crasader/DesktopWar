@@ -55,13 +55,25 @@ var LoginPanel = BasePanel.extend({
 
 var ConsolePanel = BasePanel.extend({
 
+
+
     OnInit:function() {
         var root = this.LoadJson(gn.ui.console.file);
 
-        /*var startBtn = ccui.helper.seekWidgetByName(root, "StartBtn");
-        startBtn.addTouchEventListener(this.OnStartButtonTouch, this);
-        var cancelBtn = ccui.helper.seekWidgetByName(root, "CloseBtn");
-        cancelBtn.addTouchEventListener(this.OnCancelButtonTouch, this);*/
+        //var x = cc.winSize.width * 0.5;
+        //var y = cc.winSize.height * 0.6;
+
+        var listView = ccui.helper.seekWidgetByName(root, "ListView");
+        var listSize = listView.getContentSize();
+        listView.setPosition(cc.winSize.width - listSize.width, 0);
+
+        var unit = ccui.helper.seekWidgetByName(root, "Unit");
+        unit.addTouchEventListener(this.OnCancelButtonTouch, this);
+
+        for(var i = 0; i < 10; i++){
+            var copy = unit.clone();
+            listView.addNode(copy);
+        }
 
     },
 
@@ -97,7 +109,7 @@ var ConsolePanel = BasePanel.extend({
     OnCancelButtonTouch:function(sender, type) {
         switch (type) {
             case ccui.Widget.TOUCH_ENDED:
-                //print('back');
+                print('unit');
                 break;
         }
     },
