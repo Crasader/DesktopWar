@@ -6,6 +6,7 @@
 #include "Resource.h"
 
 USING_NS_CC;
+using namespace Genius;
 
 const int		cfg_TaskBarHeight = 40;
 
@@ -102,7 +103,7 @@ void WinWrapper::ShowTrayMenu()
 	GetCursorPos(&pt);
 	HMENU hMenu;
 	hMenu = CreatePopupMenu();
-	AppendMenu(hMenu, MF_STRING, IDM_CONSOLE, TEXT("console"));
+	AppendMenu(hMenu, MF_STRING, IDM_CONSOLE, TEXT("toggle"));
 	AppendMenu(hMenu, MF_SEPARATOR, 0, NULL);
 	AppendMenu(hMenu, MF_STRING, IDM_ABOUT, TEXT("about"));
 	AppendMenu(hMenu, MF_SEPARATOR, 0, NULL);
@@ -116,7 +117,7 @@ bool WinWrapper::ProcessCommand(int wmId, int wmEvent)
 	switch (wmId)
 	{
 	case IDM_CONSOLE:
-		OpenConsole(true);
+		OpenConsole();
 		break;
 	default:
 		return false;
@@ -125,9 +126,10 @@ bool WinWrapper::ProcessCommand(int wmId, int wmEvent)
 	return true;
 }
 
-void WinWrapper::OpenConsole(bool open)
+void WinWrapper::OpenConsole()
 {
-	
+	bool visible = SceneManager::GetSingleton()->GetUILayer()->isVisible();
+	SceneManager::GetSingleton()->GetUILayer()->setVisible(!visible);
 }
 
 static float ToGLX(float x)

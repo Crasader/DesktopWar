@@ -21,7 +21,7 @@ public:
 
 	void ShowTrayMenu();
 	bool ProcessCommand(int wmId, int wmEvent);
-	void OpenConsole(bool open);
+	void OpenConsole();
 
 	void OnMouseMove(HWND hWnd, int x, int y, int nMark);
 	void OnMouseLButtonDown(HWND hWnd, int x, int y, int nMark);

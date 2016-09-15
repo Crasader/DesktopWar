@@ -3,6 +3,7 @@
 
 require("res/script/ui/BasePanel.js");
 require("res/script/ui/LoginPanel.js");
+require("res/script/ui/ConsolePanel.js");
 require("res/script/ui/PanelMgr.js");
 
 

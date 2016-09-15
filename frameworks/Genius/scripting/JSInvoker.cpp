@@ -46,3 +46,7 @@ void JSInvoker::Invoke_PushEvent(int entityID, const char* eventName)
 	sprintf_s(jsCallString, "Game.OnPushEvent(%d, '%s');", entityID, eventName);
 	ScriptingCore::getInstance()->evalString(jsCallString);
 }
+
+
+
+

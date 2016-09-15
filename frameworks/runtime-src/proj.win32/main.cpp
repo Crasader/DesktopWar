@@ -190,7 +190,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			g_winWrapper.ShowTrayMenu();
 			break;
 		case WM_LBUTTONDBLCLK:
-			g_winWrapper.OpenConsole(true);
+			g_winWrapper.OpenConsole();
 			break;
 		}
 		break;

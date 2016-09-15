@@ -4,192 +4,93 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>ui/b2.png</key>
+			<key>ui/close_h.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{2,2},{349,425}}</string>
+				<string>{{2,70},{38,29}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
-				<false />
+				<true />
 				<key>sourceSize</key>
-				<string>{349,425}</string>
+				<string>{38,29}</string>
+			</dict>
+			<key>ui/close_n.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2,112},{38,29}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{38,29}</string>
+			</dict>
+			<key>ui/close_p.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2,154},{38,29}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{38,29}</string>
 			</dict>
 			<key>ui/bg1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{2,431},{218,257}}</string>
+				<string>{{2,196},{27,28}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false />
 				<key>sourceSize</key>
-				<string>{218,257}</string>
+				<string>{27,28}</string>
 			</dict>
-			<key>ui/btn1.png</key>
+			<key>ui/button_n.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{224,431},{90,45}}</string>
+				<string>{{2,228},{23,19}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<true />
 				<key>sourceSize</key>
-				<string>{90,45}</string>
+				<string>{23,19}</string>
 			</dict>
-			<key>ui/btn2.png</key>
+			<key>ui/button_p.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{224,525},{90,45}}</string>
+				<string>{{25,228},{23,19}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<true />
 				<key>sourceSize</key>
-				<string>{90,45}</string>
+				<string>{23,19}</string>
 			</dict>
-			<key>ui/btn3.png</key>
+			<key>ui/bg2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{224,619},{90,45}}</string>
+				<string>{{33,196},{16,17}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false />
 				<key>sourceSize</key>
-				<string>{90,45}</string>
+				<string>{16,17}</string>
 			</dict>
-			<key>ui/dark.png</key>
+			<key>ui/frame.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{2,995},{21,21}}</string>
+				<string>{{2,2},{64,64}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false />
 				<key>sourceSize</key>
-				<string>{21,21}</string>
-			</dict>
-			<key>ui/title.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{202,692},{193,56}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<true />
-				<key>sourceSize</key>
-				<string>{193,56}</string>
-			</dict>
-			<key>ui/aspd.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{273,431},{34,34}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false />
-				<key>sourceSize</key>
-				<string>{34,34}</string>
-			</dict>
-			<key>ui/atk.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{273,469},{34,34}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false />
-				<key>sourceSize</key>
-				<string>{34,34}</string>
-			</dict>
-			<key>ui/check.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{27,995},{21,21}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false />
-				<key>sourceSize</key>
-				<string>{21,21}</string>
-			</dict>
-			<key>ui/hp.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{273,507},{34,34}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false />
-				<key>sourceSize</key>
-				<string>{34,34}</string>
-			</dict>
-			<key>ui/start1.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{2,692},{199,96}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<true />
-				<key>sourceSize</key>
-				<string>{199,96}</string>
-			</dict>
-			<key>ui/start2.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{2,895},{199,96}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false />
-				<key>sourceSize</key>
-				<string>{199,96}</string>
-			</dict>
-			<key>ui/start3.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{102,692},{199,96}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<true />
-				<key>sourceSize</key>
-				<string>{199,96}</string>
-			</dict>
-			<key>ui/spd.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{273,545},{34,34}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false />
-				<key>sourceSize</key>
-				<string>{34,34}</string>
-			</dict>
-			<key>ui/back2.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{205,889},{98,43}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<true />
-				<key>sourceSize</key>
-				<string>{98,43}</string>
-			</dict>
-			<key>ui/back1.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{252,889},{98,43}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<true />
-				<key>sourceSize</key>
-				<string>{98,43}</string>
+				<string>{64,64}</string>
 			</dict>
 		</dict>
 		<key>metadata</key>
@@ -201,14 +102,14 @@
 			<key>realTextureFileName</key>
 			<string>ui.png</string>
 			<key>size</key>
-			<string>{512,1024}</string>
+			<string>{128,256}</string>
 		</dict>
 		<key>texture</key>
 		<dict>
 			<key>width</key>
-			<integer>512</integer>
+			<integer>128</integer>
 			<key>height</key>
-			<integer>1024</integer>
+			<integer>256</integer>
 		</dict>
 	</dict>
 </plist>

@@ -1,20 +1,29 @@
 
 
 
-var LoginPanel = BasePanel.extend({
+
+
+var ConsolePanel = BasePanel.extend({
+
+
 
     OnInit:function() {
-        var root = this.LoadJson(gn.ui.login.file);
+        var root = this.LoadJson(gn.ui.console.file);
 
-        var rootsize = root.getContentSize();
-        var x = cc.winSize.width * 0.5 - rootsize.width*0.5;
-        var y = cc.winSize.height * 0.5 - rootsize.height*0.5 + 100;
-        root.setPosition(x,y);
+        //var x = cc.winSize.width * 0.5;
+        //var y = cc.winSize.height * 0.6;
 
-        var startBtn = ccui.helper.seekWidgetByName(root, "startBtn");
-        startBtn.addTouchEventListener(this.OnStartButtonTouch, this);
-        var cancelBtn = ccui.helper.seekWidgetByName(root, "closeBtn");
-        cancelBtn.addTouchEventListener(this.OnCancelButtonTouch, this);
+        var listView = ccui.helper.seekWidgetByName(root, "ListView");
+        var listSize = listView.getContentSize();
+        listView.setPosition(cc.winSize.width - listSize.width, 0);
+
+        var unit = ccui.helper.seekWidgetByName(root, "Unit");
+        unit.addTouchEventListener(this.OnCancelButtonTouch, this);
+
+        for(var i = 0; i < 10; i++){
+            var copy = unit.clone();
+            listView.addNode(copy);
+        }
 
     },
 
@@ -50,12 +59,10 @@ var LoginPanel = BasePanel.extend({
     OnCancelButtonTouch:function(sender, type) {
         switch (type) {
             case ccui.Widget.TOUCH_ENDED:
-                //print('back');
+                print('unit');
                 break;
         }
     },
 
 
 });
-
-
