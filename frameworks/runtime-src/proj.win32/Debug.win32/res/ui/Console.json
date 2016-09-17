@@ -17,7 +17,6 @@
           {
             "ItemMargin": 10,
             "VerticalType": "Align_VerticalCenter",
-            "IsBounceEnabled": true,
             "ScrollDirectionType": 0,
             "ClipAble": true,
             "BackColorAlpha": 59,

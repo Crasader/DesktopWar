@@ -16,6 +16,7 @@ namespace cfg
 		string nameID;
 		string nameCN;
 		string scriptName;
+		string icon;
 		int animSetId;
 		int moveSpeed;
 		int viewRange;

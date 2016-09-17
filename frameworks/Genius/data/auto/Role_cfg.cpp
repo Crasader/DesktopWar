@@ -23,6 +23,11 @@ IMPL_CONFIG_CREATE(Role_cfg);
 				scriptName = reader.GetStringValue(row, col);
 			col++;
 
+			icon = "";
+			if(reader.GetStringValue(row, col).length() > 0)
+				icon = reader.GetStringValue(row, col);
+			col++;
+
 			animSetId = 0;
 			if(reader.GetStringValue(row, col).length() > 0)
 				animSetId = reader.GetIntValue(row, col);

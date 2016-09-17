@@ -1,26 +1,26 @@
-note	id	nameID	nameCN	scriptName	animSetId	moveSpeed	viewRange	fightRangeNear	fightRangeFar	baseLife	attackValue	attackType	antiPhysicValue	antiMagicValue	dodgeValue	normalSkill1	normalSkill2	specialSkill1	specialSkill2	specialSkill3	lifeBarType	lifeBarHeight	bulletX	bulletY
-note	id	角色名	中文名	脚本名	动画集id	移动速度(10以下慢)	视野半径	近距攻击半径	远距攻击半径	基础生命	攻击力	攻击类型(1物理，2魔法)	物抗(百分数)	魔抗(百分数)	闪避(百分数)	普攻技1	普攻技2	特殊技1	特殊技2	特殊技3	血条大小(1小，2中，3大，4极大)	血条高度	子弹发射位置x	子弹发射位置y
-string	int	string	string	string	int	int	int	int	int	int	int	int	int	int	int	int	int	int	int	int	int	int	int	int
-""	0	""	""	""	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-	1001	Jedi	...	Soldier	1001	40	80	30	30	150	10	1	0	0	0	1	0	0	0	0	1	20	0	0
-	1002	Jedi2	...	Soldier	1002	40	80	30	30	150	10	1	0	0	0	1	0	0	0	0	1	20	0	0
-	1003	Tkdo		Soldier	1003	40	80	30	30	150	10	1	0	0	0	1	0	0	0	0	1	20	0	0
-	1004	Militia	民兵	Soldier	1004	40	80	30	30	50	2	1	0	0	0	1	0	0	0	0	1	20	0	0
-	1005	Footman	步兵	Soldier	1005	40	80	30	30	100	4	1	0	0	0	1	0	0	0	0	1	20	0	0
-	1006	Knight	骑士	Soldier	1006	40	80	30	30	150	8	1	0	0	0	1	0	0	0	0	1	20	0	0
-	1007	HolyKnight	圣骑士	Soldier	1007	40	200	30	30	200	16	1	0	0	0	1	1	6	8	0	1	20	0	0
-	1008	Barbarian	野蛮人	Soldier	1008	40	200	30	30	200	20	1	0	0	0	1	0	0	0	0	1	20	0	0
-	2001	Goblin	地精	Monster	2001	24	200	30	30	20	3	1	0	0	0	1	0	0	0	0	1	20	0	0
-	2002	Orc	兽人	Monster	2002	16	200	30	30	80	6	1	0	0	0	1	0	0	0	0	1	25	0	0
-	2003	Sahman	萨满	Monster	2003	20	200	30	30	100	4	1	0	80	0	1	0	2	0	0	1	25	0	0
-	2004	Ogre	巨妖	Monster	2004	14	200	30	30	800	50	1	0	0	0	1	0	0	0	0	2	50	0	0
-	2005	Bandit	强盗	Monster	2005	24	200	30	30	70	25	1	0	0	50	1	0	0	0	0	1	25	0	0
-	2006	Brigand	土匪	Monster	2006	16	200	30	30	160	8	1	50	0	0	1	0	0	0	0	1	25	0	0
-	2007	Wulf	恶狼	Monster	2007	50	200	30	30	35	2	1	0	0	50	1	0	0	0	0	1	20	0	0
-	2008	Juggernaut	狂暴魔像	Juggernaut	2008	5	200	50	50	10000	200	1	0	0	0	1	0	3	0	0	4	100	-26	68
-	2009	NoxiousCreeeper	剧毒蜘蛛	NoxiousCreeeper	2009	8	200	30	30	1000	30	1	50	0	0	1	0	5	0	0	2	35	-25	5
-	2010	ShadowArcher	暗影射手	ShadowArcher	2010	24	200	30	150	100	15	1	0	30	0	1	0	4	0	0	1	20	0	0
-	2011	NoxiousSon	蜘蛛子	Monster	2011	30	200	30	30	50	5	2	0	0	0	1	0	0	0	0	1	20	0	0
-	2012	BigDevil_chase	魔王变身-追击	Monster	2012	5	200	100	100	10000	50	1	0	0	0	1	0	3	0	0	4	100	-26	68
-	3001	Militia_Escape	民兵-逃亡	Soldier	1004	40	80	30	30	50	2	1	0	0	0	1	0	0	0	0	1	20	0	0
-	3002	Footman_Escape	步兵-逃亡	Soldier	1005	40	80	30	30	100	4	1	0	0	0	1	0	0	0	0	1	20	0	0
+note	id	nameID	nameCN	scriptName	icon	animSetId	moveSpeed	viewRange	fightRangeNear	fightRangeFar	baseLife	attackValue	attackType	antiPhysicValue	antiMagicValue	dodgeValue	normalSkill1	normalSkill2	specialSkill1	specialSkill2	specialSkill3	lifeBarType	lifeBarHeight	bulletX	bulletY
+note	id	角色名	中文名	脚本名	icon	动画集id	移动速度(10以下慢)	视野半径	近距攻击半径	远距攻击半径	基础生命	攻击力	攻击类型(1物理，2魔法)	物抗(百分数)	魔抗(百分数)	闪避(百分数)	普攻技1	普攻技2	特殊技1	特殊技2	特殊技3	血条大小(1小，2中，3大，4极大)	血条高度	子弹发射位置x	子弹发射位置y
+string	int	string	string	string	string	int	int	int	int	int	int	int	int	int	int	int	int	int	int	int	int	int	int	int	int
+""	0	""	""	""	""	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+	1001	Jedi	...	Soldier	image 3495	1001	40	80	30	30	150	10	1	0	0	0	1	0	0	0	0	1	20	0	0
+	1002	Jedi2	...	Soldier	image 3494	1002	40	80	30	30	150	10	1	0	0	0	1	0	0	0	0	1	20	0	0
+	1003	Tkdo		Soldier	image 10018	1003	40	80	30	30	150	10	1	0	0	0	1	0	0	0	0	1	20	0	0
+	1004	Militia	民兵	Soldier	image 4213	1004	40	80	30	30	50	2	1	0	0	0	1	0	0	0	0	1	20	0	0
+	1005	Footman	步兵	Soldier	image 4221	1005	40	80	30	30	100	4	1	0	0	0	1	0	0	0	0	1	20	0	0
+	1006	Knight	骑士	Soldier	image 4229	1006	40	80	30	30	150	8	1	0	0	0	1	0	0	0	0	1	20	0	0
+	1007	HolyKnight	圣骑士	Soldier	image 4237	1007	40	200	30	30	200	16	1	0	0	0	1	1	6	8	0	1	20	0	0
+	1008	Barbarian	野蛮人	Soldier	image 4245	1008	40	200	30	30	200	20	1	0	0	0	1	0	0	0	0	1	20	0	0
+	2001	Goblin	地精	Monster	image 4255	2001	24	200	30	30	20	3	1	0	0	0	1	0	0	0	0	1	20	0	0
+	2002	Orc	兽人	Monster	image 4257	2002	16	200	30	30	80	6	1	0	0	0	1	0	0	0	0	1	25	0	0
+	2003	Sahman	萨满	Monster	image 4259	2003	20	200	30	30	100	4	1	0	80	0	1	0	2	0	0	1	25	0	0
+	2004	Ogre	巨妖	Monster	image 4261	2004	14	200	30	30	800	50	1	0	0	0	1	0	0	0	0	2	50	0	0
+	2005	Bandit	强盗	Monster	image 4263	2005	24	200	30	30	70	25	1	0	0	50	1	0	0	0	0	1	25	0	0
+	2006	Brigand	土匪	Monster	image 4265	2006	16	200	30	30	160	8	1	50	0	0	1	0	0	0	0	1	25	0	0
+	2007	Wulf	恶狼	Monster	image 4279	2007	50	200	30	30	35	2	1	0	0	50	1	0	0	0	0	1	20	0	0
+	2008	Juggernaut	狂暴魔像	Juggernaut	image 4315	2008	5	200	50	50	10000	200	1	0	0	0	1	0	3	0	0	4	100	-26	68
+	2009	NoxiousCreeeper	剧毒蜘蛛	NoxiousCreeeper	image 4337	2009	8	200	30	30	1000	30	1	50	0	0	1	0	5	0	0	2	35	-25	5
+	2010	ShadowArcher	暗影射手	ShadowArcher	image 4275	2010	24	200	30	150	100	15	1	0	30	0	1	0	4	0	0	1	20	0	0
+	2011	NoxiousSon	蜘蛛子	Monster		2011	30	200	30	30	50	5	2	0	0	0	1	0	0	0	0	1	20	0	0
+	2012	BigDevil_chase	魔王变身-追击	Monster		2012	5	200	100	100	10000	50	1	0	0	0	1	0	3	0	0	4	100	-26	68
+	3001	Militia_Escape	民兵-逃亡	Soldier		1004	40	80	30	30	50	2	1	0	0	0	1	0	0	0	0	1	20	0	0
+	3002	Footman_Escape	步兵-逃亡	Soldier		1005	40	80	30	30	100	4	1	0	0	0	1	0	0	0	0	1	20	0	0

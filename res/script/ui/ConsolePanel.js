@@ -27,8 +27,11 @@ var ConsolePanel = BasePanel.extend({
             copy.setName(""+i);
             listView.addNode(copy);
             var roleCfg = Config.Role[i];
+            this.roleList[i] = {};
             this.roleList[i].root = copy;
-            this.roleList[i].icon = ccui.helper.seekWidgetByName(copy, "Icon");
+            var icon = ccui.helper.seekWidgetByName(copy, "Icon");
+            this.roleList[i].icon = icon;
+            icon.loadTexture("icon/"+roleCfg.icon+".png", 1);
         }
 
     },
