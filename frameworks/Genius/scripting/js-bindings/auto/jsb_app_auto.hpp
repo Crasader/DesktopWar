@@ -46,6 +46,7 @@ void js_app_SceneManager_finalize(JSContext *cx, JSObject *obj);
 void js_register_app_SceneManager(JSContext *cx, JS::HandleObject global);
 void register_all_app(JSContext* cx, JS::HandleObject obj);
 bool js_app_SceneManager_AddToUILayer(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_app_SceneManager_AddToRoot(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_SceneManager_ShakeScene(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_SceneManager_Init(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_app_SceneManager_Update(JSContext *cx, uint32_t argc, jsval *vp);

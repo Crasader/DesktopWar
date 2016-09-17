@@ -7,8 +7,10 @@ var LoginPanel = BasePanel.extend({
         var root = this.LoadJson(gn.ui.login.file);
 
         var rootsize = root.getContentSize();
-        var x = cc.winSize.width * 0.5 - rootsize.width*0.5;
-        var y = cc.winSize.height * 0.5 - rootsize.height*0.5 + 100;
+        //var x = cc.winSize.width * 0.5 - rootsize.width*0.5;
+        //var y = cc.winSize.height * 0.5 - rootsize.height*0.5 + 100;
+        var x = cc.winSize.width - rootsize.width - 30;
+        var y = 30;
         root.setPosition(x,y);
 
         var startBtn = ccui.helper.seekWidgetByName(root, "startBtn");
@@ -16,18 +18,19 @@ var LoginPanel = BasePanel.extend({
         var cancelBtn = ccui.helper.seekWidgetByName(root, "closeBtn");
         cancelBtn.addTouchEventListener(this.OnCancelButtonTouch, this);
 
+
     },
 
     OnShow:function(){
-        print('on show');
+        //print('on show');
     },
 
     OnHide:function(){
-        print('on hide');
+        //print('on hide');
     },
 
     OnDestroy:function(){
-        print('on destory');
+       // print('on destory');
     },
 
     // widget events handlers
@@ -54,6 +57,8 @@ var LoginPanel = BasePanel.extend({
                 break;
         }
     },
+
+
 
 
 });

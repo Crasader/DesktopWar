@@ -147,6 +147,22 @@ int
 },
 
 /**
+ * @method AddToRoot
+ * @param {cc.Node} arg0
+ * @param {float} arg1
+ * @param {float} arg2
+ * @param {int} arg3
+ */
+AddToRoot : function (
+node, 
+float, 
+float, 
+int 
+)
+{
+},
+
+/**
  * @method ShakeScene
  */
 ShakeScene : function (

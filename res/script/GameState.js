@@ -38,13 +38,14 @@ var LoadingState = GameState.extend
     },
 
     OnEnter:function () {
+        PanelMgr.Hide(gn.ui.entrance);
         if (this.uiRoot == null) {
             this.uiRoot = new cc.Node();
 
             SceneManager.GetSingleton().AddToMapLayer(this.uiRoot, 0, 0, 0);
 
-            var x = cc.winSize.width * 0.5;
-            var y = cc.winSize.height * 0.6;
+            var x = cc.winSize.width - 100;
+            var y = 60;
 
             this.percentLabel = RollNumberLabel.create();
             this.uiRoot.addChild(this.percentLabel);
@@ -111,6 +112,8 @@ var LaunchState = GameState.extend
 
     OnEnter:function ()
     {
+        gn.SceneMgr.GetUILayer().setVisible(false);
+        PanelMgr.Show(gn.ui.entrance);
         PanelMgr.Show(gn.ui.login);
     },
 
@@ -144,6 +147,7 @@ var WarState = GameState.extend({
 
     OnEnter:function ()
     {
+        PanelMgr.Show(gn.ui.entrance);
         PanelMgr.Show(gn.ui.console);
         //Monster.Create(2012, 700, 133, gn.Tag.Monster);
         NoxiousCreeeper.Create(2009, 1300, 133, gn.Tag.Monster);//mother spider

@@ -452,6 +452,94 @@ bool js_app_SceneManager_AddToUILayer(JSContext *cx, uint32_t argc, jsval *vp)
     JS_ReportError(cx, "js_app_SceneManager_AddToUILayer : wrong number of arguments: %d, was expecting %d", argc, 1);
     return false;
 }
+bool js_app_SceneManager_AddToRoot(JSContext *cx, uint32_t argc, jsval *vp)
+{
+    JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+    bool ok = true;
+    JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+    js_proxy_t *proxy = jsb_get_js_proxy(obj);
+    Genius::SceneManager* cobj = (Genius::SceneManager *)(proxy ? proxy->ptr : NULL);
+    JSB_PRECONDITION2( cobj, cx, false, "js_app_SceneManager_AddToRoot : Invalid Native Object");
+    if (argc == 1) {
+        cocos2d::Node* arg0 = nullptr;
+        do {
+            if (args.get(0).isNull()) { arg0 = nullptr; break; }
+            if (!args.get(0).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg0 = (cocos2d::Node*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+        } while (0);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_SceneManager_AddToRoot : Error processing arguments");
+        cobj->AddToRoot(arg0);
+        args.rval().setUndefined();
+        return true;
+    }
+    if (argc == 2) {
+        cocos2d::Node* arg0 = nullptr;
+        double arg1 = 0;
+        do {
+            if (args.get(0).isNull()) { arg0 = nullptr; break; }
+            if (!args.get(0).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg0 = (cocos2d::Node*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+        } while (0);
+        ok &= JS::ToNumber( cx, args.get(1), &arg1) && !std::isnan(arg1);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_SceneManager_AddToRoot : Error processing arguments");
+        cobj->AddToRoot(arg0, arg1);
+        args.rval().setUndefined();
+        return true;
+    }
+    if (argc == 3) {
+        cocos2d::Node* arg0 = nullptr;
+        double arg1 = 0;
+        double arg2 = 0;
+        do {
+            if (args.get(0).isNull()) { arg0 = nullptr; break; }
+            if (!args.get(0).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg0 = (cocos2d::Node*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+        } while (0);
+        ok &= JS::ToNumber( cx, args.get(1), &arg1) && !std::isnan(arg1);
+        ok &= JS::ToNumber( cx, args.get(2), &arg2) && !std::isnan(arg2);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_SceneManager_AddToRoot : Error processing arguments");
+        cobj->AddToRoot(arg0, arg1, arg2);
+        args.rval().setUndefined();
+        return true;
+    }
+    if (argc == 4) {
+        cocos2d::Node* arg0 = nullptr;
+        double arg1 = 0;
+        double arg2 = 0;
+        int arg3 = 0;
+        do {
+            if (args.get(0).isNull()) { arg0 = nullptr; break; }
+            if (!args.get(0).isObject()) { ok = false; break; }
+            js_proxy_t *jsProxy;
+            JS::RootedObject tmpObj(cx, args.get(0).toObjectOrNull());
+            jsProxy = jsb_get_js_proxy(tmpObj);
+            arg0 = (cocos2d::Node*)(jsProxy ? jsProxy->ptr : NULL);
+            JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+        } while (0);
+        ok &= JS::ToNumber( cx, args.get(1), &arg1) && !std::isnan(arg1);
+        ok &= JS::ToNumber( cx, args.get(2), &arg2) && !std::isnan(arg2);
+        ok &= jsval_to_int32(cx, args.get(3), (int32_t *)&arg3);
+        JSB_PRECONDITION2(ok, cx, false, "js_app_SceneManager_AddToRoot : Error processing arguments");
+        cobj->AddToRoot(arg0, arg1, arg2, arg3);
+        args.rval().setUndefined();
+        return true;
+    }
+
+    JS_ReportError(cx, "js_app_SceneManager_AddToRoot : wrong number of arguments: %d, was expecting %d", argc, 1);
+    return false;
+}
 bool js_app_SceneManager_ShakeScene(JSContext *cx, uint32_t argc, jsval *vp)
 {
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
@@ -691,6 +779,7 @@ void js_register_app_SceneManager(JSContext *cx, JS::HandleObject global) {
 
     static JSFunctionSpec funcs[] = {
         JS_FN("AddToUILayer", js_app_SceneManager_AddToUILayer, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("AddToRoot", js_app_SceneManager_AddToRoot, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("ShakeScene", js_app_SceneManager_ShakeScene, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Init", js_app_SceneManager_Init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("Update", js_app_SceneManager_Update, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),

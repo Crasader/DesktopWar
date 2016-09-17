@@ -21,6 +21,7 @@ namespace Genius
 		static  SceneManager*  GetSingleton();
 		bool Init();
 		void Update();
+		void AddToRoot(cocos2d::Node* node, float x = 0, float y = 0, int zOrder = 0);
 		void AddToMapLayer(cocos2d::Node* node, float x = 0, float y = 0, int zOrder = 0);
 		void AddToUILayer(cocos2d::Node* node, float x = 0, float y = 0, int zOrder = 0);
 		cocos2d::Node* GetMapLayer(){ return m_pMapLayer; }

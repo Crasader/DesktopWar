@@ -8,6 +8,10 @@ require("res/script/ui/PanelMgr.js");
 
 
 gn.ui = {
+    entrance:{
+        file:'res/ui/Entrance.json',
+        inst:new EntrancePanel()
+    },
     login:{
         file:'res/ui/LoginPanel.json',
         inst:new LoginPanel()

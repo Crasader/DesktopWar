@@ -5,7 +5,7 @@
 
 var ConsolePanel = BasePanel.extend({
 
-
+    roleList:{},
 
     OnInit:function() {
         var root = this.LoadJson(gn.ui.console.file);
@@ -18,45 +18,34 @@ var ConsolePanel = BasePanel.extend({
         listView.setPosition(cc.winSize.width - listSize.width, 0);
 
         var unit = ccui.helper.seekWidgetByName(root, "Unit");
-        unit.addTouchEventListener(this.OnCancelButtonTouch, this);
+        unit.addTouchEventListener(this.OnUnitTouch, this);
 
-        for(var i = 0; i < 10; i++){
+        this.roleList = {};
+
+        for(var i = 1001; i < 1008; i++){
             var copy = unit.clone();
+            copy.setName(""+i);
             listView.addNode(copy);
+            var roleCfg = Config.Role[i];
+            this.roleList[i].root = copy;
+            this.roleList[i].icon = ccui.helper.seekWidgetByName(copy, "Icon");
         }
 
     },
 
     OnShow:function(){
-        print('on show');
+        //print('on show');
     },
 
     OnHide:function(){
-        print('on hide');
+        //print('on hide');
     },
 
     OnDestroy:function(){
-        print('on destory');
+        //print('on destory');
     },
 
-    // widget events handlers
-    OnStartButtonTouch:function(sender, type) {
-        switch (type) {
-            case ccui.Widget.TOUCH_BEGAN:
-                break;
-            case ccui.Widget.TOUCH_MOVED:
-                break;
-            case ccui.Widget.TOUCH_ENDED:
-                Game.ChangeState(Game.warState);
-                break;
-            case ccui.Widget.TOUCH_CANCELED:
-                break;
-            default:
-                break;
-        }
-    },
-
-    OnCancelButtonTouch:function(sender, type) {
+    OnUnitTouch:function(sender, type) {
         switch (type) {
             case ccui.Widget.TOUCH_ENDED:
                 print('unit');

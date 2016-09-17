@@ -51,6 +51,13 @@ void SceneManager::Update()
 	UpdateSceneShake();
 }
 
+void SceneManager::AddToRoot(cocos2d::Node* node, float x/* = 0*/, float y/* = 0*/, int zOrder/* = 0*/)
+{
+	m_root->addChild(node);
+	node->setLocalZOrder(zOrder);
+	node->setPosition(x, y);
+}
+
 void SceneManager::AddToMapLayer(cocos2d::Node* node, float x/* = 0*/, float y/* = 0*/, int zOrder/* = 0*/)
 {
 	m_pMapLayer->addChild(node);

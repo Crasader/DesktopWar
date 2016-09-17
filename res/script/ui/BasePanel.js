@@ -46,3 +46,30 @@ var BasePanel = Class.extend({
     }
 
 });
+
+
+var EntrancePanel = BasePanel.extend({
+
+    uiVisible:false,
+
+    OnInit:function() {
+        var root = ccs.load(gn.ui.entrance.file).node;
+        gn.SceneMgr.AddToRoot(root);
+        var x = cc.winSize.width - 32;
+        var y = 0;
+        root.setPosition(x,y);
+        var enterBtn = ccui.helper.seekWidgetByName(root, "Button_1");
+        enterBtn.addTouchEventListener(this.OnButtonTouch, this);
+    },
+
+    OnButtonTouch:function(sender, type) {
+        switch (type) {
+            case ccui.Widget.TOUCH_ENDED:
+                this.uiVisible = !this.uiVisible;
+                gn.SceneMgr.GetUILayer().setVisible(this.uiVisible);
+                break;
+        }
+    },
+
+
+});
